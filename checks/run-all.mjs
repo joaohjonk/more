@@ -22,7 +22,7 @@ for (const c of CHECKS) {
   if (!files.length) { rows.push([c.rule, c.script, '0', 'sem arquivo aplicável']); continue; }
   const r = spawnSync('node', [path.join(CHECKS_DIR, c.script), ...files], { encoding: 'utf8', maxBuffer: 64 << 20 });
   const n = (r.stdout.match(/FALHA \((\d+)\)/) || [])[1];
-  const status = r.status === 0 ? 'PASSA' : r.status === 1 ? `FALHA (${n})` : `ERRO (exit ${r.status})`;
+  const status = r.status === 0 ? (/PROVA \(não vai para gráfica\)/.test(r.stdout) ? 'PROVA (não vai para gráfica)' : 'PASSA') : r.status === 1 ? `FALHA (${n})` : `ERRO (exit ${r.status})`;
   if (r.status !== 0) { failed++; details.push((r.stdout + r.stderr).trim()); }
   rows.push([c.rule, c.script, String(files.length), status + (c.examples ? ' + exemplos' : '')]);
 }

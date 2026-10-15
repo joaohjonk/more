@@ -1,9 +1,10 @@
 #!/usr/bin/env node
-// R-GEN-01: a marca MORE só entra como o arquivo oficial. Em SVG/HTML:
-//   - <img>/<image>/<use> de marca (class/id/alt com logo, wordmark, marca) aponta para assets/official/more-wordmark.svg,
-//     more-wordmark-currentcolor.svg ou more-wordmark-small.svg (cor pelo CSS, com tokens; o fill black do
-//     more-wordmark.svg é padrão do arquivo, não cor da marca)
-//   - <svg>/<g> inline de marca tem exatamente os mesmos paths do arquivo oficial (coordenadas arredondadas a 0,1)
+// R-GEN-01: a marca MORE só entra com os paths oficiais, inline. Em SVG/HTML:
+//   - <svg>/<g> inline de marca (class/id com logo, wordmark, marca) tem exatamente os mesmos paths de
+//     assets/official/more-wordmark.svg, more-wordmark-currentcolor.svg ou more-wordmark-small.svg (coordenadas a 0,1)
+//   - os paths usam fill="currentColor" (ou nenhum fill): a cor vem do CSS/atributo do elemento, a partir dos tokens
+//   - <img>/<image>/<use> de marca falha, mesmo apontando para o arquivo oficial: <img> não herda currentColor e o
+//     more-wordmark.svg sai #000 (quebra R-COLOR-02)
 //   - "MORE" escrito como texto (<text>, ou texto dentro de elemento de marca) falha: é marca redesenhada com fonte
 // Imagem raster gerada não é lida aqui: o wordmark entra por composição (skill image-edit) do SVG oficial, nunca pelo prompt.
 // Uso: node checks/wordmark.mjs <arquivo.svg|.html ...>
@@ -25,8 +26,7 @@ for (const f of files) {
   for (const m of src.matchAll(/<(img|image|use)\b([^>]*)>/gi)) {
     const href = (m[2].match(/(?:xlink:)?(?:href|src)\s*=\s*"([^"]*)"/i) || [, ''])[1];
     const isMark = MARK.test(m[2]) || /wordmark|logo/i.test(href);
-    if (isMark && !OFFICIAL.some((o) => href.split(/[?#]/)[0].endsWith(o)))
-      failures.push({ file: f, msg: `<${m[1]}> de marca aponta para "${href.slice(0, 60)}": use assets/official/more-wordmark.svg` });
+    if (isMark) failures.push({ file: f, msg: `<${m[1]}> de marca ("${href.slice(0, 50)}"): use os paths oficiais inline com fill="currentColor" e a cor pelo CSS` });
   }
   for (const m of src.matchAll(/<text\b[^>]*>([\s\S]*?)<\/text>/gi))
     if (/\bM\s*O\s*R\s*E\b/i.test(m[1].replace(/<[^>]+>/g, ''))) failures.push({ file: f, msg: '"MORE" escrito como <text>: a marca é o SVG oficial, nunca digitada' });
@@ -37,10 +37,11 @@ for (const f of files) {
     const p = pathsOf(m[3]);
     if (!p) { if (/\bMORE\b/i.test(m[3].replace(/<[^>]+>/g, ''))) failures.push({ file: f, msg: 'bloco de marca com "MORE" em texto: use o SVG oficial' }); continue; }
     if (!official.includes(p)) failures.push({ file: f, msg: `<${m[1]}> de marca com paths diferentes do arquivo oficial: marca redesenhada ou aproximada` });
+    for (const fm of m[3].matchAll(/<path\b[^>]*\sfill\s*=\s*"([^"]+)"/gi)) if (!/^(currentColor|none)$/i.test(fm[1])) { failures.push({ file: f, msg: `path da marca com fill="${fm[1]}": use fill="currentColor" e dê a cor no elemento` }); break; }
   }
   if (path.extname(f) === '.html') {
     for (const m of src.matchAll(/<(div|span|a|h1|p)\b([^>]*)>([^<]*)<\/\1>/gi))
       if (MARK.test(m[2]) && /\bMORE\b/i.test(m[3])) failures.push({ file: f, msg: `<${m[1]}> de marca com "MORE" em texto: use o SVG oficial` });
   }
 }
-finish('R-GEN-01', failures, 'marca sempre do arquivo oficial');
+finish('R-GEN-01', failures, 'marca sempre com os paths oficiais, inline, em currentColor');

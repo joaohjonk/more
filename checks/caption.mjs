@@ -10,7 +10,7 @@
 //         (endereço, horário). Nome de peça não é exigido.
 // Linha seca = frase sem palavra de material/ficha (checks/palavras-de-material.json) e que não é status
 // ("Pronta entrega", "Sob encomenda...").
-// Em todas: 2-145 palavras, zero "!", emoji, hashtag e palavra proibida (fora de checks/aprovadas.json).
+// Em todas: 4-145 palavras, zero "!", emoji, hashtag e palavra proibida (fora de checks/aprovadas.json).
 // O tom "discorda da convenção" não é medido: compare com as linhas aprovadas da regra.
 // Unidade: frase na fórmula peca; linha na fórmula fato.
 // Uso: node checks/caption.mjs <legenda.txt ...>
@@ -33,7 +33,7 @@ for (const f of files) {
     const tag = (caps.length > 1 ? `legenda ${i + 1} ` : '') + `[${tipo}]: `;
     const fail = (msg) => failures.push({ file: f, msg: tag + msg });
     const n = words(cap).length;
-    if (n < 2 || n > 145) fail(`${n} palavras (precisa de 2-145)`);
+    if (n < 4 || n > 145) fail(`${n} palavras (precisa de 4-145)`);
     for (const m of semAprovadas(cap).matchAll(forbiddenRe)) fail(`palavra proibida "${m[0]}"`);
     if (/[!¡]/.test(cap)) fail('ponto de exclamação');
     if (EMOJI.test(cap)) fail('emoji');

@@ -1072,7 +1072,7 @@
   "packaging_rules": {
    "proposta": {
     "last_updated": "2026-10-15",
-    "value": "Hang tag on uncoated card: Muoto name, mono line [Sob encomenda · ~120 dias] or [Pronta entrega]; ciano appears physically only as a 10mm square 'pronta entrega' sticker; TOM.01 box rich black with reversed wordmark and a mono spec panel. To validate.",
+    "value": "Hang tag on uncoated card, 50×90 mm portrait: Muoto name, mono line 'Sob encomenda · ~120 dias' or 'Pronta entrega' (no brackets: brackets are for actions); ciano appears physically only as a 10mm square 'pronta entrega' sticker; TOM.01 box rich black C60 M40 Y40 K100 with reversed wordmark and a mono spec panel. To validate.",
     "input_class": "SOFT_CONSTRAINT",
     "sources": [
      {
@@ -1091,7 +1091,7 @@
   "graphic_devices": {
    "cartaz": {
     "last_updated": "2026-10-15",
-    "value": "Receita do cartaz (do cartaz vermelho da TOM.01, IG p28_0): um campo de cor chapado; a peça em preto como silhueta dura feita da foto real (limiar de luminância, sem IA); três blocos curtos em Muoto girados 90° na margem esquerda (nome da peça, uma frase, endereço da loja); marca M girada 90° no canto de baixo à esquerda. Cartaz de evento sem peça: só campo, data em display e marca XL embaixo (convite 05.11). Texto e marca: branco (papel vazado) sobre vermelho-jambo, verde-jamaica e berinjela; preto sobre amarelo-igarata.",
+    "value": "Receita do cartaz (do cartaz vermelho da TOM.01, IG p28_0): um campo de cor chapado; a peça em preto como silhueta dura feita da foto real (limiar de luminância, sem IA); três blocos curtos em Muoto girados 90° na margem esquerda (nome da peça, uma frase, endereço da loja); marca M girada 90° no canto de baixo à esquerda. Cartaz de evento sem peça: campo, data em display, marca XL embaixo e os três blocos girados com o endereço (convite 05.11). Cartaz de peça só em vermelho-jambo ou amarelo-igarata. Texto e marca: branco (papel vazado) sobre vermelho-jambo, verde-jamaica e berinjela; preto sobre amarelo-igarata.",
     "input_class": "SOFT_CONSTRAINT",
     "sources": [
      {

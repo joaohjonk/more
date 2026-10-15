@@ -11,8 +11,12 @@
 //     vermelho-jambo, verde-jamaica, berinjela => branco. Fundo = <rect> do tamanho do quadro (SVG) ou background do
 //     elemento data-canvas (HTML)
 //   - stroke (contorno), scale negativo (espelho), escala não uniforme e fill="url(...)" (padrão) falham
-// Post de peça no feed do Instagram (nome com ig-feed / _IG_, sem evento, abertura, bastidores, marca, sobre):
-//   sem marca e sem texto sobre a foto (76% do feed). Evento, story e cartaz podem levar M ou XL.
+// Quando leva marca (tipo lido do nome MORE_<CANAL>_<slug>_<variante>_...; MORE_FONTE_ usa a variante):
+//   obrigatória: post de evento (IG com slug evento-* ou variante evento/abertura) e cartaz, convite, vitrine, livro
+//   proibida: post de peça no feed (IG com slug de peça; também sem texto sobre a foto, 76% do feed) e story (IGS /
+//             variante ig-story, story)
+//   opcional: etiqueta (ETIQUETA / variante etiqueta) e qualquer outro tipo
+// XL pode passar por cima da margem do grid de impressão (1/24 do lado menor); só não sangra para fora do quadro.
 // Uso: node checks/logo.mjs <layout.svg|layout.html ...>
 import fs from 'node:fs';
 import path from 'node:path';
@@ -27,7 +31,25 @@ const MARK = /more-wordmark|\b(wordmark|logo|marca)\b/i;
 const failures = [];
 const num = (s, k) => { const m = s.match(new RegExp(`(?:^|\\s)${k}\\s*=\\s*"(-?[\\d.]+)`)); return m ? parseFloat(m[1]) : null; };
 const css = (s, k) => { const m = s.match(new RegExp(`(?:^|;|\\s)${k}\\s*:\\s*(-?[\\d.]+)px`)); return m ? parseFloat(m[1]) : null; };
-const igProductPost = (f) => /(^|[-_])ig[-_]feed|_IG_/i.test(path.basename(f)) && !/evento|abertura|bastidor|marca|sobre/i.test(path.basename(f));
+function kind(f) {
+  const b = path.basename(f).replace(/\.[^.]+$/, '');
+  const m = b.match(/^(?:\d+[-_])?MORE_([A-Z]+)_([a-z0-9-]+)_([a-z0-9-]+)_/);
+  let canal, slug, variante;
+  if (m) [, canal, slug, variante] = m; else { canal = ''; slug = ''; variante = b.toLowerCase(); }
+  const v = variante.toLowerCase();
+  if (canal === 'FONTE' || !m) {
+    if (/ig-story|story/.test(v)) canal = 'IGS';
+    else if (/ig-feed|feed/.test(v)) canal = 'IG';
+    else if (/etiqueta/.test(v)) canal = 'ETIQUETA';
+    else if (/cartaz|convite|vitrine|livro/.test(v)) canal = 'CARTAZ';
+  }
+  if (['CARTAZ', 'CONVITE', 'VITRINE', 'LIVRO'].includes(canal) || /cartaz|convite|vitrine|livro/.test(v)) return 'obrigatoria';
+  const evento = /^evento-/.test(slug) || /evento|abertura/.test(v);
+  if (canal === 'IGS') return 'proibida';
+  if (canal === 'IG') return evento ? 'obrigatoria' : slug === 'marca' || /bastidor|marca|sobre/.test(v) ? 'opcional' : 'proibida-feed';
+  return 'opcional';
+}
+const igProductPost = (f) => kind(f) === 'proibida-feed';
 
 function campoOf(color) {
   if (!color) return null;
@@ -76,18 +98,20 @@ for (const f of files) {
       if (rot && Math.abs(+rot) % 180 === 90) [w, h] = [h, w];
       found++;
       if (ig) { failures.push({ file: f, msg: 'post de peça no feed não leva marca' }); continue; }
+      if (kind(f) === 'proibida') { failures.push({ file: f, msg: 'story não leva marca' }); continue; }
       judge(f, W, H, { x, w, h, bottomGap: y === null ? null : H - (y + h) }, m[2], m[3] || '', bg);
     }
     if (ig && /<text\b/i.test(body)) failures.push({ file: f, msg: 'post de peça no feed não leva texto sobre a foto' });
   } else {
     const body = src.replace(/^[\s\S]*?<body[^>]*>/i, '');
+    if (kind(f) === 'proibida') { if (/<(svg|img)\b[^>]*(more-wordmark|\b(wordmark|logo|marca)\b)/i.test(body)) failures.push({ file: f, msg: 'story não leva marca' }); continue; }
     if (ig) {
       if (MARK.test(body.replace(/<img\b[^>]*class="photo"[^>]*>/gi, ''))) failures.push({ file: f, msg: 'post de peça no feed não leva marca' });
       if (htmlText(body).trim()) failures.push({ file: f, msg: `post de peça no feed não leva texto sobre a foto ("${htmlText(body).trim().slice(0, 40)}"): o texto vai na legenda` });
       continue;
     }
     const cv = src.match(/<(\w+)([^>]*)data-canvas\s*=\s*"(\d+)x(\d+)"([^>]*)>/i);
-    if (!cv) { failures.push({ file: f, msg: 'HTML sem data-canvas="LxA": não dá para medir o quadro' }); continue; }
+    if (!cv) { if (kind(f) === 'obrigatoria' || MARK.test(body)) failures.push({ file: f, msg: 'HTML sem data-canvas="LxA": não dá para medir o quadro' }); continue; }
     const W = +cv[3], H = +cv[4];
     const cattrs = cv[2] + cv[5];
     const cls = ((cattrs.match(/class\s*=\s*"([^"]*)"/i) || [, ''])[1].split(/\s+/)[0]);
@@ -108,6 +132,6 @@ for (const f of files) {
       judge(f, W, H, { x: rot ? null : left, w, h, bottomGap }, m[2], '', bg);
     }
   }
-  if (!found && !ig && !failures.some((x) => x.file === f)) failures.push({ file: f, msg: 'nenhuma marca encontrada (href more-wordmark*.svg ou class/id wordmark/logo/marca)' });
+  if (!found && kind(f) === 'obrigatoria' && !failures.some((x) => x.file === f)) failures.push({ file: f, msg: 'cartaz/convite/vitrine/livro ou post de evento sem marca: leva M ou XL' });
 }
-finish('R-LOGO-01', failures, 'marca em M ou XL, cor e forma corretas; post de peça sem marca');
+finish('R-LOGO-01', failures, 'marca onde é obrigatória, em M ou XL, cor e forma corretas; post de peça e story sem marca');

@@ -28,10 +28,10 @@ R-SHAPE-02     -                 -         rejeitada (fora do guia)
 R-LAYOUT-03    scroll-safe.mjs   11        PASSA                           
 R-NAME-01      names.mjs         14        PASSA                           
 R-FILE-01      filename.mjs      20        FALHA (20)                      
-R-PRINT-01     print.mjs         4         FALHA (4)                       
+R-PRINT-01     print.mjs         4         PROVA (não vai para gráfica)    
 R-MOTION-02    cuts.mjs          0         sem arquivo aplicável           
 
-3 regra(s) com falha
+2 regra(s) com falha
 
 R-TYPE-02 FALHA (3):
   - 03-ig-story-tomada-tom-01.html: "[Comprar]" numa peça estática: não há ação, então não há colchete; o link vai na legenda ou no sticker de link
@@ -59,9 +59,3 @@ R-FILE-01 FALHA (20):
   - 09-web-abertura-loja-390.png: fora do padrão MORE_<CANAL>_<peça-slug>_<variante>_<AAAAMMDD>_v<nn>.<ext> (ex. MORE_IG_mesa-de-centro-cildo_4x5_20261105_v02.jpg)
   - 10-web-sobre-1440.png: fora do padrão MORE_<CANAL>_<peça-slug>_<variante>_<AAAAMMDD>_v<nn>.<ext> (ex. MORE_IG_mesa-de-centro-cildo_4x5_20261105_v02.jpg)
   - 10-web-sobre-390.png: fora do padrão MORE_<CANAL>_<peça-slug>_<variante>_<AAAAMMDD>_v<nn>.<ext> (ex. MORE_IG_mesa-de-centro-cildo_4x5_20261105_v02.jpg)
-
-R-PRINT-01 FALHA (4):
-  - 05-etiqueta-poltrona-leticia.pdf: não declara PDF/X-4 (exporte com o preset PDF/X-4:2008)
-  - 06-etiqueta-banco-maria.pdf: não declara PDF/X-4 (exporte com o preset PDF/X-4:2008)
-  - 07-cartaz-abertura-loja.pdf: não declara PDF/X-4 (exporte com o preset PDF/X-4:2008)
-  - 08-cartaz-mesa-de-centro-cildo.pdf: não declara PDF/X-4 (exporte com o preset PDF/X-4:2008)

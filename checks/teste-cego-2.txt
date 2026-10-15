@@ -1,0 +1,34 @@
+# Teste cego 2 (/mnt/project-files/more/teste-cego-2/pecas/) contra os checks da More
+# Gerado por: node checks/run-all.mjs /mnt/project-files/more/teste-cego-2/pecas/
+
+checks da More em /mnt/project-files/more/teste-cego-2/pecas/ (24 arquivos)
+
+regra          script            arquivos  resultado                       
+-------------  ----------------  --------  --------------------------------
+R-COLOR-01     color-tokens.mjs  10        PASSA                           
+R-COLOR-02     ground-ink.mjs    10        PASSA                           
+R-COLOR-03     accent.mjs        10        PASSA                           
+R-SHAPE-01     radius.mjs        10        PASSA                           
+R-TYPE-01      type.mjs          10        PASSA                           
+R-TYPE-02      actions.mjs       10        PASSA                           
+R-LAYOUT-01    bars.mjs          10        PASSA                           
+R-LAYOUT-02    aspect.mjs        18        PASSA + exemplos                
+R-IMG-01       no-ai.mjs         8         PASSA                           
+R-IMG-02       exemplos          -         revisão visual com o par sim/nao
+R-GEN-01       wordmark.mjs      10        PASSA                           
+R-COPY-01      copy.mjs          12        PASSA                           
+R-COMMERCE-01  commerce.mjs      10        PASSA                           
+R-COMMERCE-02  grid-price.mjs    10        PASSA                           
+R-MOTION-01    motion.mjs        10        PASSA                           
+R-COPY-02      caption.mjs       2         PASSA                           
+R-COPY-03      lang.mjs          12        PASSA                           
+R-COLOR-04     campo.mjs         8         PASSA                           
+R-LOGO-01      logo.mjs          8         PASSA                           
+R-SHAPE-02     -                 -         rejeitada (fora do guia)        
+R-LAYOUT-03    scroll-safe.mjs   10        PASSA                           
+R-NAME-01      names.mjs         12        PASSA                           
+R-FILE-01      filename.mjs      20        PASSA                           
+R-PRINT-01     print.mjs         4         PROVA (não vai para gráfica)    
+R-MOTION-02    cuts.mjs          0         sem arquivo aplicável           
+
+0 regra(s) com falha
