@@ -1,0 +1,926 @@
+{
+ "schema_version": "0.1",
+ "metadata": {
+  "brand_id": "more",
+  "name": "More",
+  "updated": "2026-10-15",
+  "owner": "More team (Fred, Edu, Vitor)",
+  "status": "partial"
+ },
+ "provenance": {
+  "ingested": [
+   {
+    "ref": "call transcript JJ x More team, 2026-10-15 (Joao upload message.md)",
+    "kind": "user_instruction"
+   },
+   {
+    "ref": "https://mymore.design (theme t/7, password-protected preview), captured 2026-10-15",
+    "kind": "live_brand_behavior"
+   },
+   {
+    "ref": "https://www.instagram.com/more.mymore/ public embed (5.6k followers, 42 posts), captured 2026-10-15",
+    "kind": "live_brand_behavior"
+   }
+  ],
+  "precedence": [
+   "user_instruction",
+   "approved_brand_state",
+   "official_asset",
+   "live_brand_behavior",
+   "campaign_exception",
+   "extracted_pattern",
+   "external_reference",
+   "model_inference"
+  ],
+  "gaps": [
+   {
+    "looked_for": "Instagram full feed and captions (public embed only showed the latest 6 posts; needs login or an owner export)",
+    "where": "https://www.instagram.com/more.mymore/",
+    "status": "needs_owner"
+   },
+   {
+    "looked_for": "official logo files and brand guidelines",
+    "where": "assets/official/",
+    "status": "needs_owner"
+   }
+  ]
+ },
+ "sections": {
+  "business_truth": {
+   "made_to_order": {
+    "last_updated": "2026-10-15",
+    "value": "Most pieces are made to order: client picks wood, finish and fabric; ~120 days to produce. No broad stock.",
+    "input_class": "FACT",
+    "sources": [
+     {
+      "kind": "user_instruction",
+      "ref": "call transcript JJ x More team, 2026-10-15 (Joao upload message.md)",
+      "quote": "a maioria esmagadora das peças que a gente tem é tudo sob demanda",
+      "captured_at": "2026-10-15",
+      "by": "brand-import"
+     }
+    ],
+    "confidence": "high",
+    "permanence": "core",
+    "approval": "current"
+   },
+   "first_buyable_product": {
+    "last_updated": "2026-10-15",
+    "value": "The wall socket (tomada) is the first product sold online: stocked, packed, only choice is core colour black, red or white.",
+    "input_class": "FACT",
+    "sources": [
+     {
+      "kind": "user_instruction",
+      "ref": "call transcript JJ x More team, 2026-10-15 (Joao upload message.md)",
+      "quote": "O que a gente vai, de fato, começar já a vender muito em breve no site é a tomada",
+      "captured_at": "2026-10-15",
+      "by": "brand-import"
+     }
+    ],
+    "confidence": "high",
+    "permanence": "core",
+    "approval": "current"
+   },
+   "site_role": {
+    "last_updated": "2026-10-15",
+    "value": "Site launches as a catalog first, not a full sales channel for furniture.",
+    "input_class": "FACT",
+    "sources": [
+     {
+      "kind": "user_instruction",
+      "ref": "call transcript JJ x More team, 2026-10-15 (Joao upload message.md)",
+      "quote": "vai servir muito mais como um catálogo pra gente nesse primeiro momento",
+      "captured_at": "2026-10-15",
+      "by": "brand-import"
+     }
+    ],
+    "confidence": "high",
+    "permanence": "core",
+    "approval": "current"
+   },
+   "stack": {
+    "last_updated": "2026-10-15",
+    "value": "Shopify (built by an external studio), Pagar.me payments, shipping calculator integrated, WhatsApp hand-off for made-to-order pieces.",
+    "input_class": "FACT",
+    "sources": [
+     {
+      "kind": "user_instruction",
+      "ref": "call transcript JJ x More team, 2026-10-15 (Joao upload message.md)",
+      "quote": "O pagamento está integrado com a Pagar.me",
+      "captured_at": "2026-10-15",
+      "by": "brand-import"
+     }
+    ],
+    "confidence": "high",
+    "permanence": "core",
+    "approval": "current",
+    "notes": "WhatsApp is not a Business account yet; number shows without brand identification."
+   },
+   "returns_risk": {
+    "last_updated": "2026-10-15",
+    "value": "Open problem: legal right of return on a custom piece after a 120-day build.",
+    "input_class": "UNKNOWN",
+    "sources": [
+     {
+      "kind": "user_instruction",
+      "ref": "call transcript JJ x More team, 2026-10-15 (Joao upload message.md)",
+      "quote": "O problema é uma logística reversa disso",
+      "captured_at": "2026-10-15",
+      "by": "brand-import"
+     }
+    ],
+    "confidence": "high",
+    "permanence": "core",
+    "approval": "unknown"
+   }
+  },
+  "customer_audience": {
+   "architects": {
+    "last_updated": "2026-10-15",
+    "value": "Architects are a key audience and referrer; they will download 2D/3D blocks in exchange for an email.",
+    "input_class": "FACT",
+    "sources": [
+     {
+      "kind": "user_instruction",
+      "ref": "call transcript JJ x More team, 2026-10-15 (Joao upload message.md)",
+      "quote": "Que é uma coisa que o arquiteto usa muito no projeto",
+      "captured_at": "2026-10-15",
+      "by": "brand-import"
+     }
+    ],
+    "confidence": "high",
+    "permanence": "core",
+    "approval": "current"
+   },
+   "end_client": {
+    "last_updated": "2026-10-15",
+    "value": "End clients buying high-ticket pieces want a human conversation (wood, fabric, origin, lead time) before buying.",
+    "input_class": "FACT",
+    "sources": [
+     {
+      "kind": "user_instruction",
+      "ref": "call transcript JJ x More team, 2026-10-15 (Joao upload message.md)",
+      "quote": "um atendimento humano ali, no fim, a pessoa quer isso",
+      "captured_at": "2026-10-15",
+      "by": "brand-import"
+     }
+    ],
+    "confidence": "high",
+    "permanence": "core",
+    "approval": "current"
+   }
+  },
+  "category": {},
+  "strategy": {},
+  "positioning": {
+   "brand_as_institution": {
+    "last_updated": "2026-10-15",
+    "value": "Strengthen More as a brand/institution, not as the story of one designer; people behind it may appear but are not the narrative.",
+    "input_class": "FACT",
+    "sources": [
+     {
+      "kind": "user_instruction",
+      "ref": "call transcript JJ x More team, 2026-10-15 (Joao upload message.md)",
+      "quote": "A gente quer muito mais fortalecer a marca como marca, como instituição",
+      "captured_at": "2026-10-15",
+      "by": "brand-import"
+     }
+    ],
+    "confidence": "high",
+    "permanence": "core",
+    "approval": "current"
+   },
+   "not_tied_to_atelier": {
+    "last_updated": "2026-10-15",
+    "value": "Do not tie the More origin story to the atelier.",
+    "input_class": "FACT",
+    "sources": [
+     {
+      "kind": "user_instruction",
+      "ref": "call transcript JJ x More team, 2026-10-15 (Joao upload message.md)",
+      "quote": "O que a gente não quer fazer é atrelar",
+      "captured_at": "2026-10-15",
+      "by": "brand-import"
+     }
+    ],
+    "confidence": "high",
+    "permanence": "core",
+    "approval": "current"
+   }
+  },
+  "jobs_to_be_done": {},
+  "brand_beliefs": {},
+  "brand_tensions": {},
+  "value_proposition": {},
+  "claims": {},
+  "proof": {},
+  "voice": {
+   "tagline": {
+    "last_updated": "2026-10-15",
+    "value": "'Menos do mesmo.' (less of the same).",
+    "input_class": "FACT",
+    "sources": [
+     {
+      "kind": "live_brand_behavior",
+      "ref": "https://mymore.design (theme t/7, password-protected preview), captured 2026-10-15",
+      "captured_at": "2026-10-15",
+      "by": "site-capture",
+      "quote": "Menos do mesmo."
+     }
+    ],
+    "confidence": "high",
+    "permanence": "core",
+    "approval": "inferred"
+   },
+   "register": {
+    "last_updated": "2026-10-15",
+    "value": "Few words, declarative, material-first ('Estofada, com estrutura de madeira maciça.'). No adjectives of luxury, no exclamation.",
+    "input_class": "FACT",
+    "sources": [
+     {
+      "kind": "extracted_pattern",
+      "ref": "https://mymore.design (theme t/7, password-protected preview), captured 2026-10-15",
+      "captured_at": "2026-10-15",
+      "by": "site-capture"
+     }
+    ],
+    "confidence": "medium",
+    "permanence": "core",
+    "approval": "inferred"
+   },
+   "language_gap": {
+    "last_updated": "2026-10-15",
+    "value": "UI is Portuguese but the about and menu statements are in English placeholder text ('More is a design studio and gallery...'), repeated twice.",
+    "input_class": "UNKNOWN",
+    "sources": [
+     {
+      "kind": "live_brand_behavior",
+      "ref": "https://mymore.design (theme t/7, password-protected preview), captured 2026-10-15",
+      "captured_at": "2026-10-15",
+      "by": "site-capture"
+     }
+    ],
+    "confidence": "high",
+    "permanence": "core",
+    "approval": "unknown",
+    "notes": "Decide PT, EN or bilingual before launch."
+   }
+  },
+  "vocabulary": {
+   "ui_words": {
+    "last_updated": "2026-10-15",
+    "value": "Assentos, Estantes, Luminárias, Mesas, Fixos; Selecione a Madeira / o Tecido; A partir de; Adicionar; Detalhes; Descrição; Baixar; Outros Produtos.",
+    "input_class": "FACT",
+    "sources": [
+     {
+      "kind": "live_brand_behavior",
+      "ref": "https://mymore.design (theme t/7, password-protected preview), captured 2026-10-15",
+      "captured_at": "2026-10-15",
+      "by": "site-capture"
+     }
+    ],
+    "confidence": "high",
+    "permanence": "core",
+    "approval": "inferred"
+   }
+  },
+  "banned_language": {},
+  "naming": {
+   "products": {
+    "last_updated": "2026-10-15",
+    "value": "Pieces carry first names or Brazilian art references (Poltrona Leticia, Banco João, Mesa Cildo, Sofá Catedral, Mesa Carnívora, Tomada TOM.01).",
+    "input_class": "FACT",
+    "sources": [
+     {
+      "kind": "live_brand_behavior",
+      "ref": "https://mymore.design (theme t/7, password-protected preview), captured 2026-10-15",
+      "captured_at": "2026-10-15",
+      "by": "site-capture"
+     }
+    ],
+    "confidence": "high",
+    "permanence": "core",
+    "approval": "inferred"
+   }
+  },
+  "logo_marks": {
+   "wordmark": {
+    "last_updated": "2026-10-15",
+    "value": "Custom geometric wordmark 'MORE': heavy blocky letters, the O a thick ring, the R cut as a quarter-round. Official file: assets/official/more-wordmark.svg (from the site's inline SVG). Colour: preto on light, branco/cinza-claro on dark.",
+    "input_class": "FACT",
+    "sources": [
+     {
+      "kind": "official_asset",
+      "ref": "assets/official/more-wordmark.svg (inline SVG on mymore.design)",
+      "captured_at": "2026-10-15",
+      "by": "site-capture"
+     }
+    ],
+    "confidence": "high",
+    "permanence": "core",
+    "approval": "inferred"
+   },
+   "intro_animation": {
+    "last_updated": "2026-10-15",
+    "value": "Home opens with the wordmark built letter by letter in greys to black, the line 'Menos do mesmo.' centred, then dissolves into the catalogue.",
+    "input_class": "FACT",
+    "sources": [
+     {
+      "kind": "live_brand_behavior",
+      "ref": "https://mymore.design (theme t/7, password-protected preview), captured 2026-10-15",
+      "captured_at": "2026-10-15",
+      "by": "site-capture",
+      "quote": "Menos do mesmo."
+     }
+    ],
+    "confidence": "high",
+    "permanence": "core",
+    "approval": "inferred"
+   },
+   "usage": {
+    "last_updated": "2026-10-15",
+    "value": "Never redraw, stretch, outline or recolour the wordmark outside preto / branco / cinza-claro; never generate it with an image model: composite the SVG.",
+    "input_class": "HARD_CONSTRAINT",
+    "sources": [
+     {
+      "kind": "model_inference",
+      "ref": "cstack rule R-GEN-01 default",
+      "captured_at": "2026-10-15",
+      "by": "site-capture"
+     }
+    ],
+    "confidence": "medium",
+    "permanence": "core",
+    "approval": "provisional"
+   }
+  },
+  "color": {
+   "palette": {
+    "last_updated": "2026-10-15",
+    "value": "Warm, quiet, paper-like: off-white #E5E1DB ground, preto #2D211E (brown-black, never pure black) for ink, cinza-escuro #5D554F for the inverse block and footer, cinza-medio #686868 for metadata, one cool accent ciano-destaque #8BC0D0. See brand/tokens/color.tokens.json.",
+    "input_class": "FACT",
+    "sources": [
+     {
+      "kind": "live_brand_behavior",
+      "ref": "https://mymore.design (theme t/7, password-protected preview), captured 2026-10-15",
+      "captured_at": "2026-10-15",
+      "by": "site-capture"
+     }
+    ],
+    "confidence": "high",
+    "permanence": "core",
+    "approval": "inferred"
+   },
+   "accent_rule": {
+    "last_updated": "2026-10-15",
+    "value": "Ciano-destaque is the only chromatic UI colour; on the live site it marks the 'Fixos' category, where the buyable tomada lives. Keep it for 'available now'.",
+    "input_class": "SOFT_CONSTRAINT",
+    "sources": [
+     {
+      "kind": "live_brand_behavior",
+      "ref": "https://mymore.design (theme t/7, password-protected preview), captured 2026-10-15",
+      "captured_at": "2026-10-15",
+      "by": "site-capture"
+     }
+    ],
+    "confidence": "medium",
+    "permanence": "core",
+    "approval": "inferred"
+   },
+   "colour_comes_from_pieces": {
+    "last_updated": "2026-10-15",
+    "value": "Saturated colour on the site comes from the pieces and materials (ipê, sucupira, bouclê, veludo jambo, vidro fundido), never from UI chrome.",
+    "input_class": "SOFT_CONSTRAINT",
+    "sources": [
+     {
+      "kind": "extracted_pattern",
+      "ref": "https://mymore.design (theme t/7, password-protected preview), captured 2026-10-15",
+      "captured_at": "2026-10-15",
+      "by": "site-capture"
+     }
+    ],
+    "confidence": "medium",
+    "permanence": "core",
+    "approval": "inferred"
+   }
+  },
+  "materials": {
+   "woods": {
+    "last_updated": "2026-10-15",
+    "value": "Madeira options: Ipê, Sucupira, Tauari, Angelim Pedra, each natural / tonalizada / ebanizada.",
+    "input_class": "FACT",
+    "sources": [
+     {
+      "kind": "live_brand_behavior",
+      "ref": "https://mymore.design/products.json",
+      "captured_at": "2026-10-15",
+      "by": "site-capture"
+     }
+    ],
+    "confidence": "high",
+    "permanence": "core",
+    "approval": "inferred"
+   },
+   "fabrics": {
+    "last_updated": "2026-10-15",
+    "value": "Tecido options: Bouclê Neve, Marfim, Areia, Flocos, Bronze, Ouro Velho, Cereja; Tecido Palha, Tecido Outono; Veludo Caramelo, Veludo Jambo, Veludo Girassol.",
+    "input_class": "FACT",
+    "sources": [
+     {
+      "kind": "live_brand_behavior",
+      "ref": "https://mymore.design/products.json",
+      "captured_at": "2026-10-15",
+      "by": "site-capture"
+     }
+    ],
+    "confidence": "high",
+    "permanence": "core",
+    "approval": "inferred",
+    "notes": "Shopify data has typos to fix: 'Velugo Girassol', 'Angelim Pedra ebanidada'."
+   },
+   "lacquer_glass_metal": {
+    "last_updated": "2026-10-15",
+    "value": "Vidro / metal pintado: Branco Glacial, Amarelo Igaratá, Verde Jamaica, Vermelho Jambo, Marrom Ginger, Azul Marselha, Preto Bali. Vidro fundido: Guaraná, Âmbar, Berinjela, Azul Índigo. Metal natural: Alumínio Semi Polido, Bronze Natural, Bronze Envelhecido.",
+    "input_class": "FACT",
+    "sources": [
+     {
+      "kind": "live_brand_behavior",
+      "ref": "https://mymore.design/products.json",
+      "captured_at": "2026-10-15",
+      "by": "site-capture"
+     }
+    ],
+    "confidence": "high",
+    "permanence": "core",
+    "approval": "inferred"
+   },
+   "naming_logic": {
+    "last_updated": "2026-10-15",
+    "value": "Colour names are Brazilian places, fruits and drinks (Igaratá, Jambo, Guaraná, Jamaica, Bali): use this register when naming new finishes.",
+    "input_class": "SOFT_CONSTRAINT",
+    "sources": [
+     {
+      "kind": "extracted_pattern",
+      "ref": "https://mymore.design (theme t/7, password-protected preview), captured 2026-10-15",
+      "captured_at": "2026-10-15",
+      "by": "site-capture"
+     }
+    ],
+    "confidence": "medium",
+    "permanence": "core",
+    "approval": "inferred"
+   }
+  },
+  "textures": {},
+  "typography": {
+   "families": {
+    "last_updated": "2026-10-15",
+    "value": "Two 205TF families, self-hosted: Muoto (Regular) for product names, prices, statements and filters; Muoto Mono Condensed for the interface voice (menu, buttons, labels, footer). The theme's default body font is the mono.",
+    "input_class": "FACT",
+    "sources": [
+     {
+      "kind": "live_brand_behavior",
+      "ref": "https://mymore.design (theme t/7, password-protected preview), captured 2026-10-15",
+      "captured_at": "2026-10-15",
+      "by": "site-capture"
+     }
+    ],
+    "confidence": "high",
+    "permanence": "core",
+    "approval": "inferred"
+   },
+   "licence": {
+    "last_updated": "2026-10-15",
+    "value": "205TF faces are commercial: confirm the web licence covers new pages and any generated material before reuse.",
+    "input_class": "UNKNOWN",
+    "sources": [
+     {
+      "kind": "model_inference",
+      "ref": "205tf.com licensing",
+      "captured_at": "2026-10-15",
+      "by": "site-capture"
+     }
+    ],
+    "confidence": "low",
+    "permanence": "core",
+    "approval": "unknown"
+   }
+  },
+  "type_hierarchy": {
+   "scale": {
+    "last_updated": "2026-10-15",
+    "value": "Small, flat scale: 10 caption, 11 label, 13 body/UI, 15 filter, 22 product title, 26 statement, 32 about. One weight (400); 600 only for the active filter. No uppercase, no letter-spacing tricks.",
+    "input_class": "FACT",
+    "sources": [
+     {
+      "kind": "live_brand_behavior",
+      "ref": "https://mymore.design (theme t/7, password-protected preview), captured 2026-10-15",
+      "captured_at": "2026-10-15",
+      "by": "site-capture"
+     }
+    ],
+    "confidence": "high",
+    "permanence": "core",
+    "approval": "inferred"
+   }
+  },
+  "grid": {
+   "catalog": {
+    "last_updated": "2026-10-15",
+    "value": "Grid view: 4 columns, 7vw gaps, 3:4 portrait images; mobile 2 columns with every 5th card full-width. List view: 10-column grid per product with 6px gaps, portrait 2 cols, landscape 3:2 3 cols, 160px between products.",
+    "input_class": "FACT",
+    "sources": [
+     {
+      "kind": "live_brand_behavior",
+      "ref": "https://mymore.design (theme t/7, password-protected preview), captured 2026-10-15",
+      "captured_at": "2026-10-15",
+      "by": "site-capture"
+     }
+    ],
+    "confidence": "high",
+    "permanence": "core",
+    "approval": "inferred"
+   },
+   "pdp": {
+    "last_updated": "2026-10-15",
+    "value": "PDP: three zones on desktop: info + selectors left, one tall 3:4 image centre, numbered thumbnails 01-04 right. Mobile: image first, swatches, title, accordions.",
+    "input_class": "FACT",
+    "sources": [
+     {
+      "kind": "live_brand_behavior",
+      "ref": "https://mymore.design (theme t/7, password-protected preview), captured 2026-10-15",
+      "captured_at": "2026-10-15",
+      "by": "site-capture"
+     }
+    ],
+    "confidence": "high",
+    "permanence": "core",
+    "approval": "inferred"
+   }
+  },
+  "spacing": {
+   "scale": {
+    "last_updated": "2026-10-15",
+    "value": "Tight base 6 / 10 / 16 / 20 / 30 px; air comes from big gaps (7vw, 160px) not from padding. Page gutter 20px desktop, 10px mobile.",
+    "input_class": "FACT",
+    "sources": [
+     {
+      "kind": "live_brand_behavior",
+      "ref": "https://mymore.design (theme t/7, password-protected preview), captured 2026-10-15",
+      "captured_at": "2026-10-15",
+      "by": "site-capture"
+     }
+    ],
+    "confidence": "high",
+    "permanence": "core",
+    "approval": "inferred"
+   }
+  },
+  "layout": {
+   "look_and_feel": {
+    "last_updated": "2026-10-15",
+    "value": "Feels like a luxury paper catalog/magazine, not glassy digital UI. Square/straight corners, editorial grid.",
+    "input_class": "FACT",
+    "sources": [
+     {
+      "kind": "external_reference",
+      "ref": "call transcript JJ x More team, 2026-10-15 (Joao upload message.md)",
+      "quote": "o site parece Um papel. Isso é legal, parece um negócio luxuoso de papel",
+      "captured_at": "2026-10-15",
+      "by": "brand-import"
+     }
+    ],
+    "confidence": "medium",
+    "permanence": "core",
+    "approval": "inferred",
+    "notes": "JJ reading during the call; tokens pending site capture (blocked by network)."
+   },
+   "floating_bars": {
+    "last_updated": "2026-10-15",
+    "value": "All navigation lives in floating 35px bars centred at the bottom (logo + Menu [+]), the CTA bar above it, the filter bar at the top: glass (preto 10% + blur), square corners, they grow to 580px when opened.",
+    "input_class": "FACT",
+    "sources": [
+     {
+      "kind": "live_brand_behavior",
+      "ref": "https://mymore.design (theme t/7, password-protected preview), captured 2026-10-15",
+      "captured_at": "2026-10-15",
+      "by": "site-capture"
+     }
+    ],
+    "confidence": "high",
+    "permanence": "core",
+    "approval": "inferred"
+   }
+  },
+  "components": {
+   "bracket_buttons": {
+    "last_updated": "2026-10-15",
+    "value": "Text buttons in mono with square brackets: [Voltar], [Lista], [Sobre nós], Menu [+].",
+    "input_class": "FACT",
+    "sources": [
+     {
+      "kind": "live_brand_behavior",
+      "ref": "https://mymore.design (theme t/7, password-protected preview), captured 2026-10-15",
+      "captured_at": "2026-10-15",
+      "by": "site-capture"
+     }
+    ],
+    "confidence": "high",
+    "permanence": "core",
+    "approval": "inferred"
+   },
+   "cta_bar": {
+    "last_updated": "2026-10-15",
+    "value": "Primary action is a bar, not a button: preto-80 background, mono label left ('A partir de' / 'Adicionar'), price right in Muoto.",
+    "input_class": "FACT",
+    "sources": [
+     {
+      "kind": "live_brand_behavior",
+      "ref": "https://mymore.design (theme t/7, password-protected preview), captured 2026-10-15",
+      "captured_at": "2026-10-15",
+      "by": "site-capture"
+     }
+    ],
+    "confidence": "high",
+    "permanence": "core",
+    "approval": "inferred"
+   },
+   "swatches": {
+    "last_updated": "2026-10-15",
+    "value": "Material swatches are square photo crops of the real material (wood blocks, fabric), 6 visible + '+N'; colour dots only for the tomada core.",
+    "input_class": "FACT",
+    "sources": [
+     {
+      "kind": "live_brand_behavior",
+      "ref": "https://mymore.design (theme t/7, password-protected preview), captured 2026-10-15",
+      "captured_at": "2026-10-15",
+      "by": "site-capture"
+     }
+    ],
+    "confidence": "high",
+    "permanence": "core",
+    "approval": "inferred"
+   },
+   "accordions": {
+    "last_updated": "2026-10-15",
+    "value": "Detalhes / Descrição / Baixar as hairline-ruled accordions under the title.",
+    "input_class": "FACT",
+    "sources": [
+     {
+      "kind": "live_brand_behavior",
+      "ref": "https://mymore.design (theme t/7, password-protected preview), captured 2026-10-15",
+      "captured_at": "2026-10-15",
+      "by": "site-capture"
+     }
+    ],
+    "confidence": "high",
+    "permanence": "core",
+    "approval": "inferred"
+   },
+   "product_card": {
+    "last_updated": "2026-10-15",
+    "value": "Name left, price right in cinza-medio under a 3:4 image; hover swaps to a smaller centred second image (scale .8 to 1).",
+    "input_class": "FACT",
+    "sources": [
+     {
+      "kind": "live_brand_behavior",
+      "ref": "https://mymore.design (theme t/7, password-protected preview), captured 2026-10-15",
+      "captured_at": "2026-10-15",
+      "by": "site-capture"
+     }
+    ],
+    "confidence": "high",
+    "permanence": "core",
+    "approval": "inferred"
+   }
+  },
+  "interaction": {
+   "whatsapp_handoff": {
+    "last_updated": "2026-10-15",
+    "value": "Made-to-order CTA 'A partir de R$' opens WhatsApp with a pre-filled message: product + selected materials (e.g. 'Poltrona Leticia | Materiais: Ipê ebanizada, Bouclê Flocos'). The CTA label does not say WhatsApp.",
+    "input_class": "FACT",
+    "sources": [
+     {
+      "kind": "live_brand_behavior",
+      "ref": "https://mymore.design (theme t/7, password-protected preview), captured 2026-10-15",
+      "captured_at": "2026-10-15",
+      "by": "site-capture"
+     }
+    ],
+    "confidence": "high",
+    "permanence": "core",
+    "approval": "inferred"
+   },
+   "buy_flow": {
+    "last_updated": "2026-10-15",
+    "value": "Only the tomada (tag 'Comprar') has Adicionar > cart drawer > Shopify checkout (Pagar.me).",
+    "input_class": "FACT",
+    "sources": [
+     {
+      "kind": "live_brand_behavior",
+      "ref": "https://mymore.design (theme t/7, password-protected preview), captured 2026-10-15",
+      "captured_at": "2026-10-15",
+      "by": "site-capture"
+     }
+    ],
+    "confidence": "high",
+    "permanence": "core",
+    "approval": "inferred"
+   }
+  },
+  "motion": {
+   "character": {
+    "last_updated": "2026-10-15",
+    "value": "Slow, soft and short: fades and grows of 0.2-0.8s, ease-out curves (.22,1,.36,1); hover swaps on a snappy (.63,.01,0,1.01). Respects prefers-reduced-motion.",
+    "input_class": "FACT",
+    "sources": [
+     {
+      "kind": "live_brand_behavior",
+      "ref": "https://mymore.design (theme t/7, password-protected preview), captured 2026-10-15",
+      "captured_at": "2026-10-15",
+      "by": "site-capture"
+     }
+    ],
+    "confidence": "high",
+    "permanence": "core",
+    "approval": "inferred"
+   }
+  },
+  "sound": {},
+  "photography": {
+   "studio_catalog": {
+    "last_updated": "2026-10-15",
+    "value": "Studio product photography, multiple angles side by side in a grid; editorial, paper-like, magazine feel.",
+    "input_class": "FACT",
+    "sources": [
+     {
+      "kind": "live_brand_behavior",
+      "ref": "call transcript JJ x More team, 2026-10-15 (Joao upload message.md)",
+      "quote": "As fotos foram feitas em estúdio",
+      "captured_at": "2026-10-15",
+      "by": "brand-import"
+     }
+    ],
+    "confidence": "medium",
+    "permanence": "core",
+    "approval": "inferred"
+   },
+   "ambient_selective": {
+    "last_updated": "2026-10-15",
+    "value": "Ambient/in-project photos only when the project is aesthetically aligned; Instagram is the looser channel for them.",
+    "input_class": "FACT",
+    "sources": [
+     {
+      "kind": "user_instruction",
+      "ref": "call transcript JJ x More team, 2026-10-15 (Joao upload message.md)",
+      "quote": "se o projeto não for muito bonito, não for esteticamente alinhado",
+      "captured_at": "2026-10-15",
+      "by": "brand-import"
+     }
+    ],
+    "confidence": "high",
+    "permanence": "core",
+    "approval": "current"
+   },
+   "no_ai_alteration_of_pieces": {
+    "last_updated": "2026-10-15",
+    "value": "AI must never alter the piece itself; finish-swap imagery is phase 2/3 and must be exact.",
+    "input_class": "HARD_CONSTRAINT",
+    "sources": [
+     {
+      "kind": "user_instruction",
+      "ref": "call transcript JJ x More team, 2026-10-15 (Joao upload message.md)",
+      "quote": "IA é complicado porque não pode mudar nada da peça",
+      "captured_at": "2026-10-15",
+      "by": "brand-import"
+     }
+    ],
+    "confidence": "high",
+    "permanence": "core",
+    "approval": "locked"
+   },
+   "studio_light": {
+    "last_updated": "2026-10-15",
+    "value": "Studio: warm beige seamless, one hard sun-like key from the side throwing a crisp window shadow on floor and wall, piece at 3/4, camera slightly above seat height.",
+    "input_class": "FACT",
+    "sources": [
+     {
+      "kind": "live_brand_behavior",
+      "ref": "https://mymore.design (theme t/7, password-protected preview), captured 2026-10-15; https://www.instagram.com/more.mymore/ public embed (5.6k followers, 42 posts), captured 2026-10-15",
+      "captured_at": "2026-10-15",
+      "by": "site-capture"
+     }
+    ],
+    "confidence": "high",
+    "permanence": "core",
+    "approval": "inferred"
+   },
+   "low_key": {
+    "last_updated": "2026-10-15",
+    "value": "Instagram adds a low-key register: near-black ground, a single warm raking light, extreme close-ups of material and joints (bronze handle, wood grain, glass edge).",
+    "input_class": "FACT",
+    "sources": [
+     {
+      "kind": "live_brand_behavior",
+      "ref": "https://www.instagram.com/more.mymore/ public embed (5.6k followers, 42 posts), captured 2026-10-15",
+      "captured_at": "2026-10-15",
+      "by": "site-capture"
+     }
+    ],
+    "confidence": "medium",
+    "permanence": "core",
+    "approval": "inferred"
+   },
+   "crops": {
+    "last_updated": "2026-10-15",
+    "value": "Detail crops are tight and architectural (joint of armrest and leg, bouclê texture) and sit beside the full piece; aspect 3:4.",
+    "input_class": "FACT",
+    "sources": [
+     {
+      "kind": "live_brand_behavior",
+      "ref": "https://mymore.design (theme t/7, password-protected preview), captured 2026-10-15",
+      "captured_at": "2026-10-15",
+      "by": "site-capture"
+     }
+    ],
+    "confidence": "high",
+    "permanence": "core",
+    "approval": "inferred"
+   }
+  },
+  "camera_language": {},
+  "lighting": {},
+  "casting": {},
+  "wardrobe": {},
+  "locations": {},
+  "props": {},
+  "product_representation": {},
+  "packaging_rules": {},
+  "illustration": {},
+  "graphic_devices": {},
+  "iconography": {},
+  "social_behavior": {
+   "instagram": {
+    "last_updated": "2026-10-15",
+    "value": "Product as sculpture, one piece per frame, no people yet; studio-light and low-key series alternate.",
+    "input_class": "FACT",
+    "sources": [
+     {
+      "kind": "live_brand_behavior",
+      "ref": "https://www.instagram.com/more.mymore/ public embed (5.6k followers, 42 posts), captured 2026-10-15",
+      "captured_at": "2026-10-15",
+      "by": "site-capture"
+     }
+    ],
+    "confidence": "medium",
+    "permanence": "core",
+    "approval": "inferred"
+   }
+  },
+  "cultural_territories": {},
+  "reference_mechanisms": {},
+  "anti_references": {},
+  "asset_registry": {},
+  "campaign_history": {},
+  "performance_evidence": {},
+  "compliance_constraints": {},
+  "approved_exceptions": {},
+  "known_uncertainties": {
+   "prices_placeholder": {
+    "last_updated": "2026-10-15",
+    "value": "Tomada TOM.01 and Estante Dominó show R$ 1 on grid and PDP (placeholder prices) on 2026-10-15.",
+    "input_class": "UNKNOWN",
+    "sources": [
+     {
+      "kind": "live_brand_behavior",
+      "ref": "https://mymore.design/products.json",
+      "captured_at": "2026-10-15",
+      "by": "site-capture"
+     }
+    ],
+    "confidence": "high",
+    "permanence": "core",
+    "approval": "unknown"
+   },
+   "instagram_depth": {
+    "last_updated": "2026-10-15",
+    "value": "Only the public embed (latest 6 posts) was readable without login; captions and full feed not analysed.",
+    "input_class": "UNKNOWN",
+    "sources": [
+     {
+      "kind": "live_brand_behavior",
+      "ref": "https://www.instagram.com/more.mymore/ public embed (5.6k followers, 42 posts), captured 2026-10-15",
+      "captured_at": "2026-10-15",
+      "by": "site-capture"
+     }
+    ],
+    "confidence": "high",
+    "permanence": "core",
+    "approval": "unknown"
+   }
+  }
+ },
+ "conflicts": [],
+ "entities_ref": "brand/brand-world.json",
+ "references_ref": "references/"
+}

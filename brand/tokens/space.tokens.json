@@ -1,0 +1,261 @@
+{
+ "$description": "Spacing, layout, radius, blur and motion from the live theme. More is square: radius 0 is the rule.",
+ "$extensions": {
+  "cstack": {
+   "status": "PROVISIONAL",
+   "source": "live site mymore.design, theme t/7 critical.css :root, captured 2026-10-15",
+   "input_class": "live_brand_behavior",
+   "approval": "awaiting More team"
+  }
+ },
+ "space": {
+  "$type": "dimension",
+  "hair": {
+   "$value": {
+    "value": 6,
+    "unit": "px"
+   },
+   "$description": "gap between gallery images, between floating bars, list-view image gap"
+  },
+  "xs": {
+   "$value": {
+    "value": 8,
+    "unit": "px"
+   }
+  },
+  "sm": {
+   "$value": {
+    "value": 10,
+    "unit": "px"
+   },
+   "$description": "mobile page gutter, bar padding"
+  },
+  "md": {
+   "$value": {
+    "value": 16,
+    "unit": "px"
+   },
+   "$description": "filter item gap, mobile bar side margin"
+  },
+  "lg": {
+   "$value": {
+    "value": 20,
+    "unit": "px"
+   },
+   "$description": "desktop page gutter, menu padding"
+  },
+  "xl": {
+   "$value": {
+    "value": 30,
+    "unit": "px"
+   },
+   "$description": "bar distance from bottom (desktop)"
+  },
+  "2xl": {
+   "$value": {
+    "value": 40,
+    "unit": "px"
+   }
+  },
+  "3xl": {
+   "$value": {
+    "value": 60,
+    "unit": "px"
+   },
+   "$description": "statement padding"
+  },
+  "section": {
+   "$value": {
+    "value": 160,
+    "unit": "px"
+   },
+   "$description": "list view: gap between products (124 on mobile)"
+  },
+  "grid-top": {
+   "$value": {
+    "value": 180,
+    "unit": "px"
+   },
+   "$description": "catalog top padding (140 mobile)"
+  }
+ },
+ "layout": {
+  "$type": "dimension",
+  "grid-gap": {
+   "$type": "number",
+   "$value": 7,
+   "$description": "catalog grid gap is 7vw on desktop (DTCG dimension has no vw unit); 100px row / 6px column on mobile"
+  },
+  "bar-height": {
+   "$value": {
+    "value": 35,
+    "unit": "px"
+   },
+   "$description": "menu bar, filter bar, CTA bar, cart bar: one height for every floating control"
+  },
+  "bar-width": {
+   "$value": {
+    "value": 320,
+    "unit": "px"
+   },
+   "$description": "menu/CTA bar at rest"
+  },
+  "bar-width-open": {
+   "$value": {
+    "value": 580,
+    "unit": "px"
+   },
+   "$description": "menu when open (max 100vw - 32px)"
+  },
+  "bar-bottom": {
+   "$value": {
+    "value": 30,
+    "unit": "px"
+   },
+   "$description": "20 on mobile"
+  },
+  "list-columns": {
+   "$type": "number",
+   "$value": 10,
+   "$description": "list view: 10-col grid, vertical image = 2 cols (3:4), horizontal image = 3 cols (3:2)"
+  },
+  "grid-columns": {
+   "$type": "number",
+   "$value": 4,
+   "$description": "catalog grid desktop; 2 on mobile, every 5th card spans full width"
+  }
+ },
+ "radius": {
+  "$type": "dimension",
+  "none": {
+   "$value": {
+    "value": 0,
+    "unit": "px"
+   },
+   "$description": "default for images, cards, bars, buttons, inputs. More is square: 'papel', not glass"
+  },
+  "round": {
+   "$value": {
+    "value": 999,
+    "unit": "px"
+   },
+   "$description": "only the colour dots of the tomada swatches are circular"
+  }
+ },
+ "blur": {
+  "$type": "dimension",
+  "soft": {
+   "$value": {
+    "value": 10,
+    "unit": "px"
+   }
+  },
+  "medium": {
+   "$value": {
+    "value": 13,
+    "unit": "px"
+   }
+  },
+  "strong": {
+   "$value": {
+    "value": 20,
+    "unit": "px"
+   }
+  },
+  "heavy": {
+   "$value": {
+    "value": 26,
+    "unit": "px"
+   }
+  }
+ },
+ "motion": {
+  "duration": {
+   "$type": "duration",
+   "instant": {
+    "$value": {
+     "value": 80,
+     "unit": "ms"
+    }
+   },
+   "quick": {
+    "$value": {
+     "value": 200,
+     "unit": "ms"
+    },
+    "$description": "hover image swap"
+   },
+   "base": {
+    "$value": {
+     "value": 500,
+     "unit": "ms"
+    },
+    "$description": "bars grow, colour, view switch"
+   },
+   "slow": {
+    "$value": {
+     "value": 800,
+     "unit": "ms"
+    },
+    "$description": "product fade-in, menu visibility"
+   },
+   "intro": {
+    "$value": {
+     "value": 450,
+     "unit": "ms"
+    },
+    "$description": "catalog rise after intro"
+   }
+  },
+  "easing": {
+   "$type": "cubicBezier",
+   "snap": {
+    "$value": [
+     0.63,
+     0.01,
+     0,
+     1.01
+    ],
+    "$description": "hover swaps on cards"
+   },
+   "out-expo": {
+    "$value": [
+     0.22,
+     1,
+     0.36,
+     1
+    ],
+    "$description": "intro dismiss, catalog rise"
+   },
+   "out-quint": {
+    "$value": [
+     0.23,
+     1,
+     0.32,
+     1
+    ],
+    "$description": "mobile category popover"
+   },
+   "standard": {
+    "$value": [
+     0.25,
+     0.1,
+     0.25,
+     1
+    ],
+    "$description": "CSS ease, used for the bars"
+   }
+  }
+ },
+ "aspect": {
+  "$type": "number",
+  "portrait": {
+   "$value": 0.75,
+   "$description": "3:4, every product card and PDP image"
+  },
+  "landscape": {
+   "$value": 1.5,
+   "$description": "3:2, horizontal list-view images"
+  }
+ }
+}

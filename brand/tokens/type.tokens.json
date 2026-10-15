@@ -1,0 +1,196 @@
+{
+ "$description": "More typography. Two families from 205TF (licensed, self-hosted in the theme): Muoto for names and statements, Muoto Mono Condensed for the interface voice. Sizes are the ones the theme uses; nothing invented.",
+ "$extensions": {
+  "cstack": {
+   "status": "PROVISIONAL",
+   "source": "live site mymore.design, theme t/7 critical.css :root, captured 2026-10-15",
+   "input_class": "live_brand_behavior",
+   "approval": "awaiting More team"
+  }
+ },
+ "font": {
+  "family": {
+   "$type": "fontFamily",
+   "muoto": {
+    "$value": [
+     "Muoto",
+     "DM Sans",
+     "Helvetica Neue",
+     "Arial",
+     "sans-serif"
+    ],
+    "$description": "205TF Muoto Regular (weight 400; the theme also asks for 300 on long text). Product names, prices, statements, filters. Stand-in when the licensed file is not available: DM Sans (Google Fonts)."
+   },
+   "mono": {
+    "$value": [
+     "MuotoMono",
+     "Martian Mono",
+     "ui-monospace",
+     "Menlo",
+     "monospace"
+    ],
+    "$description": "205TF Muoto Mono Condensed Regular. Default body font of the theme: UI labels, buttons in [brackets], menu, footer. Stand-in: Martian Mono at width 75 (condensed), Google Fonts."
+   }
+  },
+  "weight": {
+   "$type": "fontWeight",
+   "light": {
+    "$value": 300
+   },
+   "regular": {
+    "$value": 400
+   },
+   "semibold": {
+    "$value": 600,
+    "$description": "active filter only"
+   }
+  },
+  "size": {
+   "$type": "dimension",
+   "caption": {
+    "$value": {
+     "value": 10,
+     "unit": "px"
+    },
+    "$description": "thumbnail numbers 01 02 03, legal lines"
+   },
+   "label": {
+    "$value": {
+     "value": 11,
+     "unit": "px"
+    },
+    "$description": "'Selecione a Madeira', announcement bar"
+   },
+   "body": {
+    "$value": {
+     "value": 13,
+     "unit": "px"
+    },
+    "$description": "theme default (body), menu, buttons, prices"
+   },
+   "ui": {
+    "$value": {
+     "value": 15,
+     "unit": "px"
+    },
+    "$description": "category filter, mobile menu"
+   },
+   "title": {
+    "$value": {
+     "value": 22,
+     "unit": "px"
+    },
+    "$description": "product name on PDP"
+   },
+   "statement": {
+    "$value": {
+     "value": 26,
+     "unit": "px"
+    },
+    "$description": "menu statement, line-height 1"
+   },
+   "about": {
+    "$value": {
+     "value": 32,
+     "unit": "px"
+    },
+    "$description": "about block, line-height 1"
+   }
+  },
+  "line-height": {
+   "$type": "number",
+   "tight": {
+    "$value": 0.95,
+    "$description": "mobile statement"
+   },
+   "solid": {
+    "$value": 1
+   },
+   "ui": {
+    "$value": 1.47,
+    "$description": "22px on 15px"
+   },
+   "list": {
+    "$value": 1.7,
+    "$description": "menu product lists"
+   }
+  }
+ },
+ "type": {
+  "$type": "typography",
+  "ui-mono": {
+   "$value": {
+    "fontFamily": "{font.family.mono}",
+    "fontSize": "{font.size.body}",
+    "fontWeight": 400,
+    "lineHeight": 1.3,
+    "letterSpacing": {
+     "value": 0,
+     "unit": "px"
+    }
+   },
+   "$description": "[Voltar], Menu [+], Adicionar, footer"
+  },
+  "product-name": {
+   "$value": {
+    "fontFamily": "{font.family.muoto}",
+    "fontSize": "{font.size.body}",
+    "fontWeight": 400,
+    "lineHeight": 1.3,
+    "letterSpacing": {
+     "value": 0,
+     "unit": "px"
+    }
+   },
+   "$description": "grid card name; price uses the same style in text.secondary"
+  },
+  "product-title": {
+   "$value": {
+    "fontFamily": "{font.family.muoto}",
+    "fontSize": "{font.size.title}",
+    "fontWeight": 400,
+    "lineHeight": 1.1,
+    "letterSpacing": {
+     "value": 0,
+     "unit": "px"
+    }
+   }
+  },
+  "statement": {
+   "$value": {
+    "fontFamily": "{font.family.muoto}",
+    "fontSize": "{font.size.statement}",
+    "fontWeight": 400,
+    "lineHeight": 1,
+    "letterSpacing": {
+     "value": 0,
+     "unit": "px"
+    }
+   }
+  },
+  "about": {
+   "$value": {
+    "fontFamily": "{font.family.muoto}",
+    "fontSize": "{font.size.about}",
+    "fontWeight": 400,
+    "lineHeight": 1,
+    "letterSpacing": {
+     "value": 0,
+     "unit": "px"
+    }
+   }
+  },
+  "label": {
+   "$value": {
+    "fontFamily": "{font.family.muoto}",
+    "fontSize": "{font.size.label}",
+    "fontWeight": 400,
+    "lineHeight": 1.3,
+    "letterSpacing": {
+     "value": 0,
+     "unit": "px"
+    }
+   }
+  }
+ }
+}

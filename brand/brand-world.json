@@ -1,0 +1,113 @@
+{
+ "brand_id": "more",
+ "entities": [
+  {
+   "id": "PRODUCT_TOMADA_TOM_01",
+   "kind": "PRODUCT",
+   "name": "Tomada TOM.01",
+   "status": "locked",
+   "description": "Flush wall socket, 102x102x15 mm. Round bronze-tone metal ring around a coloured core with the Brazilian NBR 3-pin (20A) pattern. The only buyable-now product.",
+   "immutable_traits": [
+    "circular face with a thick polished metal ring",
+    "core colour exactly one of preto, branco, vermelho",
+    "NBR 14136 three-hole layout",
+    "102x102x15 mm"
+   ],
+   "allowed_variation": [
+    "core colour (3)",
+    "light angle"
+   ],
+   "forbidden_drift": [
+    "square plates",
+    "visible screws",
+    "extra holes or USB ports",
+    "logos on the face"
+   ],
+   "reference_images": [
+    "https://cdn.shopify.com/s/files/1/0804/0841/2408/files/PDT_FIX_TOM_TOM.jpg"
+   ],
+   "sources": [
+    {
+     "kind": "live_brand_behavior",
+     "ref": "https://mymore.design/products/tomada-tom-01",
+     "captured_at": "2026-10-15",
+     "by": "site-capture"
+    }
+   ]
+  },
+  {
+   "id": "PRODUCT_POLTRONA_LETICIA",
+   "kind": "PRODUCT",
+   "name": "Poltrona Leticia",
+   "status": "locked",
+   "description": "Upholstered lounge chair, 81x71x89 cm, seat 39 cm. Solid-wood frame with flat armrests on round legs; deep seat cushion, winged backrest with a soft central dip, loose lumbar cushion.",
+   "immutable_traits": [
+    "winged backrest with a central dip",
+    "flat wooden armrests running past the front legs",
+    "round-section wooden legs",
+    "separate lumbar cushion",
+    "81x71x89 cm"
+   ],
+   "allowed_variation": [
+    "wood: Ipê, Sucupira, Tauari, Angelim Pedra x natural/tonalizada/ebanizada",
+    "fabric: 12 bouclês/veludos/tecidos"
+   ],
+   "forbidden_drift": [
+    "changing the back silhouette",
+    "tufting or buttons",
+    "metal legs",
+    "missing lumbar cushion"
+   ],
+   "reference_images": [
+    "https://cdn.shopify.com/s/files/1/0804/0841/2408/files/PDT_ASS_POL_LETICIA_01.jpg"
+   ],
+   "sources": [
+    {
+     "kind": "live_brand_behavior",
+     "ref": "https://mymore.design/products/poltrona-leticia",
+     "captured_at": "2026-10-15",
+     "by": "site-capture"
+    }
+   ]
+  },
+  {
+   "id": "LIGHT_STUDIO_SUN",
+   "kind": "LIGHT",
+   "name": "Studio sun",
+   "status": "current",
+   "description": "One hard sun-like key from frame side through a window gobo onto a warm beige seamless; crisp parallelogram shadow on floor and wall; no fill.",
+   "immutable_traits": [
+    "single hard key",
+    "visible window-shaped shadow",
+    "warm beige seamless"
+   ],
+   "sources": [
+    {
+     "kind": "live_brand_behavior",
+     "ref": "https://mymore.design product photos",
+     "captured_at": "2026-10-15",
+     "by": "site-capture"
+    }
+   ]
+  },
+  {
+   "id": "SURFACE_PAPER_OFF_WHITE",
+   "kind": "SURFACE",
+   "name": "Paper off-white",
+   "status": "current",
+   "description": "#E5E1DB page ground; matches the studio seamless so photos melt into the page.",
+   "immutable_traits": [
+    "#E5E1DB",
+    "matte, no texture overlay"
+   ],
+   "sources": [
+    {
+     "kind": "live_brand_behavior",
+     "ref": "https://mymore.design critical.css --off-white",
+     "captured_at": "2026-10-15",
+     "by": "site-capture"
+    }
+   ]
+  }
+ ]
+}

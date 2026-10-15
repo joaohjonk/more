@@ -1,0 +1,337 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<link rel="icon" href="data:,">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>More · Sistema de design</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,600&family=Martian+Mono:wdth,wght@75,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="brand/generated/tokens.css">
+<style>
+  /* Todos os valores vêm de brand/generated/tokens.css (gerado pelos tokens DTCG). */
+  *{box-sizing:border-box;margin:0}
+  html{scroll-behavior:smooth}
+  body{background:var(--color-surface-page);color:var(--color-text-primary);font-family:var(--font-family-mono);font-size:var(--font-size-body);line-height:1.45;-webkit-font-smoothing:antialiased}
+  .muoto{font-family:var(--font-family-muoto)}
+  .mono{font-family:var(--font-family-mono);font-stretch:75%}
+  .secondary{color:var(--color-text-secondary)}
+  a{color:inherit}
+  main{max-width:1240px;margin:0 auto;padding:0 var(--space-lg) 160px}
+  section{padding-top:var(--space-section);scroll-margin-top:var(--space-3xl)}
+  .eyebrow{font-family:var(--font-family-mono);color:var(--color-text-secondary);margin-bottom:var(--space-lg)}
+  h2{font-family:var(--font-family-muoto);font-weight:400;font-size:var(--font-size-about);line-height:1;margin-bottom:var(--space-lg)}
+  h3{font-family:var(--font-family-muoto);font-weight:400;font-size:var(--font-size-ui);margin:var(--space-2xl) 0 var(--space-sm)}
+  p.lede{font-family:var(--font-family-muoto);font-size:var(--font-size-title);line-height:1.15;max-width:34ch}
+  p.body{max-width:62ch;margin-bottom:var(--space-sm)}
+  hr{border:0;border-top:1px solid var(--color-alpha-preto-10);margin:var(--space-lg) 0}
+
+  /* hero */
+  .hero{min-height:88vh;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:var(--space-xl);text-align:center}
+  .hero svg{width:min(560px,80vw);height:auto;color:var(--color-preto)}
+  .hero svg path{fill:currentColor;opacity:0;animation:in var(--motion-duration-slow) cubic-bezier(.22,1,.36,1) forwards}
+  .hero svg path:nth-child(3){animation-delay:.0s}.hero svg path:nth-child(2){animation-delay:.15s}.hero svg path:nth-child(1){animation-delay:.3s}.hero svg path:nth-child(4){animation-delay:.45s}
+  @keyframes in{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+  .hero p{font-family:var(--font-family-muoto);font-size:var(--font-size-title)}
+
+  /* index nav = floating bar */
+  .bar{position:fixed;left:50%;bottom:var(--layout-bar-bottom);transform:translateX(-50%);width:var(--layout-bar-width);max-width:calc(100vw - 32px);height:var(--layout-bar-height);background:var(--color-surface-glass);backdrop-filter:blur(var(--blur-medium));-webkit-backdrop-filter:blur(var(--blur-medium));display:flex;flex-direction:column-reverse;padding:0;z-index:10;transition:width var(--motion-duration-base) ease,height var(--motion-duration-base) ease,background-color var(--motion-duration-base) ease}
+  .bar svg{width:60px;height:auto;color:var(--color-preto)}.bar svg path{fill:currentColor}
+  .bar button{all:unset;cursor:pointer;font-family:var(--font-family-mono);font-stretch:75%}
+  .bar.open{width:var(--layout-bar-width-open);height:auto;min-height:var(--layout-bar-height);flex-direction:column-reverse;align-items:stretch;padding:0;background:var(--color-surface-glass-strong);color:var(--color-text-on-inverse)}
+  .bar.open svg{color:var(--color-branco)}
+  .bar .row{width:100%;display:flex;justify-content:space-between;align-items:center;height:var(--layout-bar-height);padding:0 var(--space-sm)}
+  .bar nav{display:none;padding:var(--space-lg);columns:2;gap:var(--space-lg)}
+  .bar.open nav{display:block}
+  .bar nav a{display:block;text-decoration:none;line-height:var(--font-line-height-list)}
+  .bar nav a:hover{color:var(--color-branco)}
+
+  /* colour */
+  .swatches{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:var(--space-hair)}
+  .sw{display:flex;flex-direction:column;gap:var(--space-xs)}
+  .sw .chip{aspect-ratio:3/4;border:1px solid var(--color-alpha-preto-10)}
+  .sw .name{font-family:var(--font-family-muoto)}
+  .sw .meta{color:var(--color-text-secondary)}
+  .chip.glass{background:linear-gradient(90deg,#c9b8a4,#7d6b5c 40%,#e5e1db)}
+  .chip.glass::after{content:"";display:block;height:100%;background:var(--color-surface-glass);backdrop-filter:blur(var(--blur-medium))}
+
+  /* type */
+  .spec{display:grid;grid-template-columns:200px 1fr;gap:var(--space-lg);padding:var(--space-lg) 0;border-top:1px solid var(--color-alpha-preto-10);align-items:baseline}
+  .spec .k{color:var(--color-text-secondary)}
+  @media(max-width:700px){.spec{grid-template-columns:1fr;gap:var(--space-xs)}}
+
+  /* space + grid */
+  .scale{display:flex;flex-direction:column;gap:var(--space-sm)}
+  .scale div{display:flex;align-items:center;gap:var(--space-md)}
+  .scale i{display:block;height:var(--space-sm);background:var(--color-preto)}
+  .grid-demo{display:grid;grid-template-columns:repeat(4,1fr);gap:7vw;margin-top:var(--space-lg)}
+  .grid-demo div{aspect-ratio:3/4;background:var(--color-alpha-preto-10)}
+  .list-demo{display:grid;grid-template-columns:repeat(10,1fr);gap:var(--space-hair);margin-top:var(--space-lg)}
+  .list-demo div{grid-column:span 2;aspect-ratio:3/4;background:var(--color-alpha-preto-10)}
+  .list-demo div.h{grid-column:span 3;aspect-ratio:3/2;align-self:end}
+  @media(max-width:700px){.grid-demo{grid-template-columns:repeat(2,1fr);gap:var(--space-hair)}}
+
+  /* components */
+  .stage{background:var(--color-surface-page);border:1px solid var(--color-alpha-preto-10);padding:var(--space-2xl) var(--space-lg);display:flex;flex-wrap:wrap;gap:var(--space-xl);align-items:flex-end;justify-content:center;position:relative}
+  .cbar{width:320px;max-width:100%;height:var(--layout-bar-height);display:flex;align-items:center;justify-content:space-between;padding:0 var(--space-sm);font-stretch:75%}
+  .cbar.glass{background:var(--color-surface-glass);backdrop-filter:blur(var(--blur-medium))}
+  .cbar.cta{background:var(--color-surface-glass-strong);color:var(--color-branco);transition:background-color var(--motion-duration-base) ease;cursor:pointer}
+  .cbar.cta:hover{background:var(--color-cart-accent);color:var(--color-preto)}
+  .cbar.cta .p{font-family:var(--font-family-muoto)}
+  .cbar svg{width:60px;height:auto}.cbar svg path{fill:currentColor}
+  .stack{display:flex;flex-direction:column;gap:var(--space-hair);align-items:center}
+  .brk{font-stretch:75%;cursor:pointer}
+  .brk:hover{color:var(--color-text-secondary)}
+  .filter{display:flex;gap:var(--space-md);height:var(--layout-bar-height);align-items:center;padding:0 var(--space-md);background:var(--color-surface-glass);backdrop-filter:blur(var(--blur-medium));font-family:var(--font-family-muoto);font-size:var(--font-size-ui)}
+  .filter span{color:#1a1a1a;cursor:pointer}.filter .on{font-weight:600}.filter .fixos.on{color:var(--color-ciano-destaque)}
+  .card{width:220px}
+  .card .img{aspect-ratio:3/4;overflow:hidden;position:relative;background:#ddd6cc}
+  .card .img img{width:100%;height:100%;object-fit:cover;display:block;transition:opacity var(--motion-duration-quick) cubic-bezier(.63,.01,0,1.01)}
+  .card .img img.alt{position:absolute;top:50%;left:50%;width:75%;height:auto;transform:translate(-50%,-50%) scale(.8);opacity:0;transition:transform var(--motion-duration-quick) cubic-bezier(.63,.01,0,1.01),opacity var(--motion-duration-quick) cubic-bezier(.63,.01,0,1.01)}
+  .card .img:hover img:first-child{opacity:.6}
+  .card .img:hover img.alt{opacity:1;transform:translate(-50%,-50%) scale(1)}
+  .card .foot{display:flex;justify-content:space-between;padding-top:var(--space-xs);font-family:var(--font-family-muoto)}
+  .card .foot .pr{color:var(--color-text-secondary)}
+  .tag{position:absolute;left:var(--space-sm);top:var(--space-sm);font-stretch:75%;font-size:var(--font-size-label);padding:2px 6px;background:var(--color-surface-glass);backdrop-filter:blur(var(--blur-soft))}
+  .tag.now{background:var(--color-ciano-destaque);color:var(--color-preto)}
+  .swrow{display:flex;gap:var(--space-hair)}
+  .swrow span{width:30px;height:30px;display:block;outline:1px solid transparent;outline-offset:2px;cursor:pointer}
+  .swrow span:hover,.swrow span.on{outline-color:var(--color-preto)}
+  .dots span{border-radius:var(--radius-round);width:22px;height:22px}
+  .acc{width:320px;max-width:100%;font-family:var(--font-family-muoto)}
+  .acc summary{list-style:none;display:flex;justify-content:space-between;padding:var(--space-xs) 0;border-top:1px solid var(--color-cinza-claro);cursor:pointer;font-size:var(--font-size-label)}
+  .acc summary::after{content:"▴";font-size:9px}.acc details[open] summary::after{content:"▾"}
+  .acc .r{display:flex;justify-content:space-between;color:var(--color-text-secondary);font-size:var(--font-size-label);padding:3px 0}
+  .proposal{border:1px dashed var(--color-text-secondary)}
+  .note{color:var(--color-text-secondary);font-size:var(--font-size-label);margin-top:var(--space-sm)}
+
+  /* motion */
+  .ease{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:var(--space-hair)}
+  .ease div{border-top:1px solid var(--color-alpha-preto-10);padding:var(--space-md) 0}
+  .ease b{display:block;width:30px;height:30px;background:var(--color-preto);margin:var(--space-md) 0}
+  .ease:hover b{transform:translateX(160px)}
+
+  /* photo */
+  .photos{display:grid;grid-template-columns:repeat(4,1fr);gap:var(--space-hair)}
+  .photos img{width:100%;aspect-ratio:3/4;object-fit:cover;display:block}
+  @media(max-width:700px){.photos{grid-template-columns:repeat(2,1fr)}}
+
+  /* rules */
+  .rules{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:var(--space-lg) var(--space-2xl)}
+  .rules div{border-top:1px solid var(--color-alpha-preto-10);padding-top:var(--space-sm)}
+  .rules .id{color:var(--color-text-secondary);font-stretch:75%}
+  .rules p{font-family:var(--font-family-muoto);margin-top:4px}
+  ol.steps{padding-left:1.2em;max-width:70ch}ol.steps li{margin-bottom:var(--space-sm)}
+  code{font-family:var(--font-family-mono);background:var(--color-alpha-preto-10);padding:1px 4px}
+  footer{background:var(--color-surface-inverse);color:var(--color-text-on-inverse);padding:var(--space-3xl) var(--space-lg) 120px;margin-top:var(--space-section)}
+  footer svg{width:min(320px,60vw);color:#c9c2b9}footer svg path{fill:currentColor}
+  @media (prefers-reduced-motion:reduce){*{transition-duration:1ms!important;animation-duration:1ms!important}}
+</style>
+</head>
+<body>
+<main>
+  <header class="hero" id="topo">
+    <svg viewBox="0 0 272 69" aria-label="More" role="img"><path d="M176.593 23.0819V1.91833H150.317V66.5948H176.593V44.2791H205.243V1.91833C189.55 1.91833 177.465 13.093 176.593 23.0875V23.0819Z"/><path d="M111.007 0C91.875 0 76.3403 15.3302 76.3403 34.223C76.3403 53.1159 91.8693 68.4461 111.007 68.4461C130.145 68.4461 145.742 53.1159 145.742 34.223C145.742 15.3302 130.213 0 111.007 0ZM111.007 42.4334C106.43 42.4334 102.69 38.8036 102.69 34.2174C102.69 29.6313 106.435 26.0015 111.007 26.0015C115.579 26.0015 119.398 29.6984 119.398 34.2174C119.398 38.7365 115.653 42.4334 111.007 42.4334Z"/><path d="M35.919 19.6423L26.2764 1.91833H0V66.5948H26.2764V44.212H45.4936V66.5948H71.77V1.91833H45.4936L35.919 19.6423Z"/><path d="M272.002 1.87909H211.835V24.7541V34.7487V44.1783V66.5612H272.002V44.7376H238.219L255.669 34.7151L238.236 24.7541H272.002V1.87909Z"/></svg>
+    <p>Menos do mesmo.</p>
+    <p class="mono secondary" style="font-size:var(--font-size-body)">Sistema de design · v0.2 · provisório até aprovação do time More</p>
+  </header>
+
+  <section id="o-que-e">
+    <div class="eyebrow">[01] O que é</div>
+    <p class="lede">Tudo o que faz o site da More parecer More, escrito em arquivos que pessoas e IA conseguem ler.</p>
+    <hr>
+    <p class="body">Os valores desta página foram medidos no site <a href="https://mymore.design">mymore.design</a> em 15/10/2026 e no Instagram <a href="https://www.instagram.com/more.mymore/">@more.mymore</a>. Nada foi inventado: quando algo ainda é dúvida, está marcado como pendente. Cada cor, tamanho, espaço e movimento existe como token em <code>brand/tokens/</code>; esta página só os mostra.</p>
+    <p class="body">Para quem cria: use esta página como guia. Para a IA: aponte para este repositório e peça para seguir o <code>cstack</code> (explicação no fim).</p>
+  </section>
+
+  <section id="principios">
+    <div class="eyebrow">[02] Princípios</div>
+    <h2>Cinco ideias que seguram o resto</h2>
+    <div class="rules">
+      <div><span class="id">Papel, não vidro</span><p>O fundo é off-white quente, como papel de revista. Transparência só nas barras flutuantes, nunca como estética.</p></div>
+      <div><span class="id">A peça é a cor</span><p>A interface é quase monocromática. Cor saturada vem da madeira, do bouclê, do vidro fundido.</p></div>
+      <div><span class="id">Quadrado</span><p>Nenhum canto arredondado. Imagens, barras e botões têm canto vivo.</p></div>
+      <div><span class="id">Duas vozes</span><p>Muoto fala os nomes e os preços. Muoto Mono fala com a interface, entre [colchetes].</p></div>
+      <div><span class="id">A galeria flutua</span><p>Navegação e ação vivem em barras de 35px no pé da tela. O resto da tela é das fotos.</p></div>
+    </div>
+  </section>
+
+  <section id="cor">
+    <div class="eyebrow">[03] Cor · brand/tokens/color.tokens.json</div>
+    <h2>Cor</h2>
+    <div class="swatches">
+      <div class="sw"><div class="chip" style="background:var(--color-off-white)"></div><span class="name">off-white</span><span class="meta">#E5E1DB · fundo de tudo</span></div>
+      <div class="sw"><div class="chip" style="background:var(--color-preto)"></div><span class="name">preto</span><span class="meta">#2D211E · texto, marca, CTA. Nunca #000</span></div>
+      <div class="sw"><div class="chip" style="background:var(--color-cinza-escuro)"></div><span class="name">cinza-escuro</span><span class="meta">#5D554F · bloco Sobre, rodapé</span></div>
+      <div class="sw"><div class="chip" style="background:var(--color-cinza-medio)"></div><span class="name">cinza-medio</span><span class="meta">#686868 · preço, medidas</span></div>
+      <div class="sw"><div class="chip" style="background:var(--color-cinza-claro)"></div><span class="name">cinza-claro</span><span class="meta">#BDBDBD · texto sobre escuro</span></div>
+      <div class="sw"><div class="chip" style="background:var(--color-ciano-destaque)"></div><span class="name">ciano-destaque</span><span class="meta">#8BC0D0 · o único acento. Significa "disponível agora"</span></div>
+      <div class="sw"><div class="chip" style="background:var(--color-cart-accent)"></div><span class="name">cart-accent</span><span class="meta">#C1CFD6 · hover da barra de compra</span></div>
+      <div class="sw"><div class="chip glass"></div><span class="name">glass (preto 10% + blur 13)</span><span class="meta">barras flutuantes</span></div>
+    </div>
+    <p class="note">Também existem marrom #574D4B, cinza-texto #999898, erro #E07A5F e preto 80% (barra de ação). Os nomes em português são os mesmos do código do site.</p>
+  </section>
+
+  <section id="tipografia">
+    <div class="eyebrow">[04] Tipografia · brand/tokens/type.tokens.json</div>
+    <h2>Tipografia</h2>
+    <p class="body">Duas famílias da 205TF: <b>Muoto</b> e <b>Muoto Mono Condensed</b>, licenciadas e hospedadas no tema. Nesta página aparecem substitutas livres (DM Sans e Martian Mono condensada) porque a licença da fonte original é do site.</p>
+    <div class="spec"><span class="k mono">about · Muoto 32/1</span><span class="muoto" style="font-size:var(--font-size-about);line-height:1">Peças de linhas puras e proporções pesadas.</span></div>
+    <div class="spec"><span class="k mono">statement · Muoto 26/1</span><span class="muoto" style="font-size:var(--font-size-statement);line-height:1">Estúdio em São Paulo.</span></div>
+    <div class="spec"><span class="k mono">product-title · Muoto 22</span><span class="muoto" style="font-size:var(--font-size-title)">Poltrona Leticia <span class="secondary" style="font-size:var(--font-size-body)">81x71x89</span></span></div>
+    <div class="spec"><span class="k mono">filtro · Muoto 15</span><span class="muoto" style="font-size:var(--font-size-ui)"><b style="font-weight:600">Todos</b>&nbsp;&nbsp;Assentos&nbsp;&nbsp;Estantes&nbsp;&nbsp;Luminárias&nbsp;&nbsp;Mesas&nbsp;&nbsp;Fixos</span></div>
+    <div class="spec"><span class="k mono">product-name · Muoto 13</span><span class="muoto" style="display:flex;justify-content:space-between;max-width:260px">Banco Maria <span class="secondary">R$ 4.880</span></span></div>
+    <div class="spec"><span class="k mono">ui-mono · Mono 13</span><span class="mono">[Voltar]&nbsp;&nbsp;[Lista]&nbsp;&nbsp;Menu [+]&nbsp;&nbsp;Adicionar</span></div>
+    <div class="spec"><span class="k mono">label · Muoto 11</span><span class="muoto" style="font-size:var(--font-size-label)">Selecione a Madeira</span></div>
+    <div class="spec"><span class="k mono">caption · 10</span><span class="muoto" style="font-size:var(--font-size-caption)">01&nbsp;&nbsp;02&nbsp;&nbsp;03&nbsp;&nbsp;04</span></div>
+    <p class="note">Um peso só (400). Semibold 600 apenas no filtro ativo. Sem caixa-alta, sem espaçamento entre letras.</p>
+  </section>
+
+  <section id="espaco">
+    <div class="eyebrow">[05] Espaço e grid · brand/tokens/space.tokens.json</div>
+    <h2>Espaço e grid</h2>
+    <p class="body">Espaços internos pequenos, distâncias grandes entre peças. O ar vem do vazio entre as fotos, não de margem dentro dos blocos.</p>
+    <div class="scale">
+      <div><i style="width:6px"></i>6 · hair · entre imagens e entre barras</div>
+      <div><i style="width:10px"></i>10 · sm · margem da página no celular</div>
+      <div><i style="width:16px"></i>16 · md · entre itens do filtro</div>
+      <div><i style="width:20px"></i>20 · lg · margem da página no desktop</div>
+      <div><i style="width:30px"></i>30 · xl · barra até o pé da tela</div>
+      <div><i style="width:60px"></i>60 · 3xl · respiro do statement</div>
+      <div><i style="width:160px"></i>160 · section · entre produtos na vista Lista</div>
+    </div>
+    <h3>Grade (catálogo) · 4 colunas, vão de 7vw, fotos 3:4</h3>
+    <div class="grid-demo"><div></div><div></div><div></div><div></div></div>
+    <h3>Lista · 10 colunas, vão de 6px, retrato ocupa 2, paisagem 3:2 ocupa 3</h3>
+    <div class="list-demo"><div></div><div></div><div class="h"></div><div></div></div>
+    <p class="note">No celular: 2 colunas, e a cada 5 cards um ocupa a largura toda.</p>
+  </section>
+
+  <section id="componentes">
+    <div class="eyebrow">[06] Componentes</div>
+    <h2>Componentes</h2>
+    <h3>Barras flutuantes (menu, ação, compra)</h3>
+    <div class="stage">
+      <div class="stack">
+        <div class="cbar cta mono"><span>A partir de</span><span class="p">R$ 23.990</span></div>
+        <div class="cbar glass mono"><svg viewBox="0 0 272 69"><path d="M176.593 23.0819V1.91833H150.317V66.5948H176.593V44.2791H205.243V1.91833C189.55 1.91833 177.465 13.093 176.593 23.0875V23.0819Z"/><path d="M111.007 0C91.875 0 76.3403 15.3302 76.3403 34.223C76.3403 53.1159 91.8693 68.4461 111.007 68.4461C130.145 68.4461 145.742 53.1159 145.742 34.223C145.742 15.3302 130.213 0 111.007 0ZM111.007 42.4334C106.43 42.4334 102.69 38.8036 102.69 34.2174C102.69 29.6313 106.435 26.0015 111.007 26.0015C115.579 26.0015 119.398 29.6984 119.398 34.2174C119.398 38.7365 115.653 42.4334 111.007 42.4334Z"/><path d="M35.919 19.6423L26.2764 1.91833H0V66.5948H26.2764V44.212H45.4936V66.5948H71.77V1.91833H45.4936L35.919 19.6423Z"/><path d="M272.002 1.87909H211.835V24.7541V34.7487V44.1783V66.5612H272.002V44.7376H238.219L255.669 34.7151L238.236 24.7541H272.002V1.87909Z"/></svg><span>Menu [+]</span></div>
+      </div>
+      <div class="stack">
+        <div class="cbar cta mono"><span>Adicionar</span><span class="p">R$ —</span></div>
+        <div class="cbar glass mono"><span>&nbsp;</span><span>Menu [+]</span></div>
+      </div>
+    </div>
+    <p class="note">35px de altura, 320px de largura, canto vivo. A barra de ação fica 6px acima do menu. Passe o mouse para ver o hover em cart-accent.</p>
+
+    <h3>Botões em colchetes e filtro</h3>
+    <div class="stage" style="align-items:center">
+      <span class="brk mono">[Voltar]</span><span class="brk mono">[Lista]</span><span class="brk mono">[Sobre nós]</span>
+      <div class="filter"><span class="on">Todos</span><span>Assentos</span><span>Mesas</span><span class="fixos">Fixos</span></div>
+    </div>
+
+    <h3>Card de produto e etiquetas</h3>
+    <div class="stage" style="align-items:flex-start">
+      <div class="card"><div class="img"><img src="https://cdn.shopify.com/s/files/1/0804/0841/2408/files/PDT_ASS_POL_LETICIA_01.jpg?width=600" alt="Poltrona Leticia"><img class="alt" src="https://cdn.shopify.com/s/files/1/0804/0841/2408/files/PDT_ASS_POL_LETICIA_06.jpg?width=500" alt=""></div><div class="foot"><span>Poltrona Leticia</span><span class="pr">R$ 23.990</span></div><p class="note">Como está hoje. Passe o mouse.</p></div>
+      <div class="card proposal"><div class="img"><img src="https://cdn.shopify.com/s/files/1/0804/0841/2408/files/PDT_ASS_POL_LETICIA_01.jpg?width=600" alt="Poltrona Leticia"><span class="tag mono">Sob encomenda</span></div><div class="foot"><span>Poltrona Leticia</span><span class="pr">12 tecidos</span></div><p class="note">Proposta: sem preço na grade, etiqueta "Sob encomenda".</p></div>
+      <div class="card proposal"><div class="img"><img src="https://cdn.shopify.com/s/files/1/0804/0841/2408/files/PDT_FIX_TOM_TOM.jpg?width=600" alt="Tomada TOM.01"><span class="tag now mono">Pronta entrega</span></div><div class="foot"><span>Tomada TOM.01</span><span class="pr">Comprar</span></div><p class="note">Proposta: o único acento marca o que se compra já.</p></div>
+    </div>
+
+    <h3>Seletores de material e acordeão</h3>
+    <div class="stage" style="align-items:flex-start">
+      <div class="acc">
+        <p style="font-size:var(--font-size-label);margin-bottom:6px">Selecione a Madeira</p>
+        <div class="swrow"><span style="background:#a0683b"></span><span class="on" style="background:#7a4a2a"></span><span style="background:#3a2a22"></span><span style="background:#b0794a"></span><span style="background:#8a5634"></span><span style="background:#2b211c"></span></div>
+        <p style="font-size:var(--font-size-label);margin:12px 0 6px">Selecione Cor</p>
+        <div class="swrow dots"><span style="background:#2d211e"></span><span class="on" style="background:#f2f0ec;outline-color:var(--color-cinza-claro)"></span><span style="background:#b1121d"></span></div>
+      </div>
+      <div class="acc"><details open><summary>Detalhes</summary><div class="r"><span>Altura</span><span>81 cm</span></div><div class="r"><span>Largura</span><span>71 cm</span></div><div class="r"><span>Profundidade</span><span>89 cm</span></div></details><details><summary>Descrição</summary><div class="r">Estofada, com estrutura de madeira maciça.</div></details><details><summary>Baixar</summary><div class="r">Bloco 2D (DWG) · 3D (SKP)</div></details></div>
+    </div>
+    <p class="note">No site, os seletores são fotos recortadas do material real (blocos de madeira, tecido). Aqui viraram cor chapada só para ilustrar. Bolinhas redondas só na tomada.</p>
+  </section>
+
+  <section id="movimento">
+    <div class="eyebrow">[07] Movimento · motion tokens</div>
+    <h2>Movimento</h2>
+    <p class="body">Devagar e curto. Fades e crescimentos de 0,2 a 0,8s, sempre com saída suave. Passe o mouse no bloco abaixo.</p>
+    <div class="ease">
+      <div><span class="mono">snap · .63,.01,0,1.01 · 200ms</span><b style="transition:transform .2s cubic-bezier(.63,.01,0,1.01)"></b><span class="secondary">troca de foto no hover</span></div>
+      <div><span class="mono">out-expo · .22,1,.36,1 · 450ms</span><b style="transition:transform .45s cubic-bezier(.22,1,.36,1)"></b><span class="secondary">abertura e entrada do catálogo</span></div>
+      <div><span class="mono">ease · 500ms</span><b style="transition:transform .5s ease"></b><span class="secondary">barras crescendo, troca de vista</span></div>
+      <div><span class="mono">ease-out · 800ms</span><b style="transition:transform .8s ease-out"></b><span class="secondary">produto aparecendo</span></div>
+    </div>
+  </section>
+
+  <section id="fotografia">
+    <div class="eyebrow">[08] Fotografia</div>
+    <h2>Fotografia</h2>
+    <p class="body"><b>Estúdio</b>: fundo bege contínuo, uma luz dura de lado que desenha uma janela no chão e na parede, peça em 3/4, câmera um pouco acima do assento, 3:4. Detalhes em crop arquitetônico (encaixe, trama, borda do vidro) ao lado da peça inteira.</p>
+    <p class="body"><b>Low-key</b> (Instagram): fundo quase preto, uma luz quente rasante, close de material. A peça nunca é alterada por IA.</p>
+    <div class="photos">
+      <img src="https://cdn.shopify.com/s/files/1/0804/0841/2408/files/PDT_ASS_POL_LETICIA_01.jpg?width=600" alt="Poltrona Leticia, luz de estúdio">
+      <img src="https://cdn.shopify.com/s/files/1/0804/0841/2408/files/PDT_ASS_POL_LETICIA_06.jpg?width=600" alt="Detalhe do encaixe da Poltrona Leticia">
+      <img src="https://cdn.shopify.com/s/files/1/0804/0841/2408/files/PDT_MES_CEN_CILDO_02.jpg?width=600" alt="Mesa Cildo em vidro fundido">
+      <img src="https://cdn.shopify.com/s/files/1/0804/0841/2408/files/PDT_FIX_TOM_TOM.01_02.jpg?width=600" alt="Tomada TOM.01">
+    </div>
+  </section>
+
+  <section id="regras">
+    <div class="eyebrow">[09] Regras · brand/rules/brand-rules.yaml</div>
+    <h2>Regras que a IA checa</h2>
+    <div class="rules">
+      <div><span class="id">R-COLOR-02</span><p>Fundo off-white, nunca branco puro. Texto preto quente, nunca #000.</p></div>
+      <div><span class="id">R-COLOR-03</span><p>O ciano é o único acento e significa "disponível agora".</p></div>
+      <div><span class="id">R-SHAPE-01</span><p>Canto vivo em tudo. Só as bolinhas de cor da tomada são redondas.</p></div>
+      <div><span class="id">R-TYPE-01</span><p>Duas famílias, um peso.</p></div>
+      <div><span class="id">R-TYPE-02</span><p>Ações são palavras em mono entre colchetes.</p></div>
+      <div><span class="id">R-LAYOUT-01</span><p>Navegação em barras flutuantes no pé da tela, sem cabeçalho fixo.</p></div>
+      <div><span class="id">R-LAYOUT-02</span><p>Uma peça por imagem, 3:4.</p></div>
+      <div><span class="id">R-IMG-01</span><p>Peça é fotografada, nunca gerada nem alterada por IA.</p></div>
+      <div><span class="id">R-GEN-01</span><p>Logo e fontes nunca são "desenhados" por IA: usa-se o arquivo real.</p></div>
+      <div><span class="id">R-COPY-01</span><p>Texto curto, declarativo, sobre material e feitura. Sem "exclusivo", "sofisticado", sem exclamação.</p></div>
+      <div><span class="id">R-COMMERCE-01</span><p>Pronta entrega e sob encomenda sempre identificados, com prazo.</p></div>
+      <div><span class="id">R-COMMERCE-02</span><p>Preço na página do produto, não na grade (proposta em discussão).</p></div>
+    </div>
+  </section>
+
+  <section id="ia">
+    <div class="eyebrow">[10] Como usar com IA</div>
+    <h2>Como usar com o Claude</h2>
+    <ol class="steps">
+      <li>Abra o Claude (app ou Claude Code) com acesso a este repositório.</li>
+      <li>Peça: <code>Instale o cstack (github.com/joaohjonk/cstack) e use o workspace da More neste repo.</code></li>
+      <li>Antes de criar: <code>/brief</code> para escrever o pedido; depois a skill certa (<code>/copywriting</code>, <code>/workflow landing-page</code>, <code>/shot-dna</code>...).</li>
+      <li>Depois de criar: <code>/brand-verify</code> (checagens automáticas destas regras) e <code>/creative-review</code> (revisores independentes). Quem faz nunca aprova o próprio trabalho.</li>
+      <li>Toda correção de vocês ("isso não é More") vira regra nova em <code>brand/rules/</code>. É assim que o gosto acumula.</li>
+    </ol>
+  </section>
+
+  <section id="pendencias">
+    <div class="eyebrow">[11] Para o time confirmar</div>
+    <h2>Pendências</h2>
+    <ol class="steps">
+      <li>Aprovar estes tokens como oficiais (hoje estão como provisórios, medidos do site).</li>
+      <li>Licença web da 205TF: cobre páginas novas e materiais gerados?</li>
+      <li>Idioma: o texto Sobre e o menu estão em inglês provisório, repetido duas vezes.</li>
+      <li>Preços de R$ 1 na Tomada TOM.01 e na Estante Dominó.</li>
+      <li>Grafias no Shopify: "Velugo Girassol" e "Angelim Pedra ebanidada".</li>
+      <li>Instagram: só os 6 posts mais recentes foram lidos (o resto pede login).</li>
+    </ol>
+  </section>
+</main>
+
+<footer>
+  <svg viewBox="0 0 272 69" aria-hidden="true"><path d="M176.593 23.0819V1.91833H150.317V66.5948H176.593V44.2791H205.243V1.91833C189.55 1.91833 177.465 13.093 176.593 23.0875V23.0819Z"/><path d="M111.007 0C91.875 0 76.3403 15.3302 76.3403 34.223C76.3403 53.1159 91.8693 68.4461 111.007 68.4461C130.145 68.4461 145.742 53.1159 145.742 34.223C145.742 15.3302 130.213 0 111.007 0ZM111.007 42.4334C106.43 42.4334 102.69 38.8036 102.69 34.2174C102.69 29.6313 106.435 26.0015 111.007 26.0015C115.579 26.0015 119.398 29.6984 119.398 34.2174C119.398 38.7365 115.653 42.4334 111.007 42.4334Z"/><path d="M35.919 19.6423L26.2764 1.91833H0V66.5948H26.2764V44.212H45.4936V66.5948H71.77V1.91833H45.4936L35.919 19.6423Z"/><path d="M272.002 1.87909H211.835V24.7541V34.7487V44.1783V66.5612H272.002V44.7376H238.219L255.669 34.7151L238.236 24.7541H272.002V1.87909Z"/></svg>
+  <p class="mono" style="margin-top:20px;font-size:var(--font-size-caption)">Tokens: brand/tokens/*.tokens.json → brand/generated/tokens.css (cstack tokens build). Medido de mymore.design em 15/10/2026.</p>
+</footer>
+
+<div class="bar" id="bar">
+  <div class="row"><svg viewBox="0 0 272 69" aria-label="More"><path d="M176.593 23.0819V1.91833H150.317V66.5948H176.593V44.2791H205.243V1.91833C189.55 1.91833 177.465 13.093 176.593 23.0875V23.0819Z"/><path d="M111.007 0C91.875 0 76.3403 15.3302 76.3403 34.223C76.3403 53.1159 91.8693 68.4461 111.007 68.4461C130.145 68.4461 145.742 53.1159 145.742 34.223C145.742 15.3302 130.213 0 111.007 0ZM111.007 42.4334C106.43 42.4334 102.69 38.8036 102.69 34.2174C102.69 29.6313 106.435 26.0015 111.007 26.0015C115.579 26.0015 119.398 29.6984 119.398 34.2174C119.398 38.7365 115.653 42.4334 111.007 42.4334Z"/><path d="M35.919 19.6423L26.2764 1.91833H0V66.5948H26.2764V44.212H45.4936V66.5948H71.77V1.91833H45.4936L35.919 19.6423Z"/><path d="M272.002 1.87909H211.835V24.7541V34.7487V44.1783V66.5612H272.002V44.7376H238.219L255.669 34.7151L238.236 24.7541H272.002V1.87909Z"/></svg><button id="tg" aria-expanded="false">Menu [+]</button></div>
+  <nav aria-label="Seções"><a href="#o-que-e">O que é</a><a href="#principios">Princípios</a><a href="#cor">Cor</a><a href="#tipografia">Tipografia</a><a href="#espaco">Espaço e grid</a><a href="#componentes">Componentes</a><a href="#movimento">Movimento</a><a href="#fotografia">Fotografia</a><a href="#regras">Regras</a><a href="#ia">Como usar com IA</a><a href="#pendencias">Pendências</a></nav>
+</div>
+<script>
+  const bar=document.getElementById('bar'),tg=document.getElementById('tg');
+  tg.onclick=()=>{const o=bar.classList.toggle('open');tg.textContent=o?'Fechar [-]':'Menu [+]';tg.setAttribute('aria-expanded',o)};
+  bar.querySelectorAll('nav a').forEach(a=>a.onclick=()=>{bar.classList.remove('open');tg.textContent='Menu [+]'});
+</script>
+</body>
+</html>

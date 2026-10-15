@@ -1,0 +1,248 @@
+{
+ "$description": "More colour tokens. Primitives keep the theme's own Portuguese names (--preto, --off-white...). Values come from the live Shopify theme; status PROVISIONAL until the More team approves them.",
+ "$extensions": {
+  "cstack": {
+   "status": "PROVISIONAL",
+   "source": "live site mymore.design, theme t/7 critical.css :root, captured 2026-10-15",
+   "input_class": "live_brand_behavior",
+   "approval": "awaiting More team"
+  }
+ },
+ "color": {
+  "$type": "color",
+  "preto": {
+   "$value": {
+    "colorSpace": "srgb",
+    "components": [
+     0.1765,
+     0.1294,
+     0.1176
+    ],
+    "hex": "#2D211E"
+   },
+   "$description": "--preto: warm near-black (brown-black, never pure #000). Ink, wordmark, CTA bar."
+  },
+  "marrom": {
+   "$value": {
+    "colorSpace": "srgb",
+    "components": [
+     0.3412,
+     0.302,
+     0.2941
+    ],
+    "hex": "#574D4B"
+   },
+   "$description": "--marrom: warm brown-grey."
+  },
+  "cinza-escuro": {
+   "$value": {
+    "colorSpace": "srgb",
+    "components": [
+     0.3647,
+     0.3333,
+     0.3098
+    ],
+    "hex": "#5D554F"
+   },
+   "$description": "--cinza-escuro: footer / inverse ground."
+  },
+  "cinza-medio": {
+   "$value": {
+    "colorSpace": "srgb",
+    "components": [
+     0.4078,
+     0.4078,
+     0.4078
+    ],
+    "hex": "#686868"
+   },
+   "$description": "--cinza-medio: prices, dimensions, secondary labels."
+  },
+  "cinza-texto": {
+   "$value": {
+    "colorSpace": "srgb",
+    "components": [
+     0.6,
+     0.5961,
+     0.5961
+    ],
+    "hex": "#999898"
+   },
+   "$description": "--cinza-texto."
+  },
+  "cinza-claro": {
+   "$value": {
+    "colorSpace": "srgb",
+    "components": [
+     0.7412,
+     0.7412,
+     0.7412
+    ],
+    "hex": "#BDBDBD"
+   },
+   "$description": "--cinza-claro: text on dark (menu, footer), hairlines on dark."
+  },
+  "off-white": {
+   "$value": {
+    "colorSpace": "srgb",
+    "components": [
+     0.898,
+     0.8824,
+     0.8588
+    ],
+    "hex": "#E5E1DB"
+   },
+   "$description": "--off-white: the page. Warm paper, matches the studio backdrop of the product photos."
+  },
+  "branco": {
+   "$value": {
+    "colorSpace": "srgb",
+    "components": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "hex": "#FFFFFF"
+   },
+   "$description": "--branco: hover / active text on dark only. Never a page background."
+  },
+  "ciano-destaque": {
+   "$value": {
+    "colorSpace": "srgb",
+    "components": [
+     0.5451,
+     0.7529,
+     0.8157
+    ],
+    "hex": "#8BC0D0"
+   },
+   "$description": "--ciano-destaque: the single accent. Used for the 'Fixos' category (buyable items). Reserve it for 'pronta entrega / comprar'."
+  },
+  "cart-accent": {
+   "$value": {
+    "colorSpace": "srgb",
+    "components": [
+     0.7569,
+     0.8118,
+     0.8392
+    ],
+    "hex": "#C1CFD6"
+   },
+   "$description": "--cart-accent: cart bar hover / open state."
+  },
+  "erro": {
+   "$value": {
+    "colorSpace": "srgb",
+    "components": [
+     0.8784,
+     0.4784,
+     0.3725
+    ],
+    "hex": "#E07A5F"
+   },
+   "$description": "--erro: errors only."
+  },
+  "alpha": {
+   "preto-80": {
+    "$value": {
+     "colorSpace": "srgb",
+     "components": [
+      0.1765,
+      0.1294,
+      0.1176
+     ],
+     "hex": "#2D211ECC",
+     "alpha": 0.8
+    },
+    "$description": "--preto-80: CTA bar, open menu panel (with backdrop blur)."
+   },
+   "preto-10": {
+    "$value": {
+     "colorSpace": "srgb",
+     "components": [
+      0.1765,
+      0.1294,
+      0.1176
+     ],
+     "hex": "#2D211E1A",
+     "alpha": 0.1
+    },
+    "$description": "--preto-10: glass bar behind menu / filters (with backdrop blur)."
+   },
+   "branco-30": {
+    "$value": {
+     "colorSpace": "srgb",
+     "components": [
+      1.0,
+      1.0,
+      1.0
+     ],
+     "hex": "#FFFFFF4C",
+     "alpha": 0.3
+    },
+    "$description": "--branco-30."
+   },
+   "cinza-overlay": {
+    "$value": {
+     "colorSpace": "srgb",
+     "components": [
+      0.7137,
+      0.7412,
+      0.749
+     ],
+     "hex": "#B6BDBFCC",
+     "alpha": 0.8
+    },
+    "$description": "--cinza-overlay."
+   }
+  },
+  "surface": {
+   "page": {
+    "$value": "{color.off-white}",
+    "$description": "Page ground on every template."
+   },
+   "inverse": {
+    "$value": "{color.cinza-escuro}",
+    "$description": "About block and footer."
+   },
+   "glass": {
+    "$value": "{color.alpha.preto-10}",
+    "$description": "Floating bars (menu, filters). Pair with blur.medium."
+   },
+   "glass-strong": {
+    "$value": "{color.alpha.preto-80}",
+    "$description": "Open menu panel and primary CTA bar."
+   }
+  },
+  "text": {
+   "primary": {
+    "$value": "{color.preto}",
+    "$description": "Titles, body, buttons on light."
+   },
+   "secondary": {
+    "$value": "{color.cinza-medio}",
+    "$description": "Prices, dimensions, metadata."
+   },
+   "on-inverse": {
+    "$value": "{color.cinza-claro}",
+    "$description": "Text on cinza-escuro / preto-80."
+   },
+   "on-inverse-active": {
+    "$value": "{color.branco}",
+    "$description": "Hover / current item on dark."
+   }
+  },
+  "accent": {
+   "available": {
+    "$value": "{color.ciano-destaque}",
+    "$description": "Marks what can be bought now (tomada, pronta entrega)."
+   }
+  },
+  "feedback": {
+   "error": {
+    "$value": "{color.erro}",
+    "$description": "Form and payment errors."
+   }
+  }
+ }
+}

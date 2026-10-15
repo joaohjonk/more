@@ -1,0 +1,64 @@
+# Machine-testable brand rules for More. Tokens hold atomic values; this file holds relationships.
+# Source: live site mymore.design (2026-10-15) + JJ x More call (2026-10-15). Status: provisional until the More team approves.
+version: 0.2
+rules:
+  - id: R-COLOR-01
+    scope: core
+    rule: pages use only color tokens; no raw hex outside brand/generated/tokens.css (white only as text on dark)
+    check: deterministic   # cstack tokens lint <files> --allow #fff
+  - id: R-COLOR-02
+    scope: core
+    rule: the page ground is off-white (#E5E1DB), never pure white; ink is preto (#2D211E), never pure black
+    check: deterministic
+  - id: R-COLOR-03
+    scope: core
+    rule: ciano-destaque is the only chromatic UI colour and means "available now / buyable"; never decorative
+    check: judge
+  - id: R-SHAPE-01
+    scope: core
+    rule: corners are square (radius 0) on images, cards, bars, buttons and inputs; only the tomada colour dots are round
+    check: deterministic   # grep border-radius in built CSS
+  - id: R-TYPE-01
+    scope: core
+    rule: two families only, Muoto (names, prices, statements) and Muoto Mono Condensed (interface); one weight, 600 only for an active filter
+    check: deterministic   # cstack type qa <url> --families "Muoto,MuotoMono" --max-families 2
+  - id: R-TYPE-02
+    scope: core
+    rule: interface actions are mono words in square brackets ([Voltar], Menu [+]); no pill buttons, no icons-only actions
+    check: judge
+  - id: R-LAYOUT-01
+    scope: core
+    rule: navigation and the primary action live in floating 35px glass bars, centred at the bottom; no fixed top header
+    check: judge
+  - id: R-LAYOUT-02
+    scope: core
+    rule: one piece per image, 3:4 portrait (3:2 only for landscape list views); images are never cropped into circles or rounded
+    check: deterministic   # cstack audit <file> --aspect 3:4
+  - id: R-IMG-01
+    scope: core
+    rule: product pieces are photographed, never generated or altered by AI; finish swaps must come from real photos or exact material renders
+    check: judge
+  - id: R-IMG-02
+    scope: core
+    rule: studio register = warm beige seamless + one hard side light with a crisp window shadow; low-key register = near-black + one warm raking light
+    check: judge
+  - id: R-GEN-01
+    scope: core
+    rule: never approximate the wordmark or the 205TF faces in a generated image; composite assets/official/more-wordmark.svg
+    check: judge
+  - id: R-COPY-01
+    scope: core
+    rule: copy is short, declarative and about material and making; no luxury adjectives (exclusivo, sofisticado, luxuoso), no exclamation marks
+    check: judge
+  - id: R-COMMERCE-01
+    scope: page
+    rule: buyable-now items (tomada) carry a visible "Pronta entrega" / Comprar signal in ciano-destaque; made-to-order items say "Sob encomenda" and the lead time
+    check: judge
+  - id: R-COMMERCE-02
+    scope: page
+    rule: price lives on the product page, not on the gallery grid (proposal from the 2026-10-15 call, not yet decided by the team)
+    check: judge
+  - id: R-MOTION-01
+    scope: core
+    rule: motion is fades and grows of 200-800ms with ease-out; everything has a prefers-reduced-motion fallback
+    check: deterministic
