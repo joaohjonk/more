@@ -1,0 +1,26 @@
+/* Shell de navegação More: faixa de localização (no fluxo, nunca fixa), bloco "Próximo" antes do rodapé e linha de vidro na loja 3D. Cores = tokens de /sistema/brand/generated/tokens.css. */
+nav.more-shell.more-shell{display:block;margin:0;padding:0;border:0;border-bottom:1px solid #2d211e1a;text-align:left;background:#E5E1DB}
+.more-shell{font-family:MuotoMono,"Martian Mono",ui-monospace,Menlo,monospace;font-stretch:75%;font-size:12px;line-height:1.47;color:#2D211E}
+.more-shell__in{max-width:1280px;margin:0 auto;padding:11px max(16px,env(safe-area-inset-right,0px)) 11px max(16px,env(safe-area-inset-left,0px));display:flex;align-items:center;gap:18px;white-space:nowrap}
+.more-shell.more-shell a{color:#2D211E;display:inline;text-decoration:none;white-space:nowrap}
+.more-shell.more-shell a:hover,.more-shell.more-shell a:focus-visible{text-decoration:underline;text-underline-offset:3px;outline:none}
+.more-shell__here{color:#686868;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.more-shell__here b{font-weight:400;color:#2D211E}
+.more-shell__spacer{flex:1}
+@media (max-width:560px){.more-shell{font-size:11px}.more-shell__in{gap:10px}.more-shell__here{flex:1;text-align:center;min-width:0}.more-shell__spacer{display:none}.more-shell__prev{display:none}}
+.more-shell__next{font-family:Muoto,"DM Sans","Helvetica Neue",Arial,sans-serif;color:#2D211E;background:#E5E1DB;border-top:1px solid #2D211E;margin:96px auto 0;max-width:1280px;padding:24px max(16px,env(safe-area-inset-right,0px)) 64px max(16px,env(safe-area-inset-left,0px));display:grid;grid-template-columns:120px minmax(0,1fr);gap:24px;align-items:start;text-align:left}
+.more-shell__next .im{display:block;width:120px;aspect-ratio:3/4;background:#2d211e1a;overflow:hidden}
+.more-shell__next .im img{width:100%;height:100%;object-fit:cover;display:block}
+.more-shell__next .tx{display:grid;gap:8px;min-width:0}
+.more-shell__next .k{font-family:MuotoMono,"Martian Mono",ui-monospace,Menlo,monospace;font-stretch:75%;font-size:12px;color:#686868}
+.more-shell__next .t{font-size:26px;line-height:1.05;margin:0;font-weight:400;max-width:30ch}
+.more-shell__next .t a{color:inherit;text-decoration:none;border-bottom:1px solid #2D211E}
+.more-shell__next .t a:hover{border-color:transparent}
+.more-shell__next .d{font-size:15px;line-height:1.47;color:#5D554F;margin:0;max-width:52ch}
+.more-shell__next .a{font-family:MuotoMono,"Martian Mono",ui-monospace,Menlo,monospace;font-stretch:75%;font-size:13px;color:#2D211E;text-decoration:none;justify-self:start}
+.more-shell__next .a:hover{text-decoration:underline;text-underline-offset:3px}
+@media (max-width:560px){.more-shell__next{grid-template-columns:96px minmax(0,1fr);gap:16px;margin-top:64px;padding-bottom:106px}.more-shell__next .im{width:96px}.more-shell__next .t{font-size:22px}}
+.more-shell--bar{font-family:MuotoMono,"Martian Mono",ui-monospace,Menlo,monospace;font-stretch:75%;font-size:13px;gap:0}
+.more-shell--bar .more-shell__here{padding:0 10px;color:#2D211E;white-space:nowrap}
+@media (max-width:560px){.more-shell--bar .more-shell__here{display:none}}
+@media (prefers-reduced-motion:reduce){.more-shell *,.more-shell__next *{transition-duration:0s}}

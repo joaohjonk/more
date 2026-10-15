@@ -1,13 +1,13 @@
 peca,canal,tipo,variante,url,qr
 Convite A5,PRINT,convite,a5,https://mymore.design/?utm_source=convite&utm_medium=print&utm_campaign=abertura-0511&utm_content=a5,convite/img/qr-convite-a5.png
-Vitrine,LOJA,vitrine,adesivo,https://mymore.design/?utm_source=vitrine&utm_medium=ooh&utm_campaign=abertura-0511&utm_content=vitrine,convite/img/qr-vitrine.png
+Vitrine,VITRINE,vitrine,adesivo,https://mymore.design/?utm_source=vitrine&utm_medium=ooh&utm_campaign=abertura-0511&utm_content=vitrine,convite/img/qr-vitrine.png
 Lista A4,PRINT,lista,a4,https://mymore.design/?utm_source=lista&utm_medium=print&utm_campaign=abertura-0511&utm_content=a4,lista/img/qr-lista.png
 Mesa de jantar Naz,PRINT,etiqueta,mesa-de-jantar-naz,https://mymore.design/products/mesa-de-jantar-naz?utm_source=etiqueta&utm_medium=print&utm_campaign=loja&utm_content=mesa-de-jantar-naz,placas/img/qr-mesa-de-jantar-naz.png
 Mesa de jantar Leila,PRINT,etiqueta,mesa-de-jantar-leila,https://mymore.design/products/mesa-de-jantar-leila?utm_source=etiqueta&utm_medium=print&utm_campaign=loja&utm_content=mesa-de-jantar-leila,placas/img/qr-mesa-de-jantar-leila.png
 Mesa de centro Oops,PRINT,etiqueta,mesa-de-centro-oops,https://mymore.design/products/mesa-de-centro-oops?utm_source=etiqueta&utm_medium=print&utm_campaign=loja&utm_content=mesa-de-centro-oops,placas/img/qr-mesa-de-centro-oops.png
-Mesa de Centro Imi,PRINT,etiqueta,mesa-de-centro-imi,https://mymore.design/products/mesa-de-centro-imi?utm_source=etiqueta&utm_medium=print&utm_campaign=loja&utm_content=mesa-de-centro-imi,placas/img/qr-mesa-de-centro-imi.png
+Mesa de centro Imi,PRINT,etiqueta,mesa-de-centro-imi,https://mymore.design/products/mesa-de-centro-imi?utm_source=etiqueta&utm_medium=print&utm_campaign=loja&utm_content=mesa-de-centro-imi,placas/img/qr-mesa-de-centro-imi.png
 Mesa de apoio Eto,PRINT,etiqueta,mesa-de-apoio-eto,https://mymore.design/products/mesa-de-apoio-eto?utm_source=etiqueta&utm_medium=print&utm_campaign=loja&utm_content=mesa-de-apoio-eto,placas/img/qr-mesa-de-apoio-eto.png
-Mesa de Apoio Carnívora,PRINT,etiqueta,mesa-carnivora,https://mymore.design/products/mesa-carnivora?utm_source=etiqueta&utm_medium=print&utm_campaign=loja&utm_content=mesa-carnivora,placas/img/qr-mesa-carnivora.png
+Mesa de apoio Carnívora,PRINT,etiqueta,mesa-carnivora,https://mymore.design/products/mesa-carnivora?utm_source=etiqueta&utm_medium=print&utm_campaign=loja&utm_content=mesa-carnivora,placas/img/qr-mesa-carnivora.png
 Luminária Ngoni,PRINT,etiqueta,luminaria-ngoni,https://mymore.design/products/luminaria-ngoni?utm_source=etiqueta&utm_medium=print&utm_campaign=loja&utm_content=luminaria-ngoni,placas/img/qr-luminaria-ngoni.png
 Luminária Fantô,PRINT,etiqueta,luminaria-fanto,https://mymore.design/products/luminaria-fanto?utm_source=etiqueta&utm_medium=print&utm_campaign=loja&utm_content=luminaria-fanto,placas/img/qr-luminaria-fanto.png
 Luminária Naz,PRINT,etiqueta,luminaria-naz,https://mymore.design/products/luminaria-naz?utm_source=etiqueta&utm_medium=print&utm_campaign=loja&utm_content=luminaria-naz,placas/img/qr-luminaria-naz.png
@@ -20,10 +20,10 @@ Sofá Canoa,PRINT,etiqueta,sofa-canoa,https://mymore.design/products/sofa-canoa?
 Poltrona Leticia,PRINT,etiqueta,poltrona-leticia,https://mymore.design/products/poltrona-leticia?utm_source=etiqueta&utm_medium=print&utm_campaign=loja&utm_content=poltrona-leticia,placas/img/qr-poltrona-leticia.png
 Poltrona Eduardo,PRINT,etiqueta,poltrona-eduardo,https://mymore.design/products/poltrona-eduardo?utm_source=etiqueta&utm_medium=print&utm_campaign=loja&utm_content=poltrona-eduardo,placas/img/qr-poltrona-eduardo.png
 Otoman Leticia,PRINT,etiqueta,otoman-leticia,https://mymore.design/products/otoman-leticia?utm_source=etiqueta&utm_medium=print&utm_campaign=loja&utm_content=otoman-leticia,placas/img/qr-otoman-leticia.png
-Cadeira 556,PRINT,etiqueta,cadeira-556,https://mymore.design/products/cadeira-556?utm_source=etiqueta&utm_medium=print&utm_campaign=loja&utm_content=cadeira-556,placas/img/qr-cadeira-556.png
+Cadeira 556-A,PRINT,etiqueta,cadeira-556,https://mymore.design/products/cadeira-556?utm_source=etiqueta&utm_medium=print&utm_campaign=loja&utm_content=cadeira-556,placas/img/qr-cadeira-556.png
 Banco Maria,PRINT,etiqueta,banco-maria,https://mymore.design/products/banco-maria?utm_source=etiqueta&utm_medium=print&utm_campaign=loja&utm_content=banco-maria,placas/img/qr-banco-maria.png
 Banco João,PRINT,etiqueta,banco-joao,https://mymore.design/products/banco-joao?utm_source=etiqueta&utm_medium=print&utm_campaign=loja&utm_content=banco-joao,placas/img/qr-banco-joao.png
-Mesa Cildo,PRINT,etiqueta,mesa-cildo,https://mymore.design/products/mesa-cildo?utm_source=etiqueta&utm_medium=print&utm_campaign=loja&utm_content=mesa-cildo,placas/img/qr-mesa-cildo.png
+Mesa de centro Cildo,PRINT,etiqueta,mesa-cildo,https://mymore.design/products/mesa-cildo?utm_source=etiqueta&utm_medium=print&utm_campaign=loja&utm_content=mesa-cildo,placas/img/qr-mesa-cildo.png
 Tomada TOM.01,PRINT,etiqueta,tomada-tom-01,https://mymore.design/products/tomada-tom-01?utm_source=etiqueta&utm_medium=print&utm_campaign=loja&utm_content=tomada-tom-01,placas/img/qr-tomada-tom-01.png
 Cadeira Maria,PRINT,etiqueta,cadeira-maria,https://mymore.design/products/cadeira-maria?utm_source=etiqueta&utm_medium=print&utm_campaign=loja&utm_content=cadeira-maria,placas/img/qr-cadeira-maria.png
 Estante Dominó,PRINT,etiqueta,estante-domino,https://mymore.design/products/estante-domino?utm_source=etiqueta&utm_medium=print&utm_campaign=loja&utm_content=estante-domino,placas/img/qr-estante-domino.png
