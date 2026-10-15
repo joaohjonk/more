@@ -25,7 +25,9 @@
     { "nome": "Maçaneta Constantin", "variantes": [], "pasta_origem": "PDT_FIX_MAC_CONSTANTIN" },
     { "nome": "Tomada TOM.01", "variantes": [], "pasta_origem": "PDT_FIX_TOM_TOM.01" },
     { "nome": "Interruptor INT.01", "variantes": [], "decisao_pendente": true, "pasta_origem": "PDT_FIX_INT_INT.01" },
+    { "nome": "Estante Dominó", "variantes": ["Estante Domino"], "decisao_pendente": true, "pasta_origem": "PDT_EST_DOMINÓ" },
+    { "nome": "Otoman Leticia", "variantes": ["Otoman Letícia"], "decisao_pendente": true, "pasta_origem": "PDT_ASS_OTT_LETICIA" },
     { "nome": "Luminária Maestro", "variantes": [], "decisao_pendente": true, "pasta_origem": "PDT_LUM_PRD_MAESTRO" }
   ],
-  "tipos": ["Mesa", "Cadeira", "Poltrona", "Sofá", "Banco", "Luminária", "Pendente", "Maçaneta", "Tomada", "Interruptor", "Torre"]
+  "tipos": ["Mesa", "Cadeira", "Poltrona", "Sofá", "Banco", "Luminária", "Pendente", "Maçaneta", "Tomada", "Interruptor", "Torre", "Estante", "Otoman"]
 }
