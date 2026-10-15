@@ -6,7 +6,7 @@
 # Uso: bash _tools/exportar-abertura.sh [AAAAMMDD] [vNN]
 set -e
 cd "$(dirname "$0")"; T=$PWD; cd ..; W=$PWD
-D=${1:-$(date +%Y%m%d)}; V=${2:-v04}; M=$(ls $W/convite/MORE_FONTE_evento-20261105_abertura_*.html | tail -1); U=http://localhost:8765/convite/$(basename $M); E=$W/convite/exports; mkdir -p $E
+D=${1:-$(date +%Y%m%d)}; V=${2:-v05}; M=$(ls $W/convite/MORE_FONTE_evento-20261105_abertura_*.html | tail -1); U=http://localhost:8765/convite/$(basename $M); E=$W/convite/exports; mkdir -p $E
 EV=evento-20261105
 shot(){ node $T/shot.mjs "$1" "$2" $3 $4 ${5:-1} .sheet ${6:-1200} >/dev/null; }
 for P in aviso convite vespera dia obrigado; do
@@ -30,4 +30,12 @@ python3 -I $T/dpi.py $E/MORE_CONVITE_${EV}_a5_${D}_${V}.png $E/MORE_CONVITE_${EV
 shot "$U?peca=convite&f=wa&elipse=1"    $E/MORE_EMAIL_${EV}_convite-elipse-wa-4x5_${D}_${V}.png 1200 1500
 shot "$U?peca=convite&f=post&elipse=1"  $E/MORE_IG_${EV}_convite-elipse-4x5_${D}_${V}.png 1080 1350
 shot "$U?peca=convite&f=story&elipse=1" $E/MORE_IGS_${EV}_convite-elipse_${D}_${V}.png 1080 1920
+# variante pelo guia de uso (exemplo de implementação do brand book): A5, A5 com sangria (PNG + PDF) e folha de comparação com o convite atual
+G=$(ls $W/convite/MORE_FONTE_evento-20261105_convite-guia_*.html | tail -1); UG=http://localhost:8765/convite/$(basename $G)
+shot "$UG" $E/MORE_CONVITE_${EV}_convite-guia-a5_${D}_${V}.png 592 840 3
+shot "$UG?bleed=1" $E/MORE_CONVITE_${EV}_convite-guia-a5-sangria3mm_${D}_${V}.png 616 864 3
+node $T/pdf.mjs "$UG?bleed=1" $E/MORE_CONVITE_${EV}_convite-guia-a5-sangria3mm_${D}_${V}.pdf 154 216 >/dev/null
+python3 -I $T/caixas.py $E/MORE_CONVITE_${EV}_convite-guia-a5-sangria3mm_${D}_${V}.pdf >/dev/null
+python3 -I $T/dpi.py $E/MORE_CONVITE_${EV}_convite-guia-a5_${D}_${V}.png $E/MORE_CONVITE_${EV}_convite-guia-a5-sangria3mm_${D}_${V}.png >/dev/null
+python3 -I $T/comparacao.py $E/MORE_CONVITE_${EV}_a5_${D}_${V}.png $E/MORE_CONVITE_${EV}_convite-guia-a5_${D}_${V}.png $E/MORE_CONVITE_${EV}_a5-comparacao-guia_${D}_${V}.png
 ls $E | wc -l

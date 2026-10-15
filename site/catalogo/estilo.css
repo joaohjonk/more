@@ -1,6 +1,6 @@
 /* Catálogo associativo · protótipo. Só tokens de brand/generated/tokens.css (More, sistema v0.3). */
-@font-face{font-family:"Muoto";src:url(fontes/Muoto-Regular.otf) format("opentype");font-weight:400;font-display:swap}
-@font-face{font-family:"MuotoMono";src:url(fontes/MuotoMono-Condensed.woff2) format("woff2");font-weight:400;font-display:swap}
+@font-face{font-family:"Muoto";src:url(/fonts/mr.otf) format("opentype");font-weight:400;font-display:swap}
+@font-face{font-family:"MuotoMono";src:url(/fonts/mm.woff2) format("woff2");font-weight:400;font-display:swap}
 :root{color-scheme:light;--gutter:max(20px,env(safe-area-inset-left,0px));--rule:var(--color-alpha-preto-10)}
 *{box-sizing:border-box}
 html{-webkit-text-size-adjust:100%;background:var(--color-off-white);color:var(--color-preto)}

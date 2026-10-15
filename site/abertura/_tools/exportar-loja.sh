@@ -4,7 +4,7 @@
 # Uso: bash _tools/exportar-loja.sh [AAAAMMDD] [vNN]
 set -e
 cd "$(dirname "$0")"; T=$PWD; cd ..; W=$PWD
-D=${1:-$(date +%Y%m%d)}; V=${2:-v04}; B=http://localhost:8765; EV=evento-20261105
+D=${1:-$(date +%Y%m%d)}; V=${2:-v05}; B=http://localhost:8765; EV=evento-20261105
 shot(){ node $T/shot.mjs "$1" "$2" $3 $4 ${5:-1} "${6:-}" 1500 >/dev/null; }
 m(){ basename $(ls $W/$1 | tail -1); }
 ET=$(m "placas/MORE_FONTE_marca_etiquetas_*.html"); LI=$(m "lista/MORE_FONTE_marca_lista-a4_*.html"); VI=$(m "vitrine/MORE_FONTE_marca_vitrine_*.html"); CA=$(m "livro/MORE_FONTE_marca_livro-capa_*.html"); FL=$(m "livro/MORE_FONTE_marca_livro-flatplan_*.html")
