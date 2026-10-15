@@ -1,0 +1,177 @@
+{
+  "space": {
+    "hair": {
+      "$type": "number",
+      "$value": 6,
+      "$description": "gap between gallery images, between floating bars, list-view image gap"
+    },
+    "xs": {
+      "$type": "number",
+      "$value": 8
+    },
+    "sm": {
+      "$type": "number",
+      "$value": 10,
+      "$description": "mobile page gutter, bar padding"
+    },
+    "md": {
+      "$type": "number",
+      "$value": 16,
+      "$description": "filter item gap, mobile bar side margin"
+    },
+    "lg": {
+      "$type": "number",
+      "$value": 20,
+      "$description": "desktop page gutter, menu padding"
+    },
+    "xl": {
+      "$type": "number",
+      "$value": 30,
+      "$description": "bar distance from bottom (desktop)"
+    },
+    "2xl": {
+      "$type": "number",
+      "$value": 40
+    },
+    "3xl": {
+      "$type": "number",
+      "$value": 60,
+      "$description": "statement padding"
+    },
+    "section": {
+      "$type": "number",
+      "$value": 160,
+      "$description": "topo da lista da coleção"
+    },
+    "grid-top": {
+      "$type": "number",
+      "$value": 180,
+      "$description": "catalog top padding (140 mobile)"
+    },
+    "3xs": {
+      "$type": "number",
+      "$value": 4,
+      "$description": "preço riscado, miniaturas da PDP (7 usos)"
+    },
+    "sm-2": {
+      "$type": "number",
+      "$value": 12,
+      "$description": "padding do botão de adicionar ao carrinho (9 usos)"
+    },
+    "lg-2": {
+      "$type": "number",
+      "$value": 24,
+      "$description": "lista do acordeão, colunas do footer"
+    },
+    "4xl": {
+      "$type": "number",
+      "$value": 120,
+      "$description": "produtos relacionados, descrição na PDP (6 usos)"
+    },
+    "grid-top-list": {
+      "$type": "number",
+      "$value": 140,
+      "$description": "topo da coleção (grid e lista)"
+    }
+  },
+  "layout": {
+    "grid-gap": {
+      "$type": "number",
+      "$value": 7,
+      "$description": "catalog grid gap is 7vw on desktop (DTCG dimension has no vw unit); 100px row / 6px column on mobile"
+    },
+    "bar-height": {
+      "$type": "number",
+      "$value": 35,
+      "$description": "menu bar, filter bar, CTA bar, cart bar: one height for every floating control"
+    },
+    "bar-width": {
+      "$type": "number",
+      "$value": 320,
+      "$description": "menu/CTA bar at rest"
+    },
+    "bar-width-open": {
+      "$type": "number",
+      "$value": 580,
+      "$description": "menu when open (max 100vw - 32px)"
+    },
+    "bar-bottom": {
+      "$type": "number",
+      "$value": 30,
+      "$description": "20 on mobile"
+    },
+    "list-columns": {
+      "$type": "number",
+      "$value": 10,
+      "$description": "list view: 10-col grid, vertical image = 2 cols (3:4), horizontal image = 3 cols (3:2)"
+    },
+    "grid-columns": {
+      "$type": "number",
+      "$value": 4,
+      "$description": "catalog grid desktop; 2 on mobile, every 5th card spans full width"
+    },
+    "bar-safe": {
+      "$type": "number",
+      "$value": 106,
+      "$description": "[proposta] derivado do site: --menu-bottom 30 + --menu-button-size 35 + --gap-btw-buttons 6 + 35 do carrinho = topo do botão do carrinho. Nada fixo pode entrar abaixo disso."
+    },
+    "bar-spacing-top": {
+      "$type": "number",
+      "$value": 35,
+      "$description": "--menu-spacing-top (o :root renderizado diz 35px)"
+    },
+    "bar-gap": {
+      "$type": "number",
+      "$value": 6,
+      "$description": "--gap-btw-buttons entre botão do menu e do carrinho"
+    }
+  },
+  "radius": {
+    "none": {
+      "$type": "number",
+      "$value": 0,
+      "$description": "imagens, cards, barras, botão de checkout e filtro: tudo que é estrutura"
+    },
+    "thumb": {
+      "$type": "number",
+      "$value": 2,
+      "$description": "amostras de material na PDP e miniaturas do modal"
+    },
+    "tooltip": {
+      "$type": "number",
+      "$value": 8,
+      "$description": "tooltip de opção na PDP (só os cantos de baixo)"
+    },
+    "panel": {
+      "$type": "number",
+      "$value": 10,
+      "$description": "caixa flutuante do footer com blur"
+    }
+  },
+  "breakpoint": {
+    "xl": {
+      "$type": "number",
+      "$value": 1440,
+      "$description": "PDP troca colunas laterais 344→280"
+    },
+    "lg": {
+      "$type": "number",
+      "$value": 1200
+    },
+    "md": {
+      "$type": "number",
+      "$value": 1024,
+      "$description": "menu e declarações mudam para mobile"
+    },
+    "sm": {
+      "$type": "number",
+      "$value": 768,
+      "$description": "footer"
+    },
+    "xs": {
+      "$type": "number",
+      "$value": 600,
+      "$description": "coleção vira 2 colunas, filtro vira botão"
+    }
+  }
+}

@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="pt-BR"><head><meta charset="utf-8">
+<title>Flatplan · Menos do mesmo, Edição 01</title>
+<style>
+@font-face{font-family:Muoto;src:url(../_fonts/205TF-Muoto-Regular.otf) format('opentype')}
+@font-face{font-family:MuotoMono;src:url(../_fonts/205TF-MuotoMono-CondensedRegular.woff2) format('woff2')}
+:root{--off-white:#E5E1DB;--preto:#2D211E;--cinza-escuro:#5D554F;--cinza-medio:#686868;--jambo:#9A1935;--ciano:#8BC0D0;
+--sans:Muoto,"DM Sans",Arial,sans-serif;--mono:MuotoMono,"Martian Mono",ui-monospace,monospace}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{background:#9a948c;font-family:var(--sans);color:var(--preto);-webkit-font-smoothing:antialiased}
+body{padding:40px}
+/* A3 paisagem 420 x 297 mm a 4 px/mm */
+.page{position:relative;width:1680px;height:1188px;background:var(--off-white);padding:52px 56px 0;overflow:hidden}
+.mono{font-family:var(--mono)}
+.head{display:grid;grid-template-columns:300px 1fr 1fr 1fr;gap:28px;align-items:start}
+.wm{width:120px;height:auto;display:block}
+.wm path{fill:var(--preto)}
+h1{font-weight:400;font-size:34px;line-height:.95;letter-spacing:-.015em;margin-top:14px}
+.head .k{font-size:11px;color:var(--cinza-escuro);line-height:1.45}
+.spec dt{font-family:var(--mono);font-size:10.5px;color:var(--cinza-escuro);margin-top:9px}
+.spec dd{font-size:12.5px;line-height:1.3}
+.spec dt:first-child{margin-top:0}
+.grid{display:grid;grid-template-columns:repeat(12,1fr);column-gap:12px;row-gap:10px;margin-top:26px}
+.sp{font-size:9.5px;line-height:1.25}
+.sp .pp{display:flex;gap:2px;height:78px}
+.sp .pg{flex:1;background:#DCD7CF;position:relative;overflow:hidden;border:1px solid rgba(45,33,30,.12)}
+.sp .pg.red{background:var(--jambo)}
+.sp .pg img{width:100%;height:100%;object-fit:cover;display:block}
+.sp .pg .t{position:absolute;left:5px;top:5px;right:5px;font-size:7px;line-height:1.2;color:var(--preto)}
+.sp .pg .t b{font-weight:400;display:block;font-size:8px}
+.sp .pg .t.light{color:var(--off-white)}
+.sp .pg .wm2{position:absolute;left:5px;bottom:4px;width:14px}
+.sp .pg .wm2 path{fill:var(--preto)}
+.sp .pg .foto{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-family:var(--mono);font-size:7px;color:var(--cinza-medio)}
+.sp .n{font-family:var(--mono);font-size:9px;color:var(--cinza-escuro);margin-top:4px;display:flex;justify-content:space-between}
+.sp .c{margin-top:1px;min-height:18px;font-size:8.5px}
+.sp .c i{color:var(--cinza-medio);font-style:normal}
+.sp .c .miss{color:var(--jambo)}
+.grp{grid-column:1/-1;font-family:var(--mono);font-size:10px;color:var(--cinza-escuro);border-bottom:1px solid rgba(45,33,30,.3);padding-bottom:2px;margin-top:2px}
+.bar{position:absolute;left:0;right:0;bottom:0;height:40px;background:var(--preto);color:var(--off-white);font-family:var(--mono);font-size:11px;display:flex;align-items:center;justify-content:space-between;padding:0 56px}
+.note{position:absolute;left:56px;right:56px;bottom:54px;font-family:var(--mono);font-size:10px;color:var(--cinza-medio);display:flex;justify-content:space-between;gap:30px}
+@page{size:420mm 297mm;margin:0}
+@media print{html,body{background:none;padding:0}.page{width:420mm;height:297mm;background:none}}
+</style></head>
+<body>
+<svg style="display:none"><symbol id="m" viewBox="0 0 272 69"><path d="M176.593 23.0819V1.91833H150.317V66.5948H176.593V44.2791H205.243V1.91833C189.55 1.91833 177.465 13.093 176.593 23.0875V23.0819Z"/><path d="M111.007 0C91.875 0 76.3403 15.3302 76.3403 34.223C76.3403 53.1159 91.8693 68.4461 111.007 68.4461C130.145 68.4461 145.742 53.1159 145.742 34.223C145.742 15.3302 130.213 0 111.007 0ZM111.007 42.4334C106.43 42.4334 102.69 38.8036 102.69 34.2174C102.69 29.6313 106.435 26.0015 111.007 26.0015C115.579 26.0015 119.398 29.6984 119.398 34.2174C119.398 38.7365 115.653 42.4334 111.007 42.4334Z"/><path d="M35.919 19.6423L26.2764 1.91833H0V66.5948H26.2764V44.212H45.4936V66.5948H71.77V1.91833H45.4936L35.919 19.6423Z"/><path d="M272.002 1.87909H211.835V24.7541V34.7487V44.1783V66.5612H272.002V44.7376H238.219L255.669 34.7151L238.236 24.7541H272.002V1.87909Z"/></symbol></svg>
+<div class="page" id="page">
+  <div class="head">
+    <div>
+      <svg class="wm"><use href="#m"/></svg>
+      <h1>Menos do mesmo.<br>Edição 01</h1>
+      <div class="k mono" style="margin-top:14px">Flatplan · 112 páginas · 56 spreads<br>Mestre: livro/livro.json</div>
+    </div>
+    <dl class="spec" id="s1"></dl>
+    <dl class="spec" id="s2"></dl>
+    <dl class="spec" id="s3"></dl>
+  </div>
+  <div class="grid" id="grid"></div>
+  <div class="note" id="note"></div>
+  <div class="bar"><span>Menos do mesmo. Edição 01 · 230 × 300 mm · 112 p.</span><span>Linha em vermelho: texto ainda a escrever · Foto 1.200 px: insuficiente para a tiragem, pedir RAW</span></div>
+</div>
+<script>
+fetch('livro.json').then(r=>r.json()).then(L=>{
+  const dl=(id,rows)=>{document.getElementById(id).innerHTML=rows.map(([k,v])=>'<dt>'+k+'</dt><dd>'+v+'</dd>').join('')};
+  dl('s1',[['Formato',L.formato],['Páginas',L.paginas],['Encadernação',L.encadernacao],['Miolo',L.miolo]]);
+  dl('s2',[['Capa',L.capa],['Tipografia',L.tipografia],['Sequência',L.sequencia]]);
+  dl('s3',[['Imagens',L.imagens],['Texto de abertura',L.texto_abertura],['Colofão',L.colofao]]);
+  const g=document.getElementById('grid'); let p=1; const sym='<svg class="wm2"><use href="#m"/></svg>';
+  let tag='';const sp=(left,right,cap,n)=>{const d=document.createElement('div');d.className='sp';d.innerHTML='<div class="pp">'+left+right+'</div><div class="n"><span>'+n+'</span><span>'+tag+'</span></div><div class="c">'+cap+'</div>';g.appendChild(d);tag=''};
+  const blank='<div class="pg"></div>';
+  const txt=(t,cls)=>'<div class="pg"><div class="t '+(cls||'')+'">'+t+'</div></div>';
+  const grp=(t)=>{tag=t};
+  grp('Abertura');
+  sp('<div class="pg red"><div class="t light"><b>Menos do mesmo.</b></div></div>','<div class="pg">'+sym+'</div>','Capa (fora) · p. 1 falsa folha de rosto','capa · 1');
+  sp(blank,txt('<b>Menos do mesmo.</b>Edição 01<br>São Paulo, 2026'),'Folha de rosto','2–3');
+  sp(blank,txt(L.texto_abertura.slice(0,80)+'…'),'Texto de abertura','4–5');
+  sp(txt('<b>Índice</b>24 peças por tipo'),txt('Assentos · Mesas<br>Luminárias · Estantes · Fixos'),'Índice','6–7');
+  p=8; let last='';
+  L.pecas.forEach(pc=>{
+    if(pc.cat!==last){grp(pc.cat);last=pc.cat}
+    const foto='<div class="pg"><img src="'+pc.img+'" alt=""></div>';
+    const nome=txt('<b>'+pc.nome+'</b>'+(pc.linha?pc.linha:'<span class="miss">linha seca a escrever</span>'));
+    sp(nome,foto,(pc.linha?'<i>'+pc.fonte+'</i>':'<span class="miss">sem linha seca</span>'),p+'–'+(p+1)); p+=2;
+    const det='<div class="pg"><img src="'+pc.img+'" alt="" style="transform:scale(2.2);transform-origin:40% 55%"></div>';
+    sp(det,txt((pc.material||'<span class="miss">linha de material a escrever</span>')+'<br>Medidas · madeiras · tecidos · prazo'),'Detalhe e ficha','' + p+'–'+(p+1)); p+=2;
+  });
+  grp('Fim');
+  sp(txt('<b>Ficha técnica</b>medidas, madeiras, tecidos, prazos'),txt('…'),'Ficha técnica','104–105');
+  sp(txt('<b>Colofão</b>'+L.colofao),blank,'Colofão','106–107');
+  sp(blank,blank,'Sem impressão','108–109');
+  sp(blank,blank,'Sem impressão','110–111');
+  sp(blank,'<div class="pg red"><div class="t light">verso: índice e texto</div></div>','p. 112 · Capa (verso)','112 · capa');
+  const miss=L.pecas.filter(x=>!x.linha).map(x=>x.nome);
+  document.getElementById('note').innerHTML='<span>Linhas secas vindas das legendas do Instagram da More (fonte em cada spread). A escrever: '+miss.join(', ')+'.</span><span>Medidas e acabamentos: do Shopify, quando houver acesso.</span>';
+});
+</script>
+</body></html>

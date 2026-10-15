@@ -16,3 +16,4 @@ state/cache/
 
 # dependências de build (Style Dictionary)
 node_modules/
+.netlify

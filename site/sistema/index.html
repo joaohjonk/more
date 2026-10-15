@@ -1,0 +1,571 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<link rel="icon" href="data:,">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sistema de design More</title>
+<meta name="color-scheme" content="light">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,600&family=Martian+Mono:wdth,wght@75,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="brand/generated/tokens.css">
+<style>
+  /* Todos os valores vêm de brand/generated/tokens.css (gerado pelos tokens DTCG). */
+  *{box-sizing:border-box;margin:0}
+  html{scroll-behavior:smooth}
+  body{background:var(--color-surface-page);color:var(--color-text-primary);font-family:var(--font-family-mono);font-size:var(--font-size-body);line-height:1.45;-webkit-font-smoothing:antialiased}
+  .muoto{font-family:var(--font-family-muoto)}
+  .mono{font-family:var(--font-family-mono);font-stretch:75%}
+  .secondary{color:var(--color-text-secondary)}
+  a{color:inherit}
+  main{max-width:1240px;margin:0 auto;padding:0 var(--space-lg) 160px}
+  section{padding-top:var(--space-section);scroll-margin-top:var(--space-3xl)}
+  .eyebrow{font-family:var(--font-family-mono);color:var(--color-text-secondary);margin-bottom:var(--space-lg)}
+  h2{font-family:var(--font-family-muoto);font-weight:400;font-size:var(--font-size-about);line-height:1;margin-bottom:var(--space-lg)}
+  h3{font-family:var(--font-family-muoto);font-weight:400;font-size:var(--font-size-ui);margin:var(--space-2xl) 0 var(--space-sm)}
+  p.lede{font-family:var(--font-family-muoto);font-size:var(--font-size-title);line-height:1.15;max-width:34ch}
+  p.body{font-family:var(--font-family-muoto);font-size:var(--font-size-ui);line-height:1.45;max-width:62ch;margin-bottom:var(--space-sm)}
+  hr{border:0;border-top:1px solid var(--color-alpha-preto-10);margin:var(--space-lg) 0}
+
+  /* hero */
+  .hero{min-height:88vh;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:var(--space-xl);text-align:center}
+  .hero svg{width:min(560px,80vw);height:auto;color:var(--color-preto)}
+  .hero svg path{fill:currentColor;opacity:0;animation:in var(--motion-duration-slow) cubic-bezier(.22,1,.36,1) forwards}
+  .hero svg path:nth-child(3){animation-delay:.0s}.hero svg path:nth-child(2){animation-delay:.15s}.hero svg path:nth-child(1){animation-delay:.3s}.hero svg path:nth-child(4){animation-delay:.45s}
+  @keyframes in{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+  .hero p{font-family:var(--font-family-muoto);font-size:var(--font-size-title)}
+
+  /* index nav = floating bar */
+  .bar{position:fixed;left:50%;bottom:var(--layout-bar-bottom);transform:translateX(-50%);width:var(--layout-bar-width);max-width:calc(100vw - 32px);height:var(--layout-bar-height);background:var(--color-surface-glass);backdrop-filter:blur(var(--blur-medium));-webkit-backdrop-filter:blur(var(--blur-medium));display:flex;flex-direction:column-reverse;padding:0;z-index:10;transition:width var(--motion-duration-base) ease,height var(--motion-duration-base) ease,background-color var(--motion-duration-base) ease}
+  .bar svg{width:60px;height:auto;color:var(--color-preto)}.bar svg path{fill:currentColor}
+  .bar button{all:unset;cursor:pointer;font-family:var(--font-family-mono);font-stretch:75%}
+  .bar.open{width:var(--layout-bar-width-open);height:auto;min-height:var(--layout-bar-height);flex-direction:column-reverse;align-items:stretch;padding:0;background:var(--color-surface-glass-strong);color:var(--color-text-on-inverse)}
+  .bar.open svg{color:var(--color-branco)}
+  .bar .row{width:100%;display:flex;justify-content:space-between;align-items:center;height:var(--layout-bar-height);padding:0 var(--space-sm)}
+  .bar nav{display:none;padding:var(--space-lg);columns:2;gap:var(--space-lg)}
+  .bar.open nav{display:block}
+  .bar nav a{display:block;text-decoration:none;line-height:var(--font-line-height-list)}
+  .bar nav a:hover{color:var(--color-branco)}
+
+  /* colour */
+  .swatches{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:var(--space-hair)}
+  .sw{display:flex;flex-direction:column;gap:var(--space-xs)}
+  @media(max-width:700px){.swatches{grid-template-columns:repeat(2,1fr)}.sw .chip{aspect-ratio:1}}
+  .sw .chip{aspect-ratio:3/4;border:1px solid var(--color-alpha-preto-10)}
+  .sw .name{font-family:var(--font-family-muoto)}
+  .sw .meta{color:var(--color-text-secondary)}
+  .chip.glass{background:linear-gradient(90deg,#c9b8a4,#7d6b5c 40%,#e5e1db)}
+  .chip.glass::after{content:"";display:block;height:100%;background:var(--color-surface-glass);backdrop-filter:blur(var(--blur-medium))}
+
+  /* type */
+  .spec{display:grid;grid-template-columns:200px 1fr;gap:var(--space-lg);padding:var(--space-lg) 0;border-top:1px solid var(--color-alpha-preto-10);align-items:baseline}
+  .spec .k{color:var(--color-text-secondary)}
+  @media(max-width:700px){.spec{grid-template-columns:1fr;gap:var(--space-xs)}}
+
+  /* space + grid */
+  .scale{display:flex;flex-direction:column;gap:var(--space-sm)}
+  .scale div{display:flex;align-items:center;gap:var(--space-md)}
+  .scale i{display:block;height:var(--space-sm);background:var(--color-preto)}
+  .grid-demo{display:grid;grid-template-columns:repeat(4,1fr);gap:7vw;margin-top:var(--space-lg)}
+  .grid-demo div{aspect-ratio:3/4;background:var(--color-alpha-preto-10)}
+  .list-demo{display:grid;grid-template-columns:repeat(10,1fr);gap:var(--space-hair);margin-top:var(--space-lg)}
+  .list-demo div{grid-column:span 2;aspect-ratio:3/4;background:var(--color-alpha-preto-10)}
+  .list-demo div.h{grid-column:span 3;aspect-ratio:3/2;align-self:end}
+  @media(max-width:700px){.grid-demo{grid-template-columns:repeat(2,1fr);gap:var(--space-hair)}}
+
+  /* components */
+  .stage{background:var(--color-surface-page);border:1px solid var(--color-alpha-preto-10);padding:var(--space-2xl) var(--space-lg);display:flex;flex-wrap:wrap;gap:var(--space-xl);align-items:flex-end;justify-content:center;position:relative}
+  .cbar{width:320px;max-width:100%;height:var(--layout-bar-height);display:flex;align-items:center;justify-content:space-between;padding:0 var(--space-sm);font-stretch:75%}
+  .cbar.glass{background:var(--color-surface-glass);backdrop-filter:blur(var(--blur-medium))}
+  .cbar.cta{background:var(--color-surface-glass-strong);color:var(--color-branco);transition:background-color var(--motion-duration-base) ease;cursor:pointer}
+  .cbar.cta:hover{background:var(--color-cart-accent);color:var(--color-preto)}
+  .cbar.cta .p{font-family:var(--font-family-muoto)}
+  .cbar svg{width:60px;height:auto}.cbar svg path{fill:currentColor}
+  .stack{display:flex;flex-direction:column;gap:var(--space-hair);align-items:center}
+  .brk{font-stretch:75%;cursor:pointer}
+  .brk:hover{color:var(--color-text-secondary)}
+  .filter{display:flex;gap:var(--space-md);height:var(--layout-bar-height);align-items:center;padding:0 var(--space-md);background:var(--color-surface-glass);backdrop-filter:blur(var(--blur-medium));font-family:var(--font-family-muoto);font-size:var(--font-size-ui)}
+  .filter span{color:#1a1a1a;cursor:pointer}.filter .on{font-weight:600}.filter .fixos.on{color:var(--color-ciano-destaque)}
+  .card{width:220px}
+  .card .img{aspect-ratio:3/4;overflow:hidden;position:relative;background:#ddd6cc}
+  .card .img img{width:100%;height:100%;object-fit:cover;display:block;transition:opacity var(--motion-duration-quick) cubic-bezier(.63,.01,0,1.01)}
+  .card .img img.alt{position:absolute;top:50%;left:50%;width:75%;height:auto;transform:translate(-50%,-50%) scale(.8);opacity:0;transition:transform var(--motion-duration-quick) cubic-bezier(.63,.01,0,1.01),opacity var(--motion-duration-quick) cubic-bezier(.63,.01,0,1.01)}
+  .card .img:hover img:first-child{opacity:.6}
+  .card .img:hover img.alt{opacity:1;transform:translate(-50%,-50%) scale(1)}
+  .card .foot{display:flex;justify-content:space-between;padding-top:var(--space-xs);font-family:var(--font-family-muoto)}
+  .card .foot .pr{color:var(--color-text-secondary)}
+  .tag{position:absolute;left:var(--space-sm);top:var(--space-sm);font-stretch:75%;font-size:var(--font-size-label);padding:2px 6px;background:var(--color-surface-glass);backdrop-filter:blur(var(--blur-soft))}
+  .tag.now{background:var(--color-ciano-destaque);color:var(--color-preto)}
+  .swrow{display:flex;gap:var(--space-hair)}
+  .swrow span{width:30px;height:30px;display:block;outline:1px solid transparent;outline-offset:2px;cursor:pointer}
+  .swrow span:hover,.swrow span.on{outline-color:var(--color-preto)}
+  .dots span{border-radius:var(--radius-round);width:22px;height:22px}
+  .acc{width:320px;max-width:100%;font-family:var(--font-family-muoto)}
+  .acc summary{list-style:none;display:flex;justify-content:space-between;padding:var(--space-xs) 0;border-top:1px solid var(--color-cinza-claro);cursor:pointer;font-size:var(--font-size-label)}
+  .acc summary::after{content:"▴";font-size:9px}.acc details[open] summary::after{content:"▾"}
+  .acc .r{display:flex;justify-content:space-between;color:var(--color-text-secondary);font-size:var(--font-size-label);padding:3px 0}
+  .proposal{border:1px dashed var(--color-text-secondary)}
+  .note{color:var(--color-text-secondary);font-size:var(--font-size-label);margin-top:var(--space-sm)}
+
+  /* motion */
+  .ease{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:var(--space-hair)}
+  .ease div{border-top:1px solid var(--color-alpha-preto-10);padding:var(--space-md) 0}
+  .ease b{display:block;width:30px;height:30px;background:var(--color-preto);margin:var(--space-md) 0}
+  .ease:hover b{transform:translateX(160px)}
+
+  /* photo */
+  .photos{display:grid;grid-template-columns:repeat(4,1fr);gap:var(--space-hair)}
+  .photos img{width:100%;aspect-ratio:3/4;object-fit:cover;display:block}
+  @media(max-width:700px){.photos{grid-template-columns:repeat(2,1fr)}}
+
+  /* rules */
+  .rules{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:var(--space-lg) var(--space-2xl)}
+  .rules div{border-top:1px solid var(--color-alpha-preto-10);padding-top:var(--space-sm)}
+  .pairs{display:grid;grid-template-columns:repeat(4,1fr);gap:var(--space-hair);margin:var(--space-lg) 0}.pairs img{width:100%;display:block}.pairs figure{margin:0}.pairs figcaption{font-family:var(--font-family-mono);font-stretch:75%;font-size:var(--font-size-caption);color:var(--color-text-secondary);margin-top:4px}@media(max-width:700px){.pairs{grid-template-columns:1fr 1fr}}
+  .rules .id{color:var(--color-text-secondary);font-stretch:75%}
+  .rules p,.spec{overflow-wrap:anywhere}
+  .rules p{font-family:var(--font-family-muoto);margin-top:4px}
+  ol.steps{padding-left:1.2em;max-width:70ch;font-family:var(--font-family-muoto);font-size:var(--font-size-ui);line-height:1.45}ol.steps li{margin-bottom:var(--space-sm)}
+  code{overflow-wrap:anywhere;font-family:var(--font-family-mono);background:var(--color-alpha-preto-10);padding:1px 4px}
+  footer{background:var(--color-surface-inverse);color:var(--color-text-on-inverse);padding:var(--space-3xl) var(--space-lg) 120px;margin-top:var(--space-section)}
+  footer svg{width:min(320px,60vw);color:var(--color-off-white)}footer svg path{fill:currentColor}
+
+  /* panel additions */
+  .campos{display:grid;grid-template-columns:repeat(4,1fr);gap:var(--space-hair)}
+  .campos div{aspect-ratio:3/4;display:flex;flex-direction:column;justify-content:flex-end;padding:var(--space-sm);color:var(--color-off-white);font-stretch:75%;font-family:var(--font-family-mono);font-size:var(--font-size-label)}
+  @media(max-width:700px){.campos{grid-template-columns:repeat(2,1fr)}}
+  table.t{border-collapse:collapse;width:100%;font-family:var(--font-family-muoto);font-size:var(--font-size-label);margin-top:var(--space-md)}
+  table.t th{font-family:var(--font-family-mono);font-stretch:75%;font-weight:400;color:var(--color-text-secondary);text-align:left;padding:6px 8px 6px 0;border-bottom:1px solid var(--color-preto)}
+  table.t td{padding:8px 8px 8px 0;border-bottom:1px solid var(--color-alpha-preto-10);vertical-align:top}
+  .tscroll{overflow-x:auto}
+  .logos{display:grid;grid-template-columns:1fr 2fr;gap:var(--space-hair)}
+  .logos > div{background:var(--color-alpha-preto-10);aspect-ratio:4/5;position:relative;overflow:hidden;padding:var(--space-md)}
+  .logos > div path{fill:var(--color-preto)}
+  .logos .xl{background:var(--color-preto);aspect-ratio:auto} .logos .xl path{fill:var(--color-off-white)}
+  .logos span{display:block;font-family:var(--font-family-mono);font-stretch:75%;font-size:var(--font-size-label);color:var(--color-text-secondary)}
+  .logos .xl span{color:var(--color-cinza-claro)}
+  @media(max-width:700px){.logos{grid-template-columns:1fr}.logos .xl{aspect-ratio:8/5}}
+  .display-demo{font-family:var(--font-family-muoto);line-height:.9;letter-spacing:-.02em;margin:var(--space-lg) 0}
+  .poster{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.3fr);gap:var(--space-2xl);align-items:start}
+  .poster img{width:100%;display:block}
+  @media(max-width:700px){.poster{grid-template-columns:1fr}}
+  .voice{display:grid;grid-template-columns:1fr 1fr;gap:var(--space-hair)}
+  .voice div{background:var(--color-alpha-preto-10);padding:var(--space-lg);font-family:var(--font-family-muoto)}
+  .voice .no{background:transparent;outline:1px dashed var(--color-text-secondary);outline-offset:-1px}
+  .voice p{font-size:var(--font-size-title);line-height:1.15;margin:var(--space-sm) 0}
+  @media(max-width:700px){.voice{grid-template-columns:1fr}}
+  @media (prefers-reduced-motion:reduce){*{transition-duration:1ms!important;animation-duration:1ms!important}}
+</style>
+</head>
+<body>
+<main>
+  <header class="hero" id="topo">
+    <svg viewBox="0 0 272 69" aria-label="More" role="img"><path d="M176.593 23.0819V1.91833H150.317V66.5948H176.593V44.2791H205.243V1.91833C189.55 1.91833 177.465 13.093 176.593 23.0875V23.0819Z"/><path d="M111.007 0C91.875 0 76.3403 15.3302 76.3403 34.223C76.3403 53.1159 91.8693 68.4461 111.007 68.4461C130.145 68.4461 145.742 53.1159 145.742 34.223C145.742 15.3302 130.213 0 111.007 0ZM111.007 42.4334C106.43 42.4334 102.69 38.8036 102.69 34.2174C102.69 29.6313 106.435 26.0015 111.007 26.0015C115.579 26.0015 119.398 29.6984 119.398 34.2174C119.398 38.7365 115.653 42.4334 111.007 42.4334Z"/><path d="M35.919 19.6423L26.2764 1.91833H0V66.5948H26.2764V44.212H45.4936V66.5948H71.77V1.91833H45.4936L35.919 19.6423Z"/><path d="M272.002 1.87909H211.835V24.7541V34.7487V44.1783V66.5612H272.002V44.7376H238.219L255.669 34.7151L238.236 24.7541H272.002V1.87909Z"/></svg>
+    <p>Menos do mesmo.</p>
+    <p class="mono secondary" style="font-size:var(--font-size-body)">Sistema de design · v0.3 · provisório até aprovação do time More</p>
+    <p class="mono" style="font-size:var(--font-size-body);margin-top:var(--space-sm)"><a href="brand/build/pdf/regras-uma-pagina.pdf">[Regras em uma página · PDF]</a>&nbsp;&nbsp;<a href="brand/specimen/especime.png">[Espécime da fonte]</a></p>
+  </header>
+
+  <section id="o-que-e">
+    <div class="eyebrow">[01] O que é</div>
+    <p class="lede">Tudo o que faz o site da More parecer More, escrito em arquivos que pessoas e IA conseguem ler.</p>
+    <hr>
+    <p class="body">Os valores desta página foram medidos no site <a href="https://mymore.design">mymore.design</a> em 15/10/2026 e no Instagram <a href="https://www.instagram.com/more.mymore/">@more.mymore</a>. Nada foi inventado: quando algo ainda é dúvida, está marcado como pendente. Cada cor, tamanho, espaço e movimento existe como token em <code>brand/tokens/</code>; esta página só os mostra.</p>
+    <p class="body">Para quem cria: use esta página como guia. Para a IA: aponte para este repositório e peça para seguir o <code>cstack</code> (explicação no fim).</p>
+  </section>
+
+  <section id="principios">
+    <div class="eyebrow">[02] Princípios</div>
+    <h2>Seis ideias que seguram o resto</h2>
+    <div class="rules">
+      <div><span class="id">Papel, não vidro</span><p>O fundo é off-white quente, como papel de revista. Transparência só nas barras flutuantes, nunca como estética.</p></div>
+      <div><span class="id">A peça é a cor</span><p>A interface é quase monocromática. Cor saturada vem da madeira, do bouclê, do vidro fundido.</p></div>
+      <div><span class="id">Quadrado</span><p>Nenhum canto arredondado. Imagens, barras e botões têm canto vivo.</p></div>
+      <div><span class="id">Duas vozes</span><p>Muoto fala os nomes e os preços. Muoto Mono fala com a interface, entre [colchetes].</p></div>
+      <div><span class="id">Peso brasileiro</span><p>Madeira maciça em seções generosas, peças com nome de gente, acabamentos com nomes de lugares e frutas: Jambo, Igaratá, Guaraná, Jamaica.</p></div>
+      <div><span class="id">A galeria flutua</span><p>Navegação e ação vivem em barras de 35px no pé da tela. O resto da tela é das fotos.</p></div>
+    </div>
+      <h3>O que a More acha</h3>
+    <div class="rules">
+      <div><span class="id">Crença 1</span><p>Uma peça não precisa combinar. "Não foi feita para combinar com o sofá. E isso é ótimo."</p></div>
+      <div><span class="id">Crença 2</span><p>Material antes de adjetivo. Madeira maciça, vidro fundido, alumínio naval, ditos pelo nome.</p></div>
+      <div><span class="id">Crença 3</span><p>Contra o móvel genérico de projeto. A peça tem que se sustentar sozinha numa sala.</p></div>
+    </div>
+  </section>
+
+  <section id="voz">
+    <div class="eyebrow">[03] Voz · brand-system voice + R-COPY-01/02/03</div>
+    <h2>Voz</h2>
+    <p class="body">Nome da peça, ponto. Depois uma linha seca que discorda do óbvio. Depois, se precisar, o material. Português primeiro. Nas 42 legendas do Instagram não há exclamação, emoji nem hashtag: é assim que continua.</p>
+    <div class="voice">
+      <div><span class="mono secondary">Assim</span><p>Mesa de jantar componível Naz. Não é quadrada, só parece.</p><p>Banco João. Precisa da sua Maria.</p><p>Maçaneta Constantin. A primeira impressão é na mão.</p></div>
+      <div class="no"><span class="mono secondary">Não assim</span><p>Móveis com alma, feitos para o uso diário.</p><p>Peças sofisticadas com personalidade única!</p><p>Purity of lines and natural beauty.</p></div>
+    </div>
+    <h3>Nomes</h3>
+    <p class="body">Um nome por peça, igual no site, no Instagram, na etiqueta e no arquivo: tipo em minúscula + Nome. <b>Mesa de centro Cildo</b>, <b>Cadeira 556-A</b>, <b>Luminária Ngoni</b>, <b>Poltrona Leticia</b>. Hoje há versões diferentes da mesma peça (Mesa Cildo / Mesa de centro Cildo, Cadeira 556 / 556-A, Torre de luz / Luminária Ngoni, Leticia / Letícia).</p>
+  </section>
+
+  <section id="marca">
+    <div class="eyebrow">[04] Marca · R-LOGO-01 · tokens logo.*</div>
+    <h2>A marca em dois tamanhos</h2>
+    <p class="body">M ou XL nas peças; S (60 px) só na barra do menu do site. Preto, branco ou off-white: preto sobre amarelo-igaratá, branco sobre vermelho-jambo, verde-jamaica e berinjela. Nunca contornada, espelhada ou com padrão por cima. Use o arquivo <code>assets/official/more-wordmark-currentcolor.svg</code> e dê a cor pelo CSS.</p>
+    <p class="note">M aparece no cartaz da TOM.01 (16% do lado curto, girada 90°), no rodapé do site (19% da largura) e na capa do livro anterior (cerca de 25%). XL aparece no convite de 05.11, quase da largura toda, encostada embaixo. O tamanho mínimo S e o respiro igual ao O são propostas nossas: estão em Propostas, fora das regras.</p>
+    <div class="logos">
+      <div><span>M · 1/6 do lado curto (faixa observada 16–25%)</span><svg viewBox="0 0 272 69" style="width:max(34%,90px);display:block;margin-top:var(--space-2xl)" aria-hidden="true"><path d="M176.593 23.0819V1.91833H150.317V66.5948H176.593V44.2791H205.243V1.91833C189.55 1.91833 177.465 13.093 176.593 23.0875V23.0819Z"/><path d="M111.007 0C91.875 0 76.3403 15.3302 76.3403 34.223C76.3403 53.1159 91.8693 68.4461 111.007 68.4461C130.145 68.4461 145.742 53.1159 145.742 34.223C145.742 15.3302 130.213 0 111.007 0ZM111.007 42.4334C106.43 42.4334 102.69 38.8036 102.69 34.2174C102.69 29.6313 106.435 26.0015 111.007 26.0015C115.579 26.0015 119.398 29.6984 119.398 34.2174C119.398 38.7365 115.653 42.4334 111.007 42.4334Z"/><path d="M35.919 19.6423L26.2764 1.91833H0V66.5948H26.2764V44.212H45.4936V66.5948H71.77V1.91833H45.4936L35.919 19.6423Z"/><path d="M272.002 1.87909H211.835V24.7541V34.7487V44.1783V66.5612H272.002V44.7376H238.219L255.669 34.7151L238.236 24.7541H272.002V1.87909Z"/></svg><span style="position:absolute;bottom:var(--space-md)">convite, post, capa</span></div>
+      <div class="xl"><span>XL · 95–100% da largura, encostada embaixo (convite 05.11)</span><svg viewBox="0 0 272 69" style="width:100%;display:block;position:absolute;left:0;bottom:-4%" aria-hidden="true"><path d="M176.593 23.0819V1.91833H150.317V66.5948H176.593V44.2791H205.243V1.91833C189.55 1.91833 177.465 13.093 176.593 23.0875V23.0819Z"/><path d="M111.007 0C91.875 0 76.3403 15.3302 76.3403 34.223C76.3403 53.1159 91.8693 68.4461 111.007 68.4461C130.145 68.4461 145.742 53.1159 145.742 34.223C145.742 15.3302 130.213 0 111.007 0ZM111.007 42.4334C106.43 42.4334 102.69 38.8036 102.69 34.2174C102.69 29.6313 106.435 26.0015 111.007 26.0015C115.579 26.0015 119.398 29.6984 119.398 34.2174C119.398 38.7365 115.653 42.4334 111.007 42.4334Z"/><path d="M35.919 19.6423L26.2764 1.91833H0V66.5948H26.2764V44.212H45.4936V66.5948H71.77V1.91833H45.4936L35.919 19.6423Z"/><path d="M272.002 1.87909H211.835V24.7541V34.7487V44.1783V66.5612H272.002V44.7376H238.219L255.669 34.7151L238.236 24.7541H272.002V1.87909Z"/></svg></div>
+    </div>
+  </section>
+
+  <section id="cor">
+    <div class="eyebrow">[05] Cor · brand/tokens/color.tokens.json</div>
+    <h2>Cor</h2>
+    <div class="swatches">
+      <div class="sw"><div class="chip" style="background:var(--color-off-white)"></div><span class="name">off-white</span><span class="meta">#E5E1DB · fundo de tudo</span></div>
+      <div class="sw"><div class="chip" style="background:var(--color-preto)"></div><span class="name">preto</span><span class="meta">#2D211E · texto, marca, CTA. Nunca #000 (o site hoje erra: o texto corrido sai #000)</span></div>
+      <div class="sw"><div class="chip" style="background:var(--color-cinza-escuro)"></div><span class="name">cinza-escuro</span><span class="meta">#5D554F · bloco Sobre, rodapé</span></div>
+      <div class="sw"><div class="chip" style="background:var(--color-cinza-medio)"></div><span class="name">cinza-medio</span><span class="meta">#686868 · preço, medidas. Só a partir de 24px no off-white (4,28:1)</span></div>
+      <div class="sw"><div class="chip" style="background:var(--color-cinza-claro)"></div><span class="name">cinza-claro</span><span class="meta">#BDBDBD · texto sobre preto 80%. Sobre cinza-escuro só a partir de 24px (3,88:1)</span></div>
+      <div class="sw"><div class="chip" style="background:var(--color-ciano-destaque)"></div><span class="name">ciano-destaque</span><span class="meta">#8BC0D0 · o único acento. No site marca só a aba "Fixos" ativa ou no hover. Nunca como cor de texto (1,53:1)</span></div>
+      <div class="sw"><div class="chip" style="background:var(--color-cart-accent)"></div><span class="name">cart-accent</span><span class="meta">#C1CFD6 · hover da barra de compra</span></div>
+      <div class="sw"><div class="chip glass"></div><span class="name">vidro (preto 80% + blur 10–20)</span><span class="meta">barras, menu aberto, gaveta do carrinho</span></div>
+    </div>
+    <p class="note">Também existem marrom #574D4B e erro #E07A5F (erro reprova como texto: 2,27:1; usar com ícone ou sublinhado). cinza-texto #999898 está no código do site mas nenhum elemento usa. Os nomes em português são os mesmos do código do site.</p>
+      <h3>Campos de cor · impresso, social e loja (R-COLOR-04)</h3>
+    <p class="body">As cores fortes da More já existem como fundos de foto no Instagram (cerca de 1 em cada 12 posts) e na capa do livro anterior. Elas viram campos chapados em cartaz, convite, livro, vitrine e post. Nunca entram na interface da loja, e nunca duas no mesmo quadro.</p>
+    <div class="campos">
+      <div style="background:var(--color-campo-vermelho-jambo)">vermelho-jambo<br>#9A1935</div>
+      <div style="background:var(--color-campo-amarelo-igarata)">amarelo-igaratá<br>#DA9015</div>
+      <div style="background:var(--color-campo-verde-jamaica)">verde-jamaica<br>#323E1C</div>
+      <div style="background:var(--color-campo-berinjela)">berinjela<br>#332436</div>
+    </div>
+    <p class="note">Hex amostrados de JPEG do Instagram (posts da TOM.01, Pendente Naz, Sofá Catedral, Luminária Fantô): trocar pelos valores das fotos originais quando chegarem. Os nomes são acabamentos reais da More; ligar cada foto a um acabamento foi dedução nossa.</p>
+    
+  </section>
+
+  <section id="tipografia">
+    <div class="eyebrow">[06] Tipografia · brand/tokens/type.tokens.json</div>
+    <h2>Tipografia</h2>
+    <p class="body">Duas famílias da 205TF: <b>Muoto</b> e <b>Muoto Mono Condensed</b>, licenciadas e hospedadas no tema. Nesta página aparecem substitutas livres (DM Sans e Martian Mono condensada) porque a licença da fonte original é do site.</p>
+    <p class="note">Para peças feitas fora do site (posts, impressos, páginas novas) use as substitutas, carregando esta linha: <code>https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,600&amp;family=Martian+Mono:wdth,wght@75,400&amp;display=swap</code>. Impresso também usa as substitutas até a licença desktop da 205TF chegar.</p>
+    <div class="spec"><span class="k mono">about · Muoto 32/1</span><span class="muoto" style="font-size:var(--font-size-about);line-height:1">Peças de linhas puras e proporções pesadas.</span></div>
+    <div class="spec"><span class="k mono">statement · Muoto 26/1</span><span class="muoto" style="font-size:var(--font-size-statement);line-height:1">Poltrona Leticia</span></div>
+    <div class="spec"><span class="k mono">title · Muoto 22/1 · mobile</span><span class="muoto" style="font-size:var(--font-size-title);line-height:1">Estúdio e galeria de móveis em São Paulo.</span></div>
+    <div class="spec"><span class="k mono">filtro · Muoto 15</span><span class="muoto" style="font-size:var(--font-size-ui)"><b style="font-weight:600">Todos</b>&nbsp;&nbsp;Assentos&nbsp;&nbsp;Estantes&nbsp;&nbsp;Luminárias&nbsp;&nbsp;Mesas&nbsp;&nbsp;Fixos</span></div>
+    <div class="spec"><span class="k mono">product-name · Muoto 13</span><span class="muoto" style="display:flex;justify-content:space-between;max-width:260px">Banco Maria <span class="secondary">R$ 4.880</span></span></div>
+    <div class="spec"><span class="k mono">ui-mono · Mono 13</span><span class="mono">[Voltar]&nbsp;&nbsp;[Lista]&nbsp;&nbsp;Menu [+]&nbsp;&nbsp;Adicionar</span></div>
+    <div class="spec"><span class="k mono">label · Muoto 11</span><span class="muoto" style="font-size:var(--font-size-label)">Selecione a Madeira</span></div>
+    <div class="spec"><span class="k mono">caption · 10</span><span class="muoto" style="font-size:var(--font-size-caption)">01&nbsp;&nbsp;02&nbsp;&nbsp;03&nbsp;&nbsp;04</span></div>
+    <p class="note">Muoto: 26 é o nome do produto na PDP e a frase do menu; 32 é a frase do rodapé; no celular viram 22 e 25. Mono: 13 no desktop, 12 e 15 no celular. Também existem 9 (preço riscado), 12 e 28 (carrinho).</p>
+    <p class="note">Peso: o site pede 300 nos textos em Muoto, mas só carrega o arquivo Regular, então o que aparece é Regular. 600 (filtro ativo) e 700 (newsletter) não têm arquivo: são negrito sintético. Sem caixa-alta, sem espaçamento entre letras.</p>
+    <p class="note">Métricas lidas dos arquivos do site: UPM 1000, altura-x 520, caixa-alta 720, entrelinha normal 1,2, nas duas famílias. Espécime em <code>brand/specimen/</code>.</p>
+      
+  </section>
+
+  <section id="espaco">
+    <div class="eyebrow">[07] Espaço e grid · brand/tokens/space.tokens.json</div>
+    <h2>Espaço e grid</h2>
+    <p class="body">Espaços internos pequenos, distâncias grandes entre peças. O ar vem do vazio entre as fotos, não de margem dentro dos blocos.</p>
+    <div class="scale">
+      <div><i style="width:6px"></i>6 · hair · entre imagens e entre barras</div>
+      <div><i style="width:10px"></i>10 · sm · margem da página no celular</div>
+      <div><i style="width:16px"></i>16 · md · entre itens do filtro</div>
+      <div><i style="width:20px"></i>20 · lg · margem da página no desktop</div>
+      <div><i style="width:30px"></i>30 · xl · barra até o pé da tela</div>
+      <div><i style="width:60px"></i>60 · 3xl · respiro do statement</div>
+      <div><i style="width:160px"></i>160 · section · entre produtos na vista Lista</div>
+    </div>
+    <h3>Grade (catálogo) · 4 colunas, vão de 7vw, fotos 3:4</h3>
+    <div class="grid-demo"><div></div><div></div><div></div><div></div></div>
+    <h3>Lista · 10 colunas, vão de 6px, retrato ocupa 2, paisagem 3:2 ocupa 3</h3>
+    <div class="list-demo"><div></div><div></div><div class="h"></div><div></div></div>
+    <p class="note">No celular: 2 colunas, e a cada 5 cards um ocupa a largura toda.</p>
+    <h3>Cantos (R-SHAPE-01)</h3>
+    <p class="body">Estrutura tem canto vivo: fotos, cards, barras, botões e campos. Raio só em peças pequenas ou flutuantes, e só destes valores:</p>
+    <div class="tscroll"><table class="t"><thead><tr><th>Token</th><th>Valor</th><th>Onde aparece no site</th></tr></thead><tbody>
+      <tr><td>radius.none</td><td>0</td><td>tudo que é estrutura</td></tr>
+      <tr><td>radius.thumb</td><td>2px</td><td>amostras de material na PDP</td></tr>
+      <tr><td>radius.tooltip</td><td>8px</td><td>tooltip de opção, só os cantos de baixo</td></tr>
+      <tr><td>radius.panel</td><td>10px</td><td>caixa do rodapé, com desfoque</td></tr>
+      <tr><td>radius.round</td><td>50%</td><td>círculos: botões de quantidade, checkbox</td></tr>
+    </tbody></table></div>
+    <h3>Breakpoints</h3>
+    <p class="body mono" style="font-family:var(--font-family-mono)">1440 · 1200 · 1024 · 768 · 600 (max-width)</p>
+  </section>
+
+  <section id="componentes">
+    <div class="eyebrow">[08] Componentes</div>
+    <h2>Componentes</h2>
+    <h3>Barras flutuantes (menu, ação, compra)</h3>
+    <div class="stage">
+      <div class="stack">
+        <div class="cbar cta mono"><span>A partir de</span><span class="p">R$ 23.990</span></div>
+        <div class="cbar glass mono"><svg viewBox="0 0 272 69"><path d="M176.593 23.0819V1.91833H150.317V66.5948H176.593V44.2791H205.243V1.91833C189.55 1.91833 177.465 13.093 176.593 23.0875V23.0819Z"/><path d="M111.007 0C91.875 0 76.3403 15.3302 76.3403 34.223C76.3403 53.1159 91.8693 68.4461 111.007 68.4461C130.145 68.4461 145.742 53.1159 145.742 34.223C145.742 15.3302 130.213 0 111.007 0ZM111.007 42.4334C106.43 42.4334 102.69 38.8036 102.69 34.2174C102.69 29.6313 106.435 26.0015 111.007 26.0015C115.579 26.0015 119.398 29.6984 119.398 34.2174C119.398 38.7365 115.653 42.4334 111.007 42.4334Z"/><path d="M35.919 19.6423L26.2764 1.91833H0V66.5948H26.2764V44.212H45.4936V66.5948H71.77V1.91833H45.4936L35.919 19.6423Z"/><path d="M272.002 1.87909H211.835V24.7541V34.7487V44.1783V66.5612H272.002V44.7376H238.219L255.669 34.7151L238.236 24.7541H272.002V1.87909Z"/></svg><span>Menu [+]</span></div>
+      </div>
+      <div class="stack">
+        <div class="cbar cta mono"><span>Adicionar</span><span class="p">R$ —</span></div>
+        <div class="cbar glass mono"><span>&nbsp;</span><span>Menu [+]</span></div>
+      </div>
+    </div>
+    <p class="note">35px de altura, 320px de largura, canto vivo. A barra de ação fica 6px acima do menu. Passe o mouse (ou toque) para ver o estado ativo em cart-accent.</p>
+
+    <h3>Botões em colchetes e filtro</h3>
+    <div class="stage" style="align-items:center">
+      <span class="brk mono">[Voltar]</span><span class="brk mono">[Lista]</span><span class="brk mono">[Sobre nós]</span>
+      <div class="filter"><span class="on">Todos</span><span>Assentos</span><span>Mesas</span><span class="fixos">Fixos</span></div>
+    </div>
+
+    <h3>Card de produto e etiquetas</h3>
+    <div class="stage" style="align-items:flex-start">
+      <div class="card"><div class="img"><img src="references/gold/site/PDT_ASS_POL_LETICIA_01.jpg" alt="Poltrona Leticia"><img class="alt" src="references/gold/site/PDT_ASS_POL_LETICIA_06.jpg" alt=""></div><div class="foot"><span>Poltrona Leticia</span><span class="pr">R$ 23.990</span></div><p class="note">Como está hoje. Passe o mouse.</p></div>
+      <div class="card proposal"><div class="img"><img src="references/gold/site/PDT_ASS_POL_LETICIA_01.jpg" alt="Poltrona Leticia"><span class="tag mono">Sob encomenda</span></div><div class="foot"><span>Poltrona Leticia</span><span class="pr">12 tecidos</span></div><p class="note">Proposta: sem preço na grade, etiqueta "Sob encomenda".</p></div>
+      <div class="card proposal"><div class="img"><img src="references/gold/site/PDT_FIX_TOM_TOM.jpg" alt="Tomada TOM.01"><span class="tag now mono">Pronta entrega</span></div><div class="foot"><span>Tomada TOM.01</span><span class="pr">Comprar</span></div><p class="note">Proposta: o único acento marca o que se compra já.</p></div>
+    </div>
+
+    <h3>Seletores de material e acordeão</h3>
+    <div class="stage" style="align-items:flex-start">
+      <div class="acc">
+        <p style="font-size:var(--font-size-label);margin-bottom:6px">Selecione a Madeira</p>
+        <div class="swrow"><span style="background:#a0683b"></span><span class="on" style="background:#7a4a2a"></span><span style="background:#3a2a22"></span><span style="background:#b0794a"></span><span style="background:#8a5634"></span><span style="background:#2b211c"></span></div>
+        <p style="font-size:var(--font-size-label);margin:12px 0 6px">Selecione Cor</p>
+        <div class="swrow dots"><span style="background:#2d211e"></span><span class="on" style="background:#f2f0ec;outline-color:var(--color-cinza-claro)"></span><span style="background:#b1121d"></span></div>
+      </div>
+      <div class="acc"><details open><summary>Detalhes</summary><div class="r"><span>Altura</span><span>81 cm</span></div><div class="r"><span>Largura</span><span>71 cm</span></div><div class="r"><span>Profundidade</span><span>89 cm</span></div></details><details><summary>Descrição</summary><div class="r">Estofada, com estrutura de madeira maciça.</div></details><details><summary>Baixar</summary><div class="r">Bloco 2D (DWG) · 3D (SKP)</div></details></div>
+    </div>
+    <p class="note">No site, os seletores são fotos recortadas do material real (blocos de madeira, tecido). Aqui viraram cor chapada só para ilustrar. Bolinhas redondas só na tomada.</p>
+  </section>
+
+  <section id="movimento">
+    <div class="eyebrow">[09] Movimento · motion tokens</div>
+    <h2>Movimento</h2>
+    <p class="body">Devagar e curto. Fades e crescimentos de 0,2 a 0,8s, sempre com saída suave. Passe o mouse ou toque no bloco abaixo.</p>
+    <div class="ease">
+      <div><span class="mono">snap · .63,.01,0,1.01 · 200ms</span><b style="transition:transform .2s cubic-bezier(.63,.01,0,1.01)"></b><span class="secondary">troca de foto no hover</span></div>
+      <div><span class="mono">out-expo · .22,1,.36,1 · 450ms</span><b style="transition:transform .45s cubic-bezier(.22,1,.36,1)"></b><span class="secondary">abertura e entrada do catálogo</span></div>
+      <div><span class="mono">ease · 500ms</span><b style="transition:transform .5s ease"></b><span class="secondary">barras crescendo, troca de vista</span></div>
+      <div><span class="mono">ease-out · 800ms</span><b style="transition:transform .8s ease-out"></b><span class="secondary">produto aparecendo</span></div>
+    </div>
+      <h3>Em vídeo (R-MOTION-02)</h3>
+    <div class="rules">
+      <div><span class="id">Corte seco</span><p>Troca de foto sem fade, na ordem dos carrosséis: peça inteira, detalhe, material.</p></div>
+      <div><span class="id">Sombra que passa</span><p>A sombra dura da janela atravessa a peça. Está no vídeo do convite de 05.11.</p></div>
+    </div>
+  </section>
+
+  <section id="fotografia">
+    <div class="eyebrow">[10] Fotografia</div>
+    <h2>Fotografia</h2>
+    <p class="body"><b>Estúdio</b>: fundo bege contínuo, uma luz dura de lado que desenha uma janela no chão e na parede, peça em 3/4, câmera um pouco acima do assento, 3:4. Detalhes em crop arquitetônico (encaixe, trama, borda do vidro) ao lado da peça inteira.</p>
+    <p class="body"><b>Low-key</b> (Instagram): fundo quase preto, uma luz quente rasante, close de material. A peça nunca é alterada por IA.</p>
+    <div class="photos">
+      <img src="references/gold/site/PDT_ASS_POL_LETICIA_01.jpg" alt="Poltrona Leticia, luz de estúdio">
+      <img src="references/gold/site/PDT_ASS_POL_LETICIA_06.jpg" alt="Detalhe do encaixe da Poltrona Leticia">
+      <img src="references/gold/site/PDT_MES_CEN_CILDO_02.jpg" alt="Mesa Cildo em vidro fundido">
+      <img src="references/gold/site/PDT_FIX_TOM_TOM.01_02.jpg" alt="Tomada TOM.01">
+    </div>
+      <p class="body"><b>Campo de cor</b> (Instagram): uma cor chapada atrás de uma peça, luz baixa. Até 1 a cada 9 posts. <b>Bastidores</b>: gente e equipe no set, no Instagram (feed e story) e no livro. Nunca na página da peça nem no Sobre.</p>
+    <p class="body"><b>Corte</b>: nunca corte a peça. Se o recorte 4:5 ou 9:16 cortaria a peça, desloque o recorte; se ainda corta, use outra foto. Peça inteira com pelo menos 15% de ar acima, a peça no terço de baixo, sombra inteira. Detalhe sangra em pelo menos dois lados. Nunca recorte sobre o off-white: o fundo é a página.</p>
+  </section>
+
+  <section id="edicoes">
+    <div class="eyebrow">[11] Edições, loja e impresso</div>
+    <h2>Fora da tela</h2>
+    <div class="poster">
+      <img src="references/gold/instagram/p28_0.jpg" alt="Cartaz vermelho da Tomada TOM.01 no Instagram da More">
+      <div>
+        <h3 style="margin-top:0">Receita do cartaz</h3>
+        <p class="body">O cartaz vermelho da TOM.01 é a única peça gráfica da More no Instagram. O que ele faz, medido no arquivo:</p>
+        <ol class="steps">
+          <li>Um campo de cor chapado (vermelho-jambo), sem degradê.</li>
+          <li>A peça em preto, como silhueta dura, com a sombra borrada de lado.</li>
+          <li>Três blocos de texto pequenos em Muoto, girados 90°, na margem esquerda: nome da peça, uma frase, endereço.</li>
+          <li>A marca em M (16% do lado curto), girada 90°, no canto de baixo à esquerda, em branco.</li>
+          <li>Nada mais: sem preço, sem chamada, sem moldura.</li>
+        </ol>
+        
+      </div>
+    </div>
+    
+    <h3>Exportação por canal</h3>
+    <div class="tscroll"><table class="t"><thead><tr><th>Canal</th><th>Formato</th><th>Observação</th></tr></thead><tbody>
+      <tr><td>Instagram feed</td><td>4:5 · 1080×1350 JPG</td><td>Recorte do topo da foto 3:4.</td></tr>
+      <tr><td>Stories e reels</td><td>9:16 · 1080×1920</td><td>250 px livres em cima e embaixo.</td></tr>
+      <tr><td>Shopify</td><td>3:4 · 2000×2667 JPG q80 sRGB</td><td>Uma peça por imagem.</td></tr>
+      <tr><td>E-mail</td><td>600 px de largura</td><td>3:4 ou 3:2.</td></tr>
+      <tr><td>WhatsApp</td><td>1080 px no lado maior, JPG</td><td>Link em texto junto, nunca só na imagem.</td></tr>
+      <tr><td>Impressão</td><td>300 dpi · PDF/X-4</td><td>Sangria de 3 mm, segurança de 5 mm, perfil para papel sem revestimento.</td></tr>
+    </tbody></table></div>
+    
+  </section>
+
+  <section id="regras">
+    <div class="eyebrow">[12] Regras · brand/rules/brand-rules.yaml · checks/</div>
+    <h2>Regras</h2>
+    <p class="body">Cada regra tem um script que diz passa ou falha, ou um par de imagens sim/não. Para checar uma peça: <code>node checks/run-all.mjs &lt;pasta&gt;</code>. O que o site de hoje já quebra está em <code>checks/site-ao-vivo.txt</code>.</p>
+    <div class="pairs">
+      <figure><img src="brand/examples/R-IMG-02-sim.jpg" alt="Sim: luz dura lateral com sombra nítida"><figcaption>R-IMG-02 · sim · estúdio e low-key reais: luz dura, sombra nítida</figcaption></figure>
+      <figure><img src="brand/examples/R-IMG-02-nao.jpg" alt="Não: a mesma foto com luz difusa (manipulada)"><figcaption>R-IMG-02 · não · luz difusa, sombra mole (contraexemplo manipulado)</figcaption></figure>
+      <figure><img src="brand/examples/R-LAYOUT-02-sim.jpg" alt="Sim: uma peça por foto"><figcaption>R-LAYOUT-02 · sim · uma peça por foto</figcaption></figure>
+      <figure><img src="brand/examples/R-LAYOUT-02-nao.jpg" alt="Não: várias peças na mesma foto de produto"><figcaption>R-LAYOUT-02 · não · cinco peças num quadro (post real de dez/2025: vale como ambiente, não como foto de produto)</figcaption></figure>
+    </div>
+    <div class="rules">
+      <div><span class="id">R-COLOR-01 · em vigor · medida no site</span><p>toda cor literal em CSS/HTML/SVG é o valor de um token de cor aprovado (brand/generated/tokens.css). Tokens color.site-sem-token-* (#1A1A1A, #DAD7D1, #DEDBD5) não contam como aprovados. Branco opaco só em color/fill/stroke (texto sobre fundo escuro), nunca em background. Definição de variável (--x: valor, como um tokens.css copiado) não é uso e não conta</p><p class="mono secondary" style="font-size:var(--font-size-caption);margin-top:4px">node checks/color-tokens.mjs &lt;arquivo&gt;</p></div>
+      <div><span class="id">R-COLOR-02 · em vigor · medida no site</span><p>html/body/:root declara background off-white #E5E1DB e color preto #2D211E; #000 opaco não aparece em nenhuma propriedade; #FFF nunca é fundo de html/body. Hoje o site quebra isto (body sem color, o texto corrido sai #000). Caso impresso (layout com @page ou @media print) - off-white é o papel, então html/body na impressão têm background none/transparent (em @media print); off-white como fundo impresso falha. Texto branco sobre campo é papel sem tinta (vazado)</p><p class="mono secondary" style="font-size:var(--font-size-caption);margin-top:4px">node checks/ground-ink.mjs &lt;arquivo&gt;</p></div>
+      <div><span class="id">R-COLOR-03 · em vigor · medida no site</span><p>ciano-destaque #8BC0D0 é a única cor cromática da interface (saturação HSL &gt;= 0,25; a outra exceção é erro #E07A5F em seletor de erro). Ciano só aparece como estado ativo ou hover de navegação - seletor de navegação (nav, menu, filter, collection, categor, tab, link &lt;a&gt;) com :hover, .active, .is-active, :focus, [aria-current], .current, .selected. É o que o site faz - a aba Fixos (a#collection-fixos.active e :hover). Nunca como texto sobre off-white (contraste 1,53:1) e nunca decorativo. Em layout de peça impressa ou social (HTML/CSS com @page, data-canvas, ou nome com PRINT, IG, IGS, CONVITE, LIVRO, VITRINE, ETIQUETA, CARTAZ) os tons campo são permitidos (R-COLOR-04) e o ciano só aparece como o adesivo quadrado de 10 mm de &quot;pronta entrega&quot; (width e height 10mm/37,8px)</p><p class="mono secondary" style="font-size:var(--font-size-caption);margin-top:4px">node checks/accent.mjs &lt;arquivo&gt;</p></div>
+      <div><span class="id">R-SHAPE-01 · em vigor · medida no site</span><p>estrutura é reta (radius.none) - imagens, cards, barras, botões de checkout e filtro, inputs. border-radius só pode ser 0, 2px (radius.thumb), 8px (radius.tooltip), 10px (radius.panel), 50% (radius.round, círculos) ou as formas de tooltip &quot;8px 8px 0&quot; / &quot;0 8px 8px&quot;. Qualquer outro valor falha. O site tem três fora da escala (5px no modal, 6px no vídeo do sobre, 20px no label do modal)</p><p class="mono secondary" style="font-size:var(--font-size-caption);margin-top:4px">node checks/radius.mjs &lt;arquivo&gt;</p></div>
+      <div><span class="id">R-TYPE-01 · em vigor · medida no site</span><p>font-family começa com Muoto ou MuotoMono (Muoto Mono Condensed); fallbacks só DM Sans, Martian Mono, Helvetica Neue, Arial, sans-serif, ui-monospace, Menlo, monospace. Pesos - Muoto 400, ou 300 em seletor .muoto (o site pede 300, mas só o arquivo Regular é carregado, então renderiza 400); MuotoMono 400; 600 só em seletor de filtro ativo (active, ativo, selected, current, checked); 700 e qualquer outro peso falham</p><p class="mono secondary" style="font-size:var(--font-size-caption);margin-top:4px">node checks/type.mjs &lt;arquivo&gt;</p></div>
+      <div><span class="id">R-TYPE-02 · em vigor · medida no site</span><p>toda ação de texto (&lt;button&gt;, &lt;input type=submit|button&gt;, &lt;a&gt; com classe btn/button, role=button) tem uma palavra entre colchetes ([Voltar], Menu [+]). Ação só com ícone falha. Controles isentos - miniatura (conteúdo &lt;img&gt;), quantidade (+/-; class quantity, qty, stepper), fechar só com ícone (class ou aria-label close/fechar) e amostra de material (swatch, material, color-option). Botão em pílula é pego por R-SHAPE-01. No site falham hoje as ações de texto Checkout, Adicionar / A partir de, Baixar, Cadastrar, Todos e Categorias. Colchete envolve só ação ([Comprar], [Como chegar], Menu [+]); status e lugar nunca levam colchete (&quot;Pronta entrega&quot;, &quot;Sob encomenda · ~120 dias&quot;, &quot;Jardins&quot;). Peça estática (PNG de story/feed, cartaz, etiqueta - layout com @page, data-canvas ou nome PRINT/IG/IGS/CONVITE/LIVRO/VITRINE/ETIQUETA/CARTAZ) não tem ação, então não tem colchete; o link vai na legenda ou no sticker de link do story</p><p class="mono secondary" style="font-size:var(--font-size-caption);margin-top:4px">node checks/actions.mjs &lt;arquivo&gt;</p></div>
+      <div><span class="id">R-LAYOUT-01 · em vigor · medida no site</span><p>menu, carrinho e adicionar-ao-carrinho (seletor fixed/sticky com menu, add-to-cart, add_to_cart, in-cart, cart-button, checkout) ficam em barras flutuantes embaixo - declaram bottom e nunca top, centralizadas (left 50% + translate(-50%), ou left 0 + right 0), height 35px quando declaram altura, fundo com alfa &lt; 1 (vidro preto-10/preto-80/cinza-overlay). Sem cabeçalho fixo - seletor fixed/sticky com header, cabecalho, topbar, navbar, nav ou toolbar e top falha. Isentos, padrão do site - o filtro da coleção (.collection-list__filter, sticky no topo) e o botão flutuante de voltar (.floating-back-button, topo, 30px)</p><p class="mono secondary" style="font-size:var(--font-size-caption);margin-top:4px">node checks/bars.mjs &lt;arquivo&gt;</p></div>
+      <div><span class="id">R-LAYOUT-02 · em vigor · medida no site</span><p>uma peça por foto de produto (grade, PDP, post de peça), ver o par de exemplos. Proporção da imagem 3:4 (fonte), 4:5 (feed, 1080x1350), 9:16 (story, 1080x1920, 250px de área segura em cima e embaixo) ou 3:2 (só lista horizontal), tolerância 1%. Em CSS de imagem, aspect-ratio só 3/4, 4/5, 9/16, 3/2; foto de produto com border-radius 0; miniatura e amostra de material (thumb, swatch, material, sample) podem ter 2px (radius.thumb), como no site. Raio fora da escala fica com R-SHAPE-01, sem contar duas vezes. O script só mede foto de produto e exportação de foto para canal - arquivo numa pasta fotos/ ou com foto, photo, PDT_, ig-feed/ig-story, story, feed, _IG_ ou _IGS_ no nome. Nunca mede captura de página nem render de layout (nome com web, captura ou folha, ou imagem mais alta que 2,5x a largura)</p><p class="mono secondary" style="font-size:var(--font-size-caption);margin-top:4px">node checks/aspect.mjs &lt;arquivo&gt;</p></div>
+      <div><span class="id">R-IMG-01 · em vigor · medida no site</span><p>foto de peça é fotografia, nunca gerada ou alterada por IA; troca de acabamento só com foto real ou render exato do material. O arquivo falha se tiver metadado IPTC DigitalSourceType trainedAlgorithmicMedia/compositeWithTrainedAlgorithmicMedia/algorithmicMedia, metadado que cite um gerador (Midjourney, DALL-E, gpt-image, Firefly, Stable Diffusion, Imagen, Gemini, Flux, Ideogram, Runway, Sora, Recraft, Krea, Magnific, Generative Fill) ou sidecar &lt;arquivo&gt;.lineage.json com operação de geração/edição. Quem exporta preserva os metadados</p><p class="mono secondary" style="font-size:var(--font-size-caption);margin-top:4px">node checks/no-ai.mjs &lt;arquivo&gt;</p></div>
+      <div><span class="id">R-IMG-02 · em vigor · medida no site</span><p>registro estúdio = fundo bege infinito + uma luz dura lateral com sombra de janela de borda nítida; registro low-key = fundo quase preto + uma luz quente rasante. Luz difusa, sombra de borda mole e preto levantado para cinza falham. Ver o par de exemplos. As fotos próprias da More já publicadas (feed do Instagram e site) são o conjunto de referência e sempre passam; o par de exemplos vale para sessões novas</p><p class="mono secondary" style="font-size:var(--font-size-caption);margin-top:4px">ver par sim/não acima</p></div>
+      <div><span class="id">R-GEN-01 · em vigor · medida no site</span><p>a marca entra sempre com os paths oficiais (assets/official/more-wordmark.svg, more-wordmark-currentcolor.svg ou more-wordmark-small.svg, coordenadas a 0,1), inline no SVG/HTML, com fill=&quot;currentColor&quot; nos paths e a cor dada pelo CSS a partir dos tokens. Nunca por &lt;img&gt;/&lt;image&gt;/&lt;use&gt; - &lt;img&gt; não herda currentColor e o more-wordmark.svg sai #000, o que quebra R-COLOR-02 (o fill black do arquivo é padrão do arquivo, não cor da marca). &quot;MORE&quot; digitado como texto ou paths diferentes falham. Em imagem gerada, a marca é composta depois (skill image-edit), nunca pedida ao modelo; as faces 205TF também não entram em prompt</p><p class="mono secondary" style="font-size:var(--font-size-caption);margin-top:4px">node checks/wordmark.mjs &lt;arquivo&gt;</p></div>
+      <div><span class="id">R-COPY-01 · em vigor · medida no site</span><p>nenhuma palavra proibida (exclusivo/a, exclusividade, sofisticado/a, sofisticação, luxuoso/a, luxo, requintado/a, requinte, premium, glamour, chique, alma, essência, personalidade); zero ponto de exclamação, emoji e hashtag; nenhuma frase com mais de 16 palavras (máximo do feed de 2026). Conteúdo de tabela, lista de definição e itens de lista (table, dl, li - fichas e medidas) não conta para o tamanho de frase. &quot;personalidade&quot; segue proibida, exceto dentro de uma linha aprovada escrita igual, listada em checks/aprovadas.json</p><p class="mono secondary" style="font-size:var(--font-size-caption);margin-top:4px">node checks/copy.mjs &lt;arquivo&gt;</p></div>
+      <div><span class="id">R-COMMERCE-01 · em vigor · medida no site</span><p>toda página de produto (og:type=product) mostra em texto exatamente um rótulo - &quot;Pronta entrega&quot;, sem prazo, ou &quot;Sob encomenda&quot; com prazo em dias, semanas ou meses (&quot;Sob encomenda · ~120 dias&quot;; ~120 dias é o padrão do negócio, salvo quando a ficha da peça diz outro prazo). Só o texto é checado, não a cor (no card de grade do site, &quot;Pronta entrega&quot; é .product-card-grid__ready-delivery em cinza-medio 10px, visível no hover)</p><p class="mono secondary" style="font-size:var(--font-size-caption);margin-top:4px">node checks/commerce.mjs &lt;arquivo&gt;</p></div>
+      <div><span class="id">R-COMMERCE-02 · em vigor · medida no site</span><p>nenhum card de grade (classe product-card* ou card-product*) mostra preço (R$); o preço fica na página de produto (proposta da call de 2026-10-15, ainda não decidida pela equipe)</p><p class="mono secondary" style="font-size:var(--font-size-caption);margin-top:4px">node checks/grid-price.mjs &lt;arquivo&gt;</p></div>
+      <div><span class="id">R-MOTION-01 · em vigor · medida no site</span><p>duração é um token motion.duration - 80, 140, 200, 300, 450, 500, 700, 800 ou 1000ms (0s = troca instantânea); qualquer outro valor falha (no site - 150, 180, 280, 400, 600ms). Curva - ease (a principal do site), ease-out, ease-in-out ou os tokens snap, out-expo, out-quint; linear só em contador (ou com duração 0); ease-in e qualquer outro cubic-bezier falham. &quot;transition: all&quot; falha. Todo seletor animado tem fallback em @media (prefers-reduced-motion - reduce), por regra * ou pelo mesmo seletor</p><p class="mono secondary" style="font-size:var(--font-size-caption);margin-top:4px">node checks/motion.mjs &lt;arquivo&gt;</p></div>
+      <div><span class="id">R-COPY-02 · proposta · observada no Instagram</span><p>duas fórmulas; o script escolhe pela primeira linha &quot;tipo: peca|evento|bastidores|marca&quot; ou pelo nome do arquivo (evento, abertura, bastidores, marca, sobre =&gt; fato). PEÇA - frase com o nome canônico (checks/nomes-canonicos.json), depois UMA linha seca de 3 a 12 palavras, antes da linha de material (opcional). FATO (evento, bastidores, marca, post sem peça) - a primeira linha diz o fato (o quê; em evento também quando, data dd.mm ou &quot;dd de mês&quot;, e onde); depois no máximo UMA linha seca; o resto são linhas de fato (endereço, horário); nome de peça não é exigido. Linha seca = sem palavra de material/ficha da lista publicada em checks/palavras-de-material.json e sem status (&quot;Pronta entrega&quot;, &quot;Sob encomenda&quot;). Sempre 4-145 palavras e palavras proibidas de R-COPY-01. A linha seca discorda da convenção, no tom destas aprovadas (checks/aprovadas.json) - &quot;Não é quadrada, só parece.&quot;, &quot;Essa não vai com as outras&quot;, &quot;Nada grita, só a concorrência.&quot;, &quot;Precisa da sua Maria.&quot;, &quot;Não foi feita para combinar com o sofá.&quot;</p><p class="mono secondary" style="font-size:var(--font-size-caption);margin-top:4px">node checks/caption.mjs &lt;arquivo&gt;</p></div>
+      <div><span class="id">R-COPY-03 · proposta · inferida</span><p>português primeiro. Página com &lt;html lang=&quot;pt-BR&quot;&gt;; todo bloco de 6+ palavras em inglês (mais palavras-função inglesas que portuguesas) fica dentro de elemento lang=&quot;en&quot; como segunda versão; em texto solto o primeiro parágrafo é português. O texto em inglês do Sobre quebra isto hoje</p><p class="mono secondary" style="font-size:var(--font-size-caption);margin-top:4px">node checks/lang.mjs &lt;arquivo&gt;</p></div>
+      <div><span class="id">R-COLOR-04 · proposta · observada no Instagram</span><p>tons color.campo (vermelho-jambo, amarelo-igarata, verde-jamaica, berinjela; petróleo é só proposta) são fundo de cartaz, convite, livro, vitrine e social. Em imagem - no máximo um tom campo com 5%+ dos pixels (a até ΔE 10 em CIELAB); petróleo nunca como fundo (20%+); em peça gráfica (MORE_PRINT/CONVITE/LIVRO/VITRINE) o fundo é chapado - dos pixels a até ΔE 25 do tom, 85%+ estão a até ΔE 10. Em CSS da loja/site, nenhum tom campo (R-COLOR-03 pega); em layout impresso/social (@page, data-canvas, nome PRINT/IG/IGS/CONVITE/LIVRO/VITRINE/ETIQUETA/CARTAZ) o campo é permitido. Ciano fica fora das peças campo (é cor de interface)</p><p class="mono secondary" style="font-size:var(--font-size-caption);margin-top:4px">node checks/campo.mjs &lt;arquivo&gt;</p></div>
+      <div><span class="id">R-LOGO-01 · proposta · observada (M e XL)</span><p>num layout (SVG com viewBox, ou HTML com data-canvas=&quot;LxA&quot;), medido pelo script. Onde leva marca (tipo lido do nome MORE_&lt;CANAL&gt;_&lt;slug&gt;_&lt;variante&gt;; MORE_FONTE_ pela variante) - obrigatória em post de evento (IG com slug evento-&lt;aaaammdd&gt;) e em cartaz, convite, vitrine e livro; proibida em post de peça no feed (que também não leva texto sobre a foto, observado em 76% do feed; o texto vai na legenda) e em story (IGS); opcional em etiqueta (ETIQUETA). M - lado maior da marca = alvo 1/6 (16,7%) do lado menor do quadro, tolerância 16-25%. XL - largura da marca 95-100% da largura do quadro, base 0-5% acima do pé do quadro, sem sangrar (marca inteira dentro); XL pode passar por cima da margem do grid de impressão (1/24 do lado menor). Outro tamanho falha. Cor só preto #2D211E, branco #FFF ou off-white #E5E1DB; sobre amarelo-igarata, preto; sobre vermelho-jambo, verde-jamaica e berinjela, branco. Nunca contornada, espelhada, esticada ou com padrão. Proposto e fora do guia até aceitarem - S mínimo 60px/18mm e respiro = altura do O</p><p class="mono secondary" style="font-size:var(--font-size-caption);margin-top:4px">node checks/logo.mjs &lt;arquivo&gt;</p></div>
+      <div><span class="id">R-LAYOUT-03 · proposta · derivada do site</span><p>todo contêiner com rolagem vertical (overflow ou overflow-y auto/scroll) termina com padding-bottom &gt;= 106px (layout.bar-safe) no mesmo seletor, para as barras flutuantes nunca cobrirem conteúdo no celular</p><p class="mono secondary" style="font-size:var(--font-size-caption);margin-top:4px">node checks/scroll-safe.mjs &lt;arquivo&gt;</p></div>
+      <div><span class="id">R-NAME-01 · proposta · observada (nomes divergentes)</span><p>um nome canônico por peça, &quot;&lt;Tipo&gt; &lt;complemento em minúscula&gt; &lt;Nome&gt;&quot; (Mesa de centro Cildo, Cadeira 556-A), igual no site, Instagram, etiquetas e arquivos. A lista e as variantes proibidas estão em checks/nomes-canonicos.json; as marcadas decisao_pendente (Ngoni, Leticia/Letícia, Naz componível, INT.01) esperam a equipe</p><p class="mono secondary" style="font-size:var(--font-size-caption);margin-top:4px">node checks/names.mjs &lt;arquivo&gt;</p></div>
+      <div><span class="id">R-MOTION-02 · proposta · observada no convite</span><p>vídeo troca de foto por corte seco (Hard cut) - nenhuma fusão nem fade, medido pelo script; o movimento de luz é Shadow sweep (mancha dura de janela atravessa a peça com a câmera parada, observado no convite 05.11), ver o par de exemplos. Proposto e fora do guia até aceitarem - Build (letras M-O-R-E em sequência, 120ms de intervalo)</p><p class="mono secondary" style="font-size:var(--font-size-caption);margin-top:4px">node checks/cuts.mjs &lt;arquivo&gt;</p></div>
+    </div>
+  </section>
+
+  <section id="fatos">
+    <div class="eyebrow">[13] Fatos para usar nas peças</div>
+    <h2>Fatos</h2>
+    <p class="body">Só isto pode aparecer como fato. O que não está aqui fica fora da peça até o time confirmar (lista em Próximos passos).</p>
+    <div class="tscroll"><table class="t"><thead><tr><th>Fato</th><th>Valor</th><th>Fonte</th></tr></thead><tbody>
+      <tr><td>Loja</td><td>Alameda Franca, 1332, casa 04, Jardins, São Paulo, SP</td><td>cartaz TOM.01 e rodapé do site</td></tr>
+      <tr><td>Abertura da loja</td><td>05.11 (2026). Sem horário.</td><td>convite atual</td></tr>
+      <tr><td>Nome do lugar</td><td>"loja" para o endereço físico</td><td>texto Sobre do site</td></tr>
+      <tr><td>Pronta entrega</td><td>Tomada TOM.01 (miolo preto, vermelho ou branco). Sem prazo no texto.</td><td>site</td></tr>
+      <tr><td>Sob encomenda</td><td>todas as outras peças: "Sob encomenda · ~120 dias"</td><td>call de 15/10</td></tr>
+      <tr><td>Preços</td><td>só os do site no dia; TOM.01 e Estante Dominó estão com R$ 1 provisório e não entram em peça</td><td>site</td></tr>
+      <tr><td>Medidas e materiais</td><td>só os da página da peça no site</td><td>site</td></tr>
+      <tr><td>Como a More se apresenta</td><td>"Estúdio e galeria de móveis em São Paulo."</td><td>texto Sobre do site, traduzido</td></tr>
+      <tr><td>Instagram e site</td><td>@more.mymore · mymore.design</td><td>site</td></tr>
+    </tbody></table></div>
+  </section>
+
+  <section id="canais">
+    <div class="eyebrow">[14] Receitas por canal</div>
+    <h2>Receitas por canal</h2>
+    <p class="body">O que fazer em cada formato. A coluna da direita diz de onde vem: o que é "padrão provisório" foi decidido por nós para não deixar dúvida e está na tabela de aceite.</p>
+    <div class="tscroll"><table class="t"><thead><tr><th>Canal</th><th>Receita</th><th>Origem</th></tr></thead><tbody>
+      <tr><td>Post de peça 4:5</td><td>Só a foto, 1080×1350. Sem texto, sem marca na imagem. Texto vai na legenda (fórmula R-COPY-02). Foto quadrada: recorte no centro; foto 3:4: recorte do topo.</td><td>observado (76% do feed)</td></tr>
+      <tr><td>Post de evento 4:5</td><td>Campo de cor + data em display + marca XL embaixo + endereço em Muoto girado. Legenda começa pelo fato (o quê, quando, onde).</td><td>convite 05.11</td></tr>
+      <tr><td>Story 9:16</td><td>Foto 9:16 recortada no centro. Texto só no terço de cima, abaixo dos 250 px livres, em Muoto 44 px (statement ×1,7) e mono 26 px. Sem colchetes: link vai no adesivo de link. Marca: não leva.</td><td>padrão provisório</td></tr>
+      <tr><td>Texto sobre foto</td><td>Preto #2D211E sobre área clara, branco sobre área escura. Nunca sobre a peça, só no fundo liso.</td><td>padrão provisório</td></tr>
+      <tr><td>Cartaz de peça</td><td>Receita do cartaz (acima), só em vermelho-jambo ou amarelo-igaratá: nos campos escuros a silhueta preta some. Silhueta feita da foto real por limiar, sem IA.</td><td>cartaz TOM.01</td></tr>
+      <tr><td>Cartaz de evento</td><td>Sem peça: campo, data em display-1, marca XL embaixo (pode passar a margem do grid), três blocos girados com o endereço.</td><td>convite 05.11</td></tr>
+      <tr><td>Blocos girados</td><td>Muoto 1,2% da largura do quadro (A2: 14 pt; 1080 px: 13 px).</td><td>medido no cartaz TOM.01</td></tr>
+      <tr><td>Etiqueta</td><td>Nome em Muoto, status em mono sem colchetes, medidas e madeira do site, mymore.design. Sem preço. Furo de 5 mm no canto de cima à esquerda, a 8 mm das bordas.</td><td>padrão provisório</td></tr>
+      <tr><td>Página nova</td><td>Componentes desta página. Barra de baixo com uma ação em colchetes; página de evento usa [Como chegar] com link do Google Maps para o endereço.</td><td>site + padrão provisório</td></tr>
+    </tbody></table></div>
+  </section>
+
+  <section id="teste">
+    <div class="eyebrow">[T] Teste cego · state/teste-cego/</div>
+    <h2>Teste com quem não viu a criação</h2>
+    <p class="body">Duas sessões que nunca leram as conversas de criação fizeram 10 peças cada (feed, story, etiqueta, cartaz A2, página), só com este repositório, e anotaram cada vez que precisaram decidir algo que o sistema não dizia. Depois de cada rodada o sistema foi corrigido, não as peças.</p>
+    <div class="tscroll"><table class="t"><thead><tr><th>Rodada</th><th>Dúvidas anotadas</th><th>Contradições internas</th><th>Falta de regra</th><th>Falta de fato</th><th>Regras que reprovam as peças</th></tr></thead><tbody>
+      <tr><td>1</td><td>100</td><td>11</td><td>76</td><td>13</td><td>7 de 23</td></tr>
+      <tr><td>2</td><td>91</td><td>22</td><td>52</td><td>17</td><td>2 de 24; 0 depois de corrigir as duas contradições</td></tr>
+    </tbody></table></div>
+    <p class="note">A rodada 1 foi classificada por nós depois, pelos rótulos do diário; a rodada 2, pela própria sessão. Por isso as contradições não se comparam direto: a rodada 2 também pegou contradições novas, criadas pelas receitas e fatos que entraram depois da rodada 1. O que sobra é quase todo fato que só o time tem: fotos originais em alta, ficha de cada peça, texto Sobre em português, detalhes da abertura.</p>
+    <div class="pairs" style="grid-template-columns:1fr 1fr">
+      <figure><img src="state/teste-cego/folha-1.jpg" alt="As 10 peças da rodada 1"><figcaption>Rodada 1</figcaption></figure>
+      <figure><img src="state/teste-cego/folha-2.jpg" alt="As 10 peças da rodada 2"><figcaption>Rodada 2</figcaption></figure>
+    </div>
+  </section>
+
+  <section id="propostas">
+    <div class="eyebrow">[P] Propostas · fora das regras até o time aceitar</div>
+    <h2>Propostas</h2>
+    <p class="body">Tudo aqui foi inventado por nós, sem uso da marca que confirme. Não vale como regra. Cada item tem uma linha em <code>state/approvals.jsonl</code>; quando o time aceitar, sobe para o corpo do guia.</p>
+    <div class="rules">
+      <div><span class="id">Logo no papel</span><p>Tamanho mínimo de 18 mm no papel (na tela, os 60 px da barra do site já são medidos).</p></div>
+      <div><span class="id">Respiro do logo</span><p>Espaço livre em volta igual à altura do O.</p></div>
+      <div><span class="id">Build</span><p>As letras M-O-R-E entram em sequência, 120 ms entre elas, do cinza ao preto.</p></div>
+      <div><span class="id">Campo petróleo</span><p>#306C6A. Não existe acabamento com esse nome; a amostra é luz colorida na borda de uma mesa.</p></div>
+      <div><span class="id">R-FILE-01 · proposta · inventada por nós</span><p>arquivos se chamam MORE_&lt;CANAL&gt;_&lt;peça-slug&gt;_&lt;variante&gt;_&lt;AAAAMMDD&gt;_v&lt;nn&gt;.&lt;ext&gt; (MORE_IG_mesa-de-centro-cildo_4x5_20261105_v02.jpg). CANAL - IG, IGS, SITE, PRINT, ETIQUETA, LIVRO, CONVITE, VITRINE, EMAIL, VIDEO, FONTE (HTML-fonte de uma peça); peça-slug = slug de nome canônico; sem peça, &quot;marca&quot; ou &quot;evento-&lt;aaaammdd&gt;&quot;; variante [a-z0-9-]; data real; extensão minúscula. Prefixo numérico de ordem (&quot;01_&quot;) só dentro de pasta cujo nome começa com teste</p><p class="mono secondary" style="font-size:var(--font-size-caption);margin-top:4px">node checks/filename.mjs &lt;arquivo&gt;</p></div>
+      <div><span class="id">R-PRINT-01 · proposta · inventada por nós</span><p>vale para cartaz, convite, livro, vitrine e etiqueta. O PDF entregue tem a página no formato final + 3 mm de sangria por lado (MediaBox = BleedBox) e TrimBox no formato final (ex. etiqueta 50x90 mm =&gt; página 56x96 mm; A2 420x594 =&gt; 426x600 mm). Off-white nunca é tinta (é o papel; papel natural sem revestimento 90-150 g/m²); no HTML-fonte, html/body com background none/transparent em @media print (ver R-COLOR-02); texto branco sobre campo = papel sem tinta (vazado). Raster de impressão &gt;= 300 dpi. PDF com PDF/X-4 declarado = FINAL. PDF sem X-4 mas com as caixas certas = PROVA (não vai para gráfica) e passa - as ferramentas do repositório não geram X-4; a exportação final em PDF/X-4 com perfil CMYK é passo da gráfica/estúdio. Conferido no preflight, sem script - margem de segurança 5 mm; preto rico C60 M40 Y40 K100 (o único valor) só em áreas &gt;= 10 mm de altura, texto &lt; 10 pt em K100 puro</p><p class="mono secondary" style="font-size:var(--font-size-caption);margin-top:4px">node checks/print.mjs &lt;arquivo&gt;</p></div>
+      <div><span class="id">Sem elipses</span><p>Recusada: o convite de 05.11 da própria More usa uma elipse. Só volta se o time decidir proibir.</p></div>
+    </div>
+    <h3>Para imprimir (proposta, a validar com a gráfica)</h3>
+    <div class="tscroll"><table class="t"><thead><tr><th>Token</th><th>Tela</th><th>CMYK</th><th>Pantone</th><th>Uso</th></tr></thead><tbody>
+      <tr><td>off-white</td><td>#E5E1DB</td><td>é o papel</td><td>—</td><td>Papel natural sem revestimento, 90–150 g (Munken Pure, Pólen). Nunca imprimir como chapado.</td></tr>
+      <tr><td>preto</td><td>#2D211E</td><td>C60 M70 Y70 K80</td><td>Black 5 C</td><td>Texto e logo. Áreas grandes em preto rico C60 M40 Y40 K100.</td></tr>
+      <tr><td>cinza-escuro</td><td>#5D554F</td><td>C0 M12 Y20 K75</td><td>411 C</td><td>Texto pequeno.</td></tr>
+      <tr><td>cinza-medio</td><td>#686868</td><td>K70</td><td>Cool Gray 9 C</td><td>Rótulos curtos.</td></tr>
+      <tr><td>ciano-destaque</td><td>#8BC0D0</td><td>C40 M5 Y10 K0</td><td>7458 C</td><td>Só "pronta entrega": adesivo quadrado de 10 mm.</td></tr>
+    </tbody></table></div>
+    <h3>Escala display · só impresso e telas grandes</h3>
+    <div class="display-demo" style="font-size:clamp(56px,12vw,160px)">05.11</div>
+    <div class="display-demo" style="font-size:clamp(32px,6vw,96px)">Mesa de centro Cildo</div>
+    <p class="note">display-1 240 pt · display-2 96 pt · display-3 48 pt. Entrelinha 0,9, espaçamento −0,02em, Muoto 400. Nunca dentro da loja.</p>
+    <h3>Escala de impressão (pt)</h3>
+    <p class="body">Legenda 6 · rótulo 7 (mínimo do mono em papel sem revestimento) · texto 8,5 · interface 10 · título 14 · frase 20 · sobre 28. Para usar no InDesign, confirmar a licença desktop da 205TF: a licença web não cobre impresso.</p>
+    <h3>Grid de impressão</h3>
+    <p class="body">12 colunas, margem de 1/24 do lado curto, linha de base de 12 pt, imagens em módulos 3:4 ou 3:2, marca XL na margem de baixo. O vidro das barras não existe no papel: vira preto a 10%, sem desfoque.</p>
+    <h3>Peças da loja</h3>
+    <p class="body"><b>Etiqueta</b>: cartão sem revestimento 50×90 mm, nome em Muoto, linha em mono <span class="mono">Sob encomenda · ~120 dias</span> ou <span class="mono">Pronta entrega</span> (sem colchetes). Cartão em pé, 50 de largura. <b>Caixa da TOM.01</b>: preto rico, marca vazada, painel técnico em mono. <b>Vitrine</b>: uma peça, luz dura de lado.</p>
+    <h3>Nome dos arquivos (R-FILE-01)</h3>
+    <p class="body mono" style="font-family:var(--font-family-mono)">MORE_IG_mesa-de-centro-cildo_4x5_20261105_v02.jpg</p>
+  </section>
+
+  <section id="ia">
+    <div class="eyebrow">[15] Como usar com IA</div>
+    <h2>Como usar com o Claude</h2>
+    <ol class="steps">
+      <li>Abra o Claude com acesso a este repositório.</li>
+      <li>Peça em português, do jeito que pediria a alguém do time: <code>Siga o sistema de design da More neste repositório e revise antes de me mostrar.</code></li>
+      <li>Quem cria não aprova o próprio trabalho: peça sempre uma segunda revisão, de preferência por outra pessoa ou outro agente.</li>
+      <li>Toda correção de vocês ("isso não é More") vira regra nova no repositório. É assim que o gosto acumula.</li>
+    </ol>
+    <details style="margin-top:var(--space-lg)"><summary class="eyebrow" style="cursor:pointer;margin:0">[+] Para quem é técnico</summary>
+      <p class="body" style="margin-top:var(--space-sm)">O workspace segue o <a href="https://github.com/joaohjonk/cstack">cstack</a>. Antes de criar: <code>/brief</code> e a skill certa (<code>/copywriting</code>, <code>/workflow landing-page</code>, <code>/shot-dna</code>). Depois: <code>/brand-verify</code> e <code>/creative-review</code>. Regras ficam em <code>brand/rules/</code>; tokens em <code>brand/tokens/</code>, gerados com <code>cstack tokens build</code>.</p>
+    </details>
+  </section>
+
+  <section id="proximos">
+    <div class="eyebrow">[16] Próximos passos · nada aqui bloqueia o uso do sistema</div>
+    <h2>Próximos passos</h2>
+    <h3>Quando chegar o acesso</h3>
+    <ol class="steps">
+      <li><b>Shopify</b>: rodar <code>shopify theme pull</code>, comparar o tema com <code>state/token-diff.md</code> e aplicar o mapa de <code>brand/build/shopify/</code>. A primeira correção é uma linha: <code>body { color: var(--preto) }</code>.</li>
+      <li><b>Fontes</b>: os arquivos Muoto e Muoto Mono da 205TF e a licença. Confirmar se cobre desktop (InDesign, Figma) e quantos computadores. Hoje o site só carrega Muoto Regular.</li>
+      <li><b>Fotos originais</b> com EXIF: trocar os hex dos campos de cor, hoje amostrados de JPEG do Instagram.</li>
+      <li><b>Figma da agência</b>: comparar com <code>brand/build/figma/</code> e manter um só.</li>
+      <li><b>Gráfica</b>: papel, perfil de cor e prova das cores impressas.</li>
+    </ol>
+    <h3>Com o time</h3>
+    <ol class="steps">
+      <li>Sessão de ratificação: passar regra por regra em <code>state/approvals.jsonl</code> (aceita, muda ou recusa).</li>
+      <li>Vitor faz 3 peças sozinho, só com este guia, e anota onde travou. Cada trava vira correção no sistema.</li>
+      <li>Decidir as grafias e nomes das peças (lista em Voz), o texto Sobre em português e os preços de R$ 1 na TOM.01 e na Estante Dominó.</li>
+      <li>Ficha de cada peça (medidas, madeiras, tecidos, prazo, status) e a foto-mestra 3:4 em alta, para impresso a 300 dpi.</li>
+      <li>O que acontece na abertura de 05.11 (horário, convite aberto ou fechado).</li>
+    </ol>
+  </section>
+</main>
+
+<footer>
+  <svg viewBox="0 0 272 69" aria-hidden="true"><path d="M176.593 23.0819V1.91833H150.317V66.5948H176.593V44.2791H205.243V1.91833C189.55 1.91833 177.465 13.093 176.593 23.0875V23.0819Z"/><path d="M111.007 0C91.875 0 76.3403 15.3302 76.3403 34.223C76.3403 53.1159 91.8693 68.4461 111.007 68.4461C130.145 68.4461 145.742 53.1159 145.742 34.223C145.742 15.3302 130.213 0 111.007 0ZM111.007 42.4334C106.43 42.4334 102.69 38.8036 102.69 34.2174C102.69 29.6313 106.435 26.0015 111.007 26.0015C115.579 26.0015 119.398 29.6984 119.398 34.2174C119.398 38.7365 115.653 42.4334 111.007 42.4334Z"/><path d="M35.919 19.6423L26.2764 1.91833H0V66.5948H26.2764V44.212H45.4936V66.5948H71.77V1.91833H45.4936L35.919 19.6423Z"/><path d="M272.002 1.87909H211.835V24.7541V34.7487V44.1783V66.5612H272.002V44.7376H238.219L255.669 34.7151L238.236 24.7541H272.002V1.87909Z"/></svg>
+  <p class="mono" style="margin-top:20px;font-size:var(--font-size-caption)">Tokens: brand/tokens/*.tokens.json → brand/generated/tokens.css (cstack tokens build). Medido de mymore.design em 15/10/2026.</p>
+</footer>
+
+<div class="bar" id="bar">
+  <div class="row"><svg viewBox="0 0 272 69" aria-label="More"><path d="M176.593 23.0819V1.91833H150.317V66.5948H176.593V44.2791H205.243V1.91833C189.55 1.91833 177.465 13.093 176.593 23.0875V23.0819Z"/><path d="M111.007 0C91.875 0 76.3403 15.3302 76.3403 34.223C76.3403 53.1159 91.8693 68.4461 111.007 68.4461C130.145 68.4461 145.742 53.1159 145.742 34.223C145.742 15.3302 130.213 0 111.007 0ZM111.007 42.4334C106.43 42.4334 102.69 38.8036 102.69 34.2174C102.69 29.6313 106.435 26.0015 111.007 26.0015C115.579 26.0015 119.398 29.6984 119.398 34.2174C119.398 38.7365 115.653 42.4334 111.007 42.4334Z"/><path d="M35.919 19.6423L26.2764 1.91833H0V66.5948H26.2764V44.212H45.4936V66.5948H71.77V1.91833H45.4936L35.919 19.6423Z"/><path d="M272.002 1.87909H211.835V24.7541V34.7487V44.1783V66.5612H272.002V44.7376H238.219L255.669 34.7151L238.236 24.7541H272.002V1.87909Z"/></svg><button id="tg" aria-expanded="false">Menu [+]</button></div>
+  <nav aria-label="Seções"><a href="#o-que-e">O que é</a><a href="#principios">Princípios</a><a href="#voz">Voz</a><a href="#marca">Marca</a><a href="#cor">Cor</a><a href="#tipografia">Tipografia</a><a href="#espaco">Espaço e grid</a><a href="#componentes">Componentes</a><a href="#movimento">Movimento</a><a href="#fotografia">Fotografia</a><a href="#edicoes">Fora da tela</a><a href="#regras">Regras</a><a href="#ia">Como usar com IA</a><a href="#pendencias">Pendências</a></nav>
+</div>
+<script>
+  const bar=document.getElementById('bar'),tg=document.getElementById('tg');
+  tg.onclick=()=>{const o=bar.classList.toggle('open');tg.textContent=o?'Fechar [-]':'Menu [+]';tg.setAttribute('aria-expanded',o)};
+  bar.querySelectorAll('nav a').forEach(a=>a.onclick=()=>{bar.classList.remove('open');tg.textContent='Menu [+]'});
+</script>
+</body>
+</html>

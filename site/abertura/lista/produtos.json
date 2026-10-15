@@ -1,0 +1,170 @@
+[
+ {
+  "handle": "mesa-de-jantar-naz",
+  "title": "Mesa de jantar Naz",
+  "cat": "Mesas",
+  "price": 25480.0,
+  "img": "img/mesa-de-jantar-naz.jpg"
+ },
+ {
+  "handle": "mesa-de-jantar-leila",
+  "title": "Mesa de jantar Leila",
+  "cat": "Mesas",
+  "price": 72980.0,
+  "img": "img/mesa-de-jantar-leila.jpg"
+ },
+ {
+  "handle": "mesa-de-centro-oops",
+  "title": "Mesa de centro Oops",
+  "cat": "Mesas",
+  "price": 28980.0,
+  "img": "img/mesa-de-centro-oops.jpg"
+ },
+ {
+  "handle": "mesa-de-centro-imi",
+  "title": "Mesa de Centro Imi",
+  "cat": "Mesas",
+  "price": 25480.0,
+  "img": "img/mesa-de-centro-imi.jpg"
+ },
+ {
+  "handle": "mesa-de-apoio-eto",
+  "title": "Mesa de apoio Eto",
+  "cat": "Mesas",
+  "price": 17200.0,
+  "img": "img/mesa-de-apoio-eto.jpg"
+ },
+ {
+  "handle": "mesa-carnivora",
+  "title": "Mesa de Apoio Carnívora",
+  "cat": "Mesas",
+  "price": 19100.0,
+  "img": "img/mesa-carnivora.jpg"
+ },
+ {
+  "handle": "luminaria-ngoni",
+  "title": "Luminária Ngoni",
+  "cat": "Luminárias",
+  "price": 8990.0,
+  "img": "img/luminaria-ngoni.jpg"
+ },
+ {
+  "handle": "luminaria-fanto",
+  "title": "Luminária Fantô",
+  "cat": "Luminárias",
+  "price": 13200.0,
+  "img": "img/luminaria-fanto.jpg"
+ },
+ {
+  "handle": "luminaria-naz",
+  "title": "Luminária Naz",
+  "cat": "Luminárias",
+  "price": 15980.0,
+  "img": "img/luminaria-naz.jpg"
+ },
+ {
+  "handle": "pendente-naz",
+  "title": "Pendente Naz",
+  "cat": "Luminárias",
+  "price": 13490.0,
+  "img": "img/pendente-naz.jpg"
+ },
+ {
+  "handle": "macaneta-constantin",
+  "title": "Maçaneta Constantin",
+  "cat": "Fixos",
+  "price": 990.0,
+  "img": "img/macaneta-constantin.jpg"
+ },
+ {
+  "handle": "estante-domino",
+  "title": "Estante Dominó",
+  "cat": "Estantes",
+  "price": 1.0,
+  "img": "img/estante-domino.jpg"
+ },
+ {
+  "handle": "sofa-moustache",
+  "title": "Sofá Moustache",
+  "cat": "Assentos",
+  "price": 15980.0,
+  "img": "img/sofa-moustache.jpg"
+ },
+ {
+  "handle": "sofa-catedral",
+  "title": "Sofá Catedral",
+  "cat": "Assentos",
+  "price": 68990.0,
+  "img": "img/sofa-catedral.jpg"
+ },
+ {
+  "handle": "sofa-canoa",
+  "title": "Sofá Canoa",
+  "cat": "Assentos",
+  "price": 87850.0,
+  "img": "img/sofa-canoa.jpg"
+ },
+ {
+  "handle": "poltrona-leticia",
+  "title": "Poltrona Leticia",
+  "cat": "Assentos",
+  "price": 23990.0,
+  "img": "img/poltrona-leticia.jpg"
+ },
+ {
+  "handle": "poltrona-eduardo",
+  "title": "Poltrona Eduardo",
+  "cat": "Assentos",
+  "price": 22990.0,
+  "img": "img/poltrona-eduardo.jpg"
+ },
+ {
+  "handle": "otoman-leticia",
+  "title": "Otoman Leticia",
+  "cat": "Assentos",
+  "price": 6980.0,
+  "img": "img/otoman-leticia.jpg"
+ },
+ {
+  "handle": "cadeira-556",
+  "title": "Cadeira 556",
+  "cat": "Assentos",
+  "price": 14290.0,
+  "img": "img/cadeira-556.jpg"
+ },
+ {
+  "handle": "banco-maria",
+  "title": "Banco Maria",
+  "cat": "Assentos",
+  "price": 4880.0,
+  "img": "img/banco-maria.jpg"
+ },
+ {
+  "handle": "banco-joao",
+  "title": "Banco João",
+  "cat": "Assentos",
+  "price": 4600.0,
+  "img": "img/banco-joao.jpg"
+ },
+ {
+  "handle": "mesa-cildo",
+  "title": "Mesa Cildo",
+  "cat": "Mesas",
+  "price": 31800.0,
+  "img": "img/mesa-cildo.jpg"
+ },
+ {
+  "handle": "tomada-tom-01",
+  "title": "Tomada TOM.01",
+  "cat": "Fixos",
+  "price": 1.0,
+  "img": "img/tomada-tom-01.jpg"
+ },
+ {
+  "handle": "cadeira-maria",
+  "title": "Cadeira Maria",
+  "cat": "Assentos",
+  "price": 10200.0,
+  "img": "img/cadeira-maria.jpg"
+ }
+]

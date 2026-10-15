@@ -1,0 +1,23 @@
+{
+  "name": "More — cores de destaque",
+  "settings": [
+    {
+      "type": "paragraph",
+      "content": "Cores, desfoques, medidas do menu e tempos de animação da marca More são fixos no tema (ver brand/build/shopify/settings-map.md). Só os dois destaques abaixo podem ser trocados pela loja."
+    },
+    {
+      "type": "color",
+      "id": "color_ciano_destaque",
+      "label": "Destaque de disponibilidade",
+      "info": "Token color.ciano-destaque. Usado no aviso de pronta-entrega. Padrão da marca: #8BC0D0.",
+      "default": "#8BC0D0"
+    },
+    {
+      "type": "color",
+      "id": "color_cart_accent",
+      "label": "Destaque do carrinho",
+      "info": "Token color.cart-accent. Padrão da marca: #C1CFD6.",
+      "default": "#C1CFD6"
+    }
+  ]
+}

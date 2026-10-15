@@ -1,0 +1,347 @@
+<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"></head><body>
+<title>Tomada TOM.01 em 3D</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,600&family=Martian+Mono:wdth,wght@75,400&display=swap" rel="stylesheet">
+<style>
+/* Layout: a PDP da More (info | peça | vistas) com a tomada em 3D no centro, sobre a parede escolhida.
+   Tokens = sistema de design More. Visual único: papel off-white, como o site. */
+:root{
+  --page:#E5E1DB; --ink:#2D211E; --muted:#686868; --soft:#BDBDBD; --rule:#2D211E1A; --glass:#2D211E1A; --strong:#2D211ECC;
+  --accent:#8BC0D0; --accent-ink:#3F7F93; --cart:#C1CFD6; --white:#FFFFFF; --stage:#DED8D0;
+  --muoto:"Muoto","DM Sans","Helvetica Neue",Arial,sans-serif;
+  --mono:"MuotoMono","Martian Mono",ui-monospace,Menlo,monospace;
+  --bar:35px; color-scheme:light;
+}
+*{box-sizing:border-box}
+html,body{height:100%}
+body{background:var(--page);color:var(--ink);font-family:var(--muoto);font-size:13px;line-height:1.4;margin:0;-webkit-font-smoothing:antialiased}
+button{font:inherit;color:inherit}
+
+.top{position:fixed;top:calc(16px + env(safe-area-inset-top,0px));left:50%;transform:translateX(-50%);z-index:6;display:flex;flex-direction:column;align-items:center;gap:6px;max-width:calc(100vw - 32px)}
+.crumb{display:flex;gap:16px;height:var(--bar);align-items:center;padding:0 16px;background:var(--glass);backdrop-filter:blur(13px);-webkit-backdrop-filter:blur(13px);font-size:15px;white-space:nowrap}
+.crumb .on{font-weight:600;color:var(--accent-ink)}
+.crumb .off{color:var(--muted)}
+.demo-note{font-family:var(--mono);font-stretch:75%;font-size:11px;color:var(--muted);text-align:center}
+
+.pdp{display:grid;grid-template-columns:minmax(260px,320px) minmax(0,1fr) 180px;gap:24px;min-height:100%;padding:96px max(20px,env(safe-area-inset-right,0px)) 120px max(20px,env(safe-area-inset-left,0px));align-items:end}
+.info{display:flex;flex-direction:column;gap:12px;min-width:0}
+.badge{align-self:flex-start;font-family:var(--mono);font-stretch:75%;font-size:11px;padding:2px 6px;background:var(--accent)}
+.title{display:flex;justify-content:space-between;align-items:baseline;border-bottom:1px solid var(--soft);padding-bottom:8px}
+.title h1{font-weight:400;font-size:22px;margin:0}
+.title span{color:var(--muted)}
+.lead{display:flex;gap:10px;align-items:flex-start;background:var(--glass);padding:10px}
+.lead b{font-weight:600}
+.lead .dot{width:8px;height:8px;margin-top:5px;flex:none;background:var(--accent)}
+.label{font-size:11px;margin-bottom:6px;display:flex;justify-content:space-between}
+.label span:last-child{color:var(--muted)}
+.sw{display:flex;flex-wrap:wrap;gap:8px}
+.sw button{all:unset;cursor:pointer;outline:1px solid transparent;outline-offset:2px}
+.sw button[aria-pressed="true"]{outline-color:var(--ink)}
+.sw button:focus-visible{outline-color:var(--muted)}
+.sw.dots button{width:24px;height:24px;border-radius:50%}
+.sw.walls button{width:30px;height:30px;background-size:cover;box-shadow:inset 0 0 0 1px var(--rule)}
+.seg{display:flex;gap:6px;flex-wrap:wrap}
+.seg button{all:unset;cursor:pointer;font-family:var(--mono);font-stretch:75%;font-size:12px;height:30px;padding:0 10px;display:flex;align-items:center;background:var(--glass)}
+.seg button[aria-pressed="true"]{background:var(--strong);color:var(--white)}
+.seg button:focus-visible{outline:1px solid var(--ink)}
+.qty{display:flex;align-items:center;height:30px;width:max-content;background:var(--glass)}
+.qty button{all:unset;cursor:pointer;width:30px;text-align:center;font-family:var(--mono)}
+.qty button:focus-visible{outline:1px solid var(--ink)}
+.qty output{min-width:28px;text-align:center;font-family:var(--mono);font-stretch:75%}
+details{border-top:1px solid var(--soft)}
+summary{list-style:none;display:flex;justify-content:space-between;padding:7px 0;cursor:pointer;font-size:11px}
+summary::after{content:"▴";font-size:9px}details[open] summary::after{content:"▾"}
+.rowkv{display:flex;justify-content:space-between;color:var(--muted);font-size:11px;padding:2px 0}
+details p{color:var(--muted);font-size:11px;margin:2px 0 8px}
+
+.stage{position:relative;height:min(78vh,820px);min-height:420px;background:var(--stage);overflow:hidden}
+.stage canvas{display:block;width:100%;height:100%;touch-action:none;cursor:grab}
+.stage canvas:active{cursor:grabbing}
+.stage img.photo{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.hint{position:absolute;left:50%;top:14px;transform:translateX(-50%);font-family:var(--mono);font-stretch:75%;font-size:12px;color:var(--muted);pointer-events:none;transition:opacity .8s ease;white-space:nowrap}
+.tools{position:absolute;right:10px;bottom:10px;display:flex;gap:6px}
+.tools button{all:unset;cursor:pointer;font-family:var(--mono);font-stretch:75%;font-size:12px;height:30px;padding:0 10px;display:flex;align-items:center;background:var(--glass);backdrop-filter:blur(10px)}
+.tools button[aria-pressed="true"]{background:var(--strong);color:var(--white)}
+.tools button:focus-visible{outline:1px solid var(--ink)}
+.caption{position:absolute;left:10px;bottom:10px;font-family:var(--mono);font-stretch:75%;font-size:11px;color:var(--muted);max-width:50%}
+
+.thumbs{display:grid;grid-template-columns:1fr 1fr;gap:6px}
+.thumbs button{all:unset;cursor:pointer;display:flex;flex-direction:column;gap:3px}
+.thumbs span{font-size:10px;text-align:right}
+.thumbs .t{aspect-ratio:3/4;background:var(--stage) center/cover;outline:1px solid transparent;outline-offset:2px;display:flex;align-items:center;justify-content:center;font-family:var(--mono);font-stretch:75%;font-size:12px}
+.thumbs button[aria-pressed="true"] .t{outline-color:var(--ink)}
+.thumbs button:focus-visible .t{outline-color:var(--muted)}
+
+.dock{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(20px + env(safe-area-inset-bottom,0px));width:340px;max-width:calc(100vw - 32px);display:flex;flex-direction:column;gap:6px;z-index:7}
+.cta{all:unset;box-sizing:border-box;cursor:pointer;height:var(--bar);display:flex;align-items:center;justify-content:space-between;padding:0 10px;background:var(--strong);color:var(--white);font-family:var(--mono);font-stretch:75%;transition:background-color .5s ease,color .5s ease}
+.cta .p{font-family:var(--muoto)}
+.cta:hover,.cta:focus-visible{background:var(--cart);color:var(--ink)}
+.menu{height:var(--bar);display:flex;align-items:center;justify-content:space-between;padding:0 10px;background:var(--glass);backdrop-filter:blur(13px);-webkit-backdrop-filter:blur(13px)}
+.menu svg{width:56px;height:auto;display:block}.menu svg path{fill:var(--ink)}
+.menu span{font-family:var(--mono);font-stretch:75%}
+
+.why{position:fixed;right:max(20px,env(safe-area-inset-right,0px));top:calc(16px + env(safe-area-inset-top,0px));z-index:6}
+.why button{all:unset;cursor:pointer;font-family:var(--mono);font-stretch:75%;height:35px;display:flex;align-items:center;padding:0 10px;background:var(--glass)}
+.why button:focus-visible{outline:1px solid var(--ink)}
+.whypanel{position:fixed;right:max(20px,env(safe-area-inset-right,0px));top:calc(58px + env(safe-area-inset-top,0px));width:360px;max-width:calc(100vw - 40px);background:var(--page);outline:1px solid var(--rule);padding:16px;z-index:9;font-size:12px}
+.whypanel ol{padding-left:18px;margin:8px 0 0}.whypanel li{margin-bottom:6px}
+.whypanel p{color:var(--muted);margin:8px 0 0}
+.toast{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(102px + env(safe-area-inset-bottom,0px));background:var(--strong);color:var(--white);font-family:var(--mono);font-stretch:75%;font-size:12px;padding:10px 12px;width:340px;max-width:calc(100vw - 32px);z-index:8}
+
+@media(max-width:900px){
+  .pdp{grid-template-columns:1fr;padding-top:104px;gap:16px;align-items:start}
+  .stage{order:1;height:58vh;min-height:340px}
+  .thumbs{order:2;grid-template-columns:repeat(5,1fr)}
+  .info{order:3}
+  .pdp{padding-top:140px;padding-bottom:150px}
+  .top{position:absolute}
+  .why{position:absolute;top:calc(92px + env(safe-area-inset-top,0px));right:auto;left:50%;transform:translateX(-50%)}
+  .whypanel{position:absolute;top:calc(132px + env(safe-area-inset-top,0px));left:16px;right:16px;width:auto;max-width:none}
+  .caption{display:none}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+
+<div class="top">
+  <div class="crumb"><span class="off">Fixos</span><span class="on">Tomada TOM.01</span></div>
+  <span class="demo-note">[Exploração] Página da tomada com a peça em 3D</span>
+</div>
+
+<div class="why"><button id="whyBtn" aria-expanded="false" aria-controls="whyPanel">[O que mudou?]</button></div>
+<div class="whypanel" id="whyPanel" hidden>
+  <b>O que esta página faz diferente do site atual</b>
+  <ol>
+    <li>A tomada gira em 3D: arraste para ver o relevo do anel e a frente NBR.</li>
+    <li>[Encaixe] separa as camadas e mostra o módulo que vai dentro da parede.</li>
+    <li>Troque a parede para ver a tomada no acabamento do seu projeto.</li>
+    <li>Veja uma, duas lado a lado ou duas empilhadas, como nas fotos.</li>
+    <li>"Pronta entrega" no topo, em ciano, o único acento do site: dá para comprar agora.</li>
+    <li>O botão diz o que faz e mostra a quantidade.</li>
+  </ol>
+  <p>Medidas e fotos reais de mymore.design. O 3D foi modelado a partir das medidas (102x102x15 mm) e das fotos, sem gerar a peça por IA. O preço ainda está em definição no site, por isso aparece como "—". Nada aqui é comprado de verdade.</p>
+</div>
+
+<main class="pdp">
+  <section class="info" aria-label="Informações da tomada">
+    <span class="badge">Pronta entrega</span>
+    <div class="title"><h1>Tomada TOM.01</h1><span>102x102x15</span></div>
+    <div class="lead"><span class="dot"></span><span><b>Em estoque.</b> Vai direto pelo checkout do site e é enviada sozinha, sem esperar peças sob encomenda.</span></div>
+
+    <div><div class="label"><span>Selecione a Cor</span><span id="corName">Preto</span></div>
+      <div class="sw dots" id="cores" role="group" aria-label="Cor do núcleo"></div></div>
+
+    <div><div class="label"><span>Ver na parede</span><span id="wallName">Off-white</span></div>
+      <div class="sw walls" id="walls" role="group" aria-label="Acabamento da parede"></div></div>
+
+    <div><div class="label"><span>Composição</span><span id="arrName">1 módulo</span></div>
+      <div class="seg" id="arr" role="group" aria-label="Composição"></div></div>
+
+    <div><div class="label"><span>Quantidade</span><span></span></div>
+      <div class="qty"><button id="minus" aria-label="Diminuir">−</button><output id="q" aria-live="polite">1</output><button id="plus" aria-label="Aumentar">+</button></div></div>
+
+    <div>
+      <details open><summary>Detalhes</summary>
+        <div class="rowkv"><span>Altura</span><span>102 mm</span></div>
+        <div class="rowkv"><span>Largura</span><span>102 mm</span></div>
+        <div class="rowkv"><span>Profundidade</span><span>15 mm</span></div>
+        <div class="rowkv"><span>Núcleo</span><span>20 A</span></div>
+      </details>
+      <details><summary>Descrição</summary><p>Tomada de embutir no frame, com conexão modular e núcleo de 20A, em três cores. Desenvolvida em conformidade com o padrão NBR.</p></details>
+      <details><summary>Baixar</summary><p>Ficha técnica (PDF) e bloco 2D/3D para o projeto.</p></details>
+    </div>
+  </section>
+
+  <section class="stage" id="stage" aria-label="Visualização da tomada">
+    <canvas id="c" aria-label="Modelo 3D da tomada. Arraste para girar, use a roda ou pinça para aproximar."></canvas>
+    <img class="photo" id="photo" alt="" hidden>
+    <div class="hint" id="hint">Arraste para girar</div>
+    <div class="caption" id="cap">Modelo 3D a partir das medidas reais</div>
+    <div class="tools">
+      <button id="spin" aria-pressed="true">[Girar]</button>
+      <button id="explode" aria-pressed="false">[Encaixe]</button>
+    </div>
+  </section>
+
+  <nav class="thumbs" id="thumbs" aria-label="Vistas"></nav>
+</main>
+
+<div class="dock">
+  <button class="cta" id="cta"><span id="ctaL">Adicionar à sacola</span><span class="p" id="ctaR">1 un · R$ —</span></button>
+  <div class="menu"><svg viewBox="0 0 272 69" role="img" aria-label="More"><path d="M176.593 23.0819V1.91833H150.317V66.5948H176.593V44.2791H205.243V1.91833C189.55 1.91833 177.465 13.093 176.593 23.0875V23.0819Z"/><path d="M111.007 0C91.875 0 76.3403 15.3302 76.3403 34.223C76.3403 53.1159 91.8693 68.4461 111.007 68.4461C130.145 68.4461 145.742 53.1159 145.742 34.223C145.742 15.3302 130.213 0 111.007 0ZM111.007 42.4334C106.43 42.4334 102.69 38.8036 102.69 34.2174C102.69 29.6313 106.435 26.0015 111.007 26.0015C115.579 26.0015 119.398 29.6984 119.398 34.2174C119.398 38.7365 115.653 42.4334 111.007 42.4334Z"/><path d="M35.919 19.6423L26.2764 1.91833H0V66.5948H26.2764V44.212H45.4936V66.5948H71.77V1.91833H45.4936L35.919 19.6423Z"/><path d="M272.002 1.87909H211.835V24.7541V34.7487V44.1783V66.5612H272.002V44.7376H238.219L255.669 34.7151L238.236 24.7541H272.002V1.87909Z"/></svg><span>Menu [+]</span></div>
+</div>
+<div class="toast" id="toast" role="status" hidden></div>
+
+<script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"}}</script>
+<script type="module">
+import * as THREE from 'three';
+import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+import { RoomEnvironment } from 'three/addons/environments/RoomEnvironment.js';
+
+const $ = (id) => document.getElementById(id);
+const mm = 0.001;
+const CORES = [['Preto','#1f1b1a'],['Branco','#efede9'],['Vermelho','#a5131c']];
+const WALLS = [
+  ['Off-white','plain','#E5E1DB'],['Branco','plain','#F3F1EC'],['Cimento queimado','cement','#A9A39A'],
+  ['Ipê ripado','wood','#7A4E31'],['Terracota','plain','#B5654A'],['Preto Bali','plain','#2D2A28']];
+const ARR = [['1 módulo',[[0,0]]],['2 lado a lado',[[-0.0545,0],[0.0545,0]]],['2 empilhadas',[[0,0.0545],[0,-0.0545]]]];
+const THUMBS = [['3D',null],['01','img/PDT_FIX_TOM_TOM.jpg'],['02','img/PDT_FIX_TOM_TOM.01_02.jpg'],['03','img/PDT_FIX_TOM_TOM.01_03.jpg'],['04','img/PDT_FIX_TOM_TOM.01_05.jpg']];
+const state = { cor:'Preto', wall:'Off-white', arr:'1 módulo', q:1, exploded:false };
+
+// ---------- cena ----------
+const canvas = $('c');
+const renderer = new THREE.WebGLRenderer({ canvas, antialias:true });
+renderer.setPixelRatio(Math.min(devicePixelRatio, 2));
+renderer.outputColorSpace = THREE.SRGBColorSpace;
+renderer.toneMapping = THREE.ACESFilmicToneMapping; renderer.toneMappingExposure = 1.0;
+renderer.shadowMap.enabled = true; renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+const scene = new THREE.Scene(); scene.background = new THREE.Color('#DED8D0');
+const pmrem = new THREE.PMREMGenerator(renderer);
+scene.environment = pmrem.fromScene(new RoomEnvironment(renderer), 0.04).texture;
+const camera = new THREE.PerspectiveCamera(30, 1, 0.005, 10);
+const controls = new OrbitControls(camera, canvas);
+controls.enableDamping = true; controls.dampingFactor = 0.08; controls.enablePan = false;
+controls.minPolarAngle = 0.5; controls.maxPolarAngle = Math.PI - 0.5; controls.minAzimuthAngle = -1.15; controls.maxAzimuthAngle = 1.15;
+// luz de estúdio da More: uma luz dura de lado, quase sem preenchimento
+const sun = new THREE.DirectionalLight('#fff1dc', 2.4); sun.position.set(-0.35, 0.25, 0.4); sun.castShadow = true;
+sun.shadow.mapSize.set(2048, 2048); Object.assign(sun.shadow.camera, { left:-0.25, right:0.25, top:0.25, bottom:-0.25, near:0.01, far:2 }); sun.shadow.bias = -0.0004; sun.shadow.radius = 3;
+scene.add(sun); scene.add(new THREE.HemisphereLight('#f4ede4', '#b9ab9c', 0.45));
+
+// parede com textura desenhada no navegador
+function wallTexture(kind, hex) {
+  const cv = document.createElement('canvas'); cv.width = cv.height = 512; const g = cv.getContext('2d');
+  g.fillStyle = hex; g.fillRect(0, 0, 512, 512);
+  if (kind === 'cement') { for (let i = 0; i < 9000; i++) { g.fillStyle = `rgba(${Math.random() < .5 ? '255,255,255' : '40,35,30'},${Math.random() * .06})`; const r = Math.random() * 6; g.fillRect(Math.random() * 512, Math.random() * 512, r, r); } }
+  if (kind === 'wood') { for (let x = 0; x < 512; x += 64) { g.fillStyle = 'rgba(20,10,5,.55)'; g.fillRect(x, 0, 6, 512); for (let k = 0; k < 40; k++) { g.strokeStyle = `rgba(${Math.random() < .5 ? '255,220,180' : '30,15,8'},.08)`; g.beginPath(); const xx = x + 8 + Math.random() * 54; g.moveTo(xx, 0); g.bezierCurveTo(xx + 4, 170, xx - 4, 340, xx + 2, 512); g.stroke(); } } }
+  if (kind === 'plain') { for (let i = 0; i < 3000; i++) { g.fillStyle = `rgba(0,0,0,${Math.random() * .025})`; g.fillRect(Math.random() * 512, Math.random() * 512, 2, 2); } }
+  const t = new THREE.CanvasTexture(cv); t.colorSpace = THREE.SRGBColorSpace; t.wrapS = t.wrapT = THREE.RepeatWrapping; t.repeat.set(kind === 'wood' ? 1.4 : 2, kind === 'wood' ? 1.4 : 2);
+  t.userData = { url: cv.toDataURL('image/jpeg', .6) }; return t;
+}
+const wallMat = new THREE.MeshStandardMaterial({ roughness: 0.92 });
+const wall = new THREE.Mesh(new THREE.PlaneGeometry(1.2, 1.2), wallMat); wall.position.z = -0.0005; wall.receiveShadow = true; scene.add(wall);
+
+// ---------- tomada: anel torneado, núcleo colorido, frente NBR, módulo de encaixe ----------
+const M = {
+  metal: new THREE.MeshStandardMaterial({ color:'#6f655b', metalness:0.9, roughness:0.42, side:THREE.DoubleSide }),
+  lip: new THREE.MeshStandardMaterial({ color:'#d9d2c6', metalness:1, roughness:0.18 }),
+  core: new THREE.MeshStandardMaterial({ color:'#1f1b1a', roughness:0.55 }),
+  hole: new THREE.MeshStandardMaterial({ color:'#0d0b0a', roughness:0.9 }),
+  brass: new THREE.MeshStandardMaterial({ color:'#b08a4a', metalness:1, roughness:0.35 }),
+  plate: new THREE.MeshStandardMaterial({ color:'#f3f1ee', roughness:0.7 }),
+};
+const GEO = (() => {
+  const ring = new THREE.LatheGeometry([[40,0],[40,6],[42.5,10],[47,12],[50,11],[51,8],[51,0]].map(([r,z]) => new THREE.Vector2(r*mm, z*mm)), 128);
+  const lip = new THREE.TorusGeometry(41*mm, 1.1*mm, 16, 128);
+  const core = new THREE.CylinderGeometry(40*mm, 40*mm, 6*mm, 96);
+  const sh = new THREE.Shape(); const w = 26, h = 9.5, t = 8;
+  sh.moveTo(-w,0); sh.lineTo(-w+t,h); sh.lineTo(w-t,h); sh.lineTo(w,0); sh.lineTo(w-t,-h); sh.lineTo(-w+t,-h); sh.closePath();
+  const pins = [[-12,0],[0,1.8],[12,0]];
+  pins.forEach(([x,y]) => { const p = new THREE.Path(); p.absarc(x, y, 2.6, 0, Math.PI*2, true); sh.holes.push(p); });
+  const face = new THREE.ExtrudeGeometry(sh, { depth:2.5, bevelEnabled:true, bevelThickness:0.6, bevelSize:0.6, bevelSegments:3 });
+  const fs = new THREE.Shape(); fs.moveTo(-68,-68); fs.lineTo(68,-68); fs.lineTo(68,68); fs.lineTo(-68,68); fs.closePath();
+  const ch = new THREE.Path(); ch.absarc(0,0,42,0,Math.PI*2,true); fs.holes.push(ch);
+  [[-56,-56],[56,-56],[-56,56],[56,56],[-58,0],[58,0]].forEach(([x,y]) => { const p = new THREE.Path(); p.absarc(x,y,4.5,0,Math.PI*2,true); fs.holes.push(p); });
+  const frame = new THREE.ExtrudeGeometry(fs, { depth:1.5, bevelEnabled:false });
+  return { ring, lip, core, face, frame, pins, hole: new THREE.CylinderGeometry(2.6*mm, 2.6*mm, 6*mm, 32), contact: new THREE.TorusGeometry(1.8*mm, 0.5*mm, 8, 24) };
+})();
+function buildTomada() {
+  const g = new THREE.Group();
+  const ring = new THREE.Mesh(GEO.ring, M.metal);
+  const lip = new THREE.Mesh(GEO.lip, M.lip); lip.rotation.x = Math.PI/2; lip.position.y = 7*mm;
+  const front = new THREE.Group();
+  const core = new THREE.Mesh(GEO.core, M.core); core.position.y = 3*mm;
+  const face = new THREE.Mesh(GEO.face, M.core); face.scale.setScalar(mm); face.rotation.x = -Math.PI/2; face.position.y = 6*mm;
+  front.add(core, face);
+  GEO.pins.forEach(([x,y]) => {
+    const h = new THREE.Mesh(GEO.hole, M.hole); h.position.set(x*mm, 6*mm, -y*mm); front.add(h);
+    const c = new THREE.Mesh(GEO.contact, M.brass); c.rotation.x = Math.PI/2; c.position.set(x*mm, 6.5*mm, -y*mm); front.add(c);
+  });
+  const frame = new THREE.Mesh(GEO.frame, M.plate); frame.scale.setScalar(mm); frame.rotation.x = -Math.PI/2; frame.position.y = -2*mm; frame.visible = false;
+  g.add(frame, ring, lip, front);
+  g.traverse(o => { if (o.isMesh) { o.castShadow = true; o.receiveShadow = true; } });
+  g.rotation.x = Math.PI/2;   // de frente para quem olha, na parede
+  g.userData = { ring, lip, front, frame };
+  return g;
+}
+let modules = [];
+function layout() {
+  modules.forEach(m => scene.remove(m)); modules = [];
+  ARR.find(a => a[0] === state.arr)[1].forEach(([x,y]) => { const m = buildTomada(); m.position.set(x, y, 0); scene.add(m); modules.push(m); });
+  frameView();
+}
+function frameView() {
+  const pos = ARR.find(a => a[0] === state.arr)[1];
+  const span = Math.max(...pos.map(([x,y]) => Math.max(Math.abs(x), Math.abs(y)))) * 2 + 0.11;
+  const d = span / (2 * Math.tan(THREE.MathUtils.degToRad(camera.fov / 2))) * 1.9 / Math.min(1, camera.aspect);
+  controls.target.set(0, 0, 0.006); camera.position.set(Math.sin(0.45) * d, 0.12 * d, Math.cos(0.45) * d);
+  controls.minDistance = d * 0.45; controls.maxDistance = d * 1.8; controls.update();
+}
+function resize() { const r = canvas.getBoundingClientRect(); if (!r.width) return; renderer.setSize(r.width, r.height, false); camera.aspect = r.width / r.height; camera.updateProjectionMatrix(); }
+new ResizeObserver(resize).observe(canvas);
+
+let t = 0.45, dragging = false, ex = 0;
+controls.addEventListener('start', () => { dragging = true; $('hint').style.opacity = 0; });
+controls.addEventListener('end', () => { dragging = false; t = Math.asin(Math.max(-1, Math.min(1, controls.getAzimuthalAngle() / 0.8))); });
+const spinOn = () => $('spin').getAttribute('aria-pressed') === 'true';
+renderer.setAnimationLoop(() => {
+  if (spinOn() && !dragging) {
+    // balanço suave, como quem olha a tomada de lado na parede
+    t += 0.008; const a = Math.sin(t) * 0.8; const d = camera.position.distanceTo(controls.target);
+    camera.position.set(Math.sin(a) * d, controls.target.y + 0.12 * d, controls.target.z + Math.cos(a) * d);
+  }
+  ex += ((state.exploded ? 1 : 0) - ex) * 0.08;
+  modules.forEach(m => { const u = m.userData;
+    u.front.position.y = ex * 0.032; u.ring.position.y = ex * 0.016; u.lip.position.y = 0.007 + ex * 0.016;
+    u.frame.position.y = -0.002 + ex * 0.004; u.frame.visible = ex > 0.03; });
+  wallMat.transparent = ex > 0.01; wallMat.opacity = 1 - ex * 0.85;
+  controls.update(); renderer.render(scene, camera);
+});
+
+// ---------- interface ----------
+function seg(id, list, key, nameId, render) {
+  const el = $(id);
+  el.innerHTML = list.map(render).join('');
+  el.querySelectorAll('button').forEach(b => b.onclick = () => {
+    state[key] = b.dataset.v; el.querySelectorAll('button').forEach(x => x.setAttribute('aria-pressed', x === b));
+    $(nameId).textContent = b.dataset.v; apply(key);
+  });
+}
+const wallTex = {}; WALLS.forEach(([n,k,h]) => wallTex[n] = wallTexture(k, h));
+seg('cores', CORES, 'cor', 'corName', ([n,c]) => `<button style="background:${c}${n === 'Branco' ? ';box-shadow:inset 0 0 0 1px #BDBDBD' : ''}" aria-label="${n}" title="${n}" data-v="${n}" aria-pressed="${n === state.cor}"></button>`);
+seg('walls', WALLS, 'wall', 'wallName', ([n]) => `<button style="background-image:url(${wallTex[n].userData.url})" aria-label="${n}" title="${n}" data-v="${n}" aria-pressed="${n === state.wall}"></button>`);
+seg('arr', ARR, 'arr', 'arrName', ([n]) => `<button data-v="${n}" aria-pressed="${n === state.arr}">${n}</button>`);
+function apply(key) {
+  if (key === 'cor' || !key) M.core.color.set(CORES.find(c => c[0] === state.cor)[1]);
+  if (key === 'wall' || !key) { wallMat.map = wallTex[state.wall]; wallMat.needsUpdate = true; }
+  if (key === 'arr' || !key) { layout(); state.q = Math.max(state.q, ARR.find(a => a[0] === state.arr)[1].length); $('q').textContent = state.q; }
+  if (key) view3D(true);
+  updateCTA();
+}
+function updateCTA() { $('ctaR').textContent = `${state.q} un · R$ —`; }
+$('minus').onclick = () => { state.q = Math.max(1, state.q - 1); $('q').textContent = state.q; updateCTA(); };
+$('plus').onclick = () => { state.q = Math.min(20, state.q + 1); $('q').textContent = state.q; updateCTA(); };
+let toastT;
+$('cta').onclick = () => {
+  const el = $('toast'); el.hidden = false;
+  el.textContent = `${state.q} × Tomada TOM.01 ${state.cor} na sacola. No site, o próximo passo é o checkout da Shopify.`;
+  clearTimeout(toastT); toastT = setTimeout(() => { el.hidden = true; }, 3200);
+};
+$('thumbs').innerHTML = THUMBS.map(([n, src], i) => `<button aria-pressed="${i === 0}" data-i="${i}" aria-label="${src ? 'Foto ' + n : 'Modelo 3D'}"><span>${n}</span><div class="t" style="${src ? `background-image:url('${src}')` : ''}">${src ? '' : '[3D]'}</div></button>`).join('');
+$('thumbs').querySelectorAll('button').forEach(b => b.onclick = () => {
+  $('thumbs').querySelectorAll('button').forEach(x => x.setAttribute('aria-pressed', x === b));
+  const src = THUMBS[+b.dataset.i][1];
+  if (src) { $('photo').src = src; $('photo').alt = `Tomada TOM.01, foto ${THUMBS[+b.dataset.i][0]}`; view3D(false); } else view3D(true);
+});
+function view3D(on) {
+  $('photo').hidden = on; canvas.style.visibility = on ? 'visible' : 'hidden';
+  ['spin','explode','hint','cap'].forEach(id => { $(id).hidden = !on; });
+  if (on) $('thumbs').querySelectorAll('button').forEach((x, i) => x.setAttribute('aria-pressed', i === 0));
+}
+$('spin').onclick = () => $('spin').setAttribute('aria-pressed', !spinOn());
+$('explode').onclick = () => { state.exploded = !state.exploded; $('explode').setAttribute('aria-pressed', state.exploded); $('cap').textContent = state.exploded ? 'Anel, núcleo e módulo de encaixe' : 'Modelo 3D a partir das medidas reais'; };
+$('whyBtn').onclick = () => { const open = $('whyPanel').hidden; $('whyPanel').hidden = !open; $('whyBtn').setAttribute('aria-expanded', open); };
+if (matchMedia('(prefers-reduced-motion: reduce)').matches) $('spin').setAttribute('aria-pressed', 'false');
+resize(); apply();
+</script>
+
+</body></html>

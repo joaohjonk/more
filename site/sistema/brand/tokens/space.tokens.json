@@ -1,0 +1,461 @@
+{
+ "$description": "Spacing, layout, radius, blur and motion from the live theme. More is square: radius 0 is the rule.",
+ "$extensions": {
+  "cstack": {
+   "status": "PROVISIONAL",
+   "source": "live site mymore.design, theme t/7 critical.css :root, captured 2026-10-15",
+   "input_class": "live_brand_behavior",
+   "approval": "awaiting More team"
+  }
+ },
+ "space": {
+  "$type": "dimension",
+  "hair": {
+   "$value": {
+    "value": 6,
+    "unit": "px"
+   },
+   "$description": "gap between gallery images, between floating bars, list-view image gap"
+  },
+  "xs": {
+   "$value": {
+    "value": 8,
+    "unit": "px"
+   }
+  },
+  "sm": {
+   "$value": {
+    "value": 10,
+    "unit": "px"
+   },
+   "$description": "mobile page gutter, bar padding"
+  },
+  "md": {
+   "$value": {
+    "value": 16,
+    "unit": "px"
+   },
+   "$description": "filter item gap, mobile bar side margin"
+  },
+  "lg": {
+   "$value": {
+    "value": 20,
+    "unit": "px"
+   },
+   "$description": "desktop page gutter, menu padding"
+  },
+  "xl": {
+   "$value": {
+    "value": 30,
+    "unit": "px"
+   },
+   "$description": "bar distance from bottom (desktop)"
+  },
+  "2xl": {
+   "$value": {
+    "value": 40,
+    "unit": "px"
+   }
+  },
+  "3xl": {
+   "$value": {
+    "value": 60,
+    "unit": "px"
+   },
+   "$description": "statement padding"
+  },
+  "section": {
+   "$value": {
+    "value": 160,
+    "unit": "px"
+   },
+   "$description": "topo da lista da coleção"
+  },
+  "grid-top": {
+   "$value": {
+    "value": 180,
+    "unit": "px"
+   },
+   "$description": "catalog top padding (140 mobile)"
+  },
+  "3xs": {
+   "$value": {
+    "value": 4,
+    "unit": "px"
+   },
+   "$description": "preço riscado, miniaturas da PDP (7 usos)"
+  },
+  "sm-2": {
+   "$value": {
+    "value": 12,
+    "unit": "px"
+   },
+   "$description": "padding do botão de adicionar ao carrinho (9 usos)"
+  },
+  "lg-2": {
+   "$value": {
+    "value": 24,
+    "unit": "px"
+   },
+   "$description": "lista do acordeão, colunas do footer"
+  },
+  "4xl": {
+   "$value": {
+    "value": 120,
+    "unit": "px"
+   },
+   "$description": "produtos relacionados, descrição na PDP (6 usos)"
+  },
+  "grid-top-list": {
+   "$value": {
+    "value": 140,
+    "unit": "px"
+   },
+   "$description": "topo da coleção (grid e lista)"
+  }
+ },
+ "layout": {
+  "$type": "dimension",
+  "grid-gap": {
+   "$type": "number",
+   "$value": 7,
+   "$description": "catalog grid gap is 7vw on desktop (DTCG dimension has no vw unit); 100px row / 6px column on mobile"
+  },
+  "bar-height": {
+   "$value": {
+    "value": 35,
+    "unit": "px"
+   },
+   "$description": "menu bar, filter bar, CTA bar, cart bar: one height for every floating control"
+  },
+  "bar-width": {
+   "$value": {
+    "value": 320,
+    "unit": "px"
+   },
+   "$description": "menu/CTA bar at rest"
+  },
+  "bar-width-open": {
+   "$value": {
+    "value": 580,
+    "unit": "px"
+   },
+   "$description": "menu when open (max 100vw - 32px)"
+  },
+  "bar-bottom": {
+   "$value": {
+    "value": 30,
+    "unit": "px"
+   },
+   "$description": "20 on mobile"
+  },
+  "list-columns": {
+   "$type": "number",
+   "$value": 10,
+   "$description": "list view: 10-col grid, vertical image = 2 cols (3:4), horizontal image = 3 cols (3:2)"
+  },
+  "grid-columns": {
+   "$type": "number",
+   "$value": 4,
+   "$description": "catalog grid desktop; 2 on mobile, every 5th card spans full width"
+  },
+  "bar-safe": {
+   "$value": {
+    "value": 106,
+    "unit": "px"
+   },
+   "$description": "derivado do site: --menu-bottom 30 + --menu-button-size 35 + --gap-btw-buttons 6 + 35 do carrinho = topo do botão do carrinho. Nada fixo pode entrar abaixo disso.",
+   "$extensions": {
+    "cstack": {
+     "status": "PROPOSED",
+     "source": "proposta nossa (leitura por função) + capturas do site",
+     "approval": "awaiting More team"
+    }
+   }
+  },
+  "bar-spacing-top": {
+   "$value": {
+    "value": 35,
+    "unit": "px"
+   },
+   "$description": "--menu-spacing-top (o :root renderizado diz 35px)"
+  },
+  "bar-gap": {
+   "$value": {
+    "value": 6,
+    "unit": "px"
+   },
+   "$description": "--gap-btw-buttons entre botão do menu e do carrinho"
+  },
+  "columns-pdp": {
+   "$value": "344px 1fr 344px",
+   "$description": "PDP desktop; 280px 1fr 280px abaixo de 1440px"
+  }
+ },
+ "radius": {
+  "$type": "dimension",
+  "none": {
+   "$value": {
+    "value": 0,
+    "unit": "px"
+   },
+   "$description": "imagens, cards, barras, botão de checkout e filtro: tudo que é estrutura"
+  },
+  "thumb": {
+   "$value": {
+    "value": 2,
+    "unit": "px"
+   },
+   "$description": "amostras de material na PDP e miniaturas do modal"
+  },
+  "tooltip": {
+   "$value": {
+    "value": 8,
+    "unit": "px"
+   },
+   "$description": "tooltip de opção na PDP (só os cantos de baixo)"
+  },
+  "panel": {
+   "$value": {
+    "value": 10,
+    "unit": "px"
+   },
+   "$description": "caixa flutuante do footer com blur"
+  },
+  "round": {
+   "$value": {
+    "value": 50,
+    "unit": "%"
+   },
+   "$description": "círculos: botões de quantidade do carrinho, checkbox do modal. Corrigido de 999px para 50% como no site."
+  },
+  "$description": "Corrigido pelo site: raio 0 é a regra para estrutura, mas o site usa raio em peças pequenas e flutuantes. 5px (.download-modal__file), 6px (.about__video-container) e 20px (label do modal) ficam fora da escala como divergências."
+ },
+ "blur": {
+  "$type": "dimension",
+  "soft": {
+   "$value": {
+    "value": 10,
+    "unit": "px"
+   }
+  },
+  "medium": {
+   "$value": {
+    "value": 13,
+    "unit": "px"
+   }
+  },
+  "strong": {
+   "$value": {
+    "value": 20,
+    "unit": "px"
+   }
+  },
+  "heavy": {
+   "$value": {
+    "value": 26,
+    "unit": "px"
+   }
+  },
+  "$description": "--blur-*: soft no botão do carrinho e na caixa do footer; medium no overlay do Sobre; strong no menu, filtro e gaveta do carrinho; heavy no fundo do modal. O vídeo do Sobre usa blur(5px) literal."
+ },
+ "motion": {
+  "duration": {
+   "$type": "duration",
+   "instant": {
+    "$value": {
+     "value": 80,
+     "unit": "ms"
+    },
+    "$description": "filtro de categorias (collection-list)"
+   },
+   "quick": {
+    "$value": {
+     "value": 200,
+     "unit": "ms"
+    },
+    "$description": "hover image swap"
+   },
+   "base": {
+    "$value": {
+     "value": 500,
+     "unit": "ms"
+    },
+    "$description": "bars grow, colour, view switch"
+   },
+   "slow": {
+    "$value": {
+     "value": 800,
+     "unit": "ms"
+    },
+    "$description": "product fade-in, menu visibility"
+   },
+   "intro": {
+    "$value": {
+     "value": 450,
+     "unit": "ms"
+    },
+    "$description": "catalog rise after intro"
+   },
+   "tick": {
+    "$value": {
+     "value": 140,
+     "unit": "ms"
+    },
+    "$description": "contador do carrinho na PDP (8 usos)"
+   },
+   "step": {
+    "$value": {
+     "value": 300,
+     "unit": "ms"
+    },
+    "$description": "acordeão da PDP"
+   },
+   "reveal": {
+    "$value": {
+     "value": 700,
+     "unit": "ms"
+    },
+    "$description": "fade do body, miniaturas, vídeo do Sobre"
+   },
+   "long": {
+    "$value": {
+     "value": 1000,
+     "unit": "ms"
+    },
+    "$description": "botão de adicionar ao carrinho (11 usos)"
+   },
+   "$description": "Também aparecem no site uma vez ou duas: 150, 180, 280, 350, 400 e 600ms. Ficam como divergências, não como tokens."
+  },
+  "easing": {
+   "$type": "cubicBezier",
+   "snap": {
+    "$value": [
+     0.63,
+     0.01,
+     0,
+     1.01
+    ],
+    "$description": "hover swaps on cards"
+   },
+   "out-expo": {
+    "$value": [
+     0.22,
+     1,
+     0.36,
+     1
+    ],
+    "$description": "intro dismiss, catalog rise"
+   },
+   "out-quint": {
+    "$value": [
+     0.23,
+     1,
+     0.32,
+     1
+    ],
+    "$description": "mobile category popover"
+   },
+   "standard": {
+    "$value": [
+     0.25,
+     0.1,
+     0.25,
+     1
+    ],
+    "$description": "'ease' do CSS: a curva mais usada no site (73 usos)"
+   }
+  }
+ },
+ "aspect": {
+  "$type": "number",
+  "portrait": {
+   "$value": 0.75,
+   "$description": "3:4, every product card and PDP image"
+  },
+  "landscape": {
+   "$value": 1.5,
+   "$description": "3:2, horizontal list-view images"
+  }
+ },
+ "logo": {
+  "$type": "dimension",
+  "$description": "Marca em M ou XL nas peças; S só na barra do site. Cores: preto #2D211E, branco ou off-white; sobre amarelo-igarata use preto, sobre vermelho-jambo, verde-jamaica e berinjela use branco. Respiro igual ao O é proposta.",
+  "s": {
+   "$value": {
+    "value": 60,
+    "unit": "px"
+   },
+   "$description": "S: 60px de largura na barra do menu do site (medido). 18 mm no papel é proposta nossa.",
+   "$extensions": {
+    "cstack": {
+     "status": "PROVISIONAL",
+     "source": "menu__brand do site, 60×16px, medido 2026-10-15",
+     "approval": "awaiting More team"
+    }
+   }
+  },
+  "m-ratio": {
+   "$value": 0.1667,
+   "$type": "number",
+   "$description": "M: alvo 1/6 (16,7%) do lado curto; tolerância 16–25% (cartaz TOM.01 16%, rodapé do site 19%, livro anterior ~25%). Convite, cartaz, capa.",
+   "$extensions": {
+    "cstack": {
+     "status": "PROPOSED",
+     "source": "instagram p28_0, rodapé do site, capa do livro anterior",
+     "approval": "awaiting More team"
+    }
+   }
+  },
+  "xl-ratio": {
+   "$value": 0.97,
+   "$type": "number",
+   "$description": "XL: 95–100% da largura, base entre 0 e 5% acima da borda de baixo, sem sangrar (convite 05.11). Cartaz, convite, vitrine.",
+   "$extensions": {
+    "cstack": {
+     "status": "PROPOSED",
+     "source": "convite 05.11",
+     "approval": "awaiting More team"
+    }
+   }
+  }
+ },
+ "breakpoint": {
+  "$type": "dimension",
+  "$description": "Breakpoints do tema, todos max-width.",
+  "xl": {
+   "$value": {
+    "value": 1440,
+    "unit": "px"
+   },
+   "$description": "PDP troca colunas laterais 344→280"
+  },
+  "lg": {
+   "$value": {
+    "value": 1200,
+    "unit": "px"
+   }
+  },
+  "md": {
+   "$value": {
+    "value": 1024,
+    "unit": "px"
+   },
+   "$description": "menu e declarações mudam para mobile"
+  },
+  "sm": {
+   "$value": {
+    "value": 768,
+    "unit": "px"
+   },
+   "$description": "footer"
+  },
+  "xs": {
+   "$value": {
+    "value": 600,
+    "unit": "px"
+   },
+   "$description": "coleção vira 2 colunas, filtro vira botão"
+  }
+ }
+}
