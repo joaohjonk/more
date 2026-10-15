@@ -204,3 +204,15 @@ dpi=info.get('dpi') or (info.get('jfif_density') if info.get('jfif_unit')==1 els
 print(json.dumps({'w':im.size[0],'h':im.size[1],'mode':im.mode,'dpi':[float(x) for x in dpi] if dpi else None}))`, file);
   return JSON.parse(out);
 }
+
+// Layout de peça impressa/social (não é a loja): HTML/CSS com @page, data-canvas, ou nome com
+// PRINT, IG, IGS, CONVITE, LIVRO, VITRINE, ETIQUETA ou CARTAZ (separado por -, _ ou .)
+export const LAYOUT_NAME = /(^|[-_.])(print|ig|igs|convite|livro|vitrine|etiqueta|cartaz)([-_.]|$)/i;
+export function isLayout(file) {
+  if (LAYOUT_NAME.test(path.basename(file))) return true;
+  if (!['html', 'htm', 'css', 'svg'].includes(ext(file))) return false;
+  const t = fs.readFileSync(file, 'utf8');
+  return /@page\b|data-canvas\s*=/.test(t);
+}
+// layout impresso: tem @page ou @media print
+export const isPrintLayout = (file) => ['html', 'htm', 'css'].includes(ext(file)) && /@page\b|@media\s*print/.test(fs.readFileSync(file, 'utf8'));

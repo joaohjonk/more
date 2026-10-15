@@ -34,10 +34,10 @@ R-MOTION-02    cuts.mjs          0         sem arquivo aplicável
 6 regra(s) com falha
 
 R-COLOR-01 FALHA (4):
-  - 37dcef66c23c_product.css: #dad7d1 em ".product__accordion-content.materials .accordion-material-wrapper.overflow-label:after,.color-background:after" só existe como color.site-sem-token-material-fundo (cor do site sem token aprovado): troque por um token da paleta
-  - 37dcef66c23c_product.css: #dedbd5 em ".product__accordion-content.materials .accordion-material-wrapper.overflow-label:hover:after" só existe como color.site-sem-token-material-hover (cor do site sem token aprovado): troque por um token da paleta
-  - 74941cd91a03_collection-list.css: #1a1a1a em ".collection-list__filter a" só existe como color.site-sem-token-grafite (cor do site sem token aprovado): troque por um token da paleta
-  - 94e8de6681a2_about.css: #1a1a1a em ".about__content" só existe como color.site-sem-token-grafite (cor do site sem token aprovado): troque por um token da paleta
+  - 37dcef66c23c_product.css: linha 1: #dad7d1 não é valor de nenhum token de cor (cstack tokens lint)
+  - 37dcef66c23c_product.css: linha 1: #dedbd5 não é valor de nenhum token de cor (cstack tokens lint)
+  - 74941cd91a03_collection-list.css: linha 1: #1a1a1a não é valor de nenhum token de cor (cstack tokens lint)
+  - 94e8de6681a2_about.css: linha 1: #1a1a1a não é valor de nenhum token de cor (cstack tokens lint)
 
 R-COLOR-02 FALHA (1):
   - nenhum html/body/:root declara color: o texto corrido cai no padrão do navegador (#000). Declare body{color:var(--preto)}
@@ -112,10 +112,10 @@ R-MOTION-02    cuts.mjs          0         sem arquivo aplicável
 12 regra(s) com falha
 
 R-COLOR-01 FALHA (4):
-  - 37dcef66c23c_product.css: #dad7d1 em ".product__accordion-content.materials .accordion-material-wrapper.overflow-label:after,.color-background:after" só existe como color.site-sem-token-material-fundo (cor do site sem token aprovado): troque por um token da paleta
-  - 37dcef66c23c_product.css: #dedbd5 em ".product__accordion-content.materials .accordion-material-wrapper.overflow-label:hover:after" só existe como color.site-sem-token-material-hover (cor do site sem token aprovado): troque por um token da paleta
-  - 74941cd91a03_collection-list.css: #1a1a1a em ".collection-list__filter a" só existe como color.site-sem-token-grafite (cor do site sem token aprovado): troque por um token da paleta
-  - 94e8de6681a2_about.css: #1a1a1a em ".about__content" só existe como color.site-sem-token-grafite (cor do site sem token aprovado): troque por um token da paleta
+  - 37dcef66c23c_product.css: linha 1: #dad7d1 não é valor de nenhum token de cor (cstack tokens lint)
+  - 37dcef66c23c_product.css: linha 1: #dedbd5 não é valor de nenhum token de cor (cstack tokens lint)
+  - 74941cd91a03_collection-list.css: linha 1: #1a1a1a não é valor de nenhum token de cor (cstack tokens lint)
+  - 94e8de6681a2_about.css: linha 1: #1a1a1a não é valor de nenhum token de cor (cstack tokens lint)
 
 R-COLOR-02 FALHA (1):
   - nenhum html/body/:root declara color: o texto corrido cai no padrão do navegador (#000). Declare body{color:var(--preto)}

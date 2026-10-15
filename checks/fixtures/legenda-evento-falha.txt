@@ -1,0 +1,4 @@
+tipo: evento
+Vem aí uma coisa nova na loja.
+Menos do mesmo, agora com endereço.
+Você não vai querer perder essa.

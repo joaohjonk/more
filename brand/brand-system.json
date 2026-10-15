@@ -256,7 +256,7 @@
    },
    "contra_o_generico": {
     "last_updated": "2026-10-15",
-    "value": "Contra o móvel genérico de projeto. ('Para projetos sem personalidade, a concorrência resolve.')",
+    "value": "Contra o móvel genérico de projeto. A peça tem que se sustentar sozinha numa sala.",
     "input_class": "SOFT_CONSTRAINT",
     "sources": [
      {
@@ -1091,7 +1091,7 @@
   "graphic_devices": {
    "cartaz": {
     "last_updated": "2026-10-15",
-    "value": "Poster recipe (from the red TOM.01 poster, IG p28_0): one campo colour field; the piece as a hard black silhouette; a mono column rotated 90°; wordmark XL or vertical; address as a fixed running foot.",
+    "value": "Receita do cartaz (do cartaz vermelho da TOM.01, IG p28_0): um campo de cor chapado; a peça em preto como silhueta dura feita da foto real (limiar de luminância, sem IA); três blocos curtos em Muoto girados 90° na margem esquerda (nome da peça, uma frase, endereço da loja); marca M girada 90° no canto de baixo à esquerda. Cartaz de evento sem peça: só campo, data em display e marca XL embaixo (convite 05.11). Texto e marca: branco (papel vazado) sobre vermelho-jambo, verde-jamaica e berinjela; preto sobre amarelo-igarata.",
     "input_class": "SOFT_CONSTRAINT",
     "sources": [
      {
@@ -1113,8 +1113,8 @@
    },
    "barra_impressa": {
     "last_updated": "2026-10-15",
-    "value": "The floating bar becomes a print device: a black bar at the foot carrying mono text ('Abertura 05.11 [Jardins]'). Brackets wrap actions and dates, never names.",
-    "input_class": "SOFT_CONSTRAINT",
+    "value": "Proposta nossa, fora do guia: barra preta no pé do impresso com texto em mono. Não usar com marca XL (as duas ocupam o pé).",
+    "input_class": "OPEN_CREATIVE_SPACE",
     "sources": [
      {
       "kind": "model_inference",
@@ -1132,7 +1132,7 @@
   "social_behavior": {
    "instagram": {
     "last_updated": "2026-10-15",
-    "value": "All 136 images are More's own studio photography: 76% light neutral seamless (off-white paper, hard sun with long shadows), 15% low-key/dark, 8% saturated colour-field backgrounds (teal, purple, green, mustard, a red TOM.01 poster). Carousels go wide shot → detail → material close-up. No people, no interiors/projects, no UGC. Formats 4:5 (1080x1350) and 3:4 (1440x1920).",
+    "value": "All 136 images are More's own studio photography: 76% light neutral seamless (off-white paper, hard sun with long shadows), 15% low-key/dark, 8% saturated colour-field backgrounds (teal, purple, green, mustard, a red TOM.01 poster). Carousels go wide shot → detail → material close-up. People appear only in the behind-the-scenes carousel (p10, 8 images: team and lights on set), never in piece photos. No interiors/projects, no UGC. Piece posts carry no text and no logo on the image; text lives in the caption. Formats 4:5 (1080x1350) and 3:4 (1440x1920).",
     "input_class": "FACT",
     "sources": [
      {
@@ -1182,25 +1182,9 @@
     "permanence": "core",
     "approval": "inferred"
    },
-   "elipse_convite": {
-    "last_updated": "2026-10-15",
-    "value": "The orange ellipse + English 'save the date' of the first 05.11 invite: rounded shape and English break R-SHAPE-02 and R-COPY-03.",
-    "input_class": "FACT",
-    "sources": [
-     {
-      "kind": "model_inference",
-      "ref": "leitura por função 2026-10-15 (estratégia de marca, designer do time, produção gráfica); geradas por modelo, não assinadas por ninguém",
-      "captured_at": "2026-10-15",
-      "by": "creative-review"
-     }
-    ],
-    "confidence": "high",
-    "permanence": "core",
-    "approval": "inferred"
-   },
    "voz_alma": {
     "last_updated": "2026-10-15",
-    "value": "Early captions with 'alma', 'essência', 'personalidade' (Dec 2025).",
+    "value": "Legendas antigas com 'alma', 'essência', 'personalidade' (dez/2025).",
     "input_class": "FACT",
     "sources": [
      {

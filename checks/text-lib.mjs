@@ -9,7 +9,17 @@ export const ALMA = ['alma', 'almas', 'essência', 'personalidade'];
 export const forbiddenRe = new RegExp(`(?<![\\p{L}])(${[...LUXO, ...ALMA].join('|')})(?![\\p{L}])`, 'giu');
 
 export const EMOJI = /\p{Extended_Pictographic}/u;
-export const MATERIAL = /(madeira|maciç|aço|alumínio|latão|vidro|fibra|tecido|estofad|bouclê|veludo|papel|algodão|mármore|madrepérola|fundid|laminad|talagarça|aramad|metal|couro|pedra|ipê|sucupira|tauari|angelim)/i;
+// Lista publicada em checks/palavras-de-material.json (R-COPY-02)
+const MAT = JSON.parse(fs.readFileSync(path.join(CHECKS_DIR, 'palavras-de-material.json'), 'utf8'));
+export const MATERIAL = new RegExp(`(?<![\\p{L}])(${[...MAT.materiais, ...MAT.ficha].join('|')})`, 'iu');
+export const STATUS = new RegExp(`^(${MAT.status.join('|')})\\b`, 'iu');
+// Linhas aprovadas (checks/aprovadas.json): palavra proibida dentro delas é aceita
+export const APROVADAS = JSON.parse(fs.readFileSync(path.join(CHECKS_DIR, 'aprovadas.json'), 'utf8')).linhas;
+export function semAprovadas(text) {
+  let t = text;
+  for (const l of APROVADAS) t = t.split(l).join(' ');
+  return t;
+}
 
 export function sentences(text) {
   return text.split(/(?<=[.?!…])\s+|\n+/).map((s) => s.trim()).filter((s) => /\p{L}/u.test(s));

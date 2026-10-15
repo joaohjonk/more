@@ -312,17 +312,22 @@
     "secondary": {
       "$type": "color",
       "$value": "{cinza-medio}",
-      "$description": "preço, medidas, 'pronta entrega', descrição do produto. 4,28:1 no off-white: reprova AA abaixo de 24px, e o site usa em 10–13px."
+      "$description": "cinza-medio: preço, medidas. 4,28:1 no off-white: só a partir de 24px. Abaixo de 24px use text.small."
     },
     "on-inverse": {
       "$type": "color",
       "$value": "{cinza-claro}",
-      "$description": "Text on cinza-escuro / preto-80."
+      "$description": "cinza-claro sobre preto 80% (8,9:1). Sobre cinza-escuro só a partir de 24px; abaixo use branco."
     },
     "on-inverse-active": {
       "$type": "color",
       "$value": "{branco}",
       "$description": "Hover / current item on dark."
+    },
+    "small": {
+      "$type": "color",
+      "$value": "{cinza-escuro}",
+      "$description": "texto pequeno (abaixo de 24px) secundário sobre off-white e papel: 5,60:1"
     }
   },
   "accent": {
@@ -409,55 +414,6 @@
         "hex": "#DA9015"
       },
       "$description": "[proposta] Fundo amarelo atrás do Pendente Naz (instagram p02_1). Hex amostrado do JPEG (inferido); nome do acabamento Amarelo Igaratá (inferido)."
-    },
-    "mostarda-igarata": {
-      "$type": "color",
-      "$value": "{campo.amarelo-igarata}",
-      "$description": "[proposta] nome antigo, mantido para peças já feitas; use amarelo-igarata"
-    }
-  },
-  "site-sem-token": {
-    "grafite": {
-      "$type": "color",
-      "$value": {
-        "colorSpace": "srgb",
-        "components": [
-          0.101961,
-          0.101961,
-          0.101961
-        ],
-        "alpha": 1,
-        "hex": "#1A1A1A"
-      },
-      "$description": "collection-list.css .collection-list__filter a (15px) e about.css .about__content (fundo)"
-    },
-    "material-fundo": {
-      "$type": "color",
-      "$value": {
-        "colorSpace": "srgb",
-        "components": [
-          0.854902,
-          0.843137,
-          0.819608
-        ],
-        "alpha": 1,
-        "hex": "#DAD7D1"
-      },
-      "$description": "product.css fundo da amostra de material no acordeão"
-    },
-    "material-hover": {
-      "$type": "color",
-      "$value": {
-        "colorSpace": "srgb",
-        "components": [
-          0.870588,
-          0.858824,
-          0.835294
-        ],
-        "alpha": 1,
-        "hex": "#DEDBD5"
-      },
-      "$description": "product.css hover da amostra de material"
     }
   }
 }

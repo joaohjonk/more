@@ -1,0 +1,4 @@
+tipo: evento
+Abertura da loja More, 05.11.
+Menos do mesmo, agora com endereço.
+Alameda Franca, 1332, casa 04, Jardins, São Paulo.

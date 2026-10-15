@@ -1,0 +1,67 @@
+# Teste cego (10 peças, /mnt/project-files/more/teste-cego/pecas/) contra os checks da More
+# Gerado por: node checks/run-all.mjs /mnt/project-files/more/teste-cego/pecas/
+
+checks da More em /mnt/project-files/more/teste-cego/pecas/ (27 arquivos)
+
+regra          script            arquivos  resultado                       
+-------------  ----------------  --------  --------------------------------
+R-COLOR-01     color-tokens.mjs  11        PASSA                           
+R-COLOR-02     ground-ink.mjs    11        PASSA                           
+R-COLOR-03     accent.mjs        11        PASSA                           
+R-SHAPE-01     radius.mjs        11        PASSA                           
+R-TYPE-01      type.mjs          11        PASSA                           
+R-TYPE-02      actions.mjs       10        FALHA (3)                       
+R-LAYOUT-01    bars.mjs          11        PASSA                           
+R-LAYOUT-02    aspect.mjs        19        PASSA + exemplos                
+R-IMG-01       no-ai.mjs         8         PASSA                           
+R-IMG-02       exemplos          -         revisão visual com o par sim/nao
+R-GEN-01       wordmark.mjs      10        PASSA                           
+R-COPY-01      copy.mjs          14        PASSA                           
+R-COMMERCE-01  commerce.mjs      10        PASSA                           
+R-COMMERCE-02  grid-price.mjs    10        PASSA                           
+R-MOTION-01    motion.mjs        11        PASSA                           
+R-COPY-02      caption.mjs       4         PASSA                           
+R-COPY-03      lang.mjs          14        PASSA                           
+R-COLOR-04     campo.mjs         8         PASSA                           
+R-LOGO-01      logo.mjs          6         PASSA                           
+R-SHAPE-02     -                 -         rejeitada (fora do guia)        
+R-LAYOUT-03    scroll-safe.mjs   11        PASSA                           
+R-NAME-01      names.mjs         14        PASSA                           
+R-FILE-01      filename.mjs      20        FALHA (20)                      
+R-PRINT-01     print.mjs         4         FALHA (4)                       
+R-MOTION-02    cuts.mjs          0         sem arquivo aplicável           
+
+3 regra(s) com falha
+
+R-TYPE-02 FALHA (3):
+  - 03-ig-story-tomada-tom-01.html: "[Comprar]" numa peça estática: não há ação, então não há colchete; o link vai na legenda ou no sticker de link
+  - 05-etiqueta-poltrona-leticia.html: "[Sob encomenda · ~120 dias]" é status ou lugar: sem colchete
+  - 06-etiqueta-banco-maria.html: "[Pronta entrega]" é status ou lugar: sem colchete
+
+R-FILE-01 FALHA (20):
+  - 01-ig-feed-poltrona-leticia.html: fora do padrão MORE_<CANAL>_<peça-slug>_<variante>_<AAAAMMDD>_v<nn>.<ext> (ex. MORE_IG_mesa-de-centro-cildo_4x5_20261105_v02.jpg)
+  - 01-ig-feed-poltrona-leticia.png: fora do padrão MORE_<CANAL>_<peça-slug>_<variante>_<AAAAMMDD>_v<nn>.<ext> (ex. MORE_IG_mesa-de-centro-cildo_4x5_20261105_v02.jpg)
+  - 02-ig-feed-abertura-loja.html: fora do padrão MORE_<CANAL>_<peça-slug>_<variante>_<AAAAMMDD>_v<nn>.<ext> (ex. MORE_IG_mesa-de-centro-cildo_4x5_20261105_v02.jpg)
+  - 02-ig-feed-abertura-loja.png: fora do padrão MORE_<CANAL>_<peça-slug>_<variante>_<AAAAMMDD>_v<nn>.<ext> (ex. MORE_IG_mesa-de-centro-cildo_4x5_20261105_v02.jpg)
+  - 03-ig-story-tomada-tom-01.html: fora do padrão MORE_<CANAL>_<peça-slug>_<variante>_<AAAAMMDD>_v<nn>.<ext> (ex. MORE_IG_mesa-de-centro-cildo_4x5_20261105_v02.jpg)
+  - 03-ig-story-tomada-tom-01.png: fora do padrão MORE_<CANAL>_<peça-slug>_<variante>_<AAAAMMDD>_v<nn>.<ext> (ex. MORE_IG_mesa-de-centro-cildo_4x5_20261105_v02.jpg)
+  - 04-ig-story-bastidores.html: fora do padrão MORE_<CANAL>_<peça-slug>_<variante>_<AAAAMMDD>_v<nn>.<ext> (ex. MORE_IG_mesa-de-centro-cildo_4x5_20261105_v02.jpg)
+  - 04-ig-story-bastidores.png: fora do padrão MORE_<CANAL>_<peça-slug>_<variante>_<AAAAMMDD>_v<nn>.<ext> (ex. MORE_IG_mesa-de-centro-cildo_4x5_20261105_v02.jpg)
+  - 05-etiqueta-poltrona-leticia.html: fora do padrão MORE_<CANAL>_<peça-slug>_<variante>_<AAAAMMDD>_v<nn>.<ext> (ex. MORE_IG_mesa-de-centro-cildo_4x5_20261105_v02.jpg)
+  - 05-etiqueta-poltrona-leticia.pdf: fora do padrão MORE_<CANAL>_<peça-slug>_<variante>_<AAAAMMDD>_v<nn>.<ext> (ex. MORE_IG_mesa-de-centro-cildo_4x5_20261105_v02.jpg)
+  - 06-etiqueta-banco-maria.html: fora do padrão MORE_<CANAL>_<peça-slug>_<variante>_<AAAAMMDD>_v<nn>.<ext> (ex. MORE_IG_mesa-de-centro-cildo_4x5_20261105_v02.jpg)
+  - 06-etiqueta-banco-maria.pdf: fora do padrão MORE_<CANAL>_<peça-slug>_<variante>_<AAAAMMDD>_v<nn>.<ext> (ex. MORE_IG_mesa-de-centro-cildo_4x5_20261105_v02.jpg)
+  - 07-cartaz-abertura-loja.html: fora do padrão MORE_<CANAL>_<peça-slug>_<variante>_<AAAAMMDD>_v<nn>.<ext> (ex. MORE_IG_mesa-de-centro-cildo_4x5_20261105_v02.jpg)
+  - 07-cartaz-abertura-loja.pdf: fora do padrão MORE_<CANAL>_<peça-slug>_<variante>_<AAAAMMDD>_v<nn>.<ext> (ex. MORE_IG_mesa-de-centro-cildo_4x5_20261105_v02.jpg)
+  - 08-cartaz-mesa-de-centro-cildo.html: fora do padrão MORE_<CANAL>_<peça-slug>_<variante>_<AAAAMMDD>_v<nn>.<ext> (ex. MORE_IG_mesa-de-centro-cildo_4x5_20261105_v02.jpg)
+  - 08-cartaz-mesa-de-centro-cildo.pdf: fora do padrão MORE_<CANAL>_<peça-slug>_<variante>_<AAAAMMDD>_v<nn>.<ext> (ex. MORE_IG_mesa-de-centro-cildo_4x5_20261105_v02.jpg)
+  - 09-web-abertura-loja-1440.png: fora do padrão MORE_<CANAL>_<peça-slug>_<variante>_<AAAAMMDD>_v<nn>.<ext> (ex. MORE_IG_mesa-de-centro-cildo_4x5_20261105_v02.jpg)
+  - 09-web-abertura-loja-390.png: fora do padrão MORE_<CANAL>_<peça-slug>_<variante>_<AAAAMMDD>_v<nn>.<ext> (ex. MORE_IG_mesa-de-centro-cildo_4x5_20261105_v02.jpg)
+  - 10-web-sobre-1440.png: fora do padrão MORE_<CANAL>_<peça-slug>_<variante>_<AAAAMMDD>_v<nn>.<ext> (ex. MORE_IG_mesa-de-centro-cildo_4x5_20261105_v02.jpg)
+  - 10-web-sobre-390.png: fora do padrão MORE_<CANAL>_<peça-slug>_<variante>_<AAAAMMDD>_v<nn>.<ext> (ex. MORE_IG_mesa-de-centro-cildo_4x5_20261105_v02.jpg)
+
+R-PRINT-01 FALHA (4):
+  - 05-etiqueta-poltrona-leticia.pdf: não declara PDF/X-4 (exporte com o preset PDF/X-4:2008)
+  - 06-etiqueta-banco-maria.pdf: não declara PDF/X-4 (exporte com o preset PDF/X-4:2008)
+  - 07-cartaz-abertura-loja.pdf: não declara PDF/X-4 (exporte com o preset PDF/X-4:2008)
+  - 08-cartaz-mesa-de-centro-cildo.pdf: não declara PDF/X-4 (exporte com o preset PDF/X-4:2008)

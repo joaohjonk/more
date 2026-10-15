@@ -5,8 +5,11 @@
 //     medido quando a mesma regra declara fundo off-white
 //   - erro #E07A5F em seletor de erro (lista ERROR abaixo)
 // Qualquer outra cor cromática (incluindo os tons color.campo) em CSS de interface falha.
+// Layout de peça impressa/social (@page, data-canvas, ou nome com PRINT/IG/IGS/CONVITE/LIVRO/VITRINE/ETIQUETA/CARTAZ):
+//   tons campo são permitidos (R-COLOR-04); ciano só como o adesivo quadrado de 10 mm de "pronta entrega"
+//   (regra com width e height de 10mm / 37,8px), proposta.
 // Uso: node checks/accent.mjs <arquivo.css|.html ...>
-import { argsOrUsage, finish, cssOf, varMap, resolveVars, colorsIn, parseColor, dist, hsl, colorTokens } from './lib.mjs';
+import { argsOrUsage, finish, cssOf, varMap, resolveVars, colorsIn, parseColor, dist, hsl, colorTokens, isLayout } from './lib.mjs';
 
 const NAV = /(nav|menu|filter|filtro|collection|categor|tab|breadcrumb|(^|[\s>+~])a(?=[#.:\[]|$))/i;
 const STATE = /(:hover|\.active|\.is-active|:focus|\[aria-current|\[aria-selected|\.current|\.selected|:checked)/i;
@@ -18,14 +21,21 @@ const CIANO = parseColor('#8bc0d0'), ERRO = parseColor('#e07a5f');
 const campo = Object.entries(colorTokens()).filter(([n]) => n.startsWith('campo-'));
 const failures = [];
 
+const mm10 = (v) => v && (/^10mm$/.test(v.trim()) || Math.abs(parseFloat(v) - 37.8) <= 0.6 && /px$/.test(v.trim()));
 for (const f of files) for (const r of cssOf(f)) {
   if (r.atRule) continue;
+  const layout = isLayout(f);
+  const dd = Object.fromEntries(r.decls.map((x) => [x.prop, resolveVars(x.value, vars)]));
   for (const d of r.decls) {
     if (d.prop.startsWith('--')) continue; // definição de variável não é uso
     for (const { raw, c } of colorsIn(resolveVars(d.value, vars))) {
       if (c.a === 0 || hsl(c).s < 0.25) continue;
       const where = `${d.prop} de "${r.selector}"`;
       const camp = campo.find(([, t]) => dist(t, c) < 3);
+      if (layout) {
+        if (camp) continue;
+        if (dist(c, CIANO) < 3) { if (!(mm10(dd.width) && mm10(dd.height))) failures.push({ file: f, msg: `ciano em ${where} num layout: ciano só como adesivo quadrado de 10 mm de "pronta entrega"` }); continue; }
+      }
       if (camp) failures.push({ file: f, msg: `${raw} (color.${camp[0]}) em ${where}: tons campo são só para fundo de cartaz/convite/livro/vitrine/social, nunca na interface da loja` });
       else if (dist(c, CIANO) < 3) {
         const sels = r.selector.split(',');

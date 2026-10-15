@@ -1,11 +1,12 @@
 #!/usr/bin/env node
-// R-COLOR-01: toda cor literal precisa ser o valor de um token aprovado; branco opaco só em propriedade de texto.
+// R-COLOR-01: toda cor literal usada precisa ser o valor de um token aprovado; branco opaco só em propriedade de texto.
+// Definição de variável (--x: valor, ex. tokens.css copiado) não é uso e não conta.
 // Uso: node checks/color-tokens.mjs <arquivo.css|.html|.svg ...>
 import fs from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
 import { spawnSync } from 'node:child_process';
-import { argsOrUsage, finish, cssOf, colorsIn, colorTokens, colorKey, varMap, resolveVars, REPO } from './lib.mjs';
+import { argsOrUsage, finish, cssOf, colorsIn, colorTokens, colorKey, varMap, resolveVars, parseColor, REPO } from './lib.mjs';
 
 const files = argsOrUsage('node checks/color-tokens.mjs <arquivo.css|.html|.svg ...>');
 const failures = [];
@@ -16,7 +17,11 @@ if (fs.existsSync(cstack)) {
   const r = spawnSync('node', [cstack, 'tokens', 'lint', ...files, '--ws', REPO, '--allow', '#fff'], { encoding: 'utf8' });
   for (const line of (r.stdout || '').split('\n')) {
     const m = line.match(/^(.*?):(\d+) (\S+) raw/);
-    if (m) failures.push({ file: m[1], msg: `linha ${m[2]}: ${m[3]} não é valor de nenhum token de cor (cstack tokens lint)` });
+    if (!m) continue;
+    // cor que só aparece em definição de variável (--x: valor) não é uso
+    const c = parseColor(m[3]);
+    const used = c && cssOf(m[1]).some((r) => r.decls.some((d) => !d.prop.startsWith('--') && colorsIn(d.value).some((x) => colorKey(x.c) === colorKey(c))));
+    if (used) failures.push({ file: m[1], msg: `linha ${m[2]}: ${m[3]} não é valor de nenhum token de cor (cstack tokens lint)` });
   }
 }
 
@@ -30,6 +35,7 @@ const vars = varMap(files);
 for (const f of files) {
   const seen = new Set();
   for (const r of cssOf(f)) for (const d of r.decls) for (const { raw, c } of colorsIn(d.value)) {
+    if (d.prop.startsWith('--')) continue; // definição de variável (tokens.css) não é uso
     const k = colorKey(c);
     if (pending.has(k) && !approved.has(k) && !seen.has(k)) {
       seen.add(k);

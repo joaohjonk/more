@@ -1,0 +1,6 @@
+{
+  "$descricao": "Raízes de palavra que fazem uma frase de legenda contar como linha de material/ficha (R-COPY-02). Comparação sem maiúsculas, pelo começo da palavra. Linhas de status ('Pronta entrega', 'Sob encomenda...') também não contam como linha seca.",
+  "materiais": ["madeira", "maciç", "aço", "alumínio", "latão", "vidro", "fibra", "tecido", "estofad", "bouclê", "veludo", "papel", "algodão", "mármore", "madrepérola", "fundid", "laminad", "talagarça", "aramad", "metal", "couro", "pedra", "ipê", "sucupira", "tauari", "angelim", "miolo", "anel", "tampo", "cúpula", "base", "pés", "estrutura", "acabamento"],
+  "ficha": ["pino", "pinos", "nbr", "mm", "cm", "medida", "medidas", "dimens"],
+  "status": ["pronta entrega", "à pronta entrega", "sob encomenda"]
+}

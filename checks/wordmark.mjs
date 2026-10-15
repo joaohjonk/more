@@ -1,7 +1,8 @@
 #!/usr/bin/env node
 // R-GEN-01: a marca MORE só entra como o arquivo oficial. Em SVG/HTML:
-//   - <img>/<image>/<use> de marca (class/id/alt com logo, wordmark, marca) aponta para assets/official/more-wordmark.svg
-//     ou more-wordmark-small.svg
+//   - <img>/<image>/<use> de marca (class/id/alt com logo, wordmark, marca) aponta para assets/official/more-wordmark.svg,
+//     more-wordmark-currentcolor.svg ou more-wordmark-small.svg (cor pelo CSS, com tokens; o fill black do
+//     more-wordmark.svg é padrão do arquivo, não cor da marca)
 //   - <svg>/<g> inline de marca tem exatamente os mesmos paths do arquivo oficial (coordenadas arredondadas a 0,1)
 //   - "MORE" escrito como texto (<text>, ou texto dentro de elemento de marca) falha: é marca redesenhada com fonte
 // Imagem raster gerada não é lida aqui: o wordmark entra por composição (skill image-edit) do SVG oficial, nunca pelo prompt.
@@ -11,7 +12,7 @@ import path from 'node:path';
 import { argsOrUsage, finish, REPO } from './lib.mjs';
 
 const files = argsOrUsage('node checks/wordmark.mjs <arquivo.svg|.html ...>');
-const OFFICIAL = ['more-wordmark.svg', 'more-wordmark-small.svg'];
+const OFFICIAL = ['more-wordmark.svg', 'more-wordmark-currentcolor.svg', 'more-wordmark-small.svg'];
 const norm = (d) => d.replace(/-?\d*\.?\d+(e-?\d+)?/gi, (n) => (Math.round(parseFloat(n) * 10) / 10).toString()).replace(/\s+/g, ' ').trim();
 const pathsOf = (svg) => [...svg.matchAll(/<path\b[^>]*\sd\s*=\s*"([^"]+)"/gi)].map((m) => norm(m[1])).sort().join('|');
 const official = OFFICIAL.map((f) => pathsOf(fs.readFileSync(path.join(REPO, 'assets/official', f), 'utf8')));

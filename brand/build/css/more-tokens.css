@@ -28,9 +28,10 @@
   --color-surface-glass: rgba(45, 33, 30, 0.1); /** Floating bars (menu, filters). Pair with blur.medium. */
   --color-surface-glass-strong: rgba(45, 33, 30, 0.8); /** Open menu panel and primary CTA bar. */
   --color-text-primary: #2d211e; /** Intenção da marca (--preto no :root). O site hoje renderiza texto corrido em #000 porque o body não define cor: é o site que quebra R-COLOR-02, não o token. Correção no tema: body { color: var(--preto) }. */
-  --color-text-secondary: #686868; /** preço, medidas, 'pronta entrega', descrição do produto. 4,28:1 no off-white: reprova AA abaixo de 24px, e o site usa em 10–13px. */
-  --color-text-on-inverse: #bdbdbd; /** Text on cinza-escuro / preto-80. */
+  --color-text-secondary: #686868; /** cinza-medio: preço, medidas. 4,28:1 no off-white: só a partir de 24px. Abaixo de 24px use text.small. */
+  --color-text-on-inverse: #bdbdbd; /** cinza-claro sobre preto 80% (8,9:1). Sobre cinza-escuro só a partir de 24px; abaixo use branco. */
   --color-text-on-inverse-active: #ffffff; /** Hover / current item on dark. */
+  --color-text-small: #5d554f; /** texto pequeno (abaixo de 24px) secundário sobre off-white e papel: 5,60:1 */
   --color-accent-available: #8bc0d0; /** Marks what can be bought now (tomada, pronta entrega). */
   --color-feedback-error: #e07a5f; /** Form and payment errors. */
   --color-campo-vermelho-jambo: #9a1935; /** Red field of the TOM.01 poster. Finish name candidate: Vermelho Jambo. */
@@ -38,10 +39,6 @@
   --color-campo-petroleo: #306c6a; /** Nome inventado por nós: não há acabamento 'petróleo'. A amostra (p01_0) é luz colorida na borda de uma mesa, não um fundo. Proposta, fora do guia até o time aceitar. */
   --color-campo-berinjela: #332436; /** Aubergine drape behind the Luminária Fantô. Finish name candidate: Berinjela. */
   --color-campo-amarelo-igarata: #da9015; /** Fundo amarelo atrás do Pendente Naz (instagram p02_1). Hex amostrado do JPEG (inferido); nome do acabamento Amarelo Igaratá (inferido). */
-  --color-campo-mostarda-igarata: #da9015; /** nome antigo, mantido para peças já feitas; use amarelo-igarata */
-  --color-site-sem-token-grafite: #1a1a1a; /** collection-list.css .collection-list__filter a (15px) e about.css .about__content (fundo) */
-  --color-site-sem-token-material-fundo: #dad7d1; /** product.css fundo da amostra de material no acordeão */
-  --color-site-sem-token-material-hover: #dedbd5; /** product.css hover da amostra de material */
   --space-hair: 6px; /** gap between gallery images, between floating bars, list-view image gap */
   --space-xs: 8px;
   --space-sm: 10px; /** mobile page gutter, bar padding */
@@ -92,9 +89,9 @@
   --motion-easing-standard: cubic-bezier(0.25, 0.1, 0.25, 1); /** 'ease' do CSS: a curva mais usada no site (73 usos) */
   --aspect-portrait: 0.75; /** 3:4, every product card and PDP image */
   --aspect-landscape: 1.5; /** 3:2, horizontal list-view images */
-  --logo-s: 60px; /** S: width 60px on screen, 18 mm in print. Bars, footer, tags, labels. */
-  --logo-m-ratio: 0.1667; /** M: width = 1/6 of the short side of the frame. Invites, posts, book cover. */
-  --logo-xl-ratio: 0.97; /** XL: 95–100% of the frame width, bottom-aligned, may bleed off the bottom edge. Intro, posters, signage, window. */
+  --logo-s: 60px; /** S: 60px de largura na barra do menu do site (medido). 18 mm no papel é proposta nossa. */
+  --logo-m-ratio: 0.1667; /** M: alvo 1/6 (16,7%) do lado curto; tolerância 16–25% (cartaz TOM.01 16%, rodapé do site 19%, livro anterior ~25%). Convite, cartaz, capa. */
+  --logo-xl-ratio: 0.97; /** XL: 95–100% da largura, base entre 0 e 5% acima da borda de baixo, sem sangrar (convite 05.11). Cartaz, convite, vitrine. */
   --breakpoint-xl: 1440px; /** PDP troca colunas laterais 344→280 */
   --breakpoint-lg: 1200px;
   --breakpoint-md: 1024px; /** menu e declarações mudam para mobile */
@@ -127,6 +124,7 @@
   --font-line-height-text: 1.15; /** descrição do produto (product.css) */
   --font-line-height-loose: 2; /** links e títulos do footer, lista do menu no mobile */
   --font-line-height-mono-list: 1.9; /** títulos de grupo do menu no mobile */
+  --font-line-height-display: 0.9; /** display-1/2/3 (proposta), espaçamento −0,02em */
   --font-print-size-caption: 6px; /** 6 pt in print (legal, credits) */
   --font-print-size-label: 7px; /** 7 pt in print (mono metadata; minimum for Mono Condensed on uncoated stock) */
   --font-print-size-body: 8.5px; /** 8.5 pt in print (running text) */
@@ -136,8 +134,8 @@
   --font-print-size-about: 28px; /** 28 pt in print (manifesto) */
   --type-ui-mono: 400 13px/1.7 MuotoMono, "Martian Mono", ui-monospace, Menlo, monospace; /** body 13px; listas do menu 22,1px (1.7) */
   --type-product-name: 400 13px/1.3 Muoto, "DM Sans", "Helvetica Neue", Arial, sans-serif; /** grid card name; price uses the same style in text.secondary */
-  --type-product-title: 300 26px/1 Muoto, "DM Sans", "Helvetica Neue", Arial, sans-serif; /** Corrigido pelo site: .product__title.muoto = Muoto 26px, peso pedido 300 (mostra Regular). */
-  --type-statement: 300 26px/1 Muoto, "DM Sans", "Helvetica Neue", Arial, sans-serif;
-  --type-about: 300 32px/1 Muoto, "DM Sans", "Helvetica Neue", Arial, sans-serif;
-  --type-label: 300 11px/1.3 Muoto, "DM Sans", "Helvetica Neue", Arial, sans-serif; /** medidas e descrição na PDP: Muoto 11px peso 300, cinza-medio */
+  --type-product-title: 400 26px/1 Muoto, "DM Sans", "Helvetica Neue", Arial, sans-serif; /** Corrigido pelo site: .product__title.muoto = Muoto 26px, peso pedido 300 (mostra Regular). Peso 400 em peças novas: é o que aparece (o site pede 300 em .muoto, mas só carrega Regular). */
+  --type-statement: 400 26px/1 Muoto, "DM Sans", "Helvetica Neue", Arial, sans-serif; /** Peso 400 em peças novas: é o que aparece (o site pede 300 em .muoto, mas só carrega Regular). */
+  --type-about: 400 32px/1 Muoto, "DM Sans", "Helvetica Neue", Arial, sans-serif; /** Peso 400 em peças novas: é o que aparece (o site pede 300 em .muoto, mas só carrega Regular). */
+  --type-label: 400 11px/1.3 Muoto, "DM Sans", "Helvetica Neue", Arial, sans-serif; /** medidas e descrição na PDP: Muoto 11px peso 300, cinza-medio Peso 400 em peças novas: é o que aparece (o site pede 300 em .muoto, mas só carrega Regular). */
 }

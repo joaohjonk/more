@@ -1,50 +1,73 @@
 #!/usr/bin/env node
-// R-LOGO-01: tamanho, cor e forma da marca num layout SVG (viewBox = quadro da peça).
-// A marca é o elemento <image>/<use>/<svg>/<g> com href more-wordmark*.svg ou class/id com wordmark/logo/marca,
-// com x, y, width, height (rotate de 90/270 troca largura e altura).
-//   - M: lado maior da marca / lado menor do quadro entre 0,16 e 0,25
-//   - XL: largura da marca / largura do quadro entre 0,95 e 1,00 e base da marca a no máx. 5% da base do quadro
-//   - qualquer outro tamanho falha
-//   - cor (fill/color) só preto #2D211E, branco #FFFFFF, off-white #E5E1DB (ou o arquivo oficial sem recolorir)
-//   - stroke (contorno), scale negativo (espelho), escala não uniforme (esticada) e fill="url(...)" (padrão) falham
-// Em HTML: o quadro é o elemento com data-canvas="LxA" (px) e a marca é <img> com style width/height/bottom em px.
+// R-LOGO-01: tamanho, cor e forma da marca num layout (SVG com viewBox, ou HTML com data-canvas="LxA" em px).
+// A marca é <image>/<use>/<img>/<svg>/<g> com href more-wordmark*.svg ou class/id com wordmark/logo/marca.
+//   SVG: x, y, width, height do elemento. HTML: style width/height e left/top/bottom em px.
+//   rotate de 90/270 troca largura e altura.
+//   - M: lado maior da marca / lado menor do quadro; alvo 1/6 (16,7%), tolerância 16-25%
+//   - XL: largura da marca / largura do quadro 95-100%, base da marca 0-5% acima da base do quadro, sem sangrar
+//     (marca inteira dentro do quadro)
+//   - outro tamanho falha
+//   - cor só preto #2D211E, branco #FFFFFF ou off-white #E5E1DB (fill/color). Sobre campo: amarelo-igarata => preto;
+//     vermelho-jambo, verde-jamaica, berinjela => branco. Fundo = <rect> do tamanho do quadro (SVG) ou background do
+//     elemento data-canvas (HTML)
+//   - stroke (contorno), scale negativo (espelho), escala não uniforme e fill="url(...)" (padrão) falham
+// Post de peça no feed do Instagram (nome com ig-feed / _IG_, sem evento, abertura, bastidores, marca, sobre):
+//   sem marca e sem texto sobre a foto (76% do feed). Evento, story e cartaz podem levar M ou XL.
 // Uso: node checks/logo.mjs <layout.svg|layout.html ...>
 import fs from 'node:fs';
-import { argsOrUsage, finish, parseColor, dist } from './lib.mjs';
+import path from 'node:path';
+import { argsOrUsage, finish, parseColor, dist, colorTokens, cssOf, varMap, resolveVars, colorsIn, htmlText } from './lib.mjs';
 
 const files = argsOrUsage('node checks/logo.mjs <layout.svg|.html ...>');
 const ALLOWED = ['#2d211e', '#ffffff', '#e5e1db'].map(parseColor);
+const PRETO = ALLOWED[0], BRANCO = ALLOWED[1];
+const toks = colorTokens();
+const CAMPO = { 'amarelo-igarata': PRETO, 'vermelho-jambo': BRANCO, 'verde-jamaica': BRANCO, berinjela: BRANCO };
 const MARK = /more-wordmark|\b(wordmark|logo|marca)\b/i;
 const failures = [];
-const num = (s, k) => { const m = s.match(new RegExp(`\\b${k}\\s*=\\s*"(-?[\\d.]+)`)); return m ? parseFloat(m[1]) : null; };
-const css = (s, k) => { const m = s.match(new RegExp(`(?:^|;|")\\s*${k}\\s*:\\s*(-?[\\d.]+)px`)); return m ? parseFloat(m[1]) : null; };
+const num = (s, k) => { const m = s.match(new RegExp(`(?:^|\\s)${k}\\s*=\\s*"(-?[\\d.]+)`)); return m ? parseFloat(m[1]) : null; };
+const css = (s, k) => { const m = s.match(new RegExp(`(?:^|;|\\s)${k}\\s*:\\s*(-?[\\d.]+)px`)); return m ? parseFloat(m[1]) : null; };
+const igProductPost = (f) => /(^|[-_])ig[-_]feed|_IG_/i.test(path.basename(f)) && !/evento|abertura|bastidor|marca|sobre/i.test(path.basename(f));
 
-function judge(f, W, H, w, h, bottomGap, attrs, inner) {
+function campoOf(color) {
+  if (!color) return null;
+  const c = parseColor(color);
+  if (!c) return null;
+  const hit = Object.keys(CAMPO).find((n) => toks[`campo-${n}`] && dist(toks[`campo-${n}`], c) < 3);
+  return hit || null;
+}
+
+function judge(f, W, H, box, attrs, inner, bg) {
+  const { x, w, h, bottomGap } = box;
   const short = Math.min(W, H), long = Math.max(w, h);
   const m = long / short, xl = w / W;
   const isM = m >= 0.16 && m <= 0.25;
-  const isXL = xl >= 0.95 && xl <= 1.0001 && bottomGap !== null && bottomGap / H <= 0.05;
-  if (!isM && !isXL) failures.push({ file: f, msg: `marca com ${Math.round(long)}px = ${(m * 100).toFixed(1)}% do lado menor e ${(xl * 100).toFixed(1)}% da largura: só M (16-25% do lado menor) ou XL (95-100% da largura, na base)` });
+  const isXL = xl >= 0.95 && xl <= 1.0001 && bottomGap !== null && bottomGap >= -0.5 && bottomGap / H <= 0.05;
+  if (!isM && !isXL) failures.push({ file: f, msg: `marca com ${Math.round(long)}px = ${(m * 100).toFixed(1)}% do lado menor e ${(xl * 100).toFixed(1)}% da largura${bottomGap !== null ? `, base ${(bottomGap / H * 100).toFixed(1)}% acima do pé` : ''}: só M (alvo 16,7%, 16-25% do lado menor) ou XL (95-100% da largura, base 0-5% acima do pé)` });
+  if (xl >= 0.95 && x !== null && (x < -0.5 || x + w > W + 0.5)) failures.push({ file: f, msg: 'marca XL sangra para fora do quadro: fica inteira dentro' });
   const all = attrs + ' ' + inner;
   if (/stroke\s*=\s*"(?!none)[^"]+"|stroke\s*:\s*(?!none)[#\w]/i.test(all)) failures.push({ file: f, msg: 'marca com contorno (stroke): nunca contornada' });
   if (/scale\(\s*-|scaleX\(\s*-|matrix\(\s*-/i.test(all)) failures.push({ file: f, msg: 'marca espelhada (scale negativo)' });
   const sc = all.match(/scale\(\s*([\d.]+)[\s,]+([\d.]+)\s*\)/);
   if (sc && Math.abs(+sc[1] - +sc[2]) > 0.001) failures.push({ file: f, msg: `marca esticada (scale ${sc[1]} x ${sc[2]})` });
   if (/fill\s*=\s*"url\(|fill\s*:\s*url\(/i.test(all)) failures.push({ file: f, msg: 'marca preenchida com padrão/degradê (fill url)' });
-  for (const c of [...all.matchAll(/(?:fill|color)\s*[=:]\s*"?\s*(#[0-9a-f]{3,8}|rgba?\([^)]*\)|white|black)/gi)].map((x) => x[1])) {
-    const p = parseColor(c);
-    if (p && !ALLOWED.some((a) => dist(a, p) < 2)) failures.push({ file: f, msg: `marca na cor ${c}: só preto #2D211E, branco ou off-white #E5E1DB` });
-  }
+  const cols = [...all.matchAll(/(?:fill|color)\s*[=:]\s*"?\s*(#[0-9a-f]{3,8}|rgba?\([^)]*\)|white|black)/gi)].map((x) => parseColor(x[1])).filter(Boolean).filter((c) => c.a > 0);
+  for (const p of cols) if (!ALLOWED.some((a) => dist(a, p) < 2)) failures.push({ file: f, msg: `marca na cor rgb(${p.r},${p.g},${p.b}): só preto #2D211E, branco #FFF ou off-white #E5E1DB` });
+  const camp = campoOf(bg);
+  if (camp && cols.length && !cols.every((p) => dist(p, CAMPO[camp]) < 2)) failures.push({ file: f, msg: `marca sobre ${camp}: use ${CAMPO[camp] === PRETO ? 'preto #2D211E' : 'branco #FFF'}` });
 }
 
 for (const f of files) {
   const src = fs.readFileSync(f, 'utf8');
   let found = 0;
+  const ig = igProductPost(f);
   if (/\.svg$/i.test(f)) {
     const vb = (src.match(/<svg\b[^>]*viewBox\s*=\s*"([^"]+)"/i) || [])[1];
     if (!vb) { failures.push({ file: f, msg: 'SVG sem viewBox: não dá para medir o quadro' }); continue; }
     const [, , W, H] = vb.split(/[\s,]+/).map(Number);
     const body = src.replace(/^[\s\S]*?<svg\b[^>]*>/i, '');
+    const bgRect = [...body.matchAll(/<rect\b([^>]*)>/gi)].find((m) => num(m[1], 'width') === W && num(m[1], 'height') === H);
+    const bg = bgRect ? (bgRect[1].match(/fill\s*=\s*"([^"]+)"/) || [])[1] : null;
     for (const m of body.matchAll(/<(image|use|svg|g)\b([^>]*)>(?:([\s\S]*?)<\/\1>)?/gi)) {
       if (!MARK.test(m[2])) continue;
       let [x, y, w, h] = ['x', 'y', 'width', 'height'].map((k) => num(m[2], k));
@@ -52,20 +75,39 @@ for (const f of files) {
       const rot = (m[2].match(/rotate\(\s*(-?\d+)/) || [])[1];
       if (rot && Math.abs(+rot) % 180 === 90) [w, h] = [h, w];
       found++;
-      judge(f, W, H, w, h, y === null ? null : H - (y + h), m[2], m[3] || '');
+      if (ig) { failures.push({ file: f, msg: 'post de peça no feed não leva marca' }); continue; }
+      judge(f, W, H, { x, w, h, bottomGap: y === null ? null : H - (y + h) }, m[2], m[3] || '', bg);
     }
+    if (ig && /<text\b/i.test(body)) failures.push({ file: f, msg: 'post de peça no feed não leva texto sobre a foto' });
   } else {
-    const cv = src.match(/data-canvas\s*=\s*"(\d+)x(\d+)"/i);
+    const body = src.replace(/^[\s\S]*?<body[^>]*>/i, '');
+    if (ig) {
+      if (MARK.test(body.replace(/<img\b[^>]*class="photo"[^>]*>/gi, ''))) failures.push({ file: f, msg: 'post de peça no feed não leva marca' });
+      if (htmlText(body).trim()) failures.push({ file: f, msg: `post de peça no feed não leva texto sobre a foto ("${htmlText(body).trim().slice(0, 40)}"): o texto vai na legenda` });
+      continue;
+    }
+    const cv = src.match(/<(\w+)([^>]*)data-canvas\s*=\s*"(\d+)x(\d+)"([^>]*)>/i);
     if (!cv) { failures.push({ file: f, msg: 'HTML sem data-canvas="LxA": não dá para medir o quadro' }); continue; }
+    const W = +cv[3], H = +cv[4];
+    const cattrs = cv[2] + cv[5];
+    const cls = ((cattrs.match(/class\s*=\s*"([^"]*)"/i) || [, ''])[1].split(/\s+/)[0]);
+    const vars = varMap([f]);
+    let bg = (cattrs.match(/background(?:-color)?\s*:\s*([^;"]+)/i) || [])[1] || null;
+    if (!bg && cls) for (const r of cssOf(f)) if (!/print/.test(r.media) && r.selector.split(',').some((s) => s.trim() === '.' + cls)) for (const d of r.decls) if (/^background(-color)?$/.test(d.prop)) bg = d.value;
+    if (bg) bg = (colorsIn(resolveVars(bg, vars))[0] || {}).raw || null;
     for (const m of src.matchAll(/<(img|svg)\b([^>]*)>/gi)) {
       if (!MARK.test(m[2])) continue;
       const st = (m[2].match(/style\s*=\s*"([^"]*)"/i) || [, ''])[1];
-      const w = css(st, 'width'), h = css(st, 'height');
+      let w = css(st, 'width'), h = css(st, 'height');
       if (w === null || h === null) { failures.push({ file: f, msg: 'marca sem width/height em px no style' }); continue; }
+      const rot = /rotate\(\s*-?(90|270)deg/.test(st);
+      const top = css(st, 'top'), bottom = css(st, 'bottom'), left = css(st, 'left');
+      const bottomGap = rot ? null : bottom !== null ? bottom : top !== null ? H - (top + h) : null;
+      if (rot) [w, h] = [h, w];
       found++;
-      judge(f, +cv[1], +cv[2], w, h, css(st, 'bottom'), m[2], '');
+      judge(f, W, H, { x: rot ? null : left, w, h, bottomGap }, m[2], '', bg);
     }
   }
-  if (!found && !failures.some((x) => x.file === f)) failures.push({ file: f, msg: 'nenhuma marca encontrada (href more-wordmark*.svg ou class/id wordmark/logo/marca)' });
+  if (!found && !ig && !failures.some((x) => x.file === f)) failures.push({ file: f, msg: 'nenhuma marca encontrada (href more-wordmark*.svg ou class/id wordmark/logo/marca)' });
 }
-finish('R-LOGO-01', failures, 'marca em M ou XL, cor e forma corretas');
+finish('R-LOGO-01', failures, 'marca em M ou XL, cor e forma corretas; post de peça sem marca');

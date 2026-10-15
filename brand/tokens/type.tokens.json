@@ -198,6 +198,10 @@
    "mono-list": {
     "$value": 1.9,
     "$description": "títulos de grupo do menu no mobile"
+   },
+   "display": {
+    "$value": 0.9,
+    "$description": "display-1/2/3 (proposta), espaçamento −0,02em"
    }
   },
   "print-size": {
@@ -286,51 +290,53 @@
    "$value": {
     "fontFamily": "{font.family.muoto}",
     "fontSize": "{font.size.statement}",
-    "fontWeight": 300,
+    "fontWeight": 400,
     "lineHeight": 1,
     "letterSpacing": {
      "value": 0,
      "unit": "px"
     }
    },
-   "$description": "Corrigido pelo site: .product__title.muoto = Muoto 26px, peso pedido 300 (mostra Regular)."
+   "$description": "Corrigido pelo site: .product__title.muoto = Muoto 26px, peso pedido 300 (mostra Regular). Peso 400 em peças novas: é o que aparece (o site pede 300 em .muoto, mas só carrega Regular)."
   },
   "statement": {
    "$value": {
     "fontFamily": "{font.family.muoto}",
     "fontSize": "{font.size.statement}",
-    "fontWeight": 300,
+    "fontWeight": 400,
     "lineHeight": 1,
     "letterSpacing": {
      "value": 0,
      "unit": "px"
     }
-   }
+   },
+   "$description": "Peso 400 em peças novas: é o que aparece (o site pede 300 em .muoto, mas só carrega Regular)."
   },
   "about": {
    "$value": {
     "fontFamily": "{font.family.muoto}",
     "fontSize": "{font.size.about}",
-    "fontWeight": 300,
+    "fontWeight": 400,
     "lineHeight": 1,
     "letterSpacing": {
      "value": 0,
      "unit": "px"
     }
-   }
+   },
+   "$description": "Peso 400 em peças novas: é o que aparece (o site pede 300 em .muoto, mas só carrega Regular)."
   },
   "label": {
    "$value": {
     "fontFamily": "{font.family.muoto}",
     "fontSize": "{font.size.label}",
-    "fontWeight": 300,
+    "fontWeight": 400,
     "lineHeight": 1.3,
     "letterSpacing": {
      "value": 0,
      "unit": "px"
     }
    },
-   "$description": "medidas e descrição na PDP: Muoto 11px peso 300, cinza-medio"
+   "$description": "medidas e descrição na PDP: Muoto 11px peso 300, cinza-medio Peso 400 em peças novas: é o que aparece (o site pede 300 em .muoto, mas só carrega Regular)."
   }
  }
 }

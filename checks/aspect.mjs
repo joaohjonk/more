@@ -1,6 +1,9 @@
 #!/usr/bin/env node
 // R-LAYOUT-02 (parte medível): proporção e cantos de imagem.
-// Imagem: largura/altura tem que ser 3:4, 4:5, 9:16 ou 3:2 (tolerância 1%). Nome com _4x5_ => 1080x1350; _9x16_ => 1080x1920.
+// Imagem: só foto de produto e exportação de foto para canal são medidas - arquivo dentro de uma pasta fotos/, ou nome
+// com foto, photo, PDT_, ig-feed/ig-story, story, feed, _IG_ ou _IGS_. Nunca mede captura de página ou render de
+// layout: nome com web, captura ou folha, ou imagem mais alta que 2,5x a largura.
+// A foto medida tem largura/altura 3:4, 4:5, 9:16 ou 3:2 (tolerância 1%). Nome com _4x5_ => 1080x1350; _9x16_ => 1080x1920.
 // CSS: em seletor de imagem (img, image, photo, foto, picture, media, gallery, thumbnail, video) aspect-ratio só 3/4, 4/5, 9/16, 3/2
 //      e border-radius 0 (foto de produto reta). Miniatura/amostra de material (thumb, swatch, material, sample) pode ter 2px
 //      (radius.thumb). Valor fora da escala de raios não é contado aqui: R-SHAPE-01 já falha.
@@ -18,7 +21,11 @@ const vars = varMap(cssFiles);
 
 for (const f of files) {
   if (IMG_EXT.includes(ext(f))) {
+    const b = path.basename(f);
+    const isPhoto = /(^|[\\/])fotos[\\/]/i.test(f) || /foto|photo|PDT_|(^|[-_])ig[-_](feed|story)|story|feed|_IGS?_/i.test(b);
+    if (!isPhoto || /web|captura|folha/i.test(b)) continue;
     const { w, h } = imageInfo(f);
+    if (h > 2.5 * w) continue; // captura de página inteira
     const r = w / h;
     const hit = Object.entries(RATIOS).find(([, v]) => Math.abs(r - v) / v <= 0.01);
     if (!hit) failures.push({ file: f, msg: `${w}x${h} (${r.toFixed(3)}) não é 3:4, 4:5, 9:16 nem 3:2` });

@@ -127,7 +127,7 @@
   ol.steps{padding-left:1.2em;max-width:70ch;font-family:var(--font-family-muoto);font-size:var(--font-size-ui);line-height:1.45}ol.steps li{margin-bottom:var(--space-sm)}
   code{font-family:var(--font-family-mono);background:var(--color-alpha-preto-10);padding:1px 4px}
   footer{background:var(--color-surface-inverse);color:var(--color-text-on-inverse);padding:var(--space-3xl) var(--space-lg) 120px;margin-top:var(--space-section)}
-  footer svg{width:min(320px,60vw);color:#c9c2b9}footer svg path{fill:currentColor}
+  footer svg{width:min(320px,60vw);color:var(--color-off-white)}footer svg path{fill:currentColor}
 
   /* panel additions */
   .campos{display:grid;grid-template-columns:repeat(4,1fr);gap:var(--space-hair)}
@@ -187,7 +187,7 @@
     <div class="rules">
       <div><span class="id">Crença 1</span><p>Uma peça não precisa combinar. "Não foi feita para combinar com o sofá. E isso é ótimo."</p></div>
       <div><span class="id">Crença 2</span><p>Material antes de adjetivo. Madeira maciça, vidro fundido, alumínio naval, ditos pelo nome.</p></div>
-      <div><span class="id">Crença 3</span><p>Contra o móvel genérico de projeto. "Para projetos sem personalidade, a concorrência resolve."</p></div>
+      <div><span class="id">Crença 3</span><p>Contra o móvel genérico de projeto. A peça tem que se sustentar sozinha numa sala.</p></div>
     </div>
   </section>
 
@@ -206,7 +206,7 @@
   <section id="marca">
     <div class="eyebrow">[04] Marca · R-LOGO-01 · tokens logo.*</div>
     <h2>A marca em dois tamanhos</h2>
-    <p class="body">M ou XL. Preto, branco ou off-white. Nunca contornada, espelhada ou com padrão por cima.</p>
+    <p class="body">M ou XL nas peças; S (60 px) só na barra do menu do site. Preto, branco ou off-white: preto sobre amarelo-igaratá, branco sobre vermelho-jambo, verde-jamaica e berinjela. Nunca contornada, espelhada ou com padrão por cima. Use o arquivo <code>assets/official/more-wordmark-currentcolor.svg</code> e dê a cor pelo CSS.</p>
     <p class="note">M aparece no cartaz da TOM.01 (16% do lado curto, girada 90°), no rodapé do site (19% da largura) e na capa do livro anterior (cerca de 25%). XL aparece no convite de 05.11, quase da largura toda, encostada embaixo. O tamanho mínimo S e o respiro igual ao O são propostas nossas: estão em Propostas, fora das regras.</p>
     <div class="logos">
       <div><span>M · 1/6 do lado curto (faixa observada 16–25%)</span><svg viewBox="0 0 272 69" style="width:max(34%,90px);display:block;margin-top:var(--space-2xl)" aria-hidden="true"><path d="M176.593 23.0819V1.91833H150.317V66.5948H176.593V44.2791H205.243V1.91833C189.55 1.91833 177.465 13.093 176.593 23.0875V23.0819Z"/><path d="M111.007 0C91.875 0 76.3403 15.3302 76.3403 34.223C76.3403 53.1159 91.8693 68.4461 111.007 68.4461C130.145 68.4461 145.742 53.1159 145.742 34.223C145.742 15.3302 130.213 0 111.007 0ZM111.007 42.4334C106.43 42.4334 102.69 38.8036 102.69 34.2174C102.69 29.6313 106.435 26.0015 111.007 26.0015C115.579 26.0015 119.398 29.6984 119.398 34.2174C119.398 38.7365 115.653 42.4334 111.007 42.4334Z"/><path d="M35.919 19.6423L26.2764 1.91833H0V66.5948H26.2764V44.212H45.4936V66.5948H71.77V1.91833H45.4936L35.919 19.6423Z"/><path d="M272.002 1.87909H211.835V24.7541V34.7487V44.1783V66.5612H272.002V44.7376H238.219L255.669 34.7151L238.236 24.7541H272.002V1.87909Z"/></svg><span style="position:absolute;bottom:var(--space-md)">convite, post, capa</span></div>
@@ -244,6 +244,7 @@
     <div class="eyebrow">[06] Tipografia · brand/tokens/type.tokens.json</div>
     <h2>Tipografia</h2>
     <p class="body">Duas famílias da 205TF: <b>Muoto</b> e <b>Muoto Mono Condensed</b>, licenciadas e hospedadas no tema. Nesta página aparecem substitutas livres (DM Sans e Martian Mono condensada) porque a licença da fonte original é do site.</p>
+    <p class="note">Para peças feitas fora do site (posts, impressos, páginas novas) use as substitutas, carregando esta linha: <code>https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,600&amp;family=Martian+Mono:wdth,wght@75,400&amp;display=swap</code>. Impresso também usa as substitutas até a licença desktop da 205TF chegar.</p>
     <div class="spec"><span class="k mono">about · Muoto 32/1</span><span class="muoto" style="font-size:var(--font-size-about);line-height:1">Peças de linhas puras e proporções pesadas.</span></div>
     <div class="spec"><span class="k mono">statement · Muoto 26/1</span><span class="muoto" style="font-size:var(--font-size-statement);line-height:1">Poltrona Leticia</span></div>
     <div class="spec"><span class="k mono">title · Muoto 22/1 · mobile</span><span class="muoto" style="font-size:var(--font-size-title);line-height:1">Estúdio em São Paulo.</span></div>
@@ -430,6 +431,39 @@
     </div>
   </section>
 
+  <section id="fatos">
+    <div class="eyebrow">[13] Fatos para usar nas peças</div>
+    <h2>Fatos</h2>
+    <p class="body">Só isto pode aparecer como fato. O que não está aqui fica fora da peça até o time confirmar (lista em Próximos passos).</p>
+    <div class="tscroll"><table class="t"><thead><tr><th>Fato</th><th>Valor</th><th>Fonte</th></tr></thead><tbody>
+      <tr><td>Loja</td><td>Alameda Franca, 1332, casa 04, Jardins, São Paulo, SP</td><td>cartaz TOM.01 e rodapé do site</td></tr>
+      <tr><td>Abertura da loja</td><td>05.11 (2026). Sem horário.</td><td>convite atual</td></tr>
+      <tr><td>Nome do lugar</td><td>"estúdio e galeria" para a More; "loja" para o endereço físico</td><td>texto Sobre do site</td></tr>
+      <tr><td>Pronta entrega</td><td>Tomada TOM.01 (miolo preto, vermelho ou branco). Sem prazo no texto.</td><td>site</td></tr>
+      <tr><td>Sob encomenda</td><td>todas as outras peças: "Sob encomenda · ~120 dias"</td><td>call de 15/10</td></tr>
+      <tr><td>Preços</td><td>só os do site no dia; TOM.01 e Estante Dominó estão com R$ 1 provisório e não entram em peça</td><td>site</td></tr>
+      <tr><td>Medidas e materiais</td><td>só os da página da peça no site</td><td>site</td></tr>
+      <tr><td>Instagram e site</td><td>@more.mymore · mymore.design</td><td>site</td></tr>
+    </tbody></table></div>
+  </section>
+
+  <section id="canais">
+    <div class="eyebrow">[14] Receitas por canal</div>
+    <h2>Receitas por canal</h2>
+    <p class="body">O que fazer em cada formato. A coluna da direita diz de onde vem: o que é "padrão provisório" foi decidido por nós para não deixar dúvida e está na tabela de aceite.</p>
+    <div class="tscroll"><table class="t"><thead><tr><th>Canal</th><th>Receita</th><th>Origem</th></tr></thead><tbody>
+      <tr><td>Post de peça 4:5</td><td>Só a foto, 1080×1350. Sem texto, sem marca na imagem. Texto vai na legenda (fórmula R-COPY-02). Foto quadrada: recorte no centro; foto 3:4: recorte do topo.</td><td>observado (76% do feed)</td></tr>
+      <tr><td>Post de evento 4:5</td><td>Campo de cor + data em display + marca XL embaixo + endereço em Muoto girado. Legenda começa pelo fato (o quê, quando, onde).</td><td>convite 05.11</td></tr>
+      <tr><td>Story 9:16</td><td>Foto 9:16 recortada no centro. Texto só no terço de cima, abaixo dos 250 px livres, em Muoto 44 px (statement ×1,7) e mono 26 px. Sem colchetes: link vai no adesivo de link. Marca: não leva.</td><td>padrão provisório</td></tr>
+      <tr><td>Texto sobre foto</td><td>Preto #2D211E sobre área clara, branco sobre área escura. Nunca sobre a peça, só no fundo liso.</td><td>padrão provisório</td></tr>
+      <tr><td>Cartaz de peça</td><td>Receita do cartaz (acima). Silhueta feita da foto real por limiar, sem IA.</td><td>cartaz TOM.01</td></tr>
+      <tr><td>Cartaz de evento</td><td>Sem peça: campo, data em display-1, marca XL embaixo, três blocos girados.</td><td>convite 05.11</td></tr>
+      <tr><td>Blocos girados</td><td>Muoto 1,2% da largura do quadro (A2: 14 pt; 1080 px: 13 px).</td><td>medido no cartaz TOM.01</td></tr>
+      <tr><td>Etiqueta</td><td>Nome em Muoto, status em mono sem colchetes, medidas e madeira do site, mymore.design. Sem preço. Furo de 5 mm no canto de cima à esquerda, a 8 mm das bordas.</td><td>padrão provisório</td></tr>
+      <tr><td>Página nova</td><td>Componentes desta página. Barra de baixo com uma ação em colchetes; página de evento usa [Como chegar] com link do Google Maps para o endereço.</td><td>site + padrão provisório</td></tr>
+    </tbody></table></div>
+  </section>
+
   <section id="propostas">
     <div class="eyebrow">[P] Propostas · fora das regras até o time aceitar</div>
     <h2>Propostas</h2>
@@ -466,7 +500,7 @@
   </section>
 
   <section id="ia">
-    <div class="eyebrow">[13] Como usar com IA</div>
+    <div class="eyebrow">[15] Como usar com IA</div>
     <h2>Como usar com o Claude</h2>
     <ol class="steps">
       <li>Abra o Claude com acesso a este repositório.</li>
@@ -480,7 +514,7 @@
   </section>
 
   <section id="proximos">
-    <div class="eyebrow">[14] Próximos passos · nada aqui bloqueia o uso do sistema</div>
+    <div class="eyebrow">[16] Próximos passos · nada aqui bloqueia o uso do sistema</div>
     <h2>Próximos passos</h2>
     <h3>Quando chegar o acesso</h3>
     <ol class="steps">
@@ -495,6 +529,8 @@
       <li>Sessão de ratificação: passar regra por regra em <code>state/approvals.jsonl</code> (aceita, muda ou recusa).</li>
       <li>Vitor faz 3 peças sozinho, só com este guia, e anota onde travou. Cada trava vira correção no sistema.</li>
       <li>Decidir as grafias e nomes das peças (lista em Voz), o texto Sobre em português e os preços de R$ 1 na TOM.01 e na Estante Dominó.</li>
+      <li>Ficha de cada peça (medidas, madeiras, tecidos, prazo, status) e a foto-mestra 3:4 em alta, para impresso a 300 dpi.</li>
+      <li>O que acontece na abertura de 05.11 (horário, convite aberto ou fechado).</li>
     </ol>
   </section>
 </main>

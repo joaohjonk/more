@@ -3,7 +3,7 @@
  "items": [
   {
    "grupo": "Logo em escalas",
-   "item": "XL embaixo, quase sangrando",
+   "item": "XL embaixo, 95–100% da largura, sem sangrar",
    "origin": "observada na marca",
    "evidence": "round2-handoff/convite-atual-frames.png"
   },
@@ -15,9 +15,9 @@
   },
   {
    "grupo": "Logo em escalas",
-   "item": "S = 60px / 18mm mínimo",
-   "origin": "inventada por nós",
-   "evidence": "nenhum uso pequeno da marca encontrado"
+   "item": "S = 60px na tela / 18mm no papel",
+   "origin": "observada na marca (tela) · inventada por nós (papel)",
+   "evidence": "menu__brand do site mede 60×16px; nenhum uso impresso pequeno encontrado"
   },
   {
    "grupo": "Logo em escalas",

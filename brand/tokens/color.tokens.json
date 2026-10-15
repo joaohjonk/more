@@ -286,15 +286,19 @@
    },
    "secondary": {
     "$value": "{color.cinza-medio}",
-    "$description": "preço, medidas, 'pronta entrega', descrição do produto. 4,28:1 no off-white: reprova AA abaixo de 24px, e o site usa em 10–13px."
+    "$description": "cinza-medio: preço, medidas. 4,28:1 no off-white: só a partir de 24px. Abaixo de 24px use text.small."
    },
    "on-inverse": {
     "$value": "{color.cinza-claro}",
-    "$description": "Text on cinza-escuro / preto-80."
+    "$description": "cinza-claro sobre preto 80% (8,9:1). Sobre cinza-escuro só a partir de 24px; abaixo use branco."
    },
    "on-inverse-active": {
     "$value": "{color.branco}",
     "$description": "Hover / current item on dark."
+   },
+   "small": {
+    "$value": "{color.cinza-escuro}",
+    "$description": "texto pequeno (abaixo de 24px) secundário sobre off-white e papel: 5,60:1"
    }
   },
   "accent": {
@@ -410,49 +414,6 @@
       "origin": "observada na marca (fundo); hex e nome inferidos"
      }
     }
-   },
-   "mostarda-igarata": {
-    "$value": "{color.campo.amarelo-igarata}",
-    "$description": "nome antigo, mantido para peças já feitas; use amarelo-igarata"
-   }
-  },
-  "site-sem-token": {
-   "$description": "Cores literais que o CSS do site usa fora do :root. Registradas para o time decidir se viram token ou se o tema passa a usar um token existente.",
-   "grafite": {
-    "$value": {
-     "colorSpace": "srgb",
-     "components": [
-      0.102,
-      0.102,
-      0.102
-     ],
-     "hex": "#1A1A1A"
-    },
-    "$description": "collection-list.css .collection-list__filter a (15px) e about.css .about__content (fundo)"
-   },
-   "material-fundo": {
-    "$value": {
-     "colorSpace": "srgb",
-     "components": [
-      0.8549,
-      0.8431,
-      0.8196
-     ],
-     "hex": "#DAD7D1"
-    },
-    "$description": "product.css fundo da amostra de material no acordeão"
-   },
-   "material-hover": {
-    "$value": {
-     "colorSpace": "srgb",
-     "components": [
-      0.8706,
-      0.8588,
-      0.8353
-     ],
-     "hex": "#DEDBD5"
-    },
-    "$description": "product.css hover da amostra de material"
    }
   }
  }

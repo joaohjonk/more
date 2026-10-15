@@ -140,6 +140,11 @@
       "$type": "number",
       "$value": 1.9,
       "$description": "títulos de grupo do menu no mobile. Multiplicador (sem unidade): no Figma use 190%."
+    },
+    "display": {
+      "$type": "number",
+      "$value": 0.9,
+      "$description": "display-1/2/3 (proposta), espaçamento −0,02em. Multiplicador (sem unidade): no Figma use 90%."
     }
   },
   "print-size": {

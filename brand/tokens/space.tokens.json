@@ -380,17 +380,17 @@
  },
  "logo": {
   "$type": "dimension",
-  "$description": "Wordmark scales: S, M or XL, nothing in between. Clear space = height of the O. Colours preto or branco only (cinza-claro allowed on dark).",
+  "$description": "Marca em M ou XL nas peças; S só na barra do site. Cores: preto #2D211E, branco ou off-white; sobre amarelo-igarata use preto, sobre vermelho-jambo, verde-jamaica e berinjela use branco. Respiro igual ao O é proposta.",
   "s": {
    "$value": {
     "value": 60,
     "unit": "px"
    },
-   "$description": "S: width 60px on screen, 18 mm in print. Bars, footer, tags, labels.",
+   "$description": "S: 60px de largura na barra do menu do site (medido). 18 mm no papel é proposta nossa.",
    "$extensions": {
     "cstack": {
-     "status": "PROPOSED",
-     "source": "site bar (measured) + designer lens",
+     "status": "PROVISIONAL",
+     "source": "menu__brand do site, 60×16px, medido 2026-10-15",
      "approval": "awaiting More team"
     }
    }
@@ -398,11 +398,11 @@
   "m-ratio": {
    "$value": 0.1667,
    "$type": "number",
-   "$description": "M: width = 1/6 of the short side of the frame. Invites, posts, book cover.",
+   "$description": "M: alvo 1/6 (16,7%) do lado curto; tolerância 16–25% (cartaz TOM.01 16%, rodapé do site 19%, livro anterior ~25%). Convite, cartaz, capa.",
    "$extensions": {
     "cstack": {
      "status": "PROPOSED",
-     "source": "proposta nossa",
+     "source": "instagram p28_0, rodapé do site, capa do livro anterior",
      "approval": "awaiting More team"
     }
    }
@@ -410,11 +410,11 @@
   "xl-ratio": {
    "$value": 0.97,
    "$type": "number",
-   "$description": "XL: 95–100% of the frame width, bottom-aligned, may bleed off the bottom edge. Intro, posters, signage, window.",
+   "$description": "XL: 95–100% da largura, base entre 0 e 5% acima da borda de baixo, sem sangrar (convite 05.11). Cartaz, convite, vitrine.",
    "$extensions": {
     "cstack": {
      "status": "PROPOSED",
-     "source": "intro do site + convite 05.11 + proposta nossa",
+     "source": "convite 05.11",
      "approval": "awaiting More team"
     }
    }
