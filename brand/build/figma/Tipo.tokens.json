@@ -1,0 +1,182 @@
+{
+  "family": {
+    "muoto": {
+      "$type": "string",
+      "$value": "Muoto",
+      "$description": "205TF Muoto Regular (weight 400; the theme also asks for 300 on long text). Product names, prices, statements, filters. Stand-in when the licensed file is not available: DM Sans (Google Fonts). Pilha CSS: Muoto, \"DM Sans\", \"Helvetica Neue\", Arial, sans-serif."
+    },
+    "mono": {
+      "$type": "string",
+      "$value": "MuotoMono",
+      "$description": "205TF Muoto Mono Condensed Regular. Default body font of the theme: UI labels, buttons in [brackets], menu, footer. Stand-in: Martian Mono at width 75 (condensed), Google Fonts. Pilha CSS: MuotoMono, \"Martian Mono\", ui-monospace, Menlo, monospace."
+    }
+  },
+  "weight": {
+    "light": {
+      "$type": "number",
+      "$value": 300,
+      "$description": "Pedido pela classe .muoto (critical.css) em títulos, declarações e medidas. O site só serve Muoto Regular (.otf), então o navegador mostra Regular: o peso 300 não existe na prática até o tema carregar o arquivo Light."
+    },
+    "regular": {
+      "$type": "number",
+      "$value": 400,
+      "$description": "body (MuotoMono) e nomes de produto no grid"
+    },
+    "semibold": {
+      "$type": "number",
+      "$value": 600,
+      "$description": "filtro ativo da coleção (sem arquivo 600: o navegador engrossa a Regular)"
+    },
+    "bold": {
+      "$type": "number",
+      "$value": 700,
+      "$description": "styles.css .text--title e botão da newsletter no footer. Sem arquivo Bold carregado: negrito sintético."
+    }
+  },
+  "size": {
+    "caption": {
+      "$type": "number",
+      "$value": 10,
+      "$description": "numeração das miniaturas 01 02 03 (PDP), CNPJ e linhas legais do footer, 'pronta entrega' no card"
+    },
+    "label": {
+      "$type": "number",
+      "$value": 11,
+      "$description": "títulos do acordeão ('Selecione a Madeira'), medidas, descrição do produto, anúncios"
+    },
+    "body": {
+      "$type": "number",
+      "$value": 13,
+      "$description": "body do tema (MuotoMono 13px), nomes e preços no grid, botões em colchetes"
+    },
+    "ui": {
+      "$type": "number",
+      "$value": 15,
+      "$description": "filtro de categorias (Muoto), listas do menu no mobile (MuotoMono)"
+    },
+    "title": {
+      "$type": "number",
+      "$value": 22,
+      "$description": "Corrigido: não é o nome do produto na PDP. 22px é o tamanho mobile das declarações: footer, texto do Sobre e carrinho vazio (≤1024px)."
+    },
+    "statement": {
+      "$type": "number",
+      "$value": 26,
+      "$description": "nome do produto na PDP (.product__title.muoto), declaração do menu, texto do Sobre, título do modal. Peso pedido 300."
+    },
+    "about": {
+      "$type": "number",
+      "$value": 32,
+      "$description": "declaração do footer no desktop (off-white sobre a caixa com blur), peso pedido 300"
+    },
+    "display-3": {
+      "$type": "number",
+      "$value": 48,
+      "$description": "[proposta] Display for print and screens wider than a phone: posters, invites, book, window. Never inside the shop UI. Line-height 0.95. Print: 48 pt. Não existe no site: tamanho proposto por nós para peças impressas e cartazes."
+    },
+    "display-2": {
+      "$type": "number",
+      "$value": 96,
+      "$description": "[proposta] Display: dates, piece names on posters and covers. Line-height 0.9, letter-spacing -0.02em. Print: 96 pt. Não existe no site: tamanho proposto por nós para peças impressas e cartazes."
+    },
+    "display-1": {
+      "$type": "number",
+      "$value": 240,
+      "$description": "[proposta] Display: one word or a date at wall/cover scale. Line-height 0.9. Print: 240 pt; on screen use clamp(96px, 20vw, 240px). Não existe no site: tamanho proposto por nós para peças impressas e cartazes."
+    },
+    "micro": {
+      "$type": "number",
+      "$value": 9,
+      "$description": "product.css .product__price-compare (preço riscado)"
+    },
+    "small": {
+      "$type": "number",
+      "$value": 12,
+      "$description": "links do footer no mobile (≤768px), botões e erro do modal de download, botões de quantidade do carrinho"
+    },
+    "statement-mobile": {
+      "$type": "number",
+      "$value": 25,
+      "$description": "declaração do menu no mobile (≤1024px), line-height .95"
+    },
+    "statement-lg": {
+      "$type": "number",
+      "$value": 28,
+      "$description": "texto do carrinho vazio no desktop"
+    }
+  },
+  "line-height": {
+    "tight": {
+      "$type": "number",
+      "$value": 0.95,
+      "$description": "mobile statement. Multiplicador (sem unidade): no Figma use 95%."
+    },
+    "solid": {
+      "$type": "number",
+      "$value": 1,
+      "$description": "Multiplicador (sem unidade): no Figma use 100%."
+    },
+    "ui": {
+      "$type": "number",
+      "$value": 1.47,
+      "$description": "22px sobre 15px no filtro de categorias. Multiplicador (sem unidade): no Figma use 147%."
+    },
+    "list": {
+      "$type": "number",
+      "$value": 1.7,
+      "$description": "listas de produto no menu (MuotoMono 13px → 22,1px). Multiplicador (sem unidade): no Figma use 170%."
+    },
+    "text": {
+      "$type": "number",
+      "$value": 1.15,
+      "$description": "descrição do produto (product.css). Multiplicador (sem unidade): no Figma use 115%."
+    },
+    "loose": {
+      "$type": "number",
+      "$value": 2,
+      "$description": "links e títulos do footer, lista do menu no mobile. Multiplicador (sem unidade): no Figma use 200%."
+    },
+    "mono-list": {
+      "$type": "number",
+      "$value": 1.9,
+      "$description": "títulos de grupo do menu no mobile. Multiplicador (sem unidade): no Figma use 190%."
+    }
+  },
+  "print-size": {
+    "caption": {
+      "$type": "number",
+      "$value": 6,
+      "$description": "6 pt in print (legal, credits)"
+    },
+    "label": {
+      "$type": "number",
+      "$value": 7,
+      "$description": "7 pt in print (mono metadata; minimum for Mono Condensed on uncoated stock)"
+    },
+    "body": {
+      "$type": "number",
+      "$value": 8.5,
+      "$description": "8.5 pt in print (running text)"
+    },
+    "ui": {
+      "$type": "number",
+      "$value": 10,
+      "$description": "10 pt in print (names on tags and price lists)"
+    },
+    "title": {
+      "$type": "number",
+      "$value": 14,
+      "$description": "14 pt in print (piece name on spec sheets)"
+    },
+    "statement": {
+      "$type": "number",
+      "$value": 20,
+      "$description": "20 pt in print (short statements)"
+    },
+    "about": {
+      "$type": "number",
+      "$value": 28,
+      "$description": "28 pt in print (manifesto)"
+    }
+  }
+}

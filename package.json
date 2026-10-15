@@ -1,0 +1,11 @@
+{
+  "name": "more-brand",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "tokens:build": "node sd.config.mjs"
+  },
+  "devDependencies": {
+    "style-dictionary": "^5.6.1"
+  }
+}

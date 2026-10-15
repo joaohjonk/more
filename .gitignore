@@ -13,3 +13,6 @@ work/browse/
 work/competitors/*/
 state/pending-jobs/
 state/cache/
+
+# dependências de build (Style Dictionary)
+node_modules/
