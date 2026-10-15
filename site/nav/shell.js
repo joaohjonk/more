@@ -10,7 +10,7 @@
   var S=[
     {id:'guia',n:'1',s:'Guia',href:'/guia/',
      t:'Guia para o time',
-     d:'Três decisões que só o time pode tomar. O resto, a IA fez em um dia.'},
+     d:'Três sugestões para antes da abertura, para pegar ou deixar. O resto, a IA fez em um dia.'},
     {id:'sistema',n:'2',s:'Sistema',href:'/sistema/',
      t:'Sistema de design',
      d:'Cor, tipo, voz e movimento, medidos no site que já existe. Cada regra tem um script.'},
@@ -22,7 +22,7 @@
      d:'A loja da Alameda Franca, três semanas antes de existir. Arraste, clique, entre.'},
     {id:'abertura',n:'5',s:'Abertura',href:'/abertura/',
      t:'Abertura 05.11 e livro',
-     d:'Nove peças, do convite à vitrine, em um dia. O time escolhe.'}
+     d:'Nove peças, do convite à vitrine, em um dia. O time escolhe, se quiser.'}
   ];
   var me=document.currentScript||document.querySelector('script[data-section]');
   if(me===null)return;
