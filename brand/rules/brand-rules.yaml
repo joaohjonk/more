@@ -121,3 +121,13 @@ rules:
     status: proposed   # proposta nossa
     rule: 'vídeo troca de foto por corte seco (Hard cut) - nenhuma fusão nem fade, medido pelo script; o movimento de luz é Shadow sweep (mancha dura de janela atravessa a peça com a câmera parada, observado no convite 05.11), ver o par de exemplos. Proposto e fora do guia até aceitarem - Build (letras M-O-R-E em sequência, 120ms de intervalo)'
     check: script   # node checks/cuts.mjs <video...>  + examples  # brand/examples/R-MOTION-02-sim/nao (Shadow sweep)
+  - id: R-MOTION-03
+    scope: core
+    status: proposed   # proposta nossa, medida no site e nas referências em 2026-10-15
+    rule: 'a segunda foto do card entra por fusão no mesmo quadro 3:4 - só opacity muda (0 => 1), duração motion.role.hover-swap 300ms (ou 0 = troca seca), curva ease ou ease-out; a primeira foto nunca escurece parcialmente (opacity entre 0 e 1 falha), nenhuma escala nem deslocamento (transform só none ou translate(-50%,-50%)), a segunda foto ocupa o quadro (width 100%, object-fit cover); nome e preço não mudam. Hoje o site faz escala .8 => 1 a 75% do quadro em 200ms snap e escurece a primeira a 60%: falha. The Row e Jacquemus fazem 300ms ease só em opacity; Knoll 600ms com escala .95 (fora da regra)'
+    check: script   # node checks/hover-swap.mjs <css da página>
+  - id: R-MOTION-04
+    scope: core
+    status: proposed   # proposta nossa; os princípios vêm da seção 8 do dossiê do catálogo (15.10.2026)
+    rule: 'a interação orienta, não encena - nenhum sequestro de rolagem (scroll-snap-type mandatory em html/body, roda do mouse com preventDefault), nenhum loader teatral (animation infinite fora de contador/progresso), nenhum cursor personalizado (cursor url() ou none), nenhum carrossel automático (autoplay); o que o hover revela abre também por foco (:focus-within ou :focus-visible no mesmo seletor), porque no toque não existe hover; toda página tem fallback em prefers-reduced-motion (R-MOTION-01)'
+    check: script   # node checks/interacao.mjs <css/html da página>

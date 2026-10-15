@@ -45,4 +45,6 @@ cstack brand context --task page   # o que a IA precisa ler para fazer uma pági
 
 ## Demo
 
+`demos/hover-foto/` compara a troca de foto do card: como o site faz hoje, sem movimento, a recomendada (fusão 300ms, R-MOTION-03) e a versão Knoll, com as medidas de The Row, Jacquemus, Knoll e Norr11. `brand/movimento.md` é a nota para o time.
+
 `demos/tomada-3d/` é a exploração da página da Tomada TOM.01 com a peça em 3D (Three.js, modelada a partir das medidas e fotos reais, sem gerar a peça por IA). Abra `demos/tomada-3d/index.html` no navegador.

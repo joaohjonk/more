@@ -1,0 +1,5 @@
+/* R-MOTION-04 que FALHA */
+html { scroll-snap-type: y mandatory; }
+body { cursor: url(cursor.png), auto; }
+.loader { animation: spin 1.2s linear infinite; }
+.card:hover .detalhe { opacity: 1; }

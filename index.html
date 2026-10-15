@@ -88,10 +88,9 @@
   .filter span{color:#1a1a1a;cursor:pointer}.filter .on{font-weight:600}.filter .fixos.on{color:var(--color-ciano-destaque)}
   .card{width:220px}
   .card .img{aspect-ratio:3/4;overflow:hidden;position:relative;background:#ddd6cc}
-  .card .img img{width:100%;height:100%;object-fit:cover;display:block;transition:opacity var(--motion-duration-quick) cubic-bezier(.63,.01,0,1.01)}
-  .card .img img.alt{position:absolute;top:50%;left:50%;width:75%;height:auto;transform:translate(-50%,-50%) scale(.8);opacity:0;transition:transform var(--motion-duration-quick) cubic-bezier(.63,.01,0,1.01),opacity var(--motion-duration-quick) cubic-bezier(.63,.01,0,1.01)}
-  .card .img:hover img:first-child{opacity:.6}
-  .card .img:hover img.alt{opacity:1;transform:translate(-50%,-50%) scale(1)}
+  .card .img img{width:100%;height:100%;object-fit:cover;display:block}
+  .card .img img.alt{position:absolute;inset:0;opacity:0;transition:opacity var(--motion-role-hover-swap-duration) var(--motion-role-hover-swap-easing)}
+  .card .img:hover img.alt,.card .img:focus-within img.alt,.card:focus-within .img img.alt{opacity:1}
   .card .foot{display:flex;justify-content:space-between;padding-top:var(--space-xs);font-family:var(--font-family-muoto)}
   .card .foot .pr{color:var(--color-text-secondary)}
   .tag{position:absolute;left:var(--space-sm);top:var(--space-sm);font-stretch:75%;font-size:var(--font-size-label);padding:2px 6px;background:var(--color-surface-glass);backdrop-filter:blur(var(--blur-soft))}
@@ -111,7 +110,7 @@
   .ease{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:var(--space-hair)}
   .ease div{border-top:1px solid var(--color-alpha-preto-10);padding:var(--space-md) 0}
   .ease b{display:block;width:30px;height:30px;background:var(--color-preto);margin:var(--space-md) 0}
-  .ease:hover b{transform:translateX(160px)}
+  .ease:hover b,.ease:focus-within b{transform:translateX(160px)}
 
   /* photo */
   .photos{display:grid;grid-template-columns:repeat(4,1fr);gap:var(--space-hair)}
@@ -316,7 +315,7 @@
 
     <h3>Card de produto e etiquetas</h3>
     <div class="stage" style="align-items:flex-start">
-      <div class="card"><div class="img"><img src="references/gold/site/PDT_ASS_POL_LETICIA_01.jpg" alt="Poltrona Leticia"><img class="alt" src="references/gold/site/PDT_ASS_POL_LETICIA_06.jpg" alt=""></div><div class="foot"><span>Poltrona Leticia</span><span class="pr">R$ 23.990</span></div><p class="note">Como está hoje. Passe o mouse.</p></div>
+      <div class="card"><div class="img"><img src="references/gold/site/PDT_ASS_POL_LETICIA_01.jpg" alt="Poltrona Leticia"><img class="alt" src="references/gold/site/PDT_ASS_POL_LETICIA_06.jpg" alt=""></div><div class="foot"><span>Poltrona Leticia</span><span class="pr">R$ 23.990</span></div><p class="note">Passe o mouse: a segunda foto entra por fusão, 300ms (R-MOTION-03, proposta). Hoje o site escurece a primeira e cresce a segunda a 75% do quadro; comparação em <a href="demos/hover-foto/index.html">demos/hover-foto</a>.</p></div>
       <div class="card proposal"><div class="img"><img src="references/gold/site/PDT_ASS_POL_LETICIA_01.jpg" alt="Poltrona Leticia"><span class="tag mono">Sob encomenda</span></div><div class="foot"><span>Poltrona Leticia</span><span class="pr">12 tecidos</span></div><p class="note">Proposta: sem preço na grade, etiqueta "Sob encomenda".</p></div>
       <div class="card proposal"><div class="img"><img src="references/gold/site/PDT_FIX_TOM_TOM.jpg" alt="Tomada TOM.01"><span class="tag now mono">Pronta entrega</span></div><div class="foot"><span>Tomada TOM.01</span><span class="pr">Comprar</span></div><p class="note">Proposta: o único acento marca o que se compra já.</p></div>
     </div>
@@ -337,14 +336,38 @@
   <section id="movimento">
     <div class="eyebrow">[09] Movimento · motion tokens</div>
     <h2>Movimento</h2>
-    <p class="body">Devagar e curto. Fades e crescimentos de 0,2 a 0,8s, sempre com saída suave. Passe o mouse ou toque no bloco abaixo.</p>
+    <p class="body">Uma coisa muda por vez, devagar e curto. Fusão de 0,3 a 0,8s; nada escala, nada salta. Passe o mouse ou toque no bloco abaixo.</p>
     <div class="ease">
-      <div><span class="mono">snap · .63,.01,0,1.01 · 200ms</span><b style="transition:transform .2s cubic-bezier(.63,.01,0,1.01)"></b><span class="secondary">troca de foto no hover</span></div>
-      <div><span class="mono">out-expo · .22,1,.36,1 · 450ms</span><b style="transition:transform .45s cubic-bezier(.22,1,.36,1)"></b><span class="secondary">abertura e entrada do catálogo</span></div>
-      <div><span class="mono">ease · 500ms</span><b style="transition:transform .5s ease"></b><span class="secondary">barras crescendo, troca de vista</span></div>
-      <div><span class="mono">ease-out · 800ms</span><b style="transition:transform .8s ease-out"></b><span class="secondary">produto aparecendo</span></div>
+      <div><span class="mono">ease · 300ms · hover-swap</span><b style="transition:transform .3s ease"></b><span class="secondary">troca de foto no card (proposta; hoje snap 200ms)</span></div>
+      <div><span class="mono">out-expo · .22,1,.36,1 · 450ms · enter</span><b style="transition:transform .45s cubic-bezier(.22,1,.36,1)"></b><span class="secondary">catálogo subindo 24px depois da abertura</span></div>
+      <div><span class="mono">ease · 500ms · panel</span><b style="transition:transform .5s ease"></b><span class="secondary">menu crescendo, gaveta do carrinho, troca de vista</span></div>
+      <div><span class="mono">ease-out · 800ms</span><b style="transition:transform .8s ease-out"></b><span class="secondary">produto aparecendo, overlay do Sobre</span></div>
+      <div><span class="mono">snap · .63,.01,0,1.01 · 200ms</span><b style="transition:transform .2s cubic-bezier(.63,.01,0,1.01)"></b><span class="secondary">o hover de hoje. Passa de 1 e dá o pulo; sai do card</span></div>
     </div>
-      <h3>Em vídeo (R-MOTION-02)</h3>
+    <h3>Medido no site em 15.10.2026</h3>
+    <div class="tscroll"><table class="t"><thead><tr><th>Onde</th><th>O que muda</th><th>Duração</th><th>Curva</th></tr></thead><tbody>
+      <tr><td>Abertura</td><td>letras saem; body 0 → 1; catálogo sobe 24px</td><td class="mono">600 · 700 · 450ms</td><td class="mono">ease · ease · out-expo</td></tr>
+      <tr><td>Card, hover</td><td>foto 1 a 60%; foto 2 a 75% do quadro, escala .8 → 1; "Pronta entrega" aparece</td><td class="mono">200ms</td><td class="mono">snap</td></tr>
+      <tr><td>Filtro</td><td>cor do link</td><td class="mono">150ms</td><td class="mono">ease</td></tr>
+      <tr><td>Menu</td><td>barra cresce em largura e altura, fundo escurece; conteúdo aparece</td><td class="mono">500 · 300ms</td><td class="mono">ease</td></tr>
+      <tr><td>Menu, hover na peça</td><td>foto da peça troca por opacidade (JS)</td><td class="mono">0</td><td class="mono">-</td></tr>
+      <tr><td>Carrinho</td><td>gaveta em altura; botão adicionar em largura e fundo</td><td class="mono">500 · 1000ms</td><td class="mono">ease</td></tr>
+      <tr><td>PDP</td><td>miniaturas 0 → 1; acordeão (borda); materiais (altura); contador do carrinho</td><td class="mono">700 · 300 · 1000 · 140ms</td><td class="mono">ease</td></tr>
+      <tr><td>Sobre</td><td>overlay 0 → 1; vídeo escala e desfoca</td><td class="mono">800 · 700ms</td><td class="mono">ease · ease-out</td></tr>
+    </tbody></table></div>
+    <h3>Referências, medidas no mesmo dia</h3>
+    <div class="tscroll"><table class="t"><thead><tr><th>Loja</th><th>Hover do card</th><th>Duração</th><th>Curva</th></tr></thead><tbody>
+      <tr><td>The Row</td><td>fusão para a foto no corpo, quadro inteiro, só opacity</td><td class="mono">300ms</td><td class="mono">ease</td></tr>
+      <tr><td>Jacquemus</td><td>fusão entre fotos do tile, só opacity; painéis em 800ms</td><td class="mono">300ms</td><td class="mono">ease</td></tr>
+      <tr><td>Knoll</td><td>fusão para foto em ambiente com escala .95 → 1</td><td class="mono">600ms</td><td class="mono">.215,.61,.355,1</td></tr>
+      <tr><td>Norr11</td><td>a foto não troca; o nome aparece. Foto carrega em 1,2s</td><td class="mono">200ms</td><td class="mono">ease</td></tr>
+      <tr><td>Kann · Massproductions · Vipp</td><td>fusão no quadro inteiro, só opacity</td><td class="mono">250 · 400 · 300ms</td><td class="mono">ease</td></tr>
+    </tbody></table></div>
+    <h3>A segunda foto do card (R-MOTION-03)</h3>
+    <p class="body">Fusão no mesmo quadro 3:4, só opacidade, 300ms, ease. A primeira foto não escurece, a segunda não escala, nome e preço param. Hoje, sem movimento e recomendada, lado a lado: <a href="demos/hover-foto/index.html">demos/hover-foto</a>.</p>
+    <h3>Interação (R-MOTION-04)</h3>
+    <p class="body">Sem sequestro de rolagem, loader teatral, cursor próprio ou carrossel automático. O que o hover revela abre também por foco: no toque não existe hover.</p>
+    <h3>Em vídeo (R-MOTION-02)</h3>
     <div class="rules">
       <div><span class="id">Corte seco</span><p>Troca de foto sem fade, na ordem dos carrosséis: peça inteira, detalhe, material.</p></div>
       <div><span class="id">Sombra que passa</span><p>A sombra dura da janela atravessa a peça. Está no vídeo do convite de 05.11.</p></div>
@@ -430,6 +453,8 @@
       <div><span class="id">R-LAYOUT-03 · proposta · derivada do site</span><p>todo contêiner com rolagem vertical (overflow ou overflow-y auto/scroll) termina com padding-bottom &gt;= 106px (layout.bar-safe) no mesmo seletor, para as barras flutuantes nunca cobrirem conteúdo no celular</p><p class="mono secondary" style="font-size:var(--font-size-caption);margin-top:4px">node checks/scroll-safe.mjs &lt;arquivo&gt;</p></div>
       <div><span class="id">R-NAME-01 · proposta · observada (nomes divergentes)</span><p>um nome canônico por peça, &quot;&lt;Tipo&gt; &lt;complemento em minúscula&gt; &lt;Nome&gt;&quot; (Mesa de centro Cildo, Cadeira 556-A), igual no site, Instagram, etiquetas e arquivos. A lista e as variantes proibidas estão em checks/nomes-canonicos.json; as marcadas decisao_pendente (Ngoni, Leticia/Letícia, Naz componível, INT.01) esperam a equipe</p><p class="mono secondary" style="font-size:var(--font-size-caption);margin-top:4px">node checks/names.mjs &lt;arquivo&gt;</p></div>
       <div><span class="id">R-MOTION-02 · proposta · observada no convite</span><p>vídeo troca de foto por corte seco (Hard cut) - nenhuma fusão nem fade, medido pelo script; o movimento de luz é Shadow sweep (mancha dura de janela atravessa a peça com a câmera parada, observado no convite 05.11), ver o par de exemplos. Proposto e fora do guia até aceitarem - Build (letras M-O-R-E em sequência, 120ms de intervalo)</p><p class="mono secondary" style="font-size:var(--font-size-caption);margin-top:4px">node checks/cuts.mjs &lt;arquivo&gt;</p></div>
+      <div><span class="id">R-MOTION-03 · proposta · medida no site e nas referências</span><p>a segunda foto do card entra por fusão no mesmo quadro 3:4 - só opacity muda (0 =&gt; 1), duração motion.role.hover-swap 300ms (ou 0 = troca seca), curva ease ou ease-out; a primeira foto nunca escurece parcialmente, nenhuma escala nem deslocamento, a segunda foto ocupa o quadro (width 100%, object-fit cover); nome e preço não mudam. Hoje o site faz escala .8 =&gt; 1 a 75% do quadro em 200ms snap e escurece a primeira a 60%: falha. The Row e Jacquemus fazem 300ms ease só em opacity; Knoll 600ms com escala .95 (fora da regra)</p><p class="mono secondary" style="font-size:var(--font-size-caption);margin-top:4px">node checks/hover-swap.mjs &lt;arquivo&gt;</p></div>
+      <div><span class="id">R-MOTION-04 · proposta · seção 8 do dossiê</span><p>a interação orienta, não encena - nenhum sequestro de rolagem (scroll-snap-type mandatory em html/body, roda do mouse com preventDefault), nenhum loader teatral (animation infinite fora de contador/progresso), nenhum cursor personalizado, nenhum carrossel automático; o que o hover revela abre também por foco (:focus-within ou :focus-visible no mesmo seletor), porque no toque não existe hover; toda página tem fallback em prefers-reduced-motion (R-MOTION-01)</p><p class="mono secondary" style="font-size:var(--font-size-caption);margin-top:4px">node checks/interacao.mjs &lt;arquivo&gt;</p></div>
     </div>
   </section>
 

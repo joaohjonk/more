@@ -36,5 +36,7 @@ export const CHECKS = [
   { rule: 'R-NAME-01', script: 'names.mjs', accepts: is('txt', 'md', 'html', 'csv'), ok: ['texto-ok.txt', 'ok.html'], falha: ['texto-falha.txt', 'falha.html'] },
   { rule: 'R-FILE-01', script: 'filename.mjs', accepts: deliverable, ok: ['MORE_IG_cadeira-maria_4x5_20261105_v01.jpg', 'MORE_PRINT_marca_convite_20261105_v01.pdf'], falha: ['foto final.jpg', 'gerada-falha.jpg'], cases: [{ ok: ['teste-prefixo/01_MORE_IG_evento-20261105_feed_20261015_v01.jpg', L_OK], falha: ['01_MORE_IG_cadeira-maria_4x5_20261105_v01.jpg'] }] },
   { rule: 'R-PRINT-01', script: 'print.mjs', accepts: (f) => ext(f) === 'pdf' || (IMG_EXT.includes(ext(f)) && /MORE_(PRINT|ETIQUETA|CARTAZ|CONVITE|LIVRO|VITRINE)_/.test(f)), ok: ['MORE_PRINT_marca_convite_20261105_v01.pdf', 'MORE_PRINT_tomada-tom-01_cartaz_20261105_v01.jpg'], falha: ['impressao-falha.pdf', 'gerada-falha.jpg'], cases: [{ ok: ['MORE_ETIQUETA_banco-maria_50x90_20261015_v01.pdf'], falha: ['impressao-falha.pdf'] }] },
+  { rule: 'R-MOTION-03', script: 'hover-swap.mjs', accepts: is('css', 'html'), ok: ['hover-ok.css', 'ok.css'], falha: ['hover-falha.css'] },
+  { rule: 'R-MOTION-04', script: 'interacao.mjs', accepts: is('css', 'html'), ok: ['interacao-ok.css', 'ok.css'], falha: ['interacao-falha.css'], cases: [{ ok: ['ok.html'], falha: ['interacao-falha.html'] }] },
   { rule: 'R-MOTION-02', script: 'cuts.mjs', accepts: is(...VIDEO), ok: ['MORE_VIDEO_poltrona-eduardo_corte-seco_20261105_v01.mp4'], falha: ['fusao-falha.mp4'], examples: true },
 ];
