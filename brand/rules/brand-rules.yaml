@@ -89,7 +89,7 @@ rules:
   - id: R-LOGO-01
     scope: core
     status: proposed
-    rule: 'num layout (SVG com viewBox, ou HTML com data-canvas="LxA"), medido pelo script. Onde leva marca (tipo lido do nome MORE_<CANAL>_<slug>_<variante>; MORE_FONTE_ pela variante) - obrigatória em post de evento (IG com slug evento-<aaaammdd>) e em cartaz, convite, vitrine e livro; proibida em post de peça no feed (que também não leva texto sobre a foto, observado em 76% do feed; o texto vai na legenda) e em story (IGS); opcional em etiqueta (ETIQUETA). M - lado maior da marca = alvo 1/6 (16,7%) do lado menor do quadro, tolerância 16-25%. XL - largura da marca 95-100% da largura do quadro, base 0-5% acima do pé do quadro, sem sangrar (marca inteira dentro); XL pode passar por cima da margem do grid de impressão (1/24 do lado menor). Outro tamanho falha. Cor só preto #2D211E, branco #FFF ou off-white #E5E1DB; sobre amarelo-igarata, preto; sobre vermelho-jambo, verde-jamaica e berinjela, branco. Nunca contornada, espelhada, esticada ou com padrão. Proposto e fora do guia até aceitarem - S mínimo 60px/18mm e respiro = altura do O'
+    rule: 'num layout (SVG com viewBox, ou HTML com data-canvas="LxA"), medido pelo script. Onde leva marca (tipo lido do nome MORE_<CANAL>_<slug>_<variante>; MORE_FONTE_ pela variante) - obrigatória em post de evento (IG com slug evento-<aaaammdd>) e em cartaz, convite, vitrine e livro; proibida em post de peça no feed (que também não leva texto sobre a foto, observado em 76% do feed; o texto vai na legenda) e em story (IGS); opcional em etiqueta (ETIQUETA). M - lado maior da marca = alvo 1/6 (16,7%) do lado menor do quadro, tolerância 16-25%. XL - largura da marca 95-100% da largura do quadro, base 0-5% acima do pé do quadro, sem sangrar (marca inteira dentro); XL pode passar por cima da margem do grid de impressão (1/24 do lado menor). Outro tamanho falha. Cor só preto #2D211E, branco #FFF ou off-white #E5E1DB; sobre amarelo-igarata, preto; sobre vermelho-jambo, verde-jamaica e berinjela, branco. Nunca contornada, espelhada, esticada ou com padrão. Proposto e fora do guia até aceitarem - S mínimo 120 px/18 mm (guia de uso p. 5) e respiro = altura do O'
     check: script   # node checks/logo.mjs <layout.svg|layout.html...>
   - id: R-SHAPE-02
     scope: core
@@ -104,7 +104,7 @@ rules:
   - id: R-NAME-01
     scope: core
     status: proposed   # naming.inconsistencies
-    rule: 'um nome canônico por peça, "<Tipo> <complemento em minúscula> <Nome>" (Mesa de centro Cildo, Cadeira 556-A), igual no site, Instagram, etiquetas e arquivos. A lista e as variantes proibidas estão em checks/nomes-canonicos.json; as marcadas decisao_pendente (Ngoni, Leticia/Letícia, Naz componível, INT.01) esperam a equipe'
+    rule: 'um nome canônico por peça, "<Tipo> <complemento em minúscula> <Nome>" (Mesa de centro Cildo, Cadeira 556-A), igual no site, Instagram, etiquetas e arquivos. A lista e as variantes proibidas estão em checks/nomes-canonicos.json; as marcadas decisao_pendente (Ngoni, Leticia/Letícia, Naz componível, INT.01, Maestro, Estante Dominó, Otoman Leticia) esperam a equipe'
     check: script   # node checks/names.mjs <txt|md|html|csv...>
   - id: R-FILE-01
     scope: core

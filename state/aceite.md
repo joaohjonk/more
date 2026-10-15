@@ -26,10 +26,10 @@ Uma linha por regra, proposta ou grupo de tokens. Para decidir, acrescente uma l
 | R-COPY-02 | legenda de peça = frase com o nome canônico (checks/nomes-canonicos.json), depois UMA linha seca de 3 a 12 palavras sem palavra de materi… | proposed | |
 | R-COPY-03 | português primeiro. Página com <html lang="pt-BR">; todo bloco de 6+ palavras em inglês (mais palavras-função inglesas que portuguesas) f… | proposed | |
 | R-COLOR-04 | tons color.campo (vermelho-jambo, amarelo-igarata, verde-jamaica, berinjela; petróleo é só proposta) são fundo de cartaz, convite, livro,… | proposed | |
-| R-LOGO-01 | num layout (SVG com viewBox, ou HTML com data-canvas="LxA"), a marca é M (lado maior da marca = 16-25% do lado menor do quadro) ou XL (95… | proposed | |
+| R-LOGO-01 | num layout (SVG com viewBox, ou HTML com data-canvas="LxA"), medido pelo script. Onde leva marca (tipo lido do nome MORE_<CANAL>_<slug>_<var… | proposed | |
 | R-SHAPE-02 | no ellipses, pills or rounded graphic shapes in any medium | rejected | |
 | R-LAYOUT-03 | todo contêiner com rolagem vertical (overflow ou overflow-y auto/scroll) termina com padding-bottom >= 106px (layout.bar-safe) no mesmo s… | proposed | |
-| R-NAME-01 | um nome canônico por peça, "<Tipo> <complemento em minúscula> <Nome>" (Mesa de centro Cildo, Cadeira 556-A), igual no site, Instagram, et… | proposed | |
+| R-NAME-01 | um nome canônico por peça, "<Tipo> <complemento em minúscula> <Nome>" (Mesa de centro Cildo, Cadeira 556-A), igual no site, Instagram, etiqu… | proposed | |
 | R-FILE-01 | arquivos se chamam MORE_<CANAL>_<peça-slug>_<variante>_<AAAAMMDD>_v<nn>.<ext> (MORE_IG_mesa-de-centro-cildo_4x5_20261105_v02.jpg). CANAL … | proposed | |
 | R-PRINT-01 | PDF de impressão declara PDF/X-4, toda página tem TrimBox e BleedBox com 3mm de sangria em cada lado, e off-white nunca é tinta (é o pape… | proposed | |
 | R-MOTION-03 | a segunda foto do card entra por fusão no quadro de hoje (75%, primeira a 60%) - só opacity, 300ms ou 0, ease; sem escala (demos/hover-foto) | proposed | |
