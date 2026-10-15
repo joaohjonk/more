@@ -34,7 +34,7 @@ node checks/self-test.mjs                      # cada script passa no fixture ok
 | R-FILE-01 | `MORE_<CANAL>_<peça-slug>_<variante>_<AAAAMMDD>_v<nn>.<ext>`, canais com ETIQUETA e FONTE, slug `marca`/`evento-<aaaammdd>`, prefixo numérico só em pasta teste* | `node checks/filename.mjs <arquivo>` |
 | R-PRINT-01 | página = formato + 3 mm (TrimBox = formato), off-white sem tinta, raster ≥ 300 dpi; com X-4 = FINAL, sem X-4 = PROVA (não vai para gráfica) | `node checks/print.mjs <pdf/imagem>` |
 | R-MOTION-02 | sem fusão nem fade entre fotos; **exemplos** para o Shadow sweep | `node checks/cuts.mjs <video>` + `brand/examples/R-MOTION-02-*` |
-| R-MOTION-03 | segunda foto do card por fusão no mesmo quadro: só opacity, 300ms ou 0, ease/ease-out; sem escala, sem deslocamento, sem escurecer a primeira, width 100% | `node checks/hover-swap.mjs <css/html>` |
+| R-MOTION-03 | segunda foto do card por fusão no quadro de hoje: só opacity, 300ms ou 0, ease/ease-out; sem escala, sem deslocamento | `node checks/hover-swap.mjs <css/html>` |
 | R-MOTION-04 | sem sequestro de rolagem, loader infinito, cursor próprio ou carrossel automático; o que o hover revela abre por foco | `node checks/interacao.mjs <css/html>` |
 
 Arquivos de apoio:

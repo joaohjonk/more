@@ -845,7 +845,7 @@
    },
    "product_card": {
     "last_updated": "2026-10-15",
-    "value": "Name left, price right in cinza-medio under a 3:4 image; hover today swaps to a smaller centred second image (75% of the frame, scale .8 to 1, 200ms snap, first image dimmed to 60%). Proposed: full-frame 300ms opacity crossfade (R-MOTION-03).",
+    "value": "Name left, price right in cinza-medio under a 3:4 image; hover today swaps to a smaller centred second image (75% of the frame, scale .8 to 1, 200ms snap, first image dimmed to 60%). Proposed: same frame, 300ms ease opacity crossfade, no scale (R-MOTION-03).",
     "input_class": "FACT",
     "sources": [
      {
@@ -929,7 +929,7 @@
    },
    "hover_swap": {
     "last_updated": "2026-10-15",
-    "value": "Proposed: second photo of the card enters by opacity crossfade in the same 3:4 frame, 300ms ease (motion.role.hover-swap); nothing scales, the first photo does not dim, name and price stay. Measured: The Row 300ms ease, Jacquemus 300ms ease, Kann 250ms, Massproductions 400ms, Vipp 300ms, Knoll 600ms with scale .95, Norr11 no swap. Demo: demos/hover-foto/index.html.",
+    "value": "Proposed: second photo of the card keeps today's frame (75% of the 3:4, centred, first photo dimmed to 60%) and enters by opacity crossfade, 300ms ease (motion.role.hover-swap); nothing scales, name and price stay. Measured: The Row 300ms ease, Jacquemus 300ms ease, Kann 250ms, Massproductions 400ms, Vipp 300ms, Knoll 600ms with scale .95, Norr11 no swap. Demo: demos/hover-foto/index.html.",
     "input_class": "SOFT_CONSTRAINT",
     "sources": [
      {

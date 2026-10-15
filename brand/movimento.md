@@ -31,22 +31,22 @@ Fora da escala: 150, 180, 280, 400 e 600ms (já na R-MOTION-01).
 | Massproductions | fusão, quadro inteiro | 400ms | ease | opacity |
 | Vipp | fusão entre fotos de categoria | 300ms | ease-in-out | opacity |
 
-Nenhuma escurece a primeira foto. Nenhuma mostra a segunda menor que o quadro. Jacquemus estava em manutenção; o CSS carregou.
+O que vem delas é o tempo e a curva. O quadro é da More. Jacquemus estava em manutenção; o CSS carregou.
 
 ## A segunda foto do card
 
-Três coisas mudam ao mesmo tempo no site. A primeira foto escurece, a segunda cresce, e não preenche o quadro. A borda dela vira uma caixa sobre a peça. O snap passa de 1 e dá um pulo.
+Três coisas mudam ao mesmo tempo no site, em 200ms. O snap passa de 1 e dá um pulo. O quadro (foto 2 a 75%, foto 1 a 60%) fica.
 
 Quatro versões lado a lado em `demos/hover-foto/index.html`:
 
 - A · hoje: 200ms snap, escala .8 → 1 a 75% do quadro, foto 1 a 60%.
-- B · sem movimento: troca seca, quadro inteiro. Funciona; na grade, pisca a cada card.
-- C · recomendada: fusão no mesmo quadro 3:4, só opacidade, 300ms, ease. É o que The Row e Jacquemus fazem.
+- B · sem movimento: troca seca, no mesmo quadro. Funciona; na grade, pisca a cada card.
+- C · recomendada: o quadro de hoje, só opacidade, 300ms, ease, sem escala. O tempo e a curva de The Row e Jacquemus.
 - D · comparação: 500ms ease-out com escala .98 → 1 (a versão Knoll). A escala mexe na peça de novo; meio segundo é lento na grade.
 
 Recomendação: C. Se o time preferir zero movimento, B passa na mesma regra (duração 0).
 
-O que o site precisa: segunda foto de cada peça em 3:4, igual à primeira. Em `product-card.css`, foto 2: `inset:0; width:100%; height:100%; object-fit:cover; transition:opacity 300ms ease`. Sem transform. Foto 1 sem transição.
+O que o site precisa, em `product-card.css`: tirar o `scale(.8)` do repouso da foto 2. Tirar `transform` da transição. `transition:opacity 300ms ease` nas duas fotos. Posição, tamanho e o 60% ficam.
 
 ## O que entrou no sistema
 

@@ -51,28 +51,27 @@ button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:poin
 .card .ft .pr{color:var(--color-cinza-medio);white-space:nowrap}
 .card .ft .pr.lbl{font-size:10px;opacity:0;transition:opacity var(--motion-duration-quick) var(--motion-easing-snap)}
 
-/* A · hoje no site: a primeira foto escurece a 60%, a segunda entra menor (75% do quadro) crescendo de .8 a 1 */
+/* Quadro de hoje, em todas as variantes: a segunda foto a 75% do quadro, centrada; a primeira escurece a 60% */
+.card .ph img.detalhe{inset:auto;top:50%;left:50%;width:75%;height:auto;transform:translate(-50%,-50%);opacity:0}
+.card:hover .ph img.peca,.card:focus-within .ph img.peca,.card.on .ph img.peca{opacity:.6}
+.card:hover .ph img.detalhe,.card:focus-within .ph img.detalhe,.card.on .ph img.detalhe{opacity:1}
+.card:hover .lbl,.card:focus-within .lbl,.card.on .lbl{opacity:1}
+
+/* A · hoje no site: tudo em 200ms snap, a segunda cresce de .8 a 1 */
 .comparacao.a .ph img.peca{transition:opacity var(--motion-duration-quick) var(--motion-easing-snap)}
-.comparacao.a .ph img.detalhe{inset:auto;top:50%;left:50%;width:75%;height:auto;transform:translate(-50%,-50%) scale(var(--motion-scale-in));opacity:0;transition:transform var(--motion-duration-quick) var(--motion-easing-snap),opacity var(--motion-duration-quick) var(--motion-easing-snap)}
-.comparacao.a .card:hover .ph img.peca,.comparacao.a .card:focus-within .ph img.peca,.comparacao.a .card.on .ph img.peca{opacity:.6}
-.comparacao.a .card:hover .ph img.detalhe,.comparacao.a .card:focus-within .ph img.detalhe,.comparacao.a .card.on .ph img.detalhe{opacity:1;transform:translate(-50%,-50%) scale(1)}
-.comparacao.a .card:hover .lbl,.comparacao.a .card:focus-within .lbl,.comparacao.a .card.on .lbl{opacity:1}
+.comparacao.a .ph img.detalhe{transform:translate(-50%,-50%) scale(var(--motion-scale-in));transition:transform var(--motion-duration-quick) var(--motion-easing-snap),opacity var(--motion-duration-quick) var(--motion-easing-snap)}
+.comparacao.a .card:hover .ph img.detalhe,.comparacao.a .card:focus-within .ph img.detalhe,.comparacao.a .card.on .ph img.detalhe{transform:translate(-50%,-50%) scale(1)}
 
-/* B · sem movimento: a segunda foto ocupa o quadro inteiro e troca seca */
-.b .ph img.detalhe{opacity:0;transition:opacity 0s}
-.b .card:hover .ph img.detalhe,.b .card:focus-within .ph img.detalhe,.b .card.on .ph img.detalhe{opacity:1}
-.b .card:hover .lbl,.b .card:focus-within .lbl,.b .card.on .lbl{opacity:1}
+/* B · sem movimento: troca seca */
+.b .ph img.peca,.b .ph img.detalhe,.b .lbl{transition:none}
 
-/* C · recomendada: as duas fotos no mesmo quadro 3:4, só a opacidade muda, 300ms, curva ease; nada escala, nada escurece */
-.c .ph img.detalhe{opacity:0;transition:opacity var(--motion-duration-step) var(--motion-easing-standard)}
-.c .card:hover .ph img.detalhe,.c .card:focus-within .ph img.detalhe,.c .card.on .ph img.detalhe{opacity:1}
-.c .card .lbl{transition:opacity var(--motion-duration-step) var(--motion-easing-standard)}
-.c .card:hover .lbl,.c .card:focus-within .lbl,.c .card.on .lbl{opacity:1}
+/* C · recomendada: só opacidade, 300ms, ease; nada escala */
+.c .ph img.peca,.c .ph img.detalhe,.c .lbl{transition:opacity var(--motion-duration-step) var(--motion-easing-standard)}
 
-/* D · comparação: fusão mais longa com escala leve (o que a Knoll faz, 600ms e .95). Fica fora da recomendação */
-.comparacao.d .ph img.detalhe{opacity:0;transform:scale(var(--motion-scale-soft));transition:opacity var(--motion-duration-base) ease-out,transform var(--motion-duration-base) ease-out}
-.comparacao.d .card:hover .ph img.detalhe,.comparacao.d .card:focus-within .ph img.detalhe,.comparacao.d .card.on .ph img.detalhe{opacity:1;transform:scale(1)}
-.comparacao.d .card:hover .lbl,.comparacao.d .card:focus-within .lbl,.comparacao.d .card.on .lbl{opacity:1}
+/* D · comparação: fusão com escala leve .98 → 1 em 500ms ease-out (a versão Knoll) */
+.comparacao.d .ph img.peca{transition:opacity var(--motion-duration-base) ease-out}
+.comparacao.d .ph img.detalhe{transform:translate(-50%,-50%) scale(var(--motion-scale-soft));transition:opacity var(--motion-duration-base) ease-out,transform var(--motion-duration-base) ease-out}
+.comparacao.d .card:hover .ph img.detalhe,.comparacao.d .card:focus-within .ph img.detalhe,.comparacao.d .card.on .ph img.detalhe{transform:translate(-50%,-50%) scale(1)}
 
 /* Tabela de medidas */
 table{border-collapse:collapse;width:100%;max-width:980px;font-size:12px}
@@ -90,7 +89,7 @@ section{margin-top:40px}
 
 <p class="mono muted">More · sistema de design · movimento · proposta</p>
 <h1>A segunda foto do card</h1>
-<p class="lede">Passe o mouse ou toque em [Simular hover]. Uma coisa muda por vez.</p>
+<p class="lede">Passe o mouse ou toque em [Simular hover]. O quadro de hoje fica; muda só como a foto chega.</p>
 
 <div class="var a comparacao">
   <div class="meta">
@@ -98,7 +97,7 @@ section{margin-top:40px}
     <div class="k"><b>duração</b><span>200ms (motion.duration.quick)</span></div>
     <div class="k"><b>curva</b><span>snap · .63,.01,0,1.01</span></div>
     <div class="k"><b>o que muda</b><span>foto 1 escurece a 60%. Foto 2 entra a 75% do quadro, escala .8 → 1</span></div>
-    <p class="why muted">Três coisas mudam ao mesmo tempo. A segunda foto não preenche o quadro e a borda dela vira uma caixa.</p>
+    <p class="why muted">Três coisas mudam ao mesmo tempo, em 200ms. O snap passa de 1 e dá o pulo.</p>
   </div>
   <div class="grid" id="ga"></div>
 </div>
@@ -108,7 +107,7 @@ section{margin-top:40px}
     <h2>B · Sem movimento</h2>
     <div class="k"><b>duração</b><span>0</span></div>
     <div class="k"><b>curva</b><span>nenhuma</span></div>
-    <div class="k"><b>o que muda</b><span>foto 2 no quadro inteiro, troca seca</span></div>
+    <div class="k"><b>o que muda</b><span>o mesmo quadro de hoje, troca seca</span></div>
     <p class="why muted">O corte seco do vídeo na tela. Na grade, pisca a cada card.</p>
   </div>
   <div class="grid" id="gb"></div>
@@ -119,8 +118,8 @@ section{margin-top:40px}
     <h2>C · Recomendada</h2>
     <div class="k"><b>duração</b><span>300ms (motion.duration.step)</span></div>
     <div class="k"><b>curva</b><span>ease (motion.easing.standard)</span></div>
-    <div class="k"><b>o que muda</b><span>só a opacidade da foto 2, no mesmo quadro 3:4. Nada escala, nada escurece, nome e preço parados</span></div>
-    <p class="why muted">O que The Row e Jacquemus fazem: 300ms, ease, só opacidade. As duas fotos têm o mesmo peso.</p>
+    <div class="k"><b>o que muda</b><span>o mesmo quadro de hoje: foto 1 a 60%, foto 2 a 75%. Só a opacidade muda; nada escala</span></div>
+    <p class="why muted">O tempo e a curva de The Row e Jacquemus: 300ms, ease, só opacidade. A composição não muda.</p>
   </div>
   <div class="grid" id="gc"></div>
 </div>
@@ -130,7 +129,7 @@ section{margin-top:40px}
     <h2>D · Comparação</h2>
     <div class="k"><b>duração</b><span>500ms (motion.duration.base)</span></div>
     <div class="k"><b>curva</b><span>ease-out</span></div>
-    <div class="k"><b>o que muda</b><span>opacidade e escala .98 → 1 da foto 2</span></div>
+    <div class="k"><b>o que muda</b><span>o mesmo quadro; opacidade e escala .98 → 1 da foto 2</span></div>
     <p class="why muted">A versão Knoll (600ms, escala .95). A escala mexe na peça de novo. Meio segundo é lento na grade.</p>
   </div>
   <div class="grid" id="gd"></div>
@@ -152,12 +151,12 @@ section{margin-top:40px}
       <tr><td>Vipp</td><td>fusão entre fotos de categoria</td><td class="m">300ms</td><td class="m">ease-in-out</td><td class="m">opacity</td></tr>
     </tbody>
   </table></div>
-  <p class="muted" style="max-width:60ch">Nenhuma referência escurece a primeira foto nem mostra a segunda menor que o quadro.</p>
+  <p class="muted" style="max-width:60ch">O que vem das referências é o tempo e a curva. O quadro é da More.</p>
 </section>
 
 <section>
   <h2>O que a recomendada pede do site</h2>
-  <p style="max-width:60ch">Segunda foto de cada peça em 3:4, igual à primeira. Em product-card.css, foto 2: <span class="mono">inset:0; width:100%; height:100%; object-fit:cover; transition:opacity 300ms ease</span>. Sem transform. A foto 1 sem transição. Nada mais muda.</p>
+  <p style="max-width:60ch">Em product-card.css, foto 2: tirar o <span class="mono">scale(.8)</span> do estado base e o <span class="mono">transform</span> da transição; <span class="mono">transition:opacity 300ms ease</span>. Foto 1: <span class="mono">transition:opacity 300ms ease</span>. Posição, tamanho e o 60% ficam como estão.</p>
 </section>
 
 <div class="bar"><button type="button" id="sim">[Simular hover]</button><span class="mono muted">1,5s em todos os cards</span></div>

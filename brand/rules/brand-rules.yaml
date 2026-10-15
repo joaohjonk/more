@@ -124,7 +124,7 @@ rules:
   - id: R-MOTION-03
     scope: core
     status: proposed   # proposta nossa, medida no site e nas referências em 2026-10-15
-    rule: 'a segunda foto do card entra por fusão no mesmo quadro 3:4 - só opacity muda (0 => 1), duração motion.role.hover-swap 300ms (ou 0 = troca seca), curva ease ou ease-out; a primeira foto nunca escurece parcialmente (opacity entre 0 e 1 falha), nenhuma escala nem deslocamento (transform só none ou translate(-50%,-50%)), a segunda foto ocupa o quadro (width 100%, object-fit cover); nome e preço não mudam. Hoje o site faz escala .8 => 1 a 75% do quadro em 200ms snap e escurece a primeira a 60%: falha. The Row e Jacquemus fazem 300ms ease só em opacity; Knoll 600ms com escala .95 (fora da regra)'
+    rule: 'a segunda foto do card entra por fusão no quadro de hoje (75% do 3:4, centrada; a primeira foto a 60%) - só opacity muda, duração motion.role.hover-swap 300ms (ou 0 = troca seca), curva ease ou ease-out; nenhuma escala nem deslocamento (transform só none ou translate(-50%,-50%); scale diferente de 1 falha); nome e preço não mudam. Hoje o site faz escala .8 => 1 em 200ms snap: falha. The Row e Jacquemus fazem 300ms ease só em opacity; Knoll 600ms com escala .95 (fora da regra)'
     check: script   # node checks/hover-swap.mjs <css da página>
   - id: R-MOTION-04
     scope: core

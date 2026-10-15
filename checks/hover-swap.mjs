@@ -1,10 +1,9 @@
 #!/usr/bin/env node
-// R-MOTION-03: a segunda foto do card (troca no hover) entra por fusão no mesmo quadro.
+// R-MOTION-03: a segunda foto do card (troca no hover) entra por fusão no quadro de hoje (75%, centrada).
 //   - vale para regras de foto de card em estado hover/focus e para a própria "segunda foto"
 //     (seletor com hover-image, hover-img, --alternate, --secondary, img.alt, img.b, img.detalhe, .foto-2)
 //   - a segunda foto não escala nem se desloca: transform só none ou translate(-50%, -50%); scale() diferente de 1 falha
-//   - a segunda foto ocupa o quadro: width menor que 100% falha
-//   - a primeira foto não escurece: opacity entre 0 e 1 (ex. .6) em estado hover falha
+//   - tamanho, posição e o 60% da primeira foto ficam como estão: a regra não mede width nem opacity de repouso
 //   - duração da fusão: 300ms (motion.role.hover-swap) ou 0 (troca seca); curva ease, ease-out ou o token standard; snap falha
 //   - blocos sob um seletor que começa com .comparacao são comparações (demo) e não contam
 // Uso: node checks/hover-swap.mjs <arquivo.css|.html ...>
@@ -35,8 +34,6 @@ for (const f of files) for (const r of cssOf(f)) {
       if (sc && Number(sc[1]) !== 1) failures.push({ file: f, msg: `${where}: a segunda foto escala (${d.transform}); só opacity muda` });
       if (/translate/.test(d.transform) && !/translate\(\s*-50%\s*,\s*-50%\s*\)/.test(d.transform)) failures.push({ file: f, msg: `${where}: a foto se desloca (${d.transform}); distância é motion.distance.none` });
     }
-    if (isSecond && d.width && /%/.test(d.width) && parseFloat(d.width) < 100) failures.push({ file: f, msg: `${where}: a segunda foto tem width ${d.width}; ela ocupa o quadro inteiro (100%, object-fit cover)` });
-    if (isHoverPhoto && !isSecond && d.opacity !== undefined) { const o = parseFloat(d.opacity); if (o > 0 && o < 1) failures.push({ file: f, msg: `${where}: a primeira foto escurece para ${d.opacity}; ela fica em 1 ou vai a 0` }); }
     for (const p of ['transition', 'transition-duration', 'transition-timing-function']) {
       if (!d[p] || /^(none|initial|inherit|unset)$/.test(d[p])) continue;
       for (const item of d[p].split(/,(?![^(]*\))/).map((s) => s.trim())) {
@@ -48,4 +45,4 @@ for (const f of files) for (const r of cssOf(f)) {
     }
   }
 }
-finish('R-MOTION-03', failures, seen ? 'a segunda foto entra por fusão no mesmo quadro' : 'sem card com troca de foto');
+finish('R-MOTION-03', failures, seen ? 'a segunda foto entra por fusão, sem escala' : 'sem card com troca de foto');

@@ -32,7 +32,7 @@ Uma linha por regra, proposta ou grupo de tokens. Para decidir, acrescente uma l
 | R-NAME-01 | um nome canônico por peça, "<Tipo> <complemento em minúscula> <Nome>" (Mesa de centro Cildo, Cadeira 556-A), igual no site, Instagram, et… | proposed | |
 | R-FILE-01 | arquivos se chamam MORE_<CANAL>_<peça-slug>_<variante>_<AAAAMMDD>_v<nn>.<ext> (MORE_IG_mesa-de-centro-cildo_4x5_20261105_v02.jpg). CANAL … | proposed | |
 | R-PRINT-01 | PDF de impressão declara PDF/X-4, toda página tem TrimBox e BleedBox com 3mm de sangria em cada lado, e off-white nunca é tinta (é o pape… | proposed | |
-| R-MOTION-03 | a segunda foto do card entra por fusão no mesmo quadro 3:4 - só opacity, 300ms ou 0, ease; sem escala, sem escurecer a primeira (demos/hover-foto) | proposed | |
+| R-MOTION-03 | a segunda foto do card entra por fusão no quadro de hoje (75%, primeira a 60%) - só opacity, 300ms ou 0, ease; sem escala (demos/hover-foto) | proposed | |
 | R-MOTION-04 | a interação orienta, não encena - sem sequestro de rolagem, loader teatral, cursor próprio ou carrossel automático; hover também por foco | proposed | |
 | motion.role.*, motion.distance.*, motion.scale.soft | papéis de movimento (hover-swap 300ms ease, panel 500ms, enter 450ms out-expo), distância (0 / 24px) e escala leve | proposed | |
 | R-MOTION-02 | vídeo troca de foto por corte seco (Hard cut) - nenhuma fusão nem fade, medido pelo script; o movimento de luz é Shadow sweep (mancha dur… | proposed | |
