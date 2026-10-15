@@ -264,6 +264,40 @@
     "permanence": "core",
     "approval": "unknown",
     "notes": "Decide PT, EN or bilingual before launch."
+   },
+   "caption_formula": {
+    "last_updated": "2026-10-15",
+    "value": "Instagram caption = product type + first name, full stop, then ONE wry line that argues with convention ('Não é quadrada, só parece.', 'Essa não vai com as outras', 'Nada grita, só a concorrência.'), then an optional materials line. 4–145 words, median 11. Zero exclamation marks, zero emoji, zero hashtags across all 42 posts.",
+    "input_class": "FACT",
+    "sources": [
+     {
+      "kind": "live_brand_behavior",
+      "ref": "https://www.instagram.com/more.mymore/ full feed via Apify instagram-scraper (42 posts, 136 images, 2025-12-20 to 2026-10-13), captured 2026-10-15",
+      "captured_at": "2026-10-15",
+      "by": "brand-import",
+      "quote": "Mesa de jantar componível Naz. Não é quadrada, só parece."
+     }
+    ],
+    "confidence": "high",
+    "permanence": "core",
+    "approval": "inferred"
+   },
+   "register_shift": {
+    "last_updated": "2026-10-15",
+    "value": "The first posts (Dec 2025) used generic soul language ('Móveis com alma', 'Peças com alma e personalidade'); from Jan 2026 the voice turns dry and contrarian. The dry voice is the brand; 'alma/personalidade/essência' is retired.",
+    "input_class": "SOFT_CONSTRAINT",
+    "sources": [
+     {
+      "kind": "live_brand_behavior",
+      "ref": "https://www.instagram.com/more.mymore/ full feed via Apify instagram-scraper (42 posts, 136 images, 2025-12-20 to 2026-10-13), captured 2026-10-15",
+      "captured_at": "2026-10-15",
+      "by": "brand-import"
+     }
+    ],
+    "confidence": "medium",
+    "permanence": "core",
+    "approval": "inferred",
+    "notes": "Likes are too few (20–145) to prove which voice performs; treat as direction, not evidence."
    }
   },
   "vocabulary": {
@@ -296,6 +330,39 @@
       "ref": "https://mymore.design (theme t/7, password-protected preview), captured 2026-10-15",
       "captured_at": "2026-10-15",
       "by": "site-capture"
+     }
+    ],
+    "confidence": "high",
+    "permanence": "core",
+    "approval": "inferred"
+   },
+   "inconsistencies": {
+    "last_updated": "2026-10-15",
+    "value": "Same piece named differently across site and Instagram: 'Mesa Cildo' vs 'Mesa de centro Cildo'; 'Cadeira 556' vs 'Cadeira 556-A'; 'Luminária Ngoni' vs 'Torre de luz Ngoni'; 'Poltrona Leticia' vs 'Letícia'; capitals vary ('Mesa de Centro Imi', 'Mesa de Apoio Carnívora' vs 'Mesa de apoio Eto'). INT.01 (switch) appears on Instagram but not in the shop.",
+    "input_class": "UNKNOWN",
+    "sources": [
+     {
+      "kind": "live_brand_behavior",
+      "ref": "https://www.instagram.com/more.mymore/ full feed via Apify instagram-scraper (42 posts, 136 images, 2025-12-20 to 2026-10-13), captured 2026-10-15",
+      "captured_at": "2026-10-15",
+      "by": "brand-import"
+     }
+    ],
+    "confidence": "high",
+    "permanence": "core",
+    "approval": "inferred",
+    "notes": "Owner to fix one canonical name per piece: '<Tipo em minúscula> <Nome>' e.g. 'Mesa de centro Cildo'."
+   },
+   "pattern": {
+    "last_updated": "2026-10-15",
+    "value": "Type in sentence case + proper name: human first names (Maria, João, Leticia, Eduardo, Leila), objects/words (Oops, Canoa, Catedral, Moustache, Carnívora, Dominó), or a code for fixtures (TOM.01, INT.01). Pairs talk to each other in copy (Banco João 'Precisa da sua Maria.').",
+    "input_class": "FACT",
+    "sources": [
+     {
+      "kind": "live_brand_behavior",
+      "ref": "https://www.instagram.com/more.mymore/ full feed via Apify instagram-scraper (42 posts, 136 images, 2025-12-20 to 2026-10-13), captured 2026-10-15",
+      "captured_at": "2026-10-15",
+      "by": "brand-import"
      }
     ],
     "confidence": "high",
@@ -846,6 +913,22 @@
     "confidence": "high",
     "permanence": "core",
     "approval": "inferred"
+   },
+   "colour_field": {
+    "last_updated": "2026-10-15",
+    "value": "Occasional single saturated background (teal, purple, olive green, mustard, red) behind one piece, lit low-key. It is the only place strong colour lives outside the products; it never enters the UI.",
+    "input_class": "FACT",
+    "sources": [
+     {
+      "kind": "live_brand_behavior",
+      "ref": "https://www.instagram.com/more.mymore/ full feed via Apify instagram-scraper (42 posts, 136 images, 2025-12-20 to 2026-10-13), captured 2026-10-15",
+      "captured_at": "2026-10-15",
+      "by": "brand-import"
+     }
+    ],
+    "confidence": "medium",
+    "permanence": "seasonal",
+    "approval": "inferred"
    }
   },
   "camera_language": {},
@@ -862,14 +945,30 @@
   "social_behavior": {
    "instagram": {
     "last_updated": "2026-10-15",
-    "value": "Product as sculpture, one piece per frame, no people yet; studio-light and low-key series alternate.",
+    "value": "All 136 images are More's own studio photography: 76% light neutral seamless (off-white paper, hard sun with long shadows), 15% low-key/dark, 8% saturated colour-field backgrounds (teal, purple, green, mustard, a red TOM.01 poster). Carousels go wide shot → detail → material close-up. No people, no interiors/projects, no UGC. Formats 4:5 (1080x1350) and 3:4 (1440x1920).",
     "input_class": "FACT",
     "sources": [
      {
       "kind": "live_brand_behavior",
-      "ref": "https://www.instagram.com/more.mymore/ public embed (5.6k followers, 42 posts), captured 2026-10-15",
+      "ref": "https://www.instagram.com/more.mymore/ full feed via Apify instagram-scraper (42 posts, 136 images, 2025-12-20 to 2026-10-13), captured 2026-10-15",
       "captured_at": "2026-10-15",
-      "by": "site-capture"
+      "by": "brand-import"
+     }
+    ],
+    "confidence": "high",
+    "permanence": "core",
+    "approval": "inferred"
+   },
+   "credits": {
+    "last_updated": "2026-10-15",
+    "value": "Some posts credit collaborators by @mention (photographers and designers, e.g. @renanmartinsfoto). Credits sit in the caption, never on the image.",
+    "input_class": "FACT",
+    "sources": [
+     {
+      "kind": "live_brand_behavior",
+      "ref": "https://www.instagram.com/more.mymore/ full feed via Apify instagram-scraper (42 posts, 136 images, 2025-12-20 to 2026-10-13), captured 2026-10-15",
+      "captured_at": "2026-10-15",
+      "by": "brand-import"
      }
     ],
     "confidence": "medium",
