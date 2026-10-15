@@ -42,3 +42,7 @@ cstack brand context --task page   # o que a IA precisa ler para fazer uma pági
 - Confirmar a licença web das fontes 205TF (Muoto e Muoto Mono) para páginas novas.
 - Idioma do texto Sobre e do menu (hoje em inglês provisório, repetido).
 - Preços de R$ 1 na Tomada TOM.01 e na Estante Dominó; grafias "Velugo Girassol" e "Angelim Pedra ebanidada" no Shopify.
+
+## Demo
+
+`demos/tomada-3d/` é a exploração da página da Tomada TOM.01 com a peça em 3D (Three.js, modelada a partir das medidas e fotos reais, sem gerar a peça por IA). Abra `demos/tomada-3d/index.html` no navegador.

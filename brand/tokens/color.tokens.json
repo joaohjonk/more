@@ -56,7 +56,7 @@
     ],
     "hex": "#686868"
    },
-   "$description": "--cinza-medio: prices, dimensions, secondary labels."
+   "$description": "--cinza-medio: prices, dimensions, secondary labels. Contrast on off-white is 4.28:1, below WCAG AA for text under 18px: use cinza-escuro for small running text."
   },
   "cinza-texto": {
    "$value": {
@@ -221,7 +221,7 @@
    },
    "secondary": {
     "$value": "{color.cinza-medio}",
-    "$description": "Prices, dimensions, metadata."
+    "$description": "Prices, dimensions, metadata. 4.28:1 on off-white: fine for short labels as on the site, use cinza-escuro for small body text."
    },
    "on-inverse": {
     "$value": "{color.cinza-claro}",

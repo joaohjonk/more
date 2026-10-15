@@ -23,7 +23,7 @@
   h2{font-family:var(--font-family-muoto);font-weight:400;font-size:var(--font-size-about);line-height:1;margin-bottom:var(--space-lg)}
   h3{font-family:var(--font-family-muoto);font-weight:400;font-size:var(--font-size-ui);margin:var(--space-2xl) 0 var(--space-sm)}
   p.lede{font-family:var(--font-family-muoto);font-size:var(--font-size-title);line-height:1.15;max-width:34ch}
-  p.body{max-width:62ch;margin-bottom:var(--space-sm)}
+  p.body{font-family:var(--font-family-muoto);font-size:var(--font-size-ui);line-height:1.45;max-width:62ch;margin-bottom:var(--space-sm)}
   hr{border:0;border-top:1px solid var(--color-alpha-preto-10);margin:var(--space-lg) 0}
 
   /* hero */
@@ -121,7 +121,7 @@
   .rules div{border-top:1px solid var(--color-alpha-preto-10);padding-top:var(--space-sm)}
   .rules .id{color:var(--color-text-secondary);font-stretch:75%}
   .rules p{font-family:var(--font-family-muoto);margin-top:4px}
-  ol.steps{padding-left:1.2em;max-width:70ch}ol.steps li{margin-bottom:var(--space-sm)}
+  ol.steps{padding-left:1.2em;max-width:70ch;font-family:var(--font-family-muoto);font-size:var(--font-size-ui);line-height:1.45}ol.steps li{margin-bottom:var(--space-sm)}
   code{font-family:var(--font-family-mono);background:var(--color-alpha-preto-10);padding:1px 4px}
   footer{background:var(--color-surface-inverse);color:var(--color-text-on-inverse);padding:var(--space-3xl) var(--space-lg) 120px;margin-top:var(--space-section)}
   footer svg{width:min(320px,60vw);color:#c9c2b9}footer svg path{fill:currentColor}
@@ -221,7 +221,7 @@
         <div class="cbar glass mono"><span>&nbsp;</span><span>Menu [+]</span></div>
       </div>
     </div>
-    <p class="note">35px de altura, 320px de largura, canto vivo. A barra de ação fica 6px acima do menu. Passe o mouse para ver o hover em cart-accent.</p>
+    <p class="note">35px de altura, 320px de largura, canto vivo. A barra de ação fica 6px acima do menu. Passe o mouse (ou toque) para ver o estado ativo em cart-accent.</p>
 
     <h3>Botões em colchetes e filtro</h3>
     <div class="stage" style="align-items:center">
@@ -252,7 +252,7 @@
   <section id="movimento">
     <div class="eyebrow">[07] Movimento · motion tokens</div>
     <h2>Movimento</h2>
-    <p class="body">Devagar e curto. Fades e crescimentos de 0,2 a 0,8s, sempre com saída suave. Passe o mouse no bloco abaixo.</p>
+    <p class="body">Devagar e curto. Fades e crescimentos de 0,2 a 0,8s, sempre com saída suave. Passe o mouse ou toque no bloco abaixo.</p>
     <div class="ease">
       <div><span class="mono">snap · .63,.01,0,1.01 · 200ms</span><b style="transition:transform .2s cubic-bezier(.63,.01,0,1.01)"></b><span class="secondary">troca de foto no hover</span></div>
       <div><span class="mono">out-expo · .22,1,.36,1 · 450ms</span><b style="transition:transform .45s cubic-bezier(.22,1,.36,1)"></b><span class="secondary">abertura e entrada do catálogo</span></div>
@@ -297,12 +297,14 @@
     <div class="eyebrow">[10] Como usar com IA</div>
     <h2>Como usar com o Claude</h2>
     <ol class="steps">
-      <li>Abra o Claude (app ou Claude Code) com acesso a este repositório.</li>
-      <li>Peça: <code>Instale o cstack (github.com/joaohjonk/cstack) e use o workspace da More neste repo.</code></li>
-      <li>Antes de criar: <code>/brief</code> para escrever o pedido; depois a skill certa (<code>/copywriting</code>, <code>/workflow landing-page</code>, <code>/shot-dna</code>...).</li>
-      <li>Depois de criar: <code>/brand-verify</code> (checagens automáticas destas regras) e <code>/creative-review</code> (revisores independentes). Quem faz nunca aprova o próprio trabalho.</li>
-      <li>Toda correção de vocês ("isso não é More") vira regra nova em <code>brand/rules/</code>. É assim que o gosto acumula.</li>
+      <li>Abra o Claude com acesso a este repositório.</li>
+      <li>Peça em português, do jeito que pediria a alguém do time: <code>Siga o sistema de design da More neste repositório e revise antes de me mostrar.</code></li>
+      <li>Quem cria não aprova o próprio trabalho: peça sempre uma segunda revisão, de preferência por outra pessoa ou outro agente.</li>
+      <li>Toda correção de vocês ("isso não é More") vira regra nova no repositório. É assim que o gosto acumula.</li>
     </ol>
+    <details style="margin-top:var(--space-lg)"><summary class="eyebrow" style="cursor:pointer;margin:0">[+] Para quem é técnico</summary>
+      <p class="body" style="margin-top:var(--space-sm)">O workspace segue o <a href="https://github.com/joaohjonk/cstack">cstack</a>. Antes de criar: <code>/brief</code> e a skill certa (<code>/copywriting</code>, <code>/workflow landing-page</code>, <code>/shot-dna</code>). Depois: <code>/brand-verify</code> e <code>/creative-review</code>. Regras ficam em <code>brand/rules/</code>; tokens em <code>brand/tokens/</code>, gerados com <code>cstack tokens build</code>.</p>
+    </details>
   </section>
 
   <section id="pendencias">
@@ -311,7 +313,7 @@
     <ol class="steps">
       <li>Aprovar estes tokens como oficiais (hoje estão como provisórios, medidos do site).</li>
       <li>Licença web da 205TF: cobre páginas novas e materiais gerados?</li>
-      <li>Idioma: o texto Sobre e o menu estão em inglês provisório, repetido duas vezes.</li>
+      <li>Idioma: o texto Sobre está em inglês provisório, com o mesmo parágrafo repetido.</li>
       <li>Preços de R$ 1 na Tomada TOM.01 e na Estante Dominó.</li>
       <li>Grafias no Shopify: "Velugo Girassol" e "Angelim Pedra ebanidada".</li>
       <li>Instagram: só os 6 posts mais recentes foram lidos (o resto pede login).</li>
