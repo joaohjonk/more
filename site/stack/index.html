@@ -1,0 +1,300 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Stack e automações · More</title>
+<meta name="description" content="O que roda hoje no site da More, medido de fora. O que ligar antes de 05.11. O que vem depois, em ordem. Seis perguntas para o time.">
+<link rel="icon" href="data:,">
+<link rel="stylesheet" href="/nav/shell.css">
+<style>
+@font-face{font-family:"Muoto";src:url("/nav/fonts/Muoto-Regular.otf") format("opentype");font-weight:400;font-display:swap}
+@font-face{font-family:"MuotoMono";src:url("/nav/fonts/MuotoMono-Condensed.woff2") format("woff2");font-weight:400;font-display:swap}
+/* Tokens do sistema de design da More (/sistema/brand/generated/tokens.css). Página de marca: paleta clara nos dois temas. */
+:root{
+  color-scheme:light;
+  --page:#E5E1DB; --ink:#2D211E; --muted:#5D554F; --label:#686868; --rule:#2D211E1A; --glass:#2D211E1A; --tile:#DDD7CF; --inverse:#2D211E; --on-inverse:#E5E1DB;
+  --muoto:"Muoto","DM Sans","Helvetica Neue",Arial,sans-serif;
+  --mono:"MuotoMono","Martian Mono",ui-monospace,Menlo,monospace;
+  --s-hair:6px; --s-sm:10px; --s-md:16px; --s-lg:20px; --s-xl:30px; --s-2xl:40px; --s-3xl:60px; --s-sec:96px;
+  --bar:35px; --barzone:75px;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--page:#E5E1DB;--ink:#2D211E;--muted:#5D554F;--rule:#2D211E1A;--glass:#2D211E1A;--tile:#DDD7CF;color-scheme:light}}
+:root[data-theme="dark"]{--page:#E5E1DB;--ink:#2D211E;--muted:#5D554F;--rule:#2D211E1A;--glass:#2D211E1A;--tile:#DDD7CF;color-scheme:light}
+*{box-sizing:border-box}
+html,body{height:100%}
+body{background:var(--page);color:var(--ink);font-family:var(--muoto);font-size:15px;line-height:1.47;-webkit-font-smoothing:antialiased;margin:0;overflow:hidden}
+/* A página rola dentro de .page; a barra vive numa faixa própria embaixo e nunca cobre texto. */
+.page{height:calc(100% - var(--barzone));overflow-y:auto;overflow-x:hidden;scroll-behavior:smooth;overscroll-behavior:contain;padding-bottom:106px}
+.wrap{max-width:1120px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:0 var(--s-3xl)}
+.mono{font-family:var(--mono);font-stretch:75%;font-size:13px}
+.muted{color:var(--muted)}
+.label{color:var(--label)}
+a{color:inherit;text-underline-offset:3px;text-decoration-thickness:1px;overflow-wrap:anywhere}
+a:hover{color:var(--muted)}
+h1,h2,h3{font-weight:400;text-wrap:balance;margin:0}
+h2{font-size:clamp(26px,3.4vw,32px);line-height:1.05;margin-bottom:var(--s-lg)}
+h3{font-size:15px;margin-bottom:4px}
+p{margin:0 0 var(--s-sm);max-width:64ch;text-wrap:pretty}
+section{padding-top:var(--s-sec)}
+.eyebrow{font-family:var(--mono);font-stretch:75%;font-size:13px;color:var(--label);margin-bottom:var(--s-md)}
+img{max-width:100%}
+b{font-weight:400}
+.tag{font-family:var(--mono);font-stretch:75%;font-size:11px;color:var(--label);white-space:nowrap}
+.tag.open{color:var(--ink)}
+
+/* abertura */
+.open{padding-top:var(--s-3xl);display:grid;gap:var(--s-md)}
+.open h1{font-size:clamp(34px,5.2vw,58px);line-height:.98;letter-spacing:-.01em;max-width:18ch}
+.open .lede{font-size:clamp(18px,2vw,22px);line-height:1.25;margin:0;max-width:34ch}
+.meta{display:flex;flex-wrap:wrap;gap:6px var(--s-lg);margin-top:var(--s-sm)}
+
+/* três linhas */
+.tres{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--s-hair);margin-top:var(--s-lg)}
+@media(max-width:860px){.tres{grid-template-columns:1fr}}
+.tres div{background:var(--glass);padding:var(--s-lg);min-width:0}
+.tres .n{font-family:var(--mono);font-stretch:75%;font-size:12px;color:var(--label);display:block;margin-bottom:8px}
+.tres p{margin:0;font-size:clamp(16px,1.6vw,19px);line-height:1.25;max-width:30ch}
+
+/* tabelas */
+.meas{overflow-x:auto;margin-top:var(--s-lg)}
+.meas table{border-collapse:collapse;width:100%;min-width:760px;font-size:14px}
+.meas th{font-family:var(--mono);font-stretch:75%;font-weight:400;font-size:12px;color:var(--label);text-align:left;padding:8px;border-bottom:1px solid var(--ink)}
+.meas td{padding:10px 8px;border-bottom:1px solid var(--rule);vertical-align:top}
+.meas td:first-child{width:18%}
+.meas tr.grp td{font-family:var(--mono);font-stretch:75%;font-size:12px;color:var(--label);padding-top:var(--s-lg);border-bottom:1px solid var(--ink)}
+@media(max-width:700px){.meas table{min-width:0}.meas thead{display:none}.meas tr{display:block;padding:12px 0;border-bottom:1px solid var(--ink)}.meas tr.grp{padding:var(--s-lg) 0 4px}.meas td{display:block;padding:2px 0;border:0;width:auto!important}.meas td:first-child{font-size:16px;margin-bottom:4px}.meas td[data-l]::before{content:attr(data-l);display:block;font-family:var(--mono);font-stretch:75%;font-size:11px;color:var(--label);margin-top:6px}}
+
+/* riscos e perguntas */
+.lst{list-style:none;margin:var(--s-lg) 0 0;padding:0;border-top:1px solid var(--ink)}
+.lst li{display:grid;grid-template-columns:4ch minmax(0,1fr);gap:8px 16px;padding:12px 0;border-bottom:1px solid var(--rule);font-size:15px}
+.lst .n{font-family:var(--mono);font-stretch:75%;font-size:12px;color:var(--label);padding-top:3px}
+.lst p{margin:0;max-width:70ch}
+.lst p b{display:block}
+.lst .how{font-family:var(--mono);font-stretch:75%;font-size:12px;color:var(--label);margin-top:4px}
+
+/* seis perguntas */
+.seis{display:grid;grid-template-columns:repeat(2,1fr);gap:var(--s-hair);margin-top:var(--s-lg)}
+@media(max-width:860px){.seis{grid-template-columns:1fr}}
+.seis article{background:var(--glass);padding:var(--s-lg);min-width:0;display:flex;flex-direction:column;gap:var(--s-sm)}
+.seis .st{font-family:var(--mono);font-stretch:75%;font-size:12px;color:var(--label)}
+.seis h3{font-size:clamp(18px,2vw,22px);line-height:1.2;margin:0}
+.seis dl{margin:0;display:grid;grid-template-columns:auto 1fr;gap:4px 12px;font-size:14px}
+.seis dt{font-family:var(--mono);font-stretch:75%;font-size:12px;color:var(--label);padding-top:2px;white-space:nowrap}
+.seis dd{margin:0}
+.seis ul{margin:0;padding-left:18px;font-size:14px}
+.seis li{margin-bottom:3px}
+
+/* fluxos */
+.fr{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--s-hair);margin-top:var(--s-md)}
+@media(max-width:860px){.fr{grid-template-columns:1fr}}
+.fr article{background:var(--glass);padding:var(--s-md) var(--s-lg);min-width:0;display:flex;flex-direction:column;gap:6px}
+.fr .st{font-family:var(--mono);font-stretch:75%;font-size:12px;color:var(--label)}
+.fr h3{font-size:17px;line-height:1.2;margin:0}
+.fr p{margin:0;font-size:14px}
+.fr .lk{font-family:var(--mono);font-stretch:75%;font-size:12px;color:var(--label);margin-top:auto;padding-top:6px}
+.base{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:var(--s-md) var(--s-2xl);margin-top:var(--s-xl)}
+.base div{border-top:1px solid var(--rule);padding-top:var(--s-sm);min-width:0}
+.base p{font-size:14px;color:var(--muted)}
+.ia{margin-top:var(--s-sec);border-top:1px solid var(--ink);padding-top:var(--s-md);font-size:14px}
+.ia p{max-width:80ch}
+
+/* barra, em faixa própria */
+.barzone{height:var(--barzone);position:relative;background:var(--page)}
+.bar{position:absolute;left:50%;transform:translateX(-50%);top:20px;width:420px;max-width:calc(100vw - 32px);height:var(--bar);background:var(--glass);backdrop-filter:blur(13px);-webkit-backdrop-filter:blur(13px);display:flex;align-items:center;justify-content:space-between;padding:0 var(--s-sm)}
+.bar svg{width:56px;height:auto;display:block;fill:currentColor}
+.bar nav{display:flex;gap:8px}
+.bar a{font-family:var(--mono);font-stretch:75%;font-size:13px;text-decoration:none;white-space:nowrap}
+.bar a:hover,.bar a:focus-visible{color:var(--muted)}
+@media(max-width:560px){.bar nav a{font-size:11px}.bar nav{gap:4px}}
+footer{background:var(--inverse);color:var(--on-inverse);margin-top:var(--s-sec)}
+footer .wrap{padding-block:var(--s-2xl)}
+footer p{font-size:13px;max-width:70ch}
+:focus-visible{outline:1px solid var(--ink);outline-offset:2px}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body><script src="/nav/shell.js" data-section="stack" data-into=".page" data-foot="on" defer></script>
+<div class="page" id="page">
+<div class="wrap">
+
+<header class="open" id="topo">
+  <div class="eyebrow">More · IA e experiência digital · Stack e automações · 15.10.2026</div>
+  <h1>Elegante na frente. Automático atrás.</h1>
+  <p class="lede">O que roda hoje no site, medido de fora. O que ligar antes de 05.11, quase tudo de graça. O que vem depois, em ordem.</p>
+  <div class="meta mono label"><span>Para: Fred, Edu, Vitor</span><span>Loja abre em 05.11.2026</span><span>Leitura: 5 min</span><span>Base: site ao vivo em 15.10, call de 15/10, pesquisa de stack de outro e-commerce</span></div>
+  <p class="muted" style="font-size:14px;margin-top:var(--s-sm)">"Guia" é o <a href="/guia/">guia para o time</a>, com as três sugestões e os seis números do placar. "JJ" é o João, autor das duas páginas.</p>
+</header>
+
+<section id="resumo">
+  <div class="eyebrow">[00] Em três linhas</div>
+  <h2>O site está pronto para vender, atrás de senha. Ninguém mede, ninguém registra.</h2>
+  <div class="tres">
+    <div><span class="n">O que funciona</span><p>Shopify com tema próprio, checkout com cartão, Pix e boleto. A tomada compra. O formulário da tomada já pede e-mail.</p></div>
+    <div><span class="n">O que falta</span><p>Nenhum pixel, nenhum Analytics, WhatsApp pessoal. Os e-mails do formulário caem no Shopify e ninguém lê.</p></div>
+    <div><span class="n">O que fazer</span><p>Oito riscos até 05.11, sete deles com ajuste de R$ 0. Depois, três ferramentas pequenas, uma por vez, com 30 dias de prova cada.</p></div>
+  </div>
+</section>
+
+<section id="hoje">
+  <div class="eyebrow">[01] O que roda hoje</div>
+  <h2>Seis funções, uma tabela.</h2>
+  <p>Lido com um navegador real em 1440 e 390 px. Também no código do site e no checkout, até a tela de pagamento. Nenhum pedido foi fechado. A última coluna diz como sabemos.</p>
+  <div class="meas" role="region" aria-label="Stack de hoje por função" tabindex="0"><table>
+    <thead><tr><th>Função</th><th>O que roda</th><th>O que vimos</th><th>Como sabemos</th></tr></thead>
+    <tbody>
+      <tr><td>Vender</td><td data-l="O que roda">Shopify, tema próprio feito pela agência. Contas de cliente novas da Shopify, login por código.</td><td data-l="O que vimos">24 peças em cinco categorias. Cinco peças estofadas com 144 variações de madeira e tecido cada, todas com o mesmo preço. Só a Tomada TOM.01 está comprável, em três cores, a R$ 1 e com peso zero. A Estante Dominó também está a R$ 1.</td><td data-l="Como sabemos"><span class="tag">observado</span> no código e no catálogo</td></tr>
+      <tr><td>Converter</td><td data-l="O que roda">Página da peça com madeira e tecido. Botão "A partir de" abre o WhatsApp. Formulário "Baixar" na página da tomada.</td><td data-l="O que vimos">O WhatsApp é um número pessoal, sem o nome da marca. O formulário pede nome, e-mail e aceite, e cria um cliente no Shopify com a etiqueta da peça. Só vimos esse, na tomada. Blocos das outras peças e quem responde, não dá para ver de fora.</td><td data-l="Como sabemos"><span class="tag">observado</span> na tomada; blocos das outras peças e lista de arquitetas <span class="tag open">[em aberto]</span></td></tr>
+      <tr><td>Cobrar e entregar</td><td data-l="O que roda">Checkout da Shopify em português. Cartão, Pix e boleto. Frete calculado no checkout.</td><td data-l="O que vimos">Visa, Master, Elo e mais cinco bandeiras, em até 12 vezes sem juros. Imposto estimado somado por cima do preço: R$ 0,17 sobre R$ 1, estimativa de teste. O frete só aparece com endereço completo; tabela ou cálculo, não dá para ver. Nota fiscal: não vimos quem emite.</td><td data-l="Como sabemos"><span class="tag">observado</span> no checkout; Pagar.me e cálculo de frete <span class="tag">ditos na call</span>; nota fiscal, quem paga o juro e regra de frete <span class="tag open">[em aberto]</span></td></tr>
+      <tr><td>Falar e reter</td><td data-l="O que roda">E-mail vendas@ no Google Workspace. WhatsApp pessoal. Instagram com 5,6 mil seguidores, número do guia.</td><td data-l="O que vimos">O domínio tem DMARC, o e-mail chega. Aceite de novidades no checkout e no login, sem nenhum e-mail além dos automáticos da Shopify. Nenhuma lista fora do Shopify.</td><td data-l="Como sabemos"><span class="tag">observado</span> nos registros do domínio, no rodapé e no login; e-mails automáticos são <span class="tag">suposição</span></td></tr>
+      <tr><td>Crescer e medir</td><td data-l="O que roda">Só o Analytics interno da Shopify.</td><td data-l="O que vimos">Nenhum pixel do Meta, nenhum Google Analytics, nenhuma tag. O único pixel personalizado só escreve no console do navegador. Coleções e busca desligadas por script. Descrição da home para o Google: "More".</td><td data-l="Como sabemos"><span class="tag">observado</span> no código</td></tr>
+      <tr><td>Ligar tudo</td><td data-l="O que roda">Nada ligado a nada.</td><td data-l="O que vimos">O Shopify Flow vem no plano e, pelo que dá para ver, não tem fluxo. A loja física de 05.11 não tem caixa ligado ao Shopify.</td><td data-l="Como sabemos"><span class="tag open">[em aberto]</span>: pede acesso ao painel</td></tr>
+    </tbody>
+  </table></div>
+  <p class="muted" style="font-size:14px;margin-top:var(--s-lg)">O que já vem de graça: a Shopify publica o catálogo para agentes de IA. Também mantém o mapa do site. O que pesa sem precisar: o tema carrega a Montserrat sem usar. A página da Poltrona Leticia pesa 4 MB em fotos.</p>
+</section>
+
+<section id="riscos">
+  <div class="eyebrow">[02] Riscos para 05.11</div>
+  <h2>Oito riscos que quebram a abertura. Sete custam R$ 0 para resolver.</h2>
+  <ol class="lst">
+    <li><span class="n">1</span><p><b>Imposto por cima do preço no checkout.</b>Num teste de R$ 1, a tela somou R$ 0,17 de imposto estimado. Se a regra valer para tudo, uma poltrona sobe milhares de reais na tela de pagamento.<span class="how">Decidir: incluir imposto no preço, ou não cobrar no site se a nota já cuida. Configurações › Impostos.</span></p></li>
+    <li><span class="n">2</span><p><b>Preço R$ 1 e peso zero.</b>Tomada TOM.01 e Estante Dominó. Sem peso, o frete calcula errado ou não calcula.<span class="how">Conferir: Produtos › cada variação › preço e peso.</span></p></li>
+    <li><span class="n">3</span><p><b>Zero medição.</b>Sem pixel, o anúncio da tomada não tem o que otimizar. Em janeiro, a conversa sobre o preço na grade volta a ser gosto.<span class="how">Ligar: app Facebook &amp; Instagram e app Google &amp; YouTube, os dois grátis.</span></p></li>
+    <li><span class="n">4</span><p><b>WhatsApp pessoal.</b>O número não tem o nome da More e as conversas não têm registro. Se a pessoa sair, a lista sai junto.<span class="how">Trocar: WhatsApp Business com o número da marca, catálogo e etiquetas.</span></p></li>
+    <li><span class="n">5</span><p><b>Os e-mails do formulário entram e ninguém lê.</b>Cada envio cria um cliente no Shopify com a etiqueta da peça. Se os blocos 2D e 3D passarem por ali, vira a lista de arquitetas.<span class="how">Ler toda semana: Clientes › filtro por etiqueta.</span></p></li>
+    <li><span class="n">6</span><p><b>Termos em inglês e nenhuma política de troca.</b>Compra online tem sete dias de arrependimento por lei. A tomada vai vender sem a página dizer isso.<span class="how">Escrever: Configurações › Políticas, em português.</span></p></li>
+    <li><span class="n">7</span><p><b>Nota fiscal da tomada.</b>Não vimos quem emite, como e quando. <span class="tag open">[em aberto]</span><span class="how">Decidir: contador, emissor gratuito ou Bling.</span></p></li>
+    <li><span class="n">8</span><p><b>12 vezes sem juros.</b>Se o juro das doze parcelas for da More, numa poltrona ele pesa. Quem paga: <span class="tag open">[em aberto]</span>. Decisão ou padrão da agência?<span class="how">Conferir: Pagamentos › provedor (Pagar.me, dito na call) › parcelas.</span></p></li>
+  </ol>
+</section>
+
+<section id="fazer">
+  <div class="eyebrow">[03] O que fazer, e quando</div>
+  <h2>Agora, até 05.11 e depois.</h2>
+  <p>Cada linha diz a ferramenta, o custo em ordem de grandeza e o esforço. Diz também quem poderia e o que fica mais fácil. Nenhuma linha pede agência.</p>
+  <div class="meas" role="region" aria-label="Plano por função" tabindex="0"><table>
+    <thead><tr><th>O quê</th><th>Ferramenta</th><th>Custa</th><th>Esforço</th><th>Quem poderia</th><th>O que fica mais fácil</th></tr></thead>
+    <tbody>
+      <tr class="grp"><td colspan="6">Agora · até 29.10, antes de tirar a senha</td></tr>
+      <tr><td>Imposto: incluir no preço ou não cobrar no site</td><td data-l="Ferramenta">Shopify › Impostos</td><td data-l="Custa">R$ 0</td><td data-l="Esforço">10 min</td><td data-l="Quem poderia">Vitor</td><td data-l="O que fica mais fácil">O preço da página é o preço cobrado.</td></tr>
+      <tr><td>Preço e peso reais na tomada; peso em todas as peças</td><td data-l="Ferramenta">Shopify › Produtos</td><td data-l="Custa">R$ 0</td><td data-l="Esforço">1 h</td><td data-l="Quem poderia">Vitor</td><td data-l="O que fica mais fácil">Frete certo, pedido certo.</td></tr>
+      <tr><td>Pixel do Meta e Google Analytics</td><td data-l="Ferramenta">Apps Facebook &amp; Instagram e Google &amp; YouTube, da própria Shopify</td><td data-l="Custa">R$ 0</td><td data-l="Esforço">1 h, com o JJ</td><td data-l="Quem poderia">Vitor</td><td data-l="O que fica mais fácil">O anúncio da tomada tem o que otimizar. O placar de sexta sai de lá.</td></tr>
+      <tr><td>WhatsApp com o número da marca</td><td data-l="Ferramenta">WhatsApp Business, o app grátis</td><td data-l="Custa">R$ 0</td><td data-l="Esforço">1 h</td><td data-l="Quem poderia">Edu</td><td data-l="O que fica mais fácil">Nome da More na conversa, etiquetas por conversa, mensagem de ausência.</td></tr>
+      <tr><td>Lista única de conversas (sugestão 3 do guia)</td><td data-l="Ferramenta">Planilha no Google Workspace que já existe, ou Clientes do Shopify com etiquetas</td><td data-l="Custa">R$ 0</td><td data-l="Esforço">2 h</td><td data-l="Quem poderia">Edu</td><td data-l="O que fica mais fácil">Toda conversa num lugar, com origem e primeira pergunta.</td></tr>
+      <tr><td>Perfil da loja no Google</td><td data-l="Ferramenta">Google Business Profile</td><td data-l="Custa">R$ 0</td><td data-l="Esforço">30 min</td><td data-l="Quem poderia">Fred</td><td data-l="O que fica mais fácil">Quem busca "More" acha endereço, horário e fotos.</td></tr>
+      <tr><td>Termos em português e política de troca</td><td data-l="Ferramenta">Shopify › Políticas</td><td data-l="Custa">R$ 0</td><td data-l="Esforço">2 h</td><td data-l="Quem poderia">Fred</td><td data-l="O que fica mais fácil">A lei dos sete dias escrita antes da primeira venda.</td></tr>
+      <tr><td>Nota fiscal da tomada: quem emite</td><td data-l="Ferramenta">Contador, emissor gratuito da Sefaz ou Bling</td><td data-l="Custa">R$ 0 a R$ 200 por mês</td><td data-l="Esforço"><span class="tag open">[em aberto]</span></td><td data-l="Quem poderia">Fred</td><td data-l="O que fica mais fácil">Venda online com nota, desde a primeira.</td></tr>
+      <tr class="grp"><td colspan="6">Até 05.11 · a semana da abertura</td></tr>
+      <tr><td>Ler a lista do formulário toda semana</td><td data-l="Ferramenta">Shopify › Clientes › etiqueta</td><td data-l="Custa">R$ 0</td><td data-l="Esforço">15 min por semana</td><td data-l="Quem poderia">Edu</td><td data-l="O que fica mais fácil">Quem pediu arquivo entra na lista única.</td></tr>
+      <tr><td>Primeiro fluxo: download vira aviso</td><td data-l="Ferramenta">Shopify Flow, que vem no plano</td><td data-l="Custa">R$ 0</td><td data-l="Esforço">1 h, com o JJ</td><td data-l="Quem poderia">Vitor</td><td data-l="O que fica mais fácil">Cliente com etiqueta de download manda e-mail para o time. Ninguém precisa lembrar de olhar.</td></tr>
+      <tr><td>Venda da loja física no mesmo painel</td><td data-l="Ferramenta">Shopify POS Lite, que vem no plano. O cartão passa na maquininha e entra como pagamento externo</td><td data-l="Custa">R$ 0 além da taxa da maquininha</td><td data-l="Esforço">2 h</td><td data-l="Quem poderia">Vitor</td><td data-l="O que fica mais fácil">Cliente da loja e cliente do site na mesma base, desde 05.11. O dinheiro ainda se confere à mão.</td></tr>
+      <tr><td>E-mails automáticos em português, com remetente da More</td><td data-l="Ferramenta">Shopify › Notificações e remetente do domínio</td><td data-l="Custa">R$ 0</td><td data-l="Esforço">1 h</td><td data-l="Quem poderia">Vitor</td><td data-l="O que fica mais fácil">Confirmação e envio da tomada com a voz da marca.</td></tr>
+      <tr class="grp"><td colspan="6">Depois · dezembro e janeiro, cada passo com 30 dias de prova</td></tr>
+      <tr><td>Proposta em PDF a partir do rascunho de pedido (fluxo 2)</td><td data-l="Ferramenta">Rascunho de pedido do Shopify e um modelo</td><td data-l="Custa">R$ 0</td><td data-l="Esforço">1 dia, com o JJ</td><td data-l="Quem poderia">Edu</td><td data-l="O que fica mais fácil">Orçamento em 24 h, sempre no mesmo formato.</td></tr>
+      <tr><td>WhatsApp ligado ao Shopify: quatro mensagens por pedido</td><td data-l="Ferramenta">Um app de WhatsApp na API oficial</td><td data-l="Custa">Cerca de R$ 0,04 por mensagem de serviço e R$ 0,32 por mensagem de marketing, mais o app, algumas centenas por mês. Com cem clientes por ano, o app custa mais que as mensagens</td><td data-l="Esforço">30 dias de teste</td><td data-l="Quem poderia">Edu</td><td data-l="O que fica mais fácil">Confirmado, em produção, acabamento, entrega: ninguém digita.</td></tr>
+      <tr><td>Placar de sexta automático</td><td data-l="Ferramenta">Flow e planilha; n8n se faltar alcance</td><td data-l="Custa">R$ 0 a R$ 150 por mês</td><td data-l="Esforço">1 dia</td><td data-l="Quem poderia">JJ</td><td data-l="O que fica mais fácil">Os seis números do guia chegam sozinhos no grupo.</td></tr>
+      <tr><td>Nota fiscal e estoque num lugar</td><td data-l="Ferramenta">Bling</td><td data-l="Custa">Cerca de R$ 200 por mês</td><td data-l="Esforço">1 semana</td><td data-l="Quem poderia">Fred</td><td data-l="O que fica mais fácil">Quando as peças sob encomenda passarem pelo site.</td></tr>
+      <tr><td>Tema: prazo, medidas, arquivos e preço por madeira e tecido</td><td data-l="Ferramenta">Campos do Shopify e o tema, com o Claude ligado à loja</td><td data-l="Custa">R$ 0 em software</td><td data-l="Esforço">2 dias, com o JJ</td><td data-l="Quem poderia">Vitor</td><td data-l="O que fica mais fácil">A ficha técnica da página da Leticia vira padrão sem pedir à agência.</td></tr>
+      <tr><td>Um e-mail por mês para arquitetas</td><td data-l="Ferramenta">Shopify Email, grátis até 10 mil por mês</td><td data-l="Custa">R$ 0</td><td data-l="Esforço">2 h por mês</td><td data-l="Quem poderia">Fred</td><td data-l="O que fica mais fácil">A lista dos blocos recebe as peças novas sem ferramenta nova.</td></tr>
+    </tbody>
+  </table></div>
+  <div class="base">
+    <div><h3>O que não entra agora</h3><p>CRM pago, e-mail pago, chat flutuante e pop-up. Trocar o meio de pagamento antes de ver as recusas. n8n antes de três fluxos fora do Flow.</p></div>
+    <div><h3>O que o plano da Shopify muda</h3><p>Com meio de pagamento de fora, a Shopify cobra uma taxa por venda. São 2% no plano menor e 1% no seguinte. Conferir na fatura da Shopify. Qual é o plano da More: <span class="tag open">[em aberto]</span>.</p></div>
+    <div><h3>O que pede acesso ao painel</h3><p>Impostos, apps instalados, plano, Flow, parcelas e regra de frete. A sugestão 2 do guia, duas horas com o JJ, resolve tudo isto numa tarde.</p></div>
+  </div>
+</section>
+
+<section id="ideal">
+  <div class="eyebrow">[04] O estado ideal</div>
+  <h2>Nove fluxos, um fato cada.</h2>
+  <p>Na frente, nada muda. O site continua a galeria que é, com a sobriedade da The Row. Sem pop-up, sem chat flutuante, sem contador. Atrás, cada fato vira um aviso e cada aviso vira uma ação.</p>
+  <div class="fr">
+    <article><span class="st">1 · interesse</span><h3>A pergunta vira cliente sem digitar</h3><p>Chega um WhatsApp com "Poltrona Leticia, ipê, bouclê bronze". Número e peça entram na lista com a etiqueta "interesse: Leticia". Quem responde é gente.</p><p class="lk">Fato: WhatsApp recebido. Passa por: WhatsApp Business, Shopify, Flow.</p></article>
+    <article><span class="st">2 · proposta</span><h3>Orçamento em 24 h, sempre no mesmo formato</h3><p>A escolha vira rascunho de pedido. Dele sai um PDF com ficha, prazo, "a partir de" confirmado e o link do sinal.</p><p class="lk">Fato: rascunho criado. Passa por: Shopify, modelo de proposta.</p></article>
+    <article><span class="st">3 · sinal</span><h3>Pagou o sinal, nasceu a data</h3><p>O pagamento marca "em produção" e calcula a entrega: cerca de 120 dias, dita como mês. Daí saem quatro mensagens, uma por etapa.</p><p class="lk">Fato: sinal pago. Passa por: Pagar.me, Shopify, WhatsApp.</p></article>
+    <article><span class="st">4 · silêncio</span><h3>Uma proposta sem resposta ganha um lembrete, só um</h3><p>Três dias depois, uma mensagem curta em nome de quem atendeu, oferecendo a amostra do tecido. Sem segunda cobrança.</p><p class="lk">Fato: três dias sem resposta. Passa por: Flow, WhatsApp.</p></article>
+    <article><span class="st">5 · tomada</span><h3>O único produto de carrinho se recupera sozinho</h3><p>Carrinho abandonado, Pix vencido ou cartão recusado: uma mensagem cada, com o link de volta.</p><p class="lk">Fato: aviso do checkout. Passa por: Shopify, Pagar.me, WhatsApp.</p></article>
+    <article><span class="st">6 · entregue</span><h3>A entrega pede uma foto, e a foto vira cena</h3><p>Uma semana depois do "entregue", uma mensagem pede a foto da peça em casa. Com consentimento, ela entra no modo Ambientes.</p><p class="lk">Fato: rastreio entregue. Passa por: transportadora, Shopify, WhatsApp.</p></article>
+    <article><span class="st">7 · arquiteta</span><h3>Quem baixa o bloco entra num outro caminho</h3><p>O download marca "arquiteta". Uma mensagem por mês com as peças novas e os blocos. Hoje só a tomada tem formulário; o resto é e-mail à mão.</p><p class="lk">Fato: download do bloco. Passa por: formulário, Shopify, e-mail.</p></article>
+    <article><span class="st">8 · sexta</span><h3>O placar se escreve sozinho</h3><p>Sessões, conversas, cliques no botão, funil da tomada, salvamentos, recusas. Os seis números do guia no grupo às nove de sexta.</p><p class="lk">Fato: é sexta. Passa por: Shopify, Meta, planilha, WhatsApp do time.</p></article>
+    <article><span class="st">9 · madrugada</span><h3>O que o aviso perdeu, a rotina acha</h3><p>Todo dia às três, uma conferência relê pedidos, pagamentos e rastreios. Cria o evento que faltou. Aviso cai; rotina não.</p><p class="lk">Fato: 03:00. Passa por: n8n, Shopify, Pagar.me.</p></article>
+  </div>
+  <div class="base">
+    <div><h3>A ordem</h3><p>Primeiro a lista única e o número da marca, à mão. Depois o Flow com etiquetas e e-mails. Depois o WhatsApp ligado ao Shopify. Só então n8n e Bling. Cada passo depende do anterior ter rodado 30 dias.</p></div>
+    <div><h3>A regra para comprar software</h3><p>Nativo antes de app, app antes de automação, automação antes de código. Toda ferramenta nova faz 30 dias de teste com critério de corte. Precisa exportar os dados. Precisa custar menos do que vale com cem clientes por ano.</p></div>
+    <div><h3>O que não entra</h3><p>Nada que a cliente veja e não veria na The Row. A tecnologia trabalha no bastidor ou não trabalha.</p></div>
+  </div>
+</section>
+
+<section id="perguntas">
+  <div class="eyebrow">[05] Seis perguntas para o time</div>
+  <h2>O que a call já respondeu. O que fica em aberto.</h2>
+  <p>A mesma grade que se usa para lançar qualquer loja, posta sobre a More. Onde a call respondeu, está escrito. Onde não respondeu, a pergunta é do time e está marcada <span class="tag open">[em aberto]</span>. Nenhum número foi inventado.</p>
+  <div class="seis">
+    <article>
+      <span class="st">1 · Ambição do lançamento</span>
+      <h3>O que é sucesso nos primeiros 30 dias?</h3>
+      <dl><dt>Da call</dt><dd>O site é catálogo antes de ser loja. A tomada é a única venda online. "Cem clientes num ano está ótimo."</dd><dt>Em aberto</dt><dd><span class="tag open">[em aberto]</span> Quantas tomadas, quantas conversas e quantos convidados na loja até 05.12? Um número de cada, escrito antes de abrir.</dd></dl>
+    </article>
+    <article>
+      <span class="st">2 · Primeiros clientes</span>
+      <h3>Quem são as cem primeiras pessoas?</h3>
+      <dl><dt>Da call</dt><dd>Arquitetas e arquitetos, que indicam e baixam blocos. Cliente final de alto valor, que quer conversar antes de comprar. São Paulo, Jardins.</dd><dt>Em aberto</dt><dd><span class="tag open">[em aberto]</span> A lista de 30 a 50 escritórios. Os convidados de 05.11, nomeados. Quem já comprou do ateliê e pode ser chamado de volta.</dd></dl>
+    </article>
+    <article>
+      <span class="st">3 · Posicionamento e mensagens</span>
+      <h3>Por que a More, e não o que a pessoa já tem?</h3>
+      <dl><dt>Da call</dt><dd>"Menos do mesmo." Galeria, não loja. A marca como instituição, não como a história de uma pessoa. Sob medida, madeira e tecido à escolha, cerca de 120 dias.</dd><dt>Em aberto</dt><dd><span class="tag open">[em aberto]</span> As duas ou três frases que o time repete em toda conversa. Proposta para discutir: "Feito em São Paulo, sob medida." "Prazo dito como mês, cumprido como data." "Uma peça por foto, luz dura."</dd></dl>
+    </article>
+    <article>
+      <span class="st">4 · Canais</span>
+      <h3>Por onde as pessoas chegam?</h3>
+      <dl><dt>Da call</dt><dd>Instagram orgânico, indicação e a loja. Anúncio só para a tomada; o resto, awareness da marca. Nada de marketplace.</dd><dt>Em aberto</dt><dd><span class="tag open">[em aberto]</span> Verba de anúncio da tomada. Quem posta e com que frequência depois de 05.11. Parcerias com escritórios: programa de RT, sim ou não.</dd></dl>
+    </article>
+    <article>
+      <span class="st">5 · Preparação até 05.11</span>
+      <h3>O que dá para testar e montar nas três semanas?</h3>
+      <dl><dt>Da call e do guia</dt><dd>Os sete ajustes da sugestão 1 do guia. As cinco peças do convite, com cronograma. A lista única. Os oito riscos da seção [02] desta página.</dd><dt>Em aberto</dt><dd><span class="tag open">[em aberto]</span> Quem faz cada um e em que dia. A nota fiscal da tomada. O caixa da loja física.</dd></dl>
+    </article>
+    <article>
+      <span class="st">6 · Economia do crescimento</span>
+      <h3>Quanto custa trazer um cliente, e quanto ele vale?</h3>
+      <dl><dt>Da call</dt><dd>Compra de alto valor, venda consultiva. Recusa de cartão em conta nova é risco. Não há meta de tamanho de lista.</dd><dt>Em aberto</dt><dd><span class="tag open">[em aberto]</span> Orçamento de marketing. Margem por peça e o custo das 12 parcelas. Taxa real do Pagar.me e o plano da Shopify. Medição: os seis números do guia, toda sexta.</dd></dl>
+    </article>
+  </div>
+</section>
+
+<section id="fontes">
+  <div class="eyebrow">[06] Fontes e método</div>
+  <h2>O que foi olhado, e como.</h2>
+  <div class="base" style="margin-top:var(--s-lg)">
+    <div><h3>Observado</h3><p>Navegador real em 1440 e 390 px, com a senha do site. Código das páginas e catálogo público. Checkout até a tela de pagamento, sem fechar pedido. Registros de e-mail do domínio.</p></div>
+    <div><h3>Dito na call</h3><p>Pagar.me, cálculo de frete e WhatsApp fora do Business. Blocos 2D e 3D. Tomada como única venda e ads só para ela.</p></div>
+    <div><h3>Suposição e em aberto</h3><p>Tudo o que mora dentro do painel. Plano, apps, impostos, Flow, parcelas, nota fiscal, caixa da loja. Entra na sugestão 2 do guia.</p></div>
+    <div><h3>De onde vêm os fluxos</h3><p>De uma pesquisa de stack feita para outro e-commerce com as mesmas peças. Loja, pagamento, avisos, mensagens e placar. Daqui só entrou o que cabe em cem clientes por ano.</p></div>
+  </div>
+  <p style="margin-top:var(--s-lg)">O resto do raciocínio está no <a href="/guia/">guia para o time</a>: as três sugestões, o serviço desenhado, a medição e os anexos.</p>
+  <div class="ia">
+    <p><b>Feito com IA:</b> a leitura do site e do checkout, e a tabela de hoje. Também a revisão crítica do plano e a leitura cega dos rótulos. <b>Opinião de pessoa:</b> a ordem, o que entrou e o que saiu são escolhas do JJ.</p>
+  </div>
+</section>
+
+</div>
+
+<footer><div class="wrap">
+  <p>Feito com o sistema de design da More. Tokens medidos de mymore.design e do Instagram em 15/10/2026. Fontes da página: Muoto e Muoto Mono.</p>
+</div></footer>
+</div>
+
+<div class="barzone"><div class="bar" aria-label="Navegação">
+  <a href="/" aria-label="Índice"><svg viewBox="0 0 272 69" role="img" aria-label="More"><path fill="currentColor" d="M176.593 23.0819V1.91833H150.317V66.5948H176.593V44.2791H205.243V1.91833C189.55 1.91833 177.465 13.093 176.593 23.0875V23.0819Z"/><path fill="currentColor" d="M111.007 0C91.875 0 76.3403 15.3302 76.3403 34.223C76.3403 53.1159 91.8693 68.4461 111.007 68.4461C130.145 68.4461 145.742 53.1159 145.742 34.223C145.742 15.3302 130.213 0 111.007 0ZM111.007 42.4334C106.43 42.4334 102.69 38.8036 102.69 34.2174C102.69 29.6313 106.435 26.0015 111.007 26.0015C115.579 26.0015 119.398 29.6984 119.398 34.2174C119.398 38.7365 115.653 42.4334 111.007 42.4334Z"/><path fill="currentColor" d="M35.919 19.6423L26.2764 1.91833H0V66.5948H26.2764V44.212H45.4936V66.5948H71.77V1.91833H45.4936L35.919 19.6423Z"/><path fill="currentColor" d="M272.002 1.87909H211.835V24.7541V34.7487V44.1783V66.5612H272.002V44.7376H238.219L255.669 34.7151L238.236 24.7541H272.002V1.87909Z"/></svg></a>
+  <nav><a href="/">[Índice]</a><a href="#hoje">[Hoje]</a><a href="#fazer">[Fazer]</a><a href="#perguntas">[Perguntas]</a></nav>
+</div></div>
+<script>
+// Âncoras rolam dentro de .page (a barra vive fora da área de rolagem).
+document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener('click',e=>{const t=document.querySelector(a.getAttribute('href'));if(t){e.preventDefault();t.scrollIntoView({block:'start'});history.replaceState(null,'',a.getAttribute('href'));}});});
+</script>
+</body>
+</html>
