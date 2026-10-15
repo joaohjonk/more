@@ -41,7 +41,7 @@ rules:
     check: script   # node checks/bars.mjs <css|html...>
   - id: R-LAYOUT-02
     scope: core
-    rule: 'uma peça por foto de produto (grade, PDP, post de peça), ver o par de exemplos. Proporção da imagem 3:4 (fonte), 4:5 (feed, 1080x1350), 9:16 (story, 1080x1920, 250px de área segura em cima e embaixo) ou 3:2 (só lista horizontal), tolerância 1%. Em CSS de imagem, aspect-ratio só 3/4, 4/5, 9/16, 3/2; foto de produto com border-radius 0; miniatura e amostra de material (thumb, swatch, material, sample) podem ter 2px (radius.thumb), como no site. Raio fora da escala fica com R-SHAPE-01, sem contar duas vezes. O script só mede foto de produto e exportação de foto para canal - arquivo numa pasta fotos/ ou com foto, photo, PDT_, ig-feed/ig-story, story, feed, _IG_ ou _IGS_ no nome. Nunca mede captura de página nem render de layout (nome com web, captura ou folha, ou imagem mais alta que 2,5x a largura)'
+    rule: 'uma peça por foto de produto (grade, PDP, post de peça), ver o par de exemplos. Proporção da imagem 2:3 (fonte: o original da câmera, como o MORE_0800 em 4379x6568), e os recortes 3:4 (site), 4:5 (feed, 1080x1350), 9:16 (story, 1080x1920, 250px de área segura em cima e embaixo) ou 3:2 (só lista horizontal), tolerância 1%. Em CSS de imagem, aspect-ratio só 2/3, 3/4, 4/5, 9/16, 3/2; foto de produto com border-radius 0; miniatura e amostra de material (thumb, swatch, material, sample) podem ter 2px (radius.thumb), como no site. Raio fora da escala fica com R-SHAPE-01, sem contar duas vezes. O script só mede foto de produto e exportação de foto para canal - arquivo numa pasta fotos/ ou com foto, photo, PDT_, ig-feed/ig-story, story, feed, _IG_ ou _IGS_ no nome. Nunca mede captura de página nem render de layout (nome com web, captura ou folha, ou imagem mais alta que 2,5x a largura)'
     check: script   # node checks/aspect.mjs <imagem|css...>  + examples  # brand/examples/R-LAYOUT-02-sim/nao (uma peça)
   - id: R-IMG-01
     scope: core
@@ -53,7 +53,7 @@ rules:
     check: examples   # brand/examples/R-IMG-02-sim.jpg / R-IMG-02-nao.jpg
   - id: R-GEN-01
     scope: core
-    rule: 'a marca entra sempre com os paths oficiais (assets/official/more-wordmark.svg, more-wordmark-currentcolor.svg ou more-wordmark-small.svg, coordenadas a 0,1), inline no SVG/HTML, com fill="currentColor" nos paths e a cor dada pelo CSS a partir dos tokens. Nunca por <img>/<image>/<use> - <img> não herda currentColor e o more-wordmark.svg sai #000, o que quebra R-COLOR-02 (o fill black do arquivo é padrão do arquivo, não cor da marca). "MORE" digitado como texto ou paths diferentes falham. Em imagem gerada, a marca é composta depois (skill image-edit), nunca pedida ao modelo; as faces 205TF também não entram em prompt'
+    rule: 'a marca entra sempre com os paths oficiais (assets/official/more-wordmark*.svg, o desenho do brand book de Manoela Moura e Anna''s, 2025; os de assets/official/legado/, copiados do site, ainda passam; coordenadas a 0,1), inline no SVG/HTML, com fill="currentColor" nos paths e a cor dada pelo CSS a partir dos tokens. Nunca por <img>/<image>/<use> - <img> não herda currentColor e o more-wordmark.svg sai #000, o que quebra R-COLOR-02 (o fill black do arquivo é padrão do arquivo, não cor da marca). "MORE" digitado como texto ou paths diferentes falham. Em imagem gerada, a marca é composta depois (skill image-edit), nunca pedida ao modelo; as faces 205TF também não entram em prompt'
     check: script   # node checks/wordmark.mjs <svg|html...>
   - id: R-COPY-01
     scope: core
@@ -131,3 +131,8 @@ rules:
     status: proposed   # proposta nossa; os princípios vêm da seção 8 do dossiê do catálogo (15.10.2026)
     rule: 'a interação orienta, não encena - nenhum sequestro de rolagem (scroll-snap-type mandatory em html/body, roda do mouse com preventDefault), nenhum loader teatral (animation infinite fora de contador/progresso), nenhum cursor personalizado (cursor url() ou none), nenhum carrossel automático (autoplay); o que o hover revela abre também por foco (:focus-within ou :focus-visible no mesmo seletor), porque no toque não existe hover; toda página tem fallback em prefers-reduced-motion (R-MOTION-01)'
     check: script   # node checks/interacao.mjs <css/html da página>
+  - id: R-FONT-01
+    scope: core
+    status: proposed   # P-FONT-01, material oficial 15.10; fora do run-all.mjs até o time aceitar
+    rule: 'nenhum arquivo de fonte (.otf, .ttf, .woff, .woff2, .eot) no repositório nem no histórico de qualquer branch. O repositório é público e a licença 205TF proíbe copiar os arquivos (EULA 205TF, § Protection); quem precisa da Muoto usa a instalação licenciada da More, e as peças daqui usam as substitutas (DM Sans, Martian Mono 75)'
+    check: script   # node checks/fontes.mjs [repo]  (não está no registry nem no run-all)

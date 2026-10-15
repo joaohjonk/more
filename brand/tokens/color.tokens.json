@@ -20,7 +20,30 @@
     ],
     "hex": "#2D211E"
    },
-   "$description": "--preto: warm near-black (brown-black, never pure #000). Ink, wordmark, CTA bar."
+   "$description": "--preto: warm near-black (brown-black, never pure #000). Ink, wordmark, CTA bar.",
+   "$extensions": {
+    "more": {
+     "oficial": {
+      "nome_no_guia": "Preto",
+      "hex": "#000000",
+      "rgb": [
+       0,
+       0,
+       0
+      ],
+      "cmyk": [
+       0,
+       0,
+       0,
+       100
+      ],
+      "pantone": null,
+      "pagina": "p. 8-10",
+      "fonte": "guia de uso (Drive 1v1F7NWHiFE0gDpsAXdnpaUCMZh7f8Et3)",
+      "relacao": "contrapartida no guia: Preto (K100). Valor diferente do medido no site; trocar é a proposta P-COR-01"
+     }
+    }
+   }
   },
   "marrom": {
    "$value": {
@@ -32,7 +55,13 @@
     ],
     "hex": "#574D4B"
    },
-   "$description": "--marrom: warm brown-grey."
+   "$description": "--marrom: warm brown-grey.",
+   "$extensions": {
+    "more": {
+     "oficial": null,
+     "nota": "o guia não tem marrom nem cinzas quentes"
+    }
+   }
   },
   "cinza-escuro": {
    "$value": {
@@ -44,7 +73,30 @@
     ],
     "hex": "#5D554F"
    },
-   "$description": "--cinza-escuro: footer / inverse ground."
+   "$description": "--cinza-escuro: footer / inverse ground.",
+   "$extensions": {
+    "more": {
+     "oficial": {
+      "nome_no_guia": "Preto 89%",
+      "hex": "#434345",
+      "rgb": [
+       67,
+       67,
+       69
+      ],
+      "cmyk": [
+       0,
+       0,
+       0,
+       89
+      ],
+      "pantone": null,
+      "pagina": "p. 8-10",
+      "fonte": "guia de uso (Drive 1v1F7NWHiFE0gDpsAXdnpaUCMZh7f8Et3)",
+      "relacao": "contrapartida no guia: Preto 89%. Neutro; o medido no site é quente"
+     }
+    }
+   }
   },
   "cinza-medio": {
    "$value": {
@@ -56,7 +108,13 @@
     ],
     "hex": "#686868"
    },
-   "$description": "--cinza-medio: prices, dimensions, secondary labels. Contrast on off-white is 4.28:1, below WCAG AA for text under 18px: use cinza-escuro for small running text."
+   "$description": "--cinza-medio: prices, dimensions, secondary labels. Contrast on off-white is 4.28:1, below WCAG AA for text under 18px: use cinza-escuro for small running text.",
+   "$extensions": {
+    "more": {
+     "oficial": null,
+     "nota": "o guia não tem este cinza; o único cinza oficial é o Preto 89% (#434345)"
+    }
+   }
   },
   "cinza-texto": {
    "$value": {
@@ -68,7 +126,13 @@
     ],
     "hex": "#999898"
    },
-   "$description": "--cinza-texto está declarado no :root do site mas nenhum seletor usa. 2,21:1 no off-white: não usar para texto."
+   "$description": "--cinza-texto está declarado no :root do site mas nenhum seletor usa. 2,21:1 no off-white: não usar para texto.",
+   "$extensions": {
+    "more": {
+     "oficial": null,
+     "nota": "o guia não tem este cinza"
+    }
+   }
   },
   "cinza-claro": {
    "$value": {
@@ -80,7 +144,13 @@
     ],
     "hex": "#BDBDBD"
    },
-   "$description": "--cinza-claro: text on dark (menu, footer), hairlines on dark."
+   "$description": "--cinza-claro: text on dark (menu, footer), hairlines on dark.",
+   "$extensions": {
+    "more": {
+     "oficial": null,
+     "nota": "o guia não tem este cinza"
+    }
+   }
   },
   "off-white": {
    "$value": {
@@ -92,7 +162,30 @@
     ],
     "hex": "#E5E1DB"
    },
-   "$description": "--off-white: the page. Warm paper, matches the studio backdrop of the product photos."
+   "$description": "--off-white: the page. Warm paper, matches the studio backdrop of the product photos.",
+   "$extensions": {
+    "more": {
+     "oficial": {
+      "nome_no_guia": "Branco",
+      "hex": "#FFFFFF",
+      "rgb": [
+       255,
+       255,
+       255
+      ],
+      "cmyk": [
+       0,
+       0,
+       0,
+       0
+      ],
+      "pantone": null,
+      "pagina": "p. 8-10",
+      "fonte": "guia de uso (Drive 1v1F7NWHiFE0gDpsAXdnpaUCMZh7f8Et3)",
+      "relacao": "o guia não tem off-white; a cor de fundo do guia é o Branco. Trocar é a proposta P-COR-01 (o site é exceção ao guia?)"
+     }
+    }
+   }
   },
   "branco": {
    "$value": {
@@ -104,7 +197,30 @@
     ],
     "hex": "#FFFFFF"
    },
-   "$description": "--branco: hover / active text on dark only. Never a page background."
+   "$description": "--branco: hover / active text on dark only. Never a page background.",
+   "$extensions": {
+    "more": {
+     "oficial": {
+      "nome_no_guia": "Branco",
+      "hex": "#FFFFFF",
+      "rgb": [
+       255,
+       255,
+       255
+      ],
+      "cmyk": [
+       0,
+       0,
+       0,
+       0
+      ],
+      "pantone": null,
+      "pagina": "p. 8-10",
+      "fonte": "guia de uso (Drive 1v1F7NWHiFE0gDpsAXdnpaUCMZh7f8Et3)",
+      "relacao": "contrapartida no guia: Branco"
+     }
+    }
+   }
   },
   "ciano-destaque": {
    "$value": {
@@ -116,7 +232,13 @@
     ],
     "hex": "#8BC0D0"
    },
-   "$description": "--ciano-destaque: the single accent. Used for the 'Fixos' category (buyable items). Reserve it for 'pronta entrega / comprar'."
+   "$description": "--ciano-destaque: the single accent. Used for the 'Fixos' category (buyable items). Reserve it for 'pronta entrega / comprar'.",
+   "$extensions": {
+    "more": {
+     "oficial": null,
+     "nota": "o guia não tem ciano de interface; o guia não trata de interface"
+    }
+   }
   },
   "cart-accent": {
    "$value": {
@@ -128,7 +250,13 @@
     ],
     "hex": "#C1CFD6"
    },
-   "$description": "--cart-accent: cart bar hover / open state."
+   "$description": "--cart-accent: cart bar hover / open state.",
+   "$extensions": {
+    "more": {
+     "oficial": null,
+     "nota": "o guia não tem esta cor"
+    }
+   }
   },
   "erro": {
    "$value": {
@@ -140,7 +268,13 @@
     ],
     "hex": "#E07A5F"
    },
-   "$description": "--erro: errors only."
+   "$description": "--erro: errors only.",
+   "$extensions": {
+    "more": {
+     "oficial": null,
+     "nota": "o guia não tem cor de erro"
+    }
+   }
   },
   "alpha": {
    "preto-80": {
@@ -154,7 +288,13 @@
      "hex": "#2D211ECC",
      "alpha": 0.8
     },
-    "$description": "--preto-80 e --marrom-80 (mesmo valor, dois nomes no site). Menu aberto, botão de checkout, modal de download."
+    "$description": "--preto-80 e --marrom-80 (mesmo valor, dois nomes no site). Menu aberto, botão de checkout, modal de download.",
+    "$extensions": {
+     "more": {
+      "oficial": null,
+      "nota": "cor com transparência: o guia proíbe tons (tints) e não tem versões com alfa"
+     }
+    }
    },
    "preto-10": {
     "$value": {
@@ -167,7 +307,13 @@
      "hex": "#2D211E1A",
      "alpha": 0.1
     },
-    "$description": "--preto-10: glass bar behind menu / filters (with backdrop blur)."
+    "$description": "--preto-10: glass bar behind menu / filters (with backdrop blur).",
+    "$extensions": {
+     "more": {
+      "oficial": null,
+      "nota": "cor com transparência: o guia proíbe tons (tints) e não tem versões com alfa"
+     }
+    }
    },
    "branco-30": {
     "$value": {
@@ -180,7 +326,13 @@
      "hex": "#FFFFFF4C",
      "alpha": 0.3
     },
-    "$description": "--branco-30 está declarado no :root do site mas nenhum seletor usa."
+    "$description": "--branco-30 está declarado no :root do site mas nenhum seletor usa.",
+    "$extensions": {
+     "more": {
+      "oficial": null,
+      "nota": "cor com transparência: o guia proíbe tons (tints) e não tem versões com alfa"
+     }
+    }
    },
    "cinza-overlay": {
     "$value": {
@@ -193,7 +345,13 @@
      "hex": "#B6BDBFCC",
      "alpha": 0.8
     },
-    "$description": "--cinza-overlay."
+    "$description": "--cinza-overlay.",
+    "$extensions": {
+     "more": {
+      "oficial": null,
+      "nota": "cor com transparência: o guia proíbe tons (tints) e não tem versões com alfa"
+     }
+    }
    },
    "preto-03": {
     "$value": {
@@ -206,7 +364,13 @@
      "hex": "#00000003",
      "alpha": 0.012
     },
-    "$description": "--preto-03 = #00000003 (alpha 0.012). Fundo do backdrop do modal."
+    "$description": "--preto-03 = #00000003 (alpha 0.012). Fundo do backdrop do modal.",
+    "$extensions": {
+     "more": {
+      "oficial": null,
+      "nota": "cor com transparência: o guia proíbe tons (tints) e não tem versões com alfa"
+     }
+    }
    },
    "preto-01": {
     "$value": {
@@ -219,7 +383,13 @@
      "hex": "#01010103",
      "alpha": 0.01
     },
-    "$description": "--preto-01. Overlay da página Sobre (só carrega o blur)."
+    "$description": "--preto-01. Overlay da página Sobre (só carrega o blur).",
+    "$extensions": {
+     "more": {
+      "oficial": null,
+      "nota": "cor com transparência: o guia proíbe tons (tints) e não tem versões com alfa"
+     }
+    }
    },
    "cinza-60": {
     "$value": {
@@ -232,7 +402,13 @@
      "hex": "#B4B8B999",
      "alpha": 0.6
     },
-    "$description": "No site se chama --marrom-60, mas o valor é cinza azulado. Ícone do carrinho vazio."
+    "$description": "No site se chama --marrom-60, mas o valor é cinza azulado. Ícone do carrinho vazio.",
+    "$extensions": {
+     "more": {
+      "oficial": null,
+      "nota": "cor com transparência: o guia proíbe tons (tints) e não tem versões com alfa"
+     }
+    }
    },
    "off-white-0": {
     "$value": {
@@ -245,7 +421,13 @@
      "hex": "#E5E1DB00",
      "alpha": 0
     },
-    "$description": "--off-white-transparent. Degradê do filtro da coleção."
+    "$description": "--off-white-transparent. Degradê do filtro da coleção.",
+    "$extensions": {
+     "more": {
+      "oficial": null,
+      "nota": "cor com transparência: o guia proíbe tons (tints) e não tem versões com alfa"
+     }
+    }
    },
    "branco-60": {
     "$value": {
@@ -258,63 +440,231 @@
      "hex": "#FFFFFF99",
      "alpha": 0.6
     },
-    "$description": "#fff9 literal no hover do botão de quantidade do carrinho."
+    "$description": "#fff9 literal no hover do botão de quantidade do carrinho.",
+    "$extensions": {
+     "more": {
+      "oficial": null,
+      "nota": "cor com transparência: o guia proíbe tons (tints) e não tem versões com alfa"
+     }
+    }
    }
   },
   "surface": {
    "page": {
     "$value": "{color.off-white}",
-    "$description": "Page ground on every template."
+    "$description": "Page ground on every template.",
+    "$extensions": {
+     "more": {
+      "oficial": {
+       "nome_no_guia": "Branco",
+       "hex": "#FFFFFF",
+       "rgb": [
+        255,
+        255,
+        255
+       ],
+       "cmyk": [
+        0,
+        0,
+        0,
+        0
+       ],
+       "pantone": null,
+       "pagina": "p. 8-10",
+       "fonte": "guia de uso (Drive 1v1F7NWHiFE0gDpsAXdnpaUCMZh7f8Et3)",
+       "relacao": "o guia não tem off-white; a cor de fundo do guia é o Branco. Trocar é a proposta P-COR-01 (o site é exceção ao guia?)"
+      },
+      "via": "{color.off-white}"
+     }
+    }
    },
    "inverse": {
     "$value": "{color.cinza-escuro}",
-    "$description": "About block and footer."
+    "$description": "About block and footer.",
+    "$extensions": {
+     "more": {
+      "oficial": {
+       "nome_no_guia": "Preto 89%",
+       "hex": "#434345",
+       "rgb": [
+        67,
+        67,
+        69
+       ],
+       "cmyk": [
+        0,
+        0,
+        0,
+        89
+       ],
+       "pantone": null,
+       "pagina": "p. 8-10",
+       "fonte": "guia de uso (Drive 1v1F7NWHiFE0gDpsAXdnpaUCMZh7f8Et3)",
+       "relacao": "contrapartida no guia: Preto 89%. Neutro; o medido no site é quente"
+      },
+      "via": "{color.cinza-escuro}"
+     }
+    }
    },
    "glass": {
     "$value": "{color.alpha.preto-10}",
-    "$description": "Floating bars (menu, filters). Pair with blur.medium."
+    "$description": "Floating bars (menu, filters). Pair with blur.medium.",
+    "$extensions": {
+     "more": {
+      "oficial": null,
+      "nota": "cor com transparência: o guia proíbe tons (tints) e não tem versões com alfa",
+      "via": "{color.alpha.preto-10}"
+     }
+    }
    },
    "glass-strong": {
     "$value": "{color.alpha.preto-80}",
-    "$description": "Open menu panel and primary CTA bar."
+    "$description": "Open menu panel and primary CTA bar.",
+    "$extensions": {
+     "more": {
+      "oficial": null,
+      "nota": "cor com transparência: o guia proíbe tons (tints) e não tem versões com alfa",
+      "via": "{color.alpha.preto-80}"
+     }
+    }
    }
   },
   "text": {
    "primary": {
     "$value": "{color.preto}",
-    "$description": "Intenção da marca (--preto no :root). O site hoje renderiza texto corrido em #000 porque o body não define cor: é o site que quebra R-COLOR-02, não o token. Correção no tema: body { color: var(--preto) }."
+    "$description": "Intenção da marca (--preto no :root). O site hoje renderiza texto corrido em #000 porque o body não define cor: é o site que quebra R-COLOR-02, não o token. Correção no tema: body { color: var(--preto) }.",
+    "$extensions": {
+     "more": {
+      "oficial": {
+       "nome_no_guia": "Preto",
+       "hex": "#000000",
+       "rgb": [
+        0,
+        0,
+        0
+       ],
+       "cmyk": [
+        0,
+        0,
+        0,
+        100
+       ],
+       "pantone": null,
+       "pagina": "p. 8-10",
+       "fonte": "guia de uso (Drive 1v1F7NWHiFE0gDpsAXdnpaUCMZh7f8Et3)",
+       "relacao": "contrapartida no guia: Preto (K100). Valor diferente do medido no site; trocar é a proposta P-COR-01"
+      },
+      "via": "{color.preto}"
+     }
+    }
    },
    "secondary": {
     "$value": "{color.cinza-medio}",
-    "$description": "cinza-medio: preço, medidas. 4,28:1 no off-white: só a partir de 24px. Abaixo de 24px use text.small."
+    "$description": "cinza-medio: preço, medidas. 4,28:1 no off-white: só a partir de 24px. Abaixo de 24px use text.small.",
+    "$extensions": {
+     "more": {
+      "oficial": null,
+      "nota": "o guia não tem este cinza; o único cinza oficial é o Preto 89% (#434345)",
+      "via": "{color.cinza-medio}"
+     }
+    }
    },
    "on-inverse": {
     "$value": "{color.cinza-claro}",
-    "$description": "cinza-claro sobre preto 80% (8,9:1). Sobre cinza-escuro só a partir de 24px; abaixo use branco."
+    "$description": "cinza-claro sobre preto 80% (8,9:1). Sobre cinza-escuro só a partir de 24px; abaixo use branco.",
+    "$extensions": {
+     "more": {
+      "oficial": null,
+      "nota": "o guia não tem este cinza",
+      "via": "{color.cinza-claro}"
+     }
+    }
    },
    "on-inverse-active": {
     "$value": "{color.branco}",
-    "$description": "Hover / current item on dark."
+    "$description": "Hover / current item on dark.",
+    "$extensions": {
+     "more": {
+      "oficial": {
+       "nome_no_guia": "Branco",
+       "hex": "#FFFFFF",
+       "rgb": [
+        255,
+        255,
+        255
+       ],
+       "cmyk": [
+        0,
+        0,
+        0,
+        0
+       ],
+       "pantone": null,
+       "pagina": "p. 8-10",
+       "fonte": "guia de uso (Drive 1v1F7NWHiFE0gDpsAXdnpaUCMZh7f8Et3)",
+       "relacao": "contrapartida no guia: Branco"
+      },
+      "via": "{color.branco}"
+     }
+    }
    },
    "small": {
     "$value": "{color.cinza-escuro}",
-    "$description": "texto pequeno (abaixo de 24px) secundário sobre off-white e papel: 5,60:1"
+    "$description": "texto pequeno (abaixo de 24px) secundário sobre off-white e papel: 5,60:1",
+    "$extensions": {
+     "more": {
+      "oficial": {
+       "nome_no_guia": "Preto 89%",
+       "hex": "#434345",
+       "rgb": [
+        67,
+        67,
+        69
+       ],
+       "cmyk": [
+        0,
+        0,
+        0,
+        89
+       ],
+       "pantone": null,
+       "pagina": "p. 8-10",
+       "fonte": "guia de uso (Drive 1v1F7NWHiFE0gDpsAXdnpaUCMZh7f8Et3)",
+       "relacao": "contrapartida no guia: Preto 89%. Neutro; o medido no site é quente"
+      },
+      "via": "{color.cinza-escuro}"
+     }
+    }
    }
   },
   "accent": {
    "available": {
     "$value": "{color.ciano-destaque}",
-    "$description": "Marks what can be bought now (tomada, pronta entrega)."
+    "$description": "Marks what can be bought now (tomada, pronta entrega).",
+    "$extensions": {
+     "more": {
+      "oficial": null,
+      "nota": "o guia não tem ciano de interface; o guia não trata de interface",
+      "via": "{color.ciano-destaque}"
+     }
+    }
    }
   },
   "feedback": {
    "error": {
     "$value": "{color.erro}",
-    "$description": "Form and payment errors."
+    "$description": "Form and payment errors.",
+    "$extensions": {
+     "more": {
+      "oficial": null,
+      "nota": "o guia não tem cor de erro",
+      "via": "{color.erro}"
+     }
+    }
    }
   },
   "campo": {
-   "$description": "Campos de cor: o recurso é observado no Instagram (8% dos posts). Hex amostrados de JPEG comprimido; trocar pelos valores das fotos originais quando chegarem.",
+   "$description": "Campos de cor: o recurso é observado no Instagram (8% dos posts). Hex amostrados de JPEG comprimido, menos o amarelo-igarata, medido no original. O guia de uso tem nove cores sazonais com Pantone (p. 11-15): ver $extensions.more.oficial de cada token e a proposta P-COR-02.",
    "vermelho-jambo": {
     "$value": {
      "colorSpace": "srgb",
@@ -332,6 +682,27 @@
       "source": "instagram p28_0 (2026-02-27), sampled",
       "approval": "awaiting More team",
       "origin": "observada na marca (fundo); hex e nome inferidos"
+     },
+     "more": {
+      "oficial": {
+       "nome_no_guia": null,
+       "hex": "#AE1B3A",
+       "rgb": [
+        174,
+        27,
+        58
+       ],
+       "cmyk": [
+        22,
+        100,
+        76,
+        13
+       ],
+       "pantone": "206 C",
+       "pagina": "p. 11-15",
+       "fonte": "More • cores.pdf (Drive 1feTKLJRyqgP5qgouS3xnE8UATbQqfp6E); guia de uso (Drive 1v1F7NWHiFE0gDpsAXdnpaUCMZh7f8Et3)",
+       "relacao": "mesma família de cor, atribuída por nós: o guia não dá nome às nove cores sazonais. Trocar é a proposta P-COR-02"
+      }
      }
     }
    },
@@ -352,6 +723,27 @@
       "source": "instagram p21_0 (2026-07-03), sampled",
       "approval": "awaiting More team",
       "origin": "observada na marca (fundo); hex e nome inferidos"
+     },
+     "more": {
+      "oficial": {
+       "nome_no_guia": null,
+       "hex": "#2D9A5C",
+       "rgb": [
+        45,
+        154,
+        92
+       ],
+       "cmyk": [
+        80,
+        15,
+        84,
+        2
+       ],
+       "pantone": "2251 C",
+       "pagina": "p. 11-15",
+       "fonte": "More • cores.pdf (Drive 1feTKLJRyqgP5qgouS3xnE8UATbQqfp6E); guia de uso (Drive 1v1F7NWHiFE0gDpsAXdnpaUCMZh7f8Et3)",
+       "relacao": "mesma família de cor, atribuída por nós: o guia não dá nome às nove cores sazonais. Trocar é a proposta P-COR-02. O verde oficial é claro; o nosso é sombra"
+      }
      }
     }
    },
@@ -372,6 +764,10 @@
       "source": "instagram p01_0 (2026-09-04), sampled",
       "approval": "awaiting More team",
       "origin": "inventada por nós"
+     },
+     "more": {
+      "oficial": null,
+      "nota": "sem contrapartida: o guia tem #335069 (2140 C) e #5ACAC6 (319 C), nenhum é este; o nome também é nosso"
      }
     }
    },
@@ -392,6 +788,27 @@
       "source": "instagram p06_0 (2026-07-21), sampled",
       "approval": "awaiting More team",
       "origin": "observada na marca (fundo); hex e nome inferidos"
+     },
+     "more": {
+      "oficial": {
+       "nome_no_guia": null,
+       "hex": "#7A5C83",
+       "rgb": [
+        122,
+        92,
+        131
+       ],
+       "cmyk": [
+        58,
+        70,
+        27,
+        6
+       ],
+       "pantone": "2081 C",
+       "pagina": "p. 11-15",
+       "fonte": "More • cores.pdf (Drive 1feTKLJRyqgP5qgouS3xnE8UATbQqfp6E); guia de uso (Drive 1v1F7NWHiFE0gDpsAXdnpaUCMZh7f8Et3)",
+       "relacao": "mesma família de cor, atribuída por nós: o guia não dá nome às nove cores sazonais. Trocar é a proposta P-COR-02"
+      }
      }
     }
    },
@@ -399,19 +816,40 @@
     "$value": {
      "colorSpace": "srgb",
      "components": [
-      0.8549,
-      0.5647,
-      0.0824
+      0.8235,
+      0.5373,
+      0.0471
      ],
-     "hex": "#DA9015"
+     "hex": "#D2890C"
     },
-    "$description": "Fundo amarelo atrás do Pendente Naz (instagram p02_1). Hex amostrado do JPEG (inferido); nome do acabamento Amarelo Igaratá (inferido).",
+    "$description": "Fundo amarelo atrás do Pendente Naz. Hex medido no original MORE_0800.jpg (Canon 5D Mark IV, a mesma foto do post p02_1 do Instagram); o JPEG do Instagram dava #DA9015. Nome do acabamento Amarelo Igaratá continua inferido.",
     "$extensions": {
      "cstack": {
       "status": "PROPOSED",
-      "source": "instagram p02_1 (2026-08-07), sampled",
+      "source": "original MORE_0800.jpg (Drive 1cdycQ5aysp2Ph6cNsDNRjfIDEm3NIa9Z), fundo medido; antes instagram p02_1 (2026-08-07)",
       "approval": "awaiting More team",
-      "origin": "observada na marca (fundo); hex e nome inferidos"
+      "origin": "observada em original (fundo); nome inferido"
+     },
+     "more": {
+      "oficial": {
+       "nome_no_guia": null,
+       "hex": "#B46407",
+       "rgb": [
+        180,
+        100,
+        7
+       ],
+       "cmyk": [
+        23,
+        66,
+        100,
+        11
+       ],
+       "pantone": "2014 C",
+       "pagina": "p. 11-15",
+       "fonte": "More • cores.pdf (Drive 1feTKLJRyqgP5qgouS3xnE8UATbQqfp6E); guia de uso (Drive 1v1F7NWHiFE0gDpsAXdnpaUCMZh7f8Et3)",
+       "relacao": "mesma família de cor, atribuída por nós: o guia não dá nome às nove cores sazonais. Trocar é a proposta P-COR-02. A foto MORE_0800 é mais clara que a tinta: o fundo fotografado não é a cor de impressão"
+      }
      }
     }
    }

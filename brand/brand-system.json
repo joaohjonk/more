@@ -456,12 +456,18 @@
   "logo_marks": {
    "wordmark": {
     "last_updated": "2026-10-15",
-    "value": "Custom geometric wordmark 'MORE': heavy blocky letters, the O a thick ring, the R cut as a quarter-round. Official file: assets/official/more-wordmark.svg (from the site's inline SVG). Colour: preto on light, branco/cinza-claro on dark.",
+    "value": "Custom geometric wordmark 'MORE' (\"composição tipográfica geométrica\", guia de uso p. 3): heavy blocky letters, the O a thick ring, the R cut as a quarter-round. Designed by Manoela Moura and Anna's, 2025. Official file: assets/official/more-wordmark.svg, the brand book's 'More • logo preto.svg' (481×123); the site's copy (272×69, same drawing) is in assets/official/legado/. The guide allows only black, grey #434345 or white; minimum 18 mm in print, 120 px on screen (p. 5). Colour in pieces: preto on light, branco/cinza-claro on dark.",
     "input_class": "FACT",
     "sources": [
      {
       "kind": "official_asset",
-      "ref": "assets/official/more-wordmark.svg (inline SVG on mymore.design)",
+      "ref": "marca-oficial/logo/More • logo preto.svg (Drive 1jiXT1KojF5-Ch9opDxh7Yy1rct7XVFBz) and guia de uso p. 3-6",
+      "captured_at": "2026-10-15",
+      "by": "material-oficial"
+     },
+     {
+      "kind": "official_asset",
+      "ref": "assets/official/legado/more-wordmark-site.svg (inline SVG on mymore.design)",
       "captured_at": "2026-10-15",
       "by": "site-capture"
      }
@@ -941,7 +947,7 @@
     ],
     "confidence": "high",
     "permanence": "core",
-    "approval": "proposed"
+    "approval": "provisional"
    },
    "interaction_principles": {
     "last_updated": "2026-10-15",
@@ -949,7 +955,7 @@
     "input_class": "SOFT_CONSTRAINT",
     "sources": [
      {
-      "kind": "document",
+      "kind": "external_reference",
       "ref": "dossiê MORE — An Associative Catalogue, seção 8 (2026-10-15)",
       "captured_at": "2026-10-15",
       "by": "motion-thread"
@@ -957,7 +963,7 @@
     ],
     "confidence": "medium",
     "permanence": "core",
-    "approval": "proposed"
+    "approval": "provisional"
    }
   },
   "sound": {},

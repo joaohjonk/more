@@ -3,34 +3,34 @@
     "muoto": {
       "$type": "string",
       "$value": "Muoto",
-      "$description": "205TF Muoto Regular (weight 400; the theme also asks for 300 on long text). Product names, prices, statements, filters. Stand-in when the licensed file is not available: DM Sans (Google Fonts). Pilha CSS: Muoto, \"DM Sans\", \"Helvetica Neue\", Arial, sans-serif."
+      "$description": "205TF Muoto. A licença da More cobre dois arquivos: Muoto Regular (400) e Muoto Italic (400, inclinação −12°). Não há Light, Medium nem Bold: qualquer outro peso seria sintético, e o CSS gerado leva font-synthesis: none. Nomes de produto, preços, declarações, filtros. Substituta quando o arquivo licenciado não está disponível: DM Sans (Google Fonts). Pilha CSS: Muoto, \"DM Sans\", \"Helvetica Neue\", Arial, sans-serif."
     },
     "mono": {
       "$type": "string",
       "$value": "MuotoMono",
-      "$description": "205TF Muoto Mono Condensed Regular. Default body font of the theme: UI labels, buttons in [brackets], menu, footer. Stand-in: Martian Mono at width 75 (condensed), Google Fonts. Pilha CSS: MuotoMono, \"Martian Mono\", ui-monospace, Menlo, monospace."
+      "$description": "205TF Muoto Mono Condensed. A licença da More cobre dois arquivos: Condensed Regular (400) e Condensed Italic (400). Sem kern (é monoespaçada). Voz da interface: rótulos, botões em [colchetes], menu, rodapé. Substituta: Martian Mono em largura 75 (condensada), Google Fonts. Pilha CSS: MuotoMono, \"Martian Mono\", ui-monospace, Menlo, monospace."
     }
   },
   "weight": {
     "light": {
       "$type": "number",
       "$value": 300,
-      "$description": "Pedido pela classe .muoto (critical.css) em títulos, declarações e medidas. O site só serve Muoto Regular (.otf), então o navegador mostra Regular: o peso 300 não existe na prática até o tema carregar o arquivo Light."
+      "$description": "Não existe: a licença da More não tem Muoto Light (só Regular e Italic). A classe .muoto do site pede 300 e o navegador mostra Regular. Peça nova não usa 300; o token fica só para registrar o pedido do site."
     },
     "regular": {
       "$type": "number",
       "$value": 400,
-      "$description": "body (MuotoMono) e nomes de produto no grid"
+      "$description": "Único peso que existe nas duas famílias licenciadas (Regular e Italic). body (MuotoMono) e nomes de produto no grid."
     },
     "semibold": {
       "$type": "number",
       "$value": 600,
-      "$description": "filtro ativo da coleção (sem arquivo 600: o navegador engrossa a Regular)"
+      "$description": "Não existe arquivo 600. O filtro ativo da coleção pede 600 e o navegador engrossa a Regular; com font-synthesis: none sai Regular."
     },
     "bold": {
       "$type": "number",
       "$value": 700,
-      "$description": "styles.css .text--title e botão da newsletter no footer. Sem arquivo Bold carregado: negrito sintético."
+      "$description": "Não existe arquivo 700. styles.css .text--title e botão da newsletter pedem 700 (negrito sintético no site); com font-synthesis: none sai Regular."
     }
   },
   "size": {

@@ -406,14 +406,14 @@
       "$value": {
         "colorSpace": "srgb",
         "components": [
-          0.854902,
-          0.564706,
-          0.082353
+          0.823529,
+          0.537255,
+          0.047059
         ],
         "alpha": 1,
-        "hex": "#DA9015"
+        "hex": "#D2890C"
       },
-      "$description": "[proposta] Fundo amarelo atrás do Pendente Naz (instagram p02_1). Hex amostrado do JPEG (inferido); nome do acabamento Amarelo Igaratá (inferido)."
+      "$description": "[proposta] Fundo amarelo atrás do Pendente Naz. Hex medido no original MORE_0800.jpg (Canon 5D Mark IV, a mesma foto do post p02_1 do Instagram); o JPEG do Instagram dava #DA9015. Nome do acabamento Amarelo Igaratá continua inferido."
     }
   }
 }

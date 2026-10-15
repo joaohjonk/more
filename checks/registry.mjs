@@ -19,7 +19,7 @@ export const CHECKS = [
   { rule: 'R-TYPE-01', script: 'type.mjs', accepts: is('css', 'html'), ok: ['ok.css'], falha: ['falha.css'] },
   { rule: 'R-TYPE-02', script: 'actions.mjs', accepts: is('html'), ok: ['ok.html', L_OK], falha: ['falha.html'], cases: [{ ok: [L_OK], falha: [L_NO] }] },
   { rule: 'R-LAYOUT-01', script: 'bars.mjs', accepts: is('css', 'html'), ok: ['ok.css'], falha: ['falha.css'] },
-  { rule: 'R-LAYOUT-02', script: 'aspect.mjs', accepts: (f) => is('css', 'html', ...IMG_EXT)(f), ok: ['ok.css', 'MORE_IG_cadeira-maria_4x5_20261105_v01.jpg'], falha: ['falha.css', 'foto final.jpg'], examples: true, cases: [{ ok: ['web-captura-pagina-390.png'], falha: ['foto final.jpg'] }] },
+  { rule: 'R-LAYOUT-02', script: 'aspect.mjs', accepts: (f) => is('css', 'html', ...IMG_EXT)(f), ok: ['ok.css', 'MORE_IG_cadeira-maria_4x5_20261105_v01.jpg'], falha: ['falha.css', 'foto final.jpg'], examples: true, cases: [{ ok: ['web-captura-pagina-390.png'], falha: ['foto final.jpg'] }, { ok: ['PDT_proporcao-2x3.jpg'], falha: ['foto final.jpg'] }] },
   { rule: 'R-IMG-01', script: 'no-ai.mjs', accepts: is(...IMG_EXT), ok: ['MORE_IG_cadeira-maria_4x5_20261105_v01.jpg'], falha: ['gerada-falha.jpg'] },
   { rule: 'R-IMG-02', examples: true },
   { rule: 'R-GEN-01', script: 'wordmark.mjs', accepts: is('svg', 'html'), ok: ['logo-ok.svg', 'ok.html'], falha: ['logo-falha.svg', 'falha.html'], cases: [{ ok: [L_OK], falha: ['wordmark-img-falha.html'] }] },
