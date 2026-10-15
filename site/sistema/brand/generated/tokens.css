@@ -96,6 +96,8 @@
   --logo-m-ratio: 0.1667;
   --logo-s: 60px;
   --logo-xl-ratio: 0.97;
+  --motion-distance-none: 0px;
+  --motion-distance-rise: 24px;
   --motion-duration-base: 500ms;
   --motion-duration-instant: 80ms;
   --motion-duration-intro: 450ms;
@@ -109,6 +111,14 @@
   --motion-easing-out-quint: cubic-bezier(0.23, 1, 0.32, 1);
   --motion-easing-snap: cubic-bezier(0.63, 0.01, 0, 1.01);
   --motion-easing-standard: cubic-bezier(0.25, 0.1, 0.25, 1);
+  --motion-role-enter-duration: 450ms;
+  --motion-role-enter-easing: cubic-bezier(0.22, 1, 0.36, 1);
+  --motion-role-hover-swap-duration: 300ms;
+  --motion-role-hover-swap-easing: cubic-bezier(0.25, 0.1, 0.25, 1);
+  --motion-role-panel-duration: 500ms;
+  --motion-role-panel-easing: cubic-bezier(0.25, 0.1, 0.25, 1);
+  --motion-scale-in: 0.8;
+  --motion-scale-soft: 0.98;
   --radius-none: 0px;
   --radius-panel: 10px;
   --radius-round: 50%;

@@ -87,6 +87,16 @@
   --motion-easing-out-expo: cubic-bezier(0.22, 1, 0.36, 1); /** intro dismiss, catalog rise */
   --motion-easing-out-quint: cubic-bezier(0.23, 1, 0.32, 1); /** mobile category popover */
   --motion-easing-standard: cubic-bezier(0.25, 0.1, 0.25, 1); /** 'ease' do CSS: a curva mais usada no site (73 usos) */
+  --motion-distance-none: 0px; /** hover de foto, troca de vista, menu: nada se desloca nem escala */
+  --motion-distance-rise: 24px; /** entrada do catálogo depois da abertura (translateY 24px → 0, out-expo 450ms) */
+  --motion-scale-in: 0.8; /** como o site faz hoje a segunda foto do card (.8 → 1). Medido; fica como registro, não como regra */
+  --motion-scale-soft: 0.98; /** escala leve para comparação (Knoll usa .95 em 600ms). Fora da recomendação */
+  --motion-role-hover-swap-duration: 300ms; /** troca de foto no card: 300ms, igual a The Row e Jacquemus (medidos em 15.10.2026). Hoje o site usa quick 200ms */
+  --motion-role-hover-swap-easing: cubic-bezier(0.25, 0.1, 0.25, 1); /** ease; nunca snap (o snap passa de 1 e dá o pulo) */
+  --motion-role-panel-duration: 500ms; /** menu que cresce, gaveta do carrinho, troca de vista (500ms ease, medido no site) */
+  --motion-role-panel-easing: cubic-bezier(0.25, 0.1, 0.25, 1);
+  --motion-role-enter-duration: 450ms; /** catálogo subindo 24px depois da abertura (450ms out-expo, medido) */
+  --motion-role-enter-easing: cubic-bezier(0.22, 1, 0.36, 1);
   --aspect-portrait: 0.75; /** 3:4, every product card and PDP image */
   --aspect-landscape: 1.5; /** 3:2, horizontal list-view images */
   --logo-s: 60px; /** S: 60px de largura na barra do menu do site (medido). 18 mm no papel é proposta nossa. */

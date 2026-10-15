@@ -365,6 +365,86 @@
     ],
     "$description": "'ease' do CSS: a curva mais usada no site (73 usos)"
    }
+  },
+  "distance": {
+   "$type": "dimension",
+   "none": {
+    "$value": {
+     "value": 0,
+     "unit": "px"
+    },
+    "$description": "hover de foto, troca de vista, menu: nada se desloca nem escala"
+   },
+   "rise": {
+    "$value": {
+     "value": 24,
+     "unit": "px"
+    },
+    "$description": "entrada do catálogo depois da abertura (translateY 24px → 0, out-expo 450ms)"
+   },
+   "$description": "Quanto algo se desloca. Só dois valores: zero (quase tudo) e a subida do catálogo na abertura. O hover de foto não usa distância nem escala (R-MOTION-03)."
+  },
+  "scale": {
+   "$type": "number",
+   "in": {
+    "$value": 0.8,
+    "$description": "como o site faz hoje a segunda foto do card (.8 → 1). Medido; fica como registro, não como regra"
+   },
+   "soft": {
+    "$value": 0.98,
+    "$description": "escala leve para comparação (Knoll usa .95 em 600ms). Fora da recomendação",
+    "$extensions": {
+     "cstack": {
+      "status": "PROPOSED",
+      "origin": "inventada por nós"
+     }
+    }
+   },
+   "$description": "Escalas que existem no site ou na comparação. A recomendação para o card é nenhuma escala."
+  },
+  "role": {
+   "hover-swap": {
+    "duration": {
+     "$type": "duration",
+     "$value": "{motion.duration.step}",
+     "$description": "troca de foto no card: 300ms, igual a The Row e Jacquemus (medidos em 15.10.2026). Hoje o site usa quick 200ms"
+    },
+    "easing": {
+     "$type": "cubicBezier",
+     "$value": "{motion.easing.standard}",
+     "$description": "ease; nunca snap (o snap passa de 1 e dá o pulo)"
+    },
+    "$description": "Papel: a segunda foto do card. Só opacity, no mesmo quadro 3:4."
+   },
+   "panel": {
+    "duration": {
+     "$type": "duration",
+     "$value": "{motion.duration.base}",
+     "$description": "menu que cresce, gaveta do carrinho, troca de vista (500ms ease, medido no site)"
+    },
+    "easing": {
+     "$type": "cubicBezier",
+     "$value": "{motion.easing.standard}"
+    }
+   },
+   "enter": {
+    "duration": {
+     "$type": "duration",
+     "$value": "{motion.duration.intro}",
+     "$description": "catálogo subindo 24px depois da abertura (450ms out-expo, medido)"
+    },
+    "easing": {
+     "$type": "cubicBezier",
+     "$value": "{motion.easing.out-expo}"
+    }
+   },
+   "$description": "Papéis: o nome do uso aponta para um valor da escala. Quem escreve CSS usa o papel, não o número.",
+   "$extensions": {
+    "cstack": {
+     "status": "PROPOSED",
+     "origin": "inferida do site e das referências"
+    }
+   }
   }
  },
  "aspect": {
