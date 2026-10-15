@@ -2,7 +2,7 @@
    Uso: <script src="/nav/shell.js" data-section="sistema" data-into=".page" defer></script>
    Insere no fluxo, nunca fixa, a faixa "onde você está".
    No fim do contêiner, antes do rodapé, entra o bloco "Próximo".
-   data-section: guia, sistema, colecao, loja-3d ou abertura.
+   data-section: guia, sistema, colecao, loja-3d, abertura ou stack.
    data-into: seletor do contêiner de rolagem (padrão body).
    data-foot="off" desliga o bloco Próximo.
    data-mode="bar" põe a faixa como linha de vidro dentro das barras (loja 3D). */
@@ -22,7 +22,10 @@
      d:'A loja da Alameda Franca, três semanas antes de existir. Arraste, clique, entre.'},
     {id:'abertura',n:'5',s:'Abertura',href:'/abertura/',
      t:'Abertura 05.11 e livro',
-     d:'Nove peças, do convite à vitrine, em um dia. O time escolhe, se quiser.'}
+     d:'Nove peças, do convite à vitrine, em um dia. O time escolhe, se quiser.'},
+    {id:'stack',n:'6',s:'Stack',href:'/stack/',
+     t:'Stack e automações',
+     d:'O que roda hoje, o que fazer até 05.11 e seis perguntas para o time. Cinco minutos.'}
   ];
   var me=document.currentScript||document.querySelector('script[data-section]');
   if(me===null)return;
@@ -44,7 +47,7 @@
       var l=document.createElement('link');l.rel='stylesheet';l.href='/nav/shell.css';document.head.appendChild(l)
     }
     var cur=S[i],prev=S[i-1],next=S[i+1];
-    var here=cur?cur.n+' de 5 · '+cur.t:'';
+    var here=cur?cur.n+' de 6 · '+cur.t:'';
     var aPrev=prev?link(prev.href,'[Anterior: '+prev.s+']'):'';
     var aNext=next?link(next.href,'[Próximo: '+next.s+']'):'';
     if(mode==='bar'){
@@ -59,7 +62,7 @@
     nav.className='more-shell';
     nav.setAttribute('aria-label','Onde você está');
     nav.innerHTML='<div class="more-shell__in">'+link('/','[Índice]')
-      +(cur?'<span class="more-shell__here">'+cur.n+' de 5 · <b>'+cur.t+'</b></span>':'')
+      +(cur?'<span class="more-shell__here">'+cur.n+' de 6 · <b>'+cur.t+'</b></span>':'')
       +'<span class="more-shell__spacer"></span>'
       +aPrev.replace('<a ','<a class="more-shell__prev" ')+aNext+'</div>';
     root.insertBefore(nav,root.firstChild);
@@ -69,7 +72,7 @@
       f.setAttribute('aria-label','Próxima página');
       f.innerHTML='<a class="im" href="'+next.href+'" tabindex="-1" aria-hidden="true">'
         +'<img src="/nav/img/'+next.id+'.jpg" alt=""></a>'
-        +'<div class="tx"><span class="k">Próximo · '+next.n+' de 5</span>'
+        +'<div class="tx"><span class="k">Próximo · '+next.n+' de 6</span>'
         +'<p class="t">'+link(next.href,next.t)+'</p>'
         +'<p class="d">'+next.d+'</p>'
         +'<a class="a" href="'+next.href+'">[Abrir]</a></div>';
