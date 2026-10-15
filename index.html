@@ -4,7 +4,8 @@
 <meta charset="utf-8">
 <link rel="icon" href="data:,">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>More · Sistema de design</title>
+<title>Sistema de design More</title>
+<meta name="color-scheme" content="light">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,600&family=Martian+Mono:wdth,wght@75,400&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="brand/generated/tokens.css">
@@ -49,6 +50,7 @@
   /* colour */
   .swatches{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:var(--space-hair)}
   .sw{display:flex;flex-direction:column;gap:var(--space-xs)}
+  @media(max-width:700px){.swatches{grid-template-columns:repeat(2,1fr)}.sw .chip{aspect-ratio:1}}
   .sw .chip{aspect-ratio:3/4;border:1px solid var(--color-alpha-preto-10)}
   .sw .name{font-family:var(--font-family-muoto)}
   .sw .meta{color:var(--color-text-secondary)}
@@ -125,6 +127,31 @@
   code{font-family:var(--font-family-mono);background:var(--color-alpha-preto-10);padding:1px 4px}
   footer{background:var(--color-surface-inverse);color:var(--color-text-on-inverse);padding:var(--space-3xl) var(--space-lg) 120px;margin-top:var(--space-section)}
   footer svg{width:min(320px,60vw);color:#c9c2b9}footer svg path{fill:currentColor}
+
+  /* panel additions */
+  .campos{display:grid;grid-template-columns:repeat(5,1fr);gap:var(--space-hair)}
+  .campos div{aspect-ratio:3/4;display:flex;flex-direction:column;justify-content:flex-end;padding:var(--space-sm);color:var(--color-off-white);font-stretch:75%;font-family:var(--font-family-mono);font-size:var(--font-size-label)}
+  @media(max-width:700px){.campos{grid-template-columns:repeat(2,1fr)}}
+  table.t{border-collapse:collapse;width:100%;font-family:var(--font-family-muoto);font-size:var(--font-size-label);margin-top:var(--space-md)}
+  table.t th{font-family:var(--font-family-mono);font-stretch:75%;font-weight:400;color:var(--color-text-secondary);text-align:left;padding:6px 8px 6px 0;border-bottom:1px solid var(--color-preto)}
+  table.t td{padding:8px 8px 8px 0;border-bottom:1px solid var(--color-alpha-preto-10);vertical-align:top}
+  .tscroll{overflow-x:auto}
+  .logos{display:grid;grid-template-columns:1fr 1fr 2fr;gap:var(--space-hair)}
+  .logos > div{background:var(--color-alpha-preto-10);aspect-ratio:4/5;position:relative;overflow:hidden;padding:var(--space-md)}
+  .logos > div path{fill:var(--color-preto)}
+  .logos .xl{background:var(--color-preto);aspect-ratio:auto} .logos .xl path{fill:var(--color-off-white)}
+  .logos span{display:block;font-family:var(--font-family-mono);font-stretch:75%;font-size:var(--font-size-label);color:var(--color-text-secondary)}
+  .logos .xl span{color:var(--color-cinza-claro)}
+  @media(max-width:700px){.logos{grid-template-columns:1fr 1fr}.logos .xl{grid-column:span 2;aspect-ratio:8/5}}
+  .display-demo{font-family:var(--font-family-muoto);line-height:.9;letter-spacing:-.02em;margin:var(--space-lg) 0}
+  .poster{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.3fr);gap:var(--space-2xl);align-items:start}
+  .poster img{width:100%;display:block}
+  @media(max-width:700px){.poster{grid-template-columns:1fr}}
+  .voice{display:grid;grid-template-columns:1fr 1fr;gap:var(--space-hair)}
+  .voice div{background:var(--color-alpha-preto-10);padding:var(--space-lg);font-family:var(--font-family-muoto)}
+  .voice .no{background:transparent;outline:1px dashed var(--color-text-secondary);outline-offset:-1px}
+  .voice p{font-size:var(--font-size-title);line-height:1.15;margin:var(--space-sm) 0}
+  @media(max-width:700px){.voice{grid-template-columns:1fr}}
   @media (prefers-reduced-motion:reduce){*{transition-duration:1ms!important;animation-duration:1ms!important}}
 </style>
 </head>
@@ -146,18 +173,48 @@
 
   <section id="principios">
     <div class="eyebrow">[02] Princípios</div>
-    <h2>Cinco ideias que seguram o resto</h2>
+    <h2>Seis ideias que seguram o resto</h2>
     <div class="rules">
       <div><span class="id">Papel, não vidro</span><p>O fundo é off-white quente, como papel de revista. Transparência só nas barras flutuantes, nunca como estética.</p></div>
       <div><span class="id">A peça é a cor</span><p>A interface é quase monocromática. Cor saturada vem da madeira, do bouclê, do vidro fundido.</p></div>
       <div><span class="id">Quadrado</span><p>Nenhum canto arredondado. Imagens, barras e botões têm canto vivo.</p></div>
       <div><span class="id">Duas vozes</span><p>Muoto fala os nomes e os preços. Muoto Mono fala com a interface, entre [colchetes].</p></div>
+      <div><span class="id">Peso brasileiro</span><p>Madeira maciça em seções generosas, peças com nome de gente, acabamentos com nomes de lugares e frutas: Jambo, Igaratá, Guaraná, Jamaica.</p></div>
       <div><span class="id">A galeria flutua</span><p>Navegação e ação vivem em barras de 35px no pé da tela. O resto da tela é das fotos.</p></div>
+    </div>
+      <h3>O que a More acha</h3>
+    <div class="rules">
+      <div><span class="id">Crença 1</span><p>Uma peça não precisa combinar. "Não foi feita para combinar com o sofá. E isso é ótimo."</p></div>
+      <div><span class="id">Crença 2</span><p>Material antes de adjetivo. Madeira maciça, vidro fundido, alumínio naval, ditos pelo nome.</p></div>
+      <div><span class="id">Crença 3</span><p>Contra o móvel genérico de projeto. "Para projetos sem personalidade, a concorrência resolve."</p></div>
+    </div>
+  </section>
+
+  <section id="voz">
+    <div class="eyebrow">[03] Voz · brand-system voice + R-COPY-01/02/03</div>
+    <h2>Voz</h2>
+    <p class="body">Nome da peça, ponto. Depois uma linha seca que discorda do óbvio. Depois, se precisar, o material. Português primeiro. Nas 42 legendas do Instagram não há exclamação, emoji nem hashtag: é assim que continua.</p>
+    <div class="voice">
+      <div><span class="mono secondary">Assim</span><p>Mesa de jantar componível Naz. Não é quadrada, só parece.</p><p>Banco João. Precisa da sua Maria.</p><p>Maçaneta Constantin. A primeira impressão é na mão.</p></div>
+      <div class="no"><span class="mono secondary">Não assim</span><p>Móveis com alma, feitos para o uso diário.</p><p>Peças sofisticadas com personalidade única!</p><p>Purity of lines and natural beauty.</p></div>
+    </div>
+    <h3>Nomes</h3>
+    <p class="body">Um nome por peça, igual no site, no Instagram, na etiqueta e no arquivo: tipo em minúscula + Nome. <b>Mesa de centro Cildo</b>, <b>Cadeira 556-A</b>, <b>Luminária Ngoni</b>, <b>Poltrona Leticia</b>. Hoje há versões diferentes da mesma peça (Mesa Cildo / Mesa de centro Cildo, Cadeira 556 / 556-A, Torre de luz / Luminária Ngoni, Leticia / Letícia).</p>
+  </section>
+
+  <section id="marca">
+    <div class="eyebrow">[04] Marca · R-LOGO-01 · tokens logo.*</div>
+    <h2>A marca em três tamanhos</h2>
+    <p class="body">S, M ou XL. Nada no meio. Respiro mínimo igual à altura do O. Só preto ou branco, nunca cortado no meio da palavra, contornado, espelhado ou sobre uma área cheia de detalhe da foto.</p>
+    <div class="logos">
+      <div><span>S · 60 px · 18 mm</span><svg viewBox="0 0 272 69" style="width:60px;display:block;margin-top:var(--space-2xl)" aria-hidden="true"><path d="M176.593 23.0819V1.91833H150.317V66.5948H176.593V44.2791H205.243V1.91833C189.55 1.91833 177.465 13.093 176.593 23.0875V23.0819Z"/><path d="M111.007 0C91.875 0 76.3403 15.3302 76.3403 34.223C76.3403 53.1159 91.8693 68.4461 111.007 68.4461C130.145 68.4461 145.742 53.1159 145.742 34.223C145.742 15.3302 130.213 0 111.007 0ZM111.007 42.4334C106.43 42.4334 102.69 38.8036 102.69 34.2174C102.69 29.6313 106.435 26.0015 111.007 26.0015C115.579 26.0015 119.398 29.6984 119.398 34.2174C119.398 38.7365 115.653 42.4334 111.007 42.4334Z"/><path d="M35.919 19.6423L26.2764 1.91833H0V66.5948H26.2764V44.212H45.4936V66.5948H71.77V1.91833H45.4936L35.919 19.6423Z"/><path d="M272.002 1.87909H211.835V24.7541V34.7487V44.1783V66.5612H272.002V44.7376H238.219L255.669 34.7151L238.236 24.7541H272.002V1.87909Z"/></svg><span style="position:absolute;bottom:var(--space-md)">barras, rodapé, etiqueta</span></div>
+      <div><span>M · 1/6 do lado curto</span><svg viewBox="0 0 272 69" style="width:max(34%,90px);display:block;margin-top:var(--space-2xl)" aria-hidden="true"><path d="M176.593 23.0819V1.91833H150.317V66.5948H176.593V44.2791H205.243V1.91833C189.55 1.91833 177.465 13.093 176.593 23.0875V23.0819Z"/><path d="M111.007 0C91.875 0 76.3403 15.3302 76.3403 34.223C76.3403 53.1159 91.8693 68.4461 111.007 68.4461C130.145 68.4461 145.742 53.1159 145.742 34.223C145.742 15.3302 130.213 0 111.007 0ZM111.007 42.4334C106.43 42.4334 102.69 38.8036 102.69 34.2174C102.69 29.6313 106.435 26.0015 111.007 26.0015C115.579 26.0015 119.398 29.6984 119.398 34.2174C119.398 38.7365 115.653 42.4334 111.007 42.4334Z"/><path d="M35.919 19.6423L26.2764 1.91833H0V66.5948H26.2764V44.212H45.4936V66.5948H71.77V1.91833H45.4936L35.919 19.6423Z"/><path d="M272.002 1.87909H211.835V24.7541V34.7487V44.1783V66.5612H272.002V44.7376H238.219L255.669 34.7151L238.236 24.7541H272.002V1.87909Z"/></svg><span style="position:absolute;bottom:var(--space-md)">convite, post, capa</span></div>
+      <div class="xl"><span>XL · 95–100% da largura, encostado embaixo, pode sangrar</span><svg viewBox="0 0 272 69" style="width:100%;display:block;position:absolute;left:0;bottom:-4%" aria-hidden="true"><path d="M176.593 23.0819V1.91833H150.317V66.5948H176.593V44.2791H205.243V1.91833C189.55 1.91833 177.465 13.093 176.593 23.0875V23.0819Z"/><path d="M111.007 0C91.875 0 76.3403 15.3302 76.3403 34.223C76.3403 53.1159 91.8693 68.4461 111.007 68.4461C130.145 68.4461 145.742 53.1159 145.742 34.223C145.742 15.3302 130.213 0 111.007 0ZM111.007 42.4334C106.43 42.4334 102.69 38.8036 102.69 34.2174C102.69 29.6313 106.435 26.0015 111.007 26.0015C115.579 26.0015 119.398 29.6984 119.398 34.2174C119.398 38.7365 115.653 42.4334 111.007 42.4334Z"/><path d="M35.919 19.6423L26.2764 1.91833H0V66.5948H26.2764V44.212H45.4936V66.5948H71.77V1.91833H45.4936L35.919 19.6423Z"/><path d="M272.002 1.87909H211.835V24.7541V34.7487V44.1783V66.5612H272.002V44.7376H238.219L255.669 34.7151L238.236 24.7541H272.002V1.87909Z"/></svg></div>
     </div>
   </section>
 
   <section id="cor">
-    <div class="eyebrow">[03] Cor · brand/tokens/color.tokens.json</div>
+    <div class="eyebrow">[05] Cor · brand/tokens/color.tokens.json</div>
     <h2>Cor</h2>
     <div class="swatches">
       <div class="sw"><div class="chip" style="background:var(--color-off-white)"></div><span class="name">off-white</span><span class="meta">#E5E1DB · fundo de tudo</span></div>
@@ -170,10 +227,28 @@
       <div class="sw"><div class="chip glass"></div><span class="name">glass (preto 10% + blur 13)</span><span class="meta">barras flutuantes</span></div>
     </div>
     <p class="note">Também existem marrom #574D4B, cinza-texto #999898, erro #E07A5F e preto 80% (barra de ação). Os nomes em português são os mesmos do código do site.</p>
+      <h3>Campos de cor · impresso, social e loja (R-COLOR-04)</h3>
+    <p class="body">As cores fortes da More já existem: são os fundos das fotos do Instagram e os nomes dos acabamentos. Elas viram campos chapados em cartaz, convite, livro, vitrine e post. Nunca entram na interface da loja, e nunca duas no mesmo quadro.</p>
+    <div class="campos">
+      <div style="background:var(--color-campo-vermelho-jambo)">vermelho-jambo<br>#9A1935</div>
+      <div style="background:var(--color-campo-mostarda-igarata)">mostarda-igaratá<br>#DA9015</div>
+      <div style="background:var(--color-campo-verde-jamaica)">verde-jamaica<br>#323E1C</div>
+      <div style="background:var(--color-campo-petroleo)">petróleo<br>#306C6A</div>
+      <div style="background:var(--color-campo-berinjela)">berinjela<br>#332436</div>
+    </div>
+    <p class="note">Valores amostrados das fotos do Instagram (posts da TOM.01, Pendente Naz, Sofá Catedral, Mesa Leila, Luminária Fantô). Confirmar com o material real antes de imprimir.</p>
+    <h3>Para imprimir (proposta, a validar com a gráfica)</h3>
+    <div class="tscroll"><table class="t"><thead><tr><th>Token</th><th>Tela</th><th>CMYK</th><th>Pantone</th><th>Uso</th></tr></thead><tbody>
+      <tr><td>off-white</td><td>#E5E1DB</td><td>é o papel</td><td>—</td><td>Papel natural sem revestimento, 90–150 g (Munken Pure, Pólen). Nunca imprimir como chapado.</td></tr>
+      <tr><td>preto</td><td>#2D211E</td><td>C60 M70 Y70 K80</td><td>Black 5 C</td><td>Texto e logo. Áreas grandes em preto rico C60 M50 Y50 K100.</td></tr>
+      <tr><td>cinza-escuro</td><td>#5D554F</td><td>C0 M12 Y20 K75</td><td>411 C</td><td>Texto pequeno.</td></tr>
+      <tr><td>cinza-medio</td><td>#686868</td><td>K70</td><td>Cool Gray 9 C</td><td>Rótulos curtos.</td></tr>
+      <tr><td>ciano-destaque</td><td>#8BC0D0</td><td>C40 M5 Y10 K0</td><td>7458 C</td><td>Só "pronta entrega": adesivo quadrado de 10 mm.</td></tr>
+    </tbody></table></div>
   </section>
 
   <section id="tipografia">
-    <div class="eyebrow">[04] Tipografia · brand/tokens/type.tokens.json</div>
+    <div class="eyebrow">[06] Tipografia · brand/tokens/type.tokens.json</div>
     <h2>Tipografia</h2>
     <p class="body">Duas famílias da 205TF: <b>Muoto</b> e <b>Muoto Mono Condensed</b>, licenciadas e hospedadas no tema. Nesta página aparecem substitutas livres (DM Sans e Martian Mono condensada) porque a licença da fonte original é do site.</p>
     <div class="spec"><span class="k mono">about · Muoto 32/1</span><span class="muoto" style="font-size:var(--font-size-about);line-height:1">Peças de linhas puras e proporções pesadas.</span></div>
@@ -185,10 +260,16 @@
     <div class="spec"><span class="k mono">label · Muoto 11</span><span class="muoto" style="font-size:var(--font-size-label)">Selecione a Madeira</span></div>
     <div class="spec"><span class="k mono">caption · 10</span><span class="muoto" style="font-size:var(--font-size-caption)">01&nbsp;&nbsp;02&nbsp;&nbsp;03&nbsp;&nbsp;04</span></div>
     <p class="note">Um peso só (400). Semibold 600 apenas no filtro ativo. Sem caixa-alta, sem espaçamento entre letras.</p>
+      <h3>Escala display · só impresso e telas grandes</h3>
+    <div class="display-demo" style="font-size:clamp(56px,12vw,160px)">05.11</div>
+    <div class="display-demo" style="font-size:clamp(32px,6vw,96px)">Mesa de centro Cildo</div>
+    <p class="note">display-1 240 pt · display-2 96 pt · display-3 48 pt. Entrelinha 0,9, espaçamento −0,02em, Muoto 400. Nunca dentro da loja.</p>
+    <h3>Escala de impressão (pt)</h3>
+    <p class="body">Legenda 6 · rótulo 7 (mínimo do mono em papel sem revestimento) · texto 8,5 · interface 10 · título 14 · frase 20 · sobre 28. Para usar no InDesign, confirmar a licença desktop da 205TF: a licença web não cobre impresso.</p>
   </section>
 
   <section id="espaco">
-    <div class="eyebrow">[05] Espaço e grid · brand/tokens/space.tokens.json</div>
+    <div class="eyebrow">[07] Espaço e grid · brand/tokens/space.tokens.json</div>
     <h2>Espaço e grid</h2>
     <p class="body">Espaços internos pequenos, distâncias grandes entre peças. O ar vem do vazio entre as fotos, não de margem dentro dos blocos.</p>
     <div class="scale">
@@ -208,7 +289,7 @@
   </section>
 
   <section id="componentes">
-    <div class="eyebrow">[06] Componentes</div>
+    <div class="eyebrow">[08] Componentes</div>
     <h2>Componentes</h2>
     <h3>Barras flutuantes (menu, ação, compra)</h3>
     <div class="stage">
@@ -231,9 +312,9 @@
 
     <h3>Card de produto e etiquetas</h3>
     <div class="stage" style="align-items:flex-start">
-      <div class="card"><div class="img"><img src="https://cdn.shopify.com/s/files/1/0804/0841/2408/files/PDT_ASS_POL_LETICIA_01.jpg?width=600" alt="Poltrona Leticia"><img class="alt" src="https://cdn.shopify.com/s/files/1/0804/0841/2408/files/PDT_ASS_POL_LETICIA_06.jpg?width=500" alt=""></div><div class="foot"><span>Poltrona Leticia</span><span class="pr">R$ 23.990</span></div><p class="note">Como está hoje. Passe o mouse.</p></div>
-      <div class="card proposal"><div class="img"><img src="https://cdn.shopify.com/s/files/1/0804/0841/2408/files/PDT_ASS_POL_LETICIA_01.jpg?width=600" alt="Poltrona Leticia"><span class="tag mono">Sob encomenda</span></div><div class="foot"><span>Poltrona Leticia</span><span class="pr">12 tecidos</span></div><p class="note">Proposta: sem preço na grade, etiqueta "Sob encomenda".</p></div>
-      <div class="card proposal"><div class="img"><img src="https://cdn.shopify.com/s/files/1/0804/0841/2408/files/PDT_FIX_TOM_TOM.jpg?width=600" alt="Tomada TOM.01"><span class="tag now mono">Pronta entrega</span></div><div class="foot"><span>Tomada TOM.01</span><span class="pr">Comprar</span></div><p class="note">Proposta: o único acento marca o que se compra já.</p></div>
+      <div class="card"><div class="img"><img src="references/gold/site/PDT_ASS_POL_LETICIA_01.jpg" alt="Poltrona Leticia"><img class="alt" src="references/gold/site/PDT_ASS_POL_LETICIA_06.jpg" alt=""></div><div class="foot"><span>Poltrona Leticia</span><span class="pr">R$ 23.990</span></div><p class="note">Como está hoje. Passe o mouse.</p></div>
+      <div class="card proposal"><div class="img"><img src="references/gold/site/PDT_ASS_POL_LETICIA_01.jpg" alt="Poltrona Leticia"><span class="tag mono">Sob encomenda</span></div><div class="foot"><span>Poltrona Leticia</span><span class="pr">12 tecidos</span></div><p class="note">Proposta: sem preço na grade, etiqueta "Sob encomenda".</p></div>
+      <div class="card proposal"><div class="img"><img src="references/gold/site/PDT_FIX_TOM_TOM.jpg" alt="Tomada TOM.01"><span class="tag now mono">Pronta entrega</span></div><div class="foot"><span>Tomada TOM.01</span><span class="pr">Comprar</span></div><p class="note">Proposta: o único acento marca o que se compra já.</p></div>
     </div>
 
     <h3>Seletores de material e acordeão</h3>
@@ -250,7 +331,7 @@
   </section>
 
   <section id="movimento">
-    <div class="eyebrow">[07] Movimento · motion tokens</div>
+    <div class="eyebrow">[09] Movimento · motion tokens</div>
     <h2>Movimento</h2>
     <p class="body">Devagar e curto. Fades e crescimentos de 0,2 a 0,8s, sempre com saída suave. Passe o mouse ou toque no bloco abaixo.</p>
     <div class="ease">
@@ -259,23 +340,66 @@
       <div><span class="mono">ease · 500ms</span><b style="transition:transform .5s ease"></b><span class="secondary">barras crescendo, troca de vista</span></div>
       <div><span class="mono">ease-out · 800ms</span><b style="transition:transform .8s ease-out"></b><span class="secondary">produto aparecendo</span></div>
     </div>
+      <h3>Três assinaturas (R-MOTION-02)</h3>
+    <div class="rules">
+      <div><span class="id">Build</span><p>As letras M-O-R-E chegam em sequência, 120 ms entre elas, do cinza ao preto. Já é a abertura do site.</p></div>
+      <div><span class="id">Corte seco</span><p>Troca de foto sem fade: aberto, detalhe, material. O ritmo dos carrosséis.</p></div>
+      <div><span class="id">Sombra que passa</span><p>A sombra dura da janela atravessa a peça. Já é o convite de 05.11.</p></div>
+    </div>
   </section>
 
   <section id="fotografia">
-    <div class="eyebrow">[08] Fotografia</div>
+    <div class="eyebrow">[10] Fotografia</div>
     <h2>Fotografia</h2>
     <p class="body"><b>Estúdio</b>: fundo bege contínuo, uma luz dura de lado que desenha uma janela no chão e na parede, peça em 3/4, câmera um pouco acima do assento, 3:4. Detalhes em crop arquitetônico (encaixe, trama, borda do vidro) ao lado da peça inteira.</p>
     <p class="body"><b>Low-key</b> (Instagram): fundo quase preto, uma luz quente rasante, close de material. A peça nunca é alterada por IA.</p>
     <div class="photos">
-      <img src="https://cdn.shopify.com/s/files/1/0804/0841/2408/files/PDT_ASS_POL_LETICIA_01.jpg?width=600" alt="Poltrona Leticia, luz de estúdio">
-      <img src="https://cdn.shopify.com/s/files/1/0804/0841/2408/files/PDT_ASS_POL_LETICIA_06.jpg?width=600" alt="Detalhe do encaixe da Poltrona Leticia">
-      <img src="https://cdn.shopify.com/s/files/1/0804/0841/2408/files/PDT_MES_CEN_CILDO_02.jpg?width=600" alt="Mesa Cildo em vidro fundido">
-      <img src="https://cdn.shopify.com/s/files/1/0804/0841/2408/files/PDT_FIX_TOM_TOM.01_02.jpg?width=600" alt="Tomada TOM.01">
+      <img src="references/gold/site/PDT_ASS_POL_LETICIA_01.jpg" alt="Poltrona Leticia, luz de estúdio">
+      <img src="references/gold/site/PDT_ASS_POL_LETICIA_06.jpg" alt="Detalhe do encaixe da Poltrona Leticia">
+      <img src="references/gold/site/PDT_MES_CEN_CILDO_02.jpg" alt="Mesa Cildo em vidro fundido">
+      <img src="references/gold/site/PDT_FIX_TOM_TOM.01_02.jpg" alt="Tomada TOM.01">
     </div>
+      <p class="body"><b>Campo de cor</b> (Instagram): uma cor chapada atrás de uma peça, luz baixa. Até 1 a cada 9 posts. <b>Bastidores</b>: gente e equipe no set, só no Instagram e no livro, nunca na página da peça.</p>
+    <p class="body"><b>Corte</b>: peça inteira com pelo menos 15% de ar acima, a peça no terço de baixo, sombra inteira. Detalhe sangra em pelo menos dois lados. Nunca recorte sobre o off-white: o fundo é a página.</p>
+  </section>
+
+  <section id="edicoes">
+    <div class="eyebrow">[11] Edições, loja e impresso</div>
+    <h2>Fora da tela</h2>
+    <div class="poster">
+      <img src="references/gold/instagram/p28_0.jpg" alt="Cartaz vermelho da Tomada TOM.01 no Instagram da More">
+      <div>
+        <h3 style="margin-top:0">Receita do cartaz</h3>
+        <p class="body">O cartaz vermelho da TOM.01 é a peça gráfica mais forte da More. Ele vira receita para convite, vitrine, sinalização e capa:</p>
+        <ol class="steps">
+          <li>Um campo de cor só.</li>
+          <li>A peça como silhueta dura, sem meio-tom.</li>
+          <li>Uma coluna em mono, girada 90°: código, medidas, endereço.</li>
+          <li>A marca em XL, embaixo, ou na vertical.</li>
+          <li>Rodapé fixo numa barra preta: <span class="mono">Abertura 05.11 [Jardins]</span>. Colchetes envolvem ações e datas, nunca nomes.</li>
+        </ol>
+        <p class="note">Elipses e formas arredondadas ficam de fora (R-SHAPE-02). O livro é uma edição numerada ("Edição 01"), não um catálogo.</p>
+      </div>
+    </div>
+    <h3>Grid de impressão</h3>
+    <p class="body">12 colunas, margem de 1/24 do lado curto, linha de base de 12 pt, imagens em módulos 3:4 ou 3:2, marca XL na margem de baixo. O vidro das barras não existe no papel: vira preto a 10%, sem desfoque.</p>
+    <h3>Exportação por canal</h3>
+    <div class="tscroll"><table class="t"><thead><tr><th>Canal</th><th>Formato</th><th>Observação</th></tr></thead><tbody>
+      <tr><td>Instagram feed</td><td>4:5 · 1080×1350 JPG</td><td>Recorte do topo da foto 3:4.</td></tr>
+      <tr><td>Stories e reels</td><td>9:16 · 1080×1920</td><td>250 px livres em cima e embaixo.</td></tr>
+      <tr><td>Shopify</td><td>3:4 · 2000×2667 JPG q80 sRGB</td><td>Uma peça por imagem.</td></tr>
+      <tr><td>E-mail</td><td>600 px de largura</td><td>3:4 ou 3:2.</td></tr>
+      <tr><td>WhatsApp</td><td>1080 px no lado maior, JPG</td><td>Link em texto junto, nunca só na imagem.</td></tr>
+      <tr><td>Impressão</td><td>300 dpi · PDF/X-4</td><td>Sangria de 3 mm, segurança de 5 mm, perfil para papel sem revestimento.</td></tr>
+    </tbody></table></div>
+    <h3>Peças da loja</h3>
+    <p class="body"><b>Etiqueta</b>: cartão sem revestimento 50×90 mm, nome em Muoto, linha em mono <span class="mono">[Sob encomenda · ~120 dias]</span> ou <span class="mono">[Pronta entrega]</span>. <b>Caixa da TOM.01</b>: preto rico, marca vazada, painel técnico em mono. <b>Vitrine</b>: uma peça, luz dura de lado.</p>
+    <h3>Nome dos arquivos (R-FILE-01)</h3>
+    <p class="body mono" style="font-family:var(--font-family-mono)">MORE_IG_mesa-de-centro-cildo_4x5_20261105_v02.jpg</p>
   </section>
 
   <section id="regras">
-    <div class="eyebrow">[09] Regras · brand/rules/brand-rules.yaml</div>
+    <div class="eyebrow">[12] Regras · brand/rules/brand-rules.yaml</div>
     <h2>Regras que a IA checa</h2>
     <div class="rules">
       <div><span class="id">R-COLOR-02</span><p>Fundo off-white, nunca branco puro. Texto preto quente, nunca #000.</p></div>
@@ -284,17 +408,25 @@
       <div><span class="id">R-TYPE-01</span><p>Duas famílias, um peso.</p></div>
       <div><span class="id">R-TYPE-02</span><p>Ações são palavras em mono entre colchetes.</p></div>
       <div><span class="id">R-LAYOUT-01</span><p>Navegação em barras flutuantes no pé da tela, sem cabeçalho fixo.</p></div>
-      <div><span class="id">R-LAYOUT-02</span><p>Uma peça por imagem, 3:4.</p></div>
+      <div><span class="id">R-LAYOUT-02</span><p>Uma peça por imagem, 3:4 na origem; 4:5 e 9:16 recortados dela.</p></div>
       <div><span class="id">R-IMG-01</span><p>Peça é fotografada, nunca gerada nem alterada por IA.</p></div>
       <div><span class="id">R-GEN-01</span><p>Logo e fontes nunca são "desenhados" por IA: usa-se o arquivo real.</p></div>
       <div><span class="id">R-COPY-01</span><p>Texto curto, declarativo, sobre material e feitura. Sem "exclusivo", "sofisticado", sem exclamação.</p></div>
       <div><span class="id">R-COMMERCE-01</span><p>Pronta entrega e sob encomenda sempre identificados, com prazo.</p></div>
       <div><span class="id">R-COMMERCE-02</span><p>Preço na página do produto, não na grade (proposta em discussão).</p></div>
+      <div><span class="id">R-COPY-02</span><p>Cada peça ganha uma linha seca que discorda do óbvio. Nunca "alma", "essência", "personalidade".</p></div>
+      <div><span class="id">R-COPY-03</span><p>Português primeiro. Inglês só como segunda versão.</p></div>
+      <div><span class="id">R-COLOR-04</span><p>Campos de cor só no impresso, no social e na loja física. Um por quadro.</p></div>
+      <div><span class="id">R-LOGO-01</span><p>Marca em S, M ou XL. Respiro igual ao O. Preto ou branco.</p></div>
+      <div><span class="id">R-SHAPE-02</span><p>Sem elipses nem formas arredondadas, em nenhum meio.</p></div>
+      <div><span class="id">R-LAYOUT-03</span><p>106 px livres no pé de toda página: as barras nunca cobrem conteúdo.</p></div>
+      <div><span class="id">R-NAME-01</span><p>Um nome por peça, igual em todo lugar.</p></div>
+      <div><span class="id">R-PRINT-01</span><p>O off-white é o papel. 300 dpi, PDF/X-4, sangria de 3 mm.</p></div>
     </div>
   </section>
 
   <section id="ia">
-    <div class="eyebrow">[10] Como usar com IA</div>
+    <div class="eyebrow">[13] Como usar com IA</div>
     <h2>Como usar com o Claude</h2>
     <ol class="steps">
       <li>Abra o Claude com acesso a este repositório.</li>
@@ -308,7 +440,7 @@
   </section>
 
   <section id="pendencias">
-    <div class="eyebrow">[11] Para o time confirmar</div>
+    <div class="eyebrow">[14] Para o time confirmar</div>
     <h2>Pendências</h2>
     <ol class="steps">
       <li>Aprovar estes tokens como oficiais (hoje estão como provisórios, medidos do site).</li>
@@ -316,7 +448,10 @@
       <li>Idioma: o texto Sobre está em inglês provisório, com o mesmo parágrafo repetido.</li>
       <li>Preços de R$ 1 na Tomada TOM.01 e na Estante Dominó.</li>
       <li>Grafias no Shopify: "Velugo Girassol" e "Angelim Pedra ebanidada".</li>
-      <li>Instagram: só os 6 posts mais recentes foram lidos (o resto pede login).</li>
+      <li>Escolher o nome oficial de cada peça (lista em Voz).</li>
+      <li>Validar com a gráfica as cores CMYK/Pantone e o papel.</li>
+      <li>Confirmar os campos de cor contra os acabamentos reais (Vermelho Jambo, Amarelo Igaratá, Verde Jamaica, Berinjela).</li>
+      <li>Trocar o texto Sobre em inglês por um manifesto em português.</li>
     </ol>
   </section>
 </main>
@@ -328,7 +463,7 @@
 
 <div class="bar" id="bar">
   <div class="row"><svg viewBox="0 0 272 69" aria-label="More"><path d="M176.593 23.0819V1.91833H150.317V66.5948H176.593V44.2791H205.243V1.91833C189.55 1.91833 177.465 13.093 176.593 23.0875V23.0819Z"/><path d="M111.007 0C91.875 0 76.3403 15.3302 76.3403 34.223C76.3403 53.1159 91.8693 68.4461 111.007 68.4461C130.145 68.4461 145.742 53.1159 145.742 34.223C145.742 15.3302 130.213 0 111.007 0ZM111.007 42.4334C106.43 42.4334 102.69 38.8036 102.69 34.2174C102.69 29.6313 106.435 26.0015 111.007 26.0015C115.579 26.0015 119.398 29.6984 119.398 34.2174C119.398 38.7365 115.653 42.4334 111.007 42.4334Z"/><path d="M35.919 19.6423L26.2764 1.91833H0V66.5948H26.2764V44.212H45.4936V66.5948H71.77V1.91833H45.4936L35.919 19.6423Z"/><path d="M272.002 1.87909H211.835V24.7541V34.7487V44.1783V66.5612H272.002V44.7376H238.219L255.669 34.7151L238.236 24.7541H272.002V1.87909Z"/></svg><button id="tg" aria-expanded="false">Menu [+]</button></div>
-  <nav aria-label="Seções"><a href="#o-que-e">O que é</a><a href="#principios">Princípios</a><a href="#cor">Cor</a><a href="#tipografia">Tipografia</a><a href="#espaco">Espaço e grid</a><a href="#componentes">Componentes</a><a href="#movimento">Movimento</a><a href="#fotografia">Fotografia</a><a href="#regras">Regras</a><a href="#ia">Como usar com IA</a><a href="#pendencias">Pendências</a></nav>
+  <nav aria-label="Seções"><a href="#o-que-e">O que é</a><a href="#principios">Princípios</a><a href="#voz">Voz</a><a href="#marca">Marca</a><a href="#cor">Cor</a><a href="#tipografia">Tipografia</a><a href="#espaco">Espaço e grid</a><a href="#componentes">Componentes</a><a href="#movimento">Movimento</a><a href="#fotografia">Fotografia</a><a href="#edicoes">Fora da tela</a><a href="#regras">Regras</a><a href="#ia">Como usar com IA</a><a href="#pendencias">Pendências</a></nav>
 </div>
 <script>
   const bar=document.getElementById('bar'),tg=document.getElementById('tg');

@@ -243,6 +243,104 @@
     "$value": "{color.erro}",
     "$description": "Form and payment errors."
    }
+  },
+  "campo": {
+   "$description": "Colour fields for print, social and the store only (posters, invites, book, window). Never in shop UI chrome (R-COLOR-04). Values sampled from More's own Instagram colour-field photos; names map to existing finish names, to confirm.",
+   "vermelho-jambo": {
+    "$value": {
+     "colorSpace": "srgb",
+     "components": [
+      0.6039,
+      0.098,
+      0.2078
+     ],
+     "hex": "#9A1935"
+    },
+    "$description": "Red field of the TOM.01 poster. Finish name candidate: Vermelho Jambo.",
+    "$extensions": {
+     "cstack": {
+      "status": "PROPOSED",
+      "source": "instagram p28_0 (2026-02-27), sampled",
+      "approval": "awaiting More team"
+     }
+    }
+   },
+   "mostarda-igarata": {
+    "$value": {
+     "colorSpace": "srgb",
+     "components": [
+      0.8549,
+      0.5647,
+      0.0824
+     ],
+     "hex": "#DA9015"
+    },
+    "$description": "Mustard field behind the Pendente Naz. Finish name candidate: Amarelo Igaratá.",
+    "$extensions": {
+     "cstack": {
+      "status": "PROPOSED",
+      "source": "instagram p02_1 (2026-08-07), sampled",
+      "approval": "awaiting More team"
+     }
+    }
+   },
+   "verde-jamaica": {
+    "$value": {
+     "colorSpace": "srgb",
+     "components": [
+      0.1961,
+      0.2431,
+      0.1098
+     ],
+     "hex": "#323E1C"
+    },
+    "$description": "Olive field behind the Sofá Catedral, low-key. Finish name candidate: Verde Jamaica.",
+    "$extensions": {
+     "cstack": {
+      "status": "PROPOSED",
+      "source": "instagram p21_0 (2026-07-03), sampled",
+      "approval": "awaiting More team"
+     }
+    }
+   },
+   "petroleo": {
+    "$value": {
+     "colorSpace": "srgb",
+     "components": [
+      0.1882,
+      0.4235,
+      0.4157
+     ],
+     "hex": "#306C6A"
+    },
+    "$description": "Teal field of the Mesa Leila carousel.",
+    "$extensions": {
+     "cstack": {
+      "status": "PROPOSED",
+      "source": "instagram p01_0 (2026-09-04), sampled",
+      "approval": "awaiting More team"
+     }
+    }
+   },
+   "berinjela": {
+    "$value": {
+     "colorSpace": "srgb",
+     "components": [
+      0.2,
+      0.1412,
+      0.2118
+     ],
+     "hex": "#332436"
+    },
+    "$description": "Aubergine drape behind the Luminária Fantô. Finish name candidate: Berinjela.",
+    "$extensions": {
+     "cstack": {
+      "status": "PROPOSED",
+      "source": "instagram p06_0 (2026-07-21), sampled",
+      "approval": "awaiting More team"
+     }
+    }
+   }
   }
  }
 }

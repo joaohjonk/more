@@ -123,6 +123,20 @@
    "$type": "number",
    "$value": 4,
    "$description": "catalog grid desktop; 2 on mobile, every 5th card spans full width"
+  },
+  "bar-safe": {
+   "$value": {
+    "value": 106,
+    "unit": "px"
+   },
+   "$description": "Bottom padding of every scroll container so the two floating bars never cover content: 2 x 35 + 6 + 30. Fixes the mobile overlap seen on home-390 and pdp-leticia-390.",
+   "$extensions": {
+    "cstack": {
+     "status": "PROPOSED",
+     "source": "critic panel 2026-10-15 (Peclat lens) + site captures",
+     "approval": "awaiting More team"
+    }
+   }
   }
  },
  "radius": {
@@ -256,6 +270,48 @@
   "landscape": {
    "$value": 1.5,
    "$description": "3:2, horizontal list-view images"
+  }
+ },
+ "logo": {
+  "$type": "dimension",
+  "$description": "Wordmark scales: S, M or XL, nothing in between. Clear space = height of the O. Colours preto or branco only (cinza-claro allowed on dark).",
+  "s": {
+   "$value": {
+    "value": 60,
+    "unit": "px"
+   },
+   "$description": "S: width 60px on screen, 18 mm in print. Bars, footer, tags, labels.",
+   "$extensions": {
+    "cstack": {
+     "status": "PROPOSED",
+     "source": "site bar (measured) + designer lens",
+     "approval": "awaiting More team"
+    }
+   }
+  },
+  "m-ratio": {
+   "$value": 0.1667,
+   "$type": "number",
+   "$description": "M: width = 1/6 of the short side of the frame. Invites, posts, book cover.",
+   "$extensions": {
+    "cstack": {
+     "status": "PROPOSED",
+     "source": "Borsche/Aparelho lens",
+     "approval": "awaiting More team"
+    }
+   }
+  },
+  "xl-ratio": {
+   "$value": 0.97,
+   "$type": "number",
+   "$description": "XL: 95–100% of the frame width, bottom-aligned, may bleed off the bottom edge. Intro, posters, signage, window.",
+   "$extensions": {
+    "cstack": {
+     "status": "PROPOSED",
+     "source": "site intro + current invite + Borsche/Aparelho lens",
+     "approval": "awaiting More team"
+    }
+   }
   }
  }
 }

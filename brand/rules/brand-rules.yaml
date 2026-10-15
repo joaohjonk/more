@@ -1,6 +1,6 @@
 # Machine-testable brand rules for More. Tokens hold atomic values; this file holds relationships.
 # Source: live site mymore.design (2026-10-15) + JJ x More call (2026-10-15). Status: provisional until the More team approves.
-version: 0.2
+version: 0.3
 rules:
   - id: R-COLOR-01
     scope: core
@@ -32,8 +32,8 @@ rules:
     check: judge
   - id: R-LAYOUT-02
     scope: core
-    rule: one piece per image, 3:4 portrait (3:2 only for landscape list views); images are never cropped into circles or rounded
-    check: deterministic   # cstack audit <file> --aspect 3:4
+    rule: one piece per image, sourced 3:4 portrait (3:2 only for landscape list views); channel crops come from the 3:4 source (Instagram feed 4:5 1080x1350, story 9:16 1080x1920 with 250px safe zones); never circles or rounded
+    check: deterministic   # cstack audit <file> --aspect 3:4|4:5|9:16
   - id: R-IMG-01
     scope: core
     rule: product pieces are photographed, never generated or altered by AI; finish swaps must come from real photos or exact material renders
@@ -62,3 +62,53 @@ rules:
     scope: core
     rule: motion is fades and grows of 200-800ms with ease-out; everything has a prefers-reduced-motion fallback
     check: deterministic
+  - id: R-COPY-02
+    scope: core
+    status: proposed   # critic panel 2026-10-15 (Andjelic, Peclat); Instagram caption formula
+    rule: each piece gets one dry line that disagrees with convention, before the material line ("Não é quadrada, só parece."); never alma, essência, personalidade, sofisticado
+    check: judge
+  - id: R-COPY-03
+    scope: core
+    status: proposed
+    rule: Portuguese first; English only as a second version, never the default (the English About text breaks this)
+    check: judge
+  - id: R-COLOR-04
+    scope: print, social, store
+    status: proposed   # critic panel (Andjelic, Borsche/Aparelho, Peclat)
+    rule: color.campo tones are flat backgrounds for posters, invites, book, window and social, one per piece; never in shop UI chrome, never two in one frame; ciano keeps its meaning (available now)
+    check: judge
+  - id: R-LOGO-01
+    scope: core
+    status: proposed
+    rule: the wordmark appears at S (60px / 18mm), M (1/6 of the short side) or XL (95-100% of the width, bottom-aligned, may bleed), nothing in between; clear space = height of the O; preto or branco only; never cut, outlined, mirrored, patterned or placed on a busy photo area
+    check: judge
+  - id: R-SHAPE-02
+    scope: core
+    status: proposed
+    rule: no ellipses, pills or rounded graphic shapes in any medium (the orange ellipse of the 2026 invite is an anti-reference)
+    check: judge
+  - id: R-LAYOUT-03
+    scope: page
+    status: proposed
+    rule: every scroll container ends with layout.bar-safe (106px) so the floating bars never cover content on mobile
+    check: deterministic
+  - id: R-NAME-01
+    scope: core
+    status: proposed   # naming.inconsistencies
+    rule: one canonical name per piece, "<tipo em minúscula> <Nome>" (Mesa de centro Cildo, Cadeira 556-A), identical on site, Instagram, tags and files
+    check: deterministic
+  - id: R-FILE-01
+    scope: core
+    status: proposed
+    rule: files are named MORE_<canal>_<peça-slug>_<variante>_<AAAAMMDD>_v<nn>.<ext> (MORE_IG_mesa-de-centro-cildo_4x5_20261105_v02.jpg)
+    check: deterministic
+  - id: R-PRINT-01
+    scope: print
+    status: proposed
+    rule: off-white is the paper, never a printed flood (uncoated natural stock 90-150g); preto prints as rich black only on large areas; 300dpi, PDF/X-4, 3mm bleed, 5mm safety
+    check: judge
+  - id: R-MOTION-02
+    scope: core
+    status: proposed   # Borsche/Aparelho lens
+    rule: three motion signatures only - Build (M-O-R-E letters in sequence, 120ms stagger, cinza to preto), Hard cut (photo swap without fade), Shadow sweep (hard window shadow travels across the piece)
+    check: judge

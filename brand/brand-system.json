@@ -209,7 +209,90 @@
    }
   },
   "jobs_to_be_done": {},
-  "brand_beliefs": {},
+  "brand_beliefs": {
+   "uma_peca_nao_precisa_combinar": {
+    "last_updated": "2026-10-15",
+    "value": "Uma peça não precisa combinar. ('Não foi feita para combinar com o sofá. E isso é ótimo.')",
+    "input_class": "SOFT_CONSTRAINT",
+    "sources": [
+     {
+      "kind": "live_brand_behavior",
+      "ref": "https://www.instagram.com/more.mymore/ captions via Apify, 2026-10-15",
+      "captured_at": "2026-10-15",
+      "by": "brand-import"
+     },
+     {
+      "kind": "model_inference",
+      "ref": "critic panel 2026-10-15, /mnt/project-files/more/painel/reviews/ (Andjelic, Peclat, Bureau Borsche/Aparelho, in-house designer lenses; model reviewers)",
+      "captured_at": "2026-10-15",
+      "by": "creative-review"
+     }
+    ],
+    "confidence": "medium",
+    "permanence": "core",
+    "approval": "inferred"
+   },
+   "material_antes_de_adjetivo": {
+    "last_updated": "2026-10-15",
+    "value": "Material antes de adjetivo: madeira maciça, vidro fundido, alumínio naval, dito pelo nome.",
+    "input_class": "SOFT_CONSTRAINT",
+    "sources": [
+     {
+      "kind": "live_brand_behavior",
+      "ref": "https://www.instagram.com/more.mymore/ captions via Apify, 2026-10-15",
+      "captured_at": "2026-10-15",
+      "by": "brand-import"
+     },
+     {
+      "kind": "model_inference",
+      "ref": "critic panel 2026-10-15, /mnt/project-files/more/painel/reviews/ (Andjelic, Peclat, Bureau Borsche/Aparelho, in-house designer lenses; model reviewers)",
+      "captured_at": "2026-10-15",
+      "by": "creative-review"
+     }
+    ],
+    "confidence": "medium",
+    "permanence": "core",
+    "approval": "inferred"
+   },
+   "contra_o_generico": {
+    "last_updated": "2026-10-15",
+    "value": "Contra o móvel genérico de projeto. ('Para projetos sem personalidade, a concorrência resolve.')",
+    "input_class": "SOFT_CONSTRAINT",
+    "sources": [
+     {
+      "kind": "live_brand_behavior",
+      "ref": "https://www.instagram.com/more.mymore/ captions via Apify, 2026-10-15",
+      "captured_at": "2026-10-15",
+      "by": "brand-import"
+     },
+     {
+      "kind": "model_inference",
+      "ref": "critic panel 2026-10-15, /mnt/project-files/more/painel/reviews/ (Andjelic, Peclat, Bureau Borsche/Aparelho, in-house designer lenses; model reviewers)",
+      "captured_at": "2026-10-15",
+      "by": "creative-review"
+     }
+    ],
+    "confidence": "medium",
+    "permanence": "core",
+    "approval": "inferred"
+   },
+   "peso_brasileiro": {
+    "last_updated": "2026-10-15",
+    "value": "Peso brasileiro: seções generosas de madeira maciça, peças com nome de gente, acabamentos com nomes de lugares e frutas (Jambo, Igaratá, Guaraná, Jamaica).",
+    "input_class": "SOFT_CONSTRAINT",
+    "sources": [
+     {
+      "kind": "model_inference",
+      "ref": "critic panel 2026-10-15, /mnt/project-files/more/painel/reviews/ (Andjelic, Peclat, Bureau Borsche/Aparelho, in-house designer lenses; model reviewers)",
+      "captured_at": "2026-10-15",
+      "by": "creative-review"
+     }
+    ],
+    "confidence": "medium",
+    "permanence": "core",
+    "approval": "inferred"
+   }
+  },
   "brand_tensions": {},
   "value_proposition": {},
   "claims": {},
@@ -419,6 +502,22 @@
     "confidence": "medium",
     "permanence": "core",
     "approval": "provisional"
+   },
+   "scales": {
+    "last_updated": "2026-10-15",
+    "value": "S (60px / 18mm), M (1/6 of the short side), XL (95-100% width, bottom-aligned, may bleed). Clear space = height of the O. Preto or branco only.",
+    "input_class": "SOFT_CONSTRAINT",
+    "sources": [
+     {
+      "kind": "model_inference",
+      "ref": "critic panel 2026-10-15, /mnt/project-files/more/painel/reviews/ (Andjelic, Peclat, Bureau Borsche/Aparelho, in-house designer lenses; model reviewers)",
+      "captured_at": "2026-10-15",
+      "by": "creative-review"
+     }
+    ],
+    "confidence": "medium",
+    "permanence": "core",
+    "approval": "inferred"
    }
   },
   "color": {
@@ -811,6 +910,22 @@
     "confidence": "high",
     "permanence": "core",
     "approval": "inferred"
+   },
+   "signatures": {
+    "last_updated": "2026-10-15",
+    "value": "Build (M-O-R-E in sequence, 120ms stagger, grey to preto; from the site intro), Hard cut (photo swap without fade; the carousel rhythm wide→detail→material), Shadow sweep (window shadow crossing the piece; from the 05.11 invite).",
+    "input_class": "SOFT_CONSTRAINT",
+    "sources": [
+     {
+      "kind": "model_inference",
+      "ref": "critic panel 2026-10-15, /mnt/project-files/more/painel/reviews/ (Andjelic, Peclat, Bureau Borsche/Aparelho, in-house designer lenses; model reviewers)",
+      "captured_at": "2026-10-15",
+      "by": "creative-review"
+     }
+    ],
+    "confidence": "medium",
+    "permanence": "core",
+    "approval": "inferred"
    }
   },
   "sound": {},
@@ -929,6 +1044,22 @@
     "confidence": "medium",
     "permanence": "seasonal",
     "approval": "inferred"
+   },
+   "bastidores": {
+    "last_updated": "2026-10-15",
+    "value": "A third register, 'Bastidores' (people and crew on set, IG p10_*), allowed on Instagram and in the book, never on a product page.",
+    "input_class": "SOFT_CONSTRAINT",
+    "sources": [
+     {
+      "kind": "model_inference",
+      "ref": "critic panel 2026-10-15, /mnt/project-files/more/painel/reviews/ (Andjelic, Peclat, Bureau Borsche/Aparelho, in-house designer lenses; model reviewers)",
+      "captured_at": "2026-10-15",
+      "by": "creative-review"
+     }
+    ],
+    "confidence": "low",
+    "permanence": "core",
+    "approval": "inferred"
    }
   },
   "camera_language": {},
@@ -938,9 +1069,65 @@
   "locations": {},
   "props": {},
   "product_representation": {},
-  "packaging_rules": {},
+  "packaging_rules": {
+   "proposta": {
+    "last_updated": "2026-10-15",
+    "value": "Hang tag on uncoated card: Muoto name, mono line [Sob encomenda · ~120 dias] or [Pronta entrega]; ciano appears physically only as a 10mm square 'pronta entrega' sticker; TOM.01 box rich black with reversed wordmark and a mono spec panel. To validate.",
+    "input_class": "SOFT_CONSTRAINT",
+    "sources": [
+     {
+      "kind": "model_inference",
+      "ref": "critic panel 2026-10-15, /mnt/project-files/more/painel/reviews/ (Andjelic, Peclat, Bureau Borsche/Aparelho, in-house designer lenses; model reviewers)",
+      "captured_at": "2026-10-15",
+      "by": "creative-review"
+     }
+    ],
+    "confidence": "low",
+    "permanence": "core",
+    "approval": "inferred"
+   }
+  },
   "illustration": {},
-  "graphic_devices": {},
+  "graphic_devices": {
+   "cartaz": {
+    "last_updated": "2026-10-15",
+    "value": "Poster recipe (from the red TOM.01 poster, IG p28_0): one campo colour field; the piece as a hard black silhouette; a mono column rotated 90°; wordmark XL or vertical; address as a fixed running foot.",
+    "input_class": "SOFT_CONSTRAINT",
+    "sources": [
+     {
+      "kind": "live_brand_behavior",
+      "ref": "https://www.instagram.com/more.mymore/ captions via Apify, 2026-10-15",
+      "captured_at": "2026-10-15",
+      "by": "brand-import"
+     },
+     {
+      "kind": "model_inference",
+      "ref": "critic panel 2026-10-15, /mnt/project-files/more/painel/reviews/ (Andjelic, Peclat, Bureau Borsche/Aparelho, in-house designer lenses; model reviewers)",
+      "captured_at": "2026-10-15",
+      "by": "creative-review"
+     }
+    ],
+    "confidence": "medium",
+    "permanence": "core",
+    "approval": "inferred"
+   },
+   "barra_impressa": {
+    "last_updated": "2026-10-15",
+    "value": "The floating bar becomes a print device: a black bar at the foot carrying mono text ('Abertura 05.11 [Jardins]'). Brackets wrap actions and dates, never names.",
+    "input_class": "SOFT_CONSTRAINT",
+    "sources": [
+     {
+      "kind": "model_inference",
+      "ref": "critic panel 2026-10-15, /mnt/project-files/more/painel/reviews/ (Andjelic, Peclat, Bureau Borsche/Aparelho, in-house designer lenses; model reviewers)",
+      "captured_at": "2026-10-15",
+      "by": "creative-review"
+     }
+    ],
+    "confidence": "medium",
+    "permanence": "core",
+    "approval": "inferred"
+   }
+  },
   "iconography": {},
   "social_behavior": {
    "instagram": {
@@ -978,7 +1165,56 @@
   },
   "cultural_territories": {},
   "reference_mechanisms": {},
-  "anti_references": {},
+  "anti_references": {
+   "catalogo_bege": {
+    "last_updated": "2026-10-15",
+    "value": "The beige 'projeto de arquiteto' catalogue and the imported Scandinavian e-commerce default (soft, rounded, generic lifestyle).",
+    "input_class": "SOFT_CONSTRAINT",
+    "sources": [
+     {
+      "kind": "model_inference",
+      "ref": "critic panel 2026-10-15, /mnt/project-files/more/painel/reviews/ (Andjelic, Peclat, Bureau Borsche/Aparelho, in-house designer lenses; model reviewers)",
+      "captured_at": "2026-10-15",
+      "by": "creative-review"
+     }
+    ],
+    "confidence": "medium",
+    "permanence": "core",
+    "approval": "inferred"
+   },
+   "elipse_convite": {
+    "last_updated": "2026-10-15",
+    "value": "The orange ellipse + English 'save the date' of the first 05.11 invite: rounded shape and English break R-SHAPE-02 and R-COPY-03.",
+    "input_class": "FACT",
+    "sources": [
+     {
+      "kind": "model_inference",
+      "ref": "critic panel 2026-10-15, /mnt/project-files/more/painel/reviews/ (Andjelic, Peclat, Bureau Borsche/Aparelho, in-house designer lenses; model reviewers)",
+      "captured_at": "2026-10-15",
+      "by": "creative-review"
+     }
+    ],
+    "confidence": "high",
+    "permanence": "core",
+    "approval": "inferred"
+   },
+   "voz_alma": {
+    "last_updated": "2026-10-15",
+    "value": "Early captions with 'alma', 'essência', 'personalidade' (Dec 2025).",
+    "input_class": "FACT",
+    "sources": [
+     {
+      "kind": "live_brand_behavior",
+      "ref": "https://www.instagram.com/more.mymore/ captions via Apify, 2026-10-15",
+      "captured_at": "2026-10-15",
+      "by": "brand-import"
+     }
+    ],
+    "confidence": "high",
+    "permanence": "core",
+    "approval": "inferred"
+   }
+  },
   "asset_registry": {},
   "campaign_history": {},
   "performance_evidence": {},

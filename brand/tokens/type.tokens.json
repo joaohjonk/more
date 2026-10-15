@@ -95,6 +95,48 @@
      "unit": "px"
     },
     "$description": "about block, line-height 1"
+   },
+   "display-3": {
+    "$value": {
+     "value": 48,
+     "unit": "px"
+    },
+    "$description": "Display for print and screens wider than a phone: posters, invites, book, window. Never inside the shop UI. Line-height 0.95. Print: 48 pt.",
+    "$extensions": {
+     "cstack": {
+      "status": "PROPOSED",
+      "source": "critic panel 2026-10-15 (Bureau Borsche/Aparelho, Peclat, in-house designer lenses)",
+      "approval": "awaiting More team"
+     }
+    }
+   },
+   "display-2": {
+    "$value": {
+     "value": 96,
+     "unit": "px"
+    },
+    "$description": "Display: dates, piece names on posters and covers. Line-height 0.9, letter-spacing -0.02em. Print: 96 pt.",
+    "$extensions": {
+     "cstack": {
+      "status": "PROPOSED",
+      "source": "critic panel 2026-10-15 (Bureau Borsche/Aparelho, Peclat, in-house designer lenses)",
+      "approval": "awaiting More team"
+     }
+    }
+   },
+   "display-1": {
+    "$value": {
+     "value": 240,
+     "unit": "px"
+    },
+    "$description": "Display: one word or a date at wall/cover scale. Line-height 0.9. Print: 240 pt; on screen use clamp(96px, 20vw, 240px).",
+    "$extensions": {
+     "cstack": {
+      "status": "PROPOSED",
+      "source": "critic panel 2026-10-15 (Bureau Borsche/Aparelho, Peclat, in-house designer lenses)",
+      "approval": "awaiting More team"
+     }
+    }
    }
   },
   "line-height": {
@@ -113,6 +155,59 @@
    "list": {
     "$value": 1.7,
     "$description": "menu product lists"
+   }
+  },
+  "print-size": {
+   "$type": "dimension",
+   "$description": "Print scale in points (same ratios as web). Proposal from the in-house designer lens, to validate on the 205TF desktop licence.",
+   "caption": {
+    "$value": {
+     "value": 6,
+     "unit": "px"
+    },
+    "$description": "6 pt in print (legal, credits)"
+   },
+   "label": {
+    "$value": {
+     "value": 7,
+     "unit": "px"
+    },
+    "$description": "7 pt in print (mono metadata; minimum for Mono Condensed on uncoated stock)"
+   },
+   "body": {
+    "$value": {
+     "value": 8.5,
+     "unit": "px"
+    },
+    "$description": "8.5 pt in print (running text)"
+   },
+   "ui": {
+    "$value": {
+     "value": 10,
+     "unit": "px"
+    },
+    "$description": "10 pt in print (names on tags and price lists)"
+   },
+   "title": {
+    "$value": {
+     "value": 14,
+     "unit": "px"
+    },
+    "$description": "14 pt in print (piece name on spec sheets)"
+   },
+   "statement": {
+    "$value": {
+     "value": 20,
+     "unit": "px"
+    },
+    "$description": "20 pt in print (short statements)"
+   },
+   "about": {
+    "$value": {
+     "value": 28,
+     "unit": "px"
+    },
+    "$description": "28 pt in print (manifesto)"
    }
   }
  },
