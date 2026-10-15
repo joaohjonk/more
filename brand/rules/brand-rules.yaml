@@ -8,7 +8,7 @@ rules:
     check: deterministic   # cstack tokens lint <files> --allow #fff
   - id: R-COLOR-02
     scope: core
-    rule: the page ground is off-white (#E5E1DB), never pure white; ink is preto (#2D211E), never pure black
+    rule: the page ground is off-white (#E5E1DB), never pure white; ink is preto (#2D211E), never pure black. The live site breaks this today: body has no color, so running text renders #000
     check: deterministic
   - id: R-COLOR-03
     scope: core
@@ -16,8 +16,8 @@ rules:
     check: judge
   - id: R-SHAPE-01
     scope: core
-    rule: corners are square (radius 0) on images, cards, bars, buttons and inputs; only the tomada colour dots are round
-    check: deterministic   # grep border-radius in built CSS
+    rule: structure is square (radius.none) - images, cards, bars, checkout and filter buttons, inputs. Radius only on small or floating parts, from the scale radius.thumb 2px, radius.tooltip 8px, radius.panel 10px, radius.round 50% (circles). Any other value fails. The live site has three off-scale radii (5px modal file, 6px about video, 20px modal label)
+    check: deterministic   # node checks/radius.mjs <css>
   - id: R-TYPE-01
     scope: core
     rule: two families only, Muoto (names, prices, statements) and Muoto Mono Condensed (interface); one weight, 600 only for an active filter
@@ -64,7 +64,7 @@ rules:
     check: deterministic
   - id: R-COPY-02
     scope: core
-    status: proposed   # critic panel 2026-10-15 (Andjelic, Peclat); Instagram caption formula
+    status: proposed   # leitura por função 2026-10-15; Instagram caption formula
     rule: each piece gets one dry line that disagrees with convention, before the material line ("Não é quadrada, só parece."); never alma, essência, personalidade, sofisticado
     check: judge
   - id: R-COPY-03
@@ -74,18 +74,18 @@ rules:
     check: judge
   - id: R-COLOR-04
     scope: print, social, store
-    status: proposed   # critic panel (Andjelic, Borsche/Aparelho, Peclat)
-    rule: color.campo tones are flat backgrounds for posters, invites, book, window and social, one per piece; never in shop UI chrome, never two in one frame; ciano keeps its meaning (available now)
+    status: proposed   # leitura por função 2026-10-15
+    rule: color.campo tones (vermelho-jambo, amarelo-igarata, verde-jamaica, berinjela; petroleo is proposed only) are flat backgrounds for posters, invites, book, window and social, one per piece; never in shop UI chrome, never two in one frame; ciano keeps its meaning (available now)
     check: judge
   - id: R-LOGO-01
     scope: core
     status: proposed
-    rule: the wordmark appears at S (60px / 18mm), M (1/6 of the short side) or XL (95-100% of the width, bottom-aligned, may bleed), nothing in between; clear space = height of the O; preto or branco only; never cut, outlined, mirrored, patterned or placed on a busy photo area
+    rule: the wordmark appears at M (1/6 of the short side, observed range 16-25%) or XL (95-100% of the width, bottom-aligned, observed on the 05.11 invite); preto, branco or off-white only; never outlined, mirrored or patterned. Proposed and not in the guide until accepted - S 60px/18mm minimum and clear space = height of the O
     check: judge
   - id: R-SHAPE-02
     scope: core
-    status: proposed
-    rule: no ellipses, pills or rounded graphic shapes in any medium (the orange ellipse of the 2026 invite is an anti-reference)
+    status: rejected   # inventada por nós; o convite 05.11 da própria marca usa elipse. Fica fora do guia.
+    rule: no ellipses, pills or rounded graphic shapes in any medium
     check: judge
   - id: R-LAYOUT-03
     scope: page
@@ -109,6 +109,6 @@ rules:
     check: judge
   - id: R-MOTION-02
     scope: core
-    status: proposed   # Borsche/Aparelho lens
-    rule: three motion signatures only - Build (M-O-R-E letters in sequence, 120ms stagger, cinza to preto), Hard cut (photo swap without fade), Shadow sweep (hard window shadow travels across the piece)
+    status: proposed   # proposta nossa
+    rule: video uses Shadow sweep (hard window shadow travels across the piece, observed on the 05.11 invite) and Hard cut (photo swap without fade, inferred from carousel order). Proposed and not in the guide until accepted - Build (M-O-R-E letters in sequence, 120ms stagger)
     check: judge

@@ -35,14 +35,20 @@
   "weight": {
    "$type": "fontWeight",
    "light": {
-    "$value": 300
+    "$value": 300,
+    "$description": "Pedido pela classe .muoto (critical.css) em títulos, declarações e medidas. O site só serve Muoto Regular (.otf), então o navegador mostra Regular: o peso 300 não existe na prática até o tema carregar o arquivo Light."
    },
    "regular": {
-    "$value": 400
+    "$value": 400,
+    "$description": "body (MuotoMono) e nomes de produto no grid"
    },
    "semibold": {
     "$value": 600,
-    "$description": "active filter only"
+    "$description": "filtro ativo da coleção (sem arquivo 600: o navegador engrossa a Regular)"
+   },
+   "bold": {
+    "$value": 700,
+    "$description": "styles.css .text--title e botão da newsletter no footer. Sem arquivo Bold carregado: negrito sintético."
    }
   },
   "size": {
@@ -52,61 +58,60 @@
      "value": 10,
      "unit": "px"
     },
-    "$description": "thumbnail numbers 01 02 03, legal lines"
+    "$description": "numeração das miniaturas 01 02 03 (PDP), CNPJ e linhas legais do footer, 'pronta entrega' no card"
    },
    "label": {
     "$value": {
      "value": 11,
      "unit": "px"
     },
-    "$description": "'Selecione a Madeira', announcement bar"
+    "$description": "títulos do acordeão ('Selecione a Madeira'), medidas, descrição do produto, anúncios"
    },
    "body": {
     "$value": {
      "value": 13,
      "unit": "px"
     },
-    "$description": "theme default (body), menu, buttons, prices"
+    "$description": "body do tema (MuotoMono 13px), nomes e preços no grid, botões em colchetes"
    },
    "ui": {
     "$value": {
      "value": 15,
      "unit": "px"
     },
-    "$description": "category filter, mobile menu"
+    "$description": "filtro de categorias (Muoto), listas do menu no mobile (MuotoMono)"
    },
    "title": {
     "$value": {
      "value": 22,
      "unit": "px"
     },
-    "$description": "product name on PDP"
+    "$description": "Corrigido: não é o nome do produto na PDP. 22px é o tamanho mobile das declarações: footer, texto do Sobre e carrinho vazio (≤1024px)."
    },
    "statement": {
     "$value": {
      "value": 26,
      "unit": "px"
     },
-    "$description": "menu statement, line-height 1"
+    "$description": "nome do produto na PDP (.product__title.muoto), declaração do menu, texto do Sobre, título do modal. Peso pedido 300."
    },
    "about": {
     "$value": {
      "value": 32,
      "unit": "px"
     },
-    "$description": "about block, line-height 1"
+    "$description": "declaração do footer no desktop (off-white sobre a caixa com blur), peso pedido 300"
    },
    "display-3": {
     "$value": {
      "value": 48,
      "unit": "px"
     },
-    "$description": "Display for print and screens wider than a phone: posters, invites, book, window. Never inside the shop UI. Line-height 0.95. Print: 48 pt.",
+    "$description": "Display for print and screens wider than a phone: posters, invites, book, window. Never inside the shop UI. Line-height 0.95. Print: 48 pt. Não existe no site: tamanho proposto por nós para peças impressas e cartazes.",
     "$extensions": {
      "cstack": {
       "status": "PROPOSED",
-      "source": "critic panel 2026-10-15 (Bureau Borsche/Aparelho, Peclat, in-house designer lenses)",
-      "approval": "awaiting More team"
+      "origin": "inventada por nós"
      }
     }
    },
@@ -115,12 +120,11 @@
      "value": 96,
      "unit": "px"
     },
-    "$description": "Display: dates, piece names on posters and covers. Line-height 0.9, letter-spacing -0.02em. Print: 96 pt.",
+    "$description": "Display: dates, piece names on posters and covers. Line-height 0.9, letter-spacing -0.02em. Print: 96 pt. Não existe no site: tamanho proposto por nós para peças impressas e cartazes.",
     "$extensions": {
      "cstack": {
       "status": "PROPOSED",
-      "source": "critic panel 2026-10-15 (Bureau Borsche/Aparelho, Peclat, in-house designer lenses)",
-      "approval": "awaiting More team"
+      "origin": "inventada por nós"
      }
     }
    },
@@ -129,14 +133,41 @@
      "value": 240,
      "unit": "px"
     },
-    "$description": "Display: one word or a date at wall/cover scale. Line-height 0.9. Print: 240 pt; on screen use clamp(96px, 20vw, 240px).",
+    "$description": "Display: one word or a date at wall/cover scale. Line-height 0.9. Print: 240 pt; on screen use clamp(96px, 20vw, 240px). Não existe no site: tamanho proposto por nós para peças impressas e cartazes.",
     "$extensions": {
      "cstack": {
       "status": "PROPOSED",
-      "source": "critic panel 2026-10-15 (Bureau Borsche/Aparelho, Peclat, in-house designer lenses)",
-      "approval": "awaiting More team"
+      "origin": "inventada por nós"
      }
     }
+   },
+   "micro": {
+    "$value": {
+     "value": 9,
+     "unit": "px"
+    },
+    "$description": "product.css .product__price-compare (preço riscado)"
+   },
+   "small": {
+    "$value": {
+     "value": 12,
+     "unit": "px"
+    },
+    "$description": "links do footer no mobile (≤768px), botões e erro do modal de download, botões de quantidade do carrinho"
+   },
+   "statement-mobile": {
+    "$value": {
+     "value": 25,
+     "unit": "px"
+    },
+    "$description": "declaração do menu no mobile (≤1024px), line-height .95"
+   },
+   "statement-lg": {
+    "$value": {
+     "value": 28,
+     "unit": "px"
+    },
+    "$description": "texto do carrinho vazio no desktop"
    }
   },
   "line-height": {
@@ -150,11 +181,23 @@
    },
    "ui": {
     "$value": 1.47,
-    "$description": "22px on 15px"
+    "$description": "22px sobre 15px no filtro de categorias"
    },
    "list": {
     "$value": 1.7,
-    "$description": "menu product lists"
+    "$description": "listas de produto no menu (MuotoMono 13px → 22,1px)"
+   },
+   "text": {
+    "$value": 1.15,
+    "$description": "descrição do produto (product.css)"
+   },
+   "loose": {
+    "$value": 2,
+    "$description": "links e títulos do footer, lista do menu no mobile"
+   },
+   "mono-list": {
+    "$value": 1.9,
+    "$description": "títulos de grupo do menu no mobile"
    }
   },
   "print-size": {
@@ -218,13 +261,13 @@
     "fontFamily": "{font.family.mono}",
     "fontSize": "{font.size.body}",
     "fontWeight": 400,
-    "lineHeight": 1.3,
+    "lineHeight": 1.7,
     "letterSpacing": {
      "value": 0,
      "unit": "px"
     }
    },
-   "$description": "[Voltar], Menu [+], Adicionar, footer"
+   "$description": "body 13px; listas do menu 22,1px (1.7)"
   },
   "product-name": {
    "$value": {
@@ -242,20 +285,21 @@
   "product-title": {
    "$value": {
     "fontFamily": "{font.family.muoto}",
-    "fontSize": "{font.size.title}",
-    "fontWeight": 400,
-    "lineHeight": 1.1,
+    "fontSize": "{font.size.statement}",
+    "fontWeight": 300,
+    "lineHeight": 1,
     "letterSpacing": {
      "value": 0,
      "unit": "px"
     }
-   }
+   },
+   "$description": "Corrigido pelo site: .product__title.muoto = Muoto 26px, peso pedido 300 (mostra Regular)."
   },
   "statement": {
    "$value": {
     "fontFamily": "{font.family.muoto}",
     "fontSize": "{font.size.statement}",
-    "fontWeight": 400,
+    "fontWeight": 300,
     "lineHeight": 1,
     "letterSpacing": {
      "value": 0,
@@ -267,7 +311,7 @@
    "$value": {
     "fontFamily": "{font.family.muoto}",
     "fontSize": "{font.size.about}",
-    "fontWeight": 400,
+    "fontWeight": 300,
     "lineHeight": 1,
     "letterSpacing": {
      "value": 0,
@@ -279,13 +323,14 @@
    "$value": {
     "fontFamily": "{font.family.muoto}",
     "fontSize": "{font.size.label}",
-    "fontWeight": 400,
+    "fontWeight": 300,
     "lineHeight": 1.3,
     "letterSpacing": {
      "value": 0,
      "unit": "px"
     }
-   }
+   },
+   "$description": "medidas e descrição na PDP: Muoto 11px peso 300, cinza-medio"
   }
  }
 }

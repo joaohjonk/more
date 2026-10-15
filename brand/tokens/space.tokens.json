@@ -69,7 +69,7 @@
     "value": 160,
     "unit": "px"
    },
-   "$description": "list view: gap between products (124 on mobile)"
+   "$description": "topo da lista da coleção"
   },
   "grid-top": {
    "$value": {
@@ -77,6 +77,41 @@
     "unit": "px"
    },
    "$description": "catalog top padding (140 mobile)"
+  },
+  "3xs": {
+   "$value": {
+    "value": 4,
+    "unit": "px"
+   },
+   "$description": "preço riscado, miniaturas da PDP (7 usos)"
+  },
+  "sm-2": {
+   "$value": {
+    "value": 12,
+    "unit": "px"
+   },
+   "$description": "padding do botão de adicionar ao carrinho (9 usos)"
+  },
+  "lg-2": {
+   "$value": {
+    "value": 24,
+    "unit": "px"
+   },
+   "$description": "lista do acordeão, colunas do footer"
+  },
+  "4xl": {
+   "$value": {
+    "value": 120,
+    "unit": "px"
+   },
+   "$description": "produtos relacionados, descrição na PDP (6 usos)"
+  },
+  "grid-top-list": {
+   "$value": {
+    "value": 140,
+    "unit": "px"
+   },
+   "$description": "topo da coleção (grid e lista)"
   }
  },
  "layout": {
@@ -129,14 +164,32 @@
     "value": 106,
     "unit": "px"
    },
-   "$description": "Bottom padding of every scroll container so the two floating bars never cover content: 2 x 35 + 6 + 30. Fixes the mobile overlap seen on home-390 and pdp-leticia-390.",
+   "$description": "derivado do site: --menu-bottom 30 + --menu-button-size 35 + --gap-btw-buttons 6 + 35 do carrinho = topo do botão do carrinho. Nada fixo pode entrar abaixo disso.",
    "$extensions": {
     "cstack": {
      "status": "PROPOSED",
-     "source": "critic panel 2026-10-15 (Peclat lens) + site captures",
+     "source": "proposta nossa (leitura por função) + capturas do site",
      "approval": "awaiting More team"
     }
    }
+  },
+  "bar-spacing-top": {
+   "$value": {
+    "value": 35,
+    "unit": "px"
+   },
+   "$description": "--menu-spacing-top (o :root renderizado diz 35px)"
+  },
+  "bar-gap": {
+   "$value": {
+    "value": 6,
+    "unit": "px"
+   },
+   "$description": "--gap-btw-buttons entre botão do menu e do carrinho"
+  },
+  "columns-pdp": {
+   "$value": "344px 1fr 344px",
+   "$description": "PDP desktop; 280px 1fr 280px abaixo de 1440px"
   }
  },
  "radius": {
@@ -146,15 +199,37 @@
     "value": 0,
     "unit": "px"
    },
-   "$description": "default for images, cards, bars, buttons, inputs. More is square: 'papel', not glass"
+   "$description": "imagens, cards, barras, botão de checkout e filtro: tudo que é estrutura"
+  },
+  "thumb": {
+   "$value": {
+    "value": 2,
+    "unit": "px"
+   },
+   "$description": "amostras de material na PDP e miniaturas do modal"
+  },
+  "tooltip": {
+   "$value": {
+    "value": 8,
+    "unit": "px"
+   },
+   "$description": "tooltip de opção na PDP (só os cantos de baixo)"
+  },
+  "panel": {
+   "$value": {
+    "value": 10,
+    "unit": "px"
+   },
+   "$description": "caixa flutuante do footer com blur"
   },
   "round": {
    "$value": {
-    "value": 999,
-    "unit": "px"
+    "value": 50,
+    "unit": "%"
    },
-   "$description": "only the colour dots of the tomada swatches are circular"
-  }
+   "$description": "círculos: botões de quantidade do carrinho, checkbox do modal. Corrigido de 999px para 50% como no site."
+  },
+  "$description": "Corrigido pelo site: raio 0 é a regra para estrutura, mas o site usa raio em peças pequenas e flutuantes. 5px (.download-modal__file), 6px (.about__video-container) e 20px (label do modal) ficam fora da escala como divergências."
  },
  "blur": {
   "$type": "dimension",
@@ -181,7 +256,8 @@
     "value": 26,
     "unit": "px"
    }
-  }
+  },
+  "$description": "--blur-*: soft no botão do carrinho e na caixa do footer; medium no overlay do Sobre; strong no menu, filtro e gaveta do carrinho; heavy no fundo do modal. O vídeo do Sobre usa blur(5px) literal."
  },
  "motion": {
   "duration": {
@@ -190,7 +266,8 @@
     "$value": {
      "value": 80,
      "unit": "ms"
-    }
+    },
+    "$description": "filtro de categorias (collection-list)"
    },
    "quick": {
     "$value": {
@@ -219,7 +296,36 @@
      "unit": "ms"
     },
     "$description": "catalog rise after intro"
-   }
+   },
+   "tick": {
+    "$value": {
+     "value": 140,
+     "unit": "ms"
+    },
+    "$description": "contador do carrinho na PDP (8 usos)"
+   },
+   "step": {
+    "$value": {
+     "value": 300,
+     "unit": "ms"
+    },
+    "$description": "acordeão da PDP"
+   },
+   "reveal": {
+    "$value": {
+     "value": 700,
+     "unit": "ms"
+    },
+    "$description": "fade do body, miniaturas, vídeo do Sobre"
+   },
+   "long": {
+    "$value": {
+     "value": 1000,
+     "unit": "ms"
+    },
+    "$description": "botão de adicionar ao carrinho (11 usos)"
+   },
+   "$description": "Também aparecem no site uma vez ou duas: 150, 180, 280, 350, 400 e 600ms. Ficam como divergências, não como tokens."
   },
   "easing": {
    "$type": "cubicBezier",
@@ -257,7 +363,7 @@
      0.25,
      1
     ],
-    "$description": "CSS ease, used for the bars"
+    "$description": "'ease' do CSS: a curva mais usada no site (73 usos)"
    }
   }
  },
@@ -296,7 +402,7 @@
    "$extensions": {
     "cstack": {
      "status": "PROPOSED",
-     "source": "Borsche/Aparelho lens",
+     "source": "proposta nossa",
      "approval": "awaiting More team"
     }
    }
@@ -308,10 +414,48 @@
    "$extensions": {
     "cstack": {
      "status": "PROPOSED",
-     "source": "site intro + current invite + Borsche/Aparelho lens",
+     "source": "intro do site + convite 05.11 + proposta nossa",
      "approval": "awaiting More team"
     }
    }
+  }
+ },
+ "breakpoint": {
+  "$type": "dimension",
+  "$description": "Breakpoints do tema, todos max-width.",
+  "xl": {
+   "$value": {
+    "value": 1440,
+    "unit": "px"
+   },
+   "$description": "PDP troca colunas laterais 344→280"
+  },
+  "lg": {
+   "$value": {
+    "value": 1200,
+    "unit": "px"
+   }
+  },
+  "md": {
+   "$value": {
+    "value": 1024,
+    "unit": "px"
+   },
+   "$description": "menu e declarações mudam para mobile"
+  },
+  "sm": {
+   "$value": {
+    "value": 768,
+    "unit": "px"
+   },
+   "$description": "footer"
+  },
+  "xs": {
+   "$value": {
+    "value": 600,
+    "unit": "px"
+   },
+   "$description": "coleção vira 2 colunas, filtro vira botão"
   }
  }
 }

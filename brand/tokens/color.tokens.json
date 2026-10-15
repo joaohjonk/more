@@ -68,7 +68,7 @@
     ],
     "hex": "#999898"
    },
-   "$description": "--cinza-texto."
+   "$description": "--cinza-texto está declarado no :root do site mas nenhum seletor usa. 2,21:1 no off-white: não usar para texto."
   },
   "cinza-claro": {
    "$value": {
@@ -154,7 +154,7 @@
      "hex": "#2D211ECC",
      "alpha": 0.8
     },
-    "$description": "--preto-80: CTA bar, open menu panel (with backdrop blur)."
+    "$description": "--preto-80 e --marrom-80 (mesmo valor, dois nomes no site). Menu aberto, botão de checkout, modal de download."
    },
    "preto-10": {
     "$value": {
@@ -180,7 +180,7 @@
      "hex": "#FFFFFF4C",
      "alpha": 0.3
     },
-    "$description": "--branco-30."
+    "$description": "--branco-30 está declarado no :root do site mas nenhum seletor usa."
    },
    "cinza-overlay": {
     "$value": {
@@ -194,6 +194,71 @@
      "alpha": 0.8
     },
     "$description": "--cinza-overlay."
+   },
+   "preto-03": {
+    "$value": {
+     "colorSpace": "srgb",
+     "components": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "hex": "#00000003",
+     "alpha": 0.01
+    },
+    "$description": "--preto-03 = #00000003 (alpha 0.012). Fundo do backdrop do modal."
+   },
+   "preto-01": {
+    "$value": {
+     "colorSpace": "srgb",
+     "components": [
+      0.0039,
+      0.0039,
+      0.0039
+     ],
+     "hex": "#01010103",
+     "alpha": 0.01
+    },
+    "$description": "--preto-01. Overlay da página Sobre (só carrega o blur)."
+   },
+   "cinza-60": {
+    "$value": {
+     "colorSpace": "srgb",
+     "components": [
+      0.7059,
+      0.7216,
+      0.7255
+     ],
+     "hex": "#B4B8B999",
+     "alpha": 0.6
+    },
+    "$description": "No site se chama --marrom-60, mas o valor é cinza azulado. Ícone do carrinho vazio."
+   },
+   "off-white-0": {
+    "$value": {
+     "colorSpace": "srgb",
+     "components": [
+      0.898,
+      0.8824,
+      0.8588
+     ],
+     "hex": "#E5E1DB00",
+     "alpha": 0
+    },
+    "$description": "--off-white-transparent. Degradê do filtro da coleção."
+   },
+   "branco-60": {
+    "$value": {
+     "colorSpace": "srgb",
+     "components": [
+      1.0,
+      1.0,
+      1.0
+     ],
+     "hex": "#FFFFFF99",
+     "alpha": 0.6
+    },
+    "$description": "#fff9 literal no hover do botão de quantidade do carrinho."
    }
   },
   "surface": {
@@ -217,11 +282,11 @@
   "text": {
    "primary": {
     "$value": "{color.preto}",
-    "$description": "Titles, body, buttons on light."
+    "$description": "Intenção da marca (--preto no :root). O site hoje renderiza texto corrido em #000 porque o body não define cor: é o site que quebra R-COLOR-02, não o token. Correção no tema: body { color: var(--preto) }."
    },
    "secondary": {
     "$value": "{color.cinza-medio}",
-    "$description": "Prices, dimensions, metadata. 4.28:1 on off-white: fine for short labels as on the site, use cinza-escuro for small body text."
+    "$description": "preço, medidas, 'pronta entrega', descrição do produto. 4,28:1 no off-white: reprova AA abaixo de 24px, e o site usa em 10–13px."
    },
    "on-inverse": {
     "$value": "{color.cinza-claro}",
@@ -245,7 +310,7 @@
    }
   },
   "campo": {
-   "$description": "Colour fields for print, social and the store only (posters, invites, book, window). Never in shop UI chrome (R-COLOR-04). Values sampled from More's own Instagram colour-field photos; names map to existing finish names, to confirm.",
+   "$description": "Campos de cor: o recurso é observado no Instagram (8% dos posts). Hex amostrados de JPEG comprimido; trocar pelos valores das fotos originais quando chegarem.",
    "vermelho-jambo": {
     "$value": {
      "colorSpace": "srgb",
@@ -261,26 +326,8 @@
      "cstack": {
       "status": "PROPOSED",
       "source": "instagram p28_0 (2026-02-27), sampled",
-      "approval": "awaiting More team"
-     }
-    }
-   },
-   "mostarda-igarata": {
-    "$value": {
-     "colorSpace": "srgb",
-     "components": [
-      0.8549,
-      0.5647,
-      0.0824
-     ],
-     "hex": "#DA9015"
-    },
-    "$description": "Mustard field behind the Pendente Naz. Finish name candidate: Amarelo Igaratá.",
-    "$extensions": {
-     "cstack": {
-      "status": "PROPOSED",
-      "source": "instagram p02_1 (2026-08-07), sampled",
-      "approval": "awaiting More team"
+      "approval": "awaiting More team",
+      "origin": "observada na marca (fundo); hex e nome inferidos"
      }
     }
    },
@@ -299,7 +346,8 @@
      "cstack": {
       "status": "PROPOSED",
       "source": "instagram p21_0 (2026-07-03), sampled",
-      "approval": "awaiting More team"
+      "approval": "awaiting More team",
+      "origin": "observada na marca (fundo); hex e nome inferidos"
      }
     }
    },
@@ -313,12 +361,13 @@
      ],
      "hex": "#306C6A"
     },
-    "$description": "Teal field of the Mesa Leila carousel.",
+    "$description": "Nome inventado por nós: não há acabamento 'petróleo'. A amostra (p01_0) é luz colorida na borda de uma mesa, não um fundo. Proposta, fora do guia até o time aceitar.",
     "$extensions": {
      "cstack": {
       "status": "PROPOSED",
       "source": "instagram p01_0 (2026-09-04), sampled",
-      "approval": "awaiting More team"
+      "approval": "awaiting More team",
+      "origin": "inventada por nós"
      }
     }
    },
@@ -337,9 +386,73 @@
      "cstack": {
       "status": "PROPOSED",
       "source": "instagram p06_0 (2026-07-21), sampled",
-      "approval": "awaiting More team"
+      "approval": "awaiting More team",
+      "origin": "observada na marca (fundo); hex e nome inferidos"
      }
     }
+   },
+   "amarelo-igarata": {
+    "$value": {
+     "colorSpace": "srgb",
+     "components": [
+      0.8549,
+      0.5647,
+      0.0824
+     ],
+     "hex": "#DA9015"
+    },
+    "$description": "Fundo amarelo atrás do Pendente Naz (instagram p02_1). Hex amostrado do JPEG (inferido); nome do acabamento Amarelo Igaratá (inferido).",
+    "$extensions": {
+     "cstack": {
+      "status": "PROPOSED",
+      "source": "instagram p02_1 (2026-08-07), sampled",
+      "approval": "awaiting More team",
+      "origin": "observada na marca (fundo); hex e nome inferidos"
+     }
+    }
+   },
+   "mostarda-igarata": {
+    "$value": "{color.campo.amarelo-igarata}",
+    "$description": "nome antigo, mantido para peças já feitas; use amarelo-igarata"
+   }
+  },
+  "site-sem-token": {
+   "$description": "Cores literais que o CSS do site usa fora do :root. Registradas para o time decidir se viram token ou se o tema passa a usar um token existente.",
+   "grafite": {
+    "$value": {
+     "colorSpace": "srgb",
+     "components": [
+      0.102,
+      0.102,
+      0.102
+     ],
+     "hex": "#1A1A1A"
+    },
+    "$description": "collection-list.css .collection-list__filter a (15px) e about.css .about__content (fundo)"
+   },
+   "material-fundo": {
+    "$value": {
+     "colorSpace": "srgb",
+     "components": [
+      0.8549,
+      0.8431,
+      0.8196
+     ],
+     "hex": "#DAD7D1"
+    },
+    "$description": "product.css fundo da amostra de material no acordeão"
+   },
+   "material-hover": {
+    "$value": {
+     "colorSpace": "srgb",
+     "components": [
+      0.8706,
+      0.8588,
+      0.8353
+     ],
+     "hex": "#DEDBD5"
+    },
+    "$description": "product.css hover da amostra de material"
    }
   }
  }

@@ -1,0 +1,78 @@
+{
+ "$description": "Origem de cada proposta da rodada de leituras por função. 'observada na marca' = existe em material da More; 'inferida' = deduzida de material da More com um passo nosso; 'inventada por nós' = sem base na marca. Inventadas ficam fora do corpo do guia até o time aceitar em state/approvals.jsonl.",
+ "items": [
+  {
+   "grupo": "Logo em escalas",
+   "item": "XL embaixo, quase sangrando",
+   "origin": "observada na marca",
+   "evidence": "round2-handoff/convite-atual-frames.png"
+  },
+  {
+   "grupo": "Logo em escalas",
+   "item": "M = 1/6 do lado curto",
+   "origin": "inferida",
+   "evidence": "instagram/img/p28_0.jpg (~16%); rodapé do site 19%; livro anterior ~25%. A faixa é observada, o número 1/6 é nosso."
+  },
+  {
+   "grupo": "Logo em escalas",
+   "item": "S = 60px / 18mm mínimo",
+   "origin": "inventada por nós",
+   "evidence": "nenhum uso pequeno da marca encontrado"
+  },
+  {
+   "grupo": "Logo em escalas",
+   "item": "respiro = altura do O",
+   "origin": "inventada por nós",
+   "evidence": "nenhum material da marca define respiro"
+  },
+  {
+   "grupo": "Assinaturas de movimento",
+   "item": "Sombra que atravessa a peça",
+   "origin": "observada na marca",
+   "evidence": "vídeo do convite 05.11 (round2-handoff/convite-atual-frames.png)"
+  },
+  {
+   "grupo": "Assinaturas de movimento",
+   "item": "Corte seco, ordem ampla → detalhe → material",
+   "origin": "inferida",
+   "evidence": "ordem dos carrosséis no Instagram (instagram/index.json); não há vídeo da marca com esse corte"
+  },
+  {
+   "grupo": "Assinaturas de movimento",
+   "item": "Build M-O-R-E com 120ms de defasagem",
+   "origin": "inventada por nós",
+   "evidence": "o site tem intro (critical.css, cubic-bezier(.22,1,.36,1) .45s), mas não letra a letra"
+  },
+  {
+   "grupo": "Campos de cor",
+   "item": "Fundo de cor saturada atrás de uma peça",
+   "origin": "observada na marca",
+   "evidence": "instagram/img/p02_1 (amarelo), p06_0 (roxo), p21_0 (verde), p28_0 (vermelho); capa do livro anterior (caramelo)"
+  },
+  {
+   "grupo": "Campos de cor",
+   "item": "Os 5 hex",
+   "origin": "inferida",
+   "evidence": "amostrados de JPEG comprimido do Instagram, sem arquivo original"
+  },
+  {
+   "grupo": "Campos de cor",
+   "item": "Nomes Vermelho Jambo, Amarelo Igaratá, Verde Jamaica, Berinjela",
+   "origin": "inferida",
+   "evidence": "são nomes reais de acabamento da More (sections.materials); ligar cada foto a um acabamento é nosso"
+  },
+  {
+   "grupo": "Campos de cor",
+   "item": "Nome 'petróleo'",
+   "origin": "inventada por nós",
+   "evidence": "não existe acabamento com esse nome; p01_0 é luz colorida na borda da mesa, não fundo"
+  },
+  {
+   "grupo": "Forma",
+   "item": "Sem elipses (R-SHAPE-02)",
+   "origin": "inventada por nós",
+   "evidence": "round2-handoff/convite-atual-frames.png",
+   "nota": "Contradiz a marca: o convite 05.11 usa elipse laranja com a data. Sai do guia."
+  }
+ ]
+}
