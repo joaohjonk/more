@@ -1,0 +1,29 @@
+{
+  "$descricao": "Nome canônico de cada peça (\"<tipo em minúscula> <Nome>\") e variantes proibidas. Fonte: site mymore.design + feed do Instagram, 2026-10-15 (brand-system.json naming). PROPOSTA: a More ainda não fixou os nomes; entradas com decisao_pendente usam a forma do site até a equipe decidir.",
+  "pecas": [
+    { "nome": "Mesa de centro Cildo", "variantes": ["Mesa Cildo"] },
+    { "nome": "Cadeira 556-A", "variantes": ["Cadeira 556(?!-A)"] },
+    { "nome": "Luminária Ngoni", "variantes": ["Torre de luz Ngoni"], "decisao_pendente": true },
+    { "nome": "Poltrona Leticia", "variantes": ["Poltrona Letícia"], "decisao_pendente": true },
+    { "nome": "Mesa de centro Oops", "variantes": ["Mesa Oops", "Oops, mesa de centro"] },
+    { "nome": "Mesa de centro Imi", "variantes": [] },
+    { "nome": "Mesa de apoio Carnívora", "variantes": ["Mesa Carnívora"] },
+    { "nome": "Mesa de apoio Eto", "variantes": [] },
+    { "nome": "Mesa de jantar Naz", "variantes": ["Mesa de jantar componível Naz"], "decisao_pendente": true },
+    { "nome": "Mesa de jantar Leila", "variantes": [] },
+    { "nome": "Pendente Naz", "variantes": [] },
+    { "nome": "Luminária Naz", "variantes": [] },
+    { "nome": "Luminária Fantô", "variantes": ["Luminária Fanto"] },
+    { "nome": "Sofá Moustache", "variantes": [] },
+    { "nome": "Sofá Canoa", "variantes": [] },
+    { "nome": "Sofá Catedral", "variantes": [] },
+    { "nome": "Poltrona Eduardo", "variantes": [] },
+    { "nome": "Cadeira Maria", "variantes": [] },
+    { "nome": "Banco Maria", "variantes": [] },
+    { "nome": "Banco João", "variantes": [] },
+    { "nome": "Maçaneta Constantin", "variantes": [] },
+    { "nome": "Tomada TOM.01", "variantes": [] },
+    { "nome": "Interruptor INT.01", "variantes": [], "decisao_pendente": true }
+  ],
+  "tipos": ["Mesa", "Cadeira", "Poltrona", "Sofá", "Banco", "Luminária", "Pendente", "Maçaneta", "Tomada", "Interruptor", "Torre"]
+}

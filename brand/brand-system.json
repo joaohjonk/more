@@ -539,7 +539,7 @@
    },
    "accent_rule": {
     "last_updated": "2026-10-15",
-    "value": "Ciano-destaque is the only chromatic UI colour; on the live site it marks the 'Fixos' category, where the buyable tomada lives. Keep it for 'available now'.",
+    "value": "Ciano-destaque is the only chromatic UI colour. Observed on the live site only as the active/hover state of the 'Fixos' collection tab (collection-list.css a#collection-fixos.active). 'Means available now' is our inference, not observed: the card's 'Pronta entrega' label is cinza-medio 10px.",
     "input_class": "SOFT_CONSTRAINT",
     "sources": [
      {

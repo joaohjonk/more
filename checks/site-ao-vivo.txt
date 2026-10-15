@@ -1,0 +1,249 @@
+# Site no ar (mymore.design, captura de 2026-10-15) contra os checks da More
+# Gerado por: node checks/run-all.mjs /mnt/project-files/more/site-raw/stylesheet/
+
+checks da More em /mnt/project-files/more/site-raw/stylesheet/ (11 arquivos)
+
+regra          script            arquivos  resultado                       
+-------------  ----------------  --------  --------------------------------
+R-COLOR-01     color-tokens.mjs  11        FALHA (4)                       
+R-COLOR-02     ground-ink.mjs    11        FALHA (1)                       
+R-COLOR-03     accent.mjs        11        PASSA                           
+R-SHAPE-01     radius.mjs        11        FALHA (3)                       
+R-TYPE-01      type.mjs          11        FALHA (2)                       
+R-TYPE-02      actions.mjs       0         sem arquivo aplicável           
+R-LAYOUT-01    bars.mjs          11        PASSA                           
+R-LAYOUT-02    aspect.mjs        11        PASSA + exemplos                
+R-IMG-01       no-ai.mjs         0         sem arquivo aplicável           
+R-IMG-02       exemplos          -         revisão visual com o par sim/nao
+R-GEN-01       wordmark.mjs      0         sem arquivo aplicável           
+R-COPY-01      copy.mjs          0         sem arquivo aplicável           
+R-COMMERCE-01  commerce.mjs      0         sem arquivo aplicável           
+R-COMMERCE-02  grid-price.mjs    0         sem arquivo aplicável           
+R-MOTION-01    motion.mjs        11        FALHA (16)                      
+R-COPY-02      caption.mjs       0         sem arquivo aplicável           
+R-COPY-03      lang.mjs          0         sem arquivo aplicável           
+R-COLOR-04     campo.mjs         0         sem arquivo aplicável           
+R-LOGO-01      logo.mjs          0         sem arquivo aplicável           
+R-SHAPE-02     -                 -         rejeitada (fora do guia)        
+R-LAYOUT-03    scroll-safe.mjs   11        FALHA (4)                       
+R-NAME-01      names.mjs         0         sem arquivo aplicável           
+R-FILE-01      filename.mjs      0         sem arquivo aplicável           
+R-PRINT-01     print.mjs         0         sem arquivo aplicável           
+R-MOTION-02    cuts.mjs          0         sem arquivo aplicável           
+
+6 regra(s) com falha
+
+R-COLOR-01 FALHA (4):
+  - 37dcef66c23c_product.css: #dad7d1 em ".product__accordion-content.materials .accordion-material-wrapper.overflow-label:after,.color-background:after" só existe como color.site-sem-token-material-fundo (cor do site sem token aprovado): troque por um token da paleta
+  - 37dcef66c23c_product.css: #dedbd5 em ".product__accordion-content.materials .accordion-material-wrapper.overflow-label:hover:after" só existe como color.site-sem-token-material-hover (cor do site sem token aprovado): troque por um token da paleta
+  - 74941cd91a03_collection-list.css: #1a1a1a em ".collection-list__filter a" só existe como color.site-sem-token-grafite (cor do site sem token aprovado): troque por um token da paleta
+  - 94e8de6681a2_about.css: #1a1a1a em ".about__content" só existe como color.site-sem-token-grafite (cor do site sem token aprovado): troque por um token da paleta
+
+R-COLOR-02 FALHA (1):
+  - nenhum html/body/:root declara color: o texto corrido cai no padrão do navegador (#000). Declare body{color:var(--preto)}
+
+R-SHAPE-01 FALHA (3):
+  - 94e8de6681a2_about.css: border-radius: 6px em ".about__video-container" está fora da escala (0, 2px, 8px, 10px, 50%, "8px 8px 0", "0 8px 8px")
+  - a5552c486cfd_modal.css: border-radius: 5px em ".download-modal__file" está fora da escala (0, 2px, 8px, 10px, 50%, "8px 8px 0", "0 8px 8px")
+  - a5552c486cfd_modal.css: border-radius: 20px em ".download-modal__terms label" está fora da escala (0, 2px, 8px, 10px, 50%, "8px 8px 0", "0 8px 8px")
+
+R-TYPE-01 FALHA (2):
+  - 5437775e7964_styles.css: font-weight 700 em ".text--title": 400; 300 só em .muoto; 600 só em filtro ativo (active/ativo/selected/current)
+  - 6a29f8b6e2ef_footer.css: font-weight 700 em ".footer__newsletter button": 400; 300 só em .muoto; 600 só em filtro ativo (active/ativo/selected/current)
+
+R-MOTION-01 FALHA (16):
+  - 37dcef66c23c_product.css: transition "transform .4s ease" em ".product__thumbnails": duração 400ms fora da escala motion.duration (80, 140, 200, 300, 450, 500, 700, 800, 1000ms)
+  - 37dcef66c23c_product.css: transition "all .5s ease" em ".product__accordion-content.materials .accordion-material-wrapper.overflow-label:after,.color-background:after": "transition: all"; nomeie as propriedades
+  - 37dcef66c23c_product.css: transition "opacity .4s ease" em ".product__accordion-content.materials .material-sample": duração 400ms fora da escala motion.duration (80, 140, 200, 300, 450, 500, 700, 800, 1000ms)
+  - 37dcef66c23c_product.css: transition "width .6s ease" em ".product__accordion-content.materials .accordion-material-wrapper:has(input[type=radio]:checked)+.material-sample": duração 600ms fora da escala motion.duration (80, 140, 200, 300, 450, 500, 700, 800, 1000ms)
+  - 6a29f8b6e2ef_footer.css: transition "all 1s ease-in-out" em ".footer__wrapper": "transition: all"; nomeie as propriedades
+  - 74941cd91a03_collection-list.css: transition "color .15s ease" em ".collection-list__filter a": duração 150ms fora da escala motion.duration (80, 140, 200, 300, 450, 500, 700, 800, 1000ms)
+  - 74941cd91a03_collection-list.css: transition "opacity .18s cubic-bezier(.23,1,.32,1)" em ".collection-list__filter.is-categories-open .collection-list__filter-items": duração 180ms fora da escala motion.duration (80, 140, 200, 300, 450, 500, 700, 800, 1000ms)
+  - 74941cd91a03_collection-list.css: transition "transform .18s cubic-bezier(.23,1,.32,1)" em ".collection-list__filter.is-categories-open .collection-list__filter-items": duração 180ms fora da escala motion.duration (80, 140, 200, 300, 450, 500, 700, 800, 1000ms)
+  - 94e8de6681a2_about.css: transition "all .8s ease" em ".about__video-container": "transition: all"; nomeie as propriedades
+  - 94e8de6681a2_about.css: transition "all ease .8s" em ".about__video-container video": "transition: all"; nomeie as propriedades
+  - 94e8de6681a2_about.css: transition "transform .6s ease" em "#pages-content": duração 600ms fora da escala motion.duration (80, 140, 200, 300, 450, 500, 700, 800, 1000ms)
+  - 96947add0ed8_menu.css: transition "all .5s ease" em ".menu__collection-year": "transition: all"; nomeie as propriedades
+  - a5552c486cfd_modal.css: transition "opacity .15s ease" em ".download-modal__submit": duração 150ms fora da escala motion.duration (80, 140, 200, 300, 450, 500, 700, 800, 1000ms)
+  - dffe1ea4d2ea_critical.css: transition "opacity .28s cubic-bezier(.22,1,.36,1)" em "html:is([data-home-intro=intro],[data-home-intro=dismissing]) #hero": duração 280ms fora da escala motion.duration (80, 140, 200, 300, 450, 500, 700, 800, 1000ms)
+  - fc619cc00d25_hero.css: animation "letterOut .6s ease forwards" em ".animate-out .logo-letter": duração 600ms fora da escala motion.duration (80, 140, 200, 300, 450, 500, 700, 800, 1000ms)
+  - 49 de 57 seletores animados sem fallback em @media (prefers-reduced-motion: reduce) (ex. ".product-card-grid__image", ".product-card-grid__hover-image", ".product-card-grid__ready-delivery"); a saída simples é *{transition:none;animation:none}
+
+R-LAYOUT-03 FALHA (4):
+  - 74941cd91a03_collection-list.css: ".collection-list__filter-items" rola na vertical e termina com padding-bottom 6px; precisa de >= 106px (var(--layout-bar-safe))
+  - 96947add0ed8_menu.css: "#principal__menu .menu__body.open-height-full" rola na vertical e termina com padding-bottom não declarado; precisa de >= 106px (var(--layout-bar-safe))
+  - b3ff5ec277b2_cart-drawer.css: ".drawer__content" rola na vertical e termina com padding-bottom 20px; precisa de >= 106px (var(--layout-bar-safe))
+  - b3ff5ec277b2_cart-drawer.css: ".drawer__contents" rola na vertical e termina com padding-bottom não declarado; precisa de >= 106px (var(--layout-bar-safe))
+
+
+# Complemento: páginas renderizadas + CSS juntos (texto, botões, preços, idioma, nomes)
+# Gerado por: node checks/run-all.mjs /mnt/project-files/more/site-raw/rendered/ /mnt/project-files/more/site-raw/stylesheet/
+
+checks da More em /mnt/project-files/more/site-raw/rendered/ + /mnt/project-files/more/site-raw/stylesheet/ (23 arquivos)
+
+regra          script            arquivos  resultado                       
+-------------  ----------------  --------  --------------------------------
+R-COLOR-01     color-tokens.mjs  17        FALHA (4)                       
+R-COLOR-02     ground-ink.mjs    17        FALHA (1)                       
+R-COLOR-03     accent.mjs        17        PASSA                           
+R-SHAPE-01     radius.mjs        17        FALHA (3)                       
+R-TYPE-01      type.mjs          17        FALHA (2)                       
+R-TYPE-02      actions.mjs       6         FALHA (16)                      
+R-LAYOUT-01    bars.mjs          17        PASSA                           
+R-LAYOUT-02    aspect.mjs        17        PASSA + exemplos                
+R-IMG-01       no-ai.mjs         0         sem arquivo aplicável           
+R-IMG-02       exemplos          -         revisão visual com o par sim/nao
+R-GEN-01       wordmark.mjs      6         PASSA                           
+R-COPY-01      copy.mjs          6         FALHA (24)                      
+R-COMMERCE-01  commerce.mjs      6         FALHA (2)                       
+R-COMMERCE-02  grid-price.mjs    6         FALHA (5)                       
+R-MOTION-01    motion.mjs        17        FALHA (30)                      
+R-COPY-02      caption.mjs       0         sem arquivo aplicável           
+R-COPY-03      lang.mjs          6         FALHA (12)                      
+R-COLOR-04     campo.mjs         0         sem arquivo aplicável           
+R-LOGO-01      logo.mjs          0         sem arquivo aplicável           
+R-SHAPE-02     -                 -         rejeitada (fora do guia)        
+R-LAYOUT-03    scroll-safe.mjs   17        FALHA (4)                       
+R-NAME-01      names.mjs         6         FALHA (49)                      
+R-FILE-01      filename.mjs      0         sem arquivo aplicável           
+R-PRINT-01     print.mjs         0         sem arquivo aplicável           
+R-MOTION-02    cuts.mjs          0         sem arquivo aplicável           
+
+12 regra(s) com falha
+
+R-COLOR-01 FALHA (4):
+  - 37dcef66c23c_product.css: #dad7d1 em ".product__accordion-content.materials .accordion-material-wrapper.overflow-label:after,.color-background:after" só existe como color.site-sem-token-material-fundo (cor do site sem token aprovado): troque por um token da paleta
+  - 37dcef66c23c_product.css: #dedbd5 em ".product__accordion-content.materials .accordion-material-wrapper.overflow-label:hover:after" só existe como color.site-sem-token-material-hover (cor do site sem token aprovado): troque por um token da paleta
+  - 74941cd91a03_collection-list.css: #1a1a1a em ".collection-list__filter a" só existe como color.site-sem-token-grafite (cor do site sem token aprovado): troque por um token da paleta
+  - 94e8de6681a2_about.css: #1a1a1a em ".about__content" só existe como color.site-sem-token-grafite (cor do site sem token aprovado): troque por um token da paleta
+
+R-COLOR-02 FALHA (1):
+  - nenhum html/body/:root declara color: o texto corrido cai no padrão do navegador (#000). Declare body{color:var(--preto)}
+
+R-SHAPE-01 FALHA (3):
+  - 94e8de6681a2_about.css: border-radius: 6px em ".about__video-container" está fora da escala (0, 2px, 8px, 10px, 50%, "8px 8px 0", "0 8px 8px")
+  - a5552c486cfd_modal.css: border-radius: 5px em ".download-modal__file" está fora da escala (0, 2px, 8px, 10px, 50%, "8px 8px 0", "0 8px 8px")
+  - a5552c486cfd_modal.css: border-radius: 20px em ".download-modal__terms label" está fora da escala (0, 2px, 8px, 10px, 50%, "8px 8px 0", "0 8px 8px")
+
+R-TYPE-01 FALHA (2):
+  - 5437775e7964_styles.css: font-weight 700 em ".text--title": 400; 300 só em .muoto; 600 só em filtro ativo (active/ativo/selected/current)
+  - 6a29f8b6e2ef_footer.css: font-weight 700 em ".footer__newsletter button": 400; 300 só em .muoto; 600 só em filtro ativo (active/ativo/selected/current)
+
+R-TYPE-02 FALHA (16):
+  - _.html: <button.hero__skip> "Todos" sem palavra entre colchetes: escreva a ação como "[Todos]"
+  - _.html: <button.collection-list__category-toggle> "Categorias" sem palavra entre colchetes: escreva a ação como "[Categorias]"
+  - _.html: <button.cart__checkout-button> "Checkout" sem palavra entre colchetes: escreva a ação como "[Checkout]"
+  - _cart.html: <button.hero__skip> "Todos" sem palavra entre colchetes: escreva a ação como "[Todos]"
+  - _cart.html: <button.collection-list__category-toggle> "Categorias" sem palavra entre colchetes: escreva a ação como "[Categorias]"
+  - _cart.html: <button.cart__checkout-button> "Checkout" sem palavra entre colchetes: escreva a ação como "[Checkout]"
+  - _collections_all.html: <button.hero__skip> "Todos" sem palavra entre colchetes: escreva a ação como "[Todos]"
+  - _collections_all.html: <button.collection-list__category-toggle> "Categorias" sem palavra entre colchetes: escreva a ação como "[Categorias]"
+  - _collections_all.html: <button.cart__checkout-button> "Checkout" sem palavra entre colchetes: escreva a ação como "[Checkout]"
+  - _pages_sobre.html: <button.cart__checkout-button> "Checkout" sem palavra entre colchetes: escreva a ação como "[Checkout]"
+  - _products_poltrona_leticia.html: <button.cart__checkout-button> "Checkout" sem palavra entre colchetes: escreva a ação como "[Checkout]"
+  - _products_poltrona_leticia.html: <a.product__add-to-cart-button> "A partir de R$ 23.990" sem palavra entre colchetes: escreva a ação como "[Adicionar]"
+  - _products_tomada_tom_01.html: <button.product__accordion> "Baixar" sem palavra entre colchetes: escreva a ação como "[Baixar]"
+  - _products_tomada_tom_01.html: <button.product__add-to-cart-button> "Adicionar R$ 1" sem palavra entre colchetes: escreva a ação como "[Adicionar]"
+  - _products_tomada_tom_01.html: <button.download-modal__submit> "Cadastrar" sem palavra entre colchetes: escreva a ação como "[Cadastrar]"
+  - _products_tomada_tom_01.html: <button.cart__checkout-button> "Checkout" sem palavra entre colchetes: escreva a ação como "[Checkout]"
+
+R-COPY-01 FALHA (24):
+  - _.html: frase com 18 palavras (máx. 16): "Studio based in São Paulo, Brazil, that specializes in crafting meticu..."
+  - _.html: frase com 20 palavras (máx. 16): "Each minimalist piece uses purity of lines and heavy proportions to re..." (3x)
+  - _cart.html: frase com 18 palavras (máx. 16): "Studio based in São Paulo, Brazil, that specializes in crafting meticu..."
+  - _cart.html: frase com 20 palavras (máx. 16): "Each minimalist piece uses purity of lines and heavy proportions to re..." (3x)
+  - _collections_all.html: frase com 18 palavras (máx. 16): "Studio based in São Paulo, Brazil, that specializes in crafting meticu..."
+  - _collections_all.html: frase com 20 palavras (máx. 16): "Each minimalist piece uses purity of lines and heavy proportions to re..." (3x)
+  - _pages_sobre.html: frase com 18 palavras (máx. 16): "Studio based in São Paulo, Brazil, that specializes in crafting meticu..."
+  - _pages_sobre.html: frase com 20 palavras (máx. 16): "Each minimalist piece uses purity of lines and heavy proportions to re..." (3x)
+  - _products_poltrona_leticia.html: frase com 18 palavras (máx. 16): "Studio based in São Paulo, Brazil, that specializes in crafting meticu..."
+  - _products_poltrona_leticia.html: frase com 20 palavras (máx. 16): "Each minimalist piece uses purity of lines and heavy proportions to re..." (3x)
+  - _products_tomada_tom_01.html: frase com 18 palavras (máx. 16): "Studio based in São Paulo, Brazil, that specializes in crafting meticu..."
+  - _products_tomada_tom_01.html: frase com 20 palavras (máx. 16): "Each minimalist piece uses purity of lines and heavy proportions to re..." (3x)
+
+R-COMMERCE-01 FALHA (2):
+  - _products_poltrona_leticia.html: página de produto sem "Pronta entrega" nem "Sob encomenda"
+  - _products_tomada_tom_01.html: página de produto sem "Pronta entrega" nem "Sob encomenda"
+
+R-COMMERCE-02 FALHA (5):
+  - _.html: 48 de 48 cards de grade mostram preço (R$): preço fica só na página de produto
+  - _cart.html: 48 de 48 cards de grade mostram preço (R$): preço fica só na página de produto
+  - _collections_all.html: 48 de 48 cards de grade mostram preço (R$): preço fica só na página de produto
+  - _products_poltrona_leticia.html: 4 de 4 cards de grade mostram preço (R$): preço fica só na página de produto
+  - _products_tomada_tom_01.html: 1 de 1 cards de grade mostram preço (R$): preço fica só na página de produto
+
+R-MOTION-01 FALHA (30):
+  - _products_poltrona_leticia.html: transition "max-height 0.35s" em "span.product__option-tooltip[style]": duração 350ms fora da escala motion.duration (80, 140, 200, 300, 450, 500, 700, 800, 1000ms) (2x)
+  - _products_poltrona_leticia.html: transition "opacity 0.35s" em "span.product__option-tooltip[style]": duração 350ms fora da escala motion.duration (80, 140, 200, 300, 450, 500, 700, 800, 1000ms) (2x)
+  - _products_poltrona_leticia.html: transition "max-height 0.35s" em "div.product__accordion-content.product__dimensions.muoto[style]": duração 350ms fora da escala motion.duration (80, 140, 200, 300, 450, 500, 700, 800, 1000ms)
+  - _products_poltrona_leticia.html: transition "opacity 0.35s" em "div.product__accordion-content.product__dimensions.muoto[style]": duração 350ms fora da escala motion.duration (80, 140, 200, 300, 450, 500, 700, 800, 1000ms)
+  - _products_poltrona_leticia.html: transition "max-height 0.35s" em "div.product__accordion-content[style]": duração 350ms fora da escala motion.duration (80, 140, 200, 300, 450, 500, 700, 800, 1000ms)
+  - _products_poltrona_leticia.html: transition "opacity 0.35s" em "div.product__accordion-content[style]": duração 350ms fora da escala motion.duration (80, 140, 200, 300, 450, 500, 700, 800, 1000ms)
+  - _products_tomada_tom_01.html: transition "max-height 0.35s" em "span.product__option-tooltip[style]": duração 350ms fora da escala motion.duration (80, 140, 200, 300, 450, 500, 700, 800, 1000ms)
+  - _products_tomada_tom_01.html: transition "opacity 0.35s" em "span.product__option-tooltip[style]": duração 350ms fora da escala motion.duration (80, 140, 200, 300, 450, 500, 700, 800, 1000ms)
+  - _products_tomada_tom_01.html: transition "max-height 0.35s" em "div.product__accordion-content.product__dimensions.muoto[style]": duração 350ms fora da escala motion.duration (80, 140, 200, 300, 450, 500, 700, 800, 1000ms)
+  - _products_tomada_tom_01.html: transition "opacity 0.35s" em "div.product__accordion-content.product__dimensions.muoto[style]": duração 350ms fora da escala motion.duration (80, 140, 200, 300, 450, 500, 700, 800, 1000ms)
+  - _products_tomada_tom_01.html: transition "max-height 0.35s" em "div.product__accordion-content[style]": duração 350ms fora da escala motion.duration (80, 140, 200, 300, 450, 500, 700, 800, 1000ms)
+  - _products_tomada_tom_01.html: transition "opacity 0.35s" em "div.product__accordion-content[style]": duração 350ms fora da escala motion.duration (80, 140, 200, 300, 450, 500, 700, 800, 1000ms)
+  - 37dcef66c23c_product.css: transition "transform .4s ease" em ".product__thumbnails": duração 400ms fora da escala motion.duration (80, 140, 200, 300, 450, 500, 700, 800, 1000ms)
+  - 37dcef66c23c_product.css: transition "all .5s ease" em ".product__accordion-content.materials .accordion-material-wrapper.overflow-label:after,.color-background:after": "transition: all"; nomeie as propriedades
+  - 37dcef66c23c_product.css: transition "opacity .4s ease" em ".product__accordion-content.materials .material-sample": duração 400ms fora da escala motion.duration (80, 140, 200, 300, 450, 500, 700, 800, 1000ms)
+  - 37dcef66c23c_product.css: transition "width .6s ease" em ".product__accordion-content.materials .accordion-material-wrapper:has(input[type=radio]:checked)+.material-sample": duração 600ms fora da escala motion.duration (80, 140, 200, 300, 450, 500, 700, 800, 1000ms)
+  - 6a29f8b6e2ef_footer.css: transition "all 1s ease-in-out" em ".footer__wrapper": "transition: all"; nomeie as propriedades
+  - 74941cd91a03_collection-list.css: transition "color .15s ease" em ".collection-list__filter a": duração 150ms fora da escala motion.duration (80, 140, 200, 300, 450, 500, 700, 800, 1000ms)
+  - 74941cd91a03_collection-list.css: transition "opacity .18s cubic-bezier(.23,1,.32,1)" em ".collection-list__filter.is-categories-open .collection-list__filter-items": duração 180ms fora da escala motion.duration (80, 140, 200, 300, 450, 500, 700, 800, 1000ms)
+  - 74941cd91a03_collection-list.css: transition "transform .18s cubic-bezier(.23,1,.32,1)" em ".collection-list__filter.is-categories-open .collection-list__filter-items": duração 180ms fora da escala motion.duration (80, 140, 200, 300, 450, 500, 700, 800, 1000ms)
+  - 94e8de6681a2_about.css: transition "all .8s ease" em ".about__video-container": "transition: all"; nomeie as propriedades
+  - 94e8de6681a2_about.css: transition "all ease .8s" em ".about__video-container video": "transition: all"; nomeie as propriedades
+  - 94e8de6681a2_about.css: transition "transform .6s ease" em "#pages-content": duração 600ms fora da escala motion.duration (80, 140, 200, 300, 450, 500, 700, 800, 1000ms)
+  - 96947add0ed8_menu.css: transition "all .5s ease" em ".menu__collection-year": "transition: all"; nomeie as propriedades
+  - a5552c486cfd_modal.css: transition "opacity .15s ease" em ".download-modal__submit": duração 150ms fora da escala motion.duration (80, 140, 200, 300, 450, 500, 700, 800, 1000ms)
+  - dffe1ea4d2ea_critical.css: transition "opacity .28s cubic-bezier(.22,1,.36,1)" em "html:is([data-home-intro=intro],[data-home-intro=dismissing]) #hero": duração 280ms fora da escala motion.duration (80, 140, 200, 300, 450, 500, 700, 800, 1000ms)
+  - fc619cc00d25_hero.css: animation "letterOut .6s ease forwards" em ".animate-out .logo-letter": duração 600ms fora da escala motion.duration (80, 140, 200, 300, 450, 500, 700, 800, 1000ms)
+  - 52 de 60 seletores animados sem fallback em @media (prefers-reduced-motion: reduce) (ex. "span.product__option-tooltip[style]", "div.product__accordion-content.product__dimensions.muoto[style]", "div.product__accordion-content[style]"); a saída simples é *{transition:none;animation:none}
+
+R-COPY-03 FALHA (12):
+  - _.html: texto em inglês fora de elemento lang="en": "Studio based in São Paulo, Brazil, that specializes in crafting meticu"
+  - _.html: texto em inglês fora de elemento lang="en": "More is a design studio and gallery featuring a collection of unique f"
+  - _cart.html: texto em inglês fora de elemento lang="en": "Studio based in São Paulo, Brazil, that specializes in crafting meticu"
+  - _cart.html: texto em inglês fora de elemento lang="en": "More is a design studio and gallery featuring a collection of unique f"
+  - _collections_all.html: texto em inglês fora de elemento lang="en": "Studio based in São Paulo, Brazil, that specializes in crafting meticu"
+  - _collections_all.html: texto em inglês fora de elemento lang="en": "More is a design studio and gallery featuring a collection of unique f"
+  - _pages_sobre.html: texto em inglês fora de elemento lang="en": "Studio based in São Paulo, Brazil, that specializes in crafting meticu"
+  - _pages_sobre.html: texto em inglês fora de elemento lang="en": "More is a design studio and gallery featuring a collection of unique f"
+  - _products_poltrona_leticia.html: texto em inglês fora de elemento lang="en": "Studio based in São Paulo, Brazil, that specializes in crafting meticu"
+  - _products_poltrona_leticia.html: texto em inglês fora de elemento lang="en": "More is a design studio and gallery featuring a collection of unique f"
+  - _products_tomada_tom_01.html: texto em inglês fora de elemento lang="en": "Studio based in São Paulo, Brazil, that specializes in crafting meticu"
+  - _products_tomada_tom_01.html: texto em inglês fora de elemento lang="en": "More is a design studio and gallery featuring a collection of unique f"
+
+R-LAYOUT-03 FALHA (4):
+  - 74941cd91a03_collection-list.css: ".collection-list__filter-items" rola na vertical e termina com padding-bottom 6px; precisa de >= 106px (var(--layout-bar-safe))
+  - 96947add0ed8_menu.css: "#principal__menu .menu__body.open-height-full" rola na vertical e termina com padding-bottom não declarado; precisa de >= 106px (var(--layout-bar-safe))
+  - b3ff5ec277b2_cart-drawer.css: ".drawer__content" rola na vertical e termina com padding-bottom 20px; precisa de >= 106px (var(--layout-bar-safe))
+  - b3ff5ec277b2_cart-drawer.css: ".drawer__contents" rola na vertical e termina com padding-bottom não declarado; precisa de >= 106px (var(--layout-bar-safe))
+
+R-NAME-01 FALHA (49):
+  - _.html: "Mesa Cildo" é variante: o nome canônico é "Mesa de centro Cildo" (3x)
+  - _.html: "Cadeira 556" é variante: o nome canônico é "Cadeira 556-A" (3x)
+  - _.html: "Mesa de Apoio Carnívora": complemento do tipo vai em minúscula (ex. "Mesa de centro Imi") (3x)
+  - _.html: "Mesa de Centro Imi": complemento do tipo vai em minúscula (ex. "Mesa de centro Imi") (3x)
+  - _cart.html: "Mesa Cildo" é variante: o nome canônico é "Mesa de centro Cildo" (3x)
+  - _cart.html: "Cadeira 556" é variante: o nome canônico é "Cadeira 556-A" (3x)
+  - _cart.html: "Mesa de Apoio Carnívora": complemento do tipo vai em minúscula (ex. "Mesa de centro Imi") (3x)
+  - _cart.html: "Mesa de Centro Imi": complemento do tipo vai em minúscula (ex. "Mesa de centro Imi") (3x)
+  - _collections_all.html: "Mesa Cildo" é variante: o nome canônico é "Mesa de centro Cildo" (3x)
+  - _collections_all.html: "Cadeira 556" é variante: o nome canônico é "Cadeira 556-A" (3x)
+  - _collections_all.html: "Mesa de Apoio Carnívora": complemento do tipo vai em minúscula (ex. "Mesa de centro Imi") (3x)
+  - _collections_all.html: "Mesa de Centro Imi": complemento do tipo vai em minúscula (ex. "Mesa de centro Imi") (3x)
+  - _pages_sobre.html: "Mesa Cildo" é variante: o nome canônico é "Mesa de centro Cildo"
+  - _pages_sobre.html: "Cadeira 556" é variante: o nome canônico é "Cadeira 556-A"
+  - _pages_sobre.html: "Mesa de Apoio Carnívora": complemento do tipo vai em minúscula (ex. "Mesa de centro Imi")
+  - _pages_sobre.html: "Mesa de Centro Imi": complemento do tipo vai em minúscula (ex. "Mesa de centro Imi")
+  - _products_poltrona_leticia.html: "Mesa Cildo" é variante: o nome canônico é "Mesa de centro Cildo"
+  - _products_poltrona_leticia.html: "Cadeira 556" é variante: o nome canônico é "Cadeira 556-A" (2x)
+  - _products_poltrona_leticia.html: "Mesa de Apoio Carnívora": complemento do tipo vai em minúscula (ex. "Mesa de centro Imi")
+  - _products_poltrona_leticia.html: "Mesa de Centro Imi": complemento do tipo vai em minúscula (ex. "Mesa de centro Imi")
+  - _products_tomada_tom_01.html: "Mesa Cildo" é variante: o nome canônico é "Mesa de centro Cildo"
+  - _products_tomada_tom_01.html: "Cadeira 556" é variante: o nome canônico é "Cadeira 556-A"
+  - _products_tomada_tom_01.html: "Mesa de Apoio Carnívora": complemento do tipo vai em minúscula (ex. "Mesa de centro Imi")
+  - _products_tomada_tom_01.html: "Mesa de Centro Imi": complemento do tipo vai em minúscula (ex. "Mesa de centro Imi")

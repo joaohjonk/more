@@ -1,0 +1,13 @@
+/* Fixture que FALHA em todos os checks de CSS */
+body { background-color: #fff; color: #000; font-family: Helvetica, Arial; }
+.title { font-weight: 700; color: #1a1a1a; }
+.tag { color: #8bc0d0; }
+.banner { background: #9a1935; }
+.promo { color: #ff6600; }
+.btn { border-radius: 20px; }
+.card img { aspect-ratio: 1/1; border-radius: 6px; }
+.site-header { position: fixed; top: 0; left: 0; width: 100%; height: 64px; background: #2d211e; }
+.modal { overflow-y: auto; padding-bottom: 20px; transition: all 1s linear; }
+.drawer { transition: opacity .6s ease-in; }
+.menu-bar { position: fixed; top: 0; left: 50%; transform: translate(-50%); height: 50px; }
+.product img { border-radius: 8px; }

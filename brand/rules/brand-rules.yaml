@@ -1,114 +1,121 @@
-# Machine-testable brand rules for More. Tokens hold atomic values; this file holds relationships.
-# Source: live site mymore.design (2026-10-15) + JJ x More call (2026-10-15). Status: provisional until the More team approves.
-version: 0.3
+# Regras de marca da More, testáveis. Tokens guardam valores atômicos; este arquivo guarda as relações.
+# Fonte: site mymore.design (2026-10-15) + call JJ x More (2026-10-15). Status: provisório até a equipe da More aprovar.
+# Zero regra ambígua: cada regra tem um limite, uma lista ou um par de exemplos.
+#   check: script    -> node checks/<script>.mjs <arquivos>; sai com 1 e mensagem em pt-BR quando falha
+#   check: examples  -> brand/examples/<ID>-sim.jpg e <ID>-nao.jpg, legenda em brand/examples/README.md
+# Tudo de uma vez: node checks/run-all.mjs <pasta>. Autoteste: node checks/self-test.mjs. Mapa completo: checks/README.md
+version: 0.4
 rules:
   - id: R-COLOR-01
     scope: core
-    rule: pages use only color tokens; no raw hex outside brand/generated/tokens.css (white only as text on dark)
-    check: deterministic   # cstack tokens lint <files> --allow #fff
+    rule: 'toda cor literal em CSS/HTML/SVG é o valor de um token de cor aprovado (brand/generated/tokens.css). Tokens color.site-sem-token-* (#1A1A1A, #DAD7D1, #DEDBD5) não contam como aprovados. Branco opaco só em color/fill/stroke (texto sobre fundo escuro), nunca em background'
+    check: script   # node checks/color-tokens.mjs <css|html|svg...>  (inclui cstack tokens lint --allow #fff)
   - id: R-COLOR-02
     scope: core
-    rule: the page ground is off-white (#E5E1DB), never pure white; ink is preto (#2D211E), never pure black. The live site breaks this today: body has no color, so running text renders #000
-    check: deterministic
+    rule: 'html/body/:root declara background off-white #E5E1DB e color preto #2D211E; #000 opaco não aparece em nenhuma propriedade; #FFF nunca é fundo de html/body. Hoje o site quebra isto (body sem color, o texto corrido sai #000)'
+    check: script   # node checks/ground-ink.mjs <todos os css/html da página>
   - id: R-COLOR-03
     scope: core
-    rule: ciano-destaque is the only chromatic UI colour and means "available now / buyable"; never decorative
-    check: judge
+    rule: 'ciano-destaque #8BC0D0 é a única cor cromática da interface (saturação HSL >= 0,25; a outra exceção é erro #E07A5F em seletor de erro). Ciano só aparece como estado ativo ou hover de navegação - seletor de navegação (nav, menu, filter, collection, categor, tab, link <a>) com :hover, .active, .is-active, :focus, [aria-current], .current, .selected. É o que o site faz - a aba Fixos (a#collection-fixos.active e :hover). Nunca como texto sobre off-white (contraste 1,53:1) e nunca decorativo'
+    proposed:
+      - text: 'ciano significa "disponível agora / pronta entrega"'
+        status: proposed   # inferida: no site o ciano marca só a aba Fixos; "Pronta entrega" no card está em cinza-medio
+    check: script   # node checks/accent.mjs <css|html...>
   - id: R-SHAPE-01
     scope: core
-    rule: structure is square (radius.none) - images, cards, bars, checkout and filter buttons, inputs. Radius only on small or floating parts, from the scale radius.thumb 2px, radius.tooltip 8px, radius.panel 10px, radius.round 50% (circles). Any other value fails. The live site has three off-scale radii (5px modal file, 6px about video, 20px modal label)
-    check: deterministic   # node checks/radius.mjs <css>
+    rule: 'estrutura é reta (radius.none) - imagens, cards, barras, botões de checkout e filtro, inputs. border-radius só pode ser 0, 2px (radius.thumb), 8px (radius.tooltip), 10px (radius.panel), 50% (radius.round, círculos) ou as formas de tooltip "8px 8px 0" / "0 8px 8px". Qualquer outro valor falha. O site tem três fora da escala (5px no modal, 6px no vídeo do sobre, 20px no label do modal)'
+    check: script   # node checks/radius.mjs <css|html...>
   - id: R-TYPE-01
     scope: core
-    rule: two families only, Muoto (names, prices, statements) and Muoto Mono Condensed (interface); one weight, 600 only for an active filter
-    check: deterministic   # cstack type qa <url> --families "Muoto,MuotoMono" --max-families 2
+    rule: 'font-family começa com Muoto ou MuotoMono (Muoto Mono Condensed); fallbacks só DM Sans, Martian Mono, Helvetica Neue, Arial, sans-serif, ui-monospace, Menlo, monospace. Pesos - Muoto 400, ou 300 em seletor .muoto (o site pede 300, mas só o arquivo Regular é carregado, então renderiza 400); MuotoMono 400; 600 só em seletor de filtro ativo (active, ativo, selected, current, checked); 700 e qualquer outro peso falham'
+    check: script   # node checks/type.mjs <css|html...>   (na página publicada também: cstack type qa <url> --families "Muoto,MuotoMono" --max-families 2)
   - id: R-TYPE-02
     scope: core
-    rule: interface actions are mono words in square brackets ([Voltar], Menu [+]); no pill buttons, no icons-only actions
-    check: judge
+    rule: 'toda ação de texto (<button>, <input type=submit|button>, <a> com classe btn/button, role=button) tem uma palavra entre colchetes ([Voltar], Menu [+]). Ação só com ícone falha. Controles isentos - miniatura (conteúdo <img>), quantidade (+/-; class quantity, qty, stepper), fechar só com ícone (class ou aria-label close/fechar) e amostra de material (swatch, material, color-option). Botão em pílula é pego por R-SHAPE-01. No site falham hoje as ações de texto Checkout, Adicionar / A partir de, Baixar, Cadastrar, Todos e Categorias'
+    check: script   # node checks/actions.mjs <html...>
   - id: R-LAYOUT-01
     scope: core
-    rule: navigation and the primary action live in floating 35px glass bars, centred at the bottom; no fixed top header
-    check: judge
+    rule: 'menu, carrinho e adicionar-ao-carrinho (seletor fixed/sticky com menu, add-to-cart, add_to_cart, in-cart, cart-button, checkout) ficam em barras flutuantes embaixo - declaram bottom e nunca top, centralizadas (left 50% + translate(-50%), ou left 0 + right 0), height 35px quando declaram altura, fundo com alfa < 1 (vidro preto-10/preto-80/cinza-overlay). Sem cabeçalho fixo - seletor fixed/sticky com header, cabecalho, topbar, navbar, nav ou toolbar e top falha. Isentos, padrão do site - o filtro da coleção (.collection-list__filter, sticky no topo) e o botão flutuante de voltar (.floating-back-button, topo, 30px)'
+    check: script   # node checks/bars.mjs <css|html...>
   - id: R-LAYOUT-02
     scope: core
-    rule: one piece per image, sourced 3:4 portrait (3:2 only for landscape list views); channel crops come from the 3:4 source (Instagram feed 4:5 1080x1350, story 9:16 1080x1920 with 250px safe zones); never circles or rounded
-    check: deterministic   # cstack audit <file> --aspect 3:4|4:5|9:16
+    rule: 'uma peça por foto de produto (grade, PDP, post de peça), ver o par de exemplos. Proporção da imagem 3:4 (fonte), 4:5 (feed, 1080x1350), 9:16 (story, 1080x1920, 250px de área segura em cima e embaixo) ou 3:2 (só lista horizontal), tolerância 1%. Em CSS de imagem, aspect-ratio só 3/4, 4/5, 9/16, 3/2; foto de produto com border-radius 0; miniatura e amostra de material (thumb, swatch, material, sample) podem ter 2px (radius.thumb), como no site. Raio fora da escala fica com R-SHAPE-01, sem contar duas vezes'
+    check: script   # node checks/aspect.mjs <imagem|css...>  + examples  # brand/examples/R-LAYOUT-02-sim/nao (uma peça)
   - id: R-IMG-01
     scope: core
-    rule: product pieces are photographed, never generated or altered by AI; finish swaps must come from real photos or exact material renders
-    check: judge
+    rule: 'foto de peça é fotografia, nunca gerada ou alterada por IA; troca de acabamento só com foto real ou render exato do material. O arquivo falha se tiver metadado IPTC DigitalSourceType trainedAlgorithmicMedia/compositeWithTrainedAlgorithmicMedia/algorithmicMedia, metadado que cite um gerador (Midjourney, DALL-E, gpt-image, Firefly, Stable Diffusion, Imagen, Gemini, Flux, Ideogram, Runway, Sora, Recraft, Krea, Magnific, Generative Fill) ou sidecar <arquivo>.lineage.json com operação de geração/edição. Quem exporta preserva os metadados'
+    check: script   # node checks/no-ai.mjs <imagem...>
   - id: R-IMG-02
     scope: core
-    rule: studio register = warm beige seamless + one hard side light with a crisp window shadow; low-key register = near-black + one warm raking light
-    check: judge
+    rule: 'registro estúdio = fundo bege infinito + uma luz dura lateral com sombra de janela de borda nítida; registro low-key = fundo quase preto + uma luz quente rasante. Luz difusa, sombra de borda mole e preto levantado para cinza falham. Ver o par de exemplos'
+    check: examples   # brand/examples/R-IMG-02-sim.jpg / R-IMG-02-nao.jpg
   - id: R-GEN-01
     scope: core
-    rule: never approximate the wordmark or the 205TF faces in a generated image; composite assets/official/more-wordmark.svg
-    check: judge
+    rule: 'a marca entra sempre como o arquivo oficial assets/official/more-wordmark.svg ou more-wordmark-small.svg - por referência (<img>/<image>/<use>) ou inline com os mesmos paths (coordenadas a 0,1). "MORE" digitado como texto ou paths diferentes falham. Em imagem gerada, a marca é composta depois (skill image-edit), nunca pedida ao modelo; as faces 205TF também não entram em prompt'
+    check: script   # node checks/wordmark.mjs <svg|html...>
   - id: R-COPY-01
     scope: core
-    rule: copy is short, declarative and about material and making; no luxury adjectives (exclusivo, sofisticado, luxuoso), no exclamation marks
-    check: judge
+    rule: 'nenhuma palavra proibida (exclusivo/a, exclusividade, sofisticado/a, sofisticação, luxuoso/a, luxo, requintado/a, requinte, premium, glamour, chique, alma, essência, personalidade); zero ponto de exclamação, emoji e hashtag; nenhuma frase com mais de 16 palavras (máximo do feed de 2026)'
+    check: script   # node checks/copy.mjs <txt|md|html...>
   - id: R-COMMERCE-01
     scope: page
-    rule: buyable-now items (tomada) carry a visible "Pronta entrega" / Comprar signal in ciano-destaque; made-to-order items say "Sob encomenda" and the lead time
-    check: judge
+    rule: 'toda página de produto (og:type=product) mostra em texto exatamente um rótulo - "Pronta entrega" ou "Sob encomenda" com prazo em dias, semanas ou meses ("Sob encomenda, 8 a 10 semanas"). Só o texto é checado, não a cor (no card de grade do site, "Pronta entrega" é .product-card-grid__ready-delivery em cinza-medio 10px, visível no hover)'
+    check: script   # node checks/commerce.mjs <produto.html...>
   - id: R-COMMERCE-02
     scope: page
-    rule: price lives on the product page, not on the gallery grid (proposal from the 2026-10-15 call, not yet decided by the team)
-    check: judge
+    rule: 'nenhum card de grade (classe product-card* ou card-product*) mostra preço (R$); o preço fica na página de produto (proposta da call de 2026-10-15, ainda não decidida pela equipe)'
+    check: script   # node checks/grid-price.mjs <html...>
   - id: R-MOTION-01
     scope: core
-    rule: motion is fades and grows of 200-800ms with ease-out; everything has a prefers-reduced-motion fallback
-    check: deterministic
+    rule: 'duração é um token motion.duration - 80, 140, 200, 300, 450, 500, 700, 800 ou 1000ms (0s = troca instantânea); qualquer outro valor falha (no site - 150, 180, 280, 400, 600ms). Curva - ease (a principal do site), ease-out, ease-in-out ou os tokens snap, out-expo, out-quint; linear só em contador (ou com duração 0); ease-in e qualquer outro cubic-bezier falham. "transition: all" falha. Todo seletor animado tem fallback em @media (prefers-reduced-motion - reduce), por regra * ou pelo mesmo seletor'
+    check: script   # node checks/motion.mjs <todos os css da página>
   - id: R-COPY-02
     scope: core
-    status: proposed   # leitura por função 2026-10-15; Instagram caption formula
-    rule: each piece gets one dry line that disagrees with convention, before the material line ("Não é quadrada, só parece."); never alma, essência, personalidade, sofisticado
-    check: judge
+    status: proposed   # leitura por função 2026-10-15; fórmula de legenda do Instagram
+    rule: 'legenda de peça = frase com o nome canônico (checks/nomes-canonicos.json), depois UMA linha seca de 3 a 12 palavras sem palavra de material, depois a linha de material (opcional); 4-145 palavras; palavras proibidas de R-COPY-01. A linha seca discorda da convenção, no tom destas aprovadas - "Não é quadrada, só parece.", "Essa não vai com as outras", "Nada grita, só a concorrência.", "Precisa da sua Maria.", "Não foi feita para combinar com o sofá."'
+    check: script   # node checks/caption.mjs <legenda.txt...>  (estrutura medida; o tom é comparado com as linhas acima)
   - id: R-COPY-03
     scope: core
     status: proposed
-    rule: Portuguese first; English only as a second version, never the default (the English About text breaks this)
-    check: judge
+    rule: 'português primeiro. Página com <html lang="pt-BR">; todo bloco de 6+ palavras em inglês (mais palavras-função inglesas que portuguesas) fica dentro de elemento lang="en" como segunda versão; em texto solto o primeiro parágrafo é português. O texto em inglês do Sobre quebra isto hoje'
+    check: script   # node checks/lang.mjs <html|txt|md...>
   - id: R-COLOR-04
     scope: print, social, store
     status: proposed   # leitura por função 2026-10-15
-    rule: color.campo tones (vermelho-jambo, amarelo-igarata, verde-jamaica, berinjela; petroleo is proposed only) are flat backgrounds for posters, invites, book, window and social, one per piece; never in shop UI chrome, never two in one frame; ciano keeps its meaning (available now)
-    check: judge
+    rule: 'tons color.campo (vermelho-jambo, amarelo-igarata, verde-jamaica, berinjela; petróleo é só proposta) são fundo de cartaz, convite, livro, vitrine e social. Em imagem - no máximo um tom campo com 5%+ dos pixels (a até ΔE 10 em CIELAB); petróleo nunca como fundo (20%+); em peça gráfica (MORE_PRINT/CONVITE/LIVRO/VITRINE) o fundo é chapado - dos pixels a até ΔE 25 do tom, 85%+ estão a até ΔE 10. Em CSS da loja, nenhum tom campo (R-COLOR-03 pega). Ciano fica fora das peças campo (é cor de interface)'
+    check: script   # node checks/campo.mjs <imagem...> [--grafica]  + node checks/accent.mjs <css>
   - id: R-LOGO-01
     scope: core
     status: proposed
-    rule: the wordmark appears at M (1/6 of the short side, observed range 16-25%) or XL (95-100% of the width, bottom-aligned, observed on the 05.11 invite); preto, branco or off-white only; never outlined, mirrored or patterned. Proposed and not in the guide until accepted - S 60px/18mm minimum and clear space = height of the O
-    check: judge
+    rule: 'num layout (SVG com viewBox, ou HTML com data-canvas="LxA"), a marca é M (lado maior da marca = 16-25% do lado menor do quadro) ou XL (95-100% da largura, base a no máximo 5% da base do quadro, observado no convite 05.11); cor só preto #2D211E, branco ou off-white #E5E1DB; sem stroke, sem scale negativo (espelho), sem escala não uniforme, sem fill url() (padrão). Proposto e fora do guia até aceitarem - S mínimo 60px/18mm e respiro = altura do O'
+    check: script   # node checks/logo.mjs <layout.svg|layout.html...>
   - id: R-SHAPE-02
     scope: core
     status: rejected   # inventada por nós; o convite 05.11 da própria marca usa elipse. Fica fora do guia.
-    rule: no ellipses, pills or rounded graphic shapes in any medium
+    rule: 'no ellipses, pills or rounded graphic shapes in any medium'
     check: judge
   - id: R-LAYOUT-03
     scope: page
     status: proposed
-    rule: every scroll container ends with layout.bar-safe (106px) so the floating bars never cover content on mobile
-    check: deterministic
+    rule: 'todo contêiner com rolagem vertical (overflow ou overflow-y auto/scroll) termina com padding-bottom >= 106px (layout.bar-safe) no mesmo seletor, para as barras flutuantes nunca cobrirem conteúdo no celular'
+    check: script   # node checks/scroll-safe.mjs <css|html...>
   - id: R-NAME-01
     scope: core
     status: proposed   # naming.inconsistencies
-    rule: one canonical name per piece, "<tipo em minúscula> <Nome>" (Mesa de centro Cildo, Cadeira 556-A), identical on site, Instagram, tags and files
-    check: deterministic
+    rule: 'um nome canônico por peça, "<Tipo> <complemento em minúscula> <Nome>" (Mesa de centro Cildo, Cadeira 556-A), igual no site, Instagram, etiquetas e arquivos. A lista e as variantes proibidas estão em checks/nomes-canonicos.json; as marcadas decisao_pendente (Ngoni, Leticia/Letícia, Naz componível, INT.01) esperam a equipe'
+    check: script   # node checks/names.mjs <txt|md|html|csv...>
   - id: R-FILE-01
     scope: core
     status: proposed
-    rule: files are named MORE_<canal>_<peça-slug>_<variante>_<AAAAMMDD>_v<nn>.<ext> (MORE_IG_mesa-de-centro-cildo_4x5_20261105_v02.jpg)
-    check: deterministic
+    rule: 'arquivos se chamam MORE_<CANAL>_<peça-slug>_<variante>_<AAAAMMDD>_v<nn>.<ext> (MORE_IG_mesa-de-centro-cildo_4x5_20261105_v02.jpg). CANAL - IG, IGS, SITE, PRINT, LIVRO, CONVITE, VITRINE, EMAIL, VIDEO; peça-slug = slug de nome canônico ou "marca"; variante [a-z0-9-]; data real; extensão minúscula'
+    check: script   # node checks/filename.mjs <arquivo...>
   - id: R-PRINT-01
     scope: print
     status: proposed
-    rule: off-white is the paper, never a printed flood (uncoated natural stock 90-150g); preto prints as rich black only on large areas; 300dpi, PDF/X-4, 3mm bleed, 5mm safety
-    check: judge
+    rule: 'PDF de impressão declara PDF/X-4, toda página tem TrimBox e BleedBox com 3mm de sangria em cada lado, e off-white nunca é tinta (é o papel; papel natural sem revestimento 90-150 g/m²); raster de impressão >= 300 dpi. Conferido no preflight, sem script - margem de segurança 5mm; preto rico C60 M40 Y40 K100 só em áreas >= 10mm de altura, texto < 10pt em K100 puro'
+    check: script   # node checks/print.mjs <pdf|imagem MORE_PRINT_...>
   - id: R-MOTION-02
     scope: core
     status: proposed   # proposta nossa
-    rule: video uses Shadow sweep (hard window shadow travels across the piece, observed on the 05.11 invite) and Hard cut (photo swap without fade, inferred from carousel order). Proposed and not in the guide until accepted - Build (M-O-R-E letters in sequence, 120ms stagger)
-    check: judge
+    rule: 'vídeo troca de foto por corte seco (Hard cut) - nenhuma fusão nem fade, medido pelo script; o movimento de luz é Shadow sweep (mancha dura de janela atravessa a peça com a câmera parada, observado no convite 05.11), ver o par de exemplos. Proposto e fora do guia até aceitarem - Build (letras M-O-R-E em sequência, 120ms de intervalo)'
+    check: script   # node checks/cuts.mjs <video...>  + examples  # brand/examples/R-MOTION-02-sim/nao (Shadow sweep)

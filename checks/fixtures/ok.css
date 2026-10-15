@@ -1,0 +1,19 @@
+/* Fixture que PASSA em todos os checks de CSS */
+:root { --preto: #2d211e; --off-white: #e5e1db; --ciano-destaque: #8bc0d0; --preto-10: rgba(45, 33, 30, .1); }
+body { background-color: var(--off-white); color: var(--preto); font-family: MuotoMono, ui-monospace, monospace; font-weight: 400; }
+h1 { font-family: Muoto, "DM Sans", sans-serif; }
+.filter a.active { font-weight: 600; }
+.collection-list__filter a#collection-fixos.active, .collection-list__filter a#collection-fixos:hover { color: var(--ciano-destaque); }
+.product-card-grid__ready-delivery { color: #686868; font-size: 10px; }
+.muoto { font-family: Muoto; font-weight: 300; }
+.material-thumb { border-radius: 2px; }
+.collection-list__filter { position: sticky; top: 0; }
+.floating-back-button { position: fixed; top: 30px; left: 20px; }
+.product-card img { aspect-ratio: 3/4; border-radius: 0; }
+.tooltip { border-radius: 8px 8px 0; }
+.swatch { border-radius: 50%; }
+.panel { border-radius: 10px; }
+#principal__menu { position: fixed; bottom: 30px; left: 50%; transform: translate(-50%); height: 35px; background-color: var(--preto-10); transition: opacity .5s ease-out, width .5s cubic-bezier(.22, 1, .36, 1), color .2s ease; }
+.drawer__content { overflow-y: auto; padding: 5px 20px 106px; }
+.menu__body { overflow-y: scroll; padding-bottom: var(--layout-bar-safe); }
+@media (prefers-reduced-motion: reduce) { *, *::before, *::after { transition: none !important; animation: none !important; } }
