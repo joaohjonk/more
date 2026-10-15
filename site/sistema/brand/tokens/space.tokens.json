@@ -466,7 +466,7 @@
     "value": 60,
     "unit": "px"
    },
-   "$description": "S: 60px de largura na barra do menu do site (medido). 18 mm no papel é proposta nossa.",
+   "$description": "S: 60px de largura na barra do menu do site (medido). O guia de uso (p. 5) pede no mínimo 120 px na tela e 18 mm no papel: o menu do site está abaixo (P-03).",
    "$extensions": {
     "cstack": {
      "status": "PROVISIONAL",

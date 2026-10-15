@@ -7,6 +7,7 @@
 :root{--preto:#2D211E;--off-white:#E5E1DB;--mono:MuotoMono,"Martian Mono",ui-monospace,monospace;--sans:Muoto,"DM Sans",Arial,sans-serif}
 *{box-sizing:border-box;margin:0;padding:0}
 html,body{font-synthesis:none;background:#9a948c;font-family:var(--sans);color:var(--preto)}
+@media print{html,body{background:none}}
 body{padding:40px}
 /* 1 px = 1 mm. O vidro é o fundo: nada de off-white impresso. Vinil recortado preto fosco. */
 .vidro{position:relative;width:var(--w);height:var(--h);background:linear-gradient(180deg,#cfc9c0,#b9b3aa);overflow:hidden}
