@@ -64,7 +64,7 @@ fi
 # bun: o gstack precisa dele (1.3.3 ou mais novo)
 [ -d "$HOME/.bun/bin" ] && PATH="$HOME/.bun/bin:$PATH"
 if ! tem bun && [ "$INSTALAR" = 1 ] && tem curl; then
-  curl -fsSL https://bun.sh/install | bash >/dev/null && PATH="$HOME/.bun/bin:$PATH"
+  curl -fsSL https://bun.sh/install 2>/dev/null | bash >/dev/null 2>&1 && PATH="$HOME/.bun/bin:$PATH"
 fi
 if tem bun && ! versao_ok "$(bun --version)" 1.3.3 && [ "$INSTALAR" = 1 ]; then bun upgrade >/dev/null 2>&1; fi
 if tem bun && versao_ok "$(bun --version)" 1.3.3; then ok "bun $(bun --version)"; no_perfil 'export PATH="$HOME/.bun/bin:$PATH"'
