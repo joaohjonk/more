@@ -1,7 +1,5 @@
 <!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><link rel="icon" href="data:,"><style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style></head><body><script src="/nav/shell.js" data-section="loja-3d" data-into=".bars" data-mode="bar" data-foot="off" defer></script><title>Loja More em 3D</title>
 <meta name="claude:viewport-fit-sides" content="cover">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,600&family=Martian+Mono:wdth,wght@75,400&display=swap" rel="stylesheet">
 <style>
 /* A loja da More (Al. Franca 1332, casa 04), construída a partir da planta executiva EX_A102_R03.
    Entrar no site é entrar na loja: cada peça exposta é clicável. Papel off-white, luz dura de dia, sem pós-processamento. */
@@ -111,12 +109,12 @@ a{color:inherit}
 </a>
 
 <div id="stage">
-  <canvas id="gl" aria-label="A loja da More na Alameda Franca, vista da porta: um salão de 5 por 17 metros, concreto lapidado, luz de dia pela fachada de vidro e as peças expostas. Clique numa peça para vê-la de perto."></canvas>
+  <canvas id="gl" aria-label="A loja da More na Alameda Franca, vista da porta. Um salão de 5,4 × 17 m, piso de concreto lapidado. A luz do dia entra pela fachada de vidro. Clique numa peça para vê-la de perto."></canvas>
 </div>
 <div id="still" aria-hidden="true"></div>
-<div id="load" aria-live="polite"><span>[Entrando na loja]</span><span class="bar"><i id="loadbar"></i></span><span id="loadpc">0%</span></div>
+<div id="load" aria-live="polite"><span>Entrando na loja</span><span class="bar"><i id="loadbar"></i></span><span id="loadpc">0%</span></div>
 <h1 class="sr">Loja More em 3D</h1>
-<p class="sr">Alameda Franca 1332, casa 04, Jardins, São Paulo. Abre em 05.11.</p>
+<p class="sr">Alameda Franca 1332, casa 04 · Jardins · São Paulo. Abre em 05.11.</p>
 
 <div id="tip" hidden></div>
 
@@ -138,8 +136,9 @@ a{color:inherit}
 <div id="plain" role="region" aria-label="Versão sem 3D">
   <div class="wrap">
     <img src="still.jpg" alt="A loja da More vista da porta, em 3D.">
-    <h1>Loja More, Alameda Franca 1332</h1>
-    <p>Seu navegador não desenha a loja em 3D. Aqui estão as peças que vão estar expostas na abertura, em 05.11.</p>
+    <h1>A loja da More</h1>
+    <p>Alameda Franca 1332, casa 04 · Jardins · São Paulo</p>
+    <p>Este navegador não desenha a loja em 3D. Abaixo, as peças que estarão na loja em 05.11.</p>
     <button class="try" id="try3d">[Tentar o 3D mesmo assim]</button>
     <div class="grid" id="plaingrid"></div>
   </div>
@@ -157,7 +156,7 @@ const $=s=>document.querySelector(s);
 const reduce=matchMedia("(prefers-reduced-motion: reduce)").matches;
 const touchOnly=()=>matchMedia("(hover: none) and (pointer: coarse)").matches;
 const mobile=()=>innerWidth<760;
-const WA="https://wa.me/5511912092600?text="+encodeURIComponent("Olá, tenho interesse na peça: ");
+const WA="https://wa.me/5511912092600?text="+encodeURIComponent("Olá. Quero conversar sobre a peça ");
 const SITE="https://mymore.design/products/";
 
 /* ------------------------------------------------------------------ as peças
@@ -167,14 +166,14 @@ const PECAS=[
  {h:"poltrona-leticia",t:"Poltrona Leticia",c:"Assentos",m:"Estofada, com estrutura de madeira maciça.",p:23990,d:"~82 × 88 × 92 cm"},
  {h:"otoman-leticia",t:"Otoman Leticia",c:"Assentos",m:"Estofado, com base de madeira maciça.",p:6980,d:"~80 × 60 × 42 cm"},
  {h:"sofa-canoa",t:"Sofá Canoa",c:"Assentos",m:"Estofado, com pés de madeira maciça de cruzetas.",p:87850,d:"~240 × 95 × 72 cm"},
- {h:"mesa-cildo",t:"Mesa Cildo",c:"Mesas",m:"Tampo de vidro fundido pigmentado, com pés em cerâmica esmaltada.",p:31800,d:"~95 × 95 × 32 cm"},
+ {h:"mesa-cildo",t:"Mesa de centro Cildo",c:"Mesas",m:"Tampo de vidro fundido pigmentado, com pés em cerâmica esmaltada.",p:31800,d:"~95 × 95 × 32 cm"},
  {h:"mesa-de-apoio-eto",t:"Mesa de apoio Eto",c:"Mesas",m:"Estrutura de madeira maciça, com tampo em mosaico de madrepérola.",p:17200,d:"~60 × 60 × 50 cm"},
  {h:"luminaria-naz",t:"Luminária Naz",c:"Luminárias",m:"Base de aço fundido, e cúpula giratória de fibra de vidro laminada com papel coreano.",p:15980,d:"~35 × 35 × 170 cm"},
  {h:"estante-domino",t:"Estante Dominó",c:"Estantes",m:"Sistema componível de madeira maciça, com chapas modulares de aço inox.",p:0,d:"~240 × 25 × 120 cm"},
  {h:"mesa-de-jantar-leila",t:"Mesa de jantar Leila",c:"Mesas",m:"Estrutura de madeira maciça, com tampo em vidro laqueado.",p:72980,d:"~Ø 140 × 75 cm"},
  {h:"cadeira-maria",t:"Cadeira Maria",c:"Assentos",m:"Estofada, com estrutura de madeira maciça.",p:10200,d:"~50 × 55 × 80 cm"},
  {h:"pendente-naz",t:"Pendente Naz",c:"Luminárias",m:"Cúpula de fibra de vidro laminada com papel coreano.",p:13490,d:"~110 × 40 × 15 cm"},
- {h:"cadeira-556",t:"Cadeira 556",c:"Assentos",m:"Estrutura de madeira maciça, com assento estofado ou de percintas de couro.",p:14290,d:"~56 × 55 × 78 cm"},
+ {h:"cadeira-556",t:"Cadeira 556-A",c:"Assentos",m:"Estrutura de madeira maciça, com assento estofado ou de percintas de couro.",p:14290,d:"~56 × 55 × 78 cm"},
  {h:"luminaria-ngoni",t:"Luminária Ngoni",c:"Luminárias",m:"Estrutura aramada envolvida por talagarça de algodão.",p:8990,d:"~25 × 25 × 160 cm"},
  {h:"sofa-catedral",t:"Sofá Catedral",c:"Assentos",m:"Estofado, com pés de madeira maciça.",p:68990,d:"~230 × 95 × 70 cm"},
  {h:"mesa-carnivora",t:"Mesa de apoio Carnívora",c:"Mesas",m:"Conjunto de duas peças, produzido de madeira maciça.",p:19100,d:"~90 × 60 × 45 cm"},
@@ -349,7 +348,7 @@ function sofaCanoa(x,z,ry){ const g=group(x,z,ry); const w=2.4,d=.95;
   for(const i of [0,1,2]) rbox(.6,.1,.5,.04,M.linhoCinza,-.75+i*.75,.57,.1,g);        // almofadas de assento
   return pickable(g,"sofa-canoa","Sofá Canoa"); }
 function mesaCildo(x,z,ry){ const g=group(x,z,ry); rbox(.95,.028,.95,.012,M.vidroAmbar,0,.31,0,g);
-  for(const [a,b] of [[-.3,-.3],[.3,-.25],[0,.32]]) cyl(.07,.07,.29,M.ceramica,a,.145,b,g,20); return pickable(g,"mesa-cildo","Mesa Cildo"); }
+  for(const [a,b] of [[-.3,-.3],[.3,-.25],[0,.32]]) cyl(.07,.07,.29,M.ceramica,a,.145,b,g,20); return pickable(g,"mesa-cildo","Mesa de centro Cildo"); }
 function mesaEto(x,z,ry){ const g=group(x,z,ry); const s=new THREE.Shape(); s.moveTo(-.32,-.2); s.lineTo(.32,-.2); s.quadraticCurveTo(.34,0,.06,.34); s.quadraticCurveTo(0,.38,-.06,.34); s.quadraticCurveTo(-.34,0,-.32,-.2);
   const top=new THREE.ExtrudeGeometry(s,{depth:.03,bevelEnabled:false}); top.rotateX(Math.PI/2); mesh(top,M.madreperola,0,.5,0,g); const rim=new THREE.ExtrudeGeometry(s,{depth:.05,bevelEnabled:false}); rim.rotateX(Math.PI/2); mesh(rim,M.madeira,0,.47,0,g).scale.set(1.04,1,1.04);
   for(const [a,b] of [[-.24,-.12],[.24,-.12],[0,.24]]) box(.07,.47,.07,M.madeira,a,.235,b,g); return pickable(g,"mesa-de-apoio-eto","Mesa de apoio Eto"); }
@@ -364,7 +363,7 @@ function cadeiraMaria(x,z,ry){ const g=group(x,z,ry); for(const [sx,sz] of [[-1,
   box(.48,.04,.5,M.madeiraClara,0,.42,0,g); rbox(.44,.08,.46,.015,M.boucleNeve,0,.48,0,g); rbox(.46,.24,.07,.03,M.boucleNeve,0,.7,-.24,g); return pickable(g,"cadeira-maria","Cadeira Maria"); }
 function cadeira556(x,z,ry){ const g=group(x,z,ry); for(const [sx,sz] of [[-1,-1],[1,-1],[-1,1],[1,1]]) box(.035,sz<0?.76:.44,.035,M.madeiraEscura,sx*.26,sz<0?.38:.22,sz*.26,g);
   box(.56,.03,.55,M.madeiraEscura,0,.43,0,g); for(let i=0;i<6;i++) box(.5,.012,.05,M.couro,0,.45,-.21+i*.085,g); box(.56,.07,.03,M.madeiraEscura,0,.72,-.26,g);
-  for(const s of [-1,1]){ box(.035,.03,.5,M.madeiraEscura,s*.26,.64,0,g); box(.035,.2,.035,M.madeiraEscura,s*.26,.54,.24,g); } return pickable(g,"cadeira-556","Cadeira 556"); }
+  for(const s of [-1,1]){ box(.035,.03,.5,M.madeiraEscura,s*.26,.64,0,g); box(.035,.2,.035,M.madeiraEscura,s*.26,.54,.24,g); } return pickable(g,"cadeira-556","Cadeira 556-A"); }
 function luminariaNgoni(x,z){ const g=group(x,z,0); const b=mesh(new THREE.BoxGeometry(.25,1.5,.25),M.papel,0,.82,0,g); for(const [a,c] of [[-1,-1],[1,-1],[-1,1],[1,1]]) cyl(.003,.003,1.62,M.preto,a*.13,.81,c*.13,g,6);
   const l=new THREE.PointLight("#FFE6B0",1.8,4,2); l.position.set(0,.9,0); g.add(l); return pickable(g,"luminaria-ngoni","Luminária Ngoni"); }
 function sofaCatedral(x,z,ry){ const g=group(x,z,ry); const w=2.3,d=.95; rbox(w,.4,d,.17,M.linhoAreia,0,.33,0,g); rbox(w-.1,.34,.3,.15,M.linhoAreia,0,.62,-d/2+.18,g);
@@ -481,18 +480,18 @@ function cardPeca(p){
     <p>${p.m}</p>
     ${price}
     <div class="kv"><span>Medidas${p.d.startsWith("~")?" (estimadas)":""}</span><b>${p.d.replace("~","")}</b></div>
-    <div class="kv"><span>Na loja</span><b>${placed?"exposta na abertura":"sob encomenda"}</b></div>
+    <div class="kv"><span>Na loja</span><b>${placed?"exposta a partir de 05.11":"sob encomenda"}</b></div>
   </div>
-  <div class="acts"><a href="${SITE}${p.h}" target="_blank" rel="noopener">[Ver no site]</a><a href="${WA}${encodeURIComponent(p.t)}" target="_blank" rel="noopener">[Falar no WhatsApp]</a><button id="c-ant">[Anterior]</button><button id="c-prox">[Próxima]</button></div>`; }
+  <div class="acts"><a href="${SITE}${p.h}" target="_blank" rel="noopener">[Ver no site]</a><a href="${WA}${encodeURIComponent(p.t)}" target="_blank" rel="noopener">[Conversar]</a><button id="c-ant">[Anterior]</button><button id="c-prox">[Próxima]</button></div>`; }
 
 const ORDER=Object.keys(PLACED);
 function open(handle,instant){
   if(handle==="sobre"){ state={page:"sobre"}; setPressed("sobre"); flyTo({pos:new THREE.Vector3(-.75,1.5,-.55),tgt:new THREE.Vector3(-HW,1.5,-1.85)},instant);
-    showCard(`<div class="text"><div class="cat">Sobre</div><h2>Menos do mesmo.</h2><p>Estúdio de São Paulo que desenha e faz móveis, luminárias e peças fixas. Madeira maciça, metal fundido, vidro e cerâmica, com acabamento manual. Tudo sob encomenda, com prazo.</p><p>A loja abre em 05.11 na Alameda Franca 1332, casa 04, nos Jardins.</p></div><div class="acts"><a href="https://mymore.design/pages/sobre" target="_blank" rel="noopener">[Ler no site]</a><a href="https://www.instagram.com/more.mymore/" target="_blank" rel="noopener">[Instagram]</a></div>`); return; }
+    showCard(`<div class="text"><div class="cat">Sobre</div><h2>Menos do mesmo.</h2><p>Desenhamos e fazemos móveis, luminárias e peças fixas em São Paulo. Madeira maciça, metal fundido, vidro e cerâmica. Acabamento à mão. Tudo sob encomenda, com prazo.</p><p>A madeira escurece. O latão ganha pátina. É para isso.</p><p>A loja abre em 05.11. Alameda Franca 1332, casa 04 · Jardins · São Paulo.</p></div><div class="acts"><a href="https://mymore.design/pages/sobre" target="_blank" rel="noopener">[Ler no site]</a><a href="https://www.instagram.com/more.mymore/" target="_blank" rel="noopener">[Instagram]</a></div>`); return; }
   if(handle==="loja"){ state={page:"loja"}; setPressed("loja"); flyTo(FR.loja,instant);
-    showCard(`<div class="text"><div class="cat">Loja</div><h2>Alameda Franca 1332, casa 04</h2><p>Jardins, São Paulo. Abre em 05.11.</p><div class="kv"><span>Salão</span><b>5,4 × 17 m, pé-direito 4,20</b></div><div class="kv"><span>Piso</span><b>concreto lapidado</b></div><div class="kv"><span>Mezanino</span><b>+4,44 m, loja 2 e escritório</b></div><p class="note">Construída a partir da planta executiva EX_A102_R03 (Atelier Peclat).</p></div><div class="acts"><a href="https://maps.google.com/?q=Alameda+Franca+1332+Jardins+São+Paulo" target="_blank" rel="noopener">[Como chegar]</a><a href="https://wa.me/5511912092600" target="_blank" rel="noopener">[WhatsApp]</a></div>`); return; }
+    showCard(`<div class="text"><div class="cat">Loja</div><h2>Uma loja para conversar.</h2><p>Alameda Franca 1332, casa 04 · Jardins · São Paulo. Abre em 05.11.</p><p>A conversa começa por uma pergunta. Para qual sala é? Conte da luz que ela tem.</p><div class="kv"><span>Salão</span><b>5,4 × 17 m, pé-direito 4,20 m</b></div><div class="kv"><span>Piso</span><b>concreto lapidado</b></div><div class="kv"><span>Luz</span><b>de dia, pela fachada de vidro</b></div><div class="kv"><span>Mezanino</span><b>+4,44 m, loja 2 e escritório</b></div><p class="note">Desenhada a partir da planta executiva do Atelier Peclat.</p></div><div class="acts"><a href="https://maps.google.com/?q=Alameda+Franca+1332+Jardins+São+Paulo" target="_blank" rel="noopener">[Como chegar]</a><a href="https://wa.me/5511912092600?text=${encodeURIComponent("Olá. Quero conversar sobre uma sala.")}" target="_blank" rel="noopener">[Conversar]</a></div>`); return; }
   if(handle==="pecas"){ state={page:"pecas"}; setPressed("pecas"); if(camera.position.distanceTo(HOME.pos)>.5&&!instant) flyTo(HOME,instant);
-    showCard(`<div class="text"><div class="cat">Peças</div><h2>Na loja</h2><ol>${PECAS.map(p=>`<li class="${PLACED[p.h]?"":"off"}"><button data-h="${p.h}">${p.t}</button><span>${PLACED[p.h]?(p.buy?"pronta entrega":"exposta"):"sob encomenda"}</span></li>`).join("")}</ol><p class="note">Clique numa peça exposta para vê-la de perto.</p></div>`);
+    showCard(`<div class="text"><div class="cat">Peças</div><h2>Na loja</h2><p>Cheio e vazio. Cada peça tem chão livre em volta.</p><ol>${PECAS.map(p=>`<li class="${PLACED[p.h]?"":"off"}"><button data-h="${p.h}">${p.t}</button><span>${PLACED[p.h]?(p.buy?"pronta entrega":"exposta"):"sob encomenda"}</span></li>`).join("")}</ol><p class="note">Clique numa peça exposta para vê-la de perto.</p></div>`);
     card.querySelectorAll("button[data-h]").forEach(b=>b.onclick=()=>open(b.dataset.h)); return; }
   const p=byH[handle]; if(!p) return; state={page:"peca",handle}; setPressed(null);
   const g=PLACED[handle]; if(g) flyTo(frameFor(g),instant);

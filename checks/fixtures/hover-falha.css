@@ -1,0 +1,5 @@
+/* R-MOTION-03 que FALHA: o que o site faz hoje */
+.product-card-grid__image { transition: opacity .2s cubic-bezier(.63, .01, 0, 1.01); }
+.product-card-grid__hover-image { position: absolute; top: 50%; left: 50%; width: 75%; transform: translate(-50%, -50%) scale(.8); opacity: 0; transition: transform .2s cubic-bezier(.63, .01, 0, 1.01), opacity .2s cubic-bezier(.63, .01, 0, 1.01); }
+.product-card-grid__image-wrapper:hover .product-card-grid__image { opacity: .6; }
+.product-card-grid__image-wrapper:hover .product-card-grid__hover-image { opacity: 1; transform: translate(-50%, -50%) scale(1); }

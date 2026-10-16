@@ -3,7 +3,7 @@
 //   - duração (a primeira medida de cada item; atraso não conta) é um token motion.duration:
 //     80, 140, 200, 300, 450, 500, 700, 800 ou 1000ms; 0s = troca instantânea, permitido. Qualquer outro valor falha
 //   - curva: ease (padrão do site), ease-out, ease-in-out, cubic-bezier dos tokens snap (0.63,0.01,0,1.01),
-//     out-expo (0.22,1,0.36,1) ou out-quint (0.23,1,0.32,1); linear só em contador (seletor/animação com counter, count,
+//     out-expo (0.22,1,0.36,1), out-quint (0.23,1,0.32,1) ou standard (0.25,0.1,0.25,1 = ease); linear só em contador (seletor/animação com counter, count,
 //     contador, ticker, marquee, progress) ou com duração 0. ease-in e qualquer outro cubic-bezier falham
 //   - "transition: all" falha
 //   - todo seletor animado tem fallback em @media (prefers-reduced-motion: reduce): regra "*" ou o mesmo seletor
@@ -27,7 +27,7 @@ function easingOk(e, ctx) {
   const m = e.match(/cubic-bezier\(([^)]*)\)/);
   if (!m) return false;
   const k = m[1].split(',').map((n) => +Number(n).toFixed(2)).join(',');
-  return ['0.22,1,0.36,1', '0.23,1,0.32,1', '0.63,0.01,0,1.01'].includes(k);
+  return ['0.22,1,0.36,1', '0.23,1,0.32,1', '0.63,0.01,0,1.01', '0.25,0.1,0.25,1'].includes(k);
 }
 for (const f of files) for (const r of cssOf(f)) {
   const reduced = /prefers-reduced-motion\s*:\s*reduce/.test(r.media);

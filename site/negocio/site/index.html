@@ -1,0 +1,255 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>A página da peça vende primeiro · O negócio do gosto · More</title>
+<meta name="description" content="Em sob encomenda, a página da peça faz o trabalho de quem atende antes da conversa começar. A da More é bonita e calada: não diz quando a peça chega, quanto custa entregar nem quem a fez.">
+<link rel="icon" href="data:,">
+<link rel="stylesheet" href="/nav/shell.css">
+<style>
+@font-face{font-family:"Muoto";src:url("/fonts/mr.otf") format("opentype");font-weight:400;font-display:swap}
+@font-face{font-family:"MuotoMono";src:url("/fonts/mm.woff2") format("woff2");font-weight:400;font-display:swap}
+/* Tokens do sistema de design da More (/sistema/brand/generated/tokens.css). Página de marca: paleta clara nos dois temas. */
+:root{
+  color-scheme:light;
+  --page:#E5E1DB; --ink:#2D211E; --muted:#5D554F; --label:#686868; --rule:#2D211E1A; --glass:#2D211E1A; --tile:#DDD7CF; --inverse:#2D211E; --on-inverse:#E5E1DB;
+  --muoto:"Muoto","DM Sans","Helvetica Neue",Arial,sans-serif;
+  --mono:"MuotoMono","Martian Mono",ui-monospace,Menlo,monospace;
+  --s-hair:6px; --s-sm:10px; --s-md:16px; --s-lg:20px; --s-xl:30px; --s-2xl:40px; --s-3xl:60px; --s-sec:96px;
+  --bar:35px; --barzone:75px;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--page:#E5E1DB;--ink:#2D211E;--muted:#5D554F;--rule:#2D211E1A;--glass:#2D211E1A;--tile:#DDD7CF;color-scheme:light}}
+:root[data-theme="dark"]{--page:#E5E1DB;--ink:#2D211E;--muted:#5D554F;--rule:#2D211E1A;--glass:#2D211E1A;--tile:#DDD7CF;color-scheme:light}
+*{box-sizing:border-box}
+html,body{height:100%}
+body{background:var(--page);color:var(--ink);font-family:var(--muoto);font-size:15px;line-height:1.47;-webkit-font-smoothing:antialiased;margin:0;overflow:hidden}
+/* A página rola dentro de .page; a barra vive numa faixa própria embaixo e nunca cobre texto. */
+.page{height:calc(100% - var(--barzone));overflow-y:auto;overflow-x:hidden;scroll-behavior:smooth;overscroll-behavior:contain;padding-bottom:106px}
+.wrap{max-width:1120px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:0 var(--s-3xl)}
+.mono{font-family:var(--mono);font-stretch:75%;font-size:13px}
+.muted{color:var(--muted)}
+.label{color:var(--label)}
+a{color:inherit;text-underline-offset:3px;text-decoration-thickness:1px;overflow-wrap:anywhere}
+a:hover{color:var(--muted)}
+h1,h2,h3{font-weight:400;text-wrap:balance;margin:0}
+h2{font-size:clamp(26px,3.4vw,32px);line-height:1.05;margin-bottom:var(--s-lg)}
+h3{font-size:15px;margin-bottom:4px}
+p{margin:0 0 var(--s-sm);max-width:64ch;text-wrap:pretty}
+section{padding-top:var(--s-sec)}
+.eyebrow{font-family:var(--mono);font-stretch:75%;font-size:13px;color:var(--label);margin-bottom:var(--s-md)}
+img{max-width:100%}
+b{font-weight:400}
+.tag{font-family:var(--mono);font-stretch:75%;font-size:11px;color:var(--label);white-space:nowrap}
+.tag.open{color:var(--ink)}
+.meas .tag{white-space:normal}
+
+/* abertura */
+.abre{padding-top:var(--s-3xl);display:grid;gap:var(--s-md)}
+.abre h1{font-size:clamp(34px,5.2vw,58px);line-height:.98;letter-spacing:-.01em;max-width:18ch}
+.abre .lede{font-size:clamp(18px,2vw,22px);line-height:1.25;margin:0;max-width:34ch}
+.meta{display:flex;flex-wrap:wrap;gap:6px var(--s-lg);margin-top:var(--s-sm)}
+
+/* tabelas */
+.meas{overflow-x:auto;margin-top:var(--s-lg)}
+.meas table{border-collapse:collapse;width:100%;min-width:760px;font-size:14px}
+.meas th{font-family:var(--mono);font-stretch:75%;font-weight:400;font-size:12px;color:var(--label);text-align:left;padding:8px;border-bottom:1px solid var(--ink)}
+.meas td{padding:10px 8px;border-bottom:1px solid var(--rule);vertical-align:top}
+.meas td:first-child{width:18%}
+.meas tr.grp td{font-family:var(--mono);font-stretch:75%;font-size:12px;color:var(--label);padding-top:var(--s-lg);border-bottom:1px solid var(--ink)}
+@media(max-width:700px){.meas table{min-width:0}.meas thead{display:none}.meas tr{display:block;padding:12px 0;border-bottom:1px solid var(--ink)}.meas tr.grp{padding:var(--s-lg) 0 4px}.meas td{display:block;padding:2px 0;border:0;width:auto!important}.meas td:first-child{font-size:16px;margin-bottom:4px}.meas td[data-l]::before{content:attr(data-l);display:block;font-family:var(--mono);font-stretch:75%;font-size:11px;color:var(--label);margin-top:6px}}
+
+/* riscos e perguntas */
+.lst{list-style:none;margin:var(--s-lg) 0 0;padding:0;border-top:1px solid var(--ink)}
+.lst li{display:grid;grid-template-columns:4ch minmax(0,1fr);gap:8px 16px;padding:12px 0;border-bottom:1px solid var(--rule);font-size:15px}
+.lst .n{font-family:var(--mono);font-stretch:75%;font-size:12px;color:var(--label);padding-top:3px}
+.lst p{margin:0;max-width:70ch}
+.lst p b{display:block}
+.lst .how{font-family:var(--mono);font-stretch:75%;font-size:12px;color:var(--label);margin-top:4px}
+
+/* barra, em faixa própria */
+.barzone{height:var(--barzone);position:relative;background:var(--page)}
+.bar{position:absolute;left:50%;transform:translateX(-50%);top:20px;width:420px;max-width:calc(100vw - 32px);height:var(--bar);background:var(--glass);backdrop-filter:blur(13px);-webkit-backdrop-filter:blur(13px);display:flex;align-items:center;justify-content:space-between;padding:0 var(--s-sm)}
+.bar svg{width:56px;height:auto;display:block;fill:currentColor}
+.bar nav{display:flex;gap:8px}
+.bar a{font-family:var(--mono);font-stretch:75%;font-size:13px;text-decoration:none;white-space:nowrap}
+.bar a:hover,.bar a:focus-visible{color:var(--muted)}
+@media(max-width:560px){.bar nav a{font-size:11px}.bar nav{gap:4px}}
+footer{background:var(--inverse);color:var(--on-inverse);margin-top:var(--s-sec)}
+footer .wrap{padding-block:var(--s-2xl)}
+footer p{font-size:13px;max-width:70ch}
+:focus-visible{outline:1px solid var(--ink);outline-offset:2px}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important;scroll-behavior:auto!important}}
+
+/* oitava seção: texto longo convertido do pacote */
+.doc{padding-top:var(--s-2xl)}
+.doc h2{padding-top:var(--s-3xl);scroll-margin-top:16px}
+.doc h3{font-size:clamp(17px,1.8vw,20px);line-height:1.2;margin:var(--s-xl) 0 var(--s-sm);scroll-margin-top:16px}
+.doc h4{font-family:var(--mono);font-stretch:75%;font-weight:400;font-size:12px;color:var(--label);margin:var(--s-lg) 0 6px}
+.doc p,.doc li{font-size:16px;line-height:1.5}
+.doc p{max-width:68ch}
+.doc strong{font-weight:400;color:var(--ink)}
+.doc p>strong:first-child{font-family:var(--mono);font-stretch:75%;font-size:13px;color:var(--label);margin-right:4px}
+.doc em{font-style:italic}
+.doc ul,.doc ol{max-width:68ch;padding-left:20px;margin:0 0 var(--s-md)}
+.doc li{margin-bottom:6px}
+.doc li>p{margin:0}
+.doc hr{border:0;border-top:1px solid var(--ink);margin:var(--s-2xl) 0 0}
+.doc blockquote{margin:var(--s-lg) 0;padding:var(--s-lg);background:var(--glass);max-width:68ch}
+.doc blockquote p{font-size:clamp(17px,1.8vw,20px);line-height:1.3;margin:0}
+.doc pre{font-family:var(--mono);font-stretch:75%;font-size:13px;line-height:1.5;background:var(--glass);padding:var(--s-md) var(--s-lg);overflow-x:auto;max-width:100%;white-space:pre}
+.doc code{font-family:var(--mono);font-stretch:75%;font-size:.88em}
+.doc .meas table{min-width:640px}
+.doc .meas td:first-child{width:auto}
+.doc .meas td,.doc .meas th{font-size:14px;line-height:1.4}
+.doc .meas th{font-size:12px}
+.doc .meas img{display:block;margin-bottom:6px}
+.doc img{height:auto;display:block;border:1px solid var(--rule)}
+.doc h3+p>a>img,.doc h3+p>img{margin:var(--s-sm) 0}
+.doc-atlas h3{padding-top:var(--s-xl);border-top:1px solid var(--ink)}
+@media(max-width:700px){.doc .meas table{min-width:0}.doc .meas thead{display:none}.doc .meas tr{display:block;padding:12px 0;border-bottom:1px solid var(--ink)}.doc .meas td{display:block;padding:2px 0;border:0}.doc .meas td:first-child{font-size:16px}}
+.mods{padding-top:var(--s-sec)}
+.mods .lst li{grid-template-columns:4ch minmax(0,1fr) auto;align-items:baseline}
+.mods .lst p{font-size:17px}
+.mods .lst a{text-decoration:none}
+.mods .lst a:hover{text-decoration:underline}
+.mods .lst .t{font-family:var(--mono);font-stretch:75%;font-size:12px;color:var(--label)}
+.mods li[aria-current] p a{text-decoration:underline}
+.mods li[aria-current] .n::after{content:" ·"}
+.doc hr+h3{border-top:0}
+
+</style>
+</head>
+<body><script src="/nav/shell.js" data-section="negocio" data-into=".page" data-foot="on" defer></script>
+<div class="page" id="page">
+<div class="wrap">
+
+<header class="abre" id="topo">
+  <div class="eyebrow">More · O negócio do gosto · Site e descoberta · 16.10.2026</div>
+  <h1>A página da peça vende primeiro</h1>
+  <p class="lede">Em sob encomenda, a página da peça faz o trabalho de quem atende antes da conversa começar. A da More é bonita e calada: não diz quando a peça chega, quanto custa entregar nem quem a fez.</p>
+  <div class="meta mono label"><span>Para Fred, Edu e Vitor</span><span>Pesquisa e recomendação, nada foi mudado no site da More</span><span>Leitura: 8 min</span></div>
+</header>
+
+<article class="doc doc-site">
+
+<p>O site foi lido em 16.10, no computador e no celular. O <a href="https://mymore.netlify.app/guia/" rel="noopener">guia</a> já propõe a ficha técnica e o selo de disponibilidade; abaixo está só o que esta leitura acrescenta.</p>
+<hr />
+<h2 id="1-a-primeira-visita">1. A primeira visita</h2>
+<p>Quem chega vê a animação do logo e a frase "Menos do mesmo.". A frase que explica o que a More é existe só em inglês, no menu e no rodapé. Nos primeiros dez segundos, ninguém fica sabendo que são móveis feitos em São Paulo, sob encomenda, desenhados por um arquiteto, com loja nos Jardins. Nenhuma página tem título.</p>
+<p>A FRAMA conta a casa de um fotógrafo e põe na legenda da foto a peça e um "SHOP" discreto. O que evitar é a Hem, que tranca a página inicial com a pergunta "privado ou profissional?".</p>
+<p>Para a More: uma linha em português depois da animação ("Móveis e objetos desenhados e feitos em São Paulo. Loja na Alameda Franca a partir de 05.11.") e um título em cada página. Teste: cinco segundos de página para oito pessoas de fora; passa se seis disserem o que é e onde fica.</p>
+<h2 id="2-a-grade-e-as-categorias">2. A grade e as categorias</h2>
+<p>Na grade, um banco e um sofá de 2,5 m ocupam o mesmo retângulo, sem medida, prazo ou selo, e a tomada e a Estante Dominó aparecem a R$ 1. A medida só surge no modo lista, como "39x142x128", sem unidade e sem dizer qual número é a altura. O "32x88x88" ao lado do nome da Mesa Cildo tem o mesmo problema.</p>
+<p>A Nordic Knots põe o prazo como selo em cada cartão ("2-4 WEEKS"), mas o preço do cartão vem sem unidade ("From $0.22") e parece de outro produto. É o erro do "39x142x128": um número que a arquiteta não sabe ler deixa de merecer confiança.</p>
+<p>As abas são Assentos, Estantes, Luminárias, Mesas e Fixos. Com 24 peças, cada entrada deve devolver de três a dez resultados, e Estantes tem uma peça só. "Fixos" não diz nada a quem não conhece a marca. A sugestão, a confirmar com a More, é juntar Estantes e Mesas em "Apoiar e guardar" e trocar "Fixos" por "Para a obra". No fim de cada peça cabem três a cinco conjuntos montados à mão ("esta peça aparece em…"), como as conexões do <a href="https://www.are.na/block/4215585" rel="noopener">Are.na</a> e o <a href="https://mymore.netlify.app/catalogo/" rel="noopener">catálogo associativo</a>.</p>
+<p>Para a More: "Sob encomenda · cerca de 120 dias" ou "Pronta entrega" no cartão, preço "a partir de" vindo da mesma fonte que a página da peça, e medida com unidade na ordem que o site já usa nos detalhes, A × L × P cm (altura, largura, profundidade).</p>
+<h2 id="3-a-página-da-peça-como-prova">3. A página da peça como prova</h2>
+<p>A Poltrona Leticia tem sete fotos, todas no tecido ferrugem, e escolher bouclê areia não muda a foto. As 144 combinações custam todas R$ 23.990. Não há prazo, entrega, garantia, cuidado, autoria, amostra nem bloco 2D/3D. No celular, a primeira tela não mostra o nome da peça, e a barra fixa cobre a linha "Tecido: Bouclê Areia". Na Mesa Cildo, a amostra "Azul Índigo" mostra o Berinjela, e o pedido sai com a cor errada.</p>
+<p>A The Invisible Collection junta medidas, origem, prazo de 16 semanas e ficha num bloco. Na Hem, o prazo pertence à variante: um acabamento sai em 15 semanas, outro em 1 a 7 dias, e o preço muda junto. A FRAMA mostra designer, ano, país de fabricação, desenho cotado e arquivos 2D/3D sem cadastro. O que evitar é o "fale conosco para saber o prazo" da Industry West, que devolve a incerteza à cliente.</p>
+<p>Para a More: um bloco de quatro linhas em toda peça, logo abaixo do preço.</p>
+<div class="meas"><table>
+<tbody>
+<tr class="odd">
+<td>Desenho</td>
+<td>[autor e ano, quando a More confirmar]</td>
+</tr>
+<tr class="even">
+<td>Feita</td>
+<td>em São Paulo, na marcenaria [nome, a confirmar]</td>
+</tr>
+<tr class="odd">
+<td>Prazo</td>
+<td>sob encomenda, cerca de 120 dias · amostra de tecido sob pedido (<a href="/negocio/arquitetos/">regras no 04</a>)</td>
+</tr>
+<tr class="even">
+<td>Entrega</td>
+<td>Grande SP: R$ [x], com montagem; outras cidades, cotada na conversa · medida embalada [A × L × P] cm: confira porta e elevador antes do sinal · garantia de [x] na estrutura [a confirmar]; o mínimo legal é de 90 dias</td>
+</tr>
+</tbody>
+</table></div>
+<p>Depois do bloco vêm a ficha em PDF e os blocos, com e-mail opcional e a pergunta "é escritório?". No celular, o nome sobe para cima da foto, e o fim da página ganha um espaço do tamanho da barra fixa. Para testar, pergunte a oito arquitetas "quem fez esta peça e quando ela chega?". Passa se sete acharem as duas respostas em menos de dez segundos.</p>
+<h2 id="4-a-conversa">4. A conversa</h2>
+<p>O botão "A partir de R$ 23.990" abre o WhatsApp com a peça e os materiais já escritos, e é o melhor recurso do site. Mas o número não leva o nome da marca, o clique não é contado e, logo depois do clique, a página apaga a seleção. Quem volta do WhatsApp encontra tudo zerado.</p>
+<p>A Nordic Knots oferece consulta "sem compra obrigatória" e resume os serviços numa linha: amostra, consulta, especialista. O que evitar é o aviso "você é arquiteta?" que a The Invisible Collection abre por cima da peça no celular.</p>
+<p>Para a More: o botão passa a dizer "Conversar sobre esta peça", com o preço ao lado e, abaixo, "abre o WhatsApp da More; resposta no mesmo dia útil". Ele guarda a seleção, leva o link da peça e conta o clique.</p>
+<h2 id="5-arquitetos-e-o-depois-da-compra">5. Arquitetos e o depois da compra</h2>
+<p>O site não oferece nada a quem especifica e, depois da compra, não diz nada. Os Termos estão em inglês, com um "[LINK]" por preencher. Na tela de pagamento, o aceite de novidades vem marcado e não há retirada na loja.</p>
+<p>A Nordic Knots aprova o cadastro profissional em 24 horas. O que evitar é o link da Industry West que leva ao site de outra marca.</p>
+<p>Para a More: uma página "Para arquitetos" no rodapé e na peça, sem portão (o desenho está no <a href="/negocio/arquitetos/">04</a>); Termos em português; aceite desmarcado; "Retirar na loja" para a tomada a partir de 05.11. Durante os 120 dias, quatro mensagens de marco saem à mão pelo WhatsApp Business, a partir de respostas prontas salvas no app, quando a oficina marca a etapa no quadro. Nada de integração paga antes de janeiro. A meta para arquitetos é uma só: 8 dos 15 escritórios convidados com pelo menos uma especificação em 90 dias.</p>
+<hr />
+<h2 id="cinco-jornadas-resumidas">Cinco jornadas, resumidas</h2>
+<div class="meas"><table>
+<thead>
+<tr class="header">
+<th>Jornada</th>
+<th>A pergunta</th>
+<th>O que falta</th>
+<th>O que se anota</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Compra a tomada online</td>
+<td>Serve na minha caixa?</td>
+<td>Foto instalada, troca em 7 dias</td>
+<td>A compra</td>
+</tr>
+<tr class="even">
+<td>Leticia, quer conversar antes</td>
+<td>Quando chega? Como fica no meu tecido?</td>
+<td>Prazo, foto da combinação, amostra</td>
+<td>Material, conversa, sinal</td>
+</tr>
+<tr class="odd">
+<td>Visita à loja</td>
+<td>Posso ver e sentar sem marcar?</td>
+<td>Endereço, horário e "pode vir sem marcar" no site e no Google Maps</td>
+<td>Quem está na loja anota nome e peça na lista</td>
+</tr>
+<tr class="even">
+<td>Arquiteta com várias peças</td>
+<td>Tem ficha? (ver <a href="/negocio/arquitetos/">04</a>)</td>
+<td>Ficha, blocos, lista por projeto</td>
+<td>Arquivos baixados, proposta</td>
+</tr>
+<tr class="odd">
+<td>Depois da compra</td>
+<td>Em que pé está?</td>
+<td>Marcos, cuidado, garantia</td>
+<td>Etapa, entrega</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="o-que-mudar-primeiro">O que mudar primeiro</h2>
+<ol type="1">
+<li><strong>Título em cada página, preço real, unidade nas medidas, a Cildo corrigida e, no celular, o nome acima da foto e o espaço para a barra.</strong> Antes de 05.11.</li>
+<li><strong>O bloco de quatro linhas em toda peça.</strong> Depois que a More confirmar autoria, frete e garantia.</li>
+<li><strong>O botão "Conversar sobre esta peça", contado e sem apagar a seleção.</strong> Horas.</li>
+<li><strong>Termos em português, aceite desmarcado, retirada na loja.</strong> Antes de 05.11, com o advogado (ver <a href="/negocio/ensaio/">01</a>).</li>
+<li><strong>Ficha e blocos das 24 peças.</strong> Depende das fichas.</li>
+</ol>
+<p>Ficam de fora, de propósito, o configurador, a realidade aumentada (87% de quem viu o botão não o usou, segundo a Baymard, com compradores dos EUA) e o filtro por ambiente. Na mesma hora de tema cabem três ajustes de acessibilidade: liberar o zoom no celular, permitir escolher amostras pelo teclado e escurecer o cinza do preço até o contraste passar de 4,5:1 (hoje, 4,27:1).</p>
+<hr />
+
+</article>
+
+<section class="mods" id="modulos" aria-label="Módulos desta seção"><div class="eyebrow">Os nove módulos</div><ol class="lst"><li><span class="n">00</span><p><a href="/negocio/">Comece aqui</a></p><span class="t">3 min</span></li><li><span class="n">01</span><p><a href="/negocio/ensaio/">O ensaio</a></p><span class="t">12 min</span></li><li aria-current="page"><span class="n">02</span><p><a href="/negocio/site/">Site e descoberta</a></p><span class="t">8 min</span></li><li><span class="n">03</span><p><a href="/negocio/carta/">Carta e relacionamento</a></p><span class="t">7 min</span></li><li><span class="n">04</span><p><a href="/negocio/arquitetos/">Arquitetos e venda assistida</a></p><span class="t">6 min</span></li><li><span class="n">05</span><p><a href="/negocio/casos/">Casos e escuta</a></p><span class="t">10 min</span></li><li><span class="n">06</span><p><a href="/negocio/plano/">Plano de 90 dias</a></p><span class="t">6 min</span></li><li><span class="n">07</span><p><a href="/negocio/evidencias/">Evidências</a></p><span class="t">consulta</span></li><li><span class="n">08</span><p><a href="/negocio/atlas/">Atlas visual</a></p><span class="t">5 min</span></li></ol></section>
+
+</div>
+
+<footer><div class="wrap">
+  <p>Pesquisa feita com IA em 16.10.2026, com três revisões independentes. Cada afirmação traz um rótulo: FATO, INFERÊNCIA, HIPÓTESE, RECOMENDAÇÃO ou NÃO SABEMOS. Nenhum número de venda, custo ou margem da More foi inventado. Feito com o sistema de design da More.</p>
+</div></footer>
+</div>
+
+<div class="barzone"><div class="bar" aria-label="Navegação">
+  <a href="/" aria-label="Índice"><svg viewBox="0 0 272 69" role="img" aria-label="More" xmlns:c2pa="http://c2pa.org/manifest"><metadata><c2pa:manifest>AAAWgmp1bWIAAAAeanVtZGMycGEAEQAQgAAAqgA4m3EDYzJwYQAAABZcanVtYgAAAEdqdW1kYzJtYQARABCAAACqADibcQN1cm46YzJwYTozMzg3YWIyYy1hMWM1LTQ5Y2EtYmY5Ny00N2RiMjI3YmYwZWYAAAADl2p1bWIAAAApanVtZGMyYXMAEQAQgAAAqgA4m3EDYzJwYS5hc3NlcnRpb25zAAAAALxqdW1iAAAARGp1bWRjYm9yABEAEIAAAKoAOJtxE2MycGEuaW5ncmVkaWVudC52MwAAAAAYYzJzaAvejDJIOSNzaPAwHj7kaAAAAABwY2JvcqNpZGM6Zm9ybWF0bWltYWdlL3N2Zyt4bWxqaW5zdGFuY2VJRHgseG1wOmlpZDphMmQ3YjNhMC04Mzk1LTQ0MTUtYWFhNS04ZWFhYWM2ZjQ1YjFscmVsYXRpb25zaGlwaHBhcmVudE9mAAAB4mp1bWIAAABBanVtZGNib3IAEQAQgAAAqgA4m3ETYzJwYS5hY3Rpb25zLnYyAAAAABhjMnNoAWo9OMK4bgwwZanS+OWsagAAAZljYm9yomdhY3Rpb25zgqJmYWN0aW9ua2MycGEub3BlbmVkanBhcmFtZXRlcnOha2luZ3JlZGllbnRzgaJjdXJseC1zZWxmI2p1bWJmPWMycGEuYXNzZXJ0aW9ucy9jMnBhLmluZ3JlZGllbnQudjNkaGFzaFggWSobncfM24/WN0aREmJtsgGGyNu3mVlNb3PF1vaOaZWkZmFjdGlvbngdY29tLmFudGhyb3BpYy5jbGF1ZGUucHJvdmlkZWRqcGFyYW1ldGVyc6F4H2NvbS5hbnRocm9waWMub3JpZ2luLWNvbmZpZGVuY2VndW5rbm93bmtkZXNjcmlwdGlvbnhmQ2xhdWRlIHByb3ZpZGVkIHRoaXMgZmlsZSBhdCB0aGUgcmVxdWVzdCBvZiBhIHVzZXIgYW5kIG1heSBoYXZlIGNyZWF0ZWQgb3IgbW9kaWZpZWQgdGhlIGZpbGUgY29udGVudHMubXNvZnR3YXJlQWdlbnShZG5hbWVmQ2xhdWRlcmFsbEFjdGlvbnNJbmNsdWRlZPUAAADIanVtYgAAAEBqdW1kY2JvcgARABCAAACqADibcRNjMnBhLmhhc2guZGF0YQAAAAAYYzJzaGE4ixWuWp1iLg6wekWrKwQAAACAY2JvcqVjYWxnZnNoYTI1NmNwYWRNAAAAAAAAAAAAAAAAAGRoYXNoWCBiHjqZX82DROgQX7UaMEWiMeHylF9MCDlPFIRlXx33amRuYW1lbmp1bWJmIG1hbmlmZXN0amV4Y2x1c2lvbnOBomVzdGFydBh2Zmxlbmd0aBkeBAAAAj5qdW1iAAAAJ2p1bWRjMmNsABEAEIAAAKoAOJtxA2MycGEuY2xhaW0udjIAAAACD2Nib3KlY2FsZ2ZzaGEyNTZpc2lnbmF0dXJleE1zZWxmI2p1bWJmPS9jMnBhL3VybjpjMnBhOjMzODdhYjJjLWExYzUtNDljYS1iZjk3LTQ3ZGIyMjdiZjBlZi9jMnBhLnNpZ25hdHVyZWppbnN0YW5jZUlEeCx4bXA6aWlkOmU1NGExMTEzLTcyMzItNGM5Zi1hMWIwLTdlOTZjMDQzZWYzYnJjcmVhdGVkX2Fzc2VydGlvbnODomN1cmx4LXNlbGYjanVtYmY9YzJwYS5hc3NlcnRpb25zL2MycGEuaW5ncmVkaWVudC52M2RoYXNoWCBZKhudx8zbj9Y3RpESYm2yAYbI27eZWU1vc8XW9o5plaJjdXJseCpzZWxmI2p1bWJmPWMycGEuYXNzZXJ0aW9ucy9jMnBhLmFjdGlvbnMudjJkaGFzaFgg7+iOlXzN9fsl5dtomZi9dr38n5qn+jROtSMCZ/zZgOeiY3VybHgpc2VsZiNqdW1iZj1jMnBhLmFzc2VydGlvbnMvYzJwYS5oYXNoLmRhdGFkaGFzaFgg5dtuer2DYxW6ttFffBa8QryKsKlQ4VcBq6Dmm04/y9x0Y2xhaW1fZ2VuZXJhdG9yX2luZm+jZG5hbWVvQW50aHJvcGljIEZpbGVzZ3ZlcnNpb25lMS4wLjBrc3BlY1ZlcnNpb25lMi40LjAAABA4anVtYgAAAChqdW1kYzJjcwARABCAAACqADibcQNjMnBhLnNpZ25hdHVyZQAAABAIY2JvctKEWQISogEmGCFZAgowggIGMIIBjaADAgECAhRA5aAK7sI50L64g/oGQgU9Z1UTADAKBggqhkjOPQQDAzBJMRcwFQYDVQQKEw5BbnRocm9waWMsIFBCQzEuMCwGA1UEAxMlQW50aHJvcGljIENvbnRlbnQgQ3JlZGVudGlhbHMgUm9vdCBDQTAeFw0yNjA4MDcxODQzNTZaFw0yODA4MDYxOTQzNTZaMEQxFzAVBgNVBAoTDkFudGhyb3BpYywgUEJDMSkwJwYDVQQDEyBBbnRocm9waWMgQ2xhdWRlIENvbnRlbnQgU2lnbmluZzBZMBMGByqGSM49AgEGCCqGSM49AwEHA0IABJh6CmvLUBgFFNU0vUKlOVtE6djd17L5SuwX0LemFisBM3dkd/3cyjxFA3Qo5S46fX0/ihY0VZ7mfb9KF703t5OjWDBWMA4GA1UdDwEB/wQEAwIHgDAVBgNVHSUEDjAMBgorBgEEAYPoXgIBMAwGA1UdEwEB/wQCMAAwHwYDVR0jBBgwFoAUzlHiBIFOZFsj+OPEz5o+nMHXXMIwCgYIKoZIzj0EAwMDZwAwZAIwMXMdFJ4BetLLVY7ORuE9noqbbAZOZn/aArXyTwFAZfKrPzxF2vPoJNf1+UCdg1XGAjBwX1zd9WGqYkqmL5SFqw1QySjr1zJfpJM9+1rdDwSPLMOPOjKuiXjoU/pUUeG9RwmhY3BhZFkNngAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPZYQLNSdZSJ1Lb4KyXNjcHFt+dMD/kTbfSuk+KST65sHWF18sFBsDHhJT9XVfg3laI//fXetfblD/peX/vE5v8r43Y=</c2pa:manifest></metadata><path fill="currentColor" d="M176.593 23.0819V1.91833H150.317V66.5948H176.593V44.2791H205.243V1.91833C189.55 1.91833 177.465 13.093 176.593 23.0875V23.0819Z"/><path fill="currentColor" d="M111.007 0C91.875 0 76.3403 15.3302 76.3403 34.223C76.3403 53.1159 91.8693 68.4461 111.007 68.4461C130.145 68.4461 145.742 53.1159 145.742 34.223C145.742 15.3302 130.213 0 111.007 0ZM111.007 42.4334C106.43 42.4334 102.69 38.8036 102.69 34.2174C102.69 29.6313 106.435 26.0015 111.007 26.0015C115.579 26.0015 119.398 29.6984 119.398 34.2174C119.398 38.7365 115.653 42.4334 111.007 42.4334Z"/><path fill="currentColor" d="M35.919 19.6423L26.2764 1.91833H0V66.5948H26.2764V44.212H45.4936V66.5948H71.77V1.91833H45.4936L35.919 19.6423Z"/><path fill="currentColor" d="M272.002 1.87909H211.835V24.7541V34.7487V44.1783V66.5612H272.002V44.7376H238.219L255.669 34.7151L238.236 24.7541H272.002V1.87909Z"/></svg></a>
+  <nav><a href="/">[Índice]</a><a href="/negocio/">[Início]</a><a href="/negocio/carta/">[Carta]</a></nav>
+</div></div>
+<script>
+document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener('click',e=>{const t=document.querySelector(decodeURIComponent(a.getAttribute('href')));if(t){e.preventDefault();t.scrollIntoView({block:'start'});history.replaceState(null,'',a.getAttribute('href'));}});});
+if(location.hash){const t=document.querySelector(decodeURIComponent(location.hash));if(t)t.scrollIntoView({block:'start'});}
+</script>
+</body>
+</html>

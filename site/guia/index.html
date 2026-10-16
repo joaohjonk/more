@@ -1,14 +1,15 @@
 <!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><link rel="icon" href="data:,"><style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style></head><body><script src="/nav/shell.js" data-section="guia" data-into=".page" data-foot="on" defer></script><title>Guia para o time · More</title>
 <meta name="claude:viewport-fit-sides" content="cover">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,600&family=Martian+Mono:wdth,wght@75,400&display=swap" rel="stylesheet">
 <style>
+@font-face{font-family:"Muoto";src:url("/fonts/mr.otf") format("opentype");font-weight:400;font-display:swap}
+@font-face{font-family:"MuotoMono";src:url("/fonts/mm.woff2") format("woff2");font-weight:400;font-display:swap}
+
 /* Tokens do sistema de design da More. Página de marca: paleta clara nos dois temas. */
 :root{
   color-scheme:light;
   --page:#E5E1DB; --ink:#2D211E; --muted:#5D554F; --rule:#2D211E1A; --glass:#2D211E1A; --tile:#DDD7CF; --white:#FFFFFF; --inverse:#2D211E; --on-inverse:#E5E1DB;
-  --muoto:"Muoto","DM Sans","Helvetica Neue",Arial,sans-serif;
-  --mono:"MuotoMono","Martian Mono",ui-monospace,Menlo,monospace;
+  --muoto:"Muoto","Helvetica Neue",Arial,sans-serif;
+  --mono:"MuotoMono",ui-monospace,Menlo,monospace;
   --s-hair:6px; --s-sm:10px; --s-md:16px; --s-lg:20px; --s-xl:30px; --s-2xl:40px; --s-3xl:60px; --s-sec:110px;
   --bar:35px; --barzone:75px;
 }
@@ -136,6 +137,9 @@ img{max-width:100%}
 .so ul{margin:0;padding-left:1.1em;font-size:14px}
 #depende h3{font-size:clamp(18px,2vw,22px);line-height:1.2;margin:var(--s-lg) 0 var(--s-sm)}
 .pr .ann b span{display:block}
+.ideias blockquote{margin:var(--s-sm) 0 0;font-size:14px}
+.ideias cite{display:block;font-family:var(--mono);font-stretch:75%;font-size:12px;color:var(--muted);font-style:normal;margin-top:4px}
+.grp{font-family:var(--mono);font-stretch:75%;font-size:12px;color:var(--muted);margin:var(--s-xl) 0 0}
 .ia{margin-top:var(--s-sec);border-top:1px solid var(--ink);padding-top:var(--s-md);font-size:14px}
 .ia p{max-width:80ch}
 
@@ -165,7 +169,7 @@ footer p{font-size:13px;max-width:70ch}
   </div>
   <figure>
     <img src="img/PDT_ASS_POL_LETICIA_01.jpg" alt="Poltrona Leticia em bouclê ferrugem, luz de estúdio">
-    <figcaption><span>Poltrona Leticia</span><span class="muted">81x71x89</span></figcaption>
+    <figcaption><span>Poltrona Leticia</span><span class="muted">81 × 71 × 89 cm</span></figcaption>
   </figure>
 </header>
 
@@ -209,7 +213,7 @@ footer p{font-size:13px;max-width:70ch}
       </ul></div>
     </article>
   </div>
-  <p style="margin-top:var(--s-lg)"><b>Para depois:</b> esconder o preço na grade. A conversa inclinou para isso, a evidência não; está em <a href="#crencas">[03]</a>. Duas escolhas de gosto ficam com o time, em <a href="#frentes">[01]</a>: o convite com ou sem a elipse e a cor da capa do livro. Preferimos sem a elipse e em Vermelho Jambo, o vermelho do sistema.</p>
+  <p style="margin-top:var(--s-lg)"><b>Para depois:</b> esconder o preço na grade. A conversa inclinou para isso, a evidência não; está em <a href="#crencas">[03]</a>. Duas escolhas de gosto ficam com o time, em <a href="#perguntas">[09]</a>: o convite com ou sem a elipse e a cor da capa do livro. Nossa sugestão é sem a elipse e em Vermelho Jambo, o vermelho do sistema.</p>
 </section>
 
 <section id="frentes">
@@ -235,7 +239,7 @@ footer p{font-size:13px;max-width:70ch}
       <span class="st">Exemplo · abertura</span>
       <h3>05.11: convite, livro, etiquetas</h3>
       <p>Nove peças. Cinco em sequência (aviso, convite, véspera, dia, obrigado) para story, post e WhatsApp. A5 para a gráfica. Vitrine com a marca em tamanho grande. O livro "Menos do mesmo" como objeto: 230×300 mm, 112 páginas. Etiquetas e lista com um QR por peça, que diz de qual peça veio a visita.</p>
-      <dl><dt>Feito com</dt><dd>Mestres em HTML com os tokens e os textos num arquivo à parte: trocar o texto e exportar refaz a peça nos três formatos. O livro é um objeto 3D posto numa foto real do Instagram.</dd><dt>Mostra</dt><dd>Que trocar o texto refaz as peças nos três formatos. Cronograma: revisão 17.10, aviso 20.10, gráfica 22.10, convite 28.10.</dd><dt>Se o time quiser</dt><dd>Duas escolhas de gosto, ditas em [00]: a elipse do convite e a cor da capa. Tudo é prova: faltam gráfica, lista de convidados e as nove legendas do livro.</dd></dl>
+      <dl><dt>Feito com</dt><dd>Mestres em HTML com os tokens e os textos num arquivo à parte: trocar o texto e exportar refaz a peça nos três formatos. O livro é um objeto 3D posto numa foto real do Instagram.</dd><dt>Mostra</dt><dd>Que trocar o texto refaz as peças nos três formatos. Cronograma: revisão 17.10, aviso 20.10, gráfica 22.10, convite 28.10.</dd><dt>Se o time quiser</dt><dd>Duas escolhas de gosto, em [09]: a elipse do convite e a cor da capa. Tudo é prova: faltam gráfica, lista de convidados e as nove legendas do livro.</dd></dl>
       <p class="lk"><a href="/abertura/#regras">Convite</a> · <a href="/abertura/#livro">Livro</a> · <a href="/abertura/#etiquetas">Etiquetas e lista</a> · <a href="/abertura/#cronograma">Cronograma</a></p>
     </article>
     <article>
@@ -256,16 +260,25 @@ footer p{font-size:13px;max-width:70ch}
       <span class="st">Exemplo · operação</span>
       <h3>Stack e automações</h3>
       <p>O que roda hoje no site e no checkout, lido de fora com prova. Oito riscos até 05.11, sete de graça. O que ligar depois, um por vez. E a jornada inteira da cliente, na página própria.</p>
-      <dl><dt>Feito com</dt><dd>Um navegador real, o código do site e o checkout até a tela de pagamento, sem fechar pedido. O que mora dentro do painel está marcado como em aberto.</dd><dt>Mostra</dt><dd>Que a automação cabe no bastidor sem a cliente ver. Na frente, o site continua a galeria que é.</dd><dt>Se o time quiser</dt><dd>Responder as seis perguntas da página e marcar quem faz cada linha da tabela "agora".</dd></dl>
+      <dl><dt>Feito com</dt><dd>Um navegador real, o código do site e o checkout até a tela de pagamento, sem fechar pedido. O que mora dentro do painel está marcado como em aberto.</dd><dt>Mostra</dt><dd>Que a automação cabe no bastidor sem a cliente ver. Na frente, o site continua calmo como é.</dd><dt>Se o time quiser</dt><dd>Responder as perguntas de [09] e marcar quem faz cada linha da tabela "agora".</dd></dl>
       <p class="lk"><a href="/stack/">Stack e automações</a> · <a href="/stack/jornada/">A jornada da cliente</a></p>
     </article>
     <article>
       <span class="st">Exemplo · catálogo</span>
       <h3>Catálogo associativo</h3>
       <p>As 24 peças por tipo, por ambiente, por material e por história. Uma peça pertence a vários caminhos ao mesmo tempo, e o site mostra por onde continuar. Direção para 2027, para conversar.</p>
-      <dl><dt>Feito com</dt><dd>Os dados do site e as quatro cenas de estúdio. Duas versões lado a lado: a associativa e a com navegação clássica.</dd><dt>Mostra</dt><dd>Que dá para explorar a More como uma galeria, sem grade de loja e sem parecer um grafo.</dd><dt>Se o time quiser</dt><dd>Ler o documento e dizer se a direção vale, e com que fotos. Nada disso muda o site de hoje.</dd></dl>
+      <dl><dt>Feito com</dt><dd>Os dados do site e as quatro cenas de estúdio. Duas versões lado a lado: a associativa e a com navegação clássica.</dd><dt>Mostra</dt><dd>Que dá para explorar a More com calma, sem grade de loja e sem parecer um grafo.</dd><dt>Se o time quiser</dt><dd>Ler o documento e dizer se a direção vale, e com que fotos. Nada disso muda o site de hoje.</dd></dl>
       <p class="lk"><a href="/catalogo/">Protótipo</a> · <a href="/catalogo/controle-a/">Versão com navegação clássica</a> · <a href="/catalogo/documento/">Documento</a></p>
     </article>
+  </div>
+
+  <h3 id="como-pensa" style="margin-top:var(--s-3xl);font-size:clamp(20px,2.4vw,24px)">Como o sistema pensa agora</h3>
+  <p>Nas entrevistas, o Fred volta sempre às mesmas ideias. Sugerimos que o sistema parta delas. Quatro já viraram princípio, cada um com uma regra que dá para conferir. Se alguma não servir, o time tira.</p>
+  <div class="base ideias">
+    <div><h3>O tempo fica</h3><p>Pátina, mancha de uso e madeira que escurece fazem parte da peça. A foto não retoca. Cada madeira diz como muda com a luz.</p><blockquote>“Vai sujar, eu vou assumir isso.”<cite>— Fred Péclat, Atelier Peclat, 06.2025</cite></blockquote></div>
+    <div><h3>Cheio e vazio</h3><p>A página alterna peça inteira, detalhe e respiro. Depois de dois blocos densos, vem um vazio: só fundo e uma linha.</p><blockquote>“A minha mão desenha o maciço, mas a intenção é criar um espaço vazio.”<cite>— Fred Péclat, Atelier Peclat</cite></blockquote></div>
+    <div><h3>Bem feito é premissa</h3><p>Cada peça mostra um detalhe de execução: encaixe, quina, solda. E quem fez, pelo nome, quando a More confirmar.</p><blockquote>“Para fazer sentido a gente fazer móvel, tem que estar bem feito. É premissa.”<cite>— Fred Péclat, Em Casa</cite></blockquote></div>
+    <div><h3>Conversa começa por pergunta</h3><p>A primeira mensagem pergunta pelo espaço e pela luz, não pelo preço. Por exemplo: “Para qual sala é? Conte da luz que ela tem.”</p><blockquote>“O projetar é uma conversa de perguntas e respostas. Cada decisão é uma resposta.”<cite>— Fred Péclat, Em Casa, 09.2025</cite></blockquote></div>
   </div>
 
 </section>
@@ -380,7 +393,7 @@ footer p{font-size:13px;max-width:70ch}
         <a href="https://mymore.netlify.app/"><span class="k">Endereço</span><h3>mymore.netlify.app</h3><span>Abre no índice das sete páginas: guia, sistema, coleção, loja 3D, abertura, stack e catálogo. O guia fica em /guia/.</span></a>
     <a href="plano.html"><span class="k">Anexo</span><h3>A lista completa: 28 melhorias</h3><span>Impacto, esforço, quando, quem, por quê e de onde veio cada nota.</span></a>
     <a href="pesquisa-lojas.html"><span class="k">Anexo</span><h3>As onze lojas, etapa por etapa</h3><span>O que cada loja premiada faz em cada etapa, com os links. Em inglês.</span></a>
-    <a href="revisoes.html"><span class="k">Anexo</span><h3>Revisões completas</h3><span>Material de trabalho. A crítica ao plano, o teste do site fluxo a fluxo e a revisão deste texto.</span></a>
+    <a href="revisoes.html"><span class="k">Anexo</span><h3>Revisões completas</h3><span>Material de trabalho. A crítica ao plano, o teste do site fluxo a fluxo e as duas crenças, com as evidências.</span></a>
     <a href="https://mymore.design"><span class="k">Site</span><h3>mymore.design</h3><span>O site atual, ainda com senha.</span></a>
     <a href="https://www.instagram.com/more.mymore"><span class="k">Instagram</span><h3>@more.mymore</h3><span>5,6 mil seguidores. 42 posts de dez/2025 a out/2026, mediana de 49 curtidas.</span></a>
     <a href="https://admin.shopify.com/"><span class="k">Loja</span><h3>Painel do Shopify</h3><span>Onde se troca foto, texto, preço, rótulo e título. É onde a sugestão 2 acontece.</span></a>
@@ -400,7 +413,7 @@ footer p{font-size:13px;max-width:70ch}
   <div class="base" style="margin-top:var(--s-lg)">
     <div><h3>O que roda hoje</h3><p>Shopify com tema sob medida, Pagar.me no checkout e WhatsApp num número pessoal. Nenhuma medição além da nativa. Preços de R$ 1 no catálogo.</p></div>
     <div><h3>O que fazer até 05.11</h3><p>Número da marca no WhatsApp Business, pixel do Meta, preços e nota fiscal da tomada. Depois, o Flow com etiquetas e o placar na planilha. Flow é o automatizador que já vem no Shopify.</p></div>
-    <div><h3>O que fica em aberto</h3><p>Seis perguntas para o time, no formato de ambição, público, canais, preparo e economia. As que a call já respondeu estão respondidas.</p></div>
+    <div><h3>O que fica em aberto</h3><p>As perguntas do stack estão em <a href="#perguntas">[09]</a>, junto com as outras. As que a call já respondeu estão respondidas na página do stack.</p></div>
   </div>
   <p class="muted" style="font-size:14px;margin-top:var(--s-lg)">A jornada inteira da cliente, do desejo à segunda peça. Em cada toque, o que é gente e o que é máquina: <a href="/stack/jornada/">a jornada</a>.</p>
 </section>
@@ -426,21 +439,68 @@ footer p{font-size:13px;max-width:70ch}
 <section id="perguntas">
   <div class="eyebrow">[09] Perguntas para o time</div>
   <h2>O que só a More responde.</h2>
-  <p>Doze perguntas, para conversar junto. Nenhuma trava a abertura. Cada uma muda uma parte deste guia quando for respondida. A resposta vale mais que qualquer sugestão aqui.</p>
-  <ol class="lst">
-    <li><span class="n">01</span><div>Preço na grade: "a partir de" ou escondido? Decidir depois das primeiras 50 conversas e da loja aberta.</div></li>
-    <li><span class="n">02</span><div>Captura: e-mail antes ou depois do WhatsApp? Confirmar os blocos 2D e 3D abertos, com e-mail opcional.</div></li>
-    <li><span class="n">03</span><div>Pré-venda de protótipo, com sinal e mês de entrega: sim, quando, e como fica o direito de arrependimento?</div></li>
-    <li><span class="n">04</span><div>O site é uma exceção ao guia de uso (preto quente, off-white, Muoto Mono), ou o guia manda? A tabela está em [11].</div></li>
-    <li><span class="n">05</span><div>Fontes: a Muoto normal tem licença para a web? O segundo domínio e o arquivo .otf servido hoje vão para a 205TF, a fundição que vende a Muoto.</div></li>
-    <li><span class="n">06</span><div>Quem fotografou a campanha e os stills, e o que o contrato cobre: site, redes, impresso, prazo.</div></li>
-    <li><span class="n">07</span><div>O que é sucesso em 30 dias: quantas tomadas, quantas conversas, quantos convidados na loja.</div></li>
-    <li><span class="n">08</span><div>Quem são as cem primeiras pessoas: a lista de escritórios, os convidados de 05.11, quem já comprou do ateliê.</div></li>
-    <li><span class="n">09</span><div>As duas ou três frases que o time repete em toda conversa. O nome do lugar: loja. Os nomes oficiais das peças e das cores.</div></li>
-    <li><span class="n">10</span><div>Catálogo por ambientes e fotos de projeto: direção para 2027 ou não, e com que rigor na escolha das fotos.</div></li>
-    <li><span class="n">11</span><div>Gente nas imagens: bastidores só no Instagram e no livro? Um vídeo institucional, um dia?</div></li>
-    <li><span class="n">12</span><div>Quem faz o quê até 05.11, com dia. A lista de [08] é a proposta.</div></li>
+  <p>Todas as perguntas abertas, num lugar só. Quase todas se respondem com uma palavra. Nenhuma trava a abertura. Cada resposta muda uma parte deste guia, e vale mais que qualquer sugestão aqui.</p>
+  <h3 class="grp">Marca e impresso</h3>
+  <ol class="lst" style="margin-top:var(--s-sm)">
+    <li><span class="n">01</span><div>A elipse da marca: entra no convite e no impresso, ou fica de fora?</div></li>
+    <li><span class="n">02</span><div>A capa do livro: Vermelho Jambo ou Amarelo Igaratá?</div></li>
+    <li><span class="n">03</span><div>O logo da etiqueta de pendurar: fica com 14 mm ou sobe para 18 mm?</div></li>
+    <li><span class="n">04</span><div>A Muoto tem licença para a web, também no segundo domínio?</div></li>
   </ol>
+  <h3 class="grp" id="discordam">Onde o guia de uso e o site discordam</h3>
+  <ol class="lst" style="margin-top:var(--s-sm)">
+    <li><span class="n">05</span><div>O site segue o guia de uso da More, ou é uma exceção combinada?</div></li>
+    <li><span class="n">06</span><div>Preto: quente, como no site (2D211E), ou puro, como no guia (K100)?</div></li>
+    <li><span class="n">07</span><div>Fundo: off-white, como no site, ou branco, como no guia?</div></li>
+    <li><span class="n">08</span><div>Cinza: quente (5D554F) ou neutro (434345)?</div></li>
+    <li><span class="n">09</span><div>Campos de cor: os cinco tons tirados das fotos ou as nove cores sazonais?</div></li>
+    <li><span class="n">10</span><div>Muoto Mono em preços, medidas e etiquetas: fica ou sai?</div></li>
+  </ol>
+  <h3 class="grp">Peças e etiquetas</h3>
+  <ol class="lst" style="margin-top:var(--s-sm)">
+    <li><span class="n">11</span><div>As medidas das peças estão conferidas? Vale escrever sempre L × P × A, como 81 × 71 × 89 cm?</div></li>
+    <li><span class="n">12</span><div>Os preços das etiquetas estão confirmados no Shopify? Sem isso, nada vai para impressão.</div></li>
+    <li><span class="n">13</span><div>“Feito por”: quais nomes de marcenaria e serralharia podem aparecer na ficha?</div></li>
+    <li><span class="n">14</span><div>Os nomes oficiais das peças e das cores são os do site?</div></li>
+  </ol>
+  <h3 class="grp">Fotos</h3>
+  <ol class="lst" style="margin-top:var(--s-sm)">
+    <li><span class="n">15</span><div>A fotógrafa é Manola ou Manoela Moura?</div></li>
+    <li><span class="n">16</span><div>O contrato das fotos cobre site, redes e impresso? Até quando?</div></li>
+    <li><span class="n">17</span><div>Luz da foto: sombra de janela, como hoje, ou luz sem sombra, como pede o guia?</div></li>
+    <li><span class="n">18</span><div>Uma sessão “luz da hora”, a mesma peça em três horas do dia: faz sentido?</div></li>
+    <li><span class="n">19</span><div>Dá para fotografar as amostras de madeira e tecido para a prancha de materiais?</div></li>
+    <li><span class="n">20</span><div>Gente nas imagens: só no Instagram e no livro?</div></li>
+    <li><span class="n">21</span><div>Catálogo por ambientes, com fotos de projeto: direção para 2027?</div></li>
+  </ol>
+  <h3 class="grp">Site e conversa</h3>
+  <ol class="lst" style="margin-top:var(--s-sm)">
+    <li><span class="n">22</span><div>Preço na grade: “a partir de” ou escondido? Pode esperar as primeiras 50 conversas.</div></li>
+    <li><span class="n">23</span><div>E-mail antes ou depois do WhatsApp? E os blocos 2D e 3D, abertos?</div></li>
+    <li><span class="n">24</span><div>Pré-venda de protótipo, com sinal: sim ou não?</div></li>
+    <li><span class="n">25</span><div>Programa para arquitetas, com reserva técnica escrita: sim ou não?</div></li>
+    <li><span class="n">26</span><div>Quais são as duas ou três frases que o time repete em toda conversa?</div></li>
+  </ol>
+  <h3 class="grp">Loja e números</h3>
+  <ol class="lst" style="margin-top:var(--s-sm)">
+    <li><span class="n">27</span><div>O que é sucesso em 30 dias: quantas tomadas, conversas e convidados?</div></li>
+    <li><span class="n">28</span><div>Quem são as cem primeiras pessoas: escritórios, convidados, clientes do ateliê?</div></li>
+    <li><span class="n">29</span><div>Nota fiscal da tomada e caixa da loja: quem cuida?</div></li>
+    <li><span class="n">30</span><div>Verba de anúncio da tomada: quanto por mês?</div></li>
+    <li><span class="n">31</span><div>Quem faz o quê até 05.11, e em que dia? A lista de [08] é a proposta.</div></li>
+  </ol>
+  <h3 class="grp" style="margin-bottom:0">O que ajudaria, se o time puder</h3>
+  <div class="dep">
+    <div><span class="k">depende de: acesso ao Shopify</span><p>Conferir impostos, apps instalados e o pixel do Meta. Sem isso, a sugestão 1 fica com o Vitor. E a medição começa sem o evento de clique.</p></div>
+    <div><span class="k">depende de: log de WhatsApp anonimizado</span><p>As conversas dos últimos meses, sem nomes. Reescreve a ordem das sugestões: mostra a primeira pergunta real e quantas conversas viram pedido.</p></div>
+    <div><span class="k">depende de: uma arquiteta de fora</span><p>Lê este resumo e a página da Leticia no celular. Depois conta o que entendeu.</p></div>
+    <div><span class="k">depende de: Meta Insights</span><p>Salvamentos e cliques por post dos últimos 90 dias. Diz o que a loja deve ter à vista em 05.11.</p></div>
+    <div><span class="k">depende de: gravação da call</span><p>Com o áudio, o tom e as hesitações entram na leitura das duas crenças de [03].</p></div>
+    <div><span class="k">depende de: gráfica e preço</span><p>Convite, livro e etiquetas já saem com 3 mm de sangria. Falta a prova de cor da gráfica e o PDF final. O preço real da TOM.01 também falta: hoje está R$ 1.</p></div>
+    <div><span class="k">mais tarde, com o time: a loja em 3D</span><p>Hoje é prova do possível. Vira planta fiel com quatro coisas. Modelos 3D das peças, o corte 301_A, fotos da obra, a lista do 05.11.</p></div>
+    <div><span class="k">uma ideia para depois: o catálogo associativo</span><p>Uma peça pertence, ao mesmo tempo, a uma coleção, uma casa, um material e uma história. É direção sugerida, não compromisso; nada muda no site de hoje. <a href="/catalogo/documento/">O documento</a> termina com as perguntas que só o time responde.</p></div>
+    <div><span class="k">a prova real: 05.11</span><p>Se alguns dos sete ajustes da sugestão 1 estiverem feitos, este guia serviu. Se nenhum fizer sentido, também vale saber.</p></div>
+  </div>
 </section>
 
 <section id="lancamento">
@@ -455,53 +515,16 @@ footer p{font-size:13px;max-width:70ch}
     <li><span class="n">05</span><div>Quatro mensagens por etapa (confirmado, em produção, acabamento, entrega) e a proposta em 24 h, como modelos de texto.</div></li>
     <li><span class="n">06</span><div>"Avise-me" na tomada sem estoque. Visita com hora marcada pela agenda do Google, com o link no site.</div></li>
   </ol>
-</section>
-
-<section id="depende">
-  <div class="eyebrow">[11] Com o time da More, depois</div>
-  <h2>O que fica para fazer junto.</h2>
-  <h3 id="discordam">Onde o guia e o site discordam</h3>
-  <p>O guia de uso chegou em 15.10. Em seis pontos, ele e o site medido não batem. O sistema segue como está até o time escolher.</p>
-  <div class="meas" role="region" aria-label="Onde o guia e o site discordam" tabindex="0"><table>
-    <thead><tr><th>O quê</th><th>No site, medido</th><th>No guia da More</th><th>Para o time</th></tr></thead>
-    <tbody>
-      <tr><td>Preto</td><td data-l="No site, medido">Quente, hex 2D211E</td><td data-l="No guia da More">Preto puro, K100</td><td data-l="Para o time">Qual vale?</td></tr>
-      <tr><td>Fundo</td><td data-l="No site, medido">Off-white, hex E5E1DB</td><td data-l="No guia da More">Branco</td><td data-l="Para o time">Qual vale?</td></tr>
-      <tr><td>Cinza</td><td data-l="No site, medido">Quente, hex 5D554F, no rodapé</td><td data-l="No guia da More">Neutro, hex 434345</td><td data-l="Para o time">Qual vale?</td></tr>
-      <tr><td>Campos de cor</td><td data-l="No site, medido">Cinco tons tirados das fotos, com nomes nossos</td><td data-l="No guia da More">Nove cores sazonais com Pantone, sem nome</td><td data-l="Para o time">Qual vale?</td></tr>
-      <tr><td>Luz da foto</td><td data-l="No site, medido">Sombra de janela e fundo quase preto</td><td data-l="No guia da More">Sem sombra de janela, sem luz dramática</td><td data-l="Para o time">Qual vale?</td></tr>
-      <tr><td>Muoto Mono</td><td data-l="No site, medido">Preços, medidas e etiquetas</td><td data-l="No guia da More">Não aparece. O guia cita só a Muoto Regular</td><td data-l="Para o time">Qual vale?</td></tr>
-    </tbody>
-  </table></div>
-  <div class="so">
-    <span class="k">Só a More responde</span>
-    <ul>
-      <li>A Muoto normal tem licença para a web? Vieram as fontes, sem o recibo dessa parte.</li>
-      <li>Quem fotografou, e onde as fotos podem sair: impresso, redes, site?</li>
-      <li>O site é uma exceção ao guia, escrita e combinada? Ou o guia vale para ele também?</li>
-    </ul>
-  </div>
-  <div class="dep">
-    <div><span class="k">depende de: acesso ao Shopify</span><p>Conferir impostos, apps instalados e o pixel do Meta. Sem isso, a sugestão 1 fica com o Vitor. E a medição começa sem o evento de clique.</p></div>
-    <div><span class="k">depende de: log de WhatsApp anonimizado</span><p>As conversas dos últimos meses, sem nomes. Reescreve a ordem das sugestões: mostra a primeira pergunta real e quantas conversas viram pedido.</p></div>
-    <div><span class="k">depende de: uma arquiteta de fora</span><p>Lê este resumo e a página da Leticia no celular. Depois conta o que entendeu.</p></div>
-    <div><span class="k">depende de: Meta Insights</span><p>Salvamentos e cliques por post dos últimos 90 dias. Diz o que a loja deve ter à vista em 05.11.</p></div>
-    <div><span class="k">depende de: gravação da call</span><p>Com o áudio, o tom e as hesitações entram na leitura das duas crenças de [03].</p></div>
-    <div><span class="k">depende de: gráfica e preço</span><p>Convite, livro e etiquetas seguem sem sangria até a gráfica confirmar as cores. O preço real da TOM.01 também falta: hoje está R$ 1.</p></div>
-    <div><span class="k">mais tarde, com o time: a loja em 3D</span><p>Hoje é prova do possível. Vira planta fiel com quatro coisas. Modelos 3D das peças, o corte 301_A, fotos da obra, a lista do 05.11.</p></div>
-    <div><span class="k">uma ideia para depois: o catálogo associativo</span><p>Uma peça pertence, ao mesmo tempo, a uma coleção, uma casa, um material e uma história. É direção sugerida, não compromisso; nada muda no site de hoje. <a href="/catalogo/documento/">O documento</a> termina com as perguntas que só o time responde.</p></div>
-    <div><span class="k">bom ter: programa para arquitetos</span><p>Condição de RT escrita: a reserva técnica, comissão da arquiteta. Contato direto com Fred e Edu. Lista de 30 a 50 escritórios. Fica para depois da abertura.</p></div>
-    <div><span class="k">a prova real: 05.11</span><p>Se alguns dos sete ajustes da sugestão 1 estiverem feitos, este guia serviu. Se nenhum fizer sentido, também vale saber.</p></div>
-  </div>
   <div class="ia">
     <p><b>Feito com IA:</b> a leitura do site e das lojas, os prints, o teste do site. As páginas de exemplo e as revisões deste texto. <b>Opinião de pessoa:</b> as três sugestões, as prioridades, a ordem. O que entrou e o que saiu. Escolhas do JJ.</p>
   </div>
 </section>
 
+
 </div>
 
 <footer><div class="wrap">
-  <p>Feito com o sistema de design da More. Tokens medidos de mymore.design e do Instagram em 15.10.2026. Fontes desta página: DM Sans e Martian Mono, no lugar da Muoto e da Muoto Mono.</p>
+  <p>Feito com o sistema de design da More. Tokens medidos de mymore.design e do Instagram em 15.10.2026. Fontes desta página: Muoto e Muoto Mono.</p>
 </div></footer>
 </div>
 

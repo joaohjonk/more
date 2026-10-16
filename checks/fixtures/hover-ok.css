@@ -1,0 +1,8 @@
+/* R-MOTION-03 que PASSA: fusão no quadro de hoje, sem escala */
+.product-card .ph img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transition: opacity var(--motion-role-hover-swap-duration) var(--motion-role-hover-swap-easing); }
+.product-card .ph img.detalhe { inset: auto; top: 50%; left: 50%; width: 75%; height: auto; transform: translate(-50%, -50%); opacity: 0; }
+.product-card:hover .ph img.peca, .product-card:focus-within .ph img.peca { opacity: .6; }
+.product-card:hover .ph img.detalhe, .product-card:focus-within .ph img.detalhe { opacity: 1; }
+.product-card-grid__hover-image { opacity: 0; transition: opacity .3s ease-out; transform: none; }
+.product-card-grid__wrapper:hover .product-card-grid__hover-image { opacity: 1; }
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; } }

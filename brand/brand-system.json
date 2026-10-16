@@ -456,12 +456,18 @@
   "logo_marks": {
    "wordmark": {
     "last_updated": "2026-10-15",
-    "value": "Custom geometric wordmark 'MORE': heavy blocky letters, the O a thick ring, the R cut as a quarter-round. Official file: assets/official/more-wordmark.svg (from the site's inline SVG). Colour: preto on light, branco/cinza-claro on dark.",
+    "value": "Custom geometric wordmark 'MORE' (\"composição tipográfica geométrica\", guia de uso p. 3): heavy blocky letters, the O a thick ring, the R cut as a quarter-round. Designed by Manoela Moura and Anna's, 2025. Official file: assets/official/more-wordmark.svg, the brand book's 'More • logo preto.svg' (481×123); the site's copy (272×69, same drawing) is in assets/official/legado/. The guide allows only black, grey #434345 or white; minimum 18 mm in print, 120 px on screen (p. 5). Colour in pieces: preto on light, branco/cinza-claro on dark.",
     "input_class": "FACT",
     "sources": [
      {
       "kind": "official_asset",
-      "ref": "assets/official/more-wordmark.svg (inline SVG on mymore.design)",
+      "ref": "marca-oficial/logo/More • logo preto.svg (Drive 1jiXT1KojF5-Ch9opDxh7Yy1rct7XVFBz) and guia de uso p. 3-6",
+      "captured_at": "2026-10-15",
+      "by": "material-oficial"
+     },
+     {
+      "kind": "official_asset",
+      "ref": "assets/official/legado/more-wordmark-site.svg (inline SVG on mymore.design)",
       "captured_at": "2026-10-15",
       "by": "site-capture"
      }
@@ -845,7 +851,7 @@
    },
    "product_card": {
     "last_updated": "2026-10-15",
-    "value": "Name left, price right in cinza-medio under a 3:4 image; hover swaps to a smaller centred second image (scale .8 to 1).",
+    "value": "Name left, price right in cinza-medio under a 3:4 image; hover today swaps to a smaller centred second image (75% of the frame, scale .8 to 1, 200ms snap, first image dimmed to 60%). Proposed: same frame, 300ms ease opacity crossfade, no scale (R-MOTION-03).",
     "input_class": "FACT",
     "sources": [
      {
@@ -897,7 +903,7 @@
   "motion": {
    "character": {
     "last_updated": "2026-10-15",
-    "value": "Slow, soft and short: fades and grows of 0.2-0.8s, ease-out curves (.22,1,.36,1); hover swaps on a snappy (.63,.01,0,1.01). Respects prefers-reduced-motion.",
+    "value": "Slow, soft and short: fades of 0.3-0.8s on ease, catalog rise 24px on out-expo 450ms, panels 500ms. One thing moves at a time. Today's card hover is the exception (200ms snap, scale .8 to 1, first photo dimmed to 60%); proposed R-MOTION-03 replaces it with a 300ms opacity crossfade. Respects prefers-reduced-motion.",
     "input_class": "FACT",
     "sources": [
      {
@@ -926,6 +932,38 @@
     "confidence": "medium",
     "permanence": "core",
     "approval": "inferred"
+   },
+   "hover_swap": {
+    "last_updated": "2026-10-15",
+    "value": "Proposed: second photo of the card keeps today's frame (75% of the 3:4, centred, first photo dimmed to 60%) and enters by opacity crossfade, 300ms ease (motion.role.hover-swap); nothing scales, name and price stay. Measured: The Row 300ms ease, Jacquemus 300ms ease, Kann 250ms, Massproductions 400ms, Vipp 300ms, Knoll 600ms with scale .95, Norr11 no swap. Demo: demos/hover-foto/index.html.",
+    "input_class": "SOFT_CONSTRAINT",
+    "sources": [
+     {
+      "kind": "live_brand_behavior",
+      "ref": "https://mymore.design (theme t/7, password-protected preview), measured with Playwright 2026-10-15; references The Row, Jacquemus, Knoll, Norr11, Kann, Massproductions, Vipp measured the same day",
+      "captured_at": "2026-10-15",
+      "by": "motion-thread"
+     }
+    ],
+    "confidence": "high",
+    "permanence": "core",
+    "approval": "provisional"
+   },
+   "interaction_principles": {
+    "last_updated": "2026-10-15",
+    "value": "Proposed R-MOTION-04 (from section 8 of the associative-catalogue dossier): no scroll hijacking, no theatrical loader, no custom cursor as navigation, no autoplay carousel; whatever hover reveals also opens on focus, because touch has no hover; reduced-motion fallback on every page.",
+    "input_class": "SOFT_CONSTRAINT",
+    "sources": [
+     {
+      "kind": "external_reference",
+      "ref": "dossiê MORE — An Associative Catalogue, seção 8 (2026-10-15)",
+      "captured_at": "2026-10-15",
+      "by": "motion-thread"
+     }
+    ],
+    "confidence": "medium",
+    "permanence": "core",
+    "approval": "provisional"
    }
   },
   "sound": {},

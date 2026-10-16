@@ -1,7 +1,8 @@
 #!/usr/bin/env node
 // R-GEN-01: a marca MORE só entra com os paths oficiais, inline. Em SVG/HTML:
 //   - <svg>/<g> inline de marca (class/id com logo, wordmark, marca) tem exatamente os mesmos paths de
-//     assets/official/more-wordmark.svg, more-wordmark-currentcolor.svg ou more-wordmark-small.svg (coordenadas a 0,1)
+//     assets/official/more-wordmark*.svg (o arquivo oficial do brand book, 481×123) ou de assets/official/legado/
+//     (cópia do site, 272×69, mesmo desenho; aceito para peças feitas antes de 15.10) - coordenadas a 0,1
 //   - os paths usam fill="currentColor" (ou nenhum fill): a cor vem do CSS/atributo do elemento, a partir dos tokens
 //   - <img>/<image>/<use> de marca falha, mesmo apontando para o arquivo oficial: <img> não herda currentColor e o
 //     more-wordmark.svg sai #000 (quebra R-COLOR-02)
@@ -13,7 +14,8 @@ import path from 'node:path';
 import { argsOrUsage, finish, REPO } from './lib.mjs';
 
 const files = argsOrUsage('node checks/wordmark.mjs <arquivo.svg|.html ...>');
-const OFFICIAL = ['more-wordmark.svg', 'more-wordmark-currentcolor.svg', 'more-wordmark-small.svg'];
+const OFFICIAL = ['more-wordmark.svg', 'more-wordmark-currentcolor.svg', 'more-wordmark-small.svg', 'more-wordmark-cinza.svg', 'more-wordmark-branco.svg',
+  'legado/more-wordmark-site.svg', 'legado/more-wordmark-site-currentcolor.svg', 'legado/more-wordmark-site-small.svg'];
 const norm = (d) => d.replace(/-?\d*\.?\d+(e-?\d+)?/gi, (n) => (Math.round(parseFloat(n) * 10) / 10).toString()).replace(/\s+/g, ' ').trim();
 const pathsOf = (svg) => [...svg.matchAll(/<path\b[^>]*\sd\s*=\s*"([^"]+)"/gi)].map((m) => norm(m[1])).sort().join('|');
 const official = OFFICIAL.map((f) => pathsOf(fs.readFileSync(path.join(REPO, 'assets/official', f), 'utf8')));
@@ -22,7 +24,7 @@ const failures = [];
 
 for (const f of files) {
   const src = fs.readFileSync(f, 'utf8');
-  if (OFFICIAL.includes(path.basename(f))) continue;
+  if (path.resolve(f).startsWith(path.join(REPO, 'assets/official') + path.sep)) continue;
   for (const m of src.matchAll(/<(img|image|use)\b([^>]*)>/gi)) {
     const href = (m[2].match(/(?:xlink:)?(?:href|src)\s*=\s*"([^"]*)"/i) || [, ''])[1];
     const isMark = MARK.test(m[2]) || /wordmark|logo/i.test(href);

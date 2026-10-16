@@ -15,9 +15,9 @@
   },
   {
    "grupo": "Logo em escalas",
-   "item": "S = 60px na tela / 18mm no papel",
-   "origin": "observada na marca (tela) · inventada por nós (papel)",
-   "evidence": "menu__brand do site mede 60×16px; nenhum uso impresso pequeno encontrado"
+   "item": "S = 120 px na tela / 18 mm no papel (mínimo do guia, p. 5)",
+   "origin": "guia de uso",
+   "evidence": "guia de uso.pdf p. 5 (Drive 1v1F7NWHiFE0gDpsAXdnpaUCMZh7f8Et3): redução mínima 18 mm no impresso e 120 px na tela. O menu__brand do site mede 60×16 px, abaixo do mínimo."
   },
   {
    "grupo": "Logo em escalas",

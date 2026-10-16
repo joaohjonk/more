@@ -1,0 +1,5 @@
+/* R-MOTION-04 que PASSA */
+.card:hover .lbl, .card:focus-within .lbl { opacity: 1; }
+.menu a:hover { color: #686868; }
+.counter { animation: tick 1s linear infinite; }
+.drawer { scroll-snap-type: y proximity; }
