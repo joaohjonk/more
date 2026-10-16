@@ -1,0 +1,530 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Sklum · desconto permanente, estoque próprio e data no botão · Estudos de caso · More</title>
+<meta name="description" content="Um e-commerce valenciano de móveis de marca própria que vende só online, com preço baixo, promoção o ano inteiro e uma data de entrega exata ao lado do botão de compra. Faturou € 525,7 mi em 2025.">
+<link rel="icon" href="data:,">
+<link rel="stylesheet" href="/nav/shell.css">
+<style>
+@font-face{font-family:"Muoto";src:url("/fonts/mr.otf") format("opentype");font-weight:400;font-display:swap}
+@font-face{font-family:"MuotoMono";src:url("/fonts/mm.woff2") format("woff2");font-weight:400;font-display:swap}
+/* Tokens do sistema de design da More (/sistema/brand/generated/tokens.css). Página de marca: paleta clara nos dois temas. */
+:root{
+  color-scheme:light;
+  --page:#E5E1DB; --ink:#2D211E; --muted:#5D554F; --label:#686868; --rule:#2D211E1A; --glass:#2D211E1A; --tile:#DDD7CF; --inverse:#2D211E; --on-inverse:#E5E1DB;
+  --muoto:"Muoto","DM Sans","Helvetica Neue",Arial,sans-serif;
+  --mono:"MuotoMono","Martian Mono",ui-monospace,Menlo,monospace;
+  --s-hair:6px; --s-sm:10px; --s-md:16px; --s-lg:20px; --s-xl:30px; --s-2xl:40px; --s-3xl:60px; --s-sec:96px;
+  --bar:35px; --barzone:75px;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--page:#E5E1DB;--ink:#2D211E;--muted:#5D554F;--rule:#2D211E1A;--glass:#2D211E1A;--tile:#DDD7CF;color-scheme:light}}
+:root[data-theme="dark"]{--page:#E5E1DB;--ink:#2D211E;--muted:#5D554F;--rule:#2D211E1A;--glass:#2D211E1A;--tile:#DDD7CF;color-scheme:light}
+*{box-sizing:border-box}
+html,body{height:100%}
+body{background:var(--page);color:var(--ink);font-family:var(--muoto);font-size:15px;line-height:1.47;-webkit-font-smoothing:antialiased;margin:0;overflow:hidden}
+/* A página rola dentro de .page; a barra vive numa faixa própria embaixo e nunca cobre texto. */
+.page{height:calc(100% - var(--barzone));overflow-y:auto;overflow-x:hidden;scroll-behavior:smooth;overscroll-behavior:contain;padding-bottom:106px}
+.wrap{max-width:1120px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:0 var(--s-3xl)}
+.mono{font-family:var(--mono);font-stretch:75%;font-size:13px}
+.muted{color:var(--muted)}
+.label{color:var(--label)}
+a{color:inherit;text-underline-offset:3px;text-decoration-thickness:1px;overflow-wrap:anywhere}
+a:hover{color:var(--muted)}
+h1,h2,h3{font-weight:400;text-wrap:balance;margin:0}
+h2{font-size:clamp(26px,3.4vw,32px);line-height:1.05;margin-bottom:var(--s-lg)}
+h3{font-size:15px;margin-bottom:4px}
+p{margin:0 0 var(--s-sm);max-width:64ch;text-wrap:pretty}
+section{padding-top:var(--s-sec)}
+.eyebrow{font-family:var(--mono);font-stretch:75%;font-size:13px;color:var(--label);margin-bottom:var(--s-md)}
+img{max-width:100%}
+b{font-weight:400}
+.tag{font-family:var(--mono);font-stretch:75%;font-size:11px;color:var(--label);white-space:nowrap}
+.tag.open{color:var(--ink)}
+.meas .tag{white-space:normal}
+
+/* abertura */
+.abre{padding-top:var(--s-3xl);display:grid;gap:var(--s-md)}
+.abre h1{font-size:clamp(34px,5.2vw,58px);line-height:.98;letter-spacing:-.01em;max-width:18ch}
+.abre .lede{font-size:clamp(18px,2vw,22px);line-height:1.25;margin:0;max-width:34ch}
+.meta{display:flex;flex-wrap:wrap;gap:6px var(--s-lg);margin-top:var(--s-sm)}
+
+/* tabelas */
+.meas{overflow-x:auto;margin-top:var(--s-lg)}
+.meas table{border-collapse:collapse;width:100%;min-width:760px;font-size:14px}
+.meas th{font-family:var(--mono);font-stretch:75%;font-weight:400;font-size:12px;color:var(--label);text-align:left;padding:8px;border-bottom:1px solid var(--ink)}
+.meas td{padding:10px 8px;border-bottom:1px solid var(--rule);vertical-align:top}
+.meas td:first-child{width:18%}
+.meas tr.grp td{font-family:var(--mono);font-stretch:75%;font-size:12px;color:var(--label);padding-top:var(--s-lg);border-bottom:1px solid var(--ink)}
+@media(max-width:700px){.meas table{min-width:0}.meas thead{display:none}.meas tr{display:block;padding:12px 0;border-bottom:1px solid var(--ink)}.meas tr.grp{padding:var(--s-lg) 0 4px}.meas td{display:block;padding:2px 0;border:0;width:auto!important}.meas td:first-child{font-size:16px;margin-bottom:4px}.meas td[data-l]::before{content:attr(data-l);display:block;font-family:var(--mono);font-stretch:75%;font-size:11px;color:var(--label);margin-top:6px}}
+
+/* riscos e perguntas */
+.lst{list-style:none;margin:var(--s-lg) 0 0;padding:0;border-top:1px solid var(--ink)}
+.lst li{display:grid;grid-template-columns:4ch minmax(0,1fr);gap:8px 16px;padding:12px 0;border-bottom:1px solid var(--rule);font-size:15px}
+.lst .n{font-family:var(--mono);font-stretch:75%;font-size:12px;color:var(--label);padding-top:3px}
+.lst p{margin:0;max-width:70ch}
+.lst p b{display:block}
+.lst .how{font-family:var(--mono);font-stretch:75%;font-size:12px;color:var(--label);margin-top:4px}
+
+/* barra, em faixa própria */
+.barzone{height:var(--barzone);position:relative;background:var(--page)}
+.bar{position:absolute;left:50%;transform:translateX(-50%);top:20px;width:420px;max-width:calc(100vw - 32px);height:var(--bar);background:var(--glass);backdrop-filter:blur(13px);-webkit-backdrop-filter:blur(13px);display:flex;align-items:center;justify-content:space-between;padding:0 var(--s-sm)}
+.bar svg{width:56px;height:auto;display:block;fill:currentColor}
+.bar nav{display:flex;gap:8px}
+.bar a{font-family:var(--mono);font-stretch:75%;font-size:13px;text-decoration:none;white-space:nowrap}
+.bar a:hover,.bar a:focus-visible{color:var(--muted)}
+@media(max-width:560px){.bar nav a{font-size:11px}.bar nav{gap:4px}}
+footer{background:var(--inverse);color:var(--on-inverse);margin-top:var(--s-sec)}
+footer .wrap{padding-block:var(--s-2xl)}
+footer p{font-size:13px;max-width:70ch}
+:focus-visible{outline:1px solid var(--ink);outline-offset:2px}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important;scroll-behavior:auto!important}}
+
+/* oitava seção: texto longo convertido do pacote */
+.doc{padding-top:var(--s-2xl)}
+.doc h2{padding-top:var(--s-3xl);scroll-margin-top:16px}
+.doc h3{font-size:clamp(17px,1.8vw,20px);line-height:1.2;margin:var(--s-xl) 0 var(--s-sm);scroll-margin-top:16px}
+.doc h4{font-family:var(--mono);font-stretch:75%;font-weight:400;font-size:12px;color:var(--label);margin:var(--s-lg) 0 6px}
+.doc p,.doc li{font-size:16px;line-height:1.5}
+.doc p{max-width:68ch}
+.doc strong{font-weight:400;color:var(--ink)}
+.doc p>strong:first-child{font-family:var(--mono);font-stretch:75%;font-size:13px;color:var(--label);margin-right:4px}
+.doc em{font-style:italic}
+.doc ul,.doc ol{max-width:68ch;padding-left:20px;margin:0 0 var(--s-md)}
+.doc li{margin-bottom:6px}
+.doc li>p{margin:0}
+.doc hr{border:0;border-top:1px solid var(--ink);margin:var(--s-2xl) 0 0}
+.doc blockquote{margin:var(--s-lg) 0;padding:var(--s-lg);background:var(--glass);max-width:68ch}
+.doc blockquote p{font-size:clamp(17px,1.8vw,20px);line-height:1.3;margin:0}
+.doc pre{font-family:var(--mono);font-stretch:75%;font-size:13px;line-height:1.5;background:var(--glass);padding:var(--s-md) var(--s-lg);overflow-x:auto;max-width:100%;white-space:pre}
+.doc code{font-family:var(--mono);font-stretch:75%;font-size:.88em}
+.doc .meas table{min-width:640px}
+.doc .meas td:first-child{width:auto}
+.doc .meas td,.doc .meas th{font-size:14px;line-height:1.4}
+.doc .meas th{font-size:12px}
+.doc .meas img{display:block;margin-bottom:6px}
+.doc img{height:auto;display:block;border:1px solid var(--rule)}
+.doc h3+p>a>img,.doc h3+p>img{margin:var(--s-sm) 0}
+.doc-atlas h3{padding-top:var(--s-xl);border-top:1px solid var(--ink)}
+@media(max-width:700px){.doc .meas:not(.grid) table{min-width:0}.doc .meas:not(.grid) thead{display:none}.doc .meas:not(.grid) tr{display:block;padding:12px 0;border-bottom:1px solid var(--ink)}.doc .meas:not(.grid) td{display:block;padding:2px 0;border:0}.doc .meas:not(.grid) td:first-child{font-size:16px}.doc .meas:not(.grid) td[data-l]:not(:first-child)::before{content:attr(data-l);display:block;font-family:var(--mono);font-stretch:75%;font-size:11px;color:var(--label);margin-top:6px}.doc .meas.grid table{min-width:560px}.doc .meas.grid td,.doc .meas.grid th{padding:8px 6px}}
+.mods{padding-top:var(--s-sec)}
+.mods .lst li{grid-template-columns:4ch minmax(0,1fr) auto;align-items:baseline}
+.mods .lst p{font-size:17px}
+.mods .lst a{text-decoration:none}
+.mods .lst a:hover{text-decoration:underline}
+.mods .lst .t{font-family:var(--mono);font-stretch:75%;font-size:12px;color:var(--label)}
+.mods li[aria-current] p a{text-decoration:underline}
+.mods li[aria-current] .n::after{content:" ·"}
+.doc hr+h3{border-top:0}
+@media(max-width:700px){.doc .meas.grid{overflow-x:auto}.doc .meas.grid table{display:table;min-width:560px}.doc .meas.grid thead{display:table-header-group}.doc .meas.grid tr{display:table-row;padding:0}.doc .meas.grid td{display:table-cell;border-bottom:1px solid var(--rule);font-size:14px}.doc .meas.grid td::before{content:none!important}.doc .meas.grid td:first-child{font-size:13px;white-space:nowrap}}
+
+</style>
+</head>
+<body><script src="/nav/shell.js" data-section="negocio" data-into=".page" data-foot="on" defer></script>
+<div class="page" id="page">
+<div class="wrap">
+
+<header class="abre" id="topo">
+  <div class="eyebrow">More · Estudos de caso · Sklum · 16.10.2026</div>
+  <h1>Sklum · desconto permanente, estoque próprio e data no botão</h1>
+  <p class="lede">Um e-commerce valenciano de móveis de marca própria que vende só online, com preço baixo, promoção o ano inteiro e uma data de entrega exata ao lado do botão de compra. Faturou € 525,7 mi em 2025.</p>
+  <div class="meta mono label"><span>Para Fred, Edu e Vitor</span><span>Estudos de caso, sem recomendação</span><span>Leitura: 12 min</span></div>
+</header>
+
+<article class="doc doc-sklum">
+
+<p>A Sklum é o caso mais distante da More neste pacote: vende muito, barato e a partir de estoque. Interessa justamente por isso. Tudo o que uma marca de móveis precisa dizer à cliente (prazo, frete, devolução, parcelamento, condição para profissional) aparece no site da Sklum por escrito, com número e na hora certa. Os números entre colchetes remetem às fontes no fim da página.</p>
+<h2 id="em-uma-linha-e-em-números">Em uma linha e em números</h2>
+<p>Varejo online de móveis e decoração de marca própria, com sede em Valência, mais de 10 mil referências e estoque próprio, vendendo para 11 países. Faz promoção o ano inteiro e passou de cerca de € 200 mi (2023) para € 525,7 mi (2025) de faturamento na sociedade operacional [1][4].</p>
+<div class="meas"><table>
+<thead>
+<tr class="header">
+<th>Item</th>
+<th>Dado</th>
+<th>Fonte · data</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-l="Item">Fundação</td>
+<td data-l="Dado">Sociedade constituída em 07.2016 como INDECEMI SL; passa a se chamar Sklum Home and Deco SL em 05.12.2022. A imprensa costuma dar 2017</td>
+<td data-l="Fonte · data">[3] BORME; [5] 20.07.2019; [6] 11.03.2025</td>
+</tr>
+<tr class="even">
+<td data-l="Item">Fundadores</td>
+<td data-l="Dado">Isaac Catalá Torres e Roberto Carlos Gómez Savall, que antes criaram a EfectoLed.com (2014). A holding deles, Direlec Group SL, é a antiga EfectoLed SL</td>
+<td data-l="Fonte · data">[5] 20.07.2019; [3][4]</td>
+</tr>
+<tr class="odd">
+<td data-l="Item">Sede e logística</td>
+<td data-l="Dado">Villalonga (Valência). Mais de 75 mil m² de armazém em La Safor e um centro novo em Real de Gandía desde 10.2024</td>
+<td data-l="Fonte · data">[10]; [13]; [14]</td>
+</tr>
+<tr class="even">
+<td data-l="Item">Faturamento</td>
+<td data-l="Dado">~€ 200 mi (2023) · € 318,6 mi (2024) · <strong>€ 525,7 mi (2025, +65%)</strong></td>
+<td data-l="Fonte · data">[1] 08.2025; [2]; [4] contas de 2025</td>
+</tr>
+<tr class="odd">
+<td data-l="Item">Resultado</td>
+<td data-l="Dado">Lucro de 2025: € 56,39 mi (+47,1%), cerca de 10,7% da receita. Patrimônio líquido: € 172 mi. O resultado de 2023 aparece como € 12 mi, chamado de "benefício operacional" numa fonte e de EBITDA em outra</td>
+<td data-l="Fonte · data">[4]; [6]; [7]</td>
+</tr>
+<tr class="even">
+<td data-l="Item">Margem bruta</td>
+<td data-l="Dado">Não se sabe</td>
+<td data-l="Fonte · data"></td>
+</tr>
+<tr class="odd">
+<td data-l="Item">Funcionários</td>
+<td data-l="Dado">806, 589, "800" ou "um milhar", conforme a fonte. Os números não batem</td>
+<td data-l="Fonte · data">[4][2][6][7]</td>
+</tr>
+<tr class="even">
+<td data-l="Item">Lojas físicas</td>
+<td data-l="Dado">Nenhuma. "Nuestro modelo es 100% online"</td>
+<td data-l="Fonte · data">[11] 16.10.2026</td>
+</tr>
+<tr class="odd">
+<td data-l="Item">Ticket médio</td>
+<td data-l="Dado">Não se sabe. Sofá de 3 lugares de € 429,95 a € 999,85; sofá modular de 4 peças a € 1.089,75</td>
+<td data-l="Fonte · data">site, 16.10.2026</td>
+</tr>
+<tr class="even">
+<td data-l="Item">Prazo</td>
+<td data-l="Dado">Item em estoque: data exata no produto ("entre el 22/10 y el 26/10", 6 a 10 dias). Internacional: despacho em 10 a 12 dias úteis. Programa profissional: 7 a 10 dias</td>
+<td data-l="Fonte · data">site, 16.10.2026; [12]; [24]</td>
+</tr>
+<tr class="odd">
+<td data-l="Item">Pagamento</td>
+<td data-l="Dado">Integral no pedido: cartão, transferência, PayPal (até 24 parcelas), Klarna, seQura, Google Pay, Bizum. Sem sinal</td>
+<td data-l="Fonte · data">[26] 16.10.2026</td>
+</tr>
+<tr class="even">
+<td data-l="Item">Investidores</td>
+<td data-l="Dado">Trilantic Europe, com controle conjunto com a Direlec; aprovação da Comissão Europeia em 01.09.2025. Os fundadores mantêm a maioria. Desde 03.12.2025 a sócia única é a OLIVA SIGMA SL</td>
+<td data-l="Fonte · data">[1]; [9]; [3]</td>
+</tr>
+<tr class="odd">
+<td data-l="Item">Avaliações</td>
+<td data-l="Dado">Trustpilot 3,6/5 com 288.080 avaliações: 49% de 5 estrelas e 28% de 1 estrela. Responde a 93% das negativas</td>
+<td data-l="Fonte · data">[15] 16.10.2026</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="história-curta">História curta</h2>
+<p>Os dois sócios vieram de outro e-commerce. Em 2014, Isaac Catalá e Roberto Carlos Gómez fundaram em Valência a EfectoLed.com, uma loja online de lâmpadas LED que faturou € 55 mi em 2017 [5]. Em julho de 2016 constituíram a sociedade que viria a ser a Sklum, com a holding do grupo como sócia única e armazém no polígono de Beniarjó [3]. O perfil no Trustpilot foi reivindicado em julho de 2017 [15].</p>
+<p>O episódio mais citado da história da empresa é a compra da SuperStudio. Segundo o elDiario.es, a SuperStudio era uma loja online catalã de móveis importados da China que tinha triplicado o faturamento em dois anos, de € 9 mi para € 28 mi. Os sócios da Sklum a compraram em 12.03.2019 por € 3 a 5 mi. Depois da compra, os novos donos pararam de investir em Google AdWords, as vendas caíram e a SuperStudio pediu concurso de credores em 20.06.2019, deixando pedidos de € 70 a mais de € 700 sem entrega [5]. Em 2025, a Interior Daily resumiu o caso dizendo que a integração "faced challenges due to changes in advertising strategy" [6]. Catalá e Gómez não responderam ao jornal [5].</p>
+<p>A partir daí o crescimento é contínuo. A sociedade adotou o nome Sklum Home and Deco em 2022 [3]. Em 2023 a receita ficou perto de € 200 mi [1]; em 2024 chegou a € 318,6 mi [2] e a empresa abriu o centro logístico de Real de Gandía [14]. No mesmo ano a Consumidor Global publicou uma reportagem sobre atrasos com o título de uma cliente: "Es un calvario" [17]. Em março de 2025 a holding contratou a Deloitte para vender uma participação minoritária [6], e em agosto entrou o fundo Trilantic, com um plano de 500 empregos diretos em dois anos e mais de 160 mil m² de novas instalações, sobretudo logísticas [1][7]. Em 2025 a receita foi de € 525,7 mi, com alta de 65% [4]. Em 03.12.2025 os dois sócios deixaram a administração, e a OLIVA SIGMA SL virou administradora e sócia única [3]. Quem está por trás dela não se sabe.</p>
+<p>Os erros registrados em público são três: a liquidação da SuperStudio em 2019 [5]; atrasos e falta de estoque, com datas que escorregam e reclamações em portais de consumidor [17]; e avaliações de funcionários em torno de 2/5 [13].</p>
+<h2 id="como-ganha-dinheiro">Como ganha dinheiro</h2>
+<p><strong>Modelo.</strong> A Sklum é varejo online de marca própria. Cada produto tem nome (Kendall, Coco, Aramis) e uma referência interna. O catálogo passa de 10 mil referências [6] e vai de vasos de € 9,95 a sofás reclináveis elétricos de € 1.499,95, com decoração, têxtil, louça, jardim e infantil no meio.</p>
+<p><strong>Origem.</strong> A empresa não publica de onde vêm os produtos. A imprensa aponta fornecedores chineses [5][17]. O site diz que "gran parte" do catálogo tem certificação FSC [18]. As páginas de produto informam materiais e densidade da espuma, e vários sofás chegam "envasado al vacío", comprimidos para caber numa caixa de transportadora.</p>
+<p><strong>Estoque.</strong> Quase tudo fica em armazém próprio em Valência. Na categoria sofás, em 16.10.2026, 293 de 316 produtos estavam no filtro "Entrega rápida". O que falta pode ser reservado. Se um item acabar, a Sklum avisa em 24 a 48 horas e "podrá suministrar un producto de similares características sin aumento de precio" [19]. Quando o carrinho tem itens com datas diferentes, o pedido inteiro sai na data mais longa [10].</p>
+<p><strong>Preço e desconto.</strong> O desconto é estrutural. No dia da pesquisa havia, ao mesmo tempo, uma liquidação de meia-estação com data ("Up to 50% off", de 15 a 25.10), um cupom de 12% acima de € 299 com contador regressivo, uma seção "Special Price" com 4.203 produtos e preço riscado nos cards. A página de promoções cita ainda as liquidações de verão e de inverno e chama a Black Friday de "uno de nuestros eventos de descuentos más importantes" [20].</p>
+<p><strong>Frete.</strong> O cliente paga, numa tabela pública por faixa de valor do pedido. Na Espanha peninsular vai de € 5,99 a € 49,99 e é grátis acima de € 1.500. A entrega é na porta do prédio, sem subir e sem montar; subir até o cômodo custa € 19,99 a mais [10].</p>
+<div class="meas"><table>
+<thead>
+<tr class="header">
+<th>País</th>
+<th>Frete padrão</th>
+<th>Grátis acima de</th>
+<th>Limiar do cupom em 16.10</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-l="País">Espanha</td>
+<td data-l="Frete padrão">€ 5,99 a € 49,99</td>
+<td data-l="Grátis acima de">€ 1.500</td>
+<td data-l="Limiar do cupom em 16.10">€ 299</td>
+</tr>
+<tr class="even">
+<td data-l="País">Portugal</td>
+<td data-l="Frete padrão">€ 5,99 a € 49,99</td>
+<td data-l="Grátis acima de">€ 1.500</td>
+<td data-l="Limiar do cupom em 16.10">€ 299</td>
+</tr>
+<tr class="odd">
+<td data-l="País">França e Alemanha</td>
+<td data-l="Frete padrão">€ 9,99 a € 62,99</td>
+<td data-l="Grátis acima de">€ 1.500</td>
+<td data-l="Limiar do cupom em 16.10">€ 349</td>
+</tr>
+<tr class="even">
+<td data-l="País">Reino Unido</td>
+<td data-l="Frete padrão">£ 20,99 a £ 129,99</td>
+<td data-l="Grátis acima de">£ 1.200</td>
+<td data-l="Limiar do cupom em 16.10">£ 349</td>
+</tr>
+</tbody>
+</table></div>
+<p>Fontes: páginas de condições de envio de cada país, lidas em 16.10.2026 [10][12]. Em 11.2025, a Semrush estimava 7,98 milhões de visitas no mês, com Espanha (31%), França (19%) e Itália (11%) à frente [21].</p>
+<p><strong>Devolução.</strong> São 14 dias, e o cliente paga a volta pela mesma tabela do frete. Não é preciso a embalagem original [22]. A garantia é de 3 anos [19].</p>
+<p><strong>Programa profissional.</strong> O Sklum Pro tem quatro níveis por compra anual sem imposto: Bronze (entrada, até 7% de desconto), Silver (a partir de € 1.500, até 10%), Gold (a partir de € 10.000, até 15%) e Platinum (a partir de € 15.000, até 20%). Os benefícios crescem por nível e incluem frete grátis acima de € 1.500, pagamento a 30 ou 60 dias, compra sob encomenda, armazenagem temporária, arquivos 3D e visibilidade de projetos no blog [23]. O programa se dirige a decoradores, hotéis, imobiliárias, produções de TV e também a lojas físicas, que podem revender [24].</p>
+<p><strong>Indicação.</strong> O "Sklum Friends Plan" dá € 15 a quem indica e 10% ao amigo [20]. Não há assinatura paga.</p>
+<h2 id="o-funil-etapa-por-etapa">O funil, etapa por etapa</h2>
+<h3 id="descoberta">Descoberta</h3>
+<p>A verba de mídia não pôde ser medida: a busca na Biblioteca de Anúncios do Meta não isolou a página da marca [27]. A estimativa da Semrush para 11.2025 dá cerca de 44% de tráfego direto e 34% vindo do Google [21]. Lembrando que, em 2019, a queda da SuperStudio foi atribuída ao corte do Google AdWords [5]. O conteúdo próprio inclui fotos de clientes com a hashtag #MySklumStory [18] e editoriais sazonais ("Fall Collection 2026") que terminam numa lista de produtos com preço.</p>
+<h3 id="página-inicial">Página inicial</h3>
+<p><img loading="lazy" src="/negocio/img/ref-sklum-home-promo-desktop-20261016.jpg" alt="Home no computador em 16.10.2026: a primeira dobra inteira é a liquidação &quot;Up to 50% off, mid season sale&quot;, com as datas 15 oct / 25 oct" /></p>
+<p>A primeira dobra é uma campanha de desconto com data de início e fim. Abaixo vêm módulos de Special Price, Natal (já em outubro), categorias e um bloco para profissionais. A barra do topo alterna o cupom com contador e a oferta de 10% para quem assina a newsletter.</p>
+<p><img loading="lazy" src="/negocio/img/ref-sklum-home-googleonetap-mobile-20261016.jpg" alt="Home no celular: o pop-up &quot;Inicia sesión en sklum.com con Google&quot; aparece por cima do banner da liquidação" /></p>
+<p>No celular, o primeiro elemento em que a pessoa pode tocar é o cadastro com a conta Google, em um toque.</p>
+<h3 id="coleção">Coleção</h3>
+<p><img loading="lazy" src="/negocio/img/ref-sklum-colecao-sofas-desktop-20261016.jpg" alt="Grade de sofás: filtro &quot;Entrega rápida (293)&quot;, &quot;316 productos&quot;, selos Special Price, preço riscado com o novo preço em amarelo e, na borda direita, a aba &quot;Suscríbete y obtén -10%&quot;" /></p>
+<p>O prazo é um filtro, ao lado de cor e material. Cada card traz preço riscado e "En stock" ou "Entrega estimada entre el 28/10 y el 02/11". A ordenação inclui "Más descuento", e a aba de newsletter fica presa à lateral da tela.</p>
+<h3 id="página-do-produto">Página do produto</h3>
+<p><img loading="lazy" src="/negocio/img/ref-sklum-pdp-prazo-preco-desktop-20261016.jpg" alt="Produto Kendall: Special Price, € 1.089,75 riscando € 1.279,75 (-14%), botão &quot;Personaliza el diseño&quot;, a linha verde &quot;En stock, entrega estimada entre el 22/10 y el 26/10&quot; logo acima do botão e o parcelamento Klarna com a taxa escrita" /></p>
+<p>A data de entrega, com dia de início e dia de fim, fica colada ao botão de compra. Abaixo vêm o parcelamento com a taxa anual escrita ("21.9% TAE"), um configurador de módulos, abas de medidas, embalagem e materiais, arquivos 3D para baixar, um bloco "Shop the look" e um convite para profissionais em todo produto. A descrição é longa e literária ("un archipiélago de suavidad en tu salón") e termina com uma ressalva: cores e medidas são "meramente orientativos", e "las devoluciones por motivos técnicos correrán a su cargo".</p>
+<h3 id="contato">Contato</h3>
+<p>Há chat com assistente virtual 24 horas e atendimento humano de segunda a sexta, das 9h às 14h, além de telefone e WhatsApp, com canais separados para profissionais [24]. Não há agendamento, loja nem amostra de tecido. A página sobre lojas responde "No es posible visitar una tienda física" e oferece 3D e realidade aumentada [11].</p>
+<h3 id="carrinho-e-checkout">Carrinho e checkout</h3>
+<p><img loading="lazy" src="/negocio/img/ref-sklum-carrinho-crosssell-desktop-20261016.jpg" alt="Gaveta lateral depois de &quot;Añadir al carrito&quot;: &quot;Completa tu salón&quot; com mesas de centro em Special Price, e no rodapé &quot;Haz tu compra rápida sin necesidad de registrarte&quot;" /></p>
+<p><img loading="lazy" src="/negocio/img/ref-sklum-carrinho-frete-desktop-20261016.jpg" alt="Carrinho: PayPal expresso no topo, a mesma data de entrega repetida, campo de cupom, frete de € 49,99 e total de € 1.139,74, com &quot;Comprados juntos&quot; logo abaixo" /></p>
+<p><img loading="lazy" src="/negocio/img/ref-sklum-checkout-desktop-20261016.jpg" alt="Checkout numa página só: identificação, dois métodos de envio (€ 49,99 na porta do prédio ou € 69,98 com subida e &quot;cita previa telefónica&quot;) e cartão" /></p>
+<p>Entre o botão de compra e o pagamento há três ofertas de produto: a gaveta, "Comprados juntos" e "Imprescindibles". O frete só aparece no carrinho. Dá para comprar sem conta pelo PayPal. O checkout tem uma página só e sete meios de pagamento. A pesquisa parou nesta tela, sem digitar dados.</p>
+<h3 id="cadastro-e-e-mail">Cadastro e e-mail</h3>
+<p><img loading="lazy" src="/negocio/img/ref-sklum-captura-email-desktop-20261016.jpg" alt="Formulário &quot;Suscríbete y disfruta de un 10% de descuento en tu primera compra&quot;, com campo opcional de WhatsApp e o link &quot;Tienes un negocio? Descubre Sklum Pro&quot;; no topo, a barra do cupom de 12% com contador &quot;Finaliza en: 1d 19h 11m&quot;" /></p>
+<p>Há pelo menos quatro portas para o cadastro: a barra do topo, a aba lateral, o ícone de conta e, no celular, o login com Google. A oferta tem condições: 10% válidos por 10 dias, só em pedidos acima de € 249, com teto de € 300 [20]. O formulário pede também o número de WhatsApp para "novedades". Os e-mails enviados depois do cadastro não foram vistos. A página de promoções diz que as datas das liquidações ficam disponíveis a quem está inscrito ("estar suscrito") [20].</p>
+<h3 id="pós-compra">Pós-compra</h3>
+<p><img loading="lazy" src="/negocio/img/ref-sklum-frete-tabela-desktop-20261016.jpg" alt="Página &quot;Condiciones de envío&quot;: tabela de frete por faixa de valor, de € 5,99 (até € 6) a € 49,99 (até € 1.500), e € 0 acima de € 1.500" /></p>
+<p>Pelas políticas, o cliente recebe aviso por e-mail no envio; o seguro cobre dano anotado no comprovante da transportadora até 24 horas depois da entrega; a devolução é aberta pelo próprio cliente em "Mis pedidos", e ele paga a volta [10][22]. Os sofás a vácuo pedem cerca de 72 horas para tomar forma e vapor para tirar as rugas (página do Kendall).</p>
+<p><img loading="lazy" src="/negocio/img/ref-sklum-trustpilot-desktop-20261016.jpg" alt="Trustpilot em 16.10.2026: nota 3,6 com 288.080 opiniões, barras de 5 e de 1 estrela dominando, &quot;Invita a los clientes a opinar&quot; e &quot;Ha contestado el 93% de las opiniones negativas&quot;, com a nota &quot;Es posible que utilice la IA para responder&quot;" /></p>
+<p>A distribuição é de dois picos: 49% de 5 estrelas e 28% de 1 estrela. O resumo do próprio Trustpilot elogia o design e a embalagem e chama a entrega de "muy ambiguo" [15]. A Sklum convida todos os compradores a avaliar, inclusive os insatisfeitos.</p>
+<h3 id="loja-física">Loja física</h3>
+<p>Não existe. A página que aparece para quem busca "Sklum tienda Madrid" é escrita para responder a essa busca e diz que não há loja [11]. Vários sites de terceiros publicam endereços de uma suposta loja em Madri, cada um numa rua diferente [25].</p>
+<h3 id="programa-profissional-e-outlet">Programa profissional e outlet</h3>
+<p><img loading="lazy" src="/negocio/img/ref-sklum-profissional-niveis-desktop-20261016.jpg" alt="Página do Programa Sklum Pro: &quot;Descuentos de hasta un 20%&quot;, assessoria, logística sob medida, orçamentos, financiamento e arquivos 3D, com o início da tabela de níveis Bronze, Silver, Gold e Platinum por compra anual" /></p>
+<p><img loading="lazy" src="/negocio/img/ref-sklum-outlet-specialprice-desktop-20261016.jpg" alt="Seção Special Price: subcategorias por ambiente e o texto &quot;muebles outlet... No son saldos por defectos, son últimas unidades y colecciones anteriores&quot;" /></p>
+<p>O profissional é tratado como cliente de volume, com régua pública de quanto precisa comprar para subir de nível. O outlet é permanente e se apresenta como sobra de coleção, não como peça com defeito.</p>
+<h2 id="peças-atômicas">Peças atômicas</h2>
+<div class="meas"><table>
+<thead>
+<tr class="header">
+<th>Etapa</th>
+<th>Peça</th>
+<th>O que é, com exemplo real</th>
+<th>Fonte / captura</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-l="Etapa">Descoberta</td>
+<td data-l="Peça">Campanha datada</td>
+<td data-l="O que é, com exemplo real">"Up to 50% off · mid season sale · 15 oct / 25 oct"</td>
+<td data-l="Fonte / captura">home-promo-desktop</td>
+</tr>
+<tr class="even">
+<td data-l="Etapa">Descoberta</td>
+<td data-l="Peça">Página-resposta de busca</td>
+<td data-l="O que é, com exemplo real">"¿Tiene Sklum tienda física…?", com perguntas frequentes que respondem não</td>
+<td data-l="Fonte / captura">[11]</td>
+</tr>
+<tr class="odd">
+<td data-l="Etapa">Descoberta</td>
+<td data-l="Peça">Fotos de clientes por hashtag</td>
+<td data-l="O que é, com exemplo real">#MySklumStory na página "Conócenos"</td>
+<td data-l="Fonte / captura">[18]</td>
+</tr>
+<tr class="even">
+<td data-l="Etapa">Descoberta</td>
+<td data-l="Peça">Editorial que vira compra</td>
+<td data-l="O que é, com exemplo real">"Fall Collection 2026", com lista de produtos e preço no fim</td>
+<td data-l="Fonte / captura">[26]</td>
+</tr>
+<tr class="odd">
+<td data-l="Etapa">Página inicial</td>
+<td data-l="Peça">Barra com contador</td>
+<td data-l="O que é, com exemplo real">"-12% en pedidos superiores a 299€ · Código: MIDSALE12 · Finaliza en: 1d 19h"</td>
+<td data-l="Fonte / captura">captura-email-desktop</td>
+</tr>
+<tr class="even">
+<td data-l="Etapa">Página inicial</td>
+<td data-l="Peça">Cadastro em um toque</td>
+<td data-l="O que é, com exemplo real">Login com Google no celular</td>
+<td data-l="Fonte / captura">home-googleonetap-mobile</td>
+</tr>
+<tr class="odd">
+<td data-l="Etapa">Coleção</td>
+<td data-l="Peça">Filtro de prazo</td>
+<td data-l="O que é, com exemplo real">"Entrega rápida (293)"</td>
+<td data-l="Fonte / captura">colecao-sofas-desktop</td>
+</tr>
+<tr class="even">
+<td data-l="Etapa">Produto</td>
+<td data-l="Peça">Data de entrega</td>
+<td data-l="O que é, com exemplo real">"En stock, entrega estimada entre el 22/10 y el 26/10"</td>
+<td data-l="Fonte / captura">pdp-prazo-preco-desktop</td>
+</tr>
+<tr class="odd">
+<td data-l="Etapa">Produto</td>
+<td data-l="Peça">Configurador</td>
+<td data-l="O que é, com exemplo real">"¿Te gustaría configurar el producto a tu gusto? Personaliza el diseño"</td>
+<td data-l="Fonte / captura">pdp-prazo-preco-desktop</td>
+</tr>
+<tr class="even">
+<td data-l="Etapa">Produto</td>
+<td data-l="Peça">Ficha técnica</td>
+<td data-l="O que é, com exemplo real">Densidade da espuma, abas Medidas e Embalaje, arquivo 3D</td>
+<td data-l="Fonte / captura">[26]</td>
+</tr>
+<tr class="odd">
+<td data-l="Etapa">Produto</td>
+<td data-l="Peça">Parcelamento com taxa escrita</td>
+<td data-l="O que é, com exemplo real">"3 plazos sin intereses (0% TAE) o desde 101 €/mes (21.9% TAE) con Klarna"</td>
+<td data-l="Fonte / captura">pdp-prazo-preco-desktop</td>
+</tr>
+<tr class="even">
+<td data-l="Etapa">Carrinho</td>
+<td data-l="Peça">Venda cruzada</td>
+<td data-l="O que é, com exemplo real">"Completa tu salón" em abas (mesas de centro, auxiliares, poltronas)</td>
+<td data-l="Fonte / captura">carrinho-crosssell-desktop</td>
+</tr>
+<tr class="odd">
+<td data-l="Etapa">Checkout</td>
+<td data-l="Peça">Compra sem conta</td>
+<td data-l="O que é, com exemplo real">PayPal expresso no topo do carrinho</td>
+<td data-l="Fonte / captura">carrinho-frete-desktop</td>
+</tr>
+<tr class="even">
+<td data-l="Etapa">Cadastro</td>
+<td data-l="Peça">Desconto com condições</td>
+<td data-l="O que é, com exemplo real">10% por 10 dias, acima de € 249, teto de € 300</td>
+<td data-l="Fonte / captura">[20] · captura-email-desktop</td>
+</tr>
+<tr class="odd">
+<td data-l="Etapa">Cadastro</td>
+<td data-l="Peça">Opt-in de WhatsApp</td>
+<td data-l="O que é, com exemplo real">"¿Quieres recibir las novedades por WhatsApp?"</td>
+<td data-l="Fonte / captura">captura-email-desktop</td>
+</tr>
+<tr class="even">
+<td data-l="Etapa">Fidelização</td>
+<td data-l="Peça">Indicação</td>
+<td data-l="O que é, com exemplo real">€ 15 para quem indica e 10% para o amigo</td>
+<td data-l="Fonte / captura">[20]</td>
+</tr>
+<tr class="odd">
+<td data-l="Etapa">Pós-compra</td>
+<td data-l="Peça">Tabela de frete e de devolução</td>
+<td data-l="O que é, com exemplo real">A mesma tabela por faixa; o cliente paga a volta</td>
+<td data-l="Fonte / captura">frete-tabela-desktop · [22]</td>
+</tr>
+<tr class="even">
+<td data-l="Etapa">Pós-compra</td>
+<td data-l="Peça">Garantia</td>
+<td data-l="O que é, com exemplo real">3 anos</td>
+<td data-l="Fonte / captura">[19]</td>
+</tr>
+<tr class="odd">
+<td data-l="Etapa">Prova</td>
+<td data-l="Peça">Avaliação pública</td>
+<td data-l="O que é, com exemplo real">Trustpilot 3,6 com 288 mil avaliações e resposta a 93% das negativas</td>
+<td data-l="Fonte / captura">trustpilot-desktop</td>
+</tr>
+<tr class="even">
+<td data-l="Etapa">Profissional</td>
+<td data-l="Peça">Níveis por volume</td>
+<td data-l="O que é, com exemplo real">Bronze a Platinum, de 7% a 20%, pagamento a 30 ou 60 dias, compra sob encomenda</td>
+<td data-l="Fonte / captura">profissional-niveis-desktop · [23]</td>
+</tr>
+<tr class="odd">
+<td data-l="Etapa">Profissional</td>
+<td data-l="Peça">Revenda</td>
+<td data-l="O que é, com exemplo real">"Distribuidores y tiendas físicas… tarifa de precios para profesionales"</td>
+<td data-l="Fonte / captura">[24]</td>
+</tr>
+<tr class="even">
+<td data-l="Etapa">Outlet</td>
+<td data-l="Peça">Seção permanente</td>
+<td data-l="O que é, com exemplo real">Special Price com 4.203 produtos</td>
+<td data-l="Fonte / captura">outlet-specialprice-desktop</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="o-que-dizem-dela">O que dizem dela</h2>
+<ul>
+<li><strong>elDiario.es, 20.07.2019</strong>, sobre a compra da SuperStudio, com o título "Guerra en el mueble 'low cost'". Um dos criadores da SuperStudio diz que a Sklum "era nuestra competencia directa" e que "nos dejamos llevar por el momento" [5].</li>
+<li><strong>Interior Daily, a partir do elEconomista, 11.03.2025:</strong> "fast-growing low-cost furniture marketplace" [6].</li>
+<li><strong>elEconomista, 08.2025, lido por resumo:</strong> a Trilantic venceu um processo competitivo; as vendas "superan ampliamente los 300 millones" e os sócios mantêm a maioria [1].</li>
+<li><strong>Consumidor Global, 02.06.2024:</strong> uma cliente esperou dois meses e meio por banquetas de € 132 que chegaram na altura errada. "Es un calvario" [17].</li>
+<li><strong>Crónica Global, 13.10.2023,</strong> num texto de marca: "la marca que convierte opiniones en experiencias únicas" [16].</li>
+<li>Não foi encontrada nenhuma entrevista ou podcast com Catalá ou Gómez. Os dois não aparecem em público.</li>
+</ul>
+<h2 id="o-que-não-se-sabe">O que não se sabe</h2>
+<ul>
+<li>Margem bruta, custo de aquisição de cliente, verba de mídia e divisão entre canais pagos.</li>
+<li>Faturamento por país e quanto vem do programa profissional e da revenda.</li>
+<li>Fornecedores e países de fabricação: só há imprensa e um especialista, nada oficial.</li>
+<li>Ticket médio e taxa de devolução.</li>
+<li>Se o lucro de € 56,39 mi em 2025 é de uma sociedade ou do grupo, e quem é a OLIVA SIGMA SL.</li>
+<li>Os e-mails de boas-vindas e de campanha e a cadência real das promoções ao longo do ano. Só o dia 16.10.2026 foi visto.</li>
+<li>Que parte das 288 mil avaliações vem de convite automático.</li>
+<li>O andamento do plano de expansão anunciado com a Trilantic.</li>
+</ul>
+<h2 id="perguntas-para-a-more">Perguntas para a More</h2>
+<ol type="1">
+<li>A Sklum põe uma data exata ("entre el 22/10 y el 26/10") ao lado do botão, e as reclamações se concentram quando essa data escorrega. Que data a More consegue prometer para uma peça de cerca de 120 dias, e o que diz à cliente quando ela muda?</li>
+<li>A Sklum mostra o frete numa tabela pública por faixa, com o cliente pagando a ida e a volta. Em que momento da conversa por WhatsApp a More informa o frete, e quem paga a devolução de uma peça feita sob encomenda?</li>
+<li>Para a Sklum, desconto é estrutura permanente: outlet com 4.203 itens, cupom com contador, 10% no cadastro. Que lugar, se algum, uma peça autoral sob encomenda dá a preço riscado, peça de mostruário ou coleção anterior?</li>
+<li>O Sklum Pro recompensa o profissional por volume anual, em quatro níveis, e aceita revenda por lojas. Como a More mede e recompensa um arquiteto que compra duas peças por ano?</li>
+<li>A Sklum vende sem loja e substitui o toque por 3D, realidade aumentada e descrição longa. O que a loja da Alameda Franca faz que essas ferramentas não fazem, e como saber se está fazendo?</li>
+<li>A Sklum convida todos os compradores a avaliar e publica a nota mesmo quando ela é 3,6. A More quer prova pública de cliente? Onde, e com que risco num volume de dezenas de pedidos?</li>
+</ol>
+<h2 id="como-este-caso-foi-feito">Como este caso foi feito</h2>
+<p>O site da Sklum (home, coleção de sofás, dois produtos, carrinho, primeira tela do checkout, cadastro, políticas, programa profissional e outlet) e o Trustpilot foram abertos ao vivo em 16.10.2026, no computador e no celular. Não foi feito cadastro nem compra, e os e-mails da marca não foram vistos. As matérias do elEconomista e do El Referente foram lidas por resumo de busca, porque o acesso direto foi recusado. Os números de tráfego são estimativas da Semrush. Nenhum funcionário, cliente ou sócio da Sklum foi ouvido.</p>
+<h2 id="fontes">Fontes</h2>
+<p>Acesso em 16.10.2026.</p>
+<ol type="1">
+<li>elEconomista, entrada da Trilantic, 08.2025 (lido por resumo de busca): <a href="https://www.eleconomista.es/capital-riesgo/noticias/13497476/08/25/trilantic-regresa-de-compras-a-espana-y-entra-en-la-cadena-online-de-muebles-sklum.html" rel="noopener">https://www.eleconomista.es/capital-riesgo/noticias/13497476/08/25/trilantic-regresa-de-compras-a-espana-y-entra-en-la-cadena-online-de-muebles-sklum.html</a> · e aprovação de Bruxelas, 09.2025: <a href="https://www.eleconomista.es/retail-consumo/noticias/13525269/09/25/bruselas-da-luz-verde-a-la-entrada-del-fondo-luxemburgues-trilantic-en-el-capital-de-la-firma-de-muebles-espanola-sklum.html" rel="noopener">https://www.eleconomista.es/retail-consumo/noticias/13525269/09/25/bruselas-da-luz-verde-a-la-entrada-del-fondo-luxemburgues-trilantic-en-el-capital-de-la-firma-de-muebles-espanola-sklum.html</a></li>
+<li>Ranking elEconomista (faturamento de € 318.604.915, via resumo de busca): <a href="https://ranking-empresas.eleconomista.es/SKLUM-HOME-AND-DECO.html" rel="noopener">https://ranking-empresas.eleconomista.es/SKLUM-HOME-AND-DECO.html</a> · e <a href="https://www.einforma.com/informacion-empresa/indecemi" rel="noopener">https://www.einforma.com/informacion-empresa/indecemi</a></li>
+<li>Empresia, atos do BORME de 2016 a 03.12.2025: <a href="https://www.empresia.es/empresa/sklum-home-and-deco/" rel="noopener">https://www.empresia.es/empresa/sklum-home-and-deco/</a></li>
+<li>Infoempresa, contas de 2025 (€ 525,70 mi, +65,0%; resultado € 56,39 mi; patrimônio líquido € 172,00 mi): <a href="https://www.infoempresa.com/es-es/es/empresa/sklum-home-and-deco-sl" rel="noopener">https://www.infoempresa.com/es-es/es/empresa/sklum-home-and-deco-sl</a> · e <a href="https://www.empresia.es/empresa/direlec-group/" rel="noopener">https://www.empresia.es/empresa/direlec-group/</a></li>
+<li>elDiario.es, 20.07.2019: <a href="https://www.eldiario.es/economia/guerra-valencianos-catalana-desmontarla-clientes_1_1430483.html" rel="noopener">https://www.eldiario.es/economia/guerra-valencianos-catalana-desmontarla-clientes_1_1430483.html</a></li>
+<li>Interior Daily, a partir do elEconomista, 11.03.2025: <a href="https://interiordaily.com/article/9712500/leading-furniture-retailer-seeks-investor-for-european-expansion" rel="noopener">https://interiordaily.com/article/9712500/leading-furniture-retailer-seeks-investor-for-european-expansion</a> · original: <a href="https://www.eleconomista.es/capital-riesgo/noticias/13254696/03/25/los-duenos-de-la-cadena-de-muebles-sklum-abren-su-accionariado-al-capital-riesgo.html" rel="noopener">https://www.eleconomista.es/capital-riesgo/noticias/13254696/03/25/los-duenos-de-la-cadena-de-muebles-sklum-abren-su-accionariado-al-capital-riesgo.html</a></li>
+<li>El Referente (lido por resumo de busca): <a href="https://elreferente.es/ecosistema/trilantic-entra-en-sklum-con-un-plan-para-ampliar-capacidad-y-mercados/" rel="noopener">https://elreferente.es/ecosistema/trilantic-entra-en-sklum-con-un-plan-para-ampliar-capacidad-y-mercados/</a> · e <a href="https://app.dealroom.co/news/feed/trilantic-invests-in-sklum-s-growth-plan" rel="noopener">https://app.dealroom.co/news/feed/trilantic-invests-in-sklum-s-growth-plan</a></li>
+<li>Post no X citando margem e valuation, sem confirmação: <a href="https://x.com/jaimenovoa/status/1943583331909505433" rel="noopener">https://x.com/jaimenovoa/status/1943583331909505433</a></li>
+<li>Notificação e aprovação na Comissão Europeia: <a href="https://eulawlive.com/competition-corner/prior-notification-published-trilantic-direlec-group-sklum-the-masie-create/" rel="noopener">https://eulawlive.com/competition-corner/prior-notification-published-trilantic-direlec-group-sklum-the-masie-create/</a> · e <a href="https://ieu-monitoring.com/editorial/eu-commission-clears-acquisition-of-sklum-the-masie-and-create-by-direlec-group-and-trilantic/843568" rel="noopener">https://ieu-monitoring.com/editorial/eu-commission-clears-acquisition-of-sklum-the-masie-and-create-by-direlec-group-and-trilantic/843568</a></li>
+<li>Condições de envio (Espanha): <a href="https://www.sklum.com/es/content/63-condiciones-de-envio" rel="noopener">https://www.sklum.com/es/content/63-condiciones-de-envio</a></li>
+<li>Página sobre loja em Madri: <a href="https://www.sklum.com/es/content/2041-tienda-sklum-madrid" rel="noopener">https://www.sklum.com/es/content/2041-tienda-sklum-madrid</a></li>
+<li>Condições de envio de outros países: <a href="https://www.sklum.com/uk/content/63-shipping-conditions" rel="noopener">https://www.sklum.com/uk/content/63-shipping-conditions</a> · /fr/content/63-conditions-de-livraison · /de/content/63-versandbedingungen · /pt/content/63-condicoes-de-envio</li>
+<li>Onda Naranja, ampliação da equipe: <a href="https://ondanaranjacope.com/index.php/noticias/oferta-de-empleo-sklum-intensifica-su-crecimiento-y-amplia-su-plantilla-en-la-safor" rel="noopener">https://ondanaranjacope.com/index.php/noticias/oferta-de-empleo-sklum-intensifica-su-crecimiento-y-amplia-su-plantilla-en-la-safor</a> · avaliações de funcionários: <a href="https://es.indeed.com/cmp/Sklum/reviews" rel="noopener">https://es.indeed.com/cmp/Sklum/reviews</a></li>
+<li>Gente de la Safor, centro de Real de Gandía: <a href="https://gentedelasafor.es/sklum-real-gandia" rel="noopener">https://gentedelasafor.es/sklum-real-gandia</a></li>
+<li>Trustpilot: <a href="https://es.trustpilot.com/review/sklum.com" rel="noopener">https://es.trustpilot.com/review/sklum.com</a></li>
+<li>Crónica Global, 13.10.2023: <a href="https://cronicaglobal.elespanol.com/business/20231013/mas-que-mobiliario-sklum-convierte-opiniones-experiencias/801670026_0.html" rel="noopener">https://cronicaglobal.elespanol.com/business/20231013/mas-que-mobiliario-sklum-convierte-opiniones-experiencias/801670026_0.html</a></li>
+<li>Consumidor Global, 02.06.2024: <a href="https://www.consumidorglobal.com/hogar/sklum-defrauda-envios-pesima-atencion-cliente-meses-espera-paquetes_10733_102.html" rel="noopener">https://www.consumidorglobal.com/hogar/sklum-defrauda-envios-pesima-atencion-cliente-meses-espera-paquetes_10733_102.html</a></li>
+<li>Páginas "Conócenos" e "Design for tomorrow": <a href="https://www.sklum.com/es/content/66-conocenos" rel="noopener">https://www.sklum.com/es/content/66-conocenos</a> · <a href="https://www.sklum.com/es/content/3727-design-for-tomorrow" rel="noopener">https://www.sklum.com/es/content/3727-design-for-tomorrow</a></li>
+<li>Condições gerais: <a href="https://www.sklum.com/es/content/65-condiciones-generales" rel="noopener">https://www.sklum.com/es/content/65-condiciones-generales</a></li>
+<li>Promoções: <a href="https://www.sklum.com/es/content/1670-promotions" rel="noopener">https://www.sklum.com/es/content/1670-promotions</a></li>
+<li>Semrush, dados de 11.2025 (estimativa): <a href="https://www.semrush.com/website/sklum.com/overview" rel="noopener">https://www.semrush.com/website/sklum.com/overview</a></li>
+<li>Política de devoluções: <a href="https://www.sklum.com/es/content/69-politica-de-devoluciones" rel="noopener">https://www.sklum.com/es/content/69-politica-de-devoluciones</a></li>
+<li>Programa Sklum Pro: <a href="https://www.sklum.com/es/595-comprar-muebles-negocios" rel="noopener">https://www.sklum.com/es/595-comprar-muebles-negocios</a></li>
+<li>Página para profissionais: <a href="https://www.sklum.com/es/content/70-profesionales" rel="noopener">https://www.sklum.com/es/content/70-profesionales</a></li>
+<li>Exemplos de endereços contraditórios em sites de terceiros: <a href="https://solicitalo.net/tienda-fisica-sklum/" rel="noopener">https://solicitalo.net/tienda-fisica-sklum/</a> · <a href="https://www.neuttro.es/sklum-tienda-fisica-en-madrid-encuentra-nuestra-direccion/" rel="noopener">https://www.neuttro.es/sklum-tienda-fisica-en-madrid-encuentra-nuestra-direccion/</a></li>
+<li>Páginas do site abertas em 16.10.2026: <a href="https://www.sklum.com/es/" rel="noopener">https://www.sklum.com/es/</a> · /es/633-comprar-sofas · produto Kendall · produto Aramis · /es/pedido-rapido · /es/11716-comprar-special-price · /es/content/4100-editorial-fall-collection-2026 · /es/content/67-pago</li>
+<li>Biblioteca de Anúncios do Meta, Espanha, anúncios ativos, busca "sklum" (cerca de 29 resultados, anunciante não isolado): <a href="https://www.facebook.com/ads/library/?active_status=active&amp;ad_type=all&amp;country=ES&amp;q=sklum&amp;search_type=keyword_unordered" rel="noopener">https://www.facebook.com/ads/library/?active_status=active&amp;ad_type=all&amp;country=ES&amp;q=sklum&amp;search_type=keyword_unordered</a></li>
+</ol>
+
+</article>
+
+<section class="mods" id="modulos" aria-label="Páginas desta seção"><div class="eyebrow">As 10 páginas desta seção</div><ol class="lst"><li><span class="n">00</span><p><a href="/negocio/">Comece aqui</a></p><span class="t">3 min</span></li><li><span class="n">01</span><p><a href="/negocio/rh/">RH</a></p><span class="t">12 min</span></li><li><span class="n">02</span><p><a href="/negocio/flamingo-estate/">Flamingo Estate</a></p><span class="t">12 min</span></li><li><span class="n">03</span><p><a href="/negocio/trousseau/">Trousseau</a></p><span class="t">12 min</span></li><li aria-current="page"><span class="n">04</span><p><a href="/negocio/sklum/">Sklum</a></p><span class="t">12 min</span></li><li><span class="n">05</span><p><a href="/negocio/nordic-knots/">Nordic Knots</a></p><span class="t">12 min</span></li><li><span class="n">06</span><p><a href="/negocio/curtos/">Hem, The Invisible Collection, ETEL e Interior Define</a></p><span class="t">12 min</span></li><li><span class="n">07</span><p><a href="/negocio/pecas/">As peças, na ordem do funil</a></p><span class="t">12 min</span></li><li><span class="n">08</span><p><a href="/negocio/lancamento/">Lançar uma marca: Nik Sharma e os experts</a></p><span class="t">8 min</span></li><li><span class="n">09</span><p><a href="/negocio/perguntas/">Perguntas para a mesa</a></p><span class="t">5 min</span></li></ol></section>
+
+</div>
+
+<footer><div class="wrap">
+  <p>Estudos de caso feitos com IA em 16.10.2026, a partir de fontes públicas e de visitas aos sites de cada marca. Cada número traz a fonte. As capturas são de páginas públicas, abertas no mesmo dia. Nada aqui diz o que a More deve fazer: os casos descrevem, as perguntas ficam com o time. Feito com o sistema de design da More.</p>
+</div></footer>
+</div>
+
+<div class="barzone"><div class="bar" aria-label="Navegação">
+  <a href="/" aria-label="Índice"><svg viewBox="0 0 272 69" role="img" aria-label="More" xmlns:c2pa="http://c2pa.org/manifest"><metadata><c2pa:manifest>AAAWgmp1bWIAAAAeanVtZGMycGEAEQAQgAAAqgA4m3EDYzJwYQAAABZcanVtYgAAAEdqdW1kYzJtYQARABCAAACqADibcQN1cm46YzJwYTozMzg3YWIyYy1hMWM1LTQ5Y2EtYmY5Ny00N2RiMjI3YmYwZWYAAAADl2p1bWIAAAApanVtZGMyYXMAEQAQgAAAqgA4m3EDYzJwYS5hc3NlcnRpb25zAAAAALxqdW1iAAAARGp1bWRjYm9yABEAEIAAAKoAOJtxE2MycGEuaW5ncmVkaWVudC52MwAAAAAYYzJzaAvejDJIOSNzaPAwHj7kaAAAAABwY2JvcqNpZGM6Zm9ybWF0bWltYWdlL3N2Zyt4bWxqaW5zdGFuY2VJRHgseG1wOmlpZDphMmQ3YjNhMC04Mzk1LTQ0MTUtYWFhNS04ZWFhYWM2ZjQ1YjFscmVsYXRpb25zaGlwaHBhcmVudE9mAAAB4mp1bWIAAABBanVtZGNib3IAEQAQgAAAqgA4m3ETYzJwYS5hY3Rpb25zLnYyAAAAABhjMnNoAWo9OMK4bgwwZanS+OWsagAAAZljYm9yomdhY3Rpb25zgqJmYWN0aW9ua2MycGEub3BlbmVkanBhcmFtZXRlcnOha2luZ3JlZGllbnRzgaJjdXJseC1zZWxmI2p1bWJmPWMycGEuYXNzZXJ0aW9ucy9jMnBhLmluZ3JlZGllbnQudjNkaGFzaFggWSobncfM24/WN0aREmJtsgGGyNu3mVlNb3PF1vaOaZWkZmFjdGlvbngdY29tLmFudGhyb3BpYy5jbGF1ZGUucHJvdmlkZWRqcGFyYW1ldGVyc6F4H2NvbS5hbnRocm9waWMub3JpZ2luLWNvbmZpZGVuY2VndW5rbm93bmtkZXNjcmlwdGlvbnhmQ2xhdWRlIHByb3ZpZGVkIHRoaXMgZmlsZSBhdCB0aGUgcmVxdWVzdCBvZiBhIHVzZXIgYW5kIG1heSBoYXZlIGNyZWF0ZWQgb3IgbW9kaWZpZWQgdGhlIGZpbGUgY29udGVudHMubXNvZnR3YXJlQWdlbnShZG5hbWVmQ2xhdWRlcmFsbEFjdGlvbnNJbmNsdWRlZPUAAADIanVtYgAAAEBqdW1kY2JvcgARABCAAACqADibcRNjMnBhLmhhc2guZGF0YQAAAAAYYzJzaGE4ixWuWp1iLg6wekWrKwQAAACAY2JvcqVjYWxnZnNoYTI1NmNwYWRNAAAAAAAAAAAAAAAAAGRoYXNoWCBiHjqZX82DROgQX7UaMEWiMeHylF9MCDlPFIRlXx33amRuYW1lbmp1bWJmIG1hbmlmZXN0amV4Y2x1c2lvbnOBomVzdGFydBh2Zmxlbmd0aBkeBAAAAj5qdW1iAAAAJ2p1bWRjMmNsABEAEIAAAKoAOJtxA2MycGEuY2xhaW0udjIAAAACD2Nib3KlY2FsZ2ZzaGEyNTZpc2lnbmF0dXJleE1zZWxmI2p1bWJmPS9jMnBhL3VybjpjMnBhOjMzODdhYjJjLWExYzUtNDljYS1iZjk3LTQ3ZGIyMjdiZjBlZi9jMnBhLnNpZ25hdHVyZWppbnN0YW5jZUlEeCx4bXA6aWlkOmU1NGExMTEzLTcyMzItNGM5Zi1hMWIwLTdlOTZjMDQzZWYzYnJjcmVhdGVkX2Fzc2VydGlvbnODomN1cmx4LXNlbGYjanVtYmY9YzJwYS5hc3NlcnRpb25zL2MycGEuaW5ncmVkaWVudC52M2RoYXNoWCBZKhudx8zbj9Y3RpESYm2yAYbI27eZWU1vc8XW9o5plaJjdXJseCpzZWxmI2p1bWJmPWMycGEuYXNzZXJ0aW9ucy9jMnBhLmFjdGlvbnMudjJkaGFzaFgg7+iOlXzN9fsl5dtomZi9dr38n5qn+jROtSMCZ/zZgOeiY3VybHgpc2VsZiNqdW1iZj1jMnBhLmFzc2VydGlvbnMvYzJwYS5oYXNoLmRhdGFkaGFzaFgg5dtuer2DYxW6ttFffBa8QryKsKlQ4VcBq6Dmm04/y9x0Y2xhaW1fZ2VuZXJhdG9yX2luZm+jZG5hbWVvQW50aHJvcGljIEZpbGVzZ3ZlcnNpb25lMS4wLjBrc3BlY1ZlcnNpb25lMi40LjAAABA4anVtYgAAAChqdW1kYzJjcwARABCAAACqADibcQNjMnBhLnNpZ25hdHVyZQAAABAIY2JvctKEWQISogEmGCFZAgowggIGMIIBjaADAgECAhRA5aAK7sI50L64g/oGQgU9Z1UTADAKBggqhkjOPQQDAzBJMRcwFQYDVQQKEw5BbnRocm9waWMsIFBCQzEuMCwGA1UEAxMlQW50aHJvcGljIENvbnRlbnQgQ3JlZGVudGlhbHMgUm9vdCBDQTAeFw0yNjA4MDcxODQzNTZaFw0yODA4MDYxOTQzNTZaMEQxFzAVBgNVBAoTDkFudGhyb3BpYywgUEJDMSkwJwYDVQQDEyBBbnRocm9waWMgQ2xhdWRlIENvbnRlbnQgU2lnbmluZzBZMBMGByqGSM49AgEGCCqGSM49AwEHA0IABJh6CmvLUBgFFNU0vUKlOVtE6djd17L5SuwX0LemFisBM3dkd/3cyjxFA3Qo5S46fX0/ihY0VZ7mfb9KF703t5OjWDBWMA4GA1UdDwEB/wQEAwIHgDAVBgNVHSUEDjAMBgorBgEEAYPoXgIBMAwGA1UdEwEB/wQCMAAwHwYDVR0jBBgwFoAUzlHiBIFOZFsj+OPEz5o+nMHXXMIwCgYIKoZIzj0EAwMDZwAwZAIwMXMdFJ4BetLLVY7ORuE9noqbbAZOZn/aArXyTwFAZfKrPzxF2vPoJNf1+UCdg1XGAjBwX1zd9WGqYkqmL5SFqw1QySjr1zJfpJM9+1rdDwSPLMOPOjKuiXjoU/pUUeG9RwmhY3BhZFkNngAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPZYQLNSdZSJ1Lb4KyXNjcHFt+dMD/kTbfSuk+KST65sHWF18sFBsDHhJT9XVfg3laI//fXetfblD/peX/vE5v8r43Y=</c2pa:manifest></metadata><path fill="currentColor" d="M176.593 23.0819V1.91833H150.317V66.5948H176.593V44.2791H205.243V1.91833C189.55 1.91833 177.465 13.093 176.593 23.0875V23.0819Z"/><path fill="currentColor" d="M111.007 0C91.875 0 76.3403 15.3302 76.3403 34.223C76.3403 53.1159 91.8693 68.4461 111.007 68.4461C130.145 68.4461 145.742 53.1159 145.742 34.223C145.742 15.3302 130.213 0 111.007 0ZM111.007 42.4334C106.43 42.4334 102.69 38.8036 102.69 34.2174C102.69 29.6313 106.435 26.0015 111.007 26.0015C115.579 26.0015 119.398 29.6984 119.398 34.2174C119.398 38.7365 115.653 42.4334 111.007 42.4334Z"/><path fill="currentColor" d="M35.919 19.6423L26.2764 1.91833H0V66.5948H26.2764V44.212H45.4936V66.5948H71.77V1.91833H45.4936L35.919 19.6423Z"/><path fill="currentColor" d="M272.002 1.87909H211.835V24.7541V34.7487V44.1783V66.5612H272.002V44.7376H238.219L255.669 34.7151L238.236 24.7541H272.002V1.87909Z"/></svg></a>
+  <nav><a href="/">[Índice]</a><a href="/negocio/">[Início]</a><a href="/negocio/nordic-knots/">[Nordic Knots]</a></nav>
+</div></div>
+<script>
+document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener('click',e=>{const t=document.querySelector(decodeURIComponent(a.getAttribute('href')));if(t){e.preventDefault();t.scrollIntoView({block:'start'});history.replaceState(null,'',a.getAttribute('href'));}});});
+if(location.hash){const t=document.querySelector(decodeURIComponent(location.hash));if(t)t.scrollIntoView({block:'start'});}
+</script>
+</body>
+</html>

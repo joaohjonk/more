@@ -1,0 +1,455 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>RH · o catálogo, a galeria e a assinatura · Estudos de caso · More</title>
+<meta name="description" content="Uma varejista americana de móveis que vende quase tudo a membros pagantes, trata catálogos de quase 500 páginas e lojas com restaurante como mídia e cobra 50% de sinal em toda encomenda. O caso mostra o modelo inteiro, inclusive onde ele range.">
+<link rel="icon" href="data:,">
+<link rel="stylesheet" href="/nav/shell.css">
+<style>
+@font-face{font-family:"Muoto";src:url("/fonts/mr.otf") format("opentype");font-weight:400;font-display:swap}
+@font-face{font-family:"MuotoMono";src:url("/fonts/mm.woff2") format("woff2");font-weight:400;font-display:swap}
+/* Tokens do sistema de design da More (/sistema/brand/generated/tokens.css). Página de marca: paleta clara nos dois temas. */
+:root{
+  color-scheme:light;
+  --page:#E5E1DB; --ink:#2D211E; --muted:#5D554F; --label:#686868; --rule:#2D211E1A; --glass:#2D211E1A; --tile:#DDD7CF; --inverse:#2D211E; --on-inverse:#E5E1DB;
+  --muoto:"Muoto","DM Sans","Helvetica Neue",Arial,sans-serif;
+  --mono:"MuotoMono","Martian Mono",ui-monospace,Menlo,monospace;
+  --s-hair:6px; --s-sm:10px; --s-md:16px; --s-lg:20px; --s-xl:30px; --s-2xl:40px; --s-3xl:60px; --s-sec:96px;
+  --bar:35px; --barzone:75px;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--page:#E5E1DB;--ink:#2D211E;--muted:#5D554F;--rule:#2D211E1A;--glass:#2D211E1A;--tile:#DDD7CF;color-scheme:light}}
+:root[data-theme="dark"]{--page:#E5E1DB;--ink:#2D211E;--muted:#5D554F;--rule:#2D211E1A;--glass:#2D211E1A;--tile:#DDD7CF;color-scheme:light}
+*{box-sizing:border-box}
+html,body{height:100%}
+body{background:var(--page);color:var(--ink);font-family:var(--muoto);font-size:15px;line-height:1.47;-webkit-font-smoothing:antialiased;margin:0;overflow:hidden}
+/* A página rola dentro de .page; a barra vive numa faixa própria embaixo e nunca cobre texto. */
+.page{height:calc(100% - var(--barzone));overflow-y:auto;overflow-x:hidden;scroll-behavior:smooth;overscroll-behavior:contain;padding-bottom:106px}
+.wrap{max-width:1120px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:0 var(--s-3xl)}
+.mono{font-family:var(--mono);font-stretch:75%;font-size:13px}
+.muted{color:var(--muted)}
+.label{color:var(--label)}
+a{color:inherit;text-underline-offset:3px;text-decoration-thickness:1px;overflow-wrap:anywhere}
+a:hover{color:var(--muted)}
+h1,h2,h3{font-weight:400;text-wrap:balance;margin:0}
+h2{font-size:clamp(26px,3.4vw,32px);line-height:1.05;margin-bottom:var(--s-lg)}
+h3{font-size:15px;margin-bottom:4px}
+p{margin:0 0 var(--s-sm);max-width:64ch;text-wrap:pretty}
+section{padding-top:var(--s-sec)}
+.eyebrow{font-family:var(--mono);font-stretch:75%;font-size:13px;color:var(--label);margin-bottom:var(--s-md)}
+img{max-width:100%}
+b{font-weight:400}
+.tag{font-family:var(--mono);font-stretch:75%;font-size:11px;color:var(--label);white-space:nowrap}
+.tag.open{color:var(--ink)}
+.meas .tag{white-space:normal}
+
+/* abertura */
+.abre{padding-top:var(--s-3xl);display:grid;gap:var(--s-md)}
+.abre h1{font-size:clamp(34px,5.2vw,58px);line-height:.98;letter-spacing:-.01em;max-width:18ch}
+.abre .lede{font-size:clamp(18px,2vw,22px);line-height:1.25;margin:0;max-width:34ch}
+.meta{display:flex;flex-wrap:wrap;gap:6px var(--s-lg);margin-top:var(--s-sm)}
+
+/* tabelas */
+.meas{overflow-x:auto;margin-top:var(--s-lg)}
+.meas table{border-collapse:collapse;width:100%;min-width:760px;font-size:14px}
+.meas th{font-family:var(--mono);font-stretch:75%;font-weight:400;font-size:12px;color:var(--label);text-align:left;padding:8px;border-bottom:1px solid var(--ink)}
+.meas td{padding:10px 8px;border-bottom:1px solid var(--rule);vertical-align:top}
+.meas td:first-child{width:18%}
+.meas tr.grp td{font-family:var(--mono);font-stretch:75%;font-size:12px;color:var(--label);padding-top:var(--s-lg);border-bottom:1px solid var(--ink)}
+@media(max-width:700px){.meas table{min-width:0}.meas thead{display:none}.meas tr{display:block;padding:12px 0;border-bottom:1px solid var(--ink)}.meas tr.grp{padding:var(--s-lg) 0 4px}.meas td{display:block;padding:2px 0;border:0;width:auto!important}.meas td:first-child{font-size:16px;margin-bottom:4px}.meas td[data-l]::before{content:attr(data-l);display:block;font-family:var(--mono);font-stretch:75%;font-size:11px;color:var(--label);margin-top:6px}}
+
+/* riscos e perguntas */
+.lst{list-style:none;margin:var(--s-lg) 0 0;padding:0;border-top:1px solid var(--ink)}
+.lst li{display:grid;grid-template-columns:4ch minmax(0,1fr);gap:8px 16px;padding:12px 0;border-bottom:1px solid var(--rule);font-size:15px}
+.lst .n{font-family:var(--mono);font-stretch:75%;font-size:12px;color:var(--label);padding-top:3px}
+.lst p{margin:0;max-width:70ch}
+.lst p b{display:block}
+.lst .how{font-family:var(--mono);font-stretch:75%;font-size:12px;color:var(--label);margin-top:4px}
+
+/* barra, em faixa própria */
+.barzone{height:var(--barzone);position:relative;background:var(--page)}
+.bar{position:absolute;left:50%;transform:translateX(-50%);top:20px;width:420px;max-width:calc(100vw - 32px);height:var(--bar);background:var(--glass);backdrop-filter:blur(13px);-webkit-backdrop-filter:blur(13px);display:flex;align-items:center;justify-content:space-between;padding:0 var(--s-sm)}
+.bar svg{width:56px;height:auto;display:block;fill:currentColor}
+.bar nav{display:flex;gap:8px}
+.bar a{font-family:var(--mono);font-stretch:75%;font-size:13px;text-decoration:none;white-space:nowrap}
+.bar a:hover,.bar a:focus-visible{color:var(--muted)}
+@media(max-width:560px){.bar nav a{font-size:11px}.bar nav{gap:4px}}
+footer{background:var(--inverse);color:var(--on-inverse);margin-top:var(--s-sec)}
+footer .wrap{padding-block:var(--s-2xl)}
+footer p{font-size:13px;max-width:70ch}
+:focus-visible{outline:1px solid var(--ink);outline-offset:2px}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important;scroll-behavior:auto!important}}
+
+/* oitava seção: texto longo convertido do pacote */
+.doc{padding-top:var(--s-2xl)}
+.doc h2{padding-top:var(--s-3xl);scroll-margin-top:16px}
+.doc h3{font-size:clamp(17px,1.8vw,20px);line-height:1.2;margin:var(--s-xl) 0 var(--s-sm);scroll-margin-top:16px}
+.doc h4{font-family:var(--mono);font-stretch:75%;font-weight:400;font-size:12px;color:var(--label);margin:var(--s-lg) 0 6px}
+.doc p,.doc li{font-size:16px;line-height:1.5}
+.doc p{max-width:68ch}
+.doc strong{font-weight:400;color:var(--ink)}
+.doc p>strong:first-child{font-family:var(--mono);font-stretch:75%;font-size:13px;color:var(--label);margin-right:4px}
+.doc em{font-style:italic}
+.doc ul,.doc ol{max-width:68ch;padding-left:20px;margin:0 0 var(--s-md)}
+.doc li{margin-bottom:6px}
+.doc li>p{margin:0}
+.doc hr{border:0;border-top:1px solid var(--ink);margin:var(--s-2xl) 0 0}
+.doc blockquote{margin:var(--s-lg) 0;padding:var(--s-lg);background:var(--glass);max-width:68ch}
+.doc blockquote p{font-size:clamp(17px,1.8vw,20px);line-height:1.3;margin:0}
+.doc pre{font-family:var(--mono);font-stretch:75%;font-size:13px;line-height:1.5;background:var(--glass);padding:var(--s-md) var(--s-lg);overflow-x:auto;max-width:100%;white-space:pre}
+.doc code{font-family:var(--mono);font-stretch:75%;font-size:.88em}
+.doc .meas table{min-width:640px}
+.doc .meas td:first-child{width:auto}
+.doc .meas td,.doc .meas th{font-size:14px;line-height:1.4}
+.doc .meas th{font-size:12px}
+.doc .meas img{display:block;margin-bottom:6px}
+.doc img{height:auto;display:block;border:1px solid var(--rule)}
+.doc h3+p>a>img,.doc h3+p>img{margin:var(--s-sm) 0}
+.doc-atlas h3{padding-top:var(--s-xl);border-top:1px solid var(--ink)}
+@media(max-width:700px){.doc .meas:not(.grid) table{min-width:0}.doc .meas:not(.grid) thead{display:none}.doc .meas:not(.grid) tr{display:block;padding:12px 0;border-bottom:1px solid var(--ink)}.doc .meas:not(.grid) td{display:block;padding:2px 0;border:0}.doc .meas:not(.grid) td:first-child{font-size:16px}.doc .meas:not(.grid) td[data-l]:not(:first-child)::before{content:attr(data-l);display:block;font-family:var(--mono);font-stretch:75%;font-size:11px;color:var(--label);margin-top:6px}.doc .meas.grid table{min-width:560px}.doc .meas.grid td,.doc .meas.grid th{padding:8px 6px}}
+.mods{padding-top:var(--s-sec)}
+.mods .lst li{grid-template-columns:4ch minmax(0,1fr) auto;align-items:baseline}
+.mods .lst p{font-size:17px}
+.mods .lst a{text-decoration:none}
+.mods .lst a:hover{text-decoration:underline}
+.mods .lst .t{font-family:var(--mono);font-stretch:75%;font-size:12px;color:var(--label)}
+.mods li[aria-current] p a{text-decoration:underline}
+.mods li[aria-current] .n::after{content:" ·"}
+.doc hr+h3{border-top:0}
+@media(max-width:700px){.doc .meas.grid{overflow-x:auto}.doc .meas.grid table{display:table;min-width:560px}.doc .meas.grid thead{display:table-header-group}.doc .meas.grid tr{display:table-row;padding:0}.doc .meas.grid td{display:table-cell;border-bottom:1px solid var(--rule);font-size:14px}.doc .meas.grid td::before{content:none!important}.doc .meas.grid td:first-child{font-size:13px;white-space:nowrap}}
+
+</style>
+</head>
+<body><script src="/nav/shell.js" data-section="negocio" data-into=".page" data-foot="on" defer></script>
+<div class="page" id="page">
+<div class="wrap">
+
+<header class="abre" id="topo">
+  <div class="eyebrow">More · Estudos de caso · RH · 16.10.2026</div>
+  <h1>RH · o catálogo, a galeria e a assinatura</h1>
+  <p class="lede">Uma varejista americana de móveis que vende quase tudo a membros pagantes, trata catálogos de quase 500 páginas e lojas com restaurante como mídia e cobra 50% de sinal em toda encomenda. O caso mostra o modelo inteiro, inclusive onde ele range.</p>
+  <div class="meta mono label"><span>Para Fred, Edu e Vitor</span><span>Estudos de caso, sem recomendação</span><span>Leitura: 12 min</span></div>
+</header>
+
+<article class="doc doc-rh">
+
+<h2 id="em-números">Em números</h2>
+<p>A RH, antiga Restoration Hardware, é um varejo verticalizado no design: desenha, encomenda a fornecedores e vende por galerias, site, catálogo e venda a profissionais.</p>
+<div class="meas"><table>
+<thead>
+<tr class="header">
+<th>Item</th>
+<th>Dado</th>
+<th>Fonte · data</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-l="Item">Fundação</td>
+<td data-l="Dado">1979, Eureka (Califórnia). Stephen Gordon restaurava uma casa vitoriana e vendia ferragens a partir de um fichário de fotocópias</td>
+<td data-l="Fonte · data">Speedwell [4]; Wikipedia [12]</td>
+</tr>
+<tr class="even">
+<td data-l="Item">Comando</td>
+<td data-l="Dado">Gary Friedman é CEO desde março de 2001; chairman e CEO desde 2013</td>
+<td data-l="Fonte · data">[4]; [12]</td>
+</tr>
+<tr class="odd">
+<td data-l="Item">Receita</td>
+<td data-l="Dado">US$ 3,44 bi no ano fiscal 2025 (+8,1%). Segmento RH: US$ 3,24 bi, com US$ 290 mi de outlets; Waterworks: US$ 198 mi</td>
+<td data-l="Fonte · data">10-K, 31.01.2026 [1]</td>
+</tr>
+<tr class="even">
+<td data-l="Item">Margem bruta</td>
+<td data-l="Dado">44,1% consolidada; 43,5% no segmento RH (cálculo nosso: 1.410,9 / 3.241,4). O custo inclui frete e aluguel das lojas</td>
+<td data-l="Fonte · data">[1]</td>
+</tr>
+<tr class="odd">
+<td data-l="Item">Lucro líquido</td>
+<td data-l="Dado">US$ 124,8 mi (3,6% da receita), com US$ 225 mi de despesa de juros</td>
+<td data-l="Fonte · data">[1]</td>
+</tr>
+<tr class="even">
+<td data-l="Item">Dívida</td>
+<td data-l="Dado">Term loans de cerca de US$ 2,35 bi</td>
+<td data-l="Fonte · data">[1]</td>
+</tr>
+<tr class="odd">
+<td data-l="Item">Lojas</td>
+<td data-l="Dado">39 Design Galleries na América do Norte (média de 32.600 pés² de área de venda), 25 Legacy Galleries, 6 Design Galleries na Europa, 1 Interior Design Studio, outras 4, 14 lojas Waterworks e 44 outlets</td>
+<td data-l="Fonte · data">[1]</td>
+</tr>
+<tr class="even">
+<td data-l="Item">Restaurantes</td>
+<td data-l="Dado">Em 25 Design Galleries e no Guesthouse</td>
+<td data-l="Fonte · data">[1]</td>
+</tr>
+<tr class="odd">
+<td data-l="Item">Membros</td>
+<td data-l="Dado">Cerca de 262 mil no fim do ano fiscal 2025, responsáveis por ~97% das vendas do negócio principal</td>
+<td data-l="Fonte · data">[1]</td>
+</tr>
+<tr class="even">
+<td data-l="Item">Taxa de membro</td>
+<td data-l="Dado">US$ 200 por ano nos EUA; € 225 na Europa</td>
+<td data-l="Fonte · data">rh.com, via buscador [9]</td>
+</tr>
+<tr class="odd">
+<td data-l="Item">Prazo</td>
+<td data-l="Dado">Tecido de estoque: 2 a 7 dias. Tecido sob encomenda: 4 a 6 ou 8 a 10 semanas, conforme o modelo</td>
+<td data-l="Fonte · data">rh.com, trecho indexado sem data [10]</td>
+</tr>
+<tr class="even">
+<td data-l="Item">Sinal</td>
+<td data-l="Dado">50% em toda encomenda custom, reconhecido como receita só na entrega</td>
+<td data-l="Fonte · data">[1]; rh.com/gb [11]</td>
+</tr>
+<tr class="odd">
+<td data-l="Item">Publicidade</td>
+<td data-l="Dado">US$ 106 mi no ano fiscal 2025 (3,1% da receita), "principalmente" catálogos</td>
+<td data-l="Fonte · data">[1]</td>
+</tr>
+<tr class="even">
+<td data-l="Item">Capital</td>
+<td data-l="Dado">Aberto na NYSE desde 2012; IPO anterior em 1998 e fechamento de capital em 2008</td>
+<td data-l="Fonte · data">[4]; [12]</td>
+</tr>
+<tr class="odd">
+<td data-l="Item">Funcionários</td>
+<td data-l="Dado">5.960 em 2024</td>
+<td data-l="Fonte · data">[12]</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="história-curta">História curta</h2>
+<p><strong>1979 a 2000, a loja de achados.</strong> Gordon vendia ferragens de restauração e "discovery items": lanternas de mineiro, aldrava de libélula, o robô "Atomic Robot Man". Em 1994 eram 5 lojas e US$ 4,2 mi de receita, e os móveis, que entraram naquele ano, chegaram a 32% das vendas em 2002. O IPO de 19.06.1998 levantou ~US$ 60 mi e financiou uma expansão rápida: 13 lojas novas só em 2000, com vendas comparáveis em -1%. A empresa fechou 2000 com US$ 2,6 mi em caixa, liquidando estoque com promoções, e a ação caiu ~95% [4].</p>
+<p><strong>2001, a chegada de Friedman.</strong> Ele vinha de 14 anos na Williams-Sonoma, onde levou a Pottery Barn de ~US$ 50 mi a mais de US$ 1 bi. Encontrou os "discovery items" respondendo por cerca de metade do negócio, cortou as bugigangas, subiu preço e reposicionou a marca "acima dos lifestyle retailers e abaixo do interior design trade" [4]. Na carta de 10.09.2026 ele resume o ponto de partida: uma empresa "quase falida, com US$ 20 milhões de valor de mercado e uma caixa de sabão em pó Oxydol na capa do catálogo" [3].</p>
+<p><strong>2008 a 2012, privada e depois RH.</strong> A Catterton fechou o capital em 18.06.2008 por US$ 179 mi, depois de uma oferta inicial de US$ 267 mi encolhida pela crise. Em 2011 vieram as primeiras Design Galleries de 21.500 pés², o triplo das lojas antigas, e em 2012 um novo IPO a US$ 24 e o nome RH [12].</p>
+<p><strong>2015 e 2016, restaurante e assinatura.</strong> O primeiro restaurante abriu em 2015 na galeria de Chicago, um prédio de 1914 com 70 mil pés² [12]. Em março de 2016 veio o RH Grey Card: US$ 100 por ano, 25% de desconto em tudo, design de interiores gratuito e o fim das promoções tradicionais [13]. Friedman disse em 31.03.2016 que "mandar e-mails promocionais repetitivos está em conflito com a essência da marca", mas deixou a porta aberta: "sempre podemos reinserir algum nível de atividade promocional" [14].</p>
+<p><strong>2022 a 2026, hotel, Europa e Estates.</strong> O RH Guesthouse New York abriu em 09.2022 [15]. Na Europa vieram Inglaterra (2023), Munique e Düsseldorf (2023), Bruxelas e Madri (2024), Paris (09.2025) e Londres (27.06.2026); em 2024 a empresa baixou US$ 19 mi em impairment de duas galerias alemãs [1]. Em 2026 lançou o RH Estates, linha clássica montada com marcas compradas (Michael Taylor, Formations, Dennis &amp; Leen, entre outras), com preço médio 45% acima do sortimento atual [3], e abriu em 18.09.2026 a primeira galeria só de Estates, em Greenwich [16].</p>
+<p><strong>Onde rangeu.</strong> A expansão com caixa negativo de 1999 e 2000, a dependência de promoção, o impairment na Alemanha e o custo de construção, que "dobrou depois da COVID" nas galerias de vários andares [3]. O ano fiscal 2026 começou com receita de -1,7% no primeiro trimestre e US$ 75 mi a mais em pedidos atrasados e sob encomenda, efeito da troca de fornecedores por causa das tarifas [2].</p>
+<h2 id="como-ganha-dinheiro">Como ganha dinheiro</h2>
+<p><strong>Fornecimento.</strong> A RH quase não fabrica: tem só uma unidade de estofados na Carolina do Norte. 76% das compras vêm de 28 fornecedores, um deles com 14% sozinho; 69% vêm da Ásia (39% do Vietnã), 21% da América do Norte e 10% da Europa [1].</p>
+<p><strong>Preço duplo.</strong> Toda peça tem preço "Member" e "Regular". No e-mail de 15.10.2026, o sofá modular Original Cloud de 4 peças aparece a US$ 6.604 para membro em liquidação contra US$ 11.125 no regular, 40,6% abaixo [7]. A RH passou a se comparar com a loja só para profissionais, e não com a Pottery Barn: na carta de 11.12.2025, Friedman escreve que "uma parte relevante dos ganhos de participação vem das lojas To-The-Trade fragmentadas" [5].</p>
+<p><strong>Assinatura.</strong> A taxa anual entra como receita diferida e é reconhecida ao longo do ano. Ficam fora do desconto Outlet, Trade, Contract, Hospitality e Waterworks [1]. Uma conta aproximada nossa, não divulgada pela empresa: se 97% das vendas principais, cerca de US$ 2,9 bi (segmento RH menos outlets), vêm de 262 mil membros, cada membro compra em média uns US$ 11 mil por ano [1].</p>
+<p><strong>Sinal e caixa.</strong> O passivo de receita diferida e depósitos de clientes era de US$ 338,5 mi em 31.01.2026, 9,8% da receita anual, e a RH espera reconhecer quase tudo em seis meses [1].</p>
+<p><strong>Frete e devolução.</strong> A entrega de móveis é por taxa fixa por zona, mas as versões indexadas do site divergem (US$ 349/449/649 ou US$ 299/399/599) [17]. A provisão para devoluções foi de US$ 155,2 mi, 4,5% da receita [1]. A peça sob encomenda não volta [11]; o que volta vai para os 44 outlets, que o 10-K chama de "parte-chave da logística reversa" [1].</p>
+<p><strong>Estoque e encomenda juntos.</strong> Há tecidos de estoque e tecidos sob encomenda na mesma peça [10]. Em 09.2025 a RH tinha ~US$ 300 mi de estoque excedente que queria reduzir [5].</p>
+<p><strong>Profissionais.</strong> O Trade dá 25% sobre o preço cheio e 20% na liquidação, pelo FAQ americano; o europeu fala em 30% [18]. Em 06.2026 a RH anunciou "A New Covenant with the Trade", para que designers e arquitetos sejam "remunerados", com RH Bespoke (medida sob especificação) e RH Couture (estofado com o tecido do cliente) [2].</p>
+<p><strong>Restaurantes.</strong> Geram em média resultado equivalente a ~65% do aluguel das galerias onde ficam; o de Newport Beach passa de US$ 20 mi de receita [5].</p>
+<h2 id="o-funil-etapa-por-etapa">O funil, etapa por etapa</h2>
+<h3 id="pré-lançamento-o-caso-estates">Pré-lançamento: o caso Estates</h3>
+<p>Não há registro do lançamento da marca em 1979. O do Estates, em 2026, seguiu uma ordem clara: prévia na RH Milan durante o Salone del Mobile; estreia na abertura de Londres (27.06); catálogo de 268 páginas enviado do fim de junho a meados de julho, com tiragem inicial "conservadora"; galeria própria em Greenwich (18.09); e o plano de levar a linha ao térreo das galerias que somam 80% do negócio em novembro, quando o estoque estiver "em nível adequado" [3][16]. Friedman projeta que o Estates chegue a 50% da oferta em cinco anos [3].</p>
+<p><img loading="lazy" src="/negocio/img/ref-rh-ir-carta-desktop-20261016.jpg" alt="A carta trimestral é a peça principal do site de investidores: o título é de resultado, mas dentro dela metade do texto é narrativa de marca" /></p>
+<h3 id="descoberta">Descoberta</h3>
+<p>Pelo 10-K, os veículos principais são as galerias, o site e os catálogos (Sourcebooks), com mídia impressa em AD, ELLE Decor, Veranda, T Magazine, World of Interiors e FT HTSI. A empresa lista também como veículos de publicidade o Guesthouse, a RH England, os jatos RH One e RH Two e o iate RH Three [1]. O catálogo é tratado como "um meio de baixo custo para testar produtos novos" [1]. Em 2026 saíram o Modern, com "quase 500 páginas" (04.08) [19], o Estates, com 268 [3], e o TEEN [7]. Segundo a Speedwell, os produtos que ganham espaço na loja vendem 50% a 150% mais, e menos de 10% do sortimento fica exposto [4].</p>
+<p><img loading="lazy" src="/negocio/img/ref-rh-email-sourcebook-mobile-20261016.jpg" alt="O catálogo impresso é anunciado por e-mail como lançamento editorial: &quot;Unveiling the RH Modern Sourcebook&quot;, &quot;nearly 500 pages&quot;" /></p>
+<h3 id="página-inicial-e-página-do-produto">Página inicial e página do produto</h3>
+<p>Não foram vistas ao vivo. O 10-K descreve navegação por cômodo, busca por tamanho e cor e "The World of RH", um portal de conteúdo [1]. Trechos indexados de rh.com, sem data, mostram a lógica da página do sofá Cloud: "a partir de US$ 6.008" para membro contra US$ 10.140 no regular, "Stocked in 26 Fabrics, Delivered in 2–7 Days" e "Available in 230 Special Order Fabrics, Delivered in 4–6 Weeks" [10]. O 10-K confirma que o cliente "pode selecionar swatches", sem dizer se são grátis [1].</p>
+<p><img loading="lazy" src="/negocio/img/ref-rh-email-liquidacao-desktop-20261016.jpg" alt="Preço em dupla no e-mail de liquidação: &quot;6,604 MEMBER SALE&quot; ao lado de &quot;11,125 REGULAR&quot; riscado, com &quot;Save 55% for a limited time&quot;" /></p>
+<h3 id="contato">Contato</h3>
+<p>O contato passa pelo RH Interior Design, gratuito para membros, em três níveis: Foundational ("projetos de um cômodo"), Comprehensive ("de dois cômodos à casa inteira") e Bespoke ("transformações da casa inteira"), este com mínimo de US$ 300 mil em produtos RH nas páginas europeias [21]. O escritório de Palm Desert, aberto em 12.2024, tem 3.000 pés², duas pequenas salas e nenhum produto exposto. Segundo Friedman, gera "um milhão de dólares por mês em design business" e paga US$ 200 mil de aluguel por ano [5]. Em Londres, o volume de projetos em andamento chegou a quase US$ 7 mi nas primeiras 8 semanas [3].</p>
+<p><img loading="lazy" src="/negocio/img/ref-rh-email-design-membro-mobile-20261016.jpg" alt="E-mail do RH Interior Design: a RH se apresenta como &quot;uma das maiores firmas de design residencial do mundo&quot;, o CTA é &quot;Request a Design Consultation&quot; e a foto mostra o estúdio de Paris, com mesa de reunião e monitores, sem produto" /></p>
+<h3 id="checkout">Checkout</h3>
+<p>Não foi alcançado. As regras vêm de documento: sinal de 50% em encomenda custom [1]; na encomenda especial, o pedido "não pode ser cancelado, alterado nem devolvido", o "depósito de 50% não é reembolsável" e o saldo é cobrado no envio [11]; cartão próprio com 0% em 12 meses ou 3,99% em 60 meses para membros [9]. Não se sabe como a assinatura aparece no carrinho.</p>
+<p><img loading="lazy" src="/negocio/img/ref-rh-10k-sinal50-desktop-20261016.jpg" alt="Trecho do 10-K: &quot;we collect deposits for all custom orders equivalent to 50% of the purchase price&quot; (destaque em amarelo aplicado pela pesquisa)" /></p>
+<h3 id="e-mails-depois-do-cadastro">E-mails depois do cadastro</h3>
+<p>O arquivo Email Love guarda 656 e-mails da RH. Entre 30.09 e 15.10.2026 foram 24 em 16 dias, 1,5 por dia; 17 trazem desconto no assunto, de "até 50%" a "até 70%" ("The Fall Clearance. Save Up to 70%…"). Os outros são de produto ou marca: Estates, os catálogos Modern e TEEN, Interior Design e a cadeira Arno [7]. Os e-mails são quase todos imagem.</p>
+<p><img loading="lazy" src="/negocio/img/ref-rh-email-lista-desktop-20261016.jpg" alt="Arquivo de e-mails da RH em 10.2026: cadência diária, tom de liquidação (&quot;Save up to 50%&quot;) e o filtro do próprio arquivo classificando 402 dos 656 e-mails como &quot;Sale &amp; Promo&quot;" /></p>
+<p>O e-mail de produto é de outro tipo. O do Baldacchino, do Estates, conta a compra da Formations ("we acquired Formations to share the world's finest designs"), detalha o mármore Emperador turco e os pés de latão e mostra amostras de acabamento [7].</p>
+<p><img loading="lazy" src="/negocio/img/ref-rh-email-estates-mobile-20261016.jpg" alt="E-mail RH Estates sobre a mesa Baldacchino: história da aquisição da Formations, material descrito peça a peça e quatro amostras de acabamento no rodapé" /></p>
+<h3 id="pós-compra">Pós-compra</h3>
+<p>A entrega de móveis é white glove, com operação própria em 29 mercados, que a RH diz reduzir devoluções e danos [1]. A assinatura é o mecanismo de retenção: segundo o 10-K, ela rende pedidos "mais distribuídos ao longo do ano" [1]. Garantia, instruções de cuidado e rastreio não foram vistos.</p>
+<p><img loading="lazy" src="/negocio/img/ref-rh-10k-membros-desktop-20261016.jpg" alt="Trecho do 10-K sobre o RH Members Program: desconto fixo todo dia, design gratuito, exclusão de Outlet, Trade, Contract e Hospitality e ~262 mil membros com ~97% das vendas" /></p>
+<h3 id="loja-física">Loja física</h3>
+<p>Há quatro formatos: galerias de 30 a 50 mil pés² com restaurante e escritório de design; galerias em prédios históricos (Paris, Londres, Milão); "RH Compounds" de 6 a 8 prédios ligados por jardins, com Naples previsto para o fim de 2026 ou início de 2027 e payback projetado de 12 a 18 meses; e escritórios de design sem produto, como Palm Desert [1][3]. A receita por galeria não é divulgada. Uma conta nossa, que inclui o online: receita total dividida pela área média de venda dá ~US$ 2.160 por pé² [1]. Os gastos de abertura de galerias devem cair de US$ 48 mi em 2026 para US$ 18 mi em 2027 [3].</p>
+<p><img loading="lazy" src="/negocio/img/ref-rh-ir-estates-greenwich-desktop-20261016.jpg" alt="Comunicado de 18.09.2026: a linha nova ganha galeria própria em Greenwich antes de ocupar as galerias existentes, com a segunda prevista em Melrose Avenue para 2027" /></p>
+<h2 id="peças-atômicas">Peças atômicas</h2>
+<div class="meas"><table>
+<thead>
+<tr class="header">
+<th>Etapa</th>
+<th>Peça</th>
+<th>O que é, com exemplo real</th>
+<th>Fonte / captura</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-l="Etapa">Pré-lançamento</td>
+<td data-l="Peça">Prévia em feira e abertura de flagship</td>
+<td data-l="O que é, com exemplo real">Estates mostrado no Salone e lançado em Londres antes da galeria própria</td>
+<td data-l="Fonte / captura">[3][16]</td>
+</tr>
+<tr class="even">
+<td data-l="Etapa">Descoberta</td>
+<td data-l="Peça">Catálogo impresso</td>
+<td data-l="O que é, com exemplo real">Modern 2026 com "quase 500 páginas"; Estates com 268; US$ 106 mi de publicidade, quase tudo em catálogo</td>
+<td data-l="Fonte / captura">[1][19]; ref-rh-email-sourcebook-mobile</td>
+</tr>
+<tr class="odd">
+<td data-l="Etapa">Descoberta</td>
+<td data-l="Peça">Ativo de marca como anúncio</td>
+<td data-l="O que é, com exemplo real">Jatos, iate, Guesthouse e RH England listados no 10-K como veículos de publicidade</td>
+<td data-l="Fonte / captura">[1]</td>
+</tr>
+<tr class="even">
+<td data-l="Etapa">Página do produto</td>
+<td data-l="Peça">Preço duplo</td>
+<td data-l="O que é, com exemplo real">"$6,604 MEMBER SALE / $11,125 REGULAR"</td>
+<td data-l="Fonte / captura">[7]; ref-rh-email-liquidacao-desktop</td>
+</tr>
+<tr class="odd">
+<td data-l="Etapa">Página do produto</td>
+<td data-l="Peça">Dois prazos na mesma peça</td>
+<td data-l="O que é, com exemplo real">"Stocked… 2–7 Days" contra "230 Special Order Fabrics… 4–6 Weeks"</td>
+<td data-l="Fonte / captura">[10]</td>
+</tr>
+<tr class="even">
+<td data-l="Etapa">Contato</td>
+<td data-l="Peça">Design gratuito para membros, em 3 níveis</td>
+<td data-l="O que é, com exemplo real">Foundational, Comprehensive, Bespoke (mínimo de US$ 300 mil)</td>
+<td data-l="Fonte / captura">[21]; ref-rh-email-design-membro-mobile</td>
+</tr>
+<tr class="odd">
+<td data-l="Etapa">Contato</td>
+<td data-l="Peça">Escritório de design sem produto</td>
+<td data-l="O que é, com exemplo real">Palm Desert: 3.000 pés², US$ 1 mi por mês em projetos</td>
+<td data-l="Fonte / captura">[5]</td>
+</tr>
+<tr class="even">
+<td data-l="Etapa">Checkout</td>
+<td data-l="Peça">Sinal de 50%</td>
+<td data-l="O que é, com exemplo real">Não reembolsável na encomenda especial</td>
+<td data-l="Fonte / captura">[1][11]; ref-rh-10k-sinal50-desktop</td>
+</tr>
+<tr class="odd">
+<td data-l="Etapa">Checkout</td>
+<td data-l="Peça">Cartão próprio</td>
+<td data-l="O que é, com exemplo real">0% em 12 meses para membros</td>
+<td data-l="Fonte / captura">[9]</td>
+</tr>
+<tr class="even">
+<td data-l="Etapa">E-mails</td>
+<td data-l="Peça">Liquidação diária</td>
+<td data-l="O que é, com exemplo real">17 de 24 e-mails com "até 50–70%" em 16 dias</td>
+<td data-l="Fonte / captura">[7]; ref-rh-email-lista-desktop</td>
+</tr>
+<tr class="odd">
+<td data-l="Etapa">E-mails</td>
+<td data-l="Peça">E-mail editorial de produto</td>
+<td data-l="O que é, com exemplo real">Baldacchino: aquisição, material, amostras de acabamento</td>
+<td data-l="Fonte / captura">[7]; ref-rh-email-estates-mobile</td>
+</tr>
+<tr class="even">
+<td data-l="Etapa">Pós-compra</td>
+<td data-l="Peça">Assinatura anual</td>
+<td data-l="O que é, com exemplo real">US$ 200, 30% em tudo, ~262 mil membros</td>
+<td data-l="Fonte / captura">[1][7][9]; ref-rh-10k-membros-desktop</td>
+</tr>
+<tr class="odd">
+<td data-l="Etapa">Pós-compra</td>
+<td data-l="Peça">Outlet como logística reversa</td>
+<td data-l="O que é, com exemplo real">44 lojas que vendem sobretudo devoluções</td>
+<td data-l="Fonte / captura">[1]</td>
+</tr>
+<tr class="even">
+<td data-l="Etapa">Loja física</td>
+<td data-l="Peça">Restaurante na galeria</td>
+<td data-l="O que é, com exemplo real">25 galerias; resultado de ~65% do aluguel</td>
+<td data-l="Fonte / captura">[1][5]</td>
+</tr>
+<tr class="odd">
+<td data-l="Etapa">Profissional</td>
+<td data-l="Peça">"New Covenant with the Trade"</td>
+<td data-l="O que é, com exemplo real">Remuneração do designer, Bespoke e Couture</td>
+<td data-l="Fonte / captura">[2]</td>
+</tr>
+<tr class="even">
+<td data-l="Etapa">Investidor e marca</td>
+<td data-l="Peça">Carta do CEO</td>
+<td data-l="O que é, com exemplo real">"Extraordinary takes more, costs more money…"</td>
+<td data-l="Fonte / captura">[3]; ref-rh-carta-q2-2026-desktop</td>
+</tr>
+</tbody>
+</table></div>
+<p><img loading="lazy" src="/negocio/img/ref-rh-carta-q2-2026-desktop-20261016.jpg" alt="Carta de 10.09.2026, seção &quot;Extraordinary takes more&quot;: resultado financeiro, a frase da entrada do centro de criação (&quot;The Home of the Extraordinary, The Remarkable &amp; The Amazing&quot;) e a história da Oxydol na mesma página (destaque aplicado pela pesquisa)" /></p>
+<h2 id="o-que-dizem-dela">O que dizem dela</h2>
+<ul>
+<li><strong>Friedman, 31.03.2016, sobre promoção:</strong> a abordagem antiga "era construída num vocabulário de desconto e preço, não de gosto, design, qualidade ou estilo" [14].</li>
+<li><strong>Friedman, 11.06.2026, sobre os profissionais:</strong> "há quem tenha gosto e não tenha escala, e quem tenha escala e não tenha gosto". Ele chama a loja só para profissionais de "cortina de ferro" e escreve que "o público fica do lado de fora" [2].</li>
+<li><strong>Friedman, 10.09.2026:</strong> "sempre conseguimos monetizar trabalho extraordinário e notável, e achamos muito difícil monetizar o ordinário e o banal" [3].</li>
+<li><strong>Friedman, 11.12.2025, sobre o mercado:</strong> "o pior mercado imobiliário em quase 50 anos" [5].</li>
+<li><strong>Speedwell, <em>The Synopsis</em>, 07.08.2023 (1h29).</strong> Pelas notas do episódio: 24:27, a estratégia das galerias grandes; 32:26, "quando faz sentido mandar um catálogo de 540 páginas"; 45:13, assinatura e os problemas das promoções; 1:14:50, jatos, iate e Guesthouse [6]. Os episódios de 18.09.2025 (13:17, descontos e estoque) e 18.12.2025 ("60% Discounts"; 22:30, estúdios de design e expansão internacional) completam a série [6].</li>
+</ul>
+<h2 id="o-que-não-se-sabe">O que não se sabe</h2>
+<ul>
+<li>A experiência real em rh.com: home, página do produto, custo dos swatches, agendamento, carrinho, oferta da assinatura no checkout.</li>
+<li>Receita por galeria, receita total dos restaurantes e payback das galerias grandes. A RH só dá exemplos escolhidos.</li>
+<li>Tiragem, custo unitário e taxa de resposta dos catálogos.</li>
+<li>Receita do Trade e do Contract, que o 10-K não separa.</li>
+<li>Receita de taxas de assinatura e taxa de renovação.</li>
+<li>Taxa de devolução por categoria e quanto dela é encomenda especial.</li>
+<li>Qual tabela de frete vale hoje.</li>
+<li>Como a política "sem promoção" de 2016 virou a liquidação de "até 70%" de 2026, e com que efeito na margem.</li>
+</ul>
+<h2 id="perguntas-para-a-more">Perguntas para a More</h2>
+<ol type="1">
+<li>A RH cobra 50% de sinal e não aceita devolução de encomenda especial, e mesmo assim provisiona 4,5% da receita para devoluções. Que regra a More escreve para o caso em que a peça sob encomenda chega e o cliente não gosta?</li>
+<li>O cliente da RH vê dois prazos na mesma peça: dias para o que está em estoque e semanas para o resto. Alguma das 24 peças teria uma versão pronta, ou o prazo de ~120 dias é parte do que se vende?</li>
+<li>Palm Desert vende projeto sem expor produto, e Greenwich expõe uma linha inteira. Na Alameda Franca, o que custa mais deixar de ter: espaço de projeto ou espaço de exposição?</li>
+<li>A RH remunera o profissional e promete abrir ao público o que antes era só para profissionais. O arquiteto, para a More, é intermediário, cliente ou coautor?</li>
+<li>Em 2016 Friedman disse que e-mail promocional repetitivo contradizia a marca. Em outubro de 2026, 17 de 24 e-mails anunciavam desconto. Que regra de desconto a More consegue manter quando aparecer estoque parado?</li>
+<li>Tudo o que a RH chama de mídia (catálogo, galeria, restaurante, hotel) é físico e caro. Qual é a peça física da More, na escala de 24 peças e três pessoas, que faz o papel do catálogo?</li>
+</ol>
+<h2 id="como-este-caso-foi-feito">Como este caso foi feito</h2>
+<p>Em 16.10.2026 foram abertos ao vivo o 10-K, as cartas trimestrais na SEC, o site de investidores e o arquivo de e-mails do Email Love. O site rh.com não abriu para a pesquisa (pedia verificação humana), então home, página do produto, swatches, agendamento e checkout vêm do 10-K e de trechos indexados por buscadores, sem data. Os podcasts da Speedwell foram lidos pelas notas dos episódios; o áudio não foi ouvido. Business Breakdowns (Colossus, 24.05.2023) e <em>30 Minute Mentors</em> (ep. 111) não foram verificados.</p>
+<h2 id="fontes">Fontes</h2>
+<p>Acesso em 16.10.2026.</p>
+<ol type="1">
+<li>RH, Form 10-K do ano fiscal 2025 (encerrado em 31.01.2026). <a href="https://www.sec.gov/Archives/edgar/data/1528849/000110465926037992/rh-20260131x10k.htm" rel="noopener">https://www.sec.gov/Archives/edgar/data/1528849/000110465926037992/rh-20260131x10k.htm</a></li>
+<li>RH, carta do 1º trimestre de 2026 (11.06.2026), Ex. 99.2. <a href="https://www.sec.gov/Archives/edgar/data/1528849/000110465926072941/rh-20260611xex99d2.htm" rel="noopener">https://www.sec.gov/Archives/edgar/data/1528849/000110465926072941/rh-20260611xex99d2.htm</a></li>
+<li>RH, carta do 2º trimestre de 2026 (10.09.2026), Ex. 99.2. <a href="https://www.sec.gov/Archives/edgar/data/1528849/000110465926106743/rh-20260910xex99d2.htm" rel="noopener">https://www.sec.gov/Archives/edgar/data/1528849/000110465926106743/rh-20260910xex99d2.htm</a> · <a href="https://ir.rh.com/" rel="noopener">https://ir.rh.com/</a></li>
+<li>Speedwell Memos, "RH business history" (20.07.2023). <a href="https://www.speedwellmemos.com/p/rh-business-history" rel="noopener">https://www.speedwellmemos.com/p/rh-business-history</a></li>
+<li>RH, carta do 3º trimestre de 2025 (11.12.2025), Ex. 99.2. <a href="https://www.sec.gov/Archives/edgar/data/1528849/000110465925120343/rh-20251211xex99d2.htm" rel="noopener">https://www.sec.gov/Archives/edgar/data/1528849/000110465925120343/rh-20251211xex99d2.htm</a></li>
+<li>Speedwell, <em>The Synopsis</em>, feed dos episódios de 07.08.2023, 18.09.2025 e 18.12.2025. <a href="https://rss.libsyn.com/shows/481071/destinations/4092573.xml" rel="noopener">https://rss.libsyn.com/shows/481071/destinations/4092573.xml</a></li>
+<li>Email Love, arquivo de e-mails da RH. <a href="https://emaillove.com/?s=RH" rel="noopener">https://emaillove.com/?s=RH</a> · <a href="https://emaillove.com/email-inspiration-from-rh-649" rel="noopener">https://emaillove.com/email-inspiration-from-rh-649</a></li>
+<li>RH, resultados do 4º trimestre e do ano fiscal 2025 (31.03.2026), Ex. 99.2. <a href="https://www.sec.gov/Archives/edgar/data/1528849/000110465926037775/rh-20260331xex99d2.htm" rel="noopener">https://www.sec.gov/Archives/edgar/data/1528849/000110465926037775/rh-20260331xex99d2.htm</a></li>
+<li>rh.com, cartão e financiamento (via buscador). <a href="https://rh.com/us/en/customer-experience/credit-card" rel="noopener">https://rh.com/us/en/customer-experience/credit-card</a></li>
+<li>rh.com, coleção Cloud (trecho indexado, sem data). <a href="https://rh.com/us/en/catalog/category/collections.jsp/cat8690012" rel="noopener">https://rh.com/us/en/catalog/category/collections.jsp/cat8690012</a></li>
+<li>rh.com/gb, "Placing an Order" (via buscador). <a href="https://rh.com/gb/en/customer-experience/placing-an-order" rel="noopener">https://rh.com/gb/en/customer-experience/placing-an-order</a></li>
+<li>Wikipedia, "RH (company)". <a href="https://en.wikipedia.org/wiki/RH_(company)" rel="noopener">https://en.wikipedia.org/wiki/RH_(company)</a></li>
+<li>Fortune, lançamento da assinatura (23.03.2016). <a href="https://fortune.com/2016/03/23/restoration-hardware-membership" rel="noopener">https://fortune.com/2016/03/23/restoration-hardware-membership</a></li>
+<li>Furniture Today, "RH CEO: special sales aren't so special anymore" (31.03.2016). <a href="https://www.furnituretoday.com/business-news/rh-ceo-special-sales-arent-so-special-anymore" rel="noopener">https://www.furnituretoday.com/business-news/rh-ceo-special-sales-arent-so-special-anymore</a></li>
+<li>Hospitality Design, "RH Guesthouse Lands in New York". <a href="https://hospitalitydesign.com/news/rh-guesthouse/139651" rel="noopener">https://hospitalitydesign.com/news/rh-guesthouse/139651</a></li>
+<li>RH IR, "RH Unveils RH Estates, The Gallery on Greenwich Avenue" (18.09.2026). <a href="https://ir.rh.com/news-events/detail/293/" rel="noopener">https://ir.rh.com/news-events/detail/293/</a></li>
+<li>rh.com, "Shipping &amp; Delivery" (versões divergentes, via buscador). <a href="https://rh.com/us/en/customer-experience/shipping-and-delivery" rel="noopener">https://rh.com/us/en/customer-experience/shipping-and-delivery</a></li>
+<li>rh.com, Trade FAQ. <a href="https://rh.com/us/en/trade/frequently-asked-questions" rel="noopener">https://rh.com/us/en/trade/frequently-asked-questions</a></li>
+<li>RH IR, "RH Unveils 2026 Modern Sourcebook" (04.08.2026). <a href="https://ir.rh.com/news-events/detail/290/rh-unveils-2026-modern-sourcebook" rel="noopener">https://ir.rh.com/news-events/detail/290/rh-unveils-2026-modern-sourcebook</a></li>
+<li>RH, Ex. 99.2 de 31.03.2026 (declarações sobre o site e patentes de interface), igual a [8].</li>
+<li>rh.com, Interior Design e Services (versões europeias, via buscador). <a href="https://rh.com/gb/en/interior-design" rel="noopener">https://rh.com/gb/en/interior-design</a> · <a href="https://rh.com/es/en/interior-design/services" rel="noopener">https://rh.com/es/en/interior-design/services</a></li>
+<li>Adam Mendler, <em>30 Minute Mentors</em>, ep. 111. <a href="https://adammendler.com/?p=17413" rel="noopener">https://adammendler.com/?p=17413</a></li>
+</ol>
+
+</article>
+
+<section class="mods" id="modulos" aria-label="Páginas desta seção"><div class="eyebrow">As 10 páginas desta seção</div><ol class="lst"><li><span class="n">00</span><p><a href="/negocio/">Comece aqui</a></p><span class="t">3 min</span></li><li aria-current="page"><span class="n">01</span><p><a href="/negocio/rh/">RH</a></p><span class="t">12 min</span></li><li><span class="n">02</span><p><a href="/negocio/flamingo-estate/">Flamingo Estate</a></p><span class="t">12 min</span></li><li><span class="n">03</span><p><a href="/negocio/trousseau/">Trousseau</a></p><span class="t">12 min</span></li><li><span class="n">04</span><p><a href="/negocio/sklum/">Sklum</a></p><span class="t">12 min</span></li><li><span class="n">05</span><p><a href="/negocio/nordic-knots/">Nordic Knots</a></p><span class="t">12 min</span></li><li><span class="n">06</span><p><a href="/negocio/curtos/">Hem, The Invisible Collection, ETEL e Interior Define</a></p><span class="t">12 min</span></li><li><span class="n">07</span><p><a href="/negocio/pecas/">As peças, na ordem do funil</a></p><span class="t">12 min</span></li><li><span class="n">08</span><p><a href="/negocio/lancamento/">Lançar uma marca: Nik Sharma e os experts</a></p><span class="t">8 min</span></li><li><span class="n">09</span><p><a href="/negocio/perguntas/">Perguntas para a mesa</a></p><span class="t">5 min</span></li></ol></section>
+
+</div>
+
+<footer><div class="wrap">
+  <p>Estudos de caso feitos com IA em 16.10.2026, a partir de fontes públicas e de visitas aos sites de cada marca. Cada número traz a fonte. As capturas são de páginas públicas, abertas no mesmo dia. Nada aqui diz o que a More deve fazer: os casos descrevem, as perguntas ficam com o time. Feito com o sistema de design da More.</p>
+</div></footer>
+</div>
+
+<div class="barzone"><div class="bar" aria-label="Navegação">
+  <a href="/" aria-label="Índice"><svg viewBox="0 0 272 69" role="img" aria-label="More" xmlns:c2pa="http://c2pa.org/manifest"><metadata><c2pa:manifest>AAAWgmp1bWIAAAAeanVtZGMycGEAEQAQgAAAqgA4m3EDYzJwYQAAABZcanVtYgAAAEdqdW1kYzJtYQARABCAAACqADibcQN1cm46YzJwYTozMzg3YWIyYy1hMWM1LTQ5Y2EtYmY5Ny00N2RiMjI3YmYwZWYAAAADl2p1bWIAAAApanVtZGMyYXMAEQAQgAAAqgA4m3EDYzJwYS5hc3NlcnRpb25zAAAAALxqdW1iAAAARGp1bWRjYm9yABEAEIAAAKoAOJtxE2MycGEuaW5ncmVkaWVudC52MwAAAAAYYzJzaAvejDJIOSNzaPAwHj7kaAAAAABwY2JvcqNpZGM6Zm9ybWF0bWltYWdlL3N2Zyt4bWxqaW5zdGFuY2VJRHgseG1wOmlpZDphMmQ3YjNhMC04Mzk1LTQ0MTUtYWFhNS04ZWFhYWM2ZjQ1YjFscmVsYXRpb25zaGlwaHBhcmVudE9mAAAB4mp1bWIAAABBanVtZGNib3IAEQAQgAAAqgA4m3ETYzJwYS5hY3Rpb25zLnYyAAAAABhjMnNoAWo9OMK4bgwwZanS+OWsagAAAZljYm9yomdhY3Rpb25zgqJmYWN0aW9ua2MycGEub3BlbmVkanBhcmFtZXRlcnOha2luZ3JlZGllbnRzgaJjdXJseC1zZWxmI2p1bWJmPWMycGEuYXNzZXJ0aW9ucy9jMnBhLmluZ3JlZGllbnQudjNkaGFzaFggWSobncfM24/WN0aREmJtsgGGyNu3mVlNb3PF1vaOaZWkZmFjdGlvbngdY29tLmFudGhyb3BpYy5jbGF1ZGUucHJvdmlkZWRqcGFyYW1ldGVyc6F4H2NvbS5hbnRocm9waWMub3JpZ2luLWNvbmZpZGVuY2VndW5rbm93bmtkZXNjcmlwdGlvbnhmQ2xhdWRlIHByb3ZpZGVkIHRoaXMgZmlsZSBhdCB0aGUgcmVxdWVzdCBvZiBhIHVzZXIgYW5kIG1heSBoYXZlIGNyZWF0ZWQgb3IgbW9kaWZpZWQgdGhlIGZpbGUgY29udGVudHMubXNvZnR3YXJlQWdlbnShZG5hbWVmQ2xhdWRlcmFsbEFjdGlvbnNJbmNsdWRlZPUAAADIanVtYgAAAEBqdW1kY2JvcgARABCAAACqADibcRNjMnBhLmhhc2guZGF0YQAAAAAYYzJzaGE4ixWuWp1iLg6wekWrKwQAAACAY2JvcqVjYWxnZnNoYTI1NmNwYWRNAAAAAAAAAAAAAAAAAGRoYXNoWCBiHjqZX82DROgQX7UaMEWiMeHylF9MCDlPFIRlXx33amRuYW1lbmp1bWJmIG1hbmlmZXN0amV4Y2x1c2lvbnOBomVzdGFydBh2Zmxlbmd0aBkeBAAAAj5qdW1iAAAAJ2p1bWRjMmNsABEAEIAAAKoAOJtxA2MycGEuY2xhaW0udjIAAAACD2Nib3KlY2FsZ2ZzaGEyNTZpc2lnbmF0dXJleE1zZWxmI2p1bWJmPS9jMnBhL3VybjpjMnBhOjMzODdhYjJjLWExYzUtNDljYS1iZjk3LTQ3ZGIyMjdiZjBlZi9jMnBhLnNpZ25hdHVyZWppbnN0YW5jZUlEeCx4bXA6aWlkOmU1NGExMTEzLTcyMzItNGM5Zi1hMWIwLTdlOTZjMDQzZWYzYnJjcmVhdGVkX2Fzc2VydGlvbnODomN1cmx4LXNlbGYjanVtYmY9YzJwYS5hc3NlcnRpb25zL2MycGEuaW5ncmVkaWVudC52M2RoYXNoWCBZKhudx8zbj9Y3RpESYm2yAYbI27eZWU1vc8XW9o5plaJjdXJseCpzZWxmI2p1bWJmPWMycGEuYXNzZXJ0aW9ucy9jMnBhLmFjdGlvbnMudjJkaGFzaFgg7+iOlXzN9fsl5dtomZi9dr38n5qn+jROtSMCZ/zZgOeiY3VybHgpc2VsZiNqdW1iZj1jMnBhLmFzc2VydGlvbnMvYzJwYS5oYXNoLmRhdGFkaGFzaFgg5dtuer2DYxW6ttFffBa8QryKsKlQ4VcBq6Dmm04/y9x0Y2xhaW1fZ2VuZXJhdG9yX2luZm+jZG5hbWVvQW50aHJvcGljIEZpbGVzZ3ZlcnNpb25lMS4wLjBrc3BlY1ZlcnNpb25lMi40LjAAABA4anVtYgAAAChqdW1kYzJjcwARABCAAACqADibcQNjMnBhLnNpZ25hdHVyZQAAABAIY2JvctKEWQISogEmGCFZAgowggIGMIIBjaADAgECAhRA5aAK7sI50L64g/oGQgU9Z1UTADAKBggqhkjOPQQDAzBJMRcwFQYDVQQKEw5BbnRocm9waWMsIFBCQzEuMCwGA1UEAxMlQW50aHJvcGljIENvbnRlbnQgQ3JlZGVudGlhbHMgUm9vdCBDQTAeFw0yNjA4MDcxODQzNTZaFw0yODA4MDYxOTQzNTZaMEQxFzAVBgNVBAoTDkFudGhyb3BpYywgUEJDMSkwJwYDVQQDEyBBbnRocm9waWMgQ2xhdWRlIENvbnRlbnQgU2lnbmluZzBZMBMGByqGSM49AgEGCCqGSM49AwEHA0IABJh6CmvLUBgFFNU0vUKlOVtE6djd17L5SuwX0LemFisBM3dkd/3cyjxFA3Qo5S46fX0/ihY0VZ7mfb9KF703t5OjWDBWMA4GA1UdDwEB/wQEAwIHgDAVBgNVHSUEDjAMBgorBgEEAYPoXgIBMAwGA1UdEwEB/wQCMAAwHwYDVR0jBBgwFoAUzlHiBIFOZFsj+OPEz5o+nMHXXMIwCgYIKoZIzj0EAwMDZwAwZAIwMXMdFJ4BetLLVY7ORuE9noqbbAZOZn/aArXyTwFAZfKrPzxF2vPoJNf1+UCdg1XGAjBwX1zd9WGqYkqmL5SFqw1QySjr1zJfpJM9+1rdDwSPLMOPOjKuiXjoU/pUUeG9RwmhY3BhZFkNngAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPZYQLNSdZSJ1Lb4KyXNjcHFt+dMD/kTbfSuk+KST65sHWF18sFBsDHhJT9XVfg3laI//fXetfblD/peX/vE5v8r43Y=</c2pa:manifest></metadata><path fill="currentColor" d="M176.593 23.0819V1.91833H150.317V66.5948H176.593V44.2791H205.243V1.91833C189.55 1.91833 177.465 13.093 176.593 23.0875V23.0819Z"/><path fill="currentColor" d="M111.007 0C91.875 0 76.3403 15.3302 76.3403 34.223C76.3403 53.1159 91.8693 68.4461 111.007 68.4461C130.145 68.4461 145.742 53.1159 145.742 34.223C145.742 15.3302 130.213 0 111.007 0ZM111.007 42.4334C106.43 42.4334 102.69 38.8036 102.69 34.2174C102.69 29.6313 106.435 26.0015 111.007 26.0015C115.579 26.0015 119.398 29.6984 119.398 34.2174C119.398 38.7365 115.653 42.4334 111.007 42.4334Z"/><path fill="currentColor" d="M35.919 19.6423L26.2764 1.91833H0V66.5948H26.2764V44.212H45.4936V66.5948H71.77V1.91833H45.4936L35.919 19.6423Z"/><path fill="currentColor" d="M272.002 1.87909H211.835V24.7541V34.7487V44.1783V66.5612H272.002V44.7376H238.219L255.669 34.7151L238.236 24.7541H272.002V1.87909Z"/></svg></a>
+  <nav><a href="/">[Índice]</a><a href="/negocio/">[Início]</a><a href="/negocio/flamingo-estate/">[Flamingo]</a></nav>
+</div></div>
+<script>
+document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener('click',e=>{const t=document.querySelector(decodeURIComponent(a.getAttribute('href')));if(t){e.preventDefault();t.scrollIntoView({block:'start'});history.replaceState(null,'',a.getAttribute('href'));}});});
+if(location.hash){const t=document.querySelector(decodeURIComponent(location.hash));if(t)t.scrollIntoView({block:'start'});}
+</script>
+</body>
+</html>

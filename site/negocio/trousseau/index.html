@@ -1,0 +1,508 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Trousseau · o enxoval que vira serviço · Estudos de caso · More</title>
+<meta name="description" content="Empresa familiar paulistana de cama, mesa e banho, fundada em 1991, que vende de estoque e cobra à parte tudo o que é feito para o cliente: monograma, reforma, sob medida. Tem 51 pontos de venda em três níveis, uma lista de presentes que vira crédito e uma linha para mais de 400 hotéis.">
+<link rel="icon" href="data:,">
+<link rel="stylesheet" href="/nav/shell.css">
+<style>
+@font-face{font-family:"Muoto";src:url("/fonts/mr.otf") format("opentype");font-weight:400;font-display:swap}
+@font-face{font-family:"MuotoMono";src:url("/fonts/mm.woff2") format("woff2");font-weight:400;font-display:swap}
+/* Tokens do sistema de design da More (/sistema/brand/generated/tokens.css). Página de marca: paleta clara nos dois temas. */
+:root{
+  color-scheme:light;
+  --page:#E5E1DB; --ink:#2D211E; --muted:#5D554F; --label:#686868; --rule:#2D211E1A; --glass:#2D211E1A; --tile:#DDD7CF; --inverse:#2D211E; --on-inverse:#E5E1DB;
+  --muoto:"Muoto","DM Sans","Helvetica Neue",Arial,sans-serif;
+  --mono:"MuotoMono","Martian Mono",ui-monospace,Menlo,monospace;
+  --s-hair:6px; --s-sm:10px; --s-md:16px; --s-lg:20px; --s-xl:30px; --s-2xl:40px; --s-3xl:60px; --s-sec:96px;
+  --bar:35px; --barzone:75px;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--page:#E5E1DB;--ink:#2D211E;--muted:#5D554F;--rule:#2D211E1A;--glass:#2D211E1A;--tile:#DDD7CF;color-scheme:light}}
+:root[data-theme="dark"]{--page:#E5E1DB;--ink:#2D211E;--muted:#5D554F;--rule:#2D211E1A;--glass:#2D211E1A;--tile:#DDD7CF;color-scheme:light}
+*{box-sizing:border-box}
+html,body{height:100%}
+body{background:var(--page);color:var(--ink);font-family:var(--muoto);font-size:15px;line-height:1.47;-webkit-font-smoothing:antialiased;margin:0;overflow:hidden}
+/* A página rola dentro de .page; a barra vive numa faixa própria embaixo e nunca cobre texto. */
+.page{height:calc(100% - var(--barzone));overflow-y:auto;overflow-x:hidden;scroll-behavior:smooth;overscroll-behavior:contain;padding-bottom:106px}
+.wrap{max-width:1120px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:0 var(--s-3xl)}
+.mono{font-family:var(--mono);font-stretch:75%;font-size:13px}
+.muted{color:var(--muted)}
+.label{color:var(--label)}
+a{color:inherit;text-underline-offset:3px;text-decoration-thickness:1px;overflow-wrap:anywhere}
+a:hover{color:var(--muted)}
+h1,h2,h3{font-weight:400;text-wrap:balance;margin:0}
+h2{font-size:clamp(26px,3.4vw,32px);line-height:1.05;margin-bottom:var(--s-lg)}
+h3{font-size:15px;margin-bottom:4px}
+p{margin:0 0 var(--s-sm);max-width:64ch;text-wrap:pretty}
+section{padding-top:var(--s-sec)}
+.eyebrow{font-family:var(--mono);font-stretch:75%;font-size:13px;color:var(--label);margin-bottom:var(--s-md)}
+img{max-width:100%}
+b{font-weight:400}
+.tag{font-family:var(--mono);font-stretch:75%;font-size:11px;color:var(--label);white-space:nowrap}
+.tag.open{color:var(--ink)}
+.meas .tag{white-space:normal}
+
+/* abertura */
+.abre{padding-top:var(--s-3xl);display:grid;gap:var(--s-md)}
+.abre h1{font-size:clamp(34px,5.2vw,58px);line-height:.98;letter-spacing:-.01em;max-width:18ch}
+.abre .lede{font-size:clamp(18px,2vw,22px);line-height:1.25;margin:0;max-width:34ch}
+.meta{display:flex;flex-wrap:wrap;gap:6px var(--s-lg);margin-top:var(--s-sm)}
+
+/* tabelas */
+.meas{overflow-x:auto;margin-top:var(--s-lg)}
+.meas table{border-collapse:collapse;width:100%;min-width:760px;font-size:14px}
+.meas th{font-family:var(--mono);font-stretch:75%;font-weight:400;font-size:12px;color:var(--label);text-align:left;padding:8px;border-bottom:1px solid var(--ink)}
+.meas td{padding:10px 8px;border-bottom:1px solid var(--rule);vertical-align:top}
+.meas td:first-child{width:18%}
+.meas tr.grp td{font-family:var(--mono);font-stretch:75%;font-size:12px;color:var(--label);padding-top:var(--s-lg);border-bottom:1px solid var(--ink)}
+@media(max-width:700px){.meas table{min-width:0}.meas thead{display:none}.meas tr{display:block;padding:12px 0;border-bottom:1px solid var(--ink)}.meas tr.grp{padding:var(--s-lg) 0 4px}.meas td{display:block;padding:2px 0;border:0;width:auto!important}.meas td:first-child{font-size:16px;margin-bottom:4px}.meas td[data-l]::before{content:attr(data-l);display:block;font-family:var(--mono);font-stretch:75%;font-size:11px;color:var(--label);margin-top:6px}}
+
+/* riscos e perguntas */
+.lst{list-style:none;margin:var(--s-lg) 0 0;padding:0;border-top:1px solid var(--ink)}
+.lst li{display:grid;grid-template-columns:4ch minmax(0,1fr);gap:8px 16px;padding:12px 0;border-bottom:1px solid var(--rule);font-size:15px}
+.lst .n{font-family:var(--mono);font-stretch:75%;font-size:12px;color:var(--label);padding-top:3px}
+.lst p{margin:0;max-width:70ch}
+.lst p b{display:block}
+.lst .how{font-family:var(--mono);font-stretch:75%;font-size:12px;color:var(--label);margin-top:4px}
+
+/* barra, em faixa própria */
+.barzone{height:var(--barzone);position:relative;background:var(--page)}
+.bar{position:absolute;left:50%;transform:translateX(-50%);top:20px;width:420px;max-width:calc(100vw - 32px);height:var(--bar);background:var(--glass);backdrop-filter:blur(13px);-webkit-backdrop-filter:blur(13px);display:flex;align-items:center;justify-content:space-between;padding:0 var(--s-sm)}
+.bar svg{width:56px;height:auto;display:block;fill:currentColor}
+.bar nav{display:flex;gap:8px}
+.bar a{font-family:var(--mono);font-stretch:75%;font-size:13px;text-decoration:none;white-space:nowrap}
+.bar a:hover,.bar a:focus-visible{color:var(--muted)}
+@media(max-width:560px){.bar nav a{font-size:11px}.bar nav{gap:4px}}
+footer{background:var(--inverse);color:var(--on-inverse);margin-top:var(--s-sec)}
+footer .wrap{padding-block:var(--s-2xl)}
+footer p{font-size:13px;max-width:70ch}
+:focus-visible{outline:1px solid var(--ink);outline-offset:2px}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important;scroll-behavior:auto!important}}
+
+/* oitava seção: texto longo convertido do pacote */
+.doc{padding-top:var(--s-2xl)}
+.doc h2{padding-top:var(--s-3xl);scroll-margin-top:16px}
+.doc h3{font-size:clamp(17px,1.8vw,20px);line-height:1.2;margin:var(--s-xl) 0 var(--s-sm);scroll-margin-top:16px}
+.doc h4{font-family:var(--mono);font-stretch:75%;font-weight:400;font-size:12px;color:var(--label);margin:var(--s-lg) 0 6px}
+.doc p,.doc li{font-size:16px;line-height:1.5}
+.doc p{max-width:68ch}
+.doc strong{font-weight:400;color:var(--ink)}
+.doc p>strong:first-child{font-family:var(--mono);font-stretch:75%;font-size:13px;color:var(--label);margin-right:4px}
+.doc em{font-style:italic}
+.doc ul,.doc ol{max-width:68ch;padding-left:20px;margin:0 0 var(--s-md)}
+.doc li{margin-bottom:6px}
+.doc li>p{margin:0}
+.doc hr{border:0;border-top:1px solid var(--ink);margin:var(--s-2xl) 0 0}
+.doc blockquote{margin:var(--s-lg) 0;padding:var(--s-lg);background:var(--glass);max-width:68ch}
+.doc blockquote p{font-size:clamp(17px,1.8vw,20px);line-height:1.3;margin:0}
+.doc pre{font-family:var(--mono);font-stretch:75%;font-size:13px;line-height:1.5;background:var(--glass);padding:var(--s-md) var(--s-lg);overflow-x:auto;max-width:100%;white-space:pre}
+.doc code{font-family:var(--mono);font-stretch:75%;font-size:.88em}
+.doc .meas table{min-width:640px}
+.doc .meas td:first-child{width:auto}
+.doc .meas td,.doc .meas th{font-size:14px;line-height:1.4}
+.doc .meas th{font-size:12px}
+.doc .meas img{display:block;margin-bottom:6px}
+.doc img{height:auto;display:block;border:1px solid var(--rule)}
+.doc h3+p>a>img,.doc h3+p>img{margin:var(--s-sm) 0}
+.doc-atlas h3{padding-top:var(--s-xl);border-top:1px solid var(--ink)}
+@media(max-width:700px){.doc .meas:not(.grid) table{min-width:0}.doc .meas:not(.grid) thead{display:none}.doc .meas:not(.grid) tr{display:block;padding:12px 0;border-bottom:1px solid var(--ink)}.doc .meas:not(.grid) td{display:block;padding:2px 0;border:0}.doc .meas:not(.grid) td:first-child{font-size:16px}.doc .meas:not(.grid) td[data-l]:not(:first-child)::before{content:attr(data-l);display:block;font-family:var(--mono);font-stretch:75%;font-size:11px;color:var(--label);margin-top:6px}.doc .meas.grid table{min-width:560px}.doc .meas.grid td,.doc .meas.grid th{padding:8px 6px}}
+.mods{padding-top:var(--s-sec)}
+.mods .lst li{grid-template-columns:4ch minmax(0,1fr) auto;align-items:baseline}
+.mods .lst p{font-size:17px}
+.mods .lst a{text-decoration:none}
+.mods .lst a:hover{text-decoration:underline}
+.mods .lst .t{font-family:var(--mono);font-stretch:75%;font-size:12px;color:var(--label)}
+.mods li[aria-current] p a{text-decoration:underline}
+.mods li[aria-current] .n::after{content:" ·"}
+.doc hr+h3{border-top:0}
+@media(max-width:700px){.doc .meas.grid{overflow-x:auto}.doc .meas.grid table{display:table;min-width:560px}.doc .meas.grid thead{display:table-header-group}.doc .meas.grid tr{display:table-row;padding:0}.doc .meas.grid td{display:table-cell;border-bottom:1px solid var(--rule);font-size:14px}.doc .meas.grid td::before{content:none!important}.doc .meas.grid td:first-child{font-size:13px;white-space:nowrap}}
+
+</style>
+</head>
+<body><script src="/nav/shell.js" data-section="negocio" data-into=".page" data-foot="on" defer></script>
+<div class="page" id="page">
+<div class="wrap">
+
+<header class="abre" id="topo">
+  <div class="eyebrow">More · Estudos de caso · Trousseau · 16.10.2026</div>
+  <h1>Trousseau · o enxoval que vira serviço</h1>
+  <p class="lede">Empresa familiar paulistana de cama, mesa e banho, fundada em 1991, que vende de estoque e cobra à parte tudo o que é feito para o cliente: monograma, reforma, sob medida. Tem 51 pontos de venda em três níveis, uma lista de presentes que vira crédito e uma linha para mais de 400 hotéis.</p>
+  <div class="meta mono label"><span>Para Fred, Edu e Vitor</span><span>Estudos de caso, sem recomendação</span><span>Leitura: 12 min</span></div>
+</header>
+
+<article class="doc doc-trousseau">
+
+<h2 id="em-números">Em números</h2>
+<div class="meas"><table>
+<thead>
+<tr class="header">
+<th>Item</th>
+<th>Dado</th>
+<th>Fonte · data</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-l="Item">Titular</td>
+<td data-l="Dado">GVR Home Indústria e Comércio de Enxovais Ltda., nome fantasia TROUSSEAU. Matriz aberta em 19.09.1991</td>
+<td data-l="Fonte · data">Rodapé do site [1]; Receita Federal [2] · 16.10.2026</td>
+</tr>
+<tr class="even">
+<td data-l="Item">Fundação</td>
+<td data-l="Dado">1991, primeira loja na R. João Cachoeira, em São Paulo</td>
+<td data-l="Fonte · data">"Nossa história" [3]; IstoÉ Dinheiro, 19.10.2011 [10]</td>
+</tr>
+<tr class="odd">
+<td data-l="Item">Quem fundou</td>
+<td data-l="Dado">Adriana e Romeu Trussardi Neto, casal. A família de Romeu já estava no setor têxtil (Trussardi, de 1898)</td>
+<td data-l="Fonte · data">[3]; [10]; HFN, 26.06.2018 [13]</td>
+</tr>
+<tr class="even">
+<td data-l="Item">Capital inicial</td>
+<td data-l="Dado">US$ 5 mil</td>
+<td data-l="Fonte · data">[10]</td>
+</tr>
+<tr class="odd">
+<td data-l="Item">Controle</td>
+<td data-l="Dado">Sociedade limitada, 100% da família. Em 15.04.2025 entraram três sócios da família, dois como administradores. Capital social de R$ 4.301.075</td>
+<td data-l="Fonte · data">[2]</td>
+</tr>
+<tr class="even">
+<td data-l="Item">Investidores externos</td>
+<td data-l="Dado">Nenhum encontrado. Em 2011 a empresa montou um conselho com 3 membros independentes</td>
+<td data-l="Fonte · data">[10]</td>
+</tr>
+<tr class="odd">
+<td data-l="Item">Aquisição</td>
+<td data-l="Dado">Operação da Casa Costa (mesa posta de Luma Costa), anunciada em 19.03.2025, valor não divulgado</td>
+<td data-l="Fonte · data">ELLE, 19.03.2025 [11]</td>
+</tr>
+<tr class="even">
+<td data-l="Item">Faturamento e margem</td>
+<td data-l="Dado">Não divulgados</td>
+<td data-l="Fonte · data">[10]</td>
+</tr>
+<tr class="odd">
+<td data-l="Item">Lojas</td>
+<td data-l="Dado">21 próprias no Brasil (SP 10, RJ 6, MG 4, DF 1; 5 delas outlet "OFF"), 9 "Exclusivité" de parceiros, 20 multimarcas e 1 em Miami: 51 pontos</td>
+<td data-l="Fonte · data">Localizador, 16.10.2026 [4]</td>
+</tr>
+<tr class="even">
+<td data-l="Item">Preço</td>
+<td data-l="Dado">Jogo de lençol de R$ 1.026 a R$ 18.220, mediana de R$ 2.430 em 237 SKUs; 111 deles remarcados</td>
+<td data-l="Fonte · data">Catálogo do site, 16.10.2026 [5]</td>
+</tr>
+<tr class="odd">
+<td data-l="Item">Prazo</td>
+<td data-l="Dado">Estoque: Sedex em 4 dias úteis para a Av. Paulista; retirada em loja em 1 a 3 dias. Personalizado: até 7 dias a mais. Sob medida: sem prazo publicado</td>
+<td data-l="Fonte · data">Simulação de frete [6]; política de personalizados [7]</td>
+</tr>
+<tr class="even">
+<td data-l="Item">Pagamento</td>
+<td data-l="Dado">Integral no pedido, cartão em até 10x ou Apple Pay. O boleto foi descontinuado</td>
+<td data-l="Fonte · data">FAQ [8]</td>
+</tr>
+<tr class="odd">
+<td data-l="Item">Hotelaria</td>
+<td data-l="Dado">"Mais de 400 hotéis no Brasil e no exterior"; a página "Nossa história" diz "mais de 300"</td>
+<td data-l="Fonte · data">[9]; [3]</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="história-curta">História curta</h2>
+<p><strong>1991 a 2001, varejo de enxoval.</strong> Adriana e Romeu abrem a loja da João Cachoeira com US$ 5 mil [10]. Vêm Gabriel Monteiro (1995), Lourdes em BH (1996), Vila Nova Conceição (1998) e Higienópolis (1999). Em 1999 sai a primeira campanha beneficente, "Trousseau do Bem" [3].</p>
+<p><strong>2002, "a grande virada".</strong> É a expressão da linha do tempo do site: a Trousseau passou a vender nas lojas só produtos da própria marca e abriu a flagship [3]. O texto não diz o que era vendido antes.</p>
+<p><strong>2009 e 2010, os canais para empresas.</strong> O Corporate, de presentes, começa em 2009 [9b], e a Trousseau Hotel Collection em 2010 [3]. No mesmo ano Romeu vende a Trussardi, marca têxtil centenária da família, à Karsten, por cerca de R$ 28 milhões, e "continua à frente da Trousseau" [15].</p>
+<p><strong>2011, 20 anos.</strong> Eram 21 lojas próprias. Houve um escritório em Locarno, na Suíça, com US$ 200 mil, para atender hotéis europeus, e uma coleção dos irmãos Campana. O jogo de cama da linha WhiteLuxury custava "aproximadamente R$ 33 mil" [10].</p>
+<p><strong>2017 a 2019, além da cama.</strong> A linha de roupa "everywear" sai em 2017 [3][16]. Em 06.2018 vem o e-commerce nos EUA, com entrega de 3 a 5 dias "sem markup de department store" [13][17], e em 2019 a primeira loja em Miami [3].</p>
+<p><strong>2020 a 2022, pandemia e parceiros.</strong> Com as lojas fechadas, o online cresceu, e "muitos clientes telefonavam para as lojas" (Adriana, 17.09.2021 [16]). Em 12.2021 abre Salvador com uma parceira local, depois de "cerca de oito anos" de planejamento [19]. Saem a coleção com Paula Raia (2021) e a linha Objets (2022) [3][16].</p>
+<p><strong>2023 a 2025, mesa e segunda geração.</strong> Em 2023, coleção com Arthur Casas; em 2024, a loja do Miami Design District [3][4]. Em 03.2025 a empresa compra a Casa Costa, e Luma Costa vira diretora artística de mesa, dividindo a direção criativa com Adriana [11]. Em 15.04.2025, um dia depois da entrada dos produtos Casa Costa no site, três sócios da família entram no contrato social [2][11]. Em 09.2025 sai a Heritage, primeira coleção com a etiqueta Trousseau | Casa Costa, com cerca de 100 peças [12].</p>
+<p><strong>Atritos visíveis.</strong> Em 16.10.2026, duas páginas do FAQ ("Consultoria em casa" e "Presente") estavam com texto de preenchimento em latim. O FAQ dá duas parcelas mínimas diferentes (R$ 50 e R$ 150), o prazo do bordado aparece como "7 dias corridos" na política e "7 dias úteis" no FAQ, e a contagem de hotéis varia entre 300 e 400 [3][7][8][9]. Nada disso trava o pedido. Mostra um site com camadas de conteúdo escritas em épocas diferentes.</p>
+<h2 id="como-ganha-dinheiro">Como ganha dinheiro</h2>
+<p><strong>Mix.</strong> O menu tem nove frentes: Cama, Mesa (Trousseau | Casa Costa), Banho, Essências, Everywear, Gifts &amp; Decor, Petit, Outlet e Atelier. Na cama o eixo é a contagem de fios (300 a 1.000), com filtros por Composição, Design e Origem. Nos 150 primeiros jogos de lençol da busca, a origem é Itália em 61, Brasil em 46, China em 36 e vazia em 7 [5].</p>
+<p><strong>Preço.</strong> O jogo de lençol de 300 fios vai de R$ 1.581 (remarcado) a R$ 3.390; os de 1.000 fios, de R$ 16.645 a R$ 18.220. A toalha de banho Málaga custa R$ 350 [5]. O site mantém Outlet e remarcações de até 60% no próprio catálogo, e 5 das 21 lojas próprias são outlet [4].</p>
+<p><strong>Frete.</strong> Grátis acima de R$ 1.000 na capital paulista, R$ 2.000 no Sul e Sudeste e R$ 3.000 no resto do país [8]. Para uma toalha de R$ 350, o Sedex custa R$ 11,82 até a Av. Paulista e R$ 55,73 até Recife; a retirada é grátis em 5 lojas de SP e 5 do RJ [6].</p>
+<p><strong>Devolução.</strong> Arrependimento em 7 dias, com reembolso "incluindo o valor do frete", garantia de 90 dias, troca do online nas lojas próprias e "1ª troca com frete grátis" [8]. Personalizado, sob medida e reforma não têm troca, com base no art. 49 do CDC [7].</p>
+<p><strong>Estoque e encomenda.</strong> O catálogo do site é de estoque, com quantidade por SKU [5]. A encomenda aparece em três camadas pagas à parte: o monograma, que soma 7 dias; os "Serviços e reformas", vendidos como SKU (colocar elástico no lençol R$ 100, diminuir lençol R$ 80, personalizar toalha de banho R$ 33); e o "Sob medida", "roupa de cama em qualquer medida", só por orçamento em loja ou por e-mail [7][22].</p>
+<p><strong>Para empresas.</strong> Hotel &amp; Spa tem catálogo próprio e duas executivas nomeadas [9]. Em 2013 a linha ia de 233 a 1.000 fios e era personalizável por hotel [14]. Corporate e Revenda têm páginas e contatos próprios [9b][9c]. Não há programa para arquitetos ou decoradores. O campo "Código do vendedor" no carrinho liga a venda online a um vendedor [23].</p>
+<p><strong>Recorrência.</strong> Não há assinatura nem pontos. A recorrência visível vem da lista de presentes, do app e das linhas de reposição.</p>
+<h2 id="o-funil-etapa-por-etapa">O funil, etapa por etapa</h2>
+<h3 id="pré-lançamento">Pré-lançamento</h3>
+<p>Não há registro do lançamento da marca. O único lançamento recente documentado é o da etiqueta Trousseau | Casa Costa: os mais vendidos da Casa Costa entraram no site e nas lojas em 14.04.2025, seis meses antes da primeira coleção conjunta, a Heritage, de 30.09.2025 [11][12].</p>
+<h3 id="descoberta">Descoberta</h3>
+<p>O que dá para rastrear são três peças. A primeira são as colaborações com nome: irmãos Campana (2011), Paula Raia (2021), Arthur Casas (2023) e Eglantina Zingg (05.2026), cada uma com subcategoria permanente no menu ("Cama › Por coleção › Irmãos Campana") [1][3][10][16][24]. A segunda são os hotéis: a página Hotel &amp; Spa tem um carrossel de 30 hotéis "que oferecem Trousseau", como Copacabana Palace, Rosewood, Fasano Boa Vista e Txai, e duas lojas próprias ficam dentro de empreendimentos de hotelaria, no Fasano de Angra dos Reis e na Fazenda Boa Vista [4][9]. A terceira é a imprensa: colunas sociais regionais em cada abertura, ELLE e Forbes em lançamentos [11][16][19][20][24].</p>
+<h3 id="página-inicial">Página inicial</h3>
+<p><img loading="lazy" src="/negocio/img/ref-trousseau-home-desktop-20261016.jpg" alt="Home no computador: o destaque é roupa (&quot;Summer Dreams&quot;, &quot;Shop Everywear&quot;), não cama; a régua do topo oferece 10% na primeira compra e o botão &quot;Ajuda?&quot; abre o WhatsApp" /></p>
+<p>No celular, no mesmo dia, o destaque era a ação Outubro Rosa. Em "Destaques", a primeira peça é de mesa (jogo de 4 xícaras Domaine, R$ 1.140) e a segunda é de cama (Ballo Garden, R$ 3.390). No menu, "Mesa" leva direto à página Trousseau | Casa Costa [1].</p>
+<h3 id="captura-de-e-mail">Captura de e-mail</h3>
+<p><img loading="lazy" src="/negocio/img/ref-trousseau-popup-email-mobile-20261016.jpg" alt="Pop-up de cadastro no celular: pede telefone antes do e-mail, para novidades &quot;por e-mail e WhatsApp&quot;, em troca de &quot;até 10% OFF&quot; (a letra miúda diz 10% em produtos de linha e 5% em remarcados)" /></p>
+<h3 id="coleção-e-página-do-produto">Coleção e página do produto</h3>
+<p><img loading="lazy" src="/negocio/img/ref-trousseau-colecao-lencol-desktop-20261016.jpg" alt="Coleção de jogos de lençol queen: filtros por Composição, Design e Origem, e o selo &quot;até 50% off&quot; no meio da linha de preço cheio" /></p>
+<p>A página do produto tem referência numérica, abas de descrição e características, preço e parcelamento em 10x. Não tem calculadora de frete, prazo de entrega nem avaliações. O texto abre pela coleção ("inspirada nos quatro elementos") e só depois chega ao fio [5].</p>
+<p><img loading="lazy" src="/negocio/img/ref-trousseau-pdp-lencol-desktop-20261016.jpg" alt="Jogo de lençol Ballo Garden: R$ 3.390 em 10x de R$ 339 e, logo abaixo, &quot;Compre também&quot; com um protetor de colchão de R$ 1.840 e seu próprio botão &quot;Adicionar à sacola&quot;" /></p>
+<p>O bloco "Compre também" monta o enxoval da mesma linha: fronha a R$ 625, duvet a R$ 4.280, capa de almofada a R$ 395 [5].</p>
+<p><img loading="lazy" src="/negocio/img/ref-trousseau-pdp-toalha-mobile-20261016.jpg" alt="Toalha Málaga no celular: o botão &quot;Personalize seu produto&quot; fica acima do &quot;Comprar&quot;" /></p>
+<p><img loading="lazy" src="/negocio/img/ref-trousseau-pdp-monograma-desktop-20261016.jpg" alt="Modal de monograma: altura, nome ou inicial, localização, fonte, cor e tipo; o aviso fixo diz que personalizados &quot;acrescentam 7 dias na entrega&quot; e o total começa em &quot;Personalização 00,00&quot;" /></p>
+<p>O modal oferece alturas de 3, 5 ou 7 cm, fontes como Diane Script, Roman Script e Bodoni, cor da linha e tipo lado a lado ou entrelaçado, com simulação na tela. O guia de personalização é uma página editorial de cinco passos que abre com a história do monograma e termina na política: personalizados "não podem ser trocados ou devolvidos" [22].</p>
+<p><img loading="lazy" src="/negocio/img/ref-trousseau-guia-monograma-desktop-20261016.jpg" alt="Guia de personalização: o texto conta que o monograma &quot;remonta ao Império Romano&quot;, ao lado da foto de uma bordadeira com o nome bordado no jaleco" /></p>
+<h3 id="contato">Contato</h3>
+<p>Há seis portas de contato, todas com número direto ou pessoa nomeada: o WhatsApp geral, de segunda a sábado [8]; a lista de presentes, com WhatsApp e e-mail próprios [25]; a hotelaria, com duas executivas [9]; o Corporate, com uma executiva [9b]; a revenda [9c]; e o WhatsApp de cada loja, publicado no localizador [4]. O "Sob medida" não tem formulário: o cliente escreve ou vai a uma loja pedir orçamento [22]. A página "Sugestão de enxoval" lista o enxoval de noiva em 21 linhas ("3 Jogos de Lençol, 1 Jogo de Lençol Bordado, 3 Duvets… 1 Odorizante Varetas") e fecha com "Fale com a nossa equipe" [26].</p>
+<h3 id="lista-de-presentes">Lista de presentes</h3>
+<p><img loading="lazy" src="/negocio/img/ref-trousseau-lista-passos-desktop-20261016.jpg" alt="Lista de presentes, &quot;Como funciona&quot;: seis passos, de &quot;Conte sua história&quot; a &quot;Agradeça com carinho&quot;, com a escolha entre receber em casa ou na loja" /></p>
+<p>A lista fica num endereço próprio e promete "uma lista feita para acompanhar a história de vocês. Da nossa família para a sua." Criar é grátis, e "100% do valor de cada presente fica disponível para você usar na Trousseau". Recebe presentes até 60 dias depois do evento, e o crédito vale por 24 meses a partir do casamento. O presente chega como o item escolhido pelo convidado, mas o valor pode ser usado em qualquer produto e não vira dinheiro. Cada convidado deixa foto e mensagem, e listas que atingem um mínimo recebem o "Álbum Trousseau" impresso. Há equipe dedicada por WhatsApp, e-mail e telefone [25]. A página Casa Costa convida a criar a lista no app [27].</p>
+<h3 id="checkout">Checkout</h3>
+<p><img loading="lazy" src="/negocio/img/ref-trousseau-carrinho-desktop-20261016.jpg" alt="Carrinho: embalagem de presente grátis por item, com campo de instruções de 300 caracteres e aviso de &quot;nota fiscal sem valor&quot;; o quadro &quot;Tem algum produto Personalizado??&quot; repete a regra de não troca; campos de cupom e &quot;Código do vendedor&quot;" /></p>
+<p>O frete é calculado no carrinho, com CEP. O checkout tem quatro etapas (Sacola, Identificação, Entrega, Pagamento), e a primeira tela pede só o e-mail. Todo pedido segue "perfumado com o nosso cheirinho Printemps" [22].</p>
+<h3 id="e-mails-depois-do-cadastro">E-mails depois do cadastro</h3>
+<p>Não foram vistos, porque não houve cadastro. Os envios saem do domínio trousseaunews.com.br, e não há arquivo público dos e-mails da marca.</p>
+<h3 id="pós-compra">Pós-compra</h3>
+<p>Acompanhamento e trocas ficam em dois sites terceirizados, linkados no rodapé [1]. A política de personalizados publica a conta do prazo: "Produção do bordado: 7 dias corridos + Envio […] cerca de 12 dias" [7]. As entregas usam Correios e transportadora, com três tentativas e sem agendamento; a entrega expressa existe só para louças na capital paulista [8].</p>
+<h3 id="loja-física">Loja física</h3>
+<p><img loading="lazy" src="/negocio/img/ref-trousseau-lojas-sp-desktop-20261016.jpg" alt="Localizador de São Paulo: cada ponto leva uma etiqueta (&quot;Lojas próprias&quot;, &quot;Multimarcas&quot;), com endereço e horário" /></p>
+<p>A rede própria fica em quatro praças: SP, RJ, BH e Brasília, cada loja com telefone e WhatsApp próprios. Fora delas a marca chega por Exclusivité (Salvador, Fortaleza, Cuiabá, Curitiba, Recife, Porto Alegre, entre outras) e por multimarcas de enxoval em cidades médias, como Uberlândia, Sorocaba e Chapecó. Algumas lojas próprias ficam em destinos de fim de semana, com horário reduzido: Fazenda Boa Vista (quarta a domingo), Quinta da Baroneza (quinta a sábado) e Angra [4]. O endereço da matriz na Receita hoje é uma loja outlet [2][4].</p>
+<h3 id="hotelaria">Hotelaria</h3>
+<p><img loading="lazy" src="/negocio/img/ref-trousseau-hotel-spa-desktop-20261016.jpg" alt="Página Hotel &amp; Spa: a linha &quot;leva para os hotéis e pousadas&quot; lençóis, toalhas e &quot;toda linha de amenities com a tradicional fragrância da marca&quot;, presente &quot;em mais de 400 hotéis&quot;" /></p>
+<p>As linhas para hotel incluem complementos, amenities, banho, roupões, perfumaria e cama, com catálogo para baixar [9]. Os amenities levam a mesma fragrância Printemps que perfuma os pedidos online [22]: o hóspede encontra no quarto o cheiro que depois recebe em casa.</p>
+<h3 id="conteúdo-editorial">Conteúdo editorial</h3>
+<p><img loading="lazy" src="/negocio/img/ref-trousseau-blog-desktop-20261016.jpg" alt="Blog &quot;Notes by Trousseau&quot;: o último post é de 11.06.2026, e a coluna lateral ainda diz &quot;mais de 25 anos&quot; de atuação" /></p>
+<p>O blog tem 188 posts: 30 em 2019, 32 em 2020, 48 em 2021, 45 em 2022, 21 em 2023, 10 em 2024, 1 em 2025 e 1 em 2026 [28]. Tem uma série assinada, "Dicas da Adriana by Trousseau". O site institucional guarda as campanhas sazonais desde 2023, cada uma com um conceito ("Ikigai", "Polinésia Francesa") [3].</p>
+<h2 id="peças-atômicas">Peças atômicas</h2>
+<div class="meas"><table>
+<thead>
+<tr class="header">
+<th>Etapa</th>
+<th>Peça</th>
+<th>O que é, com exemplo real</th>
+<th>Fonte / captura</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-l="Etapa">Pré-lançamento</td>
+<td data-l="Peça">Entrada escalonada de marca comprada</td>
+<td data-l="O que é, com exemplo real">Best-sellers da Casa Costa no site em 14.04.2025; coleção conjunta só em 30.09.2025</td>
+<td data-l="Fonte / captura">[11][12]</td>
+</tr>
+<tr class="even">
+<td data-l="Etapa">Descoberta</td>
+<td data-l="Peça">Colaboração que vira categoria permanente</td>
+<td data-l="O que é, com exemplo real">"Cama › Por coleção › Irmãos Campana / Paula Raia e Trousseau / Arthur Casas"</td>
+<td data-l="Fonte / captura">[1][3]</td>
+</tr>
+<tr class="odd">
+<td data-l="Etapa">Descoberta</td>
+<td data-l="Peça">Hotel como vitrine</td>
+<td data-l="O que é, com exemplo real">Carrossel de 30 hotéis "que oferecem Trousseau"</td>
+<td data-l="Fonte / captura">[9]; ref-trousseau-hotel-spa-desktop</td>
+</tr>
+<tr class="even">
+<td data-l="Etapa">Descoberta</td>
+<td data-l="Peça">Ação de causa recorrente</td>
+<td data-l="O que é, com exemplo real">"Trousseau do Bem" desde 1999; Outubro Rosa no destaque do celular</td>
+<td data-l="Fonte / captura">[3]</td>
+</tr>
+<tr class="odd">
+<td data-l="Etapa">Página inicial</td>
+<td data-l="Peça">Destaque de categoria vizinha</td>
+<td data-l="O que é, com exemplo real">"Summer Dreams / Shop Everywear" em vez de cama</td>
+<td data-l="Fonte / captura">ref-trousseau-home-desktop</td>
+</tr>
+<tr class="even">
+<td data-l="Etapa">Captura</td>
+<td data-l="Peça">Pop-up de telefone e e-mail</td>
+<td data-l="O que é, com exemplo real">"até 10% OFF" (10% linha, 5% remarcados), e-mail e WhatsApp</td>
+<td data-l="Fonte / captura">ref-trousseau-popup-email-mobile</td>
+</tr>
+<tr class="odd">
+<td data-l="Etapa">Página do produto</td>
+<td data-l="Peça">Venda casada do conjunto</td>
+<td data-l="O que é, com exemplo real">"Compre também": fronha, duvet, capa de almofada da mesma linha</td>
+<td data-l="Fonte / captura">ref-trousseau-pdp-lencol-desktop</td>
+</tr>
+<tr class="even">
+<td data-l="Etapa">Página do produto</td>
+<td data-l="Peça">Configurador de monograma</td>
+<td data-l="O que é, com exemplo real">Altura de 3, 5 ou 7 cm, várias fontes, cartela de linhas, "acrescentam 7 dias"</td>
+<td data-l="Fonte / captura">ref-trousseau-pdp-monograma-desktop</td>
+</tr>
+<tr class="odd">
+<td data-l="Etapa">Página do produto</td>
+<td data-l="Peça">Guia editorial de personalização</td>
+<td data-l="O que é, com exemplo real">5 passos, abrindo com a história do monograma</td>
+<td data-l="Fonte / captura">ref-trousseau-guia-monograma-desktop</td>
+</tr>
+<tr class="even">
+<td data-l="Etapa">Contato</td>
+<td data-l="Peça">Serviço vendido como SKU</td>
+<td data-l="O que é, com exemplo real">"Reforma – Colocar elástico no lençol R$ 100"; "Personalização – Toalha Banho R$ 33"</td>
+<td data-l="Fonte / captura">[22]</td>
+</tr>
+<tr class="odd">
+<td data-l="Etapa">Contato</td>
+<td data-l="Peça">Lista-modelo de enxoval</td>
+<td data-l="O que é, com exemplo real">"Sugestão de enxoval – Noivas": 21 linhas, do lençol ao odorizante</td>
+<td data-l="Fonte / captura">[26]</td>
+</tr>
+<tr class="even">
+<td data-l="Etapa">Contato</td>
+<td data-l="Peça">Contatos nomeados por canal</td>
+<td data-l="O que é, com exemplo real">Hotelaria (2 nomes), Corporate (1 nome), lista com WhatsApp próprio, WhatsApp por loja</td>
+<td data-l="Fonte / captura">[4][9]</td>
+</tr>
+<tr class="odd">
+<td data-l="Etapa">Lista</td>
+<td data-l="Peça">Lista que vira crédito</td>
+<td data-l="O que é, com exemplo real">100% do valor em crédito por 24 meses; não vira dinheiro</td>
+<td data-l="Fonte / captura">[25]; ref-trousseau-lista-passos-desktop</td>
+</tr>
+<tr class="even">
+<td data-l="Etapa">Lista</td>
+<td data-l="Peça">Álbum de agradecimento</td>
+<td data-l="O que é, com exemplo real">"Álbum Trousseau" com fotos e mensagens dos convidados</td>
+<td data-l="Fonte / captura">[25]</td>
+</tr>
+<tr class="odd">
+<td data-l="Etapa">Checkout</td>
+<td data-l="Peça">Embalagem de presente grátis e nota sem valor</td>
+<td data-l="O que é, com exemplo real">Caixa marcável por item, 300 caracteres de instrução</td>
+<td data-l="Fonte / captura">ref-trousseau-carrinho-desktop</td>
+</tr>
+<tr class="even">
+<td data-l="Etapa">Checkout</td>
+<td data-l="Peça">Código do vendedor</td>
+<td data-l="O que é, com exemplo real">Campo no carrinho que liga a venda online a um vendedor</td>
+<td data-l="Fonte / captura">ref-trousseau-carrinho-desktop</td>
+</tr>
+<tr class="odd">
+<td data-l="Etapa">Checkout</td>
+<td data-l="Peça">Primeira troca grátis e troca em loja</td>
+<td data-l="O que é, com exemplo real">"1ª troca com frete grátis! Ou troque em qualquer loja física"</td>
+<td data-l="Fonte / captura">[8]</td>
+</tr>
+<tr class="even">
+<td data-l="Etapa">Pós-compra</td>
+<td data-l="Peça">Embalagem perfumada</td>
+<td data-l="O que é, com exemplo real">"Todos os pedidos são enviados perfumados com o nosso cheirinho Printemps"</td>
+<td data-l="Fonte / captura">[22]</td>
+</tr>
+<tr class="odd">
+<td data-l="Etapa">Pós-compra</td>
+<td data-l="Peça">Fórmula de prazo publicada</td>
+<td data-l="O que é, com exemplo real">"7 dias corridos + envio = cerca de 12 dias"</td>
+<td data-l="Fonte / captura">[7]</td>
+</tr>
+<tr class="even">
+<td data-l="Etapa">Loja física</td>
+<td data-l="Peça">Rede em três níveis com etiqueta</td>
+<td data-l="O que é, com exemplo real">Lojas próprias, Exclusivité e multimarcas no mesmo localizador</td>
+<td data-l="Fonte / captura">ref-trousseau-lojas-sp-desktop</td>
+</tr>
+<tr class="odd">
+<td data-l="Etapa">Loja física</td>
+<td data-l="Peça">Lojas em destino de fim de semana</td>
+<td data-l="O que é, com exemplo real">Fazenda Boa Vista, Quinta da Baroneza, Fasano Angra</td>
+<td data-l="Fonte / captura">[4]</td>
+</tr>
+<tr class="even">
+<td data-l="Etapa">Profissional</td>
+<td data-l="Peça">Linha de hotel com a fragrância da marca</td>
+<td data-l="O que é, com exemplo real">Amenities com a "tradicional fragrância"; 233 a 1.000 fios em 2013</td>
+<td data-l="Fonte / captura">[9][14]</td>
+</tr>
+<tr class="odd">
+<td data-l="Etapa">Editorial</td>
+<td data-l="Peça">Blog com série da dona</td>
+<td data-l="O que é, com exemplo real">"Dicas da Adriana by Trousseau"; 188 posts, 2 desde 2025</td>
+<td data-l="Fonte / captura">[28]; ref-trousseau-blog-desktop</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="o-que-dizem-dela">O que dizem dela</h2>
+<p>Não foram encontradas entrevistas longas, podcasts ou reportagens de negócios sobre a Trousseau em si. A Meio &amp; Mensagem de 22.07.2025 fala da Trussardi e cita a Trousseau numa linha [15]. As falas públicas são curtas e vêm de lançamentos:</p>
+<ul>
+<li>Romeu Trussardi Neto, 2011: "Apostamos em um segmento que até então não tratava de forma diferenciada os artigos de cama, mesa e banho" [10].</li>
+<li>Rodolfo Trussardi, executivo, 12.2021: "Sempre tivemos como nosso principal concorrente o mercado externo" [19].</li>
+<li>Adriana Trussardi, 09.2021, sobre a pandemia: "Tivemos muitos clientes que telefonavam para as lojas" [16]. Em 05.2026: "Sempre acreditamos que o conforto está nos detalhes" [24].</li>
+<li>Bentley Hardwick, executivo da operação americana, 2018: "um negócio familiar bem estabelecido, com instalações de ponta" [13].</li>
+<li>Renata Andrade, franqueada em Salvador, 2021: "meu grande desafio agora é entrar na casa do cliente" [19].</li>
+<li>Luma Costa, 09.2025, sobre a Heritage: "uma herança de amor" [12].</li>
+</ul>
+<h2 id="o-que-não-se-sabe">O que não se sabe</h2>
+<ul>
+<li>Faturamento, margem, ticket médio e peso de cada canal (próprias, Exclusivité, multimarcas, online, hotel, corporate).</li>
+<li>Se a GVR Home produz ou terceiriza, e onde. A razão social diz "Indústria" e a imprensa fala em bordado no Brasil, mas não há fábrica publicada.</li>
+<li>Os termos da compra da Casa Costa.</li>
+<li>O contrato da Exclusivité: franquia formal ou licença, taxas, quem compra o estoque.</li>
+<li>Prazo e preço do "Sob medida", e se a "Consultoria em casa" existe como serviço.</li>
+<li>Quantas listas de presentes estão ativas e quanto do crédito vira pedido.</li>
+<li>Seguidores no Instagram e conteúdo dos e-mails.</li>
+<li>A reputação no Reclame Aqui, cujo selo está no rodapé.</li>
+<li>O destino da loja de Brickell, em Miami, e do escritório na Suíça.</li>
+</ul>
+<h2 id="perguntas-para-a-more">Perguntas para a More</h2>
+<ol type="1">
+<li>A Trousseau separa o que é estoque (prazo de dias) do que é encomenda (monograma com 7 dias a mais, reforma vendida como SKU, sob medida só por orçamento). Na More, que pedaço do catálogo de 24 peças poderia ter prazo curto, e o que isso faria com a percepção dos 120 dias do resto?</li>
+<li>A lista de presentes da Trousseau não entrega objetos: entrega crédito por 24 meses, com equipe dedicada e álbum. Casa nova e casamento são ocasiões em que se compra móvel. Que forma teria um presente coletivo para uma peça de valor alto e prazo de 120 dias?</li>
+<li>A fragrância Printemps está no quarto de hotel, na caixa do pedido e na loja. Qual é, na More, o elemento sensorial ou material que o cliente encontra em todos os pontos de contato, da Alameda Franca ao WhatsApp?</li>
+<li>A rede da Trousseau tem três níveis e lojas em destinos de fim de semana com horário curto. Para uma única loja em São Paulo, onde estão os lugares de fim de semana do cliente da More, e quem venderia por ela fora da cidade?</li>
+<li>O campo "Código do vendedor" liga o online ao vendedor da loja. Com venda por WhatsApp e site, como a More vai atribuir uma venda que começa na Alameda Franca e fecha no celular?</li>
+<li>O blog teve 48 posts em 2021 e 1 em 2025, e o FAQ ainda guarda texto de preenchimento. Quanta superfície de conteúdo a More consegue manter viva com três pessoas, e o que sai do site quando não há quem atualize?</li>
+</ol>
+<h2 id="como-este-caso-foi-feito">Como este caso foi feito</h2>
+<p>Em 16.10.2026 foram abertos ao vivo a loja brasileira do site (home, coleção, páginas de produto, monograma, carrinho e a primeira tela do checkout, sem compra), a lista de presentes, o blog, o localizador de lojas, o catálogo público e a simulação de frete do site, além do registro na Receita Federal. O Instagram não abriu sem login, os e-mails não foram vistos porque não houve cadastro, e a página do Reclame Aqui e um resumo da Texbrasil não abriram. Não há podcast ou entrevista longa para ouvir; as falas vêm de imprensa.</p>
+<h2 id="fontes">Fontes</h2>
+<p>Acesso em 16.10.2026.</p>
+<ol type="1">
+<li>Site, loja brasileira (home, menu, rodapé) e loja americana. <a href="https://www.trousseau.com.br/pt/" rel="noopener">https://www.trousseau.com.br/pt/</a> · <a href="https://www.trousseau.com.br/en/" rel="noopener">https://www.trousseau.com.br/en/</a></li>
+<li>Receita Federal, via BrasilAPI (filial do rodapé e matriz). <a href="https://brasilapi.com.br/api/cnpj/v1/66934555001948" rel="noopener">https://brasilapi.com.br/api/cnpj/v1/66934555001948</a> · <a href="https://brasilapi.com.br/api/cnpj/v1/66934555000119" rel="noopener">https://brasilapi.com.br/api/cnpj/v1/66934555000119</a></li>
+<li>"Nossa história". <a href="https://www.trousseau.com.br/pt/institucional/quem-somos" rel="noopener">https://www.trousseau.com.br/pt/institucional/quem-somos</a></li>
+<li>Localizador de lojas e loja de Miami. <a href="https://www.trousseau.com.br/pt/lojas-trousseau" rel="noopener">https://www.trousseau.com.br/pt/lojas-trousseau</a> · <a href="https://www.trousseau.com.br/pt/estados-unidos" rel="noopener">https://www.trousseau.com.br/pt/estados-unidos</a></li>
+<li>Catálogo público do site, busca "jogo de lençol" (150 produtos), e Atelier. <a href="https://www.trousseau.com.br/api/catalog_system/pub/products/search?ft=jogo%20de%20len%C3%A7ol&amp;sc=1" rel="noopener">https://www.trousseau.com.br/api/catalog_system/pub/products/search?ft=jogo%20de%20len%C3%A7ol&amp;sc=1</a> · <a href="https://www.trousseau.com.br/pt/atelier-trousseau" rel="noopener">https://www.trousseau.com.br/pt/atelier-trousseau</a></li>
+<li>Simulação de frete do site (CEPs 01310-100, 22410-003 e 50030-230). <a href="https://www.trousseau.com.br/api/checkout/pub/orderForms/simulation?sc=1" rel="noopener">https://www.trousseau.com.br/api/checkout/pub/orderForms/simulation?sc=1</a></li>
+<li>Política de produtos personalizados. <a href="https://www.trousseau.com.br/pt/institucional/politicas-de-personalizacao" rel="noopener">https://www.trousseau.com.br/pt/institucional/politicas-de-personalizacao</a></li>
+<li>Central de atendimento (entrega, troca, pagamento, presente, consultoria em casa). <a href="https://www.trousseau.com.br/pt/central-de-atendimento/entrega" rel="noopener">https://www.trousseau.com.br/pt/central-de-atendimento/entrega</a></li>
+<li>Hotel &amp; Spa. <a href="https://www.trousseau.com.br/pt/institucional/quem-somos/hotel-e-spa" rel="noopener">https://www.trousseau.com.br/pt/institucional/quem-somos/hotel-e-spa</a> · 9b. Corporate: <a href="https://www.trousseau.com.br/pt/institucional/quem-somos/nossas-marcas/corporate" rel="noopener">https://www.trousseau.com.br/pt/institucional/quem-somos/nossas-marcas/corporate</a> · 9c. Revenda e Exclusivité: <a href="https://www.trousseau.com.br/pt/multimarcas-and-exclusivite-trousseau-fale-conosco" rel="noopener">https://www.trousseau.com.br/pt/multimarcas-and-exclusivite-trousseau-fale-conosco</a></li>
+<li>IstoÉ Dinheiro, "O luxo brasileiro em casas europeias" (19.10.2011). <a href="https://istoedinheiro.com.br/o-luxo-brasileiro-em-casas-europeias-2/" rel="noopener">https://istoedinheiro.com.br/o-luxo-brasileiro-em-casas-europeias-2/</a></li>
+<li>ELLE Brasil, "Trousseau adquire operação da Casa Costa…" (19.03.2025). <a href="https://elle.com.br/elle-decoration/trousseau" rel="noopener">https://elle.com.br/elle-decoration/trousseau</a></li>
+<li>Portal IN, "Trousseau e Luma Costa estreiam coleção…" (30.09.2025). <a href="https://www.portalin.com.br/notas/trousseau-e-luma-costa-estreiam-colecao-de-mesa-posta-sob-a-nova-etiqueta-trousseau-casa-costa/" rel="noopener">https://www.portalin.com.br/notas/trousseau-e-luma-costa-estreiam-colecao-de-mesa-posta-sob-a-nova-etiqueta-trousseau-casa-costa/</a></li>
+<li>HFN, "Brazilian Luxury Linen Brand Makes US Debut" (26.06.2018). <a href="https://www.hfndigital.com/industry-news/brazilian-luxury-linen-brand-makes-us-debut" rel="noopener">https://www.hfndigital.com/industry-news/brazilian-luxury-linen-brand-makes-us-debut</a></li>
+<li>Panrotas, linha Hotel no Sheraton da Bahia (07.05.2013). <a href="https://www.panrotas.com.br/noticia-turismo/hotelaria/2013/05/com-linha-hotel-trousseau-veste-spa-do-novo-sheraton-da-bahia_88064.html" rel="noopener">https://www.panrotas.com.br/noticia-turismo/hotelaria/2013/05/com-linha-hotel-trousseau-veste-spa-do-novo-sheraton-da-bahia_88064.html</a></li>
+<li>Meio &amp; Mensagem, "Trussardi entra em nova fase mantendo o DNA" (22.07.2025). <a href="https://www.meioemensagem.com.br/marketing/trussardi-entra-em-nova-fase-mantendo-o-dna" rel="noopener">https://www.meioemensagem.com.br/marketing/trussardi-entra-em-nova-fase-mantendo-o-dna</a></li>
+<li>Forbes Mulher, "Paula Raia lança coleção de enxoval para a Trousseau" (17.09.2021). <a href="https://forbes.com.br/forbes-mulher/2021/09/paula-raia-lanca-colecao-de-enxoval-para-a-trousseau/" rel="noopener">https://forbes.com.br/forbes-mulher/2021/09/paula-raia-lanca-colecao-de-enxoval-para-a-trousseau/</a></li>
+<li>Business of Home, "How the Campana Brothers do bedding" (19.06.2018). <a href="https://businessofhome.com/articles/how-the-campana-brothers-do-bedding" rel="noopener">https://businessofhome.com/articles/how-the-campana-brothers-do-bedding</a></li>
+<li>Fashion Week Online, venda no Brickell City Centre (14.10.2023). <a href="https://fashionweekonline.com/?p=213662" rel="noopener">https://fashionweekonline.com/?p=213662</a></li>
+<li>Bahia Notícias, abertura em Salvador (14.12.2021). <a href="https://www.bahianoticias.com.br/bnhall/business/84-sempre-tivemos-vontade-de-lancar-nossa-marca-em-salvador-diz-executivo-da-trousseau" rel="noopener">https://www.bahianoticias.com.br/bnhall/business/84-sempre-tivemos-vontade-de-lancar-nossa-marca-em-salvador-diz-executivo-da-trousseau</a></li>
+<li>Bahia Notícias, nova loja em Salvador e coleção Heritage (09.10.2025). <a href="https://www.bahianoticias.com.br/bnhall/business/1025-com-presenca-de-luma-costa-trousseau-abre-nova-loja-em-salvador-e-lanca-colecao-heritage" rel="noopener">https://www.bahianoticias.com.br/bnhall/business/1025-com-presenca-de-luma-costa-trousseau-abre-nova-loja-em-salvador-e-lanca-colecao-heritage</a></li>
+<li>Luxe Interiors + Design, "Trousseau Miami Design District" (07.01.2026). <a href="https://luxesource.com/article/trousseau-miami-design-district" rel="noopener">https://luxesource.com/article/trousseau-miami-design-district</a></li>
+<li>Special Service, guia de personalização e serviços e reformas. <a href="https://www.trousseau.com.br/pt/special-service" rel="noopener">https://www.trousseau.com.br/pt/special-service</a> · <a href="https://www.trousseau.com.br/pt/lp-personalizacao-trousseau" rel="noopener">https://www.trousseau.com.br/pt/lp-personalizacao-trousseau</a> · <a href="https://www.trousseau.com.br/pt/atelier-trousseau/servi%C3%A7os-e-reformas" rel="noopener">https://www.trousseau.com.br/pt/atelier-trousseau/servi%C3%A7os-e-reformas</a></li>
+<li>Carrinho. <a href="https://www.trousseau.com.br/checkout/#/cart" rel="noopener">https://www.trousseau.com.br/checkout/#/cart</a></li>
+<li>Forbes Life, "Trousseau e Eglantina Zingg…" (12.05.2026). <a href="https://forbes.com.br/forbes-life/2026/05/trousseau-e-eglantina-zingg-quando-o-essencial-encontra-uma-voz-global/" rel="noopener">https://forbes.com.br/forbes-life/2026/05/trousseau-e-eglantina-zingg-quando-o-essencial-encontra-uma-voz-global/</a></li>
+<li>Lista de presentes. <a href="https://www.lista.trousseau.com.br/" rel="noopener">https://www.lista.trousseau.com.br/</a></li>
+<li>Sugestão de enxoval. <a href="https://www.trousseau.com.br/pt/sugestao-de-enxoval" rel="noopener">https://www.trousseau.com.br/pt/sugestao-de-enxoval</a></li>
+<li>Trousseau | Casa Costa. <a href="https://www.trousseau.com.br/pt/trousseaucasacosta" rel="noopener">https://www.trousseau.com.br/pt/trousseaucasacosta</a></li>
+<li>Blog "Notes by Trousseau" (188 posts). <a href="https://blog.trousseau.com.br/wp-json/wp/v2/posts" rel="noopener">https://blog.trousseau.com.br/wp-json/wp/v2/posts</a></li>
+</ol>
+
+</article>
+
+<section class="mods" id="modulos" aria-label="Páginas desta seção"><div class="eyebrow">As 10 páginas desta seção</div><ol class="lst"><li><span class="n">00</span><p><a href="/negocio/">Comece aqui</a></p><span class="t">3 min</span></li><li><span class="n">01</span><p><a href="/negocio/rh/">RH</a></p><span class="t">12 min</span></li><li><span class="n">02</span><p><a href="/negocio/flamingo-estate/">Flamingo Estate</a></p><span class="t">12 min</span></li><li aria-current="page"><span class="n">03</span><p><a href="/negocio/trousseau/">Trousseau</a></p><span class="t">12 min</span></li><li><span class="n">04</span><p><a href="/negocio/sklum/">Sklum</a></p><span class="t">12 min</span></li><li><span class="n">05</span><p><a href="/negocio/nordic-knots/">Nordic Knots</a></p><span class="t">12 min</span></li><li><span class="n">06</span><p><a href="/negocio/curtos/">Hem, The Invisible Collection, ETEL e Interior Define</a></p><span class="t">12 min</span></li><li><span class="n">07</span><p><a href="/negocio/pecas/">As peças, na ordem do funil</a></p><span class="t">12 min</span></li><li><span class="n">08</span><p><a href="/negocio/lancamento/">Lançar uma marca: Nik Sharma e os experts</a></p><span class="t">8 min</span></li><li><span class="n">09</span><p><a href="/negocio/perguntas/">Perguntas para a mesa</a></p><span class="t">5 min</span></li></ol></section>
+
+</div>
+
+<footer><div class="wrap">
+  <p>Estudos de caso feitos com IA em 16.10.2026, a partir de fontes públicas e de visitas aos sites de cada marca. Cada número traz a fonte. As capturas são de páginas públicas, abertas no mesmo dia. Nada aqui diz o que a More deve fazer: os casos descrevem, as perguntas ficam com o time. Feito com o sistema de design da More.</p>
+</div></footer>
+</div>
+
+<div class="barzone"><div class="bar" aria-label="Navegação">
+  <a href="/" aria-label="Índice"><svg viewBox="0 0 272 69" role="img" aria-label="More" xmlns:c2pa="http://c2pa.org/manifest"><metadata><c2pa:manifest>AAAWgmp1bWIAAAAeanVtZGMycGEAEQAQgAAAqgA4m3EDYzJwYQAAABZcanVtYgAAAEdqdW1kYzJtYQARABCAAACqADibcQN1cm46YzJwYTozMzg3YWIyYy1hMWM1LTQ5Y2EtYmY5Ny00N2RiMjI3YmYwZWYAAAADl2p1bWIAAAApanVtZGMyYXMAEQAQgAAAqgA4m3EDYzJwYS5hc3NlcnRpb25zAAAAALxqdW1iAAAARGp1bWRjYm9yABEAEIAAAKoAOJtxE2MycGEuaW5ncmVkaWVudC52MwAAAAAYYzJzaAvejDJIOSNzaPAwHj7kaAAAAABwY2JvcqNpZGM6Zm9ybWF0bWltYWdlL3N2Zyt4bWxqaW5zdGFuY2VJRHgseG1wOmlpZDphMmQ3YjNhMC04Mzk1LTQ0MTUtYWFhNS04ZWFhYWM2ZjQ1YjFscmVsYXRpb25zaGlwaHBhcmVudE9mAAAB4mp1bWIAAABBanVtZGNib3IAEQAQgAAAqgA4m3ETYzJwYS5hY3Rpb25zLnYyAAAAABhjMnNoAWo9OMK4bgwwZanS+OWsagAAAZljYm9yomdhY3Rpb25zgqJmYWN0aW9ua2MycGEub3BlbmVkanBhcmFtZXRlcnOha2luZ3JlZGllbnRzgaJjdXJseC1zZWxmI2p1bWJmPWMycGEuYXNzZXJ0aW9ucy9jMnBhLmluZ3JlZGllbnQudjNkaGFzaFggWSobncfM24/WN0aREmJtsgGGyNu3mVlNb3PF1vaOaZWkZmFjdGlvbngdY29tLmFudGhyb3BpYy5jbGF1ZGUucHJvdmlkZWRqcGFyYW1ldGVyc6F4H2NvbS5hbnRocm9waWMub3JpZ2luLWNvbmZpZGVuY2VndW5rbm93bmtkZXNjcmlwdGlvbnhmQ2xhdWRlIHByb3ZpZGVkIHRoaXMgZmlsZSBhdCB0aGUgcmVxdWVzdCBvZiBhIHVzZXIgYW5kIG1heSBoYXZlIGNyZWF0ZWQgb3IgbW9kaWZpZWQgdGhlIGZpbGUgY29udGVudHMubXNvZnR3YXJlQWdlbnShZG5hbWVmQ2xhdWRlcmFsbEFjdGlvbnNJbmNsdWRlZPUAAADIanVtYgAAAEBqdW1kY2JvcgARABCAAACqADibcRNjMnBhLmhhc2guZGF0YQAAAAAYYzJzaGE4ixWuWp1iLg6wekWrKwQAAACAY2JvcqVjYWxnZnNoYTI1NmNwYWRNAAAAAAAAAAAAAAAAAGRoYXNoWCBiHjqZX82DROgQX7UaMEWiMeHylF9MCDlPFIRlXx33amRuYW1lbmp1bWJmIG1hbmlmZXN0amV4Y2x1c2lvbnOBomVzdGFydBh2Zmxlbmd0aBkeBAAAAj5qdW1iAAAAJ2p1bWRjMmNsABEAEIAAAKoAOJtxA2MycGEuY2xhaW0udjIAAAACD2Nib3KlY2FsZ2ZzaGEyNTZpc2lnbmF0dXJleE1zZWxmI2p1bWJmPS9jMnBhL3VybjpjMnBhOjMzODdhYjJjLWExYzUtNDljYS1iZjk3LTQ3ZGIyMjdiZjBlZi9jMnBhLnNpZ25hdHVyZWppbnN0YW5jZUlEeCx4bXA6aWlkOmU1NGExMTEzLTcyMzItNGM5Zi1hMWIwLTdlOTZjMDQzZWYzYnJjcmVhdGVkX2Fzc2VydGlvbnODomN1cmx4LXNlbGYjanVtYmY9YzJwYS5hc3NlcnRpb25zL2MycGEuaW5ncmVkaWVudC52M2RoYXNoWCBZKhudx8zbj9Y3RpESYm2yAYbI27eZWU1vc8XW9o5plaJjdXJseCpzZWxmI2p1bWJmPWMycGEuYXNzZXJ0aW9ucy9jMnBhLmFjdGlvbnMudjJkaGFzaFgg7+iOlXzN9fsl5dtomZi9dr38n5qn+jROtSMCZ/zZgOeiY3VybHgpc2VsZiNqdW1iZj1jMnBhLmFzc2VydGlvbnMvYzJwYS5oYXNoLmRhdGFkaGFzaFgg5dtuer2DYxW6ttFffBa8QryKsKlQ4VcBq6Dmm04/y9x0Y2xhaW1fZ2VuZXJhdG9yX2luZm+jZG5hbWVvQW50aHJvcGljIEZpbGVzZ3ZlcnNpb25lMS4wLjBrc3BlY1ZlcnNpb25lMi40LjAAABA4anVtYgAAAChqdW1kYzJjcwARABCAAACqADibcQNjMnBhLnNpZ25hdHVyZQAAABAIY2JvctKEWQISogEmGCFZAgowggIGMIIBjaADAgECAhRA5aAK7sI50L64g/oGQgU9Z1UTADAKBggqhkjOPQQDAzBJMRcwFQYDVQQKEw5BbnRocm9waWMsIFBCQzEuMCwGA1UEAxMlQW50aHJvcGljIENvbnRlbnQgQ3JlZGVudGlhbHMgUm9vdCBDQTAeFw0yNjA4MDcxODQzNTZaFw0yODA4MDYxOTQzNTZaMEQxFzAVBgNVBAoTDkFudGhyb3BpYywgUEJDMSkwJwYDVQQDEyBBbnRocm9waWMgQ2xhdWRlIENvbnRlbnQgU2lnbmluZzBZMBMGByqGSM49AgEGCCqGSM49AwEHA0IABJh6CmvLUBgFFNU0vUKlOVtE6djd17L5SuwX0LemFisBM3dkd/3cyjxFA3Qo5S46fX0/ihY0VZ7mfb9KF703t5OjWDBWMA4GA1UdDwEB/wQEAwIHgDAVBgNVHSUEDjAMBgorBgEEAYPoXgIBMAwGA1UdEwEB/wQCMAAwHwYDVR0jBBgwFoAUzlHiBIFOZFsj+OPEz5o+nMHXXMIwCgYIKoZIzj0EAwMDZwAwZAIwMXMdFJ4BetLLVY7ORuE9noqbbAZOZn/aArXyTwFAZfKrPzxF2vPoJNf1+UCdg1XGAjBwX1zd9WGqYkqmL5SFqw1QySjr1zJfpJM9+1rdDwSPLMOPOjKuiXjoU/pUUeG9RwmhY3BhZFkNngAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPZYQLNSdZSJ1Lb4KyXNjcHFt+dMD/kTbfSuk+KST65sHWF18sFBsDHhJT9XVfg3laI//fXetfblD/peX/vE5v8r43Y=</c2pa:manifest></metadata><path fill="currentColor" d="M176.593 23.0819V1.91833H150.317V66.5948H176.593V44.2791H205.243V1.91833C189.55 1.91833 177.465 13.093 176.593 23.0875V23.0819Z"/><path fill="currentColor" d="M111.007 0C91.875 0 76.3403 15.3302 76.3403 34.223C76.3403 53.1159 91.8693 68.4461 111.007 68.4461C130.145 68.4461 145.742 53.1159 145.742 34.223C145.742 15.3302 130.213 0 111.007 0ZM111.007 42.4334C106.43 42.4334 102.69 38.8036 102.69 34.2174C102.69 29.6313 106.435 26.0015 111.007 26.0015C115.579 26.0015 119.398 29.6984 119.398 34.2174C119.398 38.7365 115.653 42.4334 111.007 42.4334Z"/><path fill="currentColor" d="M35.919 19.6423L26.2764 1.91833H0V66.5948H26.2764V44.212H45.4936V66.5948H71.77V1.91833H45.4936L35.919 19.6423Z"/><path fill="currentColor" d="M272.002 1.87909H211.835V24.7541V34.7487V44.1783V66.5612H272.002V44.7376H238.219L255.669 34.7151L238.236 24.7541H272.002V1.87909Z"/></svg></a>
+  <nav><a href="/">[Índice]</a><a href="/negocio/">[Início]</a><a href="/negocio/sklum/">[Sklum]</a></nav>
+</div></div>
+<script>
+document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener('click',e=>{const t=document.querySelector(decodeURIComponent(a.getAttribute('href')));if(t){e.preventDefault();t.scrollIntoView({block:'start'});history.replaceState(null,'',a.getAttribute('href'));}});});
+if(location.hash){const t=document.querySelector(decodeURIComponent(location.hash));if(t)t.scrollIntoView({block:'start'});}
+</script>
+</body>
+</html>
