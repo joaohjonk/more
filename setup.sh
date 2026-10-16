@@ -25,7 +25,8 @@ SO="$(uname -s)"
 
 titulo(){ printf '\n%s\n' "$1"; }
 ok(){ printf '  ok     %s\n' "$1"; }
-aviso(){ printf '  aviso  %s\n' "$1"; }
+AVISOS=0
+aviso(){ printf '  aviso  %s\n' "$1"; AVISOS=$((AVISOS+1)); }
 falta(){ printf '  falta  %s\n' "$1"; FALTAS="${FALTAS}  - $1
 "; }
 tem(){ command -v "$1" >/dev/null 2>&1; }
@@ -105,8 +106,9 @@ else falta "cstack: git clone --depth 1 https://github.com/joaohjonk/cstack.git 
 # 4. gstack: testes de site no navegador, revisão de código e de design (/qa, /design-review, /review) --
 titulo "4. gstack (github.com/garrytan/gstack)"
 if [ "$INSTALAR" = 1 ] && tem bun; then
-  if [ -d "$GSTACK_DIR/.git" ]; then ok "gstack já instalado (para atualizar, peça /gstack-upgrade no Claude Code)"
-  else git clone -q --single-branch --depth 1 https://github.com/garrytan/gstack.git "$GSTACK_DIR"; fi
+  if [ -d "$GSTACK_DIR/.git" ] && [ -e "$HOME/.claude/skills/qa" ]; then ok "gstack já instalado (para atualizar, peça /gstack-upgrade no Claude Code)"
+  else
+  [ -d "$GSTACK_DIR/.git" ] || git clone -q --single-branch --depth 1 https://github.com/garrytan/gstack.git "$GSTACK_DIR"
   LOG="${TMPDIR:-/tmp}/more-setup-gstack.log"; OPC=""; [ "$NAVEGADOR" = 1 ] || OPC="--no-browser"
   printf '         instalando (leva um ou dois minutos; o registro fica em %s)\n' "$LOG"
   if (cd "$GSTACK_DIR" && ./setup $OPC) >"$LOG" 2>&1; then
@@ -115,6 +117,7 @@ if [ "$INSTALAR" = 1 ] && tem bun; then
     elif [ "$NAVEGADOR" = 0 ]; then aviso "navegador do gstack não instalado (--sem-navegador): ele baixa no primeiro /qa"
     else ok "navegador do gstack (Chromium) instalado"; fi
   else falta "gstack: ./setup falhou; veja $LOG"; fi
+  fi
 fi
 if [ -f "$GSTACK_DIR/SKILL.md" ] && [ -e "$HOME/.claude/skills/qa" ]; then ok "gstack em $GSTACK_DIR, skills /qa /design-review /review ligadas"
 else falta "gstack: git clone --single-branch --depth 1 https://github.com/garrytan/gstack.git ~/.claude/skills/gstack && cd ~/.claude/skills/gstack && ./setup"; fi
@@ -142,7 +145,8 @@ printf '         Figma e Netlify pedem login: dentro do Claude Code, digite /mcp
 
 # Resumo ---------------------------------------------------------------------------------------------
 titulo "Resumo"
-if [ -z "$FALTAS" ]; then printf '  Tudo instalado.\n'; else printf '  Falta:\n%s' "$FALTAS"; fi
+if [ -z "$FALTAS" ] && [ "$AVISOS" = 0 ]; then printf '  Tudo instalado.\n'
+elif [ -z "$FALTAS" ]; then printf '  Tudo instalado, com %s aviso(s) acima: são opcionais ou dependem desta máquina.\n' "$AVISOS"; else printf '  Falta:\n%s' "$FALTAS"; fi
 cat <<'FIM'
 
   Passos que dependem de conta ou licença (o script não faz):
