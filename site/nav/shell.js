@@ -10,7 +10,7 @@
   var S=[
     {id:'guia',n:'1',s:'Guia',href:'/guia/',
      t:'Guia para o time',
-     d:'Três sugestões para antes da abertura, para pegar ou deixar. O resto, a IA fez em um dia.'},
+     d:'Três sugestões para antes da abertura, dez prioridades e o que só a More responde.'},
     {id:'sistema',n:'2',s:'Sistema',href:'/sistema/',
      t:'Sistema de design',
      d:'Cor, tipo, voz e movimento, medidos no site que já existe. Cada regra tem um script.'},
@@ -22,13 +22,13 @@
      d:'A loja da Alameda Franca, três semanas antes de existir. Arraste, clique, entre.'},
     {id:'abertura',n:'5',s:'Abertura',href:'/abertura/',
      t:'Abertura 05.11 e livro',
-     d:'Nove peças, do convite à vitrine, em um dia. O time escolhe, se quiser.'},
+     d:'Nove peças, do convite à vitrine. O time escolhe, se quiser.'},
     {id:'stack',n:'6',s:'Stack',href:'/stack/',
      t:'Stack e automações',
      d:'O que roda hoje, o que fazer até 05.11 e seis perguntas para o time. Cinco minutos.'},
     {id:'catalogo',n:'7',s:'Catálogo',href:'/catalogo/',
      t:'Catálogo associativo',
-     d:'Uma exploração: as 24 peças por tipo, por ambiente, por material e por história. Direção sugerida, não decisão.'}
+     d:'As 24 peças por tipo, por ambiente, por material e por história. Uma direção para conversar.'}
   ];
   var me=document.currentScript||document.querySelector('script[data-section]');
   if(me===null)return;

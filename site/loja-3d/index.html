@@ -116,7 +116,7 @@ a{color:inherit}
 <div id="still" aria-hidden="true"></div>
 <div id="load" aria-live="polite"><span>[Entrando na loja]</span><span class="bar"><i id="loadbar"></i></span><span id="loadpc">0%</span></div>
 <h1 class="sr">Loja More em 3D</h1>
-<p class="sr">Alameda Franca 1332, casa 04, Jardins, São Paulo. Abre em 5 de novembro.</p>
+<p class="sr">Alameda Franca 1332, casa 04, Jardins, São Paulo. Abre em 05.11.</p>
 
 <div id="tip" hidden></div>
 
@@ -139,7 +139,7 @@ a{color:inherit}
   <div class="wrap">
     <img src="still.jpg" alt="A loja da More vista da porta, em 3D.">
     <h1>Loja More, Alameda Franca 1332</h1>
-    <p>Seu navegador não desenha a loja em 3D. Aqui estão as peças que vão estar expostas na abertura, em 5 de novembro.</p>
+    <p>Seu navegador não desenha a loja em 3D. Aqui estão as peças que vão estar expostas na abertura, em 05.11.</p>
     <button class="try" id="try3d">[Tentar o 3D mesmo assim]</button>
     <div class="grid" id="plaingrid"></div>
   </div>
@@ -488,9 +488,9 @@ function cardPeca(p){
 const ORDER=Object.keys(PLACED);
 function open(handle,instant){
   if(handle==="sobre"){ state={page:"sobre"}; setPressed("sobre"); flyTo({pos:new THREE.Vector3(-.75,1.5,-.55),tgt:new THREE.Vector3(-HW,1.5,-1.85)},instant);
-    showCard(`<div class="text"><div class="cat">Sobre</div><h2>Menos do mesmo.</h2><p>Estúdio de São Paulo que desenha e faz móveis, luminárias e peças fixas. Madeira maciça, metal fundido, vidro e cerâmica, com acabamento manual. Tudo sob encomenda, com prazo.</p><p>A loja abre em 5 de novembro na Alameda Franca 1332, casa 04, nos Jardins.</p></div><div class="acts"><a href="https://mymore.design/pages/sobre" target="_blank" rel="noopener">[Ler no site]</a><a href="https://www.instagram.com/mymore.design" target="_blank" rel="noopener">[Instagram]</a></div>`); return; }
+    showCard(`<div class="text"><div class="cat">Sobre</div><h2>Menos do mesmo.</h2><p>Estúdio de São Paulo que desenha e faz móveis, luminárias e peças fixas. Madeira maciça, metal fundido, vidro e cerâmica, com acabamento manual. Tudo sob encomenda, com prazo.</p><p>A loja abre em 05.11 na Alameda Franca 1332, casa 04, nos Jardins.</p></div><div class="acts"><a href="https://mymore.design/pages/sobre" target="_blank" rel="noopener">[Ler no site]</a><a href="https://www.instagram.com/more.mymore/" target="_blank" rel="noopener">[Instagram]</a></div>`); return; }
   if(handle==="loja"){ state={page:"loja"}; setPressed("loja"); flyTo(FR.loja,instant);
-    showCard(`<div class="text"><div class="cat">Loja</div><h2>Alameda Franca 1332, casa 04</h2><p>Jardins, São Paulo. Abre em 5 de novembro.</p><div class="kv"><span>Salão</span><b>5,4 × 17 m, pé-direito 4,20</b></div><div class="kv"><span>Piso</span><b>concreto lapidado</b></div><div class="kv"><span>Mezanino</span><b>+4,44 m, loja 2 e escritório</b></div><p class="note">Construída a partir da planta executiva EX_A102_R03 (Atelier Peclat).</p></div><div class="acts"><a href="https://maps.google.com/?q=Alameda+Franca+1332+Jardins+São+Paulo" target="_blank" rel="noopener">[Como chegar]</a><a href="https://wa.me/5511912092600" target="_blank" rel="noopener">[WhatsApp]</a></div>`); return; }
+    showCard(`<div class="text"><div class="cat">Loja</div><h2>Alameda Franca 1332, casa 04</h2><p>Jardins, São Paulo. Abre em 05.11.</p><div class="kv"><span>Salão</span><b>5,4 × 17 m, pé-direito 4,20</b></div><div class="kv"><span>Piso</span><b>concreto lapidado</b></div><div class="kv"><span>Mezanino</span><b>+4,44 m, loja 2 e escritório</b></div><p class="note">Construída a partir da planta executiva EX_A102_R03 (Atelier Peclat).</p></div><div class="acts"><a href="https://maps.google.com/?q=Alameda+Franca+1332+Jardins+São+Paulo" target="_blank" rel="noopener">[Como chegar]</a><a href="https://wa.me/5511912092600" target="_blank" rel="noopener">[WhatsApp]</a></div>`); return; }
   if(handle==="pecas"){ state={page:"pecas"}; setPressed("pecas"); if(camera.position.distanceTo(HOME.pos)>.5&&!instant) flyTo(HOME,instant);
     showCard(`<div class="text"><div class="cat">Peças</div><h2>Na loja</h2><ol>${PECAS.map(p=>`<li class="${PLACED[p.h]?"":"off"}"><button data-h="${p.h}">${p.t}</button><span>${PLACED[p.h]?(p.buy?"pronta entrega":"exposta"):"sob encomenda"}</span></li>`).join("")}</ol><p class="note">Clique numa peça exposta para vê-la de perto.</p></div>`);
     card.querySelectorAll("button[data-h]").forEach(b=>b.onclick=()=>open(b.dataset.h)); return; }
