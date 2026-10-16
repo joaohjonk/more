@@ -101,7 +101,7 @@ b{font-weight:400}
 .bar nav{display:flex;gap:8px}
 .bar a{font-family:var(--mono);font-stretch:75%;font-size:13px;text-decoration:none;white-space:nowrap}
 .bar a:hover,.bar a:focus-visible{color:var(--muted)}
-@media(max-width:560px){.bar nav a{font-size:11px}.bar nav{gap:4px}}
+@media(max-width:560px){.bar nav a{font-size:11px}.bar nav{gap:4px;min-width:0;overflow-x:auto;scrollbar-width:none}.bar nav::-webkit-scrollbar{display:none}}
 footer{background:var(--inverse);color:var(--on-inverse);margin-top:var(--s-sec)}
 footer .wrap{padding-block:var(--s-2xl)}
 footer p{font-size:13px;max-width:70ch}
@@ -117,7 +117,7 @@ footer p{font-size:13px;max-width:70ch}
   <div class="eyebrow">More · IA e experiência digital · Stack e automações · Jornada · 15.10.2026</div>
   <h1>Do desejo à segunda peça.</h1>
   <p class="lede">A jornada inteira da More em dez etapas. O que a cliente vê, o que a pessoa faz, o que roda sozinho. E os desvios.</p>
-  <div class="meta mono label"><span>Para: Fred, Edu, Vitor</span><span>Leitura: 10 min</span><span>Parte de <a href="/stack/">Stack e automações</a></span><span>Base: call de 15/10, lojas de referência, Nordic Knots e Sklum</span></div>
+  <div class="meta mono label"><span>Para: Fred, Edu, Vitor</span><span>Leitura: 10 min</span><span>Parte de <a href="/stack/">Stack e automações</a></span><span>Base: call de 15.10, lojas de referência, Nordic Knots e Sklum</span></div>
   <p class="muted" style="font-size:14px;margin-top:var(--s-sm)">Uma marca de desejo vende como quem namora. A pergunta desta página: em cada toque, o que é gente e o que é máquina? A resposta nunca é "tudo máquina".</p>
 </header>
 
@@ -143,7 +143,7 @@ footer p{font-size:13px;max-width:70ch}
       <dt>Roda sozinho</dt><dd>O pixel guarda a origem. Uma palavra no comentário ou na DM devolve a ficha da peça, com aceite.</dd>
       <dt>Ferramenta</dt><dd>Instagram, Meta Ads, ManyChat para a DM, planilha de imprensa e eventos.</dd>
       <dt>Sinal no perfil</dt><dd>Origem. Peça de interesse. Quem indicou.</dd></dl></div></li>
-    <li><div class="no">2</div><div class="et"><span class="k">Descoberta</span><h3>A galeria, com prazo e ficha</h3>
+    <li><div class="no">2</div><div class="et"><span class="k">Descoberta</span><h3>O site, com prazo e ficha</h3>
       <dl><dt>Cliente vê</dt><dd>O site como é. Na peça: madeira, tecido, medidas, "sob encomenda, cerca de 120 dias", cenas em ambiente, bloco 2D e 3D, "pedir amostra".</dd>
       <dt>Pessoa da More faz</dt><dd>Nada.</dd>
       <dt>Roda sozinho</dt><dd>Peça vista entra no perfil. O bloco pede nome, e-mail, onde trabalha, estúdio ou empresa, e o uso: projeto de cliente, projeto pessoal, estudo da peça, outro. E se é arquiteta ou não. "Avise-me" nas peças sem data.</dd>
@@ -152,7 +152,7 @@ footer p{font-size:13px;max-width:70ch}
     <li class="desvio"><div class="no"><span>se</span></div><div class="et"><p><span class="k">Disse que é arquiteta ou escritório</span>Entra no mundo More: modelos 3D e fichas, mostruário padrão pelo correio, convite ao ateliê, e notícia constante do que a oficina faz. Vai direto para a etapa 4.</p></div></li>
     <li><div class="no">3</div><div class="et"><span class="k">Primeiro contato</span><h3>Uma conversa com nome, em horas, não dias</h3>
       <dl><dt>Cliente vê</dt><dd>O WhatsApp da More, já com a peça e as opções escritas. Resposta de uma pessoa, com nome.</dd>
-      <dt>Pessoa da More faz</dt><dd>Uma pessoa do time, cerca de seis horas por dia. Responde dentro da promessa. Pergunta o projeto, o ambiente e o prazo. Decide o que mandar.</dd>
+      <dt>Pessoa da More faz</dt><dd>Uma pessoa do time, cerca de seis horas por dia. Responde dentro da promessa. Começa pelo espaço: “Para qual sala é? Conte da luz que ela tem.” Depois, projeto e prazo. Decide o que mandar.</dd>
       <dt>Roda sozinho</dt><dd>O número vira perfil com etiqueta "interesse: peça". A IA sugere a resposta com ficha, prazo e fotos; a pessoa escolhe e envia. Fora do horário, a mensagem diz quando alguém responde.</dd>
       <dt>Ferramenta</dt><dd>WhatsApp Business no número da marca. Depois, a API oficial dentro do CRM.</dd>
       <dt>Sinal no perfil</dt><dd>Tipo: cliente final, arquiteta, imprensa, presente. Prazo do projeto. Peça.</dd></dl></div></li>
@@ -164,7 +164,7 @@ footer p{font-size:13px;max-width:70ch}
       <dt>Ferramenta</dt><dd>Quadro interno (seção [03]), banco de fotos com etiquetas, agenda para visita.</dd>
       <dt>Sinal no perfil</dt><dd>Amostra pedida. Visita feita. Livro enviado. Madeira e tecido preferidos.</dd></dl></div></li>
     <li class="desvio"><div class="no"><span>se</span></div><div class="et"><p><span class="k">Nota alta no perfil</span>Convite pessoal para o próximo evento no ateliê. Livro pelo correio. Quem liga é o Fred, não um fluxo.</p></div></li>
-    <li><div class="no">5</div><div class="et"><span class="k">Orçamento</span><h3>Proposta em 24 horas, sempre igual</h3>
+    <li><div class="no">5</div><div class="et"><span class="k">Proposta</span><h3>Proposta em 24 horas, sempre igual</h3>
       <dl><dt>Cliente vê</dt><dd>Um PDF com a peça, madeira, tecido, medidas, preço, mês de entrega e o link do sinal.</dd>
       <dt>Pessoa da More faz</dt><dd>Confere e aprova a proposta. Manda com uma frase sua.</dd>
       <dt>Roda sozinho</dt><dd>O rascunho de pedido vira o PDF. O perfil marca "proposta enviada" e "proposta aberta".</dd>
@@ -331,7 +331,7 @@ footer p{font-size:13px;max-width:70ch}
   <div class="eyebrow">[07] Fontes e referências</div>
   <h2>De onde vem cada parte.</h2>
   <div class="base">
-    <div><h3>A call de 15/10</h3><p>Venda consultiva e quadro de etapas. Livro para a lista alta. Perfil central com nota. Blocos em troca de e-mail. Humanização fora do site.</p></div>
+    <div><h3>A call de 15.10</h3><p>Venda consultiva e quadro de etapas. Livro para a lista alta. Perfil central com nota. Blocos em troca de e-mail. Humanização fora do site.</p></div>
     <div><h3>Nordic Knots</h3><p>Lida em 15.10. Consulta grátis com hora marcada e conta Pro. Campanhas por estação. Grade do Instagram com projetos e designers convidados. Investimento de US$ 100 milhões em março, liderado pela Imaginary Ventures, com a Iris Ventures.</p></div>
     <div><h3>Sklum e as lojas premiadas</h3><p>Prazo em data, amostras, arquivos para profissionais, avise-me, mensagens de etapa. A pesquisa está no <a href="/guia/">guia</a> e na <a href="/stack/#referencias">seção [06] do stack</a>.</p></div>
     <div><h3>Método</h3><p>Fluxos "um fato cada", como o Greg Isenberg descreve. Ciclo de vida e retenção como o Lenny Rachitsky mede. Calendário por tema mensal, como a MKT1 publica.</p></div>
@@ -343,7 +343,7 @@ footer p{font-size:13px;max-width:70ch}
 
 </div>
 <footer><div class="wrap">
-  <p>Feito com o sistema de design da More. Tokens medidos de mymore.design e do Instagram em 15/10/2026. Fontes da página: Muoto e Muoto Mono.</p>
+  <p>Feito com o sistema de design da More. Tokens medidos de mymore.design e do Instagram em 15.10.2026. Fontes da página: Muoto e Muoto Mono.</p>
 </div></footer>
 </div>
 

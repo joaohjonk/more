@@ -16,3 +16,10 @@ state/cache/
 
 # dependências de build (Style Dictionary)
 node_modules/
+.netlify
+
+# fontes licenciadas nunca entram no repo público (B2); o deploy.sh copia dos originais na pasta compartilhada
+site/**/*.otf
+site/**/*.woff
+site/**/*.woff2
+site/**/*.ttf

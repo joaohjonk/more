@@ -6,11 +6,12 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Sistema de design More</title>
 <meta name="color-scheme" content="light">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,600&family=Martian+Mono:wdth,wght@75,400&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="brand/generated/tokens.css">
 <style>
   /* Todos os valores vêm de brand/generated/tokens.css (gerado pelos tokens DTCG). */
+  @font-face{font-family:"Muoto";src:url("/fonts/mr.otf") format("opentype");font-weight:400;font-display:swap}
+  @font-face{font-family:"MuotoMono";src:url("/fonts/mm.woff2") format("woff2");font-weight:400;font-display:swap}
+  :root{--font-family-muoto:"Muoto","Helvetica Neue",Arial,sans-serif;--font-family-mono:"MuotoMono",ui-monospace,Menlo,monospace}
   *{box-sizing:border-box;margin:0}
   html{scroll-behavior:smooth}
   body{background:var(--color-surface-page);color:var(--color-text-primary);font-family:var(--font-family-mono);font-size:var(--font-size-body);line-height:1.45;-webkit-font-smoothing:antialiased}
@@ -179,6 +180,11 @@
   .voice .no{background:transparent;outline:1px dashed var(--color-text-secondary);outline-offset:-1px}
   .voice p{font-size:var(--font-size-title);line-height:1.15;margin:var(--space-sm) 0}
   @media(max-width:700px){.voice{grid-template-columns:1fr}}
+  .quote{max-width:62ch;margin:var(--space-lg) 0;padding-left:var(--space-md);border-left:1px solid var(--color-preto);font-family:var(--font-family-muoto);font-size:var(--font-size-ui);line-height:1.45}
+  .quote cite{display:block;margin-top:4px;font-style:normal;font-family:var(--font-family-mono);color:var(--color-text-secondary);font-size:var(--font-size-label)}
+  .rules .fred{font-size:var(--font-size-label);color:var(--color-text-secondary);margin-top:var(--space-xs)}
+  .quals{font-family:var(--font-family-mono);color:var(--color-text-secondary);font-size:var(--font-size-label);margin-top:4px}
+  .fazer{border:1px dashed var(--color-text-secondary);padding:var(--space-lg);margin-top:var(--space-lg)}
   @media (prefers-reduced-motion:reduce){*{transition-duration:1ms!important;animation-duration:1ms!important}}
 </style>
 </head>
@@ -187,64 +193,80 @@
   <header class="hero" id="topo">
     <svg viewBox="0 0 481 123" aria-label="More" role="img"><path d="M480.1 3.35986H373.9V44.2599V62.1299V78.9899V119.01H480.1V79.9899H420.47L451.27 62.0699L420.5 44.2599H480.1V3.35986Z"/><path d="M63.4 35.1202L46.38 3.43018H0V119.07H46.38V79.0502H80.3V119.07H126.68V3.43018H80.3L63.4 35.1202Z"/><path d="M195.94 0C162.17 0 134.75 27.41 134.75 61.19C134.75 94.97 162.16 122.38 195.94 122.38C229.72 122.38 257.25 94.97 257.25 61.19C257.25 27.41 229.84 0 195.94 0ZM195.94 75.87C187.86 75.87 181.26 69.38 181.26 61.18C181.26 52.98 187.87 46.49 195.94 46.49C204.01 46.49 210.75 53.1 210.75 61.18C210.75 69.26 204.14 75.87 195.94 75.87Z"/><path d="M311.71 41.2702V3.43018H265.33V119.07H311.71V79.1702H362.28V3.43018C334.58 3.43018 313.25 23.4102 311.71 41.2802V41.2702Z"/></svg>
     <p>Menos do mesmo.</p>
-    <p class="mono secondary" style="font-size:var(--font-size-body)">Sistema de design · v0.3 · provisório até aprovação do time More</p>
+    <p class="mono secondary" style="font-size:var(--font-size-body)">Sistema de design · provisório até a More aprovar</p>
     <p class="mono" style="font-size:var(--font-size-body);margin-top:var(--space-sm)"><a href="brand/build/pdf/regras-uma-pagina.pdf">[Regras em uma página · PDF]</a>&nbsp;&nbsp;<a href="brand/specimen/especime.png">[Espécime da fonte]</a></p>
     <aside class="tldr" aria-label="Em resumo">
       <span class="k">[Em resumo]</span>
       <ul>
-        <li>Esta página é o sistema de design da More: cor, tipo, espaço, componentes, movimento, fotografia e regras, cada um com o valor medido no site mymore.design.</li>
-        <li>Desde 15.10 ela traz também o guia de uso oficial da marca, o manual de 39 páginas que veio com o logo e as fontes. Onde o guia e o site discordam, os dois valores aparecem lado a lado.</li>
-        <li>Nada muda no sistema sem o time da More responder. O que é sugestão nossa vem marcado como proposta.</li>
-        <li>No GitHub estão os tokens (cada cor, tamanho e espaço num arquivo que o site, o Figma e a IA leem), as regras com exemplos de certo e errado, as verificações que conferem as peças e esta página. Os arquivos de fonte ficam de fora, porque a licença não deixa publicá-los.</li>
+        <li>Esta página é o sistema da More: cor, tipo, espaço, componentes, movimento, foto, voz e regras.</li>
+        <li>Cada valor foi medido no site e no Instagram da More, ou vem do guia de uso oficial da marca.</li>
+        <li>Onde o guia e o site discordam, os dois aparecem lado a lado.</li>
+        <li>Nada muda sem a More responder. O que ainda é proposta vem marcado.</li>
+        <li>Os arquivos guardam tokens, regras e checagens. O site, o Figma e a IA leem os mesmos arquivos. As fontes ficam de fora: a licença não deixa publicar.</li>
       </ul>
-      <a class="gh" href="https://github.com/joaohjonk/more">[Ver o repositório no GitHub · joaohjonk/more]</a>
+      <a class="gh" href="https://github.com/joaohjonk/more">[Ver os arquivos do sistema]</a>
     </aside>
   </header>
 
   <section id="o-que-e">
     <div class="eyebrow">[01] O que é</div>
-    <p class="lede">Tudo o que faz o site da More parecer More, escrito em arquivos que pessoas e IA conseguem ler.</p>
+    <p class="lede">Nada aqui é aleatório. Cada cor, medida e palavra é uma decisão, e as decisões formam um sistema.</p>
+    <blockquote class="quote">“Não há aleatoriedade, apenas decisões conscientes. Tudo foi pensado como parte de um sistema maior.”<cite>— Fred Péclat, Casa Vogue, 04.2026</cite></blockquote>
     <hr>
-    <p class="body">Os valores desta página foram medidos no site <a href="https://mymore.design">mymore.design</a> em 15/10/2026 e no Instagram <a href="https://www.instagram.com/more.mymore/">@more.mymore</a>. Nada foi inventado: quando algo ainda é dúvida, está marcado como pendente. Cada cor, tamanho, espaço e movimento existe como token em <code>brand/tokens/</code>; esta página só os mostra.</p>
-    <p class="body">Para quem cria: use esta página como guia. Para a IA: aponte para este repositório e peça para seguir o <code>cstack</code> (explicação no fim).</p>
+    <p class="body">Um sistema funciona como uma orquestra. Um músico desafinado se ouve mais que a música inteira.</p>
+    <p class="body">Por isso cada regra tem uma checagem automática. Ela confere a peça antes de sair: cor, medida, fonte, palavra. Nenhum instrumento sai do tom.</p>
+    <p class="body">Os valores foram medidos no site <a href="https://mymore.design">mymore.design</a> e no Instagram <a href="https://www.instagram.com/more.mymore/">@more.mymore</a>, em 15.10. Nada foi inventado. O que ainda é dúvida está marcado como pendente.</p>
+    <p class="body">Para quem cria, esta página é o guia. A IA lê os mesmos arquivos e segue as mesmas regras.</p>
   </section>
 
   <section id="principios">
     <div class="eyebrow">[02] Princípios</div>
-    <h2>Seis ideias que seguram o resto</h2>
+    <h2>Nove ideias que seguram o resto</h2>
     <div class="rules">
-      <div><span class="id">Papel, não vidro</span><p>O fundo é off-white quente, como papel de revista. Transparência só nas barras flutuantes, nunca como estética.</p></div>
-      <div><span class="id">A peça é a cor</span><p>A interface é quase monocromática. Cor saturada vem da madeira, do bouclê, do vidro fundido.</p></div>
-      <div><span class="id">Quadrado</span><p>Nenhum canto arredondado. Imagens, barras e botões têm canto vivo.</p></div>
-      <div><span class="id">Duas vozes</span><p>Muoto fala os nomes e os preços. Muoto Mono fala com a interface, entre [colchetes].</p></div>
-      <div><span class="id">Peso brasileiro</span><p>Madeira maciça em seções generosas, peças com nome de gente, acabamentos com nomes de lugares e frutas: Jambo, Igaratá, Guaraná, Jamaica.</p></div>
-      <div><span class="id">A galeria flutua</span><p>Navegação e ação vivem em barras de 35px no pé da tela. O resto da tela é das fotos.</p></div>
+      <div><span class="id">Papel, não vidro</span><p>O fundo é off-white quente, como papel de revista. Transparência só nas barras flutuantes.</p></div>
+      <div><span class="id">A peça é a cor</span><p>A interface é quase sem cor. A cor vem da madeira, do bouclê, do vidro fundido.</p></div>
+      <div><span class="id">Quadrado</span><p>Nenhum canto arredondado. Foto, barra e botão têm canto vivo.</p></div>
+      <div><span class="id">Duas famílias</span><p>Muoto diz os nomes e os preços. Muoto Mono fala com a interface, entre colchetes.</p></div>
+      <div><span class="id">Peso brasileiro</span><p>Madeira maciça em seções grossas. Peças com nome de gente. Acabamentos com nome de lugar e de fruta: Jambo, Igaratá, Guaraná, Jamaica.</p></div>
+      <div><span class="id">A tela é da foto</span><p>Navegação e ação ficam em barras de 35 px no pé da tela. O resto é das fotos.</p></div>
+      <div><span class="id">O tempo fica</span><p>Pátina, mancha de uso e madeira que escureceu não se retocam. Cada madeira diz como envelhece. O ipê escurece com a luz. É para isso.</p><p class="fred">“Vai sujar, eu vou assumir isso.”<br>— Fred Péclat, Atelier Peclat, 06.2025</p><p class="mono secondary" style="font-size:var(--font-size-caption);margin-top:4px">regra R-TIME-01 · proposta</p></div>
+      <div><span class="id">Cheio e vazio</span><p>A página tem ritmo: peça inteira, detalhe, vazio. Depois de dois blocos densos vem um respiro. Só off-white e uma linha.</p><p class="fred">“A minha mão desenha o maciço, mas a intenção é criar um espaço vazio.”<br>— Fred Péclat, Atelier Peclat</p><p class="mono secondary" style="font-size:var(--font-size-caption);margin-top:4px">regra R-LAYOUT-04 · proposta · medida space.vazio</p></div>
+      <div><span class="id">Bem feito é premissa</span><p>Toda peça mostra um detalhe de execução: encaixe, quina, solda. E diz quem fez. Até a More confirmar os nomes, pelo ofício: a marcenaria, a serralharia.</p><p class="fred">“Para fazer sentido a gente fazer móvel, tem que estar bem feito. É premissa.”<br>— Fred Péclat, Em Casa, 09.2025</p><p class="mono secondary" style="font-size:var(--font-size-caption);margin-top:4px">regra R-CRAFT-01 · proposta</p></div>
     </div>
       <h3>O que a More acha</h3>
     <div class="rules">
-      <div><span class="id">Crença 1</span><p>Uma peça não precisa combinar. "Não foi feita para combinar com o sofá. E isso é ótimo."</p></div>
+      <div><span class="id">Crença 1</span><p>Uma peça não precisa combinar. Não foi feita para combinar com o sofá. E isso é bom.</p></div>
       <div><span class="id">Crença 2</span><p>Material antes de adjetivo. Madeira maciça, vidro fundido, alumínio naval, ditos pelo nome.</p></div>
-      <div><span class="id">Crença 3</span><p>Contra o móvel genérico de projeto. A peça tem que se sustentar sozinha numa sala.</p></div>
+      <div><span class="id">Crença 3</span><p>Contra o móvel genérico de projeto. A peça se sustenta sozinha numa sala.</p></div>
+      <div><span class="id">Crença 4</span><p>Linguagem, não estilo. O móvel nasce do espaço: proporção, material, escala.</p><p class="fred">“Estilo te encaixota. Existe uma linguagem.”<br>— Fred Péclat, Em Casa, 09.2025</p></div>
     </div>
   </section>
 
   <section id="voz">
-    <div class="eyebrow">[03] Voz · brand-system voice + R-COPY-01/02/03</div>
+    <div class="eyebrow">[03] Voz</div>
     <h2>Voz</h2>
-    <p class="body">Nome da peça, ponto. Depois uma linha seca que discorda do óbvio. Depois, se precisar, o material. Português primeiro. Nas 42 legendas do Instagram não há exclamação, emoji nem hashtag: é assim que continua.</p>
+    <p class="body">A More fala em dois registros. A linha seca afirma. A pergunta abre a conversa. Português primeiro. Sem exclamação, sem emoji, sem hashtag.</p>
     <div class="voice">
-      <div><span class="mono secondary">Assim</span><p>Mesa de jantar componível Naz. Não é quadrada, só parece.</p><p>Banco João. Precisa da sua Maria.</p><p>Maçaneta Constantin. A primeira impressão é na mão.</p></div>
-      <div class="no"><span class="mono secondary">Não assim</span><p>Móveis com alma, feitos para o uso diário.</p><p>Peças sofisticadas com personalidade única!</p><p>Purity of lines and natural beauty.</p></div>
+      <div><span class="mono secondary">Linha seca · afirma</span><p>Mesa de jantar Naz. Não é quadrada, só parece.</p><p>Banco João. Precisa da sua Maria.</p><p>Maçaneta Constantin. A primeira impressão é na mão.</p><span class="note" style="display:block">Nome da peça, ponto. Uma linha que discorda do óbvio. Depois o material, se precisar.</span></div>
+      <div><span class="mono secondary">A pergunta · conversa</span><p>Para qual sala é? Conte da luz que ela tem.</p><p>A janela dá para onde?</p><p>Quem senta ali, e a que horas?</p><span class="note" style="display:block">A primeira mensagem pergunta pela sala, pela luz e por quem mora. Nunca pelo preço. A ação é [Conversar].</span></div>
+    </div>
+    <blockquote class="quote">“O projetar é uma conversa de perguntas e respostas. Cada decisão é uma resposta.”<cite>— Fred Péclat, Em Casa, 09.2025</cite></blockquote>
+    <div class="voice">
+      <div class="no"><span class="mono secondary">Não assim · afirmação</span><p>Móveis feitos com carinho para o seu lar.</p><p>Design único para todos os estilos.</p><p lang="en">Purity of lines and natural beauty.</p></div>
+      <div class="no"><span class="mono secondary">Não assim · conversa</span><p>Olá, como podemos ajudar?</p><p>Qual é o seu orçamento?</p><p>Pedir orçamento</p></div>
     </div>
     <h3>Nomes</h3>
-    <p class="body">Um nome por peça, igual no site, no Instagram, na etiqueta e no arquivo: tipo em minúscula + Nome. <b>Mesa de centro Cildo</b>, <b>Cadeira 556-A</b>, <b>Luminária Ngoni</b>, <b>Poltrona Leticia</b>. Hoje há versões diferentes da mesma peça (Mesa Cildo / Mesa de centro Cildo, Cadeira 556 / 556-A, Torre de luz / Luminária Ngoni, Leticia / Letícia).</p>
+    <p class="body">Um nome por peça. Igual no site, no Instagram, na etiqueta e no arquivo. Tipo em minúscula, depois o nome: <b>Mesa de centro Cildo</b>, <b>Cadeira 556-A</b>, <b>Luminária Ngoni</b>, <b>Poltrona Leticia</b>.</p>
+    <p class="body">Hoje a mesma peça tem nomes diferentes. Mesa Cildo ou Mesa de centro Cildo. Cadeira 556 ou 556-A. Torre de luz ou Luminária Ngoni. Leticia ou Letícia.</p>
   </section>
 
   <section id="marca">
-    <div class="eyebrow">[04] Marca · R-LOGO-01 · tokens logo.*</div>
+    <div class="eyebrow">[04] Marca · R-LOGO-01</div>
     <h2>A marca em dois tamanhos</h2>
-    <p class="body">M ou XL nas peças; S só na barra do menu do site (hoje 60 px, abaixo do mínimo do guia de uso: 120 px na tela e 18 mm no papel, p. 5). Preto, branco ou off-white: preto sobre amarelo-igaratá, branco sobre vermelho-jambo, verde-jamaica e berinjela. Nunca contornada, espelhada ou com padrão por cima. Use o arquivo <code>assets/official/more-wordmark-currentcolor.svg</code> e dê a cor pelo CSS. Desde 15.10 ele traz o desenho oficial do brand book (Manoela Moura e Anna's, 2025); o SVG copiado do site ficou em <code>assets/official/legado/</code>.</p>
-    <p class="note">M aparece no cartaz da TOM.01 (16% do lado curto, girada 90°), no rodapé do site (19% da largura) e na capa do livro anterior (cerca de 25%). XL aparece no convite de 05.11, quase da largura toda, encostada embaixo. O respiro igual ao O é proposta nossa, fora das regras. O mínimo de 120 px / 18 mm vem do guia de uso da More (p. 5).</p>
+    <p class="body">M ou XL nas peças. S só na barra do menu do site. Hoje ela tem 60 px, abaixo do mínimo do guia de uso. O mínimo é 120 px na tela e 18 mm no papel (guia, p. 5).</p>
+    <p class="body">Preto, branco ou off-white. Preto sobre amarelo-igaratá. Branco sobre vermelho-jambo, verde-jamaica e berinjela. Nunca contornada, espelhada ou com padrão por cima.</p>
+    <p class="body">A marca é sempre o desenho oficial do brand book, de Manoela Moura e Anna's, 2025. A cor vem da página.</p>
+    <p class="note">M aparece no cartaz da TOM.01, com 16% do lado curto, girada 90°. Aparece no rodapé do site, com 19% da largura. E na capa do livro anterior, com cerca de 25%. XL aparece no convite de 05.11, quase da largura toda, encostada embaixo. O respiro igual ao O ainda é proposta.</p>
     <div class="logos">
       <div><span>M · 1/6 do lado curto (faixa observada 16–25%)</span><svg viewBox="0 0 481 123" style="width:max(34%,90px);display:block;margin-top:var(--space-2xl)" aria-hidden="true"><path d="M480.1 3.35986H373.9V44.2599V62.1299V78.9899V119.01H480.1V79.9899H420.47L451.27 62.0699L420.5 44.2599H480.1V3.35986Z"/><path d="M63.4 35.1202L46.38 3.43018H0V119.07H46.38V79.0502H80.3V119.07H126.68V3.43018H80.3L63.4 35.1202Z"/><path d="M195.94 0C162.17 0 134.75 27.41 134.75 61.19C134.75 94.97 162.16 122.38 195.94 122.38C229.72 122.38 257.25 94.97 257.25 61.19C257.25 27.41 229.84 0 195.94 0ZM195.94 75.87C187.86 75.87 181.26 69.38 181.26 61.18C181.26 52.98 187.87 46.49 195.94 46.49C204.01 46.49 210.75 53.1 210.75 61.18C210.75 69.26 204.14 75.87 195.94 75.87Z"/><path d="M311.71 41.2702V3.43018H265.33V119.07H311.71V79.1702H362.28V3.43018C334.58 3.43018 313.25 23.4102 311.71 41.2802V41.2702Z"/></svg><span style="position:absolute;bottom:var(--space-md)">convite, post, capa</span></div>
       <div class="xl"><span>XL · 95–100% da largura, encostada embaixo (convite 05.11)</span><svg viewBox="0 0 481 123" style="width:100%;display:block;position:absolute;left:0;bottom:-4%" aria-hidden="true"><path d="M480.1 3.35986H373.9V44.2599V62.1299V78.9899V119.01H480.1V79.9899H420.47L451.27 62.0699L420.5 44.2599H480.1V3.35986Z"/><path d="M63.4 35.1202L46.38 3.43018H0V119.07H46.38V79.0502H80.3V119.07H126.68V3.43018H80.3L63.4 35.1202Z"/><path d="M195.94 0C162.17 0 134.75 27.41 134.75 61.19C134.75 94.97 162.16 122.38 195.94 122.38C229.72 122.38 257.25 94.97 257.25 61.19C257.25 27.41 229.84 0 195.94 0ZM195.94 75.87C187.86 75.87 181.26 69.38 181.26 61.18C181.26 52.98 187.87 46.49 195.94 46.49C204.01 46.49 210.75 53.1 210.75 61.18C210.75 69.26 204.14 75.87 195.94 75.87Z"/><path d="M311.71 41.2702V3.43018H265.33V119.07H311.71V79.1702H362.28V3.43018C334.58 3.43018 313.25 23.4102 311.71 41.2802V41.2702Z"/></svg></div>
@@ -252,54 +274,54 @@
   </section>
 
   <section id="cor">
-    <div class="eyebrow">[05] Cor · brand/tokens/color.tokens.json</div>
+    <div class="eyebrow">[05] Cor</div>
     <h2>Cor</h2>
     <div class="swatches">
       <div class="sw"><div class="chip" style="background:var(--color-off-white)"></div><span class="name">off-white</span><span class="meta">#E5E1DB · fundo de tudo</span></div>
-      <div class="sw"><div class="chip" style="background:var(--color-preto)"></div><span class="name">preto</span><span class="meta">#2D211E · texto, marca, CTA. Nunca #000 (o site hoje erra: o texto corrido sai #000)</span></div>
+      <div class="sw"><div class="chip" style="background:var(--color-preto)"></div><span class="name">preto</span><span class="meta">#2D211E · texto, marca, ação. Nunca #000. Hoje o site erra: o texto corrido sai #000</span></div>
       <div class="sw"><div class="chip" style="background:var(--color-cinza-escuro)"></div><span class="name">cinza-escuro</span><span class="meta">#5D554F · bloco Sobre, rodapé</span></div>
       <div class="sw"><div class="chip" style="background:var(--color-cinza-medio)"></div><span class="name">cinza-medio</span><span class="meta">#686868 · preço, medidas. Só a partir de 24px no off-white (4,28:1)</span></div>
       <div class="sw"><div class="chip" style="background:var(--color-cinza-claro)"></div><span class="name">cinza-claro</span><span class="meta">#BDBDBD · texto sobre preto 80%. Sobre cinza-escuro só a partir de 24px (3,88:1)</span></div>
-      <div class="sw"><div class="chip" style="background:var(--color-ciano-destaque)"></div><span class="name">ciano-destaque</span><span class="meta">#8BC0D0 · o único acento. No site marca só a aba "Fixos" ativa ou no hover. Nunca como cor de texto (1,53:1)</span></div>
+      <div class="sw"><div class="chip" style="background:var(--color-ciano-destaque)"></div><span class="name">ciano-destaque</span><span class="meta">#8BC0D0 · o único acento. No site, só a aba Fixos, ativa ou no hover. Nunca como cor de texto (1,53:1)</span></div>
       <div class="sw"><div class="chip" style="background:var(--color-cart-accent)"></div><span class="name">cart-accent</span><span class="meta">#C1CFD6 · hover da barra de compra</span></div>
       <div class="sw"><div class="chip glass"></div><span class="name">vidro (preto 80% + blur 10–20)</span><span class="meta">barras, menu aberto, gaveta do carrinho</span></div>
     </div>
-    <p class="note">Também existem marrom #574D4B e erro #E07A5F (erro reprova como texto: 2,27:1; usar com ícone ou sublinhado). cinza-texto #999898 está no código do site mas nenhum elemento usa. Os nomes em português são os mesmos do código do site.</p>
+    <p class="note">Existem também marrom #574D4B e erro #E07A5F. O erro não passa como texto (2,27:1): vai com ícone ou sublinhado. O cinza-texto #999898 está no código do site, sem uso. Os nomes em português são os mesmos do código do site.</p>
       <h3>Campos de cor · impresso, social e loja (R-COLOR-04)</h3>
-    <p class="body">As cores fortes da More já existem como fundos de foto no Instagram (cerca de 1 em cada 12 posts) e na capa do livro anterior. Elas viram campos chapados em cartaz, convite, livro, vitrine e post. Nunca entram na interface da loja, e nunca duas no mesmo quadro.</p>
+    <p class="body">As cores fortes da More já são fundo de foto no Instagram. Aparecem em cerca de 1 a cada 12 posts. Estão também na capa do livro anterior. Viram campos chapados em cartaz, convite, livro, vitrine e post. Nunca na interface da loja. Nunca duas no mesmo quadro.</p>
     <div class="campos">
       <div style="background:var(--color-campo-vermelho-jambo)">vermelho-jambo<br>#9A1935</div>
       <div style="background:var(--color-campo-amarelo-igarata)">amarelo-igaratá<br>#D2890C</div>
       <div style="background:var(--color-campo-verde-jamaica)">verde-jamaica<br>#323E1C</div>
       <div style="background:var(--color-campo-berinjela)">berinjela<br>#332436</div>
     </div>
-    <p class="note">Hex amostrados de JPEG do Instagram (posts da TOM.01, Sofá Catedral, Luminária Fantô); o amarelo foi medido na foto original MORE_0800. O guia de uso da More tem nove cores sazonais com Pantone (p. 11-15), com valores diferentes destes: cada token guarda o valor oficial ao lado do medido, e a troca é proposta para o time. Os nomes são acabamentos reais da More; ligar cada foto a um acabamento foi dedução nossa.</p>
+    <p class="note">Cores medidas nas fotos do Instagram: TOM.01, Sofá Catedral, Luminária Fantô. O amarelo foi medido na foto original. O guia de uso tem nove cores sazonais com Pantone (p. 11 a 15), com outros valores. Cada token guarda o valor do guia ao lado do medido. A troca é pergunta para a More. Os nomes são acabamentos reais da More. Ligar cada foto a um acabamento foi dedução, a confirmar.</p>
     
   </section>
 
   <section id="tipografia">
-    <div class="eyebrow">[06] Tipografia · brand/tokens/type.tokens.json</div>
+    <div class="eyebrow">[06] Tipografia</div>
     <h2>Tipografia</h2>
-    <p class="body">Duas famílias da 205TF: <b>Muoto</b> e <b>Muoto Mono Condensed</b>, licenciadas e hospedadas no tema. A licença da More cobre só Regular e Italic de cada uma; não há Light, Semibold nem Bold. Nesta página aparecem substitutas livres (DM Sans e Martian Mono condensada) porque a licença da fonte original é do site.</p>
-    <p class="note">Para peças feitas fora do site (posts, impressos, páginas novas) use as substitutas, carregando esta linha: <code>https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,600&amp;family=Martian+Mono:wdth,wght@75,400&amp;display=swap</code>. No impresso, a licença desktop é da More e vale só nos computadores dela; agência, gráfica e este projeto usam as substitutas.</p>
-    <div class="spec"><span class="k mono">about · Muoto 32/1</span><span class="muoto" style="font-size:var(--font-size-about);line-height:1">Peças de linhas puras e proporções pesadas.</span></div>
+    <p class="body">Duas famílias da 205TF: <b>Muoto</b> e <b>Muoto Mono Condensed</b>. A licença da More cobre Regular e Italic de cada uma. Não há Light, Semibold nem Bold. Esta página usa a Muoto servida pelo próprio site da More.</p>
+    <p class="note">Fora do site, sem a licença, valem substitutas livres: DM Sans e Martian Mono condensada. A licença desktop é da More e vale só nos computadores dela. Agência e gráfica usam as substitutas.</p>
+    <div class="spec"><span class="k mono">about · Muoto 32/1</span><span class="muoto" style="font-size:var(--font-size-about);line-height:1">Freijó maciço, encaixe a seco. Escurece com a luz.</span></div>
     <div class="spec"><span class="k mono">statement · Muoto 26/1</span><span class="muoto" style="font-size:var(--font-size-statement);line-height:1">Poltrona Leticia</span></div>
-    <div class="spec"><span class="k mono">title · Muoto 22/1 · mobile</span><span class="muoto" style="font-size:var(--font-size-title);line-height:1">Estúdio e galeria de móveis em São Paulo.</span></div>
+    <div class="spec"><span class="k mono">title · Muoto 22/1 · mobile</span><span class="muoto" style="font-size:var(--font-size-title);line-height:1">A sala de quem lê de tarde.</span></div>
     <div class="spec"><span class="k mono">filtro · Muoto 15</span><span class="muoto" style="font-size:var(--font-size-ui)"><b style="font-weight:600">Todos</b>&nbsp;&nbsp;Assentos&nbsp;&nbsp;Estantes&nbsp;&nbsp;Luminárias&nbsp;&nbsp;Mesas&nbsp;&nbsp;Fixos</span></div>
     <div class="spec"><span class="k mono">product-name · Muoto 13</span><span class="muoto" style="display:flex;justify-content:space-between;max-width:260px">Banco Maria <span class="secondary">R$ 4.880</span></span></div>
     <div class="spec"><span class="k mono">ui-mono · Mono 13</span><span class="mono">[Voltar]&nbsp;&nbsp;[Lista]&nbsp;&nbsp;Menu [+]&nbsp;&nbsp;Adicionar</span></div>
     <div class="spec"><span class="k mono">label · Muoto 11</span><span class="muoto" style="font-size:var(--font-size-label)">Selecione a Madeira</span></div>
     <div class="spec"><span class="k mono">caption · 10</span><span class="muoto" style="font-size:var(--font-size-caption)">01&nbsp;&nbsp;02&nbsp;&nbsp;03&nbsp;&nbsp;04</span></div>
-    <p class="note">Muoto: 26 é o nome do produto na PDP e a frase do menu; 32 é a frase do rodapé; no celular viram 22 e 25. Mono: 13 no desktop, 12 e 15 no celular. Também existem 9 (preço riscado), 12 e 28 (carrinho).</p>
-    <p class="note">Peso: 400 é o único que existe. O site pede 300 nos textos em Muoto e o navegador mostra Regular; 600 (filtro ativo) e 700 (newsletter) não têm arquivo e saem como negrito sintético. O CSS dos tokens leva <code>font-synthesis: none</code>, então peça nova não inventa peso. Sem caixa-alta, sem espaçamento entre letras.</p>
-    <p class="note">Métricas lidas dos arquivos do site: UPM 1000, altura-x 520, caixa-alta 720, entrelinha normal 1,2, nas duas famílias. Muoto tem algarismos tabulares (<code>tnum</code>), formas para caixa-alta (<code>case</code>), zero cortado (<code>zero</code>), três conjuntos alternativos (<code>ss01</code>–<code>ss03</code>) e kerning; a Mono tem <code>case</code>, <code>zero</code>, <code>ss01</code>–<code>ss02</code> e nenhum kerning. Espécime em <code>brand/specimen/</code>. O que a licença cobre, numa página: <a href="brand/build/pdf/licenca-fontes.pdf">licenca-fontes.pdf</a>.</p>
+    <p class="note">Muoto: 26 é o nome da peça na página dela e a frase do menu. 32 é a frase do rodapé. No celular viram 22 e 25. Mono: 13 no desktop, 12 e 15 no celular. Existem também 9 (preço riscado), 12 e 28 (carrinho).</p>
+    <p class="note">Peso: só existe 400. O site pede 300 e o navegador mostra Regular. 600 (filtro ativo) e 700 (newsletter) não têm arquivo. Saem como negrito falso. Peça nova não inventa peso. Sem caixa-alta, sem espaço extra entre letras.</p>
+    <p class="note">Nas duas famílias: altura-x 520 e caixa-alta 720, em 1000. Entrelinha normal 1,2. A Muoto tem algarismos de largura fixa, zero cortado, três conjuntos alternativos e kerning. A Mono tem zero cortado, dois conjuntos alternativos e nenhum kerning. <a href="brand/specimen/especime.png">Ver o espécime</a>. <a href="brand/build/pdf/licenca-fontes.pdf">Ver a licença em uma página</a>.</p>
       
   </section>
 
   <section id="espaco">
-    <div class="eyebrow">[07] Espaço e grid · brand/tokens/space.tokens.json</div>
+    <div class="eyebrow">[07] Espaço e grid</div>
     <h2>Espaço e grid</h2>
-    <p class="body">Espaços internos pequenos, distâncias grandes entre peças. O ar vem do vazio entre as fotos, não de margem dentro dos blocos.</p>
+    <p class="body">Espaço interno pequeno, distância grande entre peças. O ar vem do vazio entre as fotos. Não vem da margem dentro do bloco.</p>
     <div class="scale">
       <div><i style="width:6px"></i>6 · hair · entre imagens e entre barras</div>
       <div><i style="width:10px"></i>10 · sm · margem da página no celular</div>
@@ -308,6 +330,7 @@
       <div><i style="width:30px"></i>30 · xl · barra até o pé da tela</div>
       <div><i style="width:60px"></i>60 · 3xl · respiro do statement</div>
       <div><i style="width:160px"></i>160 · section · entre produtos na vista Lista</div>
+      <div><i style="width:240px;background:transparent;outline:1px dashed var(--color-text-secondary);outline-offset:-1px"></i>240 · vazio · proposta: o respiro depois de dois blocos densos (120 no celular)</div>
     </div>
     <h3>Grade (catálogo) · 4 colunas, vão de 7vw, fotos 3:4</h3>
     <div class="grid-demo"><div></div><div></div><div></div><div></div></div>
@@ -315,10 +338,10 @@
     <div class="list-demo"><div></div><div></div><div class="h"></div><div></div></div>
     <p class="note">No celular: 2 colunas, e a cada 5 cards um ocupa a largura toda.</p>
     <h3>Cantos (R-SHAPE-01)</h3>
-    <p class="body">Estrutura tem canto vivo: fotos, cards, barras, botões e campos. Raio só em peças pequenas ou flutuantes, e só destes valores:</p>
+    <p class="body">Estrutura tem canto vivo: fotos, cards, barras, botões e campos. Raio só em peças pequenas ou flutuantes. E só estes valores:</p>
     <div class="tscroll"><table class="t"><thead><tr><th>Token</th><th>Valor</th><th>Onde aparece no site</th></tr></thead><tbody>
       <tr><td>radius.none</td><td>0</td><td>tudo que é estrutura</td></tr>
-      <tr><td>radius.thumb</td><td>2px</td><td>amostras de material na PDP</td></tr>
+      <tr><td>radius.thumb</td><td>2px</td><td>amostras de material na página da peça</td></tr>
       <tr><td>radius.tooltip</td><td>8px</td><td>tooltip de opção, só os cantos de baixo</td></tr>
       <tr><td>radius.panel</td><td>10px</td><td>caixa do rodapé, com desfoque</td></tr>
       <tr><td>radius.round</td><td>50%</td><td>círculos: botões de quantidade, checkbox</td></tr>
@@ -341,34 +364,35 @@
         <div class="cbar glass mono"><span>&nbsp;</span><span>Menu [+]</span></div>
       </div>
     </div>
-    <p class="note">35px de altura, 320px de largura, canto vivo. A barra de ação fica 6px acima do menu. Passe o mouse (ou toque) para ver o estado ativo em cart-accent.</p>
+    <p class="note">35 px de altura, 320 px de largura, canto vivo. A barra de ação fica 6 px acima do menu. Passe o mouse ou toque: o estado ativo é cart-accent.</p>
 
     <h3>Botões em colchetes e filtro</h3>
     <div class="stage" style="align-items:center">
-      <span class="brk mono">[Voltar]</span><span class="brk mono">[Lista]</span><span class="brk mono">[Sobre nós]</span>
+      <span class="brk mono">[Conversar]</span><span class="brk mono">[Voltar]</span><span class="brk mono">[Lista]</span><span class="brk mono">[Sobre nós]</span>
       <div class="filter"><span class="on">Todos</span><span>Assentos</span><span>Mesas</span><span class="fixos">Fixos</span></div>
     </div>
 
     <h3 id="card">Card de produto e etiquetas</h3>
-    <p class="body">O guia de uso da More não desenha card, preço nem etiqueta: ele trata de logo, cor, tipografia, foto e layout de campanha. O card pega do guia o que se aplica a ele e deixa o resto como proposta nossa. Na tabela abaixo, cada linha põe o que o guia diz (com a página do PDF) ao lado do que o site faz hoje, medido em 15.10. <span class="og">guia</span> marca o que vem do guia; <span class="og pr">proposta</span> marca o que é nosso. Nada disso muda o núcleo do sistema até o time da More responder.</p>
+    <p class="body">O guia de uso da More não desenha card, preço nem etiqueta. Ele trata de logo, cor, tipografia, foto e campanha. O card pega do guia o que serve. O resto é proposta.</p>
+    <p class="body">A tabela põe o guia ao lado do site, medido em 15.10. <span class="og">guia</span> vem do guia. <span class="og pr">proposta</span> ainda é proposta. Nada disso muda o núcleo antes da More responder.</p>
     <div class="stage" style="align-items:flex-start">
-      <div class="card"><span class="lbl">[Hoje no site, com o movimento proposto]</span><div class="img"><img src="references/gold/site/PDT_ASS_POL_LETICIA_01.jpg" alt="Poltrona Leticia, de frente"><img class="alt" src="references/gold/site/PDT_ASS_POL_LETICIA_06.jpg" alt=""></div><div class="foot"><span>Poltrona Leticia</span><span class="pr">R$ 23.990</span></div><p class="note">Nome à esquerda, preço à direita em cinza. Passe o mouse: a foto da frente dá lugar ao detalhe, no mesmo quadro de hoje, por uma fusão de 300 ms sem escala (regra de movimento 03, proposta). O site hoje troca a foto num corte seco de 200 ms, com a segunda foto crescendo de 80% a 100%. <a href="demos/hover-foto/index.html">Ver os dois lado a lado</a>.</p></div>
-      <div class="card proposal"><span class="lbl">[Proposta · sob encomenda]</span><div class="img"><img src="references/gold/site/PDT_ASS_POL_LETICIA_01.jpg" alt="Poltrona Leticia, de frente"><img class="alt" src="references/gold/site/PDT_ASS_POL_LETICIA_06.jpg" alt=""><span class="tag mono">Sob encomenda</span></div><div class="foot guia"><span>Poltrona Leticia</span><span class="m">81 × 71 × 89 cm</span><span class="m">12 tecidos</span></div><p class="note">Sem preço na grade. A legenda segue o exemplo de peça do próprio guia: nome, depois as medidas, uma por linha, tudo em preto e à esquerda (<b>guia p. 17</b>). O preço fica na página da peça e na barra de compra. A etiqueta é preto sobre branco e fica no fundo vazio da foto, longe da peça.</p></div>
-      <div class="card proposal"><span class="lbl">[Proposta · pronta entrega]</span><div class="img"><img src="references/gold/site/PDT_FIX_TOM_TOM.jpg" alt="Tomada TOM.01"><img class="alt" src="references/gold/site/PDT_FIX_TOM_TOM.01_02.jpg" alt=""><span class="tag now mono">Pronta entrega</span></div><div class="foot guia"><span>Tomada TOM.01</span><span class="m">102 × 102 × 15 mm</span><span class="m">3 cores de núcleo</span></div><p class="note">A única etiqueta invertida, branco sobre preto, marca o que se leva já. A versão anterior desta proposta usava o ciano do filtro Fixos do site; o ciano não está entre as nove cores do guia (<b>guia p. 14</b>), então saiu. Passe o mouse: o hover mostra as três cores de núcleo.</p></div>
+      <div class="card"><span class="lbl">[Hoje no site, com o movimento proposto]</span><div class="img"><img src="references/gold/site/PDT_ASS_POL_LETICIA_01.jpg" alt="Poltrona Leticia, de frente"><img class="alt" src="references/gold/site/PDT_ASS_POL_LETICIA_06.jpg" alt=""></div><div class="foot"><span>Poltrona Leticia</span><span class="pr">R$ 23.990</span></div><p class="note">Nome à esquerda, preço à direita, em cinza. Passe o mouse: a frente dá lugar ao detalhe, no mesmo quadro. Fusão de 300 ms, sem escala (R-MOTION-03, proposta). Hoje o site troca em 200 ms e a segunda foto cresce de 80% a 100%. <a href="demos/hover-foto/index.html">Ver os dois lado a lado</a>.</p></div>
+      <div class="card proposal"><span class="lbl">[Proposta · sob encomenda]</span><div class="img"><img src="references/gold/site/PDT_ASS_POL_LETICIA_01.jpg" alt="Poltrona Leticia, de frente"><img class="alt" src="references/gold/site/PDT_ASS_POL_LETICIA_06.jpg" alt=""><span class="tag mono">Sob encomenda</span></div><div class="foot guia"><span>Poltrona Leticia</span><span class="m">81 × 71 × 89 cm</span><span class="m">12 tecidos</span></div><p class="note">Sem preço na grade. A legenda segue o guia: nome, depois as medidas, uma por linha. Tudo em preto, à esquerda (<b>guia, p. 17</b>). O preço fica na página da peça e na barra de compra. A etiqueta é preto sobre branco. Fica no fundo vazio da foto, longe da peça.</p></div>
+      <div class="card proposal"><span class="lbl">[Proposta · pronta entrega]</span><div class="img"><img src="references/gold/site/PDT_FIX_TOM_TOM.jpg" alt="Tomada TOM.01"><img class="alt" src="references/gold/site/PDT_FIX_TOM_TOM.01_02.jpg" alt=""><span class="tag now mono">Pronta entrega</span></div><div class="foot guia"><span>Tomada TOM.01</span><span class="m">102 × 102 × 15 mm</span><span class="m">3 cores de núcleo</span></div><p class="note">A única etiqueta invertida, branco sobre preto, marca o que se leva já. Sem ciano: ele não está entre as nove cores do guia (<b>guia, p. 14</b>). Passe o mouse: aparecem as três cores de núcleo.</p></div>
     </div>
     <div class="tscroll">
     <table class="t card-t">
       <tr><th>Ponto</th><th>O que o guia diz</th><th>Hoje no site (medido em 15.10)</th><th>No card proposto</th></tr>
-      <tr><td>Fonte</td><td><span class="og">guia</span> Só a Muoto Regular, a única fonte que o guia nomeia (p. 17).</td><td>Nome e preço em Muoto. Botões entre colchetes e barras em Muoto Mono Condensed, a versão estreita e de largura fixa da mesma família.</td><td><span class="og pr">proposta</span> Nome e legenda em Muoto Regular. A etiqueta fica na Mono até o time decidir se a Mono é uma exceção ao guia.</td></tr>
-      <tr><td>Legenda</td><td><span class="og">guia</span> O exemplo de peça do guia é "Otoman Maria João", com "50 cm de largura" e "30 cm de altura" embaixo, uma medida por linha, sem preço (p. 17).</td><td>Nome e preço na mesma linha. As medidas já vêm no código da grade, mas escondidas; aparecem só na página da peça, como "81x71x89".</td><td><span class="og pr">proposta</span> Nome, medidas e opções, sem preço na grade. O site escreve "81x71x89" sem unidade e sem dizer qual número é a largura; o guia escreveria cada medida com o nome dela. Pergunta para o time: qual é a ordem?</td></tr>
+      <tr><td>Fonte</td><td><span class="og">guia</span> Só a Muoto Regular, a única fonte que o guia nomeia (p. 17).</td><td>Nome e preço em Muoto. Botões entre colchetes e barras em Muoto Mono Condensed, a versão estreita e de largura fixa da mesma família.</td><td><span class="og pr">proposta</span> Nome e legenda em Muoto Regular. A etiqueta fica na Mono até a More decidir se a Mono é exceção ao guia.</td></tr>
+      <tr><td>Legenda</td><td><span class="og">guia</span> O exemplo de peça do guia é "Otoman Maria João", com "50 cm de largura" e "30 cm de altura" embaixo, uma medida por linha, sem preço (p. 17).</td><td>Nome e preço na mesma linha. As medidas já estão na grade, escondidas. Aparecem só na página da peça, como três números ligados pela letra x, sem unidade.</td><td><span class="og pr">proposta</span> Nome, medidas e opções, sem preço na grade. Medidas como 81 × 71 × 89 cm, sempre largura × profundidade × altura. O guia escreveria cada medida com o nome dela. Pergunta para a More: qual é a ordem?</td></tr>
       <tr><td>Alinhamento</td><td><span class="og">guia</span> Um tipo de alinhamento por peça (p. 29, escrito para campanha).</td><td>Nome alinhado à esquerda, preço à direita.</td><td><span class="og pr">proposta</span> Tudo à esquerda.</td></tr>
-      <tr><td>Preto e cinza</td><td><span class="og">guia</span> Não usar preto com cinza no mesmo layout (p. 14). O cinza do guia é o preto a 89%, #434345.</td><td>Nome em preto quente #2D211E, preço em cinza #686868.</td><td><span class="og pr">proposta</span> Tudo no mesmo preto. Pergunta para o time: a regra vale para texto ou só para áreas de cor?</td></tr>
+      <tr><td>Preto e cinza</td><td><span class="og">guia</span> Não usar preto com cinza no mesmo layout (p. 14). O cinza do guia é o preto a 89%, #434345.</td><td>Nome em preto quente #2D211E, preço em cinza #686868.</td><td><span class="og pr">proposta</span> Tudo no mesmo preto. Pergunta para a More: a regra vale para texto ou só para áreas de cor?</td></tr>
       <tr><td>Cor da etiqueta</td><td><span class="og">guia</span> Só as nove cores da paleta (p. 14). Texto sobre cor sempre preto ou branco (p. 12).</td><td>O card não tem etiqueta. O ciano #8BC0D0 aparece só no filtro Fixos.</td><td><span class="og pr">proposta</span> Duas etiquetas: preto sobre branco para "Sob encomenda", branco sobre preto para "Pronta entrega". Sem ciano e sem vidro sobre a foto.</td></tr>
-      <tr><td>Lugar da etiqueta</td><td><span class="og">guia</span> Para o logo: não interromper o objeto da foto nem cobrir a área que explica o produto (p. 30 e 31).</td><td>Não se aplica.</td><td><span class="og pr">proposta</span> A mesma regra vale para a etiqueta: no canto, no fundo vazio da foto, nunca sobre a peça. É uma extensão nossa de uma regra que o guia escreveu para o logo.</td></tr>
+      <tr><td>Lugar da etiqueta</td><td><span class="og">guia</span> Para o logo: não interromper o objeto da foto nem cobrir a área que explica o produto (p. 30 e 31).</td><td>Não se aplica.</td><td><span class="og pr">proposta</span> A mesma regra vale para a etiqueta: no canto, no fundo vazio da foto, nunca sobre a peça. É a regra do logo, levada para a etiqueta.</td></tr>
       <tr><td>Fotos do card</td><td><span class="og">guia</span> Still com luz difusa e sombra levemente marcada, em seis ângulos: frente, 3/4 frente, lado, costas, 3/4 costas e detalhe, com cuidado com textura e cor dos materiais (p. 23). Sem pessoas, sem luz com desenho de janela, sem luz chapada (p. 24).</td><td>O card abre na foto de frente; a segunda foto da Leticia é o detalhe. Fotos de 2:3 recortadas em 3:4.</td><td><span class="og pr">proposta</span> Frente no card, detalhe no hover, porque o guia põe a textura em primeiro lugar. Peça com variações (a tomada) mostra as variações no hover.</td></tr>
       <tr><td>Movimento</td><td>O guia não fala de movimento.</td><td>Corte seco de 200 ms, segunda foto crescendo de 80% a 100%.</td><td><span class="og pr">proposta</span> Fusão de 300 ms, sem escala.</td></tr>
-      <tr><td>Números</td><td>O guia mostra os algarismos da Muoto, sem regra de uso (p. 17 e 18).</td><td>Algarismos de largura variável; medidas com a letra x, como "81x71x89".</td><td><span class="og pr">proposta</span> Algarismos de largura fixa, para preços e medidas alinharem em coluna, e o sinal × de verdade nas medidas. As duas coisas são recursos da própria Muoto.</td></tr>
-      <tr><td>Etiqueta impressa na loja</td><td><span class="og">guia</span> Logo com no mínimo 18 mm no papel e 120 px na tela (p. 5). Em campanha, texto corrido até 12 pt e título até 20 pt (p. 29 e 31).</td><td>As <a href="/abertura/#etiquetas">etiquetas da abertura de 05.11</a>: na ficha A6 o logo tem 18 mm e o nome 30 pt; na etiqueta de pendurar 50 × 90 mm o logo tem 14 mm e o nome 15 pt. As duas usam o desenho antigo do logo.</td><td><span class="og pr">proposta</span> Logo de 18 mm também na etiqueta de pendurar, com o desenho oficial, e as mesmas duas etiquetas de status do card. Pergunta para o time: os limites de 12 e 20 pt valem para etiqueta ou só para campanha?</td></tr>
+      <tr><td>Números</td><td>O guia mostra os algarismos da Muoto, sem regra de uso (p. 17 e 18).</td><td>Algarismos de largura variável. Medidas ligadas pela letra x, sem unidade.</td><td><span class="og pr">proposta</span> Algarismos de largura fixa, para preços e medidas alinharem em coluna, e o sinal × de verdade nas medidas. As duas coisas são recursos da própria Muoto.</td></tr>
+      <tr><td>Etiqueta impressa na loja</td><td><span class="og">guia</span> Logo com no mínimo 18 mm no papel e 120 px na tela (p. 5). Em campanha, texto corrido até 12 pt e título até 20 pt (p. 29 e 31).</td><td>As <a href="/abertura/#etiquetas">etiquetas da abertura de 05.11</a>: na ficha A6 o logo tem 18 mm e o nome 30 pt; na etiqueta de pendurar 50 × 90 mm o logo tem 14 mm e o nome 15 pt. As duas usam o desenho antigo do logo.</td><td><span class="og pr">proposta</span> Logo de 18 mm também na etiqueta de pendurar, com o desenho oficial, e as mesmas duas etiquetas de status do card. Pergunta para a More: os limites de 12 e 20 pt valem para etiqueta ou só para campanha?</td></tr>
     </table>
     </div>
 
@@ -382,19 +406,19 @@
       </div>
       <div class="acc"><details open><summary>Detalhes</summary><div class="r"><span>Altura</span><span>81 cm</span></div><div class="r"><span>Largura</span><span>71 cm</span></div><div class="r"><span>Profundidade</span><span>89 cm</span></div></details><details><summary>Descrição</summary><div class="r">Estofada, com estrutura de madeira maciça.</div></details><details><summary>Baixar</summary><div class="r">Bloco 2D (DWG) · 3D (SKP)</div></details></div>
     </div>
-    <p class="note">No site, os seletores são fotos recortadas do material real (blocos de madeira, tecido). Aqui viraram cor chapada só para ilustrar. Bolinhas redondas só na tomada.</p>
+    <p class="note">No site, os seletores são fotos recortadas do material real: bloco de madeira, tecido. Aqui viraram cor chapada, só para ilustrar. Bolinha redonda só na tomada.</p>
   </section>
 
   <section id="movimento">
-    <div class="eyebrow">[09] Movimento · motion tokens</div>
+    <div class="eyebrow">[09] Movimento</div>
     <h2>Movimento</h2>
-    <p class="body">Uma coisa muda por vez, devagar e curto. Fusão de 0,3 a 0,8s; nada escala, nada salta. Passe o mouse ou toque no bloco abaixo.</p>
+    <p class="body">Uma coisa muda por vez, devagar e curto. Fusão de 0,3 a 0,8 s. Nada escala, nada salta. Passe o mouse ou toque no bloco abaixo.</p>
     <div class="ease">
       <div><span class="mono">ease · 300ms · hover-swap</span><b style="transition:transform .3s ease"></b><span class="secondary">troca de foto no card (proposta; hoje snap 200ms)</span></div>
       <div><span class="mono">out-expo · .22,1,.36,1 · 450ms · enter</span><b style="transition:transform .45s cubic-bezier(.22,1,.36,1)"></b><span class="secondary">catálogo subindo 24px depois da abertura</span></div>
       <div><span class="mono">ease · 500ms · panel</span><b style="transition:transform .5s ease"></b><span class="secondary">menu crescendo, gaveta do carrinho, troca de vista</span></div>
       <div><span class="mono">ease-out · 800ms</span><b style="transition:transform .8s ease-out"></b><span class="secondary">produto aparecendo, overlay do Sobre</span></div>
-      <div><span class="mono">snap · .63,.01,0,1.01 · 200ms</span><b style="transition:transform .2s cubic-bezier(.63,.01,0,1.01)"></b><span class="secondary">o hover de hoje. Passa de 1 e dá o pulo; sai do card</span></div>
+      <div><span class="mono">snap · .63,.01,0,1.01 · 200ms</span><b style="transition:transform .2s cubic-bezier(.63,.01,0,1.01)"></b><span class="secondary">o hover de hoje. A curva passa do ponto e dá um pulo. Sai do card</span></div>
     </div>
     <h3>Medido no site em 15.10.2026</h3>
     <div class="tscroll"><table class="t"><thead><tr><th>Onde</th><th>O que muda</th><th>Duração</th><th>Curva</th></tr></thead><tbody>
@@ -408,6 +432,7 @@
       <tr><td>Sobre</td><td>overlay 0 → 1; vídeo escala e desfoca</td><td class="mono">800 · 700ms</td><td class="mono">ease · ease-out</td></tr>
     </tbody></table></div>
     <h3>Referências, medidas no mesmo dia</h3>
+    <p class="body">Referência serve para medir. Nunca para copiar.</p>
     <div class="tscroll"><table class="t"><thead><tr><th>Loja</th><th>Hover do card</th><th>Duração</th><th>Curva</th></tr></thead><tbody>
       <tr><td>The Row</td><td>fusão para a foto no corpo, quadro inteiro, só opacity</td><td class="mono">300ms</td><td class="mono">ease</td></tr>
       <tr><td>Jacquemus</td><td>fusão entre fotos do tile, só opacity; painéis em 800ms</td><td class="mono">300ms</td><td class="mono">ease</td></tr>
@@ -416,9 +441,9 @@
       <tr><td>Kann · Massproductions · Vipp</td><td>fusão no quadro inteiro, só opacity</td><td class="mono">250 · 400 · 300ms</td><td class="mono">ease</td></tr>
     </tbody></table></div>
     <h3>A segunda foto do card (R-MOTION-03)</h3>
-    <p class="body">O quadro de hoje fica: foto 2 a 75%, foto 1 a 60%. Só a opacidade muda, 300ms, ease; nada escala, nome e preço param. Hoje, sem movimento e recomendada, lado a lado: <a href="demos/hover-foto/index.html">demos/hover-foto</a>.</p>
+    <p class="body">O quadro de hoje fica: foto 2 a 75%, foto 1 a 60%. Só a opacidade muda: 300 ms, ease. Nada escala. Nome e preço ficam parados. <a href="demos/hover-foto/index.html">Ver hoje e a proposta lado a lado</a>.</p>
     <h3>Interação (R-MOTION-04)</h3>
-    <p class="body">Sem sequestro de rolagem, loader teatral, cursor próprio ou carrossel automático. O que o hover revela abre também por foco: no toque não existe hover.</p>
+    <p class="body">Sem sequestro de rolagem, loader teatral, cursor próprio ou carrossel automático. O que o hover mostra, o foco também mostra. No toque não existe hover.</p>
     <h3>Em vídeo (R-MOTION-02)</h3>
     <div class="rules">
       <div><span class="id">Corte seco</span><p>Troca de foto sem fade, na ordem dos carrosséis: peça inteira, detalhe, material.</p></div>
@@ -429,17 +454,18 @@
   <section id="fotografia">
     <div class="eyebrow">[10] Fotografia</div>
     <h2>Fotografia</h2>
-    <p class="body"><b>Estúdio</b>: fundo bege contínuo, uma luz dura de lado que desenha uma janela no chão e na parede, peça em 3/4, câmera um pouco acima do assento. O original sai da câmera em 2:3; 3:4 (site), 4:5 e 9:16 são recortes. Detalhes em crop arquitetônico (encaixe, trama, borda do vidro) ao lado da peça inteira.</p>
+    <p class="body"><b>Estúdio</b>: fundo bege contínuo. Uma luz dura de lado desenha uma janela no chão e na parede. Peça em 3/4, câmera um pouco acima do assento. A câmera faz 2:3. 3:4 (site), 4:5 e 9:16 são recortes. O detalhe vem ao lado da peça inteira: encaixe, trama, borda do vidro.</p>
     <p class="body"><b>Low-key</b> (Instagram): fundo quase preto, uma luz quente rasante, close de material. A peça nunca é alterada por IA.</p>
+    <p class="body"><b>O tempo fica</b>: pátina, mancha de uso e madeira escurecida aparecem como estão. Nada se retoca. <b>Quem fez</b>: a foto de detalhe mostra o encaixe, a legenda diz o ofício.</p>
     <div class="photos">
       <img src="references/gold/site/PDT_ASS_POL_LETICIA_01.jpg" alt="Poltrona Leticia, luz de estúdio">
       <img src="references/gold/site/PDT_ASS_POL_LETICIA_06.jpg" alt="Detalhe do encaixe da Poltrona Leticia">
       <img src="references/gold/site/PDT_MES_CEN_CILDO_02.jpg" alt="Mesa Cildo em vidro fundido">
       <img src="references/gold/site/PDT_FIX_TOM_TOM.01_02.jpg" alt="Tomada TOM.01">
     </div>
-      <p class="body"><b>Campo de cor</b> (Instagram): uma cor chapada atrás de uma peça, luz baixa. Até 1 a cada 9 posts. <b>Bastidores</b>: gente e equipe no set, no Instagram (feed e story) e no livro. Nunca na página da peça nem no Sobre.</p>
-    <p class="body"><b>Corte</b>: nunca corte a peça. Se o recorte 4:5 ou 9:16 cortaria a peça, desloque o recorte; se ainda corta, use outra foto. Peça inteira com pelo menos 15% de ar acima, a peça no terço de baixo, sombra inteira. Detalhe sangra em pelo menos dois lados. Nunca recorte sobre o off-white: o fundo é a página.</p>
-    <p class="note">O guia de uso da More descreve outra luz (p. 20-24 do PDF): quatro tempos na campanha, still com luz difusa e sombra levemente marcada, sem sombra de janela nem low-key dramático. Esta seção continua mostrando o que o site e o Instagram publicam; a troca está na tabela de aceite.</p>
+      <p class="body"><b>Campo de cor</b> (Instagram): uma cor chapada atrás de uma peça, luz baixa. Até 1 a cada 9 posts. <b>Bastidores</b>: gente e equipe no set, no feed, no story e no livro. Nunca na página da peça nem no Sobre.</p>
+    <p class="body"><b>Corte</b>: nunca corte a peça. Se o recorte 4:5 ou 9:16 corta a peça, desloque o recorte. Se ainda corta, use outra foto. Peça inteira com pelo menos 15% de ar acima, no terço de baixo, sombra inteira. Detalhe sangra em pelo menos dois lados. Nunca recorte a peça sobre o off-white: o fundo é a página.</p>
+    <p class="note">O guia de uso descreve outra luz (p. 20 a 24): quatro tempos na campanha, luz difusa, sombra leve. Sem sombra de janela, sem low-key. Esta seção mostra o que o site e o Instagram publicam. A troca é pergunta para a More. A luz da hora, em Propostas, pode resolver as duas.</p>
   </section>
 
   <section id="edicoes">
@@ -449,7 +475,7 @@
       <img src="references/gold/instagram/p28_0.jpg" alt="Cartaz vermelho da Tomada TOM.01 no Instagram da More">
       <div>
         <h3 style="margin-top:0">Receita do cartaz</h3>
-        <p class="body">O cartaz vermelho da TOM.01 é a única peça gráfica da More no Instagram. O que ele faz, medido no arquivo:</p>
+        <p class="body">O cartaz vermelho da TOM.01 é a única peça gráfica da More no Instagram. O que ele faz:</p>
         <ol class="steps">
           <li>Um campo de cor chapado (vermelho-jambo), sem degradê.</li>
           <li>A peça em preto, como silhueta dura, com a sombra borrada de lado.</li>
@@ -474,56 +500,63 @@
   </section>
 
   <section id="regras">
-    <div class="eyebrow">[12] Regras · brand/rules/brand-rules.yaml · checks/</div>
+    <div class="eyebrow">[12] Regras</div>
     <h2>Regras</h2>
-    <p class="body">Cada regra tem um script que diz passa ou falha, ou um par de imagens sim/não. Para checar uma peça: <code>node checks/run-all.mjs &lt;pasta&gt;</code>. O que o site de hoje já quebra está em <code>checks/site-ao-vivo.txt</code>.</p>
+    <p class="body">Cada regra tem uma checagem automática que diz passa ou não passa. Ou um par de fotos: assim sim, assim não. A peça passa por todas antes de sair. O site de hoje também passa por elas, e já quebra algumas.</p>
     <div class="pairs">
       <figure><img src="brand/examples/R-IMG-02-sim.jpg" alt="Sim: luz dura lateral com sombra nítida"><figcaption>R-IMG-02 · sim · estúdio e low-key reais: luz dura, sombra nítida</figcaption></figure>
       <figure><img src="brand/examples/R-IMG-02-nao.jpg" alt="Não: a mesma foto com luz difusa (manipulada)"><figcaption>R-IMG-02 · não · luz difusa, sombra mole (contraexemplo manipulado)</figcaption></figure>
       <figure><img src="brand/examples/R-LAYOUT-02-sim.jpg" alt="Sim: uma peça por foto"><figcaption>R-LAYOUT-02 · sim · uma peça por foto</figcaption></figure>
-      <figure><img src="brand/examples/R-LAYOUT-02-nao.jpg" alt="Não: várias peças na mesma foto de produto"><figcaption>R-LAYOUT-02 · não · cinco peças num quadro (post real de dez/2025: vale como ambiente, não como foto de produto)</figcaption></figure>
+      <figure><img src="brand/examples/R-LAYOUT-02-nao.jpg" alt="Não: várias peças na mesma foto de produto"><figcaption>R-LAYOUT-02 · não · cinco peças num quadro. Post real de 12.2025: vale como ambiente, não como foto de produto</figcaption></figure>
     </div>
     <div class="rules">
-      <div><span class="id">R-COLOR-01 · em vigor · medida no site</span><p>toda cor literal em CSS/HTML/SVG é o valor de um token de cor aprovado (brand/generated/tokens.css). Tokens color.site-sem-token-* (#1A1A1A, #DAD7D1, #DEDBD5) não contam como aprovados. Branco opaco só em color/fill/stroke (texto sobre fundo escuro), nunca em background. Definição de variável (--x: valor, como um tokens.css copiado) não é uso e não conta</p><p class="mono secondary" style="font-size:var(--font-size-caption);margin-top:4px">node checks/color-tokens.mjs &lt;arquivo&gt;</p></div>
-      <div><span class="id">R-COLOR-02 · em vigor · medida no site</span><p>html/body/:root declara background off-white #E5E1DB e color preto #2D211E; #000 opaco não aparece em nenhuma propriedade; #FFF nunca é fundo de html/body. Hoje o site quebra isto (body sem color, o texto corrido sai #000). Caso impresso (layout com @page ou @media print) - off-white é o papel, então html/body na impressão têm background none/transparent (em @media print); off-white como fundo impresso falha. Texto branco sobre campo é papel sem tinta (vazado)</p><p class="mono secondary" style="font-size:var(--font-size-caption);margin-top:4px">node checks/ground-ink.mjs &lt;arquivo&gt;</p></div>
-      <div><span class="id">R-COLOR-03 · em vigor · medida no site</span><p>ciano-destaque #8BC0D0 é a única cor cromática da interface (saturação HSL &gt;= 0,25; a outra exceção é erro #E07A5F em seletor de erro). Ciano só aparece como estado ativo ou hover de navegação - seletor de navegação (nav, menu, filter, collection, categor, tab, link &lt;a&gt;) com :hover, .active, .is-active, :focus, [aria-current], .current, .selected. É o que o site faz - a aba Fixos (a#collection-fixos.active e :hover). Nunca como texto sobre off-white (contraste 1,53:1) e nunca decorativo. Em layout de peça impressa ou social (HTML/CSS com @page, data-canvas, ou nome com PRINT, IG, IGS, CONVITE, LIVRO, VITRINE, ETIQUETA, CARTAZ) os tons campo são permitidos (R-COLOR-04) e o ciano só aparece como o adesivo quadrado de 10 mm de &quot;pronta entrega&quot; (width e height 10mm/37,8px)</p><p class="mono secondary" style="font-size:var(--font-size-caption);margin-top:4px">node checks/accent.mjs &lt;arquivo&gt;</p></div>
-      <div><span class="id">R-SHAPE-01 · em vigor · medida no site</span><p>estrutura é reta (radius.none) - imagens, cards, barras, botões de checkout e filtro, inputs. border-radius só pode ser 0, 2px (radius.thumb), 8px (radius.tooltip), 10px (radius.panel), 50% (radius.round, círculos) ou as formas de tooltip &quot;8px 8px 0&quot; / &quot;0 8px 8px&quot;. Qualquer outro valor falha. O site tem três fora da escala (5px no modal, 6px no vídeo do sobre, 20px no label do modal)</p><p class="mono secondary" style="font-size:var(--font-size-caption);margin-top:4px">node checks/radius.mjs &lt;arquivo&gt;</p></div>
-      <div><span class="id">R-TYPE-01 · em vigor · medida no site</span><p>font-family começa com Muoto ou MuotoMono (Muoto Mono Condensed); fallbacks só DM Sans, Martian Mono, Helvetica Neue, Arial, sans-serif, ui-monospace, Menlo, monospace. Pesos - Muoto 400, ou 300 em seletor .muoto (o site pede 300, mas só o arquivo Regular é carregado, então renderiza 400); MuotoMono 400; 600 só em seletor de filtro ativo (active, ativo, selected, current, checked); 700 e qualquer outro peso falham</p><p class="mono secondary" style="font-size:var(--font-size-caption);margin-top:4px">node checks/type.mjs &lt;arquivo&gt;</p></div>
-      <div><span class="id">R-TYPE-02 · em vigor · medida no site</span><p>toda ação de texto (&lt;button&gt;, &lt;input type=submit|button&gt;, &lt;a&gt; com classe btn/button, role=button) tem uma palavra entre colchetes ([Voltar], Menu [+]). Ação só com ícone falha. Controles isentos - miniatura (conteúdo &lt;img&gt;), quantidade (+/-; class quantity, qty, stepper), fechar só com ícone (class ou aria-label close/fechar) e amostra de material (swatch, material, color-option). Botão em pílula é pego por R-SHAPE-01. No site falham hoje as ações de texto Checkout, Adicionar / A partir de, Baixar, Cadastrar, Todos e Categorias. Colchete envolve só ação ([Comprar], [Como chegar], Menu [+]); status e lugar nunca levam colchete (&quot;Pronta entrega&quot;, &quot;Sob encomenda · ~120 dias&quot;, &quot;Jardins&quot;). Peça estática (PNG de story/feed, cartaz, etiqueta - layout com @page, data-canvas ou nome PRINT/IG/IGS/CONVITE/LIVRO/VITRINE/ETIQUETA/CARTAZ) não tem ação, então não tem colchete; o link vai na legenda ou no sticker de link do story</p><p class="mono secondary" style="font-size:var(--font-size-caption);margin-top:4px">node checks/actions.mjs &lt;arquivo&gt;</p></div>
-      <div><span class="id">R-LAYOUT-01 · em vigor · medida no site</span><p>menu, carrinho e adicionar-ao-carrinho (seletor fixed/sticky com menu, add-to-cart, add_to_cart, in-cart, cart-button, checkout) ficam em barras flutuantes embaixo - declaram bottom e nunca top, centralizadas (left 50% + translate(-50%), ou left 0 + right 0), height 35px quando declaram altura, fundo com alfa &lt; 1 (vidro preto-10/preto-80/cinza-overlay). Sem cabeçalho fixo - seletor fixed/sticky com header, cabecalho, topbar, navbar, nav ou toolbar e top falha. Isentos, padrão do site - o filtro da coleção (.collection-list__filter, sticky no topo) e o botão flutuante de voltar (.floating-back-button, topo, 30px)</p><p class="mono secondary" style="font-size:var(--font-size-caption);margin-top:4px">node checks/bars.mjs &lt;arquivo&gt;</p></div>
-      <div><span class="id">R-LAYOUT-02 · em vigor · medida no site</span><p>uma peça por foto de produto (grade, PDP, post de peça), ver o par de exemplos. Proporção da imagem 2:3 (fonte: o original da câmera, como o MORE_0800 em 4379x6568), e os recortes 3:4 (site), 4:5 (feed, 1080x1350), 9:16 (story, 1080x1920, 250px de área segura em cima e embaixo) ou 3:2 (só lista horizontal), tolerância 1%. Em CSS de imagem, aspect-ratio só 2/3, 3/4, 4/5, 9/16, 3/2; foto de produto com border-radius 0; miniatura e amostra de material (thumb, swatch, material, sample) podem ter 2px (radius.thumb), como no site. Raio fora da escala fica com R-SHAPE-01, sem contar duas vezes. O script só mede foto de produto e exportação de foto para canal - arquivo numa pasta fotos/ ou com foto, photo, PDT_, ig-feed/ig-story, story, feed, _IG_ ou _IGS_ no nome. Nunca mede captura de página nem render de layout (nome com web, captura ou folha, ou imagem mais alta que 2,5x a largura)</p><p class="mono secondary" style="font-size:var(--font-size-caption);margin-top:4px">node checks/aspect.mjs &lt;arquivo&gt;</p></div>
-      <div><span class="id">R-IMG-01 · em vigor · medida no site</span><p>foto de peça é fotografia, nunca gerada ou alterada por IA; troca de acabamento só com foto real ou render exato do material. O arquivo falha se tiver metadado IPTC DigitalSourceType trainedAlgorithmicMedia/compositeWithTrainedAlgorithmicMedia/algorithmicMedia, metadado que cite um gerador (Midjourney, DALL-E, gpt-image, Firefly, Stable Diffusion, Imagen, Gemini, Flux, Ideogram, Runway, Sora, Recraft, Krea, Magnific, Generative Fill) ou sidecar &lt;arquivo&gt;.lineage.json com operação de geração/edição. Quem exporta preserva os metadados</p><p class="mono secondary" style="font-size:var(--font-size-caption);margin-top:4px">node checks/no-ai.mjs &lt;arquivo&gt;</p></div>
-      <div><span class="id">R-IMG-02 · em vigor · medida no site</span><p>registro estúdio = fundo bege infinito + uma luz dura lateral com sombra de janela de borda nítida; registro low-key = fundo quase preto + uma luz quente rasante. Luz difusa, sombra de borda mole e preto levantado para cinza falham. Ver o par de exemplos. As fotos próprias da More já publicadas (feed do Instagram e site) são o conjunto de referência e sempre passam; o par de exemplos vale para sessões novas</p><p class="mono secondary" style="font-size:var(--font-size-caption);margin-top:4px">ver par sim/não acima</p></div>
-      <div><span class="id">R-GEN-01 · em vigor · medida no site</span><p>a marca entra sempre com os paths oficiais (assets/official/more-wordmark*.svg, o desenho do brand book de Manoela Moura e Anna&#x27;s, 2025; os de assets/official/legado/, copiados do site, ainda passam; coordenadas a 0,1), inline no SVG/HTML, com fill=&quot;currentColor&quot; nos paths e a cor dada pelo CSS a partir dos tokens. Nunca por &lt;img&gt;/&lt;image&gt;/&lt;use&gt; - &lt;img&gt; não herda currentColor e o more-wordmark.svg sai #000, o que quebra R-COLOR-02 (o fill black do arquivo é padrão do arquivo, não cor da marca). &quot;MORE&quot; digitado como texto ou paths diferentes falham. Em imagem gerada, a marca é composta depois (skill image-edit), nunca pedida ao modelo; as faces 205TF também não entram em prompt</p><p class="mono secondary" style="font-size:var(--font-size-caption);margin-top:4px">node checks/wordmark.mjs &lt;arquivo&gt;</p></div>
-      <div><span class="id">R-COPY-01 · em vigor · medida no site</span><p>nenhuma palavra proibida (exclusivo/a, exclusividade, sofisticado/a, sofisticação, luxuoso/a, luxo, requintado/a, requinte, premium, glamour, chique, alma, essência, personalidade); zero ponto de exclamação, emoji e hashtag; nenhuma frase com mais de 16 palavras (máximo do feed de 2026). Conteúdo de tabela, lista de definição e itens de lista (table, dl, li - fichas e medidas) não conta para o tamanho de frase. &quot;personalidade&quot; segue proibida, exceto dentro de uma linha aprovada escrita igual, listada em checks/aprovadas.json</p><p class="mono secondary" style="font-size:var(--font-size-caption);margin-top:4px">node checks/copy.mjs &lt;arquivo&gt;</p></div>
-      <div><span class="id">R-COMMERCE-01 · em vigor · medida no site</span><p>toda página de produto (og:type=product) mostra em texto exatamente um rótulo - &quot;Pronta entrega&quot;, sem prazo, ou &quot;Sob encomenda&quot; com prazo em dias, semanas ou meses (&quot;Sob encomenda · ~120 dias&quot;; ~120 dias é o padrão do negócio, salvo quando a ficha da peça diz outro prazo). Só o texto é checado, não a cor (no card de grade do site, &quot;Pronta entrega&quot; é .product-card-grid__ready-delivery em cinza-medio 10px, visível no hover)</p><p class="mono secondary" style="font-size:var(--font-size-caption);margin-top:4px">node checks/commerce.mjs &lt;arquivo&gt;</p></div>
-      <div><span class="id">R-COMMERCE-02 · em vigor · medida no site</span><p>nenhum card de grade (classe product-card* ou card-product*) mostra preço (R$); o preço fica na página de produto (proposta da call de 2026-10-15, ainda não decidida pela equipe)</p><p class="mono secondary" style="font-size:var(--font-size-caption);margin-top:4px">node checks/grid-price.mjs &lt;arquivo&gt;</p></div>
-      <div><span class="id">R-MOTION-01 · em vigor · medida no site</span><p>duração é um token motion.duration - 80, 140, 200, 300, 450, 500, 700, 800 ou 1000ms (0s = troca instantânea); qualquer outro valor falha (no site - 150, 180, 280, 400, 600ms). Curva - ease (a principal do site), ease-out, ease-in-out ou os tokens snap, out-expo, out-quint; linear só em contador (ou com duração 0); ease-in e qualquer outro cubic-bezier falham. &quot;transition: all&quot; falha. Todo seletor animado tem fallback em @media (prefers-reduced-motion - reduce), por regra * ou pelo mesmo seletor</p><p class="mono secondary" style="font-size:var(--font-size-caption);margin-top:4px">node checks/motion.mjs &lt;arquivo&gt;</p></div>
-      <div><span class="id">R-COPY-02 · proposta · observada no Instagram</span><p>duas fórmulas; o script escolhe pela primeira linha &quot;tipo: peca|evento|bastidores|marca&quot; ou pelo nome do arquivo (evento, abertura, bastidores, marca, sobre =&gt; fato). PEÇA - frase com o nome canônico (checks/nomes-canonicos.json), depois UMA linha seca de 3 a 12 palavras, antes da linha de material (opcional). FATO (evento, bastidores, marca, post sem peça) - a primeira linha diz o fato (o quê; em evento também quando, data dd.mm ou &quot;dd de mês&quot;, e onde); depois no máximo UMA linha seca; o resto são linhas de fato (endereço, horário); nome de peça não é exigido. Linha seca = sem palavra de material/ficha da lista publicada em checks/palavras-de-material.json e sem status (&quot;Pronta entrega&quot;, &quot;Sob encomenda&quot;). Sempre 4-145 palavras e palavras proibidas de R-COPY-01. A linha seca discorda da convenção, no tom destas aprovadas (checks/aprovadas.json) - &quot;Não é quadrada, só parece.&quot;, &quot;Essa não vai com as outras&quot;, &quot;Nada grita, só a concorrência.&quot;, &quot;Precisa da sua Maria.&quot;, &quot;Não foi feita para combinar com o sofá.&quot;</p><p class="mono secondary" style="font-size:var(--font-size-caption);margin-top:4px">node checks/caption.mjs &lt;arquivo&gt;</p></div>
-      <div><span class="id">R-COPY-03 · proposta · inferida</span><p>português primeiro. Página com &lt;html lang=&quot;pt-BR&quot;&gt;; todo bloco de 6+ palavras em inglês (mais palavras-função inglesas que portuguesas) fica dentro de elemento lang=&quot;en&quot; como segunda versão; em texto solto o primeiro parágrafo é português. O texto em inglês do Sobre quebra isto hoje</p><p class="mono secondary" style="font-size:var(--font-size-caption);margin-top:4px">node checks/lang.mjs &lt;arquivo&gt;</p></div>
-      <div><span class="id">R-COLOR-04 · proposta · observada no Instagram</span><p>tons color.campo (vermelho-jambo, amarelo-igarata, verde-jamaica, berinjela; petróleo é só proposta) são fundo de cartaz, convite, livro, vitrine e social. Em imagem - no máximo um tom campo com 5%+ dos pixels (a até ΔE 10 em CIELAB); petróleo nunca como fundo (20%+); em peça gráfica (MORE_PRINT/CONVITE/LIVRO/VITRINE) o fundo é chapado - dos pixels a até ΔE 25 do tom, 85%+ estão a até ΔE 10. Em CSS da loja/site, nenhum tom campo (R-COLOR-03 pega); em layout impresso/social (@page, data-canvas, nome PRINT/IG/IGS/CONVITE/LIVRO/VITRINE/ETIQUETA/CARTAZ) o campo é permitido. Ciano fica fora das peças campo (é cor de interface)</p><p class="mono secondary" style="font-size:var(--font-size-caption);margin-top:4px">node checks/campo.mjs &lt;arquivo&gt;</p></div>
-      <div><span class="id">R-LOGO-01 · proposta · observada (M e XL)</span><p>num layout (SVG com viewBox, ou HTML com data-canvas=&quot;LxA&quot;), medido pelo script. Onde leva marca (tipo lido do nome MORE_&lt;CANAL&gt;_&lt;slug&gt;_&lt;variante&gt;; MORE_FONTE_ pela variante) - obrigatória em post de evento (IG com slug evento-&lt;aaaammdd&gt;) e em cartaz, convite, vitrine e livro; proibida em post de peça no feed (que também não leva texto sobre a foto, observado em 76% do feed; o texto vai na legenda) e em story (IGS); opcional em etiqueta (ETIQUETA). M - lado maior da marca = alvo 1/6 (16,7%) do lado menor do quadro, tolerância 16-25%. XL - largura da marca 95-100% da largura do quadro, base 0-5% acima do pé do quadro, sem sangrar (marca inteira dentro); XL pode passar por cima da margem do grid de impressão (1/24 do lado menor). Outro tamanho falha. Cor só preto #2D211E, branco #FFF ou off-white #E5E1DB; sobre amarelo-igarata, preto; sobre vermelho-jambo, verde-jamaica e berinjela, branco. Nunca contornada, espelhada, esticada ou com padrão. Proposto e fora do guia até aceitarem - S mínimo 120 px/18 mm (guia de uso p. 5) e respiro = altura do O</p><p class="mono secondary" style="font-size:var(--font-size-caption);margin-top:4px">node checks/logo.mjs &lt;arquivo&gt;</p></div>
-      <div><span class="id">R-LAYOUT-03 · proposta · derivada do site</span><p>todo contêiner com rolagem vertical (overflow ou overflow-y auto/scroll) termina com padding-bottom &gt;= 106px (layout.bar-safe) no mesmo seletor, para as barras flutuantes nunca cobrirem conteúdo no celular</p><p class="mono secondary" style="font-size:var(--font-size-caption);margin-top:4px">node checks/scroll-safe.mjs &lt;arquivo&gt;</p></div>
-      <div><span class="id">R-NAME-01 · proposta · observada (nomes divergentes)</span><p>um nome canônico por peça, &quot;&lt;Tipo&gt; &lt;complemento em minúscula&gt; &lt;Nome&gt;&quot; (Mesa de centro Cildo, Cadeira 556-A), igual no site, Instagram, etiquetas e arquivos. A lista e as variantes proibidas estão em checks/nomes-canonicos.json; as marcadas decisao_pendente (Ngoni, Leticia/Letícia, Naz componível, INT.01, Maestro, Estante Dominó, Otoman Leticia) esperam a equipe</p><p class="mono secondary" style="font-size:var(--font-size-caption);margin-top:4px">node checks/names.mjs &lt;arquivo&gt;</p></div>
-      <div><span class="id">R-MOTION-02 · proposta · observada no convite</span><p>vídeo troca de foto por corte seco (Hard cut) - nenhuma fusão nem fade, medido pelo script; o movimento de luz é Shadow sweep (mancha dura de janela atravessa a peça com a câmera parada, observado no convite 05.11), ver o par de exemplos. Proposto e fora do guia até aceitarem - Build (letras M-O-R-E em sequência, 120ms de intervalo)</p><p class="mono secondary" style="font-size:var(--font-size-caption);margin-top:4px">node checks/cuts.mjs &lt;arquivo&gt;</p></div>
-      <div><span class="id">R-MOTION-03 · proposta · medida no site e nas referências</span><p>a segunda foto do card entra por fusão no quadro de hoje (75% do 3:4, centrada; a primeira foto a 60%) - só opacity muda, duração motion.role.hover-swap 300ms (ou 0 = troca seca), curva ease ou ease-out; nenhuma escala nem deslocamento; nome e preço não mudam. Hoje o site faz escala .8 =&gt; 1 em 200ms snap: falha. The Row e Jacquemus fazem 300ms ease só em opacity; Knoll 600ms com escala .95 (fora da regra)</p><p class="mono secondary" style="font-size:var(--font-size-caption);margin-top:4px">node checks/hover-swap.mjs &lt;arquivo&gt;</p></div>
-      <div><span class="id">R-MOTION-04 · proposta · seção 8 do dossiê</span><p>a interação orienta, não encena - nenhum sequestro de rolagem (scroll-snap-type mandatory em html/body, roda do mouse com preventDefault), nenhum loader teatral (animation infinite fora de contador/progresso), nenhum cursor personalizado, nenhum carrossel automático; o que o hover revela abre também por foco (:focus-within ou :focus-visible no mesmo seletor), porque no toque não existe hover; toda página tem fallback em prefers-reduced-motion (R-MOTION-01)</p><p class="mono secondary" style="font-size:var(--font-size-caption);margin-top:4px">node checks/interacao.mjs &lt;arquivo&gt;</p></div>
+      <div><span class="id">R-COLOR-01 · em vigor · medida no site</span><p>Toda cor vem de um token aprovado. Branco opaco só em texto sobre fundo escuro. Nunca como fundo.</p><p class="mono secondary" style="font-size:var(--font-size-caption);margin-top:4px">checagem automática</p></div>
+      <div><span class="id">R-COLOR-02 · em vigor · medida no site</span><p>O fundo é off-white #E5E1DB. O texto é preto #2D211E. Nunca #000, nunca fundo branco. Hoje o site erra: o texto corrido sai #000. No impresso, o off-white é o papel e não leva tinta.</p><p class="mono secondary" style="font-size:var(--font-size-caption);margin-top:4px">checagem automática</p></div>
+      <div><span class="id">R-COLOR-03 · em vigor · medida no site</span><p>Ciano #8BC0D0 é a única cor da interface. Só no hover ou na aba ativa da navegação, como no filtro Fixos. Nunca como texto sobre off-white: o contraste é 1,53:1. Nunca como enfeite. No impresso, só no adesivo quadrado de 10 mm de pronta entrega.</p><p class="mono secondary" style="font-size:var(--font-size-caption);margin-top:4px">checagem automática</p></div>
+      <div><span class="id">R-SHAPE-01 · em vigor · medida no site</span><p>Estrutura tem canto vivo. Raio só de 0, 2, 8 ou 10 px, ou círculo. O site tem três fora da escala. 5 px no modal, 6 px no vídeo do Sobre. 20 px no rótulo do modal.</p><p class="mono secondary" style="font-size:var(--font-size-caption);margin-top:4px">checagem automática</p></div>
+      <div><span class="id">R-TYPE-01 · em vigor · medida no site</span><p>Só Muoto e Muoto Mono, peso 400. O site pede 300 e mostra 400. Peso 600 só no filtro ativo. 700 nunca.</p><p class="mono secondary" style="font-size:var(--font-size-caption);margin-top:4px">checagem automática</p></div>
+      <div><span class="id">R-TYPE-02 · em vigor · medida no site</span><p>Toda ação de texto leva uma palavra entre colchetes: [Conversar], [Voltar], Menu [+]. Status e lugar nunca levam: Pronta entrega, Jardins. Hoje falham no site: Checkout, Adicionar, Baixar, Cadastrar, Todos, Categorias. Peça impressa não tem ação. Então não tem colchete.</p><p class="mono secondary" style="font-size:var(--font-size-caption);margin-top:4px">checagem automática</p></div>
+      <div><span class="id">R-LAYOUT-01 · em vigor · medida no site</span><p>Menu, carrinho e compra ficam em barras flutuantes no pé da tela. Centralizadas, 35 px de altura, fundo de vidro. Nenhum cabeçalho fixo no topo. Exceções do site: o filtro da coleção e o botão de voltar.</p><p class="mono secondary" style="font-size:var(--font-size-caption);margin-top:4px">checagem automática</p></div>
+      <div><span class="id">R-LAYOUT-02 · em vigor · medida no site</span><p>Uma peça por foto de produto. A câmera faz 2:3. Os recortes são 3:4 no site, 4:5 no feed e 9:16 no story. 3:2 só na lista. O story guarda 250 px livres em cima e embaixo.</p><p class="mono secondary" style="font-size:var(--font-size-caption);margin-top:4px">checagem automática</p></div>
+      <div><span class="id">R-IMG-01 · em vigor · medida no site</span><p>Foto de peça é fotografia. Nunca gerada nem alterada por IA. Troca de acabamento só com foto real. Quem exporta mantém os dados de origem do arquivo.</p><p class="mono secondary" style="font-size:var(--font-size-caption);margin-top:4px">checagem automática</p></div>
+      <div><span class="id">R-IMG-02 · em vigor · medida no site</span><p>Estúdio: fundo bege contínuo e uma luz dura de lado, com sombra de janela nítida. Low-key: fundo quase preto e uma luz quente rasante. Luz difusa e sombra mole não passam. As fotos já publicadas da More são a referência.</p><p class="mono secondary" style="font-size:var(--font-size-caption);margin-top:4px">par de fotos sim e não, acima</p></div>
+      <div><span class="id">R-GEN-01 · em vigor · medida no site</span><p>A marca é sempre o desenho oficial do brand book. Desenho de Manoela Moura e Anna&#x27;s, 2025. A cor vem da página. Nunca MORE digitado como texto. Em imagem, a marca entra depois, por cima. Nunca é pedida a uma IA.</p><p class="mono secondary" style="font-size:var(--font-size-caption);margin-top:4px">checagem automática</p></div>
+      <div><span class="id">R-COPY-01 · em vigor · medida no site</span><p>Doze palavras de vitrine ficam fora do texto. A lista está na regra. Sem exclamação, emoji ou hashtag. Frase com até 16 palavras. O texto prova com fato, não com adjetivo.</p><p class="mono secondary" style="font-size:var(--font-size-caption);margin-top:4px">checagem automática</p></div>
+      <div><span class="id">R-COMMERCE-01 · em vigor · medida no site</span><p>Toda página de peça mostra um só rótulo. Pronta entrega, sem prazo. Ou Sob encomenda, com prazo: Sob encomenda · ~120 dias.</p><p class="mono secondary" style="font-size:var(--font-size-caption);margin-top:4px">checagem automática</p></div>
+      <div><span class="id">R-COMMERCE-02 · em vigor · medida no site</span><p>O card da grade não mostra preço. O preço fica na página da peça. Veio da conversa de 15.10 e ainda espera a decisão da More.</p><p class="mono secondary" style="font-size:var(--font-size-caption);margin-top:4px">checagem automática</p></div>
+      <div><span class="id">R-MOTION-01 · em vigor · medida no site</span><p>Duração só de 80, 140, 200, 300, 450, 500, 700, 800 ou 1000 ms. O site usa 150, 180, 280, 400 e 600 ms: falham. Curva ease, ease-out ou ease-in-out. Todo movimento tem uma versão parada para quem pede menos movimento.</p><p class="mono secondary" style="font-size:var(--font-size-caption);margin-top:4px">checagem automática</p></div>
+      <div><span class="id">R-COPY-02 · proposta · observada no Instagram</span><p>Legenda de peça: nome, ponto, uma linha seca de 3 a 12 palavras. Depois o material, se precisar. Legenda de fato: o quê, quando e onde. Depois no máximo uma linha seca. No tom destas: Não é quadrada, só parece. Nada grita, só a concorrência.</p><p class="mono secondary" style="font-size:var(--font-size-caption);margin-top:4px">checagem automática</p></div>
+      <div><span class="id">R-COPY-03 · proposta · inferida</span><p>Português primeiro. Texto em inglês só como segunda versão, marcada. O texto em inglês do Sobre quebra isto hoje.</p><p class="mono secondary" style="font-size:var(--font-size-caption);margin-top:4px">checagem automática</p></div>
+      <div><span class="id">R-COLOR-04 · proposta · observada no Instagram</span><p>Os campos de cor são fundo de cartaz, convite, livro, vitrine e post. Um campo por quadro, chapado. Nunca na interface da loja. Petróleo ainda é só proposta.</p><p class="mono secondary" style="font-size:var(--font-size-caption);margin-top:4px">checagem automática</p></div>
+      <div><span class="id">R-LOGO-01 · proposta · observada (M e XL)</span><p>Marca em M ou XL. M tem 1/6 do lado curto do quadro. XL ocupa a largura, encostada embaixo. Vai em evento, cartaz, convite, vitrine e livro. Não vai em post de peça nem em story. Preto, branco ou off-white.</p><p class="mono secondary" style="font-size:var(--font-size-caption);margin-top:4px">checagem automática</p></div>
+      <div><span class="id">R-LAYOUT-03 · proposta · derivada do site</span><p>Toda área com rolagem termina com 106 px livres embaixo. Assim a barra nunca cobre conteúdo no celular.</p><p class="mono secondary" style="font-size:var(--font-size-caption);margin-top:4px">checagem automática</p></div>
+      <div><span class="id">R-NAME-01 · proposta · observada (nomes divergentes)</span><p>Um nome por peça, igual em todo lugar. Tipo em minúscula, depois o nome: Mesa de centro Cildo, Cadeira 556-A. Ngoni, Leticia, Naz, INT.01, Maestro e Dominó esperam a decisão da More.</p><p class="mono secondary" style="font-size:var(--font-size-caption);margin-top:4px">checagem automática</p></div>
+      <div><span class="id">R-MOTION-02 · proposta · observada no convite</span><p>Vídeo troca de foto em corte seco, sem fusão. A luz se move como no convite de 05.11. A sombra da janela atravessa a peça, com a câmera parada.</p><p class="mono secondary" style="font-size:var(--font-size-caption);margin-top:4px">checagem automática</p></div>
+      <div><span class="id">R-MOTION-03 · proposta · medida no site e nas referências</span><p>A segunda foto do card entra por fusão de 300 ms. Só a opacidade muda. Nada escala, nome e preço ficam. Hoje o site escala de 80% a 100% em 200 ms: falha.</p><p class="mono secondary" style="font-size:var(--font-size-caption);margin-top:4px">checagem automática</p></div>
+      <div><span class="id">R-MOTION-04 · proposta · interação</span><p>A interação orienta, não encena. Sem sequestro de rolagem, loader teatral, cursor próprio ou carrossel automático. O que o hover mostra, o foco também mostra.</p><p class="mono secondary" style="font-size:var(--font-size-caption);margin-top:4px">checagem automática</p></div>
+      <div><span class="id">R-TIME-01 · proposta · ideia do Fred</span><p>Pátina, mancha de uso e madeira escurecida não se retocam. Nem na foto, nem na peça. Toda ficha de madeira tem uma linha sobre como ela envelhece.</p><p class="mono secondary" style="font-size:var(--font-size-caption);margin-top:4px">par de fotos sim e não, a fazer</p></div>
+      <div><span class="id">R-LAYOUT-04 · proposta · ideia do Fred</span><p>Ritmo: peça inteira, detalhe, vazio. Depois de dois blocos densos, um respiro de off-white e uma linha. Altura proposta: space.vazio, 240 px no desktop e 120 px no celular.</p><p class="mono secondary" style="font-size:var(--font-size-caption);margin-top:4px">checagem automática, a escrever</p></div>
+      <div><span class="id">R-CRAFT-01 · proposta · ideia do Fred</span><p>Toda peça mostra um detalhe de execução: encaixe, quina ou solda. A ficha diz quem fez. Pelo ofício, até a More confirmar os nomes.</p><p class="mono secondary" style="font-size:var(--font-size-caption);margin-top:4px">checagem automática, a escrever</p></div>
+      <div><span class="id">R-COPY-04 · proposta · ideia do Fred</span><p>A primeira mensagem pergunta pela sala, pela luz e por quem mora. Nunca pelo preço. A ação principal é [Conversar]. Nunca Pedir orçamento, nunca Fale conosco.</p><p class="mono secondary" style="font-size:var(--font-size-caption);margin-top:4px">checagem automática, a escrever</p></div>
+      <div><span class="id">R-REF-01 · proposta · ideia do Fred</span><p>Referência vira memória, nunca cópia. Nenhuma peça nova recria uma imagem de referência. Antes de criar, leia o repertório e o que a More não é.</p><p class="mono secondary" style="font-size:var(--font-size-caption);margin-top:4px">revisão lado a lado com as referências</p></div>
     </div>
   </section>
 
   <section id="fatos">
     <div class="eyebrow">[13] Fatos para usar nas peças</div>
     <h2>Fatos</h2>
-    <p class="body">Só isto pode aparecer como fato. O que não está aqui fica fora da peça até o time confirmar (lista em Próximos passos).</p>
+    <p class="body">Só isto pode aparecer como fato. O resto fica fora da peça até a More confirmar. A lista está em Próximos passos.</p>
     <div class="tscroll"><table class="t"><thead><tr><th>Fato</th><th>Valor</th><th>Fonte</th></tr></thead><tbody>
-      <tr><td>Loja</td><td>Alameda Franca, 1332, casa 04, Jardins, São Paulo, SP</td><td>cartaz TOM.01 e rodapé do site</td></tr>
+      <tr><td>Loja</td><td>Alameda Franca 1332, casa 04 · Jardins · São Paulo</td><td>cartaz TOM.01 e rodapé do site</td></tr>
       <tr><td>Abertura da loja</td><td>05.11 (2026). Sem horário.</td><td>convite atual</td></tr>
       <tr><td>Nome do lugar</td><td>"loja" para o endereço físico</td><td>texto Sobre do site</td></tr>
       <tr><td>Pronta entrega</td><td>Tomada TOM.01 (miolo preto, vermelho ou branco). Sem prazo no texto.</td><td>site</td></tr>
-      <tr><td>Sob encomenda</td><td>todas as outras peças: "Sob encomenda · ~120 dias"</td><td>call de 15/10</td></tr>
+      <tr><td>Sob encomenda</td><td>todas as outras peças: "Sob encomenda · ~120 dias"</td><td>conversa de 15.10</td></tr>
       <tr><td>Preços</td><td>só os do site no dia; TOM.01 e Estante Dominó estão com R$ 1 provisório e não entram em peça</td><td>site</td></tr>
       <tr><td>Medidas e materiais</td><td>só os da página da peça no site</td><td>site</td></tr>
-      <tr><td>Como a More se apresenta</td><td>"Estúdio e galeria de móveis em São Paulo."</td><td>texto Sobre do site, traduzido</td></tr>
+      <tr><td>Como a More se apresenta</td><td>"Estúdio e loja de móveis em São Paulo."</td><td>texto Sobre do site, traduzido e com "loja"</td></tr>
+      <tr><td>Quem fez</td><td>pelo ofício: a marcenaria, a serralharia. Nomes só quando a More confirmar.</td><td>posts do Fred e do ateliê</td></tr>
+      <tr><td>Medidas</td><td>81 × 71 × 89 cm: largura × profundidade × altura, com o sinal ×</td><td>página da peça no site</td></tr>
       <tr><td>Instagram e site</td><td>@more.mymore · mymore.design</td><td>site</td></tr>
     </tbody></table></div>
   </section>
@@ -531,7 +564,7 @@
   <section id="canais">
     <div class="eyebrow">[14] Receitas por canal</div>
     <h2>Receitas por canal</h2>
-    <p class="body">O que fazer em cada formato. A coluna da direita diz de onde vem: o que é "padrão provisório" foi decidido por nós para não deixar dúvida e está na tabela de aceite.</p>
+    <p class="body">O que fazer em cada formato. A coluna da direita diz de onde vem. Padrão provisório é uma decisão tomada para não deixar dúvida. Espera a More aprovar.</p>
     <div class="tscroll"><table class="t"><thead><tr><th>Canal</th><th>Receita</th><th>Origem</th></tr></thead><tbody>
       <tr><td>Post de peça 4:5</td><td>Só a foto, 1080×1350. Sem texto, sem marca na imagem. Texto vai na legenda (fórmula R-COPY-02). Foto quadrada: recorte no centro; foto 3:4: recorte do topo.</td><td>observado (76% do feed)</td></tr>
       <tr><td>Post de evento 4:5</td><td>Campo de cor + data em display + marca XL embaixo + endereço em Muoto girado. Legenda começa pelo fato (o quê, quando, onde).</td><td>convite 05.11</td></tr>
@@ -541,19 +574,20 @@
       <tr><td>Cartaz de evento</td><td>Sem peça: campo, data em display-1, marca XL embaixo (pode passar a margem do grid), três blocos girados com o endereço.</td><td>convite 05.11</td></tr>
       <tr><td>Blocos girados</td><td>Muoto 1,2% da largura do quadro (A2: 14 pt; 1080 px: 13 px).</td><td>medido no cartaz TOM.01</td></tr>
       <tr><td>Etiqueta</td><td>Nome em Muoto, status em mono sem colchetes, medidas e madeira do site, mymore.design. Sem preço. Furo de 5 mm no canto de cima à esquerda, a 8 mm das bordas.</td><td>padrão provisório</td></tr>
+      <tr><td>Primeira mensagem</td><td>WhatsApp e [Conversar]: pergunta pela sala, pela luz e por quem mora. Nunca pelo preço. "Para qual sala é? Conte da luz que ela tem."</td><td>ideia do Fred · R-COPY-04</td></tr>
       <tr><td>Página nova</td><td>Componentes desta página. Barra de baixo com uma ação em colchetes; página de evento usa [Como chegar] com link do Google Maps para o endereço.</td><td>site + padrão provisório</td></tr>
     </tbody></table></div>
   </section>
 
   <section id="teste">
-    <div class="eyebrow">[T] Teste cego · state/teste-cego/</div>
+    <div class="eyebrow">[T] Teste cego</div>
     <h2>Teste com quem não viu a criação</h2>
-    <p class="body">Duas sessões que nunca leram as conversas de criação fizeram 10 peças cada (feed, story, etiqueta, cartaz A2, página), só com este repositório, e anotaram cada vez que precisaram decidir algo que o sistema não dizia. Depois de cada rodada o sistema foi corrigido, não as peças.</p>
+    <p class="body">Duas sessões de IA fizeram 10 peças cada, só com este sistema. Nunca tinham visto a criação. Feed, story, etiqueta, cartaz A2 e página. Cada vez que o sistema não dizia algo, elas anotaram. Depois de cada rodada, o sistema foi corrigido. As peças, não.</p>
     <div class="tscroll"><table class="t"><thead><tr><th>Rodada</th><th>Dúvidas anotadas</th><th>Contradições internas</th><th>Falta de regra</th><th>Falta de fato</th><th>Regras que reprovam as peças</th></tr></thead><tbody>
       <tr><td>1</td><td>100</td><td>11</td><td>76</td><td>13</td><td>7 de 23</td></tr>
       <tr><td>2</td><td>91</td><td>22</td><td>52</td><td>17</td><td>2 de 24; 0 depois de corrigir as duas contradições</td></tr>
     </tbody></table></div>
-    <p class="note">A rodada 1 foi classificada por nós depois, pelos rótulos do diário; a rodada 2, pela própria sessão. Por isso as contradições não se comparam direto: a rodada 2 também pegou contradições novas, criadas pelas receitas e fatos que entraram depois da rodada 1. O que sobra é quase todo fato que só o time tem: fotos originais em alta, ficha de cada peça, texto Sobre em português, detalhes da abertura.</p>
+    <p class="note">A rodada 1 foi classificada depois, pelos rótulos do diário. A rodada 2, pela própria sessão. Por isso as contradições não se comparam direto. A rodada 2 também achou contradições novas, das receitas e fatos que entraram no meio. O que sobra é quase todo fato que só a More tem. Fotos originais em alta, ficha de cada peça, texto Sobre em português, detalhes da abertura.</p>
     <div class="pairs" style="grid-template-columns:1fr 1fr">
       <figure><img src="state/teste-cego/folha-1.jpg" alt="As 10 peças da rodada 1"><figcaption>Rodada 1</figcaption></figure>
       <figure><img src="state/teste-cego/folha-2.jpg" alt="As 10 peças da rodada 2"><figcaption>Rodada 2</figcaption></figure>
@@ -561,15 +595,24 @@
   </section>
 
   <section id="propostas">
-    <div class="eyebrow">[P] Propostas · fora das regras até o time aceitar</div>
+    <div class="eyebrow">[P] Propostas · fora das regras até a More aceitar</div>
     <h2>Propostas</h2>
-    <p class="body">Tudo aqui foi inventado por nós, sem uso da marca que confirme. Não vale como regra. Cada item tem uma linha em <code>state/approvals.jsonl</code>; quando o time aceitar, sobe para o corpo do guia.</p>
+    <p class="body">Nada aqui tem uso da marca que confirme. Não vale como regra. Quando a More aceitar, sobe para o corpo do guia.</p>
+    <div class="fazer">
+      <div class="eyebrow" style="margin-bottom:var(--space-sm)">Para fazer com a More · pede fotos</div>
+      <div class="rules">
+        <div><span class="id">Prancha de materiais</span><p>As amostras fotografadas lado a lado, como as pranchas da Knoll. O site não tem tato. Mas pode dizer a temperatura.</p><p class="quals">quente ou frio · áspero ou liso · leve ou pesado · como envelhece</p></div>
+        <div><span class="id">Receita de ambiente</span><p>Para foto ambientada, vitrine e a loja de 05.11. Cada ambiente leva seis coisas:</p><ol class="steps" style="font-size:var(--font-size-label);margin-top:4px"><li>uma peça escultórica</li><li>uma peça funcional</li><li>uma textura feita à mão</li><li>uma planta</li><li>uma obra de arte</li><li>um achado com pátina</li></ol></div>
+        <div><span class="id">A luz da hora</span><p>A mesma peça, a mesma câmera, três horas do dia. Manhã, meio da tarde, fim de tarde. A sombra da janela deixa de ser estilo. Vira hora.</p></div>
+      </div>
+    </div>
+    <h3>Outras propostas</h3>
     <div class="rules">
             <div><span class="id">Respiro do logo</span><p>Espaço livre em volta igual à altura do O.</p></div>
       <div><span class="id">Build</span><p>As letras M-O-R-E entram em sequência, 120 ms entre elas, do cinza ao preto.</p></div>
-      <div><span class="id">Campo petróleo</span><p>#306C6A. Não existe acabamento com esse nome; a amostra é luz colorida na borda de uma mesa.</p></div>
-      <div><span class="id">R-FILE-01 · proposta · inventada por nós</span><p>arquivos se chamam MORE_&lt;CANAL&gt;_&lt;peça-slug&gt;_&lt;variante&gt;_&lt;AAAAMMDD&gt;_v&lt;nn&gt;.&lt;ext&gt; (MORE_IG_mesa-de-centro-cildo_4x5_20261105_v02.jpg). CANAL - IG, IGS, SITE, PRINT, ETIQUETA, LIVRO, CONVITE, VITRINE, EMAIL, VIDEO, FONTE (HTML-fonte de uma peça); peça-slug = slug de nome canônico; sem peça, &quot;marca&quot; ou &quot;evento-&lt;aaaammdd&gt;&quot;; variante [a-z0-9-]; data real; extensão minúscula. Prefixo numérico de ordem (&quot;01_&quot;) só dentro de pasta cujo nome começa com teste</p><p class="mono secondary" style="font-size:var(--font-size-caption);margin-top:4px">node checks/filename.mjs &lt;arquivo&gt;</p></div>
-      <div><span class="id">R-PRINT-01 · proposta · inventada por nós</span><p>vale para cartaz, convite, livro, vitrine e etiqueta. O PDF entregue tem a página no formato final + 3 mm de sangria por lado (MediaBox = BleedBox) e TrimBox no formato final (ex. etiqueta 50x90 mm =&gt; página 56x96 mm; A2 420x594 =&gt; 426x600 mm). Off-white nunca é tinta (é o papel; papel natural sem revestimento 90-150 g/m²); no HTML-fonte, html/body com background none/transparent em @media print (ver R-COLOR-02); texto branco sobre campo = papel sem tinta (vazado). Raster de impressão &gt;= 300 dpi. PDF com PDF/X-4 declarado = FINAL. PDF sem X-4 mas com as caixas certas = PROVA (não vai para gráfica) e passa - as ferramentas do repositório não geram X-4; a exportação final em PDF/X-4 com perfil CMYK é passo da gráfica/estúdio. Conferido no preflight, sem script - margem de segurança 5 mm; preto rico C60 M40 Y40 K100 (o único valor) só em áreas &gt;= 10 mm de altura, texto &lt; 10 pt em K100 puro</p><p class="mono secondary" style="font-size:var(--font-size-caption);margin-top:4px">node checks/print.mjs &lt;arquivo&gt;</p></div>
+      <div><span class="id">Campo petróleo</span><p>#306C6A. Não existe acabamento com esse nome. A amostra é luz colorida na borda de uma mesa.</p></div>
+      <div><span class="id">R-FILE-01 · proposta</span><p>Todo arquivo diz a marca, o canal, a peça, a variante, a data e a versão. O exemplo está no fim desta seção.</p><p class="mono secondary" style="font-size:var(--font-size-caption);margin-top:4px">checagem automática</p></div>
+      <div><span class="id">R-PRINT-01 · proposta</span><p>PDF de impressão com 3 mm de sangria e o formato final marcado. Off-white é o papel, não tinta. Imagem a 300 dpi. A gráfica faz a exportação final.</p><p class="mono secondary" style="font-size:var(--font-size-caption);margin-top:4px">checagem automática</p></div>
       <div><span class="id">Sem elipses</span><p>Recusada: o convite de 05.11 da própria More usa uma elipse. Só volta se o time decidir proibir.</p></div>
     </div>
     <h3>Para imprimir (proposta, a validar com a gráfica)</h3>
@@ -585,12 +628,13 @@
     <div class="display-demo" style="font-size:clamp(32px,6vw,96px)">Mesa de centro Cildo</div>
     <p class="note">display-1 240 pt · display-2 96 pt · display-3 48 pt. Entrelinha 0,9, espaçamento −0,02em, Muoto 400. Nunca dentro da loja.</p>
     <h3>Escala de impressão (pt)</h3>
-    <p class="body">Legenda 6 · rótulo 7 (mínimo do mono em papel sem revestimento) · texto 8,5 · interface 10 · título 14 · frase 20 · sobre 28. Para usar no InDesign, confirmar a licença desktop da 205TF: a licença web não cobre impresso.</p>
+    <p class="body">Legenda 6 · rótulo 7 · texto 8,5 · interface 10 · título 14 · frase 20 · sobre 28. O rótulo 7 é o mínimo do mono em papel sem revestimento. Para usar no InDesign, falta confirmar a licença desktop da 205TF. A licença web não cobre impresso.</p>
     <h3>Grid de impressão</h3>
-    <p class="body">12 colunas, margem de 1/24 do lado curto, linha de base de 12 pt, imagens em módulos 3:4 ou 3:2, marca XL na margem de baixo. O vidro das barras não existe no papel: vira preto a 10%, sem desfoque.</p>
+    <p class="body">12 colunas. Margem de 1/24 do lado curto. Linha de base de 12 pt. Imagens em módulos 3:4 ou 3:2. Marca XL na margem de baixo. O vidro das barras não existe no papel: vira preto a 10%, sem desfoque.</p>
     <h3>Peças da loja</h3>
-    <p class="body"><b>Etiqueta</b>: cartão sem revestimento 50×90 mm, nome em Muoto, linha em mono <span class="mono">Sob encomenda · ~120 dias</span> ou <span class="mono">Pronta entrega</span> (sem colchetes). Cartão em pé, 50 de largura. <b>Caixa da TOM.01</b>: preto rico, marca vazada, painel técnico em mono. <b>Vitrine</b>: uma peça, luz dura de lado.</p>
+    <p class="body"><b>Etiqueta</b>: cartão sem revestimento de 50 × 90 mm, em pé. Nome em Muoto. Uma linha em mono, sem colchetes: <span class="mono">Sob encomenda · ~120 dias</span> ou <span class="mono">Pronta entrega</span>. <b>Caixa da TOM.01</b>: preto rico, marca vazada, painel técnico em mono. <b>Vitrine</b>: uma peça, luz dura de lado.</p>
     <h3>Nome dos arquivos (R-FILE-01)</h3>
+    <p class="body">Marca, canal, peça, variante, data e versão:</p>
     <p class="body mono" style="font-family:var(--font-family-mono)">MORE_IG_mesa-de-centro-cildo_4x5_20261105_v02.jpg</p>
   </section>
 
@@ -598,13 +642,19 @@
     <div class="eyebrow">[15] Como usar com IA</div>
     <h2>Como usar com o Claude</h2>
     <ol class="steps">
-      <li>Abra o Claude com acesso a este repositório.</li>
-      <li>Peça em português, do jeito que pediria a alguém do time: <code>Siga o sistema de design da More neste repositório e revise antes de me mostrar.</code></li>
-      <li>Quem cria não aprova o próprio trabalho: peça sempre uma segunda revisão, de preferência por outra pessoa ou outro agente.</li>
-      <li>Toda correção de vocês ("isso não é More") vira regra nova no repositório. É assim que o gosto acumula.</li>
+      <li>Abra o Claude com acesso aos arquivos do sistema.</li>
+      <li>Peça em português, como pediria a alguém do time: “Siga o sistema de design da More e revise antes de me mostrar.”</li>
+      <li>Quem cria não aprova o próprio trabalho. Peça sempre uma segunda revisão, de outra pessoa ou de outro agente.</li>
+      <li>Toda correção do time (“isso não é More”) vira regra nova. É assim que o gosto acumula.</li>
     </ol>
+    <h3>Repertório e o que a More não é</h3>
+    <p class="body">Antes de criar, a IA lê duas listas. Referência vira memória, nunca cópia. Nenhuma peça nova recria uma imagem de referência.</p>
+    <div class="rules">
+      <div><span class="id">Repertório</span><p>Brancusi, Arp, Perriand, Lina Bo Bardi, Rino Levi com Burle Marx, Aalto. Agnes Martin, Suzan Frecon, Turrell, Serra, Eliasson, Lorenzato, Ronchamp. De cada nome, uma lição. Brancusi: reduzir a forma. Turrell: a luz como material.</p></div>
+      <div><span class="id">O que a More não é</span><p>Render decorado. Moodboard bege genérico. Ambiente gerado por IA. Móvel que só combina.</p></div>
+    </div>
     <details style="margin-top:var(--space-lg)"><summary class="eyebrow" style="cursor:pointer;margin:0">[+] Para quem é técnico</summary>
-      <p class="body" style="margin-top:var(--space-sm)">O workspace segue o <a href="https://github.com/joaohjonk/cstack">cstack</a>. Antes de criar: <code>/brief</code> e a skill certa (<code>/copywriting</code>, <code>/workflow landing-page</code>, <code>/shot-dna</code>). Depois: <code>/brand-verify</code> e <code>/creative-review</code>. Regras ficam em <code>brand/rules/</code>; tokens em <code>brand/tokens/</code>, gerados com <code>cstack tokens build</code>.</p>
+      <p class="body" style="margin-top:var(--space-sm)">Os arquivos guardam os tokens, as regras e as checagens. A IA lê tudo antes de criar e confere tudo antes de entregar. Quem cria e quem revisa são agentes diferentes. <a href="https://github.com/joaohjonk/more">Ver os arquivos</a>.</p>
     </details>
   </section>
 
@@ -613,31 +663,33 @@
     <h2>Próximos passos</h2>
     <h3>Quando chegar o acesso</h3>
     <ol class="steps">
-      <li><b>Shopify</b>: rodar <code>shopify theme pull</code>, comparar o tema com <code>state/token-diff.md</code> e aplicar o mapa de <code>brand/build/shopify/</code>. A primeira correção é uma linha: <code>body { color: var(--preto) }</code>.</li>
-      <li><b>Fontes</b>: chegaram em 15.10 (Regular e Italic das duas famílias). Falta a More confirmar com a 205TF a licença web da Muoto e o número de computadores; detalhes em <a href="brand/build/pdf/licenca-fontes.pdf">licenca-fontes.pdf</a>.</li>
-      <li><b>Fotos originais</b>: chegaram em 15.10. O amarelo já foi medido no original; vermelho, verde e berinjela não têm original no Drive. A paleta oficial do guia é proposta na tabela de aceite.</li>
-      <li><b>Figma da agência</b>: comparar com <code>brand/build/figma/</code> e manter um só.</li>
+      <li><b>Shopify</b>: comparar o tema com o sistema e aplicar as correções. A primeira é uma linha: o texto corrido passa a sair no preto da More.</li>
+      <li><b>Fontes</b>: chegaram em 15.10, Regular e Italic das duas famílias. Falta a More confirmar com a 205TF a licença web e o número de computadores. <a href="brand/build/pdf/licenca-fontes.pdf">Ver a licença em uma página</a>.</li>
+      <li><b>Fotos originais</b>: chegaram em 15.10. O amarelo já foi medido no original. Vermelho, verde e berinjela não têm original. A paleta do guia é proposta.</li>
+      <li><b>Figma da agência</b>: comparar com o sistema e manter um só.</li>
       <li><b>Gráfica</b>: papel, perfil de cor e prova das cores impressas.</li>
+      <li><b>Fotos novas</b>: a prancha de materiais, a receita de ambiente e a luz da hora.</li>
     </ol>
     <h3>Com o time</h3>
     <ol class="steps">
-      <li>Sessão de ratificação: passar regra por regra em <code>state/approvals.jsonl</code> (aceita, muda ou recusa).</li>
+      <li>Uma conversa para passar regra por regra: aceita, muda ou recusa.</li>
       <li>Vitor faz 3 peças sozinho, só com este guia, e anota onde travou. Cada trava vira correção no sistema.</li>
+      <li>Dizer quem fez cada peça: marcenaria, serralharia, fotógrafo. Com nome, se a More quiser.</li>
       <li>Decidir as grafias e nomes das peças (lista em Voz), o texto Sobre em português e os preços de R$ 1 na TOM.01 e na Estante Dominó.</li>
       <li>Ficha de cada peça (medidas, madeiras, tecidos, prazo, status) e a foto-mestra 3:4 em alta, para impresso a 300 dpi.</li>
-      <li>O que acontece na abertura de 05.11 (horário, convite aberto ou fechado).</li>
+      <li>O que acontece na abertura de 05.11: horário, convite aberto ou fechado.</li>
     </ol>
   </section>
 </main>
 
 <footer>
   <svg viewBox="0 0 481 123" aria-hidden="true"><path d="M480.1 3.35986H373.9V44.2599V62.1299V78.9899V119.01H480.1V79.9899H420.47L451.27 62.0699L420.5 44.2599H480.1V3.35986Z"/><path d="M63.4 35.1202L46.38 3.43018H0V119.07H46.38V79.0502H80.3V119.07H126.68V3.43018H80.3L63.4 35.1202Z"/><path d="M195.94 0C162.17 0 134.75 27.41 134.75 61.19C134.75 94.97 162.16 122.38 195.94 122.38C229.72 122.38 257.25 94.97 257.25 61.19C257.25 27.41 229.84 0 195.94 0ZM195.94 75.87C187.86 75.87 181.26 69.38 181.26 61.18C181.26 52.98 187.87 46.49 195.94 46.49C204.01 46.49 210.75 53.1 210.75 61.18C210.75 69.26 204.14 75.87 195.94 75.87Z"/><path d="M311.71 41.2702V3.43018H265.33V119.07H311.71V79.1702H362.28V3.43018C334.58 3.43018 313.25 23.4102 311.71 41.2802V41.2702Z"/></svg>
-  <p class="mono" style="margin-top:20px;font-size:var(--font-size-caption)">Tokens: brand/tokens/*.tokens.json → brand/generated/tokens.css (cstack tokens build). Medido de mymore.design em 15/10/2026.</p>
+  <p class="mono" style="margin-top:20px;font-size:var(--font-size-caption)">Alameda Franca 1332, casa 04 · Jardins · São Paulo · mymore.design · medido em 15.10.2026</p>
 </footer>
 
 <div class="bar" id="bar">
   <div class="row"><svg viewBox="0 0 481 123" aria-label="More"><path d="M480.1 3.35986H373.9V44.2599V62.1299V78.9899V119.01H480.1V79.9899H420.47L451.27 62.0699L420.5 44.2599H480.1V3.35986Z"/><path d="M63.4 35.1202L46.38 3.43018H0V119.07H46.38V79.0502H80.3V119.07H126.68V3.43018H80.3L63.4 35.1202Z"/><path d="M195.94 0C162.17 0 134.75 27.41 134.75 61.19C134.75 94.97 162.16 122.38 195.94 122.38C229.72 122.38 257.25 94.97 257.25 61.19C257.25 27.41 229.84 0 195.94 0ZM195.94 75.87C187.86 75.87 181.26 69.38 181.26 61.18C181.26 52.98 187.87 46.49 195.94 46.49C204.01 46.49 210.75 53.1 210.75 61.18C210.75 69.26 204.14 75.87 195.94 75.87Z"/><path d="M311.71 41.2702V3.43018H265.33V119.07H311.71V79.1702H362.28V3.43018C334.58 3.43018 313.25 23.4102 311.71 41.2802V41.2702Z"/></svg><button id="tg" aria-expanded="false">Menu [+]</button></div>
-  <nav aria-label="Seções"><a href="/">Índice</a><a href="#o-que-e">O que é</a><a href="#principios">Princípios</a><a href="#voz">Voz</a><a href="#marca">Marca</a><a href="#cor">Cor</a><a href="#tipografia">Tipografia</a><a href="#espaco">Espaço e grid</a><a href="#componentes">Componentes</a><a href="#movimento">Movimento</a><a href="#fotografia">Fotografia</a><a href="#edicoes">Fora da tela</a><a href="#regras">Regras</a><a href="#ia">Como usar com IA</a><a href="#pendencias">Pendências</a></nav>
+  <nav aria-label="Seções"><a href="/">Índice</a><a href="#o-que-e">O que é</a><a href="#principios">Princípios</a><a href="#voz">Voz</a><a href="#marca">Marca</a><a href="#cor">Cor</a><a href="#tipografia">Tipografia</a><a href="#espaco">Espaço e grid</a><a href="#componentes">Componentes</a><a href="#movimento">Movimento</a><a href="#fotografia">Fotografia</a><a href="#edicoes">Fora da tela</a><a href="#regras">Regras</a><a href="#ia">Como usar com IA</a><a href="#propostas">Propostas</a><a href="#proximos">Próximos passos</a></nav>
 </div>
 <script>
   const bar=document.getElementById('bar'),tg=document.getElementById('tg');

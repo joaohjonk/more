@@ -136,3 +136,28 @@ rules:
     status: proposed   # P-FONT-01, material oficial 15.10; fora do run-all.mjs até o time aceitar
     rule: 'nenhum arquivo de fonte (.otf, .ttf, .woff, .woff2, .eot) no repositório nem no histórico de qualquer branch. O repositório é público e a licença 205TF proíbe copiar os arquivos (EULA 205TF, § Protection); quem precisa da Muoto usa a instalação licenciada da More, e as peças daqui usam as substitutas (DM Sans, Martian Mono 75)'
     check: script   # node checks/fontes.mjs [repo]  (não está no registry nem no run-all)
+  - id: R-TIME-01
+    scope: core
+    status: proposed   # ideia do Fred ("O tempo fica"); pesquisa-fred 15.10. Nenhum valor do core muda
+    rule: 'pátina, mancha de uso e madeira que escureceu não se retocam, nem na foto nem na peça (sem clonar, sem uniformizar tom de madeira, sem limpar mancha em pós-produção). Toda ficha de madeira tem uma linha "como envelhece", em frase curta e de fato ("O ipê escurece com a luz. É para isso."). Falha - ficha de madeira sem essa linha; foto com retoque de pátina declarado no sidecar <arquivo>.lineage.json'
+    check: judge   # par de exemplos sim/não a fazer com a More (brand/examples/R-TIME-01-sim/nao); script da ficha a escrever
+  - id: R-LAYOUT-04
+    scope: page
+    status: proposed   # ideia do Fred ("Cheio e vazio"); token proposto, fora de brand/tokens até aceitarem
+    rule: 'ritmo de página - peça inteira, detalhe, vazio. Depois de no máximo dois blocos densos seguidos (bloco com foto, tabela ou mais de 60 palavras), vem um respiro - um bloco só de off-white e no máximo uma linha de texto, com altura mínima igual ao token proposto space.vazio (240px no desktop, 120px abaixo de 768px). Nenhum valor de space.* existente muda'
+    check: judge   # checagem por script a escrever (contar blocos densos seguidos no HTML); até lá, revisão
+  - id: R-CRAFT-01
+    scope: page, print
+    status: proposed   # ideia do Fred ("Bem feito é premissa")
+    rule: 'toda página de peça e toda ficha impressa mostram pelo menos uma foto de detalhe de execução (encaixe, quina, solda, trama) e uma linha "Feito por" com quem fez. Até a More confirmar os nomes, pelo ofício ("Marcenaria", "Serralharia"); nome de parceiro só depois de confirmado. Falha - página de peça sem foto de detalhe ou sem a linha de quem fez'
+    check: judge   # script a escrever (procurar a linha "Feito por" e uma imagem marcada como detalhe)
+  - id: R-COPY-04
+    scope: core
+    status: proposed   # ideia do Fred ("Projeto é conversa"); segundo registro da voz, ao lado da linha seca (R-COPY-02)
+    rule: 'a pergunta - a primeira mensagem de atendimento (modelo de WhatsApp, botão de conversa, e-mail de resposta) é uma pergunta sobre a sala, a luz ou quem mora ("Para qual sala é? Conte da luz que ela tem."). Nunca pergunta por preço ou orçamento na primeira mensagem. A ação principal se chama [Conversar]; "Pedir orçamento", "Fale conosco" e "Solicite" falham. Valem também as regras de R-COPY-01'
+    check: judge   # script a escrever (primeira linha termina em "?" e não tem preço/orçamento; rótulo da ação = Conversar)
+  - id: R-REF-01
+    scope: core
+    status: proposed   # ideia do Fred ("Contra a média"); pastas references/culture e references/anti
+    rule: 'referência vira memória, nunca cópia. Antes de criar, ler references/culture/README.md (repertório) e references/anti/README.md (o que a More não é). Nenhuma peça nova recria composição, enquadramento ou paleta de uma imagem de referência; nenhuma peça se parece com a lista anti (render decorado, moodboard bege genérico, ambiente gerado por IA, móvel que só combina)'
+    check: judge   # revisão lado a lado com as referências
