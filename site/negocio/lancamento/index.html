@@ -1,0 +1,266 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Lançar uma marca: o que dizem Nik Sharma e os experts · Estudos de caso · More</title>
+<meta name="description" content="Os princípios, a sequência antes, durante e depois do lançamento, os casos que eles contam e os números que acompanham, postos ao lado das nove marcas desta seção. O material foi escrito para marcas de consumo; onde ele pressupõe outra premissa, a página avisa.">
+<link rel="icon" href="data:,">
+<link rel="stylesheet" href="/nav/shell.css">
+<style>
+@font-face{font-family:"Muoto";src:url("/fonts/mr.otf") format("opentype");font-weight:400;font-display:swap}
+@font-face{font-family:"MuotoMono";src:url("/fonts/mm.woff2") format("woff2");font-weight:400;font-display:swap}
+/* Tokens do sistema de design da More (/sistema/brand/generated/tokens.css). Página de marca: paleta clara nos dois temas. */
+:root{
+  color-scheme:light;
+  --page:#E5E1DB; --ink:#2D211E; --muted:#5D554F; --label:#686868; --rule:#2D211E1A; --glass:#2D211E1A; --tile:#DDD7CF; --inverse:#2D211E; --on-inverse:#E5E1DB;
+  --muoto:"Muoto","DM Sans","Helvetica Neue",Arial,sans-serif;
+  --mono:"MuotoMono","Martian Mono",ui-monospace,Menlo,monospace;
+  --s-hair:6px; --s-sm:10px; --s-md:16px; --s-lg:20px; --s-xl:30px; --s-2xl:40px; --s-3xl:60px; --s-sec:96px;
+  --bar:35px; --barzone:75px;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--page:#E5E1DB;--ink:#2D211E;--muted:#5D554F;--rule:#2D211E1A;--glass:#2D211E1A;--tile:#DDD7CF;color-scheme:light}}
+:root[data-theme="dark"]{--page:#E5E1DB;--ink:#2D211E;--muted:#5D554F;--rule:#2D211E1A;--glass:#2D211E1A;--tile:#DDD7CF;color-scheme:light}
+*{box-sizing:border-box}
+html,body{height:100%}
+body{background:var(--page);color:var(--ink);font-family:var(--muoto);font-size:15px;line-height:1.47;-webkit-font-smoothing:antialiased;margin:0;overflow:hidden}
+/* A página rola dentro de .page; a barra vive numa faixa própria embaixo e nunca cobre texto. */
+.page{height:calc(100% - var(--barzone));overflow-y:auto;overflow-x:hidden;scroll-behavior:smooth;overscroll-behavior:contain;padding-bottom:106px}
+.wrap{max-width:1120px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:0 var(--s-3xl)}
+.mono{font-family:var(--mono);font-stretch:75%;font-size:13px}
+.muted{color:var(--muted)}
+.label{color:var(--label)}
+a{color:inherit;text-underline-offset:3px;text-decoration-thickness:1px;overflow-wrap:anywhere}
+a:hover{color:var(--muted)}
+h1,h2,h3{font-weight:400;text-wrap:balance;margin:0}
+h2{font-size:clamp(26px,3.4vw,32px);line-height:1.05;margin-bottom:var(--s-lg)}
+h3{font-size:15px;margin-bottom:4px}
+p{margin:0 0 var(--s-sm);max-width:64ch;text-wrap:pretty}
+section{padding-top:var(--s-sec)}
+.eyebrow{font-family:var(--mono);font-stretch:75%;font-size:13px;color:var(--label);margin-bottom:var(--s-md)}
+img{max-width:100%}
+b{font-weight:400}
+.tag{font-family:var(--mono);font-stretch:75%;font-size:11px;color:var(--label);white-space:nowrap}
+.tag.open{color:var(--ink)}
+.meas .tag{white-space:normal}
+
+/* abertura */
+.abre{padding-top:var(--s-3xl);display:grid;gap:var(--s-md)}
+.abre h1{font-size:clamp(34px,5.2vw,58px);line-height:.98;letter-spacing:-.01em;max-width:18ch}
+.abre .lede{font-size:clamp(18px,2vw,22px);line-height:1.25;margin:0;max-width:34ch}
+.meta{display:flex;flex-wrap:wrap;gap:6px var(--s-lg);margin-top:var(--s-sm)}
+
+/* tabelas */
+.meas{overflow-x:auto;margin-top:var(--s-lg)}
+.meas table{border-collapse:collapse;width:100%;min-width:760px;font-size:14px}
+.meas th{font-family:var(--mono);font-stretch:75%;font-weight:400;font-size:12px;color:var(--label);text-align:left;padding:8px;border-bottom:1px solid var(--ink)}
+.meas td{padding:10px 8px;border-bottom:1px solid var(--rule);vertical-align:top}
+.meas td:first-child{width:18%}
+.meas tr.grp td{font-family:var(--mono);font-stretch:75%;font-size:12px;color:var(--label);padding-top:var(--s-lg);border-bottom:1px solid var(--ink)}
+@media(max-width:700px){.meas table{min-width:0}.meas thead{display:none}.meas tr{display:block;padding:12px 0;border-bottom:1px solid var(--ink)}.meas tr.grp{padding:var(--s-lg) 0 4px}.meas td{display:block;padding:2px 0;border:0;width:auto!important}.meas td:first-child{font-size:16px;margin-bottom:4px}.meas td[data-l]::before{content:attr(data-l);display:block;font-family:var(--mono);font-stretch:75%;font-size:11px;color:var(--label);margin-top:6px}}
+
+/* riscos e perguntas */
+.lst{list-style:none;margin:var(--s-lg) 0 0;padding:0;border-top:1px solid var(--ink)}
+.lst li{display:grid;grid-template-columns:4ch minmax(0,1fr);gap:8px 16px;padding:12px 0;border-bottom:1px solid var(--rule);font-size:15px}
+.lst .n{font-family:var(--mono);font-stretch:75%;font-size:12px;color:var(--label);padding-top:3px}
+.lst p{margin:0;max-width:70ch}
+.lst p b{display:block}
+.lst .how{font-family:var(--mono);font-stretch:75%;font-size:12px;color:var(--label);margin-top:4px}
+
+/* barra, em faixa própria */
+.barzone{height:var(--barzone);position:relative;background:var(--page)}
+.bar{position:absolute;left:50%;transform:translateX(-50%);top:20px;width:420px;max-width:calc(100vw - 32px);height:var(--bar);background:var(--glass);backdrop-filter:blur(13px);-webkit-backdrop-filter:blur(13px);display:flex;align-items:center;justify-content:space-between;padding:0 var(--s-sm)}
+.bar svg{width:56px;height:auto;display:block;fill:currentColor}
+.bar nav{display:flex;gap:8px}
+.bar a{font-family:var(--mono);font-stretch:75%;font-size:13px;text-decoration:none;white-space:nowrap}
+.bar a:hover,.bar a:focus-visible{color:var(--muted)}
+@media(max-width:560px){.bar nav a{font-size:11px}.bar nav{gap:4px}}
+footer{background:var(--inverse);color:var(--on-inverse);margin-top:var(--s-sec)}
+footer .wrap{padding-block:var(--s-2xl)}
+footer p{font-size:13px;max-width:70ch}
+:focus-visible{outline:1px solid var(--ink);outline-offset:2px}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important;scroll-behavior:auto!important}}
+
+/* oitava seção: texto longo convertido do pacote */
+.doc{padding-top:var(--s-2xl)}
+.doc h2{padding-top:var(--s-3xl);scroll-margin-top:16px}
+.doc h3{font-size:clamp(17px,1.8vw,20px);line-height:1.2;margin:var(--s-xl) 0 var(--s-sm);scroll-margin-top:16px}
+.doc h4{font-family:var(--mono);font-stretch:75%;font-weight:400;font-size:12px;color:var(--label);margin:var(--s-lg) 0 6px}
+.doc p,.doc li{font-size:16px;line-height:1.5}
+.doc p{max-width:68ch}
+.doc strong{font-weight:400;color:var(--ink)}
+.doc p>strong:first-child{font-family:var(--mono);font-stretch:75%;font-size:13px;color:var(--label);margin-right:4px}
+.doc em{font-style:italic}
+.doc ul,.doc ol{max-width:68ch;padding-left:20px;margin:0 0 var(--s-md)}
+.doc li{margin-bottom:6px}
+.doc li>p{margin:0}
+.doc hr{border:0;border-top:1px solid var(--ink);margin:var(--s-2xl) 0 0}
+.doc blockquote{margin:var(--s-lg) 0;padding:var(--s-lg);background:var(--glass);max-width:68ch}
+.doc blockquote p{font-size:clamp(17px,1.8vw,20px);line-height:1.3;margin:0}
+.doc pre{font-family:var(--mono);font-stretch:75%;font-size:13px;line-height:1.5;background:var(--glass);padding:var(--s-md) var(--s-lg);overflow-x:auto;max-width:100%;white-space:pre}
+.doc code{font-family:var(--mono);font-stretch:75%;font-size:.88em}
+.doc .meas table{min-width:640px}
+.doc .meas td:first-child{width:auto}
+.doc .meas td,.doc .meas th{font-size:14px;line-height:1.4}
+.doc .meas th{font-size:12px}
+.doc .meas img{display:block;margin-bottom:6px}
+.doc img{height:auto;display:block;border:1px solid var(--rule)}
+.doc h3+p>a>img,.doc h3+p>img{margin:var(--s-sm) 0}
+.doc-atlas h3{padding-top:var(--s-xl);border-top:1px solid var(--ink)}
+@media(max-width:700px){.doc .meas:not(.grid) table{min-width:0}.doc .meas:not(.grid) thead{display:none}.doc .meas:not(.grid) tr{display:block;padding:12px 0;border-bottom:1px solid var(--ink)}.doc .meas:not(.grid) td{display:block;padding:2px 0;border:0}.doc .meas:not(.grid) td:first-child{font-size:16px}.doc .meas:not(.grid) td[data-l]:not(:first-child)::before{content:attr(data-l);display:block;font-family:var(--mono);font-stretch:75%;font-size:11px;color:var(--label);margin-top:6px}.doc .meas.grid table{min-width:560px}.doc .meas.grid td,.doc .meas.grid th{padding:8px 6px}}
+.mods{padding-top:var(--s-sec)}
+.mods .lst li{grid-template-columns:4ch minmax(0,1fr) auto;align-items:baseline}
+.mods .lst p{font-size:17px}
+.mods .lst a{text-decoration:none}
+.mods .lst a:hover{text-decoration:underline}
+.mods .lst .t{font-family:var(--mono);font-stretch:75%;font-size:12px;color:var(--label)}
+.mods li[aria-current] p a{text-decoration:underline}
+.mods li[aria-current] .n::after{content:" ·"}
+.doc hr+h3{border-top:0}
+@media(max-width:700px){.doc .meas.grid{overflow-x:auto}.doc .meas.grid table{display:table;min-width:560px}.doc .meas.grid thead{display:table-header-group}.doc .meas.grid tr{display:table-row;padding:0}.doc .meas.grid td{display:table-cell;border-bottom:1px solid var(--rule);font-size:14px}.doc .meas.grid td::before{content:none!important}.doc .meas.grid td:first-child{font-size:13px;white-space:nowrap}}
+
+</style>
+</head>
+<body><script src="/nav/shell.js" data-section="negocio" data-into=".page" data-foot="on" defer></script>
+<div class="page" id="page">
+<div class="wrap">
+
+<header class="abre" id="topo">
+  <div class="eyebrow">More · Estudos de caso · Lançar uma marca: Nik Sharma e os experts · 16.10.2026</div>
+  <h1>Lançar uma marca: o que dizem Nik Sharma e os experts</h1>
+  <p class="lede">Os princípios, a sequência antes, durante e depois do lançamento, os casos que eles contam e os números que acompanham, postos ao lado das nove marcas desta seção. O material foi escrito para marcas de consumo; onde ele pressupõe outra premissa, a página avisa.</p>
+  <div class="meta mono label"><span>Para Fred, Edu e Vitor</span><span>Estudos de caso, sem recomendação</span><span>Leitura: 8 min</span></div>
+</header>
+
+<article class="doc doc-lancamento">
+
+<p>A fonte é um digest das anotações de e-commerce do Joao: a masterclass e as newsletters de Nik Sharma (2023 a 2026) e a síntese dos 40 episódios do podcast Open Residency, entre outros [1]. Quase todos os exemplos são de suplementos, bebidas e roupa. Três marcas indicam a premissa de uma tática: <strong>[recompra]</strong>, <strong>[ticket baixo]</strong> e <strong>[varejo]</strong> (venda em rede de terceiros). Ao lado de cada princípio está a marca, entre as nove dos casos, que o confirma ou o contradiz.</p>
+<h2 id="os-princípios">Os princípios</h2>
+<p><strong>1. O produto é pré-requisito; a máquina é o fosso.</strong> "Product is table stakes. The machine is the moat": anúncio, página, oferta e retenção funcionam como um sistema só [1]. A Nordic Knots repete o mesmo número do anúncio ao checkout: 3–6 dias para o estoque, 2–4 semanas para o sob medida [2].</p>
+<p><strong>2. Toda página precisa de um ângulo, e a prova reforça o ângulo.</strong> "A page without a point of view is a well-organized shelf" [1]. A Nordic Knots se põe "entre os dois": entre o tapete barato e o feito à mão, caro e demorado [2].</p>
+<p><strong>3. Coesão vence fragmentação.</strong> O e-mail soa como o site, que soa como o anúncio; quando não soa, o Nik fala em "cohesion tax" [1]. Dois casos mostram o contrário. A Hem anunciou em 02.2026 o fim de toda promoção, e oito meses depois o cadastro do rodapé ainda oferece 10% [4]. A RH disse em 2016 que e-mail promocional repetitivo contradizia a marca; em outubro de 2026, 17 de 24 e-mails tinham desconto no assunto [3].</p>
+<p><strong>4. Consertar o site antes de comprar tráfego.</strong> Mandar visitas para uma experiência quebrada é "lighting money on fire" [1]. Em 16.10.2026, duas páginas do FAQ da Trousseau estavam em lorem ipsum [5]. A Sklum, com € 525,7 mi de receita em 2025, tem 28% de avaliações de uma estrela, muitas sobre datas de entrega que escorregam [6].</p>
+<p><strong>5. Marca é um sentimento, construído por repetição.</strong> "Nine times out of ten, 'our CPA is too high' means the brand has no name recognition" [1]. Sean Frank (Ridge): "familiarity just comes from exposure" [1]. Richard Christiansen, da Flamingo Estate, diz "marca, marca, marca primeiro e só marca"; o sócio Aaron Harvey diz "eu odeio marketing" [7].</p>
+<p><strong>6. Ninguém liga para o que você diz do seu produto.</strong> "Get someone else to say it" [1]. A Nordic Knots lista 62 matérias de imprensa; a Trousseau mostra 30 hotéis "que oferecem Trousseau"; a Flamingo põe os logos de AD e GQ sobre a foto da vela [2][5][7].</p>
+<p><strong>7. Validar antes de gastar.</strong> A pergunta permanente é "como rodo este experimento pelo menor custo possível?". A Native testou com pré-venda e anúncios, cerca de US$ 8 mil no primeiro mês [1]. A Interior Define fez o oposto: tomou US$ 30 mi emprestados em 01.2022 para abrir 30 lojas e foi liquidada em 12.2022 [4]. A Nordic Knots só abriu a primeira loja em 2023, sete anos depois de começar, e captou em 2026 [2]. Checketts (Rhone) resume: "it takes eight years to build a brand" [1].</p>
+<p><strong>8. Prova orgânica antes de escala.</strong> Para o Nik, o sinal é ter 1.000 clientes desconhecidos comprando e elogiando sem que ninguém peça [1].</p>
+<p><strong>9. O valor percebido vem de onde a marca aparece.</strong> Ross Mackay (Cadence): do lugar, das companhias e do design, não do preço [1]. A ETEL aparece na SP-Arte e na ICFF; a Trousseau, no Copacabana Palace [4][5].</p>
+<p><strong>10. Escassez como sistema.</strong> John Terzian (h.wood) nunca deixa a oferta alcançar a demanda: "if you know, you know" [1]. A ETEL edita a Cadeirinha em 89 exemplares numerados; a Flamingo anunciou "uma edição limitada de 200 velas apimentadas" [4][7]. A Sklum vive do oposto: estoque próprio, mais de 10 mil referências e uma seção permanente com 4.203 itens remarcados [6].</p>
+<p><strong>11. Quem criou a marca fica colado no cliente.</strong> Nema (Salt &amp; Stone): "once the founder becomes disconnected from the end customer, it's over" [1]. Christiansen escreve uma carta toda sexta e põe o próprio e-mail no rodapé dos textos [7]. Os criadores da Sklum não aparecem em público [6].</p>
+<p><strong>12. Menos e melhor.</strong> Nate Checketts (Rhone): o maior erro é comprar estoque demais e diluir a história com produtos paralelos; a Momentous corta um produto que vende US$ 6 mi por ano se ele destoa [1]. Investidores pediram à Flamingo que acabasse com o hortifrúti, e ela recusou [7]. A Sklum contradiz o princípio e cresceu 65% em 2025 [6].</p>
+<h2 id="a-sequência-antes-no-dia-depois">A sequência: antes, no dia, depois</h2>
+<p><strong>Antes.</strong> O Nik lista cinco pré-requisitos: um produto com prova orgânica, uma mensagem forte, conteúdo de estúdio e externo, social orgânico ("página com 250 seguidores não inspira confiança") e ferramentas de medição instaladas [1]. Peter Rahal anunciou a David Protein nos próprios perfis seis meses antes do lançamento, o que virou notícia no setor [1]. Antes do primeiro anúncio vêm pixel, UTMs, pesquisa pós-compra e respostas prontas para as perguntas frequentes [1].</p>
+<p><strong>No dia.</strong> A David marcou uma data pública, fez um sorteio de 5.000 barras no TikTok e disparou uma lista de 40 mil e-mails: US$ 1 mi na semana e estoque esgotado [1]. A Athletic Brewing fazia lançamentos semanais online que esgotavam em cerca de 30 segundos, antes de entrar em lojas [1]. Para um produto novo numa marca existente, o checklist do Nik pede dois e-mails de aviso antes, o anúncio no dia com reenvio a quem não abriu, acesso antecipado para os melhores clientes e envio coordenado a criadores e imprensa [1].</p>
+<p><strong>Depois.</strong> O playbook do Nik tem cinco passos: página com oferta; social orgânico como laboratório e depois anúncios, até achar <strong>um</strong> funil que funciona (um tipo de criativo, um canal, um público); otimização da página só depois disso; e-mail e SMS; por fim, venda adicional, novos produtos e canais, para passar de US$ 3–5 mi [1]. Taylor Holiday cria quatro picos próprios por ano, fora da Black Friday [1]. Rahal começa com 90% em performance e 10% em marca e inverte com o tempo [1].</p>
+<p><strong>Como as nove lançaram.</strong> Nenhuma tem registro público do lançamento da marca. A RH lançou a linha Estates em 2026 por lugares, não por data: Salone, Londres em 27.06, um catálogo de 268 páginas e Greenwich em 18.09 [3].</p>
+<h2 id="outros-casos-que-eles-citam">Outros casos que eles citam</h2>
+<ul>
+<li><strong>Represent</strong> (George Heaton): uma estampa que já vende online ganha uma versão só de uma cidade, 50 peças num pop-up de dois dias, e a procura volta para o site [1].</li>
+<li><strong>h.wood</strong> (Terzian): notas sobre 200 a 300 clientes frequentes e frases escondidas sob os pratos [1].</li>
+<li><strong>Rhone</strong> (Checketts): 16 lojas lucrativas abertas onde já havia clientes online [1].</li>
+</ul>
+<h2 id="as-métricas-que-acompanham">As métricas que acompanham</h2>
+<div class="meas"><table>
+<thead>
+<tr class="header">
+<th>Métrica</th>
+<th>Referência citada</th>
+<th>Quem</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-l="Métrica">Adesão ao pop-up de e-mail</td>
+<td data-l="Referência citada">Meta de 12%; abaixo de 7% é alerta; o típico é 2–3%</td>
+<td data-l="Quem">Nik [1]</td>
+</tr>
+<tr class="even">
+<td data-l="Métrica">Receita vinda de e-mail</td>
+<td data-l="Referência citada">15% a 50% da receita total</td>
+<td data-l="Quem">Nik [1]</td>
+</tr>
+<tr class="odd">
+<td data-l="Métrica">Conversão por origem</td>
+<td data-l="Referência citada">A diferença entre busca de marca e anúncio frio mostra que o problema é a página</td>
+<td data-l="Quem">Nik [1]</td>
+</tr>
+<tr class="even">
+<td data-l="Métrica">Hierarquia</td>
+<td data-l="Referência citada">Caixa de 13 semanas, depois margem de contribuição diária, depois receita e ticket; retorno por canal no fim</td>
+<td data-l="Quem">Holiday [1]</td>
+</tr>
+<tr class="odd">
+<td data-l="Métrica">Desconto como % das vendas</td>
+<td data-l="Referência citada">Um dos quatro indicadores de gestão</td>
+<td data-l="Quem">Shackleford [1]</td>
+</tr>
+<tr class="even">
+<td data-l="Métrica">Custo de aquisição e valor do cliente</td>
+<td data-l="Referência citada">3 a 3,5 vezes em 24 meses; recuperar o custo em menos de 4 meses é excelente</td>
+<td data-l="Quem">Danny Yeung [1]</td>
+</tr>
+<tr class="odd">
+<td data-l="Métrica">Lojas</td>
+<td data-l="Referência citada">Receita por m², mesa ou manequim por hora</td>
+<td data-l="Quem">Molner [1]</td>
+</tr>
+<tr class="even">
+<td data-l="Métrica">Recompra <strong>[recompra]</strong></td>
+<td data-l="Referência citada">Não escalar mídia antes de a recompra de 60–90 dias provar o conceito</td>
+<td data-l="Quem">Kocher [1]</td>
+</tr>
+</tbody>
+</table></div>
+<p>Das nove, a RH publica o mais próximo disso: US$ 338,5 mi em depósitos de clientes e receita diferida em 31.01.2026, e publicidade de 3,1% da receita [3].</p>
+<h2 id="onde-discordam">Onde discordam</h2>
+<ul>
+<li><strong>Esgotar.</strong> Para Heaton e Terzian, esgotar gera desejo. Para Mackay, esgotar um produto de uso diário quebra o hábito. Rahal aceita esgotar se a reposição vier em duas semanas [1]. ETEL e Flamingo usam tiragem fechada [4][7].</li>
+<li><strong>Mídia paga cedo.</strong> Frank é orgânico até cerca de US$ 10 mi; o Nik escala um funil pago assim que o encontra [1]. A Nordic Knots roda cerca de 140 anúncios; a TIC deixou de anunciar em redes [2][4].</li>
+<li><strong>Programas de fidelidade.</strong> O Nik chama programa de pontos de "accounting liability"; a True Classic tem 100 mil membros pagos [1]. A RH vende cerca de 97% do principal a cerca de 262 mil membros que pagam US$ 200 por ano [3].</li>
+<li><strong>Loja como marketing.</strong> A True Classic aceita loja no zero a zero; a Rhone recusa a loja como chamariz que dá prejuízo [1]. A RH diz que os restaurantes das galerias rendem cerca de 65% do aluguel; a Interior Define abriu lojas com dívida [3][4].</li>
+<li><strong>Celebridade.</strong> O Nik prefere um painel de especialistas com nome e foto; a IM8 tem Beckham como sócio [1]. A Flamingo trabalha com Pamela Anderson e Jane Goodall [7].</li>
+</ul>
+<h2 id="o-que-o-material-não-cobre">O que o material não cobre</h2>
+<p>O digest quase não fala de venda consultiva, orçamento, produção sob encomenda, prazos de meses, ticket alto com compra única nem arquitetos. A exceção é uma linha do Nik sobre ofertas de primeira compra: para produto de ticket alto e baixa recompra, a oferta de entrada mira um ticket próximo do normal, não um produto de isca [1]. Para essas etapas, ver <a href="/negocio/pecas/">As peças, na ordem do funil</a>, seções 5, 8 e 10.</p>
+<h2 id="perguntas-para-a-more">Perguntas para a More</h2>
+<ol type="1">
+<li>Qual é o ângulo da More em uma frase, contra o que ela se posiciona, e essa frase aparece igual no Instagram, na loja e no WhatsApp?</li>
+<li>O Nik pede prova com pagamento antes de gastar. O que a More já sabe, com dinheiro de cliente, sobre quais das 24 peças vendem?</li>
+<li>A abertura de 05.11 é um dia ou uma sequência? O que acontece nas seis semanas antes e nas seis depois?</li>
+<li>Quem fala da More além da própria More, e o que essas pessoas dizem?</li>
+<li>Se a regra é "menos e melhor", alguma das 24 peças sairia do catálogo, e por quê?</li>
+<li>Qual é o número que a More acompanha toda semana: caixa, pedidos entregues, visitas à loja, conversas no WhatsApp?</li>
+<li>Das discordâncias acima (esgotar, mídia paga, fidelidade, loja, celebridade), em qual delas a More já tomou partido sem perceber?</li>
+</ol>
+<h2 id="fontes">Fontes</h2>
+<ol type="1">
+<li>Digest das anotações de e-commerce do Joao, lido em 16.10.2026: Nik Sharma, masterclass de lançamento (set/2026), newsletters (2023 a 2026) e checklist de 2025; os 40 episódios do podcast Open Residency.</li>
+<li><a href="/negocio/nordic-knots/">Nordic Knots</a>: Biblioteca de Anúncios do Meta (16.10.2026), Business of Home (27.03.2026).</li>
+<li><a href="/negocio/rh/">RH</a>: 10-K do ano fiscal 2025, carta de 09.2026, Speedwell (20.07.2023), Furniture Today (31.03.2016), Email Love.</li>
+<li><a href="/negocio/curtos/">Hem, The Invisible Collection, ETEL e Interior Define</a>: Hem (Fast Company, 02.09.2026), ETEL (etel.design), Interior Define (Horizon, 11.01.2022; Business of Home, 01.2023).</li>
+<li><a href="/negocio/trousseau/">Trousseau</a>: site e central de atendimento (16.10.2026), página Hotel &amp; Spa.</li>
+<li><a href="/negocio/sklum/">Sklum</a>: contas de 2025 via infoempresa, Trustpilot (16.10.2026), site.</li>
+<li><a href="/negocio/flamingo-estate/">Flamingo Estate</a>: Inc. (17.05.2026), Shopify Masters (07.04.2026), Email Love, site.</li>
+</ol>
+
+</article>
+
+<section class="mods" id="modulos" aria-label="Páginas desta seção"><div class="eyebrow">As 10 páginas desta seção</div><ol class="lst"><li><span class="n">00</span><p><a href="/negocio/">Comece aqui</a></p><span class="t">3 min</span></li><li><span class="n">01</span><p><a href="/negocio/rh/">RH</a></p><span class="t">12 min</span></li><li><span class="n">02</span><p><a href="/negocio/flamingo-estate/">Flamingo Estate</a></p><span class="t">12 min</span></li><li><span class="n">03</span><p><a href="/negocio/trousseau/">Trousseau</a></p><span class="t">12 min</span></li><li><span class="n">04</span><p><a href="/negocio/sklum/">Sklum</a></p><span class="t">12 min</span></li><li><span class="n">05</span><p><a href="/negocio/nordic-knots/">Nordic Knots</a></p><span class="t">12 min</span></li><li><span class="n">06</span><p><a href="/negocio/curtos/">Hem, The Invisible Collection, ETEL e Interior Define</a></p><span class="t">12 min</span></li><li><span class="n">07</span><p><a href="/negocio/pecas/">As peças, na ordem do funil</a></p><span class="t">12 min</span></li><li aria-current="page"><span class="n">08</span><p><a href="/negocio/lancamento/">Lançar uma marca: Nik Sharma e os experts</a></p><span class="t">8 min</span></li><li><span class="n">09</span><p><a href="/negocio/perguntas/">Perguntas para a mesa</a></p><span class="t">5 min</span></li></ol></section>
+
+</div>
+
+<footer><div class="wrap">
+  <p>Estudos de caso feitos com IA em 16.10.2026, a partir de fontes públicas e de visitas aos sites de cada marca. Cada número traz a fonte. As capturas são de páginas públicas, abertas no mesmo dia. Nada aqui diz o que a More deve fazer: os casos descrevem, as perguntas ficam com o time. Feito com o sistema de design da More.</p>
+</div></footer>
+</div>
+
+<div class="barzone"><div class="bar" aria-label="Navegação">
+  <a href="/" aria-label="Índice"><svg viewBox="0 0 272 69" role="img" aria-label="More" xmlns:c2pa="http://c2pa.org/manifest"><metadata><c2pa:manifest>AAAWgmp1bWIAAAAeanVtZGMycGEAEQAQgAAAqgA4m3EDYzJwYQAAABZcanVtYgAAAEdqdW1kYzJtYQARABCAAACqADibcQN1cm46YzJwYTozMzg3YWIyYy1hMWM1LTQ5Y2EtYmY5Ny00N2RiMjI3YmYwZWYAAAADl2p1bWIAAAApanVtZGMyYXMAEQAQgAAAqgA4m3EDYzJwYS5hc3NlcnRpb25zAAAAALxqdW1iAAAARGp1bWRjYm9yABEAEIAAAKoAOJtxE2MycGEuaW5ncmVkaWVudC52MwAAAAAYYzJzaAvejDJIOSNzaPAwHj7kaAAAAABwY2JvcqNpZGM6Zm9ybWF0bWltYWdlL3N2Zyt4bWxqaW5zdGFuY2VJRHgseG1wOmlpZDphMmQ3YjNhMC04Mzk1LTQ0MTUtYWFhNS04ZWFhYWM2ZjQ1YjFscmVsYXRpb25zaGlwaHBhcmVudE9mAAAB4mp1bWIAAABBanVtZGNib3IAEQAQgAAAqgA4m3ETYzJwYS5hY3Rpb25zLnYyAAAAABhjMnNoAWo9OMK4bgwwZanS+OWsagAAAZljYm9yomdhY3Rpb25zgqJmYWN0aW9ua2MycGEub3BlbmVkanBhcmFtZXRlcnOha2luZ3JlZGllbnRzgaJjdXJseC1zZWxmI2p1bWJmPWMycGEuYXNzZXJ0aW9ucy9jMnBhLmluZ3JlZGllbnQudjNkaGFzaFggWSobncfM24/WN0aREmJtsgGGyNu3mVlNb3PF1vaOaZWkZmFjdGlvbngdY29tLmFudGhyb3BpYy5jbGF1ZGUucHJvdmlkZWRqcGFyYW1ldGVyc6F4H2NvbS5hbnRocm9waWMub3JpZ2luLWNvbmZpZGVuY2VndW5rbm93bmtkZXNjcmlwdGlvbnhmQ2xhdWRlIHByb3ZpZGVkIHRoaXMgZmlsZSBhdCB0aGUgcmVxdWVzdCBvZiBhIHVzZXIgYW5kIG1heSBoYXZlIGNyZWF0ZWQgb3IgbW9kaWZpZWQgdGhlIGZpbGUgY29udGVudHMubXNvZnR3YXJlQWdlbnShZG5hbWVmQ2xhdWRlcmFsbEFjdGlvbnNJbmNsdWRlZPUAAADIanVtYgAAAEBqdW1kY2JvcgARABCAAACqADibcRNjMnBhLmhhc2guZGF0YQAAAAAYYzJzaGE4ixWuWp1iLg6wekWrKwQAAACAY2JvcqVjYWxnZnNoYTI1NmNwYWRNAAAAAAAAAAAAAAAAAGRoYXNoWCBiHjqZX82DROgQX7UaMEWiMeHylF9MCDlPFIRlXx33amRuYW1lbmp1bWJmIG1hbmlmZXN0amV4Y2x1c2lvbnOBomVzdGFydBh2Zmxlbmd0aBkeBAAAAj5qdW1iAAAAJ2p1bWRjMmNsABEAEIAAAKoAOJtxA2MycGEuY2xhaW0udjIAAAACD2Nib3KlY2FsZ2ZzaGEyNTZpc2lnbmF0dXJleE1zZWxmI2p1bWJmPS9jMnBhL3VybjpjMnBhOjMzODdhYjJjLWExYzUtNDljYS1iZjk3LTQ3ZGIyMjdiZjBlZi9jMnBhLnNpZ25hdHVyZWppbnN0YW5jZUlEeCx4bXA6aWlkOmU1NGExMTEzLTcyMzItNGM5Zi1hMWIwLTdlOTZjMDQzZWYzYnJjcmVhdGVkX2Fzc2VydGlvbnODomN1cmx4LXNlbGYjanVtYmY9YzJwYS5hc3NlcnRpb25zL2MycGEuaW5ncmVkaWVudC52M2RoYXNoWCBZKhudx8zbj9Y3RpESYm2yAYbI27eZWU1vc8XW9o5plaJjdXJseCpzZWxmI2p1bWJmPWMycGEuYXNzZXJ0aW9ucy9jMnBhLmFjdGlvbnMudjJkaGFzaFgg7+iOlXzN9fsl5dtomZi9dr38n5qn+jROtSMCZ/zZgOeiY3VybHgpc2VsZiNqdW1iZj1jMnBhLmFzc2VydGlvbnMvYzJwYS5oYXNoLmRhdGFkaGFzaFgg5dtuer2DYxW6ttFffBa8QryKsKlQ4VcBq6Dmm04/y9x0Y2xhaW1fZ2VuZXJhdG9yX2luZm+jZG5hbWVvQW50aHJvcGljIEZpbGVzZ3ZlcnNpb25lMS4wLjBrc3BlY1ZlcnNpb25lMi40LjAAABA4anVtYgAAAChqdW1kYzJjcwARABCAAACqADibcQNjMnBhLnNpZ25hdHVyZQAAABAIY2JvctKEWQISogEmGCFZAgowggIGMIIBjaADAgECAhRA5aAK7sI50L64g/oGQgU9Z1UTADAKBggqhkjOPQQDAzBJMRcwFQYDVQQKEw5BbnRocm9waWMsIFBCQzEuMCwGA1UEAxMlQW50aHJvcGljIENvbnRlbnQgQ3JlZGVudGlhbHMgUm9vdCBDQTAeFw0yNjA4MDcxODQzNTZaFw0yODA4MDYxOTQzNTZaMEQxFzAVBgNVBAoTDkFudGhyb3BpYywgUEJDMSkwJwYDVQQDEyBBbnRocm9waWMgQ2xhdWRlIENvbnRlbnQgU2lnbmluZzBZMBMGByqGSM49AgEGCCqGSM49AwEHA0IABJh6CmvLUBgFFNU0vUKlOVtE6djd17L5SuwX0LemFisBM3dkd/3cyjxFA3Qo5S46fX0/ihY0VZ7mfb9KF703t5OjWDBWMA4GA1UdDwEB/wQEAwIHgDAVBgNVHSUEDjAMBgorBgEEAYPoXgIBMAwGA1UdEwEB/wQCMAAwHwYDVR0jBBgwFoAUzlHiBIFOZFsj+OPEz5o+nMHXXMIwCgYIKoZIzj0EAwMDZwAwZAIwMXMdFJ4BetLLVY7ORuE9noqbbAZOZn/aArXyTwFAZfKrPzxF2vPoJNf1+UCdg1XGAjBwX1zd9WGqYkqmL5SFqw1QySjr1zJfpJM9+1rdDwSPLMOPOjKuiXjoU/pUUeG9RwmhY3BhZFkNngAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPZYQLNSdZSJ1Lb4KyXNjcHFt+dMD/kTbfSuk+KST65sHWF18sFBsDHhJT9XVfg3laI//fXetfblD/peX/vE5v8r43Y=</c2pa:manifest></metadata><path fill="currentColor" d="M176.593 23.0819V1.91833H150.317V66.5948H176.593V44.2791H205.243V1.91833C189.55 1.91833 177.465 13.093 176.593 23.0875V23.0819Z"/><path fill="currentColor" d="M111.007 0C91.875 0 76.3403 15.3302 76.3403 34.223C76.3403 53.1159 91.8693 68.4461 111.007 68.4461C130.145 68.4461 145.742 53.1159 145.742 34.223C145.742 15.3302 130.213 0 111.007 0ZM111.007 42.4334C106.43 42.4334 102.69 38.8036 102.69 34.2174C102.69 29.6313 106.435 26.0015 111.007 26.0015C115.579 26.0015 119.398 29.6984 119.398 34.2174C119.398 38.7365 115.653 42.4334 111.007 42.4334Z"/><path fill="currentColor" d="M35.919 19.6423L26.2764 1.91833H0V66.5948H26.2764V44.212H45.4936V66.5948H71.77V1.91833H45.4936L35.919 19.6423Z"/><path fill="currentColor" d="M272.002 1.87909H211.835V24.7541V34.7487V44.1783V66.5612H272.002V44.7376H238.219L255.669 34.7151L238.236 24.7541H272.002V1.87909Z"/></svg></a>
+  <nav><a href="/">[Índice]</a><a href="/negocio/">[Início]</a><a href="/negocio/perguntas/">[Perguntas]</a></nav>
+</div></div>
+<script>
+document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener('click',e=>{const t=document.querySelector(decodeURIComponent(a.getAttribute('href')));if(t){e.preventDefault();t.scrollIntoView({block:'start'});history.replaceState(null,'',a.getAttribute('href'));}});});
+if(location.hash){const t=document.querySelector(decodeURIComponent(location.hash));if(t)t.scrollIntoView({block:'start'});}
+</script>
+</body>
+</html>

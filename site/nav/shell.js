@@ -29,9 +29,9 @@
     {id:'catalogo',n:'7',s:'Catálogo',href:'/catalogo/',
      t:'Catálogo associativo',
      d:'As 24 peças por tipo, por ambiente, por material e por história. Uma direção para conversar.'},
-    {id:'negocio',n:'8',s:'Negócio',href:'/negocio/',
-     t:'Como a More cresce',
-     d:'Por que o arquiteto vende mais que o anúncio, o que escrever antes de 05.11 e oito casas para aprender.'}
+    {id:'negocio',n:'8',s:'Casos',href:'/negocio/',
+     t:'Estudos de caso',
+     d:'Nove casas parecidas com a More, desmontadas do anúncio à entrega, e o playbook de lançamento do Nik Sharma.'}
   ];
   var me=document.currentScript||document.querySelector('script[data-section]');
   if(me===null)return;

@@ -1,0 +1,458 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Nordic Knots · prazo curto e sob medida no mesmo seletor · Estudos de caso · More</title>
+<meta name="description" content="Uma marca sueca de tapetes feitos à mão na Índia que cresceu dez anos sem investidor e com lucro, repete o número do prazo do anúncio ao checkout e põe estoque, sob medida e amostra no mesmo controle da página do produto.">
+<link rel="icon" href="data:,">
+<link rel="stylesheet" href="/nav/shell.css">
+<style>
+@font-face{font-family:"Muoto";src:url("/fonts/mr.otf") format("opentype");font-weight:400;font-display:swap}
+@font-face{font-family:"MuotoMono";src:url("/fonts/mm.woff2") format("woff2");font-weight:400;font-display:swap}
+/* Tokens do sistema de design da More (/sistema/brand/generated/tokens.css). Página de marca: paleta clara nos dois temas. */
+:root{
+  color-scheme:light;
+  --page:#E5E1DB; --ink:#2D211E; --muted:#5D554F; --label:#686868; --rule:#2D211E1A; --glass:#2D211E1A; --tile:#DDD7CF; --inverse:#2D211E; --on-inverse:#E5E1DB;
+  --muoto:"Muoto","DM Sans","Helvetica Neue",Arial,sans-serif;
+  --mono:"MuotoMono","Martian Mono",ui-monospace,Menlo,monospace;
+  --s-hair:6px; --s-sm:10px; --s-md:16px; --s-lg:20px; --s-xl:30px; --s-2xl:40px; --s-3xl:60px; --s-sec:96px;
+  --bar:35px; --barzone:75px;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--page:#E5E1DB;--ink:#2D211E;--muted:#5D554F;--rule:#2D211E1A;--glass:#2D211E1A;--tile:#DDD7CF;color-scheme:light}}
+:root[data-theme="dark"]{--page:#E5E1DB;--ink:#2D211E;--muted:#5D554F;--rule:#2D211E1A;--glass:#2D211E1A;--tile:#DDD7CF;color-scheme:light}
+*{box-sizing:border-box}
+html,body{height:100%}
+body{background:var(--page);color:var(--ink);font-family:var(--muoto);font-size:15px;line-height:1.47;-webkit-font-smoothing:antialiased;margin:0;overflow:hidden}
+/* A página rola dentro de .page; a barra vive numa faixa própria embaixo e nunca cobre texto. */
+.page{height:calc(100% - var(--barzone));overflow-y:auto;overflow-x:hidden;scroll-behavior:smooth;overscroll-behavior:contain;padding-bottom:106px}
+.wrap{max-width:1120px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:0 var(--s-3xl)}
+.mono{font-family:var(--mono);font-stretch:75%;font-size:13px}
+.muted{color:var(--muted)}
+.label{color:var(--label)}
+a{color:inherit;text-underline-offset:3px;text-decoration-thickness:1px;overflow-wrap:anywhere}
+a:hover{color:var(--muted)}
+h1,h2,h3{font-weight:400;text-wrap:balance;margin:0}
+h2{font-size:clamp(26px,3.4vw,32px);line-height:1.05;margin-bottom:var(--s-lg)}
+h3{font-size:15px;margin-bottom:4px}
+p{margin:0 0 var(--s-sm);max-width:64ch;text-wrap:pretty}
+section{padding-top:var(--s-sec)}
+.eyebrow{font-family:var(--mono);font-stretch:75%;font-size:13px;color:var(--label);margin-bottom:var(--s-md)}
+img{max-width:100%}
+b{font-weight:400}
+.tag{font-family:var(--mono);font-stretch:75%;font-size:11px;color:var(--label);white-space:nowrap}
+.tag.open{color:var(--ink)}
+.meas .tag{white-space:normal}
+
+/* abertura */
+.abre{padding-top:var(--s-3xl);display:grid;gap:var(--s-md)}
+.abre h1{font-size:clamp(34px,5.2vw,58px);line-height:.98;letter-spacing:-.01em;max-width:18ch}
+.abre .lede{font-size:clamp(18px,2vw,22px);line-height:1.25;margin:0;max-width:34ch}
+.meta{display:flex;flex-wrap:wrap;gap:6px var(--s-lg);margin-top:var(--s-sm)}
+
+/* tabelas */
+.meas{overflow-x:auto;margin-top:var(--s-lg)}
+.meas table{border-collapse:collapse;width:100%;min-width:760px;font-size:14px}
+.meas th{font-family:var(--mono);font-stretch:75%;font-weight:400;font-size:12px;color:var(--label);text-align:left;padding:8px;border-bottom:1px solid var(--ink)}
+.meas td{padding:10px 8px;border-bottom:1px solid var(--rule);vertical-align:top}
+.meas td:first-child{width:18%}
+.meas tr.grp td{font-family:var(--mono);font-stretch:75%;font-size:12px;color:var(--label);padding-top:var(--s-lg);border-bottom:1px solid var(--ink)}
+@media(max-width:700px){.meas table{min-width:0}.meas thead{display:none}.meas tr{display:block;padding:12px 0;border-bottom:1px solid var(--ink)}.meas tr.grp{padding:var(--s-lg) 0 4px}.meas td{display:block;padding:2px 0;border:0;width:auto!important}.meas td:first-child{font-size:16px;margin-bottom:4px}.meas td[data-l]::before{content:attr(data-l);display:block;font-family:var(--mono);font-stretch:75%;font-size:11px;color:var(--label);margin-top:6px}}
+
+/* riscos e perguntas */
+.lst{list-style:none;margin:var(--s-lg) 0 0;padding:0;border-top:1px solid var(--ink)}
+.lst li{display:grid;grid-template-columns:4ch minmax(0,1fr);gap:8px 16px;padding:12px 0;border-bottom:1px solid var(--rule);font-size:15px}
+.lst .n{font-family:var(--mono);font-stretch:75%;font-size:12px;color:var(--label);padding-top:3px}
+.lst p{margin:0;max-width:70ch}
+.lst p b{display:block}
+.lst .how{font-family:var(--mono);font-stretch:75%;font-size:12px;color:var(--label);margin-top:4px}
+
+/* barra, em faixa própria */
+.barzone{height:var(--barzone);position:relative;background:var(--page)}
+.bar{position:absolute;left:50%;transform:translateX(-50%);top:20px;width:420px;max-width:calc(100vw - 32px);height:var(--bar);background:var(--glass);backdrop-filter:blur(13px);-webkit-backdrop-filter:blur(13px);display:flex;align-items:center;justify-content:space-between;padding:0 var(--s-sm)}
+.bar svg{width:56px;height:auto;display:block;fill:currentColor}
+.bar nav{display:flex;gap:8px}
+.bar a{font-family:var(--mono);font-stretch:75%;font-size:13px;text-decoration:none;white-space:nowrap}
+.bar a:hover,.bar a:focus-visible{color:var(--muted)}
+@media(max-width:560px){.bar nav a{font-size:11px}.bar nav{gap:4px}}
+footer{background:var(--inverse);color:var(--on-inverse);margin-top:var(--s-sec)}
+footer .wrap{padding-block:var(--s-2xl)}
+footer p{font-size:13px;max-width:70ch}
+:focus-visible{outline:1px solid var(--ink);outline-offset:2px}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important;scroll-behavior:auto!important}}
+
+/* oitava seção: texto longo convertido do pacote */
+.doc{padding-top:var(--s-2xl)}
+.doc h2{padding-top:var(--s-3xl);scroll-margin-top:16px}
+.doc h3{font-size:clamp(17px,1.8vw,20px);line-height:1.2;margin:var(--s-xl) 0 var(--s-sm);scroll-margin-top:16px}
+.doc h4{font-family:var(--mono);font-stretch:75%;font-weight:400;font-size:12px;color:var(--label);margin:var(--s-lg) 0 6px}
+.doc p,.doc li{font-size:16px;line-height:1.5}
+.doc p{max-width:68ch}
+.doc strong{font-weight:400;color:var(--ink)}
+.doc p>strong:first-child{font-family:var(--mono);font-stretch:75%;font-size:13px;color:var(--label);margin-right:4px}
+.doc em{font-style:italic}
+.doc ul,.doc ol{max-width:68ch;padding-left:20px;margin:0 0 var(--s-md)}
+.doc li{margin-bottom:6px}
+.doc li>p{margin:0}
+.doc hr{border:0;border-top:1px solid var(--ink);margin:var(--s-2xl) 0 0}
+.doc blockquote{margin:var(--s-lg) 0;padding:var(--s-lg);background:var(--glass);max-width:68ch}
+.doc blockquote p{font-size:clamp(17px,1.8vw,20px);line-height:1.3;margin:0}
+.doc pre{font-family:var(--mono);font-stretch:75%;font-size:13px;line-height:1.5;background:var(--glass);padding:var(--s-md) var(--s-lg);overflow-x:auto;max-width:100%;white-space:pre}
+.doc code{font-family:var(--mono);font-stretch:75%;font-size:.88em}
+.doc .meas table{min-width:640px}
+.doc .meas td:first-child{width:auto}
+.doc .meas td,.doc .meas th{font-size:14px;line-height:1.4}
+.doc .meas th{font-size:12px}
+.doc .meas img{display:block;margin-bottom:6px}
+.doc img{height:auto;display:block;border:1px solid var(--rule)}
+.doc h3+p>a>img,.doc h3+p>img{margin:var(--s-sm) 0}
+.doc-atlas h3{padding-top:var(--s-xl);border-top:1px solid var(--ink)}
+@media(max-width:700px){.doc .meas:not(.grid) table{min-width:0}.doc .meas:not(.grid) thead{display:none}.doc .meas:not(.grid) tr{display:block;padding:12px 0;border-bottom:1px solid var(--ink)}.doc .meas:not(.grid) td{display:block;padding:2px 0;border:0}.doc .meas:not(.grid) td:first-child{font-size:16px}.doc .meas:not(.grid) td[data-l]:not(:first-child)::before{content:attr(data-l);display:block;font-family:var(--mono);font-stretch:75%;font-size:11px;color:var(--label);margin-top:6px}.doc .meas.grid table{min-width:560px}.doc .meas.grid td,.doc .meas.grid th{padding:8px 6px}}
+.mods{padding-top:var(--s-sec)}
+.mods .lst li{grid-template-columns:4ch minmax(0,1fr) auto;align-items:baseline}
+.mods .lst p{font-size:17px}
+.mods .lst a{text-decoration:none}
+.mods .lst a:hover{text-decoration:underline}
+.mods .lst .t{font-family:var(--mono);font-stretch:75%;font-size:12px;color:var(--label)}
+.mods li[aria-current] p a{text-decoration:underline}
+.mods li[aria-current] .n::after{content:" ·"}
+.doc hr+h3{border-top:0}
+@media(max-width:700px){.doc .meas.grid{overflow-x:auto}.doc .meas.grid table{display:table;min-width:560px}.doc .meas.grid thead{display:table-header-group}.doc .meas.grid tr{display:table-row;padding:0}.doc .meas.grid td{display:table-cell;border-bottom:1px solid var(--rule);font-size:14px}.doc .meas.grid td::before{content:none!important}.doc .meas.grid td:first-child{font-size:13px;white-space:nowrap}}
+
+</style>
+</head>
+<body><script src="/nav/shell.js" data-section="negocio" data-into=".page" data-foot="on" defer></script>
+<div class="page" id="page">
+<div class="wrap">
+
+<header class="abre" id="topo">
+  <div class="eyebrow">More · Estudos de caso · Nordic Knots · 16.10.2026</div>
+  <h1>Nordic Knots · prazo curto e sob medida no mesmo seletor</h1>
+  <p class="lede">Uma marca sueca de tapetes feitos à mão na Índia que cresceu dez anos sem investidor e com lucro, repete o número do prazo do anúncio ao checkout e põe estoque, sob medida e amostra no mesmo controle da página do produto.</p>
+  <div class="meta mono label"><span>Para Fred, Edu e Vitor</span><span>Estudos de caso, sem recomendação</span><span>Leitura: 12 min</span></div>
+</header>
+
+<article class="doc doc-nordic-knots">
+
+<p>A Nordic Knots é, entre os casos deste pacote, a que mais se parece com a More no problema central: vender uma peça feita à mão, em parte sob encomenda, para uma cliente que precisa saber quando ela chega. A marca resolveu isso tornando o prazo curto e dizendo esse prazo em toda parte. Os números entre colchetes remetem às fontes no fim da página. Onde um número é conta feita a partir das fontes, o texto diz "cálculo"; onde é dedução, diz "inferência".</p>
+<h2 id="em-uma-linha-e-em-números">Em uma linha e em números</h2>
+<p>Tapetes desenhados em Estocolmo e feitos à mão na Índia, vendidos sobretudo online e nos Estados Unidos. A empresa ficou dez anos sem investidor, com lucro, e em 03.2026 captou cerca de US$ 100 mi para abrir lojas [1][2].</p>
+<div class="meas"><table>
+<thead>
+<tr class="header">
+<th>Item</th>
+<th>Dado</th>
+<th>Fonte · data</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-l="Item">Fundação</td>
+<td data-l="Dado">2016; empresa registrada em 07.11.2016 (Nordic Knots AB)</td>
+<td data-l="Fonte · data">[6]; [1] 27.03.2026</td>
+</tr>
+<tr class="even">
+<td data-l="Item">Quem fundou</td>
+<td data-l="Dado">Fabian Berglund (CEO), a mulher dele, Liza Laserow Berglund (diretora criativa), e o irmão dele, Felix Berglund (hoje conselheiro)</td>
+<td data-l="Fonte · data">[1]; [8] 02.04.2026</td>
+</tr>
+<tr class="odd">
+<td data-l="Item">Sede</td>
+<td data-l="Dado">Estocolmo, num endereço que também é loja</td>
+<td data-l="Fonte · data">[11] 16.10.2026</td>
+</tr>
+<tr class="even">
+<td data-l="Item">Faturamento</td>
+<td data-l="Dado">Grupo em 2024: SEK 377 mi (+50%), lucro após resultado financeiro de ~SEK 75 mi (+64%). Doze meses antes de 03.2026: ~SEK 670 mi. Crescimento médio acima de 60% ao ano em três anos. 2025: +85% sobre 2024, segundo o CEO. Meta para 2026: acima de US$ 100 mi</td>
+<td data-l="Fonte · data">[7] 28.08.2025; [3] 02.04.2026; [2] 26.03.2026</td>
+</tr>
+<tr class="odd">
+<td data-l="Item">Margem</td>
+<td data-l="Dado">Só a empresa-mãe sueca, sem a subsidiária americana: em 2025, receita de SEK 355,7 mi e lucro líquido de SEK 87,7 mi; margem de lucro de 31,2% (31,8% em 2024). A margem do grupo não se sabe</td>
+<td data-l="Fonte · data">[6] exercício 12.2025</td>
+</tr>
+<tr class="even">
+<td data-l="Item">Equipe</td>
+<td data-l="Dado">32 funcionários na empresa-mãe (ano não indicado)</td>
+<td data-l="Fonte · data">[6]</td>
+</tr>
+<tr class="odd">
+<td data-l="Item">Mercados</td>
+<td data-l="Dado">EUA com cerca de 69% das vendas; depois Reino Unido, França e Suécia</td>
+<td data-l="Fonte · data">[3] 02.04.2026; [9] 2024 dá 70%</td>
+</tr>
+<tr class="even">
+<td data-l="Item">Lojas</td>
+<td data-l="Dado">3 próprias (Nova York, Londres, Estocolmo) e 2 concessões (Harvey Nichols, em Londres; Le Bon Marché, em Paris). Los Angeles foi anunciada para 06.2026 e não aparecia na página de lojas em 16.10.2026</td>
+<td data-l="Fonte · data">[11]; [2]; [25]</td>
+</tr>
+<tr class="odd">
+<td data-l="Item">Ticket</td>
+<td data-l="Dado">Faixa de US$ 495 a US$ 5.000; a maior parte entre US$ 800 e US$ 2.000</td>
+<td data-l="Fonte · data">[2] 26.03.2026</td>
+</tr>
+<tr class="even">
+<td data-l="Item">Prazo</td>
+<td data-l="Dado">Estoque: 3 a 6 dias úteis. Tapete sob medida: 2 a 4 semanas. Cortina sob medida: 1 a 3 semanas</td>
+<td data-l="Fonte · data">[12] 16.10.2026</td>
+</tr>
+<tr class="odd">
+<td data-l="Item">Pagamento</td>
+<td data-l="Dado">100% no pedido (cartão, Apple Pay, Google Pay, Affirm parcelado); sem sinal</td>
+<td data-l="Fonte · data">[12]</td>
+</tr>
+<tr class="even">
+<td data-l="Item">Canais</td>
+<td data-l="Dado">Site próprio, lojas, profissionais (cerca de 30% da base), concessões em lojas de departamento; também à venda em DWR, SSENSE e 1stdibs</td>
+<td data-l="Fonte · data">[1]; [11]; [26]</td>
+</tr>
+<tr class="odd">
+<td data-l="Item">Investidores</td>
+<td data-l="Dado">Primeira captação, de cerca de US$ 100 mi, minoritária, liderada pela Imaginary Ventures (Natalie Massenet), com Creades, Iris Ventures e St. Dominique Capital. Valuation não divulgado</td>
+<td data-l="Fonte · data">[1]; [2] 03.2026</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="história-curta">História curta</h2>
+<p><strong>2016, Nova York.</strong> O casal morava em Nova York e não achava tapete: "havia muito para escolher, mas poucas marcas em que você sentisse que podia confiar", disse Fabian à Monocle [4]. A ideia veio numas férias em Greenport, Long Island [5]. Liza vinha do direito e do antiquário da família; Fabian, da publicidade; Felix, do pôquer profissional e do e-commerce [5][10]. O lugar que escolheram fica entre o tapete barato e ruim e o feito à mão, caro e demorado: "Gostamos de estar em algum lugar entre os dois" [1].</p>
+<p><strong>2016 a 2021, fora do horário.</strong> Fabian passou cerca de cinco anos no emprego de publicidade, tocando a marca à noite: "queríamos um projeto para tocar em família" [8]. Os três se mudaram para Estocolmo e abriram um ateliê. A pandemia acelerou as vendas [1]. A primeira colaboração com um designer de fora, Campbell-Rey, saiu em 2021 [8].</p>
+<p><strong>2023, a primeira loja.</strong> Sete anos depois da fundação, a marca abriu a loja de Estocolmo num antigo cinema, com projeto do Studio Giancarlo Valle [11][27]. No mesmo ano lançou cortinas feitas em tecelagens italianas [8].</p>
+<p><strong>2024, Nova York.</strong> Loja de cerca de 140 m² na Greene Street, no SoHo, inaugurada em 06.2024, também de Giancarlo Valle [9][7]. Nesse ano a receita do grupo passou de SEK 377 mi [7].</p>
+<p><strong>2025 e 2026, de tapete a casa.</strong> Vieram roupa de cama, mantas e cabeceiras (09.2025), um apartamento-loja em Mayfair (10.2025), tecido a metro e carpete de parede a parede [8][11][13]. A captação saiu em 03.2026, depois de cerca de cinco anos recusando investidores: "Agora queremos andar um pouco mais rápido", disse Fabian [1]. Em 2026 vieram ainda as concessões na Harvey Nichols (07.2026) e no Le Bon Marché, e a certificação B Corp [11][13].</p>
+<p><strong>Atritos registrados.</strong> Não há relato público de crise. Dois atritos aparecem no próprio site: um preço sem unidade nos cards de sob medida e a mudança na política de devolução, que passou a cobrar taxa (ambos descritos abaixo). A loja de Los Angeles estava prevista para junho [2] e ainda não estava na lista de lojas em 16.10.2026.</p>
+<h2 id="como-ganha-dinheiro">Como ganha dinheiro</h2>
+<p><strong>Mix.</strong> O site abre com "Rugs, Curtains, Bedding &amp; Decor" [14]. Em 2025 o tapete ainda era o centro, e a coleção Grand era a mais vendida [4]. A divisão da receita por categoria não se sabe.</p>
+<p><strong>Produção.</strong> Os tapetes são feitos à mão em Bhadohi, na Índia, com lã da Nova Zelândia e certificação GoodWeave, que atesta trabalho adulto. Os tecidos vêm de tecelagens italianas entre Milão e o lago de Como [4][15][16]. As fábricas são de terceiros, com código de fornecedor e auditoria [16]. O Grand é tecido em tear manual, não atado nó a nó; a linha Savanna é de nó à mão [15][14].</p>
+<p><strong>Estoque e sob medida no mesmo produto.</strong> O tamanho padrão sai do estoque, de um armazém na Geórgia, nos Estados Unidos, em 3 a 6 dias úteis, e o seletor mostra o estoque por tamanho ("Only 1 left") [15]. O sob medida, de 5 a 15 pés, é tecido depois do pedido e sai em 2 a 4 semanas [17].</p>
+<p><strong>Preço.</strong> O Grand Walnut padrão custa US$ 995 em 5'×8', US$ 2.595 em 9'×12' e US$ 3.995 em 12'×15' [15]. O sob medida mínimo (5'×6') custa US$ 1.035,40 [17]. Cálculo: são US$ 34,5 por pé quadrado no sob medida mínimo, contra US$ 24,9 no 5'×8' e US$ 24,0 no 9'×12'. No tamanho de entrada, o sob medida sai cerca de 39% mais caro por área. As colaborações com designers começam em US$ 1.195 a US$ 1.495 [14][28].</p>
+<p><strong>Frete.</strong> Grátis no território continental dos Estados Unidos. Expresso, frete de carga e entrega com montagem são pagos [12].</p>
+<p><strong>Devolução.</strong> São 30 dias, com taxa de US$ 39 por item (US$ 89 para tapete acima de 8'×10'), descontada do reembolso. Sob medida, amostra, carpete, cortina sob medida e tecido a metro não se devolvem. Pedido confirmado não se cancela nem se altera [12].</p>
+<p><strong>Amostra.</strong> Um recorte de 8"×8" do próprio tapete custa US$ 12 e não tem devolução. Aparece como primeiro "tamanho" no seletor e como botão ao lado do "Add to cart" no sob medida [15][17]. Para profissionais, é grátis [18].</p>
+<p><strong>Profissionais.</strong> O programa PRO dá desconto em todos os produtos (o percentual não é publicado), amostras grátis, frete expresso, gerente de conta, isenção de imposto e outras formas de pagamento, com aprovação em 24 horas [18]. Designers são cerca de 30% da base [1]. O preço de profissional vale "online, in store, or through your account manager" [18].</p>
+<p><strong>Assinatura.</strong> Não há. <strong>Mídia paga:</strong> há anúncios ativos no Meta; o orçamento não se sabe.</p>
+<h2 id="o-funil-etapa-por-etapa">O funil, etapa por etapa</h2>
+<h3 id="pré-lançamento">Pré-lançamento</h3>
+<p>Não há registro público de lista de espera nem de pré-venda em 2016. A matéria mais antiga encontrada é da Interior Design, de 13.03.2018 [29].</p>
+<h3 id="descoberta">Descoberta</h3>
+<p>A página de imprensa da marca lista 62 matérias de 10.2021 a 09.2026, de Vogue, NYT, FT, AD, Wallpaper*, WWD e The Guardian, entre outras [13]. A Vogue a chamou de "Fashion's Favorite Rug Brand" em 25.09.2025 [13].</p>
+<p>Na Biblioteca de Anúncios do Meta (EUA), em 16.10.2026, a busca por "nordic knots" dava cerca de 140 resultados. Os 30 primeiros eram todos da página da marca, rodando em Facebook, Instagram, Messenger e Threads, com início em 22.06.2026 (14 anúncios), agosto, setembro e outubro. O texto repete o prazo: "Free delivery in 3–6 days", "Made-to-measure rugs in just 2–4 weeks", "Custom-made curtains… in only 1-3 weeks". Há peças com nome de designer, como "Eagle + Hodges for Nordic Knots" [19].</p>
+<p><img loading="lazy" src="/negocio/img/ref-nordicknots-anuncios-meta-desktop-20261016.jpg" alt="Biblioteca de Anúncios do Meta, EUA, 16.10.2026: anúncios das coleções Grand, Park, Boho e de juta, todos fechando com &quot;Free delivery in 3–6 days&quot;, e um da colaboração Eagle + Hodges" /></p>
+<p>O argumento do anúncio é o prazo, não o preço. Nenhum dos 30 anúncios lidos oferecia cupom.</p>
+<h3 id="página-inicial">Página inicial</h3>
+<p><img loading="lazy" src="/negocio/img/ref-nordicknots-home-desktop-20261016.jpg" alt="Home no computador: a faixa &quot;Free standard delivery in 3-6 business days&quot; no topo, o título &quot;Rugs, Curtains, Bedding &amp; Decor&quot; ao lado de um vídeo de quarto e &quot;Pro Account&quot; no menu principal, junto das categorias" /></p>
+<p>O prazo aparece antes de qualquer produto, numa faixa fixa que acompanha todas as páginas. O título diz o que a marca vende. Depois vem um carrossel de tapetes com "From $" em cada card. O profissional tem entrada no menu principal, no mesmo nível das categorias [14].</p>
+<h3 id="coleção-e-página-do-produto">Coleção e página do produto</h3>
+<p>A coleção tem fundo neutro, fotos de ambiente intercaladas e o preço "From $995.00" no card [20].</p>
+<p><img loading="lazy" src="/negocio/img/ref-nordicknots-pdp-tamanho-estoque-prazo-desktop-20261016.jpg" alt="Página do Grand Walnut com o seletor aberto: &quot;8&quot;x8&quot; (sample)&quot; como primeira opção, oito tamanhos de estoque com &quot;Available now&quot; ou &quot;Only 1 left&quot; e, por último, &quot;Custom size · Lead time 2-4 weeks&quot;" /></p>
+<p>O seletor de tamanho junta quatro informações: a amostra, a disponibilidade por tamanho, os tamanhos de estoque e o sob medida com o prazo. Ninguém precisa sair da página para descobrir que existe tamanho especial nem quanto tempo ele leva. Abaixo vêm o parcelamento ("As low as <span class="math inline">$63/mo"), o aviso de que a coleção é feita "in small batches", acordeões com detalhes, cuidados, frete, devolução e ficha técnica para baixar, a venda casada de base antiderrapante (US$</span> 59 a 69) e fotos de ambiente com legenda de lugar ("Grand Walnut, Soho Loft, New York") [15].</p>
+<p><img loading="lazy" src="/negocio/img/ref-nordicknots-sobmedida-prazo-preco-desktop-20261016.jpg" alt="Página de sob medida: título &quot;Made-to-measure rugs in 2-4 weeks&quot;, selo &quot;2-4 WEEKS&quot; em cada card, a régua &quot;Order samples · Free design consultation · Chat with a specialist · Measuring advice&quot; e preços &quot;From $0.22&quot; sem unidade" /></p>
+<p>A categoria de sob medida tem o prazo no título e em cada card, e explica o processo em três passos: medir, artesão, entrega em 2 a 4 semanas [17]. Na madrugada de 16.10.2026 os cards mostravam "From $0.22" e "From $0.15", sem unidade; às 13h57 o mesmo card mostrava "From $1,035.40". A unidade do preço baixo não é informada.</p>
+<p><img loading="lazy" src="/negocio/img/ref-nordicknots-pdp-sobmedida-amostra-desktop-20261016.jpg" alt="Produto sob medida: formato, largura e comprimento em pés e polegadas, preço de US$ 1.035,40 ao lado de &quot;Free delivery in 2-4 weeks&quot;, o botão &quot;+ Rug sample $12.00&quot; e os atalhos &quot;Free design consultation&quot; e &quot;Chat with a specialist&quot;" /></p>
+<p>O preço recalcula conforme a medida e fica ao lado do prazo. Amostra, consulta e chat estão no mesmo bloco do botão de compra, e a dúvida de quem vai encomendar tem resposta antes do checkout. O mínimo é de 5 pés e o máximo de 15 [17].</p>
+<h3 id="contato-e-consulta">Contato e consulta</h3>
+<p>A página "Services" oferece quatro consultas: digital, em loja, em casa (só em Estocolmo) e para profissionais. Sobre o custo, a resposta é "complimentary, with no purchase required" [21]. A central de ajuda tem e-mail, telefone em Nova York com horário e chat [22]. Pedidos especiais são respondidos "within 24 hours (Monday - Friday)" [17].</p>
+<p><img loading="lazy" src="/negocio/img/ref-nordicknots-consulta-gratis-desktop-20261016.jpg" alt="Bloco &quot;Pro consultation&quot;: agendamento nas lojas de Nova York, Londres e Estocolmo e, abaixo, &quot;What is the cost? Our consultations are complimentary, with no purchase required&quot;" /></p>
+<p><img loading="lazy" src="/negocio/img/ref-nordicknots-pro-24h-desktop-20261016.jpg" alt="Programa PRO em três passos: Apply, Get approved (&quot;confirm within 24 hours&quot;) e Start purchasing, com preço de profissional &quot;online, in store, or through your account manager&quot;" /></p>
+<p>O desconto de profissional existe, mas o percentual não é público. O que a página vende é velocidade (24 horas) e, mais abaixo, uma galeria de projetos com crédito ao escritório: Studio Giancarlo Valle, Fabrizio Casiraghi, Hollie Bowden, Hôtel Il Pellicano [18].</p>
+<h3 id="captura-de-e-mail">Captura de e-mail</h3>
+<p><img loading="lazy" src="/negocio/img/ref-nordicknots-popup-email-desktop-20261016.jpg" alt="Pop-up &quot;Be first in line&quot; sobre a página do produto: &quot;Sign up to get first access to limited collections, special collaborations, and private offers, before they sell out&quot;, sem desconto" /></p>
+<p>O pop-up abre segundos depois de entrar na página do produto. A troca proposta é acesso antecipado e escassez, não cupom de primeira compra. O rodapé repete o formulário. Os e-mails enviados depois do cadastro não foram vistos; o FAQ confirma dois e-mails de pedido, a confirmação e o rastreio na expedição [12].</p>
+<h3 id="carrinho-e-checkout">Carrinho e checkout</h3>
+<p>O carrinho abre como gaveta lateral, com oferta de base para o tapete no mesmo tamanho (US$ 89 a 99 para 5'×8') e frete padrão grátis.</p>
+<p><img loading="lazy" src="/negocio/img/ref-nordicknots-checkout-desktop-20261016.jpg" alt="Checkout, primeira tela: a caixa &quot;Email me with news and offers&quot; já marcada, endereço e telefone obrigatórios, empresa opcional e, ao lado, resumo do pedido, campo de cupom e três garantias (envio, devolução em 30 dias, atendimento com horário)" /></p>
+<p>O checkout tem uma página só. A inscrição na newsletter vem marcada por padrão. A garantia de devolução já avisa, ali mesmo, que amostras, tapetes sob medida e cortinas ficam de fora [23]. A navegação parou nesta tela.</p>
+<h3 id="pós-compra">Pós-compra</h3>
+<p>A devolução tem portal próprio, com a taxa calculada por item. Pedidos anteriores a 05.03 seguem o processo antigo, o que indica que a política mudou em 03.2026 (inferência). Há páginas de cuidados e guia de tamanhos. A embalagem de volta não é fornecida [12].</p>
+<h3 id="loja-física-e-conteúdo">Loja física e conteúdo</h3>
+<p><img loading="lazy" src="/negocio/img/ref-nordicknots-lojas-desktop-20261016.jpg" alt="Página da loja de Nova York: endereço na Greene Street, &quot;Open for walk-ins and appointments&quot;, horário de segunda a domingo, botão &quot;Book consultation&quot; e foto de amostras penduradas em trilho sobre uma mesa de trabalho" /></p>
+<p>Cada loja tem texto próprio. Nova York aceita quem chega sem hora marcada [9][11]. Londres é um apartamento no segundo andar da Mount Street, onde é preciso tocar a campainha. Estocolmo funciona no antigo cinema. Todas têm botão para agendar consulta [11].</p>
+<p><img loading="lazy" src="/negocio/img/ref-nordicknots-editorial-fw26-desktop-20261016.jpg" alt="Campanha Fall Winter 26: vídeo com uma caixa de fósforos escrita &quot;Look for the moiré pillow&quot; e o texto &quot;New York knows a thing or two about a well-dressed room&quot;" /></p>
+<p>O conteúdo vem em campanhas, histórias e lookbook. A campanha FW26 se passa no Upper East Side ("Old-school decorating, with new rules") e lista os produtos novos logo abaixo do texto [30]. As colaborações com designers formam uma linha de produto, com página e anúncio próprios: Giancarlo Valle, Campbell-Rey, Studio MRS, Eagle + Hodges, Garance Vallée e Studio Mellone. Esta última é de Andre Mellone, designer brasileiro radicado em Nova York: quatro tapetes a partir de US$ 1.495, inspirados no modernismo brasileiro e no art déco [13][14][28].</p>
+<h2 id="peças-atômicas">Peças atômicas</h2>
+<div class="meas"><table>
+<thead>
+<tr class="header">
+<th>Etapa</th>
+<th>Peça</th>
+<th>O que é, com exemplo real</th>
+<th>Fonte / captura</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-l="Etapa">Descoberta</td>
+<td data-l="Peça">Anúncio de prazo</td>
+<td data-l="O que é, com exemplo real">"Made-to-measure rugs in just 2–4 weeks… Free shipping on all orders"</td>
+<td data-l="Fonte / captura">[19] · anuncios-meta</td>
+</tr>
+<tr class="even">
+<td data-l="Etapa">Descoberta</td>
+<td data-l="Peça">Colaboração assinada</td>
+<td data-l="O que é, com exemplo real">Studio Mellone, 4 tapetes, em Wallpaper*, Galerie, Elle Decor e AD (02 a 05.2026)</td>
+<td data-l="Fonte / captura">[13][28]</td>
+</tr>
+<tr class="odd">
+<td data-l="Etapa">Página inicial</td>
+<td data-l="Peça">Faixa de prazo</td>
+<td data-l="O que é, com exemplo real">"Free standard delivery in 3-6 business days" no topo de todas as páginas</td>
+<td data-l="Fonte / captura">home-desktop</td>
+</tr>
+<tr class="even">
+<td data-l="Etapa">Produto</td>
+<td data-l="Peça">Seletor com estoque e prazo</td>
+<td data-l="O que é, com exemplo real">"8"x8" (sample)" … "Only 1 left" … "Custom size · Lead time 2-4 weeks"</td>
+<td data-l="Fonte / captura">pdp-tamanho-estoque-prazo</td>
+</tr>
+<tr class="odd">
+<td data-l="Etapa">Produto</td>
+<td data-l="Peça">Amostra paga</td>
+<td data-l="O que é, com exemplo real">Recorte de 8"×8" por US$ 12, sem devolução; grátis para profissional</td>
+<td data-l="Fonte / captura">[15][18] · pdp-sobmedida-amostra</td>
+</tr>
+<tr class="even">
+<td data-l="Etapa">Produto</td>
+<td data-l="Peça">Ficha técnica</td>
+<td data-l="O que é, com exemplo real">Acordeão com "Download tearsheet"</td>
+<td data-l="Fonte / captura">[15]</td>
+</tr>
+<tr class="odd">
+<td data-l="Etapa">Produto</td>
+<td data-l="Peça">Legenda com lugar</td>
+<td data-l="O que é, com exemplo real">"Grand Walnut, Soho Loft, New York"; no PRO, com o nome do escritório</td>
+<td data-l="Fonte / captura">[15][18]</td>
+</tr>
+<tr class="even">
+<td data-l="Etapa">Contato</td>
+<td data-l="Peça">Consulta grátis</td>
+<td data-l="O que é, com exemplo real">4 tipos; "complimentary, with no purchase required"</td>
+<td data-l="Fonte / captura">[21] · consulta-gratis</td>
+</tr>
+<tr class="odd">
+<td data-l="Etapa">Contato</td>
+<td data-l="Peça">Programa profissional</td>
+<td data-l="O que é, com exemplo real">3 passos, aprovação em 24 horas</td>
+<td data-l="Fonte / captura">[18] · pro-24h</td>
+</tr>
+<tr class="even">
+<td data-l="Etapa">E-mail</td>
+<td data-l="Peça">Pop-up sem cupom</td>
+<td data-l="O que é, com exemplo real">"Be first in line… before they sell out"</td>
+<td data-l="Fonte / captura">popup-email</td>
+</tr>
+<tr class="odd">
+<td data-l="Etapa">Checkout</td>
+<td data-l="Peça">Opt-in pré-marcado e três garantias</td>
+<td data-l="O que é, com exemplo real">"Email me with news and offers" marcado; envio, 30 dias, atendimento</td>
+<td data-l="Fonte / captura">checkout</td>
+</tr>
+<tr class="even">
+<td data-l="Etapa">Pós-compra</td>
+<td data-l="Peça">Portal de devolução com taxa</td>
+<td data-l="O que é, com exemplo real">US$ 39 ou US$ 89 descontados do reembolso</td>
+<td data-l="Fonte / captura">[12]</td>
+</tr>
+<tr class="odd">
+<td data-l="Etapa">Loja física</td>
+<td data-l="Peça">Apartamento-loja</td>
+<td data-l="O que é, com exemplo real">Mount Street, segundo andar, com campainha</td>
+<td data-l="Fonte / captura">[11]</td>
+</tr>
+<tr class="even">
+<td data-l="Etapa">Loja física</td>
+<td data-l="Peça">Concessão em loja de departamento</td>
+<td data-l="O que é, com exemplo real">Harvey Nichols e Le Bon Marché</td>
+<td data-l="Fonte / captura">[11]</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="o-que-dizem-dela">O que dizem dela</h2>
+<ul>
+<li>Fabian, sobre a origem: "havia muito para escolher, mas poucas marcas em que você sentisse que podia confiar" (Monocle, 07.04.2025) [4].</li>
+<li>Fabian, sobre o preço: "Gostamos de estar em algum lugar entre os dois" (Business of Home, 27.03.2026) [1].</li>
+<li>Liza, sobre a captação: "Sentimos que é o momento certo." Fabian: "Agora queremos andar um pouco mais rápido" (Business of Home) [1].</li>
+<li>Fabian, sobre lojas: "Vemos mais lojas-conceito em outras cidades-chave" (WWD, 26.03.2026) [2].</li>
+<li>Fabian, sobre a ambição: "nunca quisemos ser só mais uma marca de decoração" (Family Style, 02.04.2026) [8].</li>
+<li>Liza, sobre campanha: "Gostamos de transmitir uma atmosfera" e "queremos que o cliente viva com o produto" (Monocle) [4].</li>
+<li>Liza, sobre o setor: "Operamos num setor muito tradicional"; a marca busca "produtos que pareçam tão modernos daqui a dez anos quanto hoje" (designboom, 12.06.2026) [10].</li>
+<li>A WWD descreve uma marca escandinava com apelo de moda e diz que a captação mostra que "rugs are a hot bet" [2].</li>
+<li>Não foi encontrado episódio de podcast com os três.</li>
+</ul>
+<h2 id="o-que-não-se-sabe">O que não se sabe</h2>
+<ul>
+<li>Receita e margem do grupo em 2025 (só há números da empresa-mãe sueca) e a divisão entre site, loja, profissionais e atacado, e entre categorias.</li>
+<li>O percentual do desconto PRO e se ele soma com promoções.</li>
+<li>Custo de mídia paga, custo de aquisição de cliente e peso dos anúncios nas vendas.</li>
+<li>Conteúdo e cadência dos e-mails.</li>
+<li>Taxa de devolução e se a taxa cobrada desde 03.2026 mudou a conversão.</li>
+<li>Como o sob medida cabe em 2 a 4 semanas sendo tecido à mão na Índia (estoque de fio, teares dedicados, frete aéreo). Nenhuma fonte explica.</li>
+<li>Data e endereço da loja de Los Angeles e a situação do braço de projeto de interiores citado pela Family Style [8], que não tem página no site.</li>
+<li>Valuation (agregadores falam em números sem fonte primária [24]).</li>
+<li>O texto das matérias do NYT de 16.06.2024 e 24.09.2025, das quais só os títulos foram vistos.</li>
+</ul>
+<h2 id="perguntas-para-a-more">Perguntas para a More</h2>
+<ol type="1">
+<li>A Nordic Knots põe estoque, sob medida e amostra no mesmo seletor de tamanho e mostra o prazo em cada opção. Na More, onde a cliente descobre, na mesma tela, que a peça leva cerca de 120 dias, e o que ela recebe ou vê enquanto espera?</li>
+<li>O argumento repetido do anúncio ao checkout é um número de prazo ("3–6 days", "2–4 weeks"). Que número a More consegue garantir e repetir em todo lugar sem quebrar a promessa?</li>
+<li>A amostra custa US$ 12 para o público e é grátis para o profissional. O que, na More, faz o papel da amostra (madeira, tecido, visita à oficina), e quem paga por ela?</li>
+<li>O PRO promete aprovação em 24 horas e não publica o desconto; a página vende velocidade e crédito ao escritório. O que um arquiteto de São Paulo ganharia em 24 horas com a More, sem receber reserva técnica?</li>
+<li>A marca levou sete anos para abrir a primeira loja (2016 a 2023) e cresceu mais de 60% ao ano com lucro antes de captar. O que a loja da Alameda Franca precisa mostrar nos primeiros 12 meses para justificar uma segunda?</li>
+<li>O pop-up oferece acesso antecipado, e não desconto. Que lista de espera ou "primeiro a saber" faz sentido para 24 peças feitas sob encomenda?</li>
+</ol>
+<h2 id="como-este-caso-foi-feito">Como este caso foi feito</h2>
+<p>O site americano da marca (home, coleção, dois produtos, sob medida, serviços, programa PRO, lojas, campanha FW26, carrinho e primeira tela do checkout) e a Biblioteca de Anúncios do Meta foram abertos ao vivo em 16.10.2026. Não foi feito cadastro nem compra, e os e-mails da marca não foram vistos. As contas suecas foram lidas no registro público; as matérias, nas páginas citadas, exceto as do NYT, das quais só se viram os títulos. Ninguém da marca foi ouvido. O pedido inicial atribuía a marca a dois irmãos de outro sobrenome; nenhuma fonte os liga à Nordic Knots, e o nome completo do CEO no registro sueco é Fabian Gustav Berglund [6].</p>
+<h2 id="fontes">Fontes</h2>
+<p>Acesso em 16.10.2026.</p>
+<ol type="1">
+<li>Business of Home, Fred Nicolaus, 27.03.2026: <a href="https://businessofhome.com/articles/nordic-knots-raises-100-million" rel="noopener">https://businessofhome.com/articles/nordic-knots-raises-100-million</a></li>
+<li>WWD, Sofia Celeste, 26.03.2026, via Yahoo Finance: <a href="https://finance.yahoo.com/markets/stocks/articles/exclusive-nordic-knots-fresh-investment-164237793.html" rel="noopener">https://finance.yahoo.com/markets/stocks/articles/exclusive-nordic-knots-fresh-investment-164237793.html</a></li>
+<li>Vinge, 02.04.2026: <a href="https://www.vinge.se/en/mandates/vinge-advises-the-founders-of-nordic-knots-in-connection-with-the-investment-in-the-company-by-imaginary-ventures-and-other-investors/" rel="noopener">https://www.vinge.se/en/mandates/vinge-advises-the-founders-of-nordic-knots-in-connection-with-the-investment-in-the-company-by-imaginary-ventures-and-other-investors/</a></li>
+<li>Monocle, 07.04.2025 (data pela página de imprensa da marca): <a href="https://monocle.com/design/profile-fabian-and-lisa-laserow-berglund-nordic-knots/" rel="noopener">https://monocle.com/design/profile-fabian-and-lisa-laserow-berglund-nordic-knots/</a></li>
+<li>Opumo, sem data (provavelmente 2020): <a href="https://www.opumo.com/magazine/an-interview-with-the-founders-of-nordic-knots" rel="noopener">https://www.opumo.com/magazine/an-interview-with-the-founders-of-nordic-knots</a></li>
+<li>Allabolag, contas da Nordic Knots AB, exercício encerrado em 12.2025: <a href="https://www.allabolag.se/5590841317/nordic-knots-ab" rel="noopener">https://www.allabolag.se/5590841317/nordic-knots-ab</a></li>
+<li>Interior Daily, 28.08.2025 (origem: ehandel.se): <a href="https://www.interiordaily.com/article/9760111/sweden-carpet-company-weaves-rapid-global-growth-with-strong-us-momentum/" rel="noopener">https://www.interiordaily.com/article/9760111/sweden-carpet-company-weaves-rapid-global-growth-with-strong-us-momentum/</a></li>
+<li>Family Style, 02.04.2026: <a href="https://www.family.style/articles/fabian-berglund-liza-berglund-laserow-nordic-knots" rel="noopener">https://www.family.style/articles/fabian-berglund-liza-berglund-laserow-nordic-knots</a></li>
+<li>Wallpaper*, 30.06.2024: <a href="https://wallpaper.com/design-interiors/nordic-knots-new-york-store-opens" rel="noopener">https://wallpaper.com/design-interiors/nordic-knots-new-york-store-opens</a></li>
+<li>designboom, 12.06.2026: <a href="https://www.designboom.com/design/liza-laserow-berglund-nordic-knots-rug-textile-interview/" rel="noopener">https://www.designboom.com/design/liza-laserow-berglund-nordic-knots-rug-textile-interview/</a></li>
+<li>Lojas: <a href="https://nordicknots.com/us/flagship-store" rel="noopener">https://nordicknots.com/us/flagship-store</a></li>
+<li>FAQ (pedidos, envio, devolução, pagamento): <a href="https://nordicknots.com/us/support" rel="noopener">https://nordicknots.com/us/support</a></li>
+<li>Imprensa (62 itens, 06.10.2021 a 18.09.2026): <a href="https://nordicknots.com/us/press" rel="noopener">https://nordicknots.com/us/press</a></li>
+<li>Home: <a href="https://nordicknots.com/us" rel="noopener">https://nordicknots.com/us</a></li>
+<li>Produto Grand Walnut: <a href="https://nordicknots.com/us/product/grand-walnut" rel="noopener">https://nordicknots.com/us/product/grand-walnut</a></li>
+<li>Sobre a marca: <a href="https://nordicknots.com/about" rel="noopener">https://nordicknots.com/about</a></li>
+<li>Sob medida: <a href="https://nordicknots.com/us/custom-rugs" rel="noopener">https://nordicknots.com/us/custom-rugs</a> · <a href="https://nordicknots.com/us/product/grand-walnut-custom-rug" rel="noopener">https://nordicknots.com/us/product/grand-walnut-custom-rug</a></li>
+<li>Programa PRO: <a href="https://nordicknots.com/us/pro-membership" rel="noopener">https://nordicknots.com/us/pro-membership</a></li>
+<li>Biblioteca de Anúncios do Meta, EUA: <a href="https://www.facebook.com/ads/library/?active_status=active&amp;ad_type=all&amp;country=US&amp;q=%22nordic%20knots%22&amp;search_type=keyword_exact_phrase" rel="noopener">https://www.facebook.com/ads/library/?active_status=active&amp;ad_type=all&amp;country=US&amp;q=%22nordic%20knots%22&amp;search_type=keyword_exact_phrase</a></li>
+<li>Coleção de tapetes: <a href="https://nordicknots.com/us/rugs" rel="noopener">https://nordicknots.com/us/rugs</a></li>
+<li>Serviços: <a href="https://nordicknots.com/us/services" rel="noopener">https://nordicknots.com/us/services</a></li>
+<li>Central de ajuda, bloco de contato: <a href="https://nordicknots.com/us/support" rel="noopener">https://nordicknots.com/us/support</a></li>
+<li>Checkout, primeira tela, sem dados: <a href="https://nordicknots.com/us/checkout" rel="noopener">https://nordicknots.com/us/checkout</a></li>
+<li>Agregador, sem fonte primária: <a href="https://www.startupresearcher.com/news/nordic-knots-reaches-usd2-billion-valuation-after-usd100-million-investment" rel="noopener">https://www.startupresearcher.com/news/nordic-knots-reaches-usd2-billion-valuation-after-usd100-million-investment</a></li>
+<li>Vaga para a loja de Los Angeles: <a href="https://nordicknots.com/us/careers/sales-store-operations-associate-la-flagship" rel="noopener">https://nordicknots.com/us/careers/sales-store-operations-associate-la-flagship</a></li>
+<li>Revendedores: <a href="https://www.dwr.com/brands-nordic-knots" rel="noopener">https://www.dwr.com/brands-nordic-knots</a> · <a href="https://www.ssense.com/en-us/everything-else/designers/nordic-knots" rel="noopener">https://www.ssense.com/en-us/everything-else/designers/nordic-knots</a> · <a href="https://www.1stdibs.com/creators/nordic-knots/furniture/rugs-carpets/russian-scandinavian-rugs" rel="noopener">https://www.1stdibs.com/creators/nordic-knots/furniture/rugs-carpets/russian-scandinavian-rugs</a></li>
+<li>Dezeen, 23.03.2023: <a href="https://www.dezeen.com/2023/03/23/nordic-knots-studio-giancarlo-valle-cinema-showroom/" rel="noopener">https://www.dezeen.com/2023/03/23/nordic-knots-studio-giancarlo-valle-cinema-showroom/</a></li>
+<li>Studio Mellone: <a href="https://nordicknots.com/us/editorial/campaigns/studio-mellone" rel="noopener">https://nordicknots.com/us/editorial/campaigns/studio-mellone</a> · Galerie, 17.02.2026: <a href="https://galeriemagazine.com/andre-mellone-new-rug-collection-takes-influence-from-art-deco-and-bauhaus/" rel="noopener">https://galeriemagazine.com/andre-mellone-new-rug-collection-takes-influence-from-art-deco-and-bauhaus/</a></li>
+<li>Interior Design, 13.03.2018: <a href="https://interiordesign.net/designwire/nordic-knots-creates-modernist-rugs-inspired-by-scandinavian-heritage/" rel="noopener">https://interiordesign.net/designwire/nordic-knots-creates-modernist-rugs-inspired-by-scandinavian-heritage/</a></li>
+<li>Campanha Fall Winter 26: <a href="https://nordicknots.com/us/editorial/campaigns/fall-winter-26" rel="noopener">https://nordicknots.com/us/editorial/campaigns/fall-winter-26</a></li>
+</ol>
+
+</article>
+
+<section class="mods" id="modulos" aria-label="Páginas desta seção"><div class="eyebrow">As 10 páginas desta seção</div><ol class="lst"><li><span class="n">00</span><p><a href="/negocio/">Comece aqui</a></p><span class="t">3 min</span></li><li><span class="n">01</span><p><a href="/negocio/rh/">RH</a></p><span class="t">12 min</span></li><li><span class="n">02</span><p><a href="/negocio/flamingo-estate/">Flamingo Estate</a></p><span class="t">12 min</span></li><li><span class="n">03</span><p><a href="/negocio/trousseau/">Trousseau</a></p><span class="t">12 min</span></li><li><span class="n">04</span><p><a href="/negocio/sklum/">Sklum</a></p><span class="t">12 min</span></li><li aria-current="page"><span class="n">05</span><p><a href="/negocio/nordic-knots/">Nordic Knots</a></p><span class="t">12 min</span></li><li><span class="n">06</span><p><a href="/negocio/curtos/">Hem, The Invisible Collection, ETEL e Interior Define</a></p><span class="t">12 min</span></li><li><span class="n">07</span><p><a href="/negocio/pecas/">As peças, na ordem do funil</a></p><span class="t">12 min</span></li><li><span class="n">08</span><p><a href="/negocio/lancamento/">Lançar uma marca: Nik Sharma e os experts</a></p><span class="t">8 min</span></li><li><span class="n">09</span><p><a href="/negocio/perguntas/">Perguntas para a mesa</a></p><span class="t">5 min</span></li></ol></section>
+
+</div>
+
+<footer><div class="wrap">
+  <p>Estudos de caso feitos com IA em 16.10.2026, a partir de fontes públicas e de visitas aos sites de cada marca. Cada número traz a fonte. As capturas são de páginas públicas, abertas no mesmo dia. Nada aqui diz o que a More deve fazer: os casos descrevem, as perguntas ficam com o time. Feito com o sistema de design da More.</p>
+</div></footer>
+</div>
+
+<div class="barzone"><div class="bar" aria-label="Navegação">
+  <a href="/" aria-label="Índice"><svg viewBox="0 0 272 69" role="img" aria-label="More" xmlns:c2pa="http://c2pa.org/manifest"><metadata><c2pa:manifest>AAAWgmp1bWIAAAAeanVtZGMycGEAEQAQgAAAqgA4m3EDYzJwYQAAABZcanVtYgAAAEdqdW1kYzJtYQARABCAAACqADibcQN1cm46YzJwYTozMzg3YWIyYy1hMWM1LTQ5Y2EtYmY5Ny00N2RiMjI3YmYwZWYAAAADl2p1bWIAAAApanVtZGMyYXMAEQAQgAAAqgA4m3EDYzJwYS5hc3NlcnRpb25zAAAAALxqdW1iAAAARGp1bWRjYm9yABEAEIAAAKoAOJtxE2MycGEuaW5ncmVkaWVudC52MwAAAAAYYzJzaAvejDJIOSNzaPAwHj7kaAAAAABwY2JvcqNpZGM6Zm9ybWF0bWltYWdlL3N2Zyt4bWxqaW5zdGFuY2VJRHgseG1wOmlpZDphMmQ3YjNhMC04Mzk1LTQ0MTUtYWFhNS04ZWFhYWM2ZjQ1YjFscmVsYXRpb25zaGlwaHBhcmVudE9mAAAB4mp1bWIAAABBanVtZGNib3IAEQAQgAAAqgA4m3ETYzJwYS5hY3Rpb25zLnYyAAAAABhjMnNoAWo9OMK4bgwwZanS+OWsagAAAZljYm9yomdhY3Rpb25zgqJmYWN0aW9ua2MycGEub3BlbmVkanBhcmFtZXRlcnOha2luZ3JlZGllbnRzgaJjdXJseC1zZWxmI2p1bWJmPWMycGEuYXNzZXJ0aW9ucy9jMnBhLmluZ3JlZGllbnQudjNkaGFzaFggWSobncfM24/WN0aREmJtsgGGyNu3mVlNb3PF1vaOaZWkZmFjdGlvbngdY29tLmFudGhyb3BpYy5jbGF1ZGUucHJvdmlkZWRqcGFyYW1ldGVyc6F4H2NvbS5hbnRocm9waWMub3JpZ2luLWNvbmZpZGVuY2VndW5rbm93bmtkZXNjcmlwdGlvbnhmQ2xhdWRlIHByb3ZpZGVkIHRoaXMgZmlsZSBhdCB0aGUgcmVxdWVzdCBvZiBhIHVzZXIgYW5kIG1heSBoYXZlIGNyZWF0ZWQgb3IgbW9kaWZpZWQgdGhlIGZpbGUgY29udGVudHMubXNvZnR3YXJlQWdlbnShZG5hbWVmQ2xhdWRlcmFsbEFjdGlvbnNJbmNsdWRlZPUAAADIanVtYgAAAEBqdW1kY2JvcgARABCAAACqADibcRNjMnBhLmhhc2guZGF0YQAAAAAYYzJzaGE4ixWuWp1iLg6wekWrKwQAAACAY2JvcqVjYWxnZnNoYTI1NmNwYWRNAAAAAAAAAAAAAAAAAGRoYXNoWCBiHjqZX82DROgQX7UaMEWiMeHylF9MCDlPFIRlXx33amRuYW1lbmp1bWJmIG1hbmlmZXN0amV4Y2x1c2lvbnOBomVzdGFydBh2Zmxlbmd0aBkeBAAAAj5qdW1iAAAAJ2p1bWRjMmNsABEAEIAAAKoAOJtxA2MycGEuY2xhaW0udjIAAAACD2Nib3KlY2FsZ2ZzaGEyNTZpc2lnbmF0dXJleE1zZWxmI2p1bWJmPS9jMnBhL3VybjpjMnBhOjMzODdhYjJjLWExYzUtNDljYS1iZjk3LTQ3ZGIyMjdiZjBlZi9jMnBhLnNpZ25hdHVyZWppbnN0YW5jZUlEeCx4bXA6aWlkOmU1NGExMTEzLTcyMzItNGM5Zi1hMWIwLTdlOTZjMDQzZWYzYnJjcmVhdGVkX2Fzc2VydGlvbnODomN1cmx4LXNlbGYjanVtYmY9YzJwYS5hc3NlcnRpb25zL2MycGEuaW5ncmVkaWVudC52M2RoYXNoWCBZKhudx8zbj9Y3RpESYm2yAYbI27eZWU1vc8XW9o5plaJjdXJseCpzZWxmI2p1bWJmPWMycGEuYXNzZXJ0aW9ucy9jMnBhLmFjdGlvbnMudjJkaGFzaFgg7+iOlXzN9fsl5dtomZi9dr38n5qn+jROtSMCZ/zZgOeiY3VybHgpc2VsZiNqdW1iZj1jMnBhLmFzc2VydGlvbnMvYzJwYS5oYXNoLmRhdGFkaGFzaFgg5dtuer2DYxW6ttFffBa8QryKsKlQ4VcBq6Dmm04/y9x0Y2xhaW1fZ2VuZXJhdG9yX2luZm+jZG5hbWVvQW50aHJvcGljIEZpbGVzZ3ZlcnNpb25lMS4wLjBrc3BlY1ZlcnNpb25lMi40LjAAABA4anVtYgAAAChqdW1kYzJjcwARABCAAACqADibcQNjMnBhLnNpZ25hdHVyZQAAABAIY2JvctKEWQISogEmGCFZAgowggIGMIIBjaADAgECAhRA5aAK7sI50L64g/oGQgU9Z1UTADAKBggqhkjOPQQDAzBJMRcwFQYDVQQKEw5BbnRocm9waWMsIFBCQzEuMCwGA1UEAxMlQW50aHJvcGljIENvbnRlbnQgQ3JlZGVudGlhbHMgUm9vdCBDQTAeFw0yNjA4MDcxODQzNTZaFw0yODA4MDYxOTQzNTZaMEQxFzAVBgNVBAoTDkFudGhyb3BpYywgUEJDMSkwJwYDVQQDEyBBbnRocm9waWMgQ2xhdWRlIENvbnRlbnQgU2lnbmluZzBZMBMGByqGSM49AgEGCCqGSM49AwEHA0IABJh6CmvLUBgFFNU0vUKlOVtE6djd17L5SuwX0LemFisBM3dkd/3cyjxFA3Qo5S46fX0/ihY0VZ7mfb9KF703t5OjWDBWMA4GA1UdDwEB/wQEAwIHgDAVBgNVHSUEDjAMBgorBgEEAYPoXgIBMAwGA1UdEwEB/wQCMAAwHwYDVR0jBBgwFoAUzlHiBIFOZFsj+OPEz5o+nMHXXMIwCgYIKoZIzj0EAwMDZwAwZAIwMXMdFJ4BetLLVY7ORuE9noqbbAZOZn/aArXyTwFAZfKrPzxF2vPoJNf1+UCdg1XGAjBwX1zd9WGqYkqmL5SFqw1QySjr1zJfpJM9+1rdDwSPLMOPOjKuiXjoU/pUUeG9RwmhY3BhZFkNngAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPZYQLNSdZSJ1Lb4KyXNjcHFt+dMD/kTbfSuk+KST65sHWF18sFBsDHhJT9XVfg3laI//fXetfblD/peX/vE5v8r43Y=</c2pa:manifest></metadata><path fill="currentColor" d="M176.593 23.0819V1.91833H150.317V66.5948H176.593V44.2791H205.243V1.91833C189.55 1.91833 177.465 13.093 176.593 23.0875V23.0819Z"/><path fill="currentColor" d="M111.007 0C91.875 0 76.3403 15.3302 76.3403 34.223C76.3403 53.1159 91.8693 68.4461 111.007 68.4461C130.145 68.4461 145.742 53.1159 145.742 34.223C145.742 15.3302 130.213 0 111.007 0ZM111.007 42.4334C106.43 42.4334 102.69 38.8036 102.69 34.2174C102.69 29.6313 106.435 26.0015 111.007 26.0015C115.579 26.0015 119.398 29.6984 119.398 34.2174C119.398 38.7365 115.653 42.4334 111.007 42.4334Z"/><path fill="currentColor" d="M35.919 19.6423L26.2764 1.91833H0V66.5948H26.2764V44.212H45.4936V66.5948H71.77V1.91833H45.4936L35.919 19.6423Z"/><path fill="currentColor" d="M272.002 1.87909H211.835V24.7541V34.7487V44.1783V66.5612H272.002V44.7376H238.219L255.669 34.7151L238.236 24.7541H272.002V1.87909Z"/></svg></a>
+  <nav><a href="/">[Índice]</a><a href="/negocio/">[Início]</a><a href="/negocio/curtos/">[Curtos]</a></nav>
+</div></div>
+<script>
+document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener('click',e=>{const t=document.querySelector(decodeURIComponent(a.getAttribute('href')));if(t){e.preventDefault();t.scrollIntoView({block:'start'});history.replaceState(null,'',a.getAttribute('href'));}});});
+if(location.hash){const t=document.querySelector(decodeURIComponent(location.hash));if(t)t.scrollIntoView({block:'start'});}
+</script>
+</body>
+</html>
