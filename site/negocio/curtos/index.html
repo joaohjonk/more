@@ -1,0 +1,701 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Quatro casos curtos · Hem, The Invisible Collection, ETEL, Interior Define · Estudos de caso · More</title>
+<meta name="description" content="Uma editora sueca que encerrou as promoções, uma plataforma de peças de decoradores vendida por orçamento, a casa paulistana que numera cada peça e uma marca de sofás sob medida que ficou sem caixa. Interior Define é o caso de contraste.">
+<link rel="icon" href="data:,">
+<link rel="stylesheet" href="/nav/shell.css">
+<style>
+@font-face{font-family:"Muoto";src:url("/fonts/mr.otf") format("opentype");font-weight:400;font-display:swap}
+@font-face{font-family:"MuotoMono";src:url("/fonts/mm.woff2") format("woff2");font-weight:400;font-display:swap}
+/* Tokens do sistema de design da More (/sistema/brand/generated/tokens.css). Página de marca: paleta clara nos dois temas. */
+:root{
+  color-scheme:light;
+  --page:#E5E1DB; --ink:#2D211E; --muted:#5D554F; --label:#686868; --rule:#2D211E1A; --glass:#2D211E1A; --tile:#DDD7CF; --inverse:#2D211E; --on-inverse:#E5E1DB;
+  --muoto:"Muoto","DM Sans","Helvetica Neue",Arial,sans-serif;
+  --mono:"MuotoMono","Martian Mono",ui-monospace,Menlo,monospace;
+  --s-hair:6px; --s-sm:10px; --s-md:16px; --s-lg:20px; --s-xl:30px; --s-2xl:40px; --s-3xl:60px; --s-sec:96px;
+  --bar:35px; --barzone:75px;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--page:#E5E1DB;--ink:#2D211E;--muted:#5D554F;--rule:#2D211E1A;--glass:#2D211E1A;--tile:#DDD7CF;color-scheme:light}}
+:root[data-theme="dark"]{--page:#E5E1DB;--ink:#2D211E;--muted:#5D554F;--rule:#2D211E1A;--glass:#2D211E1A;--tile:#DDD7CF;color-scheme:light}
+*{box-sizing:border-box}
+html,body{height:100%}
+body{background:var(--page);color:var(--ink);font-family:var(--muoto);font-size:15px;line-height:1.47;-webkit-font-smoothing:antialiased;margin:0;overflow:hidden}
+/* A página rola dentro de .page; a barra vive numa faixa própria embaixo e nunca cobre texto. */
+.page{height:calc(100% - var(--barzone));overflow-y:auto;overflow-x:hidden;scroll-behavior:smooth;overscroll-behavior:contain;padding-bottom:106px}
+.wrap{max-width:1120px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:0 var(--s-3xl)}
+.mono{font-family:var(--mono);font-stretch:75%;font-size:13px}
+.muted{color:var(--muted)}
+.label{color:var(--label)}
+a{color:inherit;text-underline-offset:3px;text-decoration-thickness:1px;overflow-wrap:anywhere}
+a:hover{color:var(--muted)}
+h1,h2,h3{font-weight:400;text-wrap:balance;margin:0}
+h2{font-size:clamp(26px,3.4vw,32px);line-height:1.05;margin-bottom:var(--s-lg)}
+h3{font-size:15px;margin-bottom:4px}
+p{margin:0 0 var(--s-sm);max-width:64ch;text-wrap:pretty}
+section{padding-top:var(--s-sec)}
+.eyebrow{font-family:var(--mono);font-stretch:75%;font-size:13px;color:var(--label);margin-bottom:var(--s-md)}
+img{max-width:100%}
+b{font-weight:400}
+.tag{font-family:var(--mono);font-stretch:75%;font-size:11px;color:var(--label);white-space:nowrap}
+.tag.open{color:var(--ink)}
+.meas .tag{white-space:normal}
+
+/* abertura */
+.abre{padding-top:var(--s-3xl);display:grid;gap:var(--s-md)}
+.abre h1{font-size:clamp(34px,5.2vw,58px);line-height:.98;letter-spacing:-.01em;max-width:18ch}
+.abre .lede{font-size:clamp(18px,2vw,22px);line-height:1.25;margin:0;max-width:34ch}
+.meta{display:flex;flex-wrap:wrap;gap:6px var(--s-lg);margin-top:var(--s-sm)}
+
+/* tabelas */
+.meas{overflow-x:auto;margin-top:var(--s-lg)}
+.meas table{border-collapse:collapse;width:100%;min-width:760px;font-size:14px}
+.meas th{font-family:var(--mono);font-stretch:75%;font-weight:400;font-size:12px;color:var(--label);text-align:left;padding:8px;border-bottom:1px solid var(--ink)}
+.meas td{padding:10px 8px;border-bottom:1px solid var(--rule);vertical-align:top}
+.meas td:first-child{width:18%}
+.meas tr.grp td{font-family:var(--mono);font-stretch:75%;font-size:12px;color:var(--label);padding-top:var(--s-lg);border-bottom:1px solid var(--ink)}
+@media(max-width:700px){.meas table{min-width:0}.meas thead{display:none}.meas tr{display:block;padding:12px 0;border-bottom:1px solid var(--ink)}.meas tr.grp{padding:var(--s-lg) 0 4px}.meas td{display:block;padding:2px 0;border:0;width:auto!important}.meas td:first-child{font-size:16px;margin-bottom:4px}.meas td[data-l]::before{content:attr(data-l);display:block;font-family:var(--mono);font-stretch:75%;font-size:11px;color:var(--label);margin-top:6px}}
+
+/* riscos e perguntas */
+.lst{list-style:none;margin:var(--s-lg) 0 0;padding:0;border-top:1px solid var(--ink)}
+.lst li{display:grid;grid-template-columns:4ch minmax(0,1fr);gap:8px 16px;padding:12px 0;border-bottom:1px solid var(--rule);font-size:15px}
+.lst .n{font-family:var(--mono);font-stretch:75%;font-size:12px;color:var(--label);padding-top:3px}
+.lst p{margin:0;max-width:70ch}
+.lst p b{display:block}
+.lst .how{font-family:var(--mono);font-stretch:75%;font-size:12px;color:var(--label);margin-top:4px}
+
+/* barra, em faixa própria */
+.barzone{height:var(--barzone);position:relative;background:var(--page)}
+.bar{position:absolute;left:50%;transform:translateX(-50%);top:20px;width:420px;max-width:calc(100vw - 32px);height:var(--bar);background:var(--glass);backdrop-filter:blur(13px);-webkit-backdrop-filter:blur(13px);display:flex;align-items:center;justify-content:space-between;padding:0 var(--s-sm)}
+.bar svg{width:56px;height:auto;display:block;fill:currentColor}
+.bar nav{display:flex;gap:8px}
+.bar a{font-family:var(--mono);font-stretch:75%;font-size:13px;text-decoration:none;white-space:nowrap}
+.bar a:hover,.bar a:focus-visible{color:var(--muted)}
+@media(max-width:560px){.bar nav a{font-size:11px}.bar nav{gap:4px}}
+footer{background:var(--inverse);color:var(--on-inverse);margin-top:var(--s-sec)}
+footer .wrap{padding-block:var(--s-2xl)}
+footer p{font-size:13px;max-width:70ch}
+:focus-visible{outline:1px solid var(--ink);outline-offset:2px}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important;scroll-behavior:auto!important}}
+
+/* oitava seção: texto longo convertido do pacote */
+.doc{padding-top:var(--s-2xl)}
+.doc h2{padding-top:var(--s-3xl);scroll-margin-top:16px}
+.doc h3{font-size:clamp(17px,1.8vw,20px);line-height:1.2;margin:var(--s-xl) 0 var(--s-sm);scroll-margin-top:16px}
+.doc h4{font-family:var(--mono);font-stretch:75%;font-weight:400;font-size:12px;color:var(--label);margin:var(--s-lg) 0 6px}
+.doc p,.doc li{font-size:16px;line-height:1.5}
+.doc p{max-width:68ch}
+.doc strong{font-weight:400;color:var(--ink)}
+.doc p>strong:first-child{font-family:var(--mono);font-stretch:75%;font-size:13px;color:var(--label);margin-right:4px}
+.doc em{font-style:italic}
+.doc ul,.doc ol{max-width:68ch;padding-left:20px;margin:0 0 var(--s-md)}
+.doc li{margin-bottom:6px}
+.doc li>p{margin:0}
+.doc hr{border:0;border-top:1px solid var(--ink);margin:var(--s-2xl) 0 0}
+.doc blockquote{margin:var(--s-lg) 0;padding:var(--s-lg);background:var(--glass);max-width:68ch}
+.doc blockquote p{font-size:clamp(17px,1.8vw,20px);line-height:1.3;margin:0}
+.doc pre{font-family:var(--mono);font-stretch:75%;font-size:13px;line-height:1.5;background:var(--glass);padding:var(--s-md) var(--s-lg);overflow-x:auto;max-width:100%;white-space:pre}
+.doc code{font-family:var(--mono);font-stretch:75%;font-size:.88em}
+.doc .meas table{min-width:640px}
+.doc .meas td:first-child{width:auto}
+.doc .meas td,.doc .meas th{font-size:14px;line-height:1.4}
+.doc .meas th{font-size:12px}
+.doc .meas img{display:block;margin-bottom:6px}
+.doc img{height:auto;display:block;border:1px solid var(--rule)}
+.doc h3+p>a>img,.doc h3+p>img{margin:var(--s-sm) 0}
+.doc-atlas h3{padding-top:var(--s-xl);border-top:1px solid var(--ink)}
+@media(max-width:700px){.doc .meas:not(.grid) table{min-width:0}.doc .meas:not(.grid) thead{display:none}.doc .meas:not(.grid) tr{display:block;padding:12px 0;border-bottom:1px solid var(--ink)}.doc .meas:not(.grid) td{display:block;padding:2px 0;border:0}.doc .meas:not(.grid) td:first-child{font-size:16px}.doc .meas:not(.grid) td[data-l]:not(:first-child)::before{content:attr(data-l);display:block;font-family:var(--mono);font-stretch:75%;font-size:11px;color:var(--label);margin-top:6px}.doc .meas.grid table{min-width:560px}.doc .meas.grid td,.doc .meas.grid th{padding:8px 6px}}
+.mods{padding-top:var(--s-sec)}
+.mods .lst li{grid-template-columns:4ch minmax(0,1fr) auto;align-items:baseline}
+.mods .lst p{font-size:17px}
+.mods .lst a{text-decoration:none}
+.mods .lst a:hover{text-decoration:underline}
+.mods .lst .t{font-family:var(--mono);font-stretch:75%;font-size:12px;color:var(--label)}
+.mods li[aria-current] p a{text-decoration:underline}
+.mods li[aria-current] .n::after{content:" ·"}
+.doc hr+h3{border-top:0}
+@media(max-width:700px){.doc .meas.grid{overflow-x:auto}.doc .meas.grid table{display:table;min-width:560px}.doc .meas.grid thead{display:table-header-group}.doc .meas.grid tr{display:table-row;padding:0}.doc .meas.grid td{display:table-cell;border-bottom:1px solid var(--rule);font-size:14px}.doc .meas.grid td::before{content:none!important}.doc .meas.grid td:first-child{font-size:13px;white-space:nowrap}}
+
+</style>
+</head>
+<body><script src="/nav/shell.js" data-section="negocio" data-into=".page" data-foot="on" defer></script>
+<div class="page" id="page">
+<div class="wrap">
+
+<header class="abre" id="topo">
+  <div class="eyebrow">More · Estudos de caso · Hem, The Invisible Collection, ETEL e Interior Define · 16.10.2026</div>
+  <h1>Quatro casos curtos · Hem, The Invisible Collection, ETEL, Interior Define</h1>
+  <p class="lede">Uma editora sueca que encerrou as promoções, uma plataforma de peças de decoradores vendida por orçamento, a casa paulistana que numera cada peça e uma marca de sofás sob medida que ficou sem caixa. Interior Define é o caso de contraste.</p>
+  <div class="meta mono label"><span>Para Fred, Edu e Vitor</span><span>Estudos de caso, sem recomendação</span><span>Leitura: 12 min</span></div>
+</header>
+
+<article class="doc doc-curtos">
+
+<p>Cada marca tem a mesma ordem: números com fonte, como ganha dinheiro, o funil em observações com captura, peças atômicas, o que não se sabe, perguntas para a More, como o caso foi feito e fontes próprias. As capturas são de 16.10.2026.</p>
+<h2 id="hem-estocolmo">Hem (Estocolmo)</h2>
+<p>Editora sueca de móveis de designers convidados. Nasceu vendendo direto ao público, hoje vende sobretudo a profissionais e revendedores e, em 02.2026, encerrou toda promoção.</p>
+<div class="meas"><table>
+<thead>
+<tr class="header">
+<th>Item</th>
+<th>Dado</th>
+<th>Fonte</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-l="Item">Fundação</td>
+<td data-l="Dado">Fim de 2014, em Estocolmo, por Petrus Palmér</td>
+<td data-l="Fonte">[2] 20.10.2020</td>
+</tr>
+<tr class="even">
+<td data-l="Item">Controle</td>
+<td data-l="Dado">Em 2016, Palmér recomprou a empresa da Fab.com, com investimento da Vitra</td>
+<td data-l="Fonte">[3] 25.05.2018</td>
+</tr>
+<tr class="odd">
+<td data-l="Item">Faturamento</td>
+<td data-l="Dado">US$ 2 mi (2016) e US$ 6 mi (2017), com 20 funcionários. Nada público depois</td>
+<td data-l="Fonte">[3]</td>
+</tr>
+<tr class="even">
+<td data-l="Item">Canais</td>
+<td data-l="Dado">"A maioria das vendas vem de trade e atacado"</td>
+<td data-l="Fonte">[1] 02.09.2026</td>
+</tr>
+<tr class="odd">
+<td data-l="Item">Preço e prazo</td>
+<td data-l="Dado">Poltrona Hunk: US$ 6.599 no acabamento Moonlight, envio em 15 semanas; US$ 3.699 no Icicle, envio em 1 a 7 dias</td>
+<td data-l="Fonte">[7] 16.10.2026</td>
+</tr>
+<tr class="even">
+<td data-l="Item">Desconto profissional</td>
+<td data-l="Dado">"Standard discount of 25%", que não se soma a promoções</td>
+<td data-l="Fonte">[4]</td>
+</tr>
+<tr class="odd">
+<td data-l="Item">Frete (EUA)</td>
+<td data-l="Dado">De US$ 9 a US$ 52; US$ 149 até a calçada; US$ 349 com montagem</td>
+<td data-l="Fonte">[5]</td>
+</tr>
+<tr class="even">
+<td data-l="Item">Devolução</td>
+<td data-l="Dado">14 dias, frete pago pelo cliente; peça sob encomenda não tem devolução</td>
+<td data-l="Fonte">[5]</td>
+</tr>
+<tr class="odd">
+<td data-l="Item">Lojas</td>
+<td data-l="Dado">Estúdios em Los Angeles e no SoHo, em Nova York, com hora marcada, segundo reportagem de 2020</td>
+<td data-l="Fonte">[2]</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="como-ganha-dinheiro">Como ganha dinheiro</h3>
+<p>Parte do catálogo fica em estoque e sai em dias; outra parte é feita sob encomenda e leva semanas. A mesma cadeira tem os dois prazos, conforme o acabamento [7]. O preço público é um só para pessoa física e empresa; o profissional vê o valor com 25% de desconto depois de entrar no Hem Pro [4]. Em 02.2026, Palmér anunciou: "No Black Friday. No seasonal sales. No promotional pricing." Disse que os parceiros de atacado aplaudiram, que a venda direta caiu "como era de esperar" e chamou a decisão de "calculated bet" [1]. A página "About" diz "we will only sell on owned channels" [6], mas o rodapé tem um link para revendedores internacionais e a Fast Company fala em atacado [1].</p>
+<h3 id="o-funil">O funil</h3>
+<p>Antes de qualquer produto, a home pergunta quem é a pessoa e onde ela está.</p>
+<p><img loading="lazy" src="/negocio/img/ref-hem-portao-perfil-desktop-20261016.jpg" alt="Hem: a home abre com &quot;Are you a private or trade customer?&quot; e a escolha de região (Canada, Europe, United Kingdom, United States) antes de mostrar qualquer produto" /></p>
+<p>O prazo é um dado da variante: fica sob o botão e muda quando muda o acabamento.</p>
+<p><img loading="lazy" src="/negocio/img/ref-hem-pdp-prazo-variante-desktop-20261016.jpg" alt="Hem: produto Hunk no acabamento Moonlight, US$ 6.599, parcelamento Affirm a partir de US$ 229/mês e, sob o botão, &quot;Ships within 15 weeks&quot; ao lado de &quot;Trade professional?&quot;" /></p>
+<p>O programa profissional é de autosserviço: "No middlemen or under the table negotiations", estoque e prazo em tempo real, data de entrega desejada na cotação e arquivos 3D [6].</p>
+<p><img loading="lazy" src="/negocio/img/ref-hem-hempro-desktop-20261016.jpg" alt="Hem Pro: &quot;The easiest way to independently specify and buy products as a design professional&quot;, com os botões de inscrição e login, e a faixa &quot;Chat with an expert&quot; no topo" /></p>
+<p>Oito meses depois do fim das promoções, o cadastro do rodapé ainda oferece desconto, e a sacola tem campo de cupom.</p>
+<p><img loading="lazy" src="/negocio/img/ref-hem-newsletter-desconto-desktop-20261016.jpg" alt="Hem: newsletter no rodapé, &quot;Get a 10% discount on your first order, updates on sales and campaigns&quot;" /></p>
+<p><img loading="lazy" src="/negocio/img/ref-hem-sacola-checkout-desktop-20261016.jpg" alt="Hem: sacola com a Hunk de US$ 6.599, o campo &quot;Discount code&quot; e o frete calculado só no checkout" /></p>
+<h3 id="peças-atômicas">Peças atômicas</h3>
+<div class="meas"><table>
+<thead>
+<tr class="header">
+<th>Etapa</th>
+<th>Peça</th>
+<th>Exemplo</th>
+<th>Fonte</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-l="Etapa">Entrada</td>
+<td data-l="Peça">Portão de perfil</td>
+<td data-l="Exemplo">"Private or trade?" e região</td>
+<td data-l="Fonte">captura</td>
+</tr>
+<tr class="even">
+<td data-l="Etapa">Produto</td>
+<td data-l="Peça">Prazo por variante</td>
+<td data-l="Exemplo">15 semanas ou 1 a 7 dias na mesma cadeira</td>
+<td data-l="Fonte">[7]</td>
+</tr>
+<tr class="odd">
+<td data-l="Etapa">Contato</td>
+<td data-l="Peça">Chat fixo no topo</td>
+<td data-l="Exemplo">"Chat with an expert" em todas as páginas</td>
+<td data-l="Fonte">captura</td>
+</tr>
+<tr class="even">
+<td data-l="Etapa">Profissional</td>
+<td data-l="Peça">Hem Pro</td>
+<td data-l="Exemplo">25%, amostras grátis, visita agendada</td>
+<td data-l="Fonte">[4][6]</td>
+</tr>
+<tr class="odd">
+<td data-l="Etapa">Cadastro</td>
+<td data-l="Peça">Newsletter semanal</td>
+<td data-l="Exemplo">10% na primeira compra</td>
+<td data-l="Fonte">captura</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="o-que-não-se-sabe">O que não se sabe</h3>
+<p>Faturamento depois de 2017; quanto a venda direta caiu; o peso de cada canal; os royalties dos designers; o prazo do pedido profissional. Uma página regional do Hem Pro já mostrou faixas de 25% a 40% por volume; a central de ajuda hoje fala em 25% padrão "unless otherwise approved" [4]. A divergência não foi resolvida.</p>
+<h3 id="perguntas-para-a-more">Perguntas para a More</h3>
+<ul>
+<li>Se o prazo depende do acabamento, onde a cliente vê isso antes de abrir o WhatsApp?</li>
+<li>Qual é a política de desconto escrita hoje, e em quantos lugares do site e das mensagens ela pode ser contradita?</li>
+<li>O que um arquiteto consegue fazer sozinho no site, sem pedir nada a ninguém?</li>
+</ul>
+<h3 id="como-este-caso-foi-feito">Como este caso foi feito</h3>
+<p>O site americano da Hem (portão, produto, Hem Pro, rodapé e sacola) foi aberto ao vivo em 16.10.2026. A matéria da Fast Company foi lida por um resumo publicado em outro site, porque o acesso direto foi recusado. Ninguém da Hem foi ouvido.</p>
+<h3 id="fontes-da-hem">Fontes da Hem</h3>
+<ol type="1">
+<li>Fast Company, 02.09.2026, lida via <a href="https://www.cbinsights.com/company/hem" rel="noopener">https://www.cbinsights.com/company/hem</a></li>
+<li>Azure, 20.10.2020: <a href="https://www.azuremagazine.com/article/hem-founder-petrus-palmer-on-disrupting-design-retail" rel="noopener">https://www.azuremagazine.com/article/hem-founder-petrus-palmer-on-disrupting-design-retail</a></li>
+<li>Business of Home, 25.05.2018: <a href="https://businessofhome.com/articles/this-swedish-designer-s-concept-might-be-the-next-ikea" rel="noopener">https://businessofhome.com/articles/this-swedish-designer-s-concept-might-be-the-next-ikea</a></li>
+<li><a href="https://help.hem.com/en/articles/9465342-what-is-the-hem-pro-discount" rel="noopener">https://help.hem.com/en/articles/9465342-what-is-the-hem-pro-discount</a></li>
+<li><a href="https://hem.com/en-us/shipping-and-return-policy" rel="noopener">https://hem.com/en-us/shipping-and-return-policy</a></li>
+<li><a href="https://hem.com/en-us/hem-pro" rel="noopener">https://hem.com/en-us/hem-pro</a> e <a href="https://hem.com/en-us/about-us" rel="noopener">https://hem.com/en-us/about-us</a></li>
+<li>Produto Hunk: <a href="https://hem.com/en-us/furniture/chairs-and-stools/hunk/32171" rel="noopener">https://hem.com/en-us/furniture/chairs-and-stools/hunk/32171</a></li>
+</ol>
+<h2 id="the-invisible-collection-londres-e-paris">The Invisible Collection (Londres e Paris)</h2>
+<p>Plataforma de móveis de decoradores e ateliês, feitos sob encomenda, vendida por consultores e por galerias que funcionam como casas.</p>
+<div class="meas"><table>
+<thead>
+<tr class="header">
+<th>Item</th>
+<th>Dado</th>
+<th>Fonte</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-l="Item">Fundação</td>
+<td data-l="Dado">2016, por Isabelle Dubern-Mallevays e Anna Zaoui, com Lily Froehlicher</td>
+<td data-l="Fonte">[1] 22.01.2024; [2]</td>
+</tr>
+<tr class="even">
+<td data-l="Item">Origem</td>
+<td data-l="Dado">Uma poltrona de Pierre Yovanovitch que só se comprava contratando o projeto inteiro</td>
+<td data-l="Fonte">[2]</td>
+</tr>
+<tr class="odd">
+<td data-l="Item">Criadores</td>
+<td data-l="Dado">Mais de 750</td>
+<td data-l="Fonte">[1]</td>
+</tr>
+<tr class="even">
+<td data-l="Item">Galerias</td>
+<td data-l="Dado">6 endereços: Londres, Nova York (2), Los Angeles, Paris (2). Quatro só com hora marcada</td>
+<td data-l="Fonte">[3]</td>
+</tr>
+<tr class="odd">
+<td data-l="Item">Faturamento</td>
+<td data-l="Dado">Não se sabe. Uma estimativa de terceiros fala em cerca de US$ 5 mi, sem auditoria</td>
+<td data-l="Fonte">[8]</td>
+</tr>
+<tr class="even">
+<td data-l="Item">Ticket</td>
+<td data-l="Dado">Sofá Ned: "From $18,335" no card da listagem e "From $18,845 incl. customs &amp; duties" na página do produto</td>
+<td data-l="Fonte">site, 16.10.2026</td>
+</tr>
+<tr class="odd">
+<td data-l="Item">Prazo</td>
+<td data-l="Dado">Ned: "Handmade in the United Kingdom · Production lead time: 16 weeks"; o frete não entra no prazo</td>
+<td data-l="Fonte">site, 16.10.2026; [4]</td>
+</tr>
+<tr class="even">
+<td data-l="Item">Pagamento</td>
+<td data-l="Dado">Integral; a produção começa quando o pagamento é recebido</td>
+<td data-l="Fonte">[4]</td>
+</tr>
+<tr class="odd">
+<td data-l="Item">Devolução</td>
+<td data-l="Dado">Não há cancelamento nem devolução, salvo defeito</td>
+<td data-l="Fonte">[5]</td>
+</tr>
+<tr class="even">
+<td data-l="Item">Certificação</td>
+<td data-l="Dado">B Corp; certificado de autenticidade em toda peça</td>
+<td data-l="Fonte">[6]</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="como-ganha-dinheiro-1">Como ganha dinheiro</h3>
+<p>Vende peças de terceiros sob encomenda; a margem e a comissão por peça não são públicas. Há dois caminhos. Quando o preço está visível, a cliente paga no carrinho. Quando não está, ou quando ela quer mudar algo, pede um orçamento, respondido em "menos de 24 horas" ou em até 7 dias para peças complexas, com especificação, prazo, origem, impostos e frete. A cliente paga 100%, e a produção começa [4]. O programa profissional oferece "special rates and price-matching", orçamento com várias peças, certificado digital de procedência, frete consolidado, masterclasses, jantares e catálogos impressos sob medida [7]. A Business of Home registra que a empresa deixou de anunciar em redes sociais [1]; o motivo está só no áudio da entrevista, que não foi ouvido.</p>
+<h3 id="o-funil-1">O funil</h3>
+<p>A segmentação acontece logo na entrada. No computador, a pergunta abre sobre a home; no celular, abre sobre a página do produto, por cima do preço.</p>
+<p><img loading="lazy" src="/negocio/img/ref-theinvisiblecollection-home-desktop-20261016.jpg" alt="The Invisible Collection: modal &quot;Are you an interior designer or architect?&quot; sobre a home, com &quot;Trade Program&quot; em destaque no topo e &quot;Contact us, Appointment&quot; no canto" /></p>
+<p>A página do produto oferece dois botões, um para comprar e outro para pedir orçamento, e um bloco técnico que responde às perguntas de quem encomenda.</p>
+<p><img loading="lazy" src="/negocio/img/ref-theinvisiblecollection-pdp-orcamento-desktop-20261016.jpg" alt="Sofá Ned: &quot;From $18,845 incl. customs &amp; duties&quot;, botões &quot;Place order&quot; e &quot;Request a quote or a customisation&quot;, tecido Dedar, &quot;Fabric required: 22 m&quot;, &quot;Production lead time: 16 weeks&quot; e &quot;Download tearsheet&quot;" /></p>
+<p>Cada galeria tem endereço, horário, botão de agendamento e uma vitrine que troca ("Currently on view").</p>
+<p><img loading="lazy" src="/negocio/img/ref-theinvisiblecollection-modal-profissional-mobile-20261016.jpg" alt="The Invisible Collection no celular: o mesmo modal &quot;Are you an interior designer or architect?&quot; aberto sobre a página do sofá Ned, por cima do preço &quot;From $18,845 incl. customs &amp; duties&quot;" /></p>
+<p>O bloco técnico traz tecido, metragem, dimensões, origem e prazo de produção, e o arquivo para baixar serve ao profissional que vai especificar a peça. Qualquer pedido fora do padrão (outro tecido, outra medida) passa pelo orçamento escrito.</p>
+<p><img loading="lazy" src="/negocio/img/ref-theinvisiblecollection-galerias-desktop-20261016.jpg" alt="Galeria de Londres: &quot;Visit our Galleries &amp; Residences&quot;, horário de segunda a sexta, &quot;Open for walk-ins and appointments&quot;, &quot;Book an appointment&quot; e &quot;Currently on view&quot;" /></p>
+<p>O programa profissional se apresenta como um clube: os benefícios listados incluem serviço e acesso (masterclasses, jantares, catálogos impressos), e não só preço [7].</p>
+<h3 id="peças-atômicas-1">Peças atômicas</h3>
+<div class="meas"><table>
+<thead>
+<tr class="header">
+<th>Etapa</th>
+<th>Peça</th>
+<th>Exemplo</th>
+<th>Fonte</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-l="Etapa">Produto</td>
+<td data-l="Peça">Bloco técnico</td>
+<td data-l="Exemplo">Tecido Dedar, 22 m, prazo, "Download tearsheet"</td>
+<td data-l="Fonte">captura</td>
+</tr>
+<tr class="even">
+<td data-l="Etapa">Contato</td>
+<td data-l="Peça">Orçamento escrito</td>
+<td data-l="Exemplo">Especificação, prazo, origem e frete em até 24 horas</td>
+<td data-l="Fonte">[4]</td>
+</tr>
+<tr class="odd">
+<td data-l="Etapa">Contato</td>
+<td data-l="Peça">WhatsApp e telefone</td>
+<td data-l="Exemplo">Citados em cada resposta do FAQ</td>
+<td data-l="Fonte">[4]</td>
+</tr>
+<tr class="even">
+<td data-l="Etapa">Pós-compra</td>
+<td data-l="Peça">Certificado de procedência</td>
+<td data-l="Exemplo">"Each piece is authentic and certified"</td>
+<td data-l="Fonte">[6][7]</td>
+</tr>
+<tr class="odd">
+<td data-l="Etapa">Loja</td>
+<td data-l="Peça">Galeria-residência</td>
+<td data-l="Exemplo">"Open for walk-ins and appointments"</td>
+<td data-l="Fonte">[3]</td>
+</tr>
+<tr class="even">
+<td data-l="Etapa">Profissional</td>
+<td data-l="Peça">Masterclass, jantar, catálogo impresso</td>
+<td data-l="Exemplo">"Custom-printed and special edition catalogues"</td>
+<td data-l="Fonte">[7]</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="o-que-não-se-sabe-1">O que não se sabe</h3>
+<p>Receita, comissão sobre cada venda, percentual do desconto profissional, o resultado de sair das redes, a conversão entre orçamento e pedido e a razão da diferença de preço do Ned entre o card e a página do produto.</p>
+<h3 id="perguntas-para-a-more-1">Perguntas para a More</h3>
+<ul>
+<li>Quanto tempo a More leva para devolver um orçamento escrito, e o que ele contém?</li>
+<li>Pagamento integral, sinal ou parcelas: o que a cliente de uma peça de 120 dias aceita, e o que o caixa da oficina exige?</li>
+<li>O que acontece na loja da Alameda Franca entre uma visita marcada e uma espontânea?</li>
+</ul>
+<h3 id="como-este-caso-foi-feito-1">Como este caso foi feito</h3>
+<p>O site (home, produto Ned no computador e no celular, galerias, programa profissional, FAQ e políticas) foi aberto ao vivo em 16.10.2026. A entrevista da Business of Home foi lida em texto; o áudio não foi ouvido. Ninguém da empresa foi ouvido.</p>
+<h3 id="fontes-da-the-invisible-collection">Fontes da The Invisible Collection</h3>
+<ol type="1">
+<li>Business of Home, 22.01.2024: <a href="https://businessofhome.com/articles/the-invisible-collection-is-bringing-luxury-design-online" rel="noopener">https://businessofhome.com/articles/the-invisible-collection-is-bringing-luxury-design-online</a></li>
+<li><a href="https://theinvisiblecollection.com/about" rel="noopener">https://theinvisiblecollection.com/about</a></li>
+<li><a href="https://theinvisiblecollection.com/our-galleries" rel="noopener">https://theinvisiblecollection.com/our-galleries</a></li>
+<li><a href="https://theinvisiblecollection.com/how-to" rel="noopener">https://theinvisiblecollection.com/how-to</a></li>
+<li><a href="https://theinvisiblecollection.com/return-policy" rel="noopener">https://theinvisiblecollection.com/return-policy</a> e /delivery</li>
+<li><a href="https://theinvisiblecollection.com/about/our-values" rel="noopener">https://theinvisiblecollection.com/about/our-values</a></li>
+<li><a href="https://theinvisiblecollection.com/professional-programme" rel="noopener">https://theinvisiblecollection.com/professional-programme</a></li>
+<li>Estimativa de terceiros: <a href="https://prospeo.io/c/the-invisible-collection" rel="noopener">https://prospeo.io/c/the-invisible-collection</a></li>
+</ol>
+<h2 id="etel-são-paulo">ETEL (São Paulo)</h2>
+<p>Galeria, editora e marcenaria de design brasileiro. Reedita modernistas com os autores ou seus herdeiros, edita contemporâneos e certifica cada peça com um número.</p>
+<div class="meas"><table>
+<thead>
+<tr class="header">
+<th>Item</th>
+<th>Dado</th>
+<th>Fonte</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-l="Item">Fundação</td>
+<td data-l="Dado">1985, por Etel Carmona, com o mestre marceneiro Moacir Tozzo</td>
+<td data-l="Fonte">[1]</td>
+</tr>
+<tr class="even">
+<td data-l="Item">Primeira galeria</td>
+<td data-l="Dado">05.05.1993, em São Paulo</td>
+<td data-l="Fonte">[1]</td>
+</tr>
+<tr class="odd">
+<td data-l="Item">Direção</td>
+<td data-l="Dado">Lissa Carmona, CEO e curadora, na empresa desde 1993</td>
+<td data-l="Fonte">[1]</td>
+</tr>
+<tr class="even">
+<td data-l="Item">Fábrica</td>
+<td data-l="Dado">Região de Campinas, cerca de 200 funcionários</td>
+<td data-l="Fonte">[2] 03.08.2025</td>
+</tr>
+<tr class="odd">
+<td data-l="Item">Madeira certificada</td>
+<td data-l="Dado">Primeira fabricante brasileira de móveis com certificação FSC, em 2002</td>
+<td data-l="Fonte">[1]</td>
+</tr>
+<tr class="even">
+<td data-l="Item">Galerias</td>
+<td data-l="Dado">Alameda Gabriel Monteiro da Silva (São Paulo) e Via Maroncelli (Milão); Dallas planejada</td>
+<td data-l="Fonte">[3]; [2]</td>
+</tr>
+<tr class="odd">
+<td data-l="Item">Representantes</td>
+<td data-l="Dado">"Mais de 10 países"; a página lista 13 praças, de Goiânia a Riga</td>
+<td data-l="Fonte">[1][3]</td>
+</tr>
+<tr class="even">
+<td data-l="Item">Feiras</td>
+<td data-l="Dado">ICFF, em Nova York, desde 1995; SP-Arte desde 2016 e em 2026</td>
+<td data-l="Fonte">[2][4][5]</td>
+</tr>
+<tr class="odd">
+<td data-l="Item">Faturamento, preço, prazo</td>
+<td data-l="Dado">Não se sabe. O site não traz preço nem prazo</td>
+<td data-l="Fonte"></td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="como-ganha-dinheiro-2">Como ganha dinheiro</h3>
+<p>A ETEL vende peças feitas à mão, sob encomenda, em três "capítulos": reedições de mestres, contemporâneos e nova geração [1]. A reedição segue um contrato com o designer ou com a família, e a empresa diz garantir "um salário justo a todas as partes envolvidas", inclusive aos detentores de direitos autorais; o percentual não é público. Depois de produzida, cada peça recebe "um selo de DNA e certificado", "um número que traça a sua história, desde o designer, ano de criação, ano de edição, do artesão, ao cliente" [6]. Há também edições limitadas: a Cadeirinha de Eduardo Longo (1979/2026) sai em 89 exemplares, número do endereço da Casa Bola, com certificado assinado pelo autor [7]. A divulgação é cultural: a Casa Zalszupin, com 15 exposições em três anos [2], mostras em Varsóvia, Como e Paris, e livros. A empresa está na ICFF, em Nova York, desde 1995 e na SP-Arte desde que a feira abriu o setor de design, em 2016 [2][4]. A primeira galeria, de 1993, abriu com peças de Etel Carmona e Claudia Moreira Salles [1], e hoje a venda passa também por representantes em 13 cidades listadas no site, de Goiânia a Riga [3].</p>
+<h3 id="o-funil-2">O funil</h3>
+<p>A home funciona como um calendário de feiras e exposições.</p>
+<p><img loading="lazy" src="/negocio/img/ref-etel-home-desktop-20261016.jpg" alt="ETEL: home com os blocos &quot;SP-Arte 2026 · O tempo passa? Não passa, Percival Lafer&quot; e &quot;Aberto5 · Cadeirinha&quot;, seguidos da seção Sincronicidade" /></p>
+<p>A página do produto conta a autoria e a edição, mas a única ação é guardar na lista de desejos.</p>
+<p><img loading="lazy" src="/negocio/img/ref-etel-pdp-edicao-mobile-20261016.jpg" alt="ETEL no celular: texto da Cadeirinha com &quot;edição especial e limitada de 89 exemplares&quot; e &quot;certificado de autenticidade assinado por Eduardo Longo&quot;, seguido de &quot;Adicionada à wishlist (+)&quot; e das dimensões" /></p>
+<p>O certificado é explicado numa página própria.</p>
+<p><img loading="lazy" src="/negocio/img/ref-etel-autenticidade-certificado-desktop-20261016.jpg" alt="ETEL: página de autenticidade com a lista de reedições (Niemeyer, Lina Bo Bardi, Zalszupin, Tenreiro e outros) e o trecho sobre o selo de DNA e o certificado com número" /></p>
+<p>Em nenhum ponto do caminho aparecem preço, prazo ou botão de compra. A próxima etapa, para quem quer a peça, é ir à galeria ou escrever. O contato é a galeria: endereço, horário e telefone, mais um formulário dirigido à equipe de comunicação. Não há página para arquitetos.</p>
+<p><img loading="lazy" src="/negocio/img/ref-etel-contato-galerias-desktop-20261016.jpg" alt="ETEL: página de contato com a galeria de São Paulo, endereço na Alameda Gabriel Monteiro da Silva e horário de segunda a sábado" /></p>
+<h3 id="peças-atômicas-2">Peças atômicas</h3>
+<div class="meas"><table>
+<thead>
+<tr class="header">
+<th>Etapa</th>
+<th>Peça</th>
+<th>Exemplo</th>
+<th>Fonte</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-l="Etapa">Descoberta</td>
+<td data-l="Peça">Feira e exposição</td>
+<td data-l="Exemplo">SP-Arte 2026 com Percival Lafer</td>
+<td data-l="Fonte">captura</td>
+</tr>
+<tr class="even">
+<td data-l="Etapa">Produto</td>
+<td data-l="Peça">Edição numerada</td>
+<td data-l="Exemplo">89 exemplares da Cadeirinha</td>
+<td data-l="Fonte">[7]</td>
+</tr>
+<tr class="odd">
+<td data-l="Etapa">Pós-compra</td>
+<td data-l="Peça">Selo de DNA e certificado</td>
+<td data-l="Exemplo">Designer, ano de criação, ano de edição, artesão, cliente</td>
+<td data-l="Fonte">[6]</td>
+</tr>
+<tr class="even">
+<td data-l="Etapa">Conteúdo</td>
+<td data-l="Peça">Xiloteca, linha do tempo, publicações</td>
+<td data-l="Exemplo">Ipê, louro-preto; de 1932 em diante</td>
+<td data-l="Fonte">[8]</td>
+</tr>
+<tr class="odd">
+<td data-l="Etapa">Loja</td>
+<td data-l="Peça">Casa Zalszupin</td>
+<td data-l="Exemplo">Mostra com curador e agendamento</td>
+<td data-l="Fonte">[9]</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="o-que-não-se-sabe-2">O que não se sabe</h3>
+<p>Faturamento, preços, prazo de produção, sinal, royalties, condições para arquitetos, quantas edições numeradas existem e quanto vende cada canal (galeria, representante, feira).</p>
+<h3 id="perguntas-para-a-more-2">Perguntas para a More</h3>
+<ul>
+<li>Que registro cada peça da More já tem hoje (número, data, marceneiro, cliente), e quem o guarda?</li>
+<li>Em que calendário cultural de São Paulo a More quer aparecer, e o que levaria?</li>
+<li>Se um arquiteto achar a More pelo site, qual é o primeiro passo que a página oferece?</li>
+</ul>
+<h3 id="como-este-caso-foi-feito-2">Como este caso foi feito</h3>
+<p>O site da ETEL (home, produto Cadeirinha no celular, páginas de autenticidade, universo e contato) foi aberto ao vivo em 16.10.2026. A reportagem da Forbes foi lida em texto. Não houve visita à galeria nem conversa com a empresa.</p>
+<h3 id="fontes-da-etel">Fontes da ETEL</h3>
+<ol type="1">
+<li><a href="https://etel.design/universo/sobre-nos" rel="noopener">https://etel.design/universo/sobre-nos</a></li>
+<li>Forbes Brasil, 03.08.2025: <a href="https://forbes.com.br/forbeslife/2025/08/como-lissa-carmona-ajudou-a-redefinir-o-brasil-no-circuito-global-do-design" rel="noopener">https://forbes.com.br/forbeslife/2025/08/como-lissa-carmona-ajudou-a-redefinir-o-brasil-no-circuito-global-do-design</a></li>
+<li><a href="https://etel.design/contato" rel="noopener">https://etel.design/contato</a></li>
+<li>Tribuna PR, 05.04.2017: <a href="https://tribunapr.com.br/mais-pop/sp-arte-reune-nomes-famosos-do-design-em-25-galerias" rel="noopener">https://tribunapr.com.br/mais-pop/sp-arte-reune-nomes-famosos-do-design-em-25-galerias</a></li>
+<li><a href="https://etel.design" rel="noopener">https://etel.design</a> (home)</li>
+<li><a href="https://etel.design/universo/autenticidade" rel="noopener">https://etel.design/universo/autenticidade</a></li>
+<li><a href="https://etel.design/produto/cadeirinha" rel="noopener">https://etel.design/produto/cadeirinha</a></li>
+<li><a href="https://etel.design/universo" rel="noopener">https://etel.design/universo</a></li>
+<li><a href="https://etel.design/sincronicidade" rel="noopener">https://etel.design/sincronicidade</a></li>
+</ol>
+<h2 id="interior-define-chicago--caso-de-contraste">Interior Define (Chicago) · caso de contraste</h2>
+<p>Sofás sob medida vendidos online, feitos na China, com capital de risco. Abriu lojas com dívida, ficou sem caixa em 2022 e foi liquidada. A marca continua viva sob a Havenly.</p>
+<div class="meas"><table>
+<thead>
+<tr class="header">
+<th>Item</th>
+<th>Dado</th>
+<th>Fonte</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-l="Item">Lançamento</td>
+<td data-l="Dado">Cerca de 03.2014, em Chicago, por Rob Royer (ex-Bonobos) e Steve Mcclearn (ex-Sears)</td>
+<td data-l="Fonte">[1] 08.09.2014</td>
+</tr>
+<tr class="even">
+<td data-l="Item">Modelo em 2014</td>
+<td data-l="Dado">Feito depois do pedido em Foshan (China); cerca de 12 semanas; sofá médio de US$ 1.600; 1 loja</td>
+<td data-l="Fonte">[1]</td>
+</tr>
+<tr class="odd">
+<td data-l="Item">Capital</td>
+<td data-l="Dado">Seed de US$ 1 mi (2014); Série B de US$ 15 mi (03.2018, segundo agregadores); total de US$ 46 a 56 mi, conforme a fonte</td>
+<td data-l="Fonte">[1][2]</td>
+</tr>
+<tr class="even">
+<td data-l="Item">Dívida</td>
+<td data-l="Dado">Empréstimo de US$ 30 mi da Horizon em 01.2022 (US$ 20 mi na primeira parcela)</td>
+<td data-l="Fonte">[3] 11.01.2022</td>
+</tr>
+<tr class="odd">
+<td data-l="Item">Plano</td>
+<td data-l="Dado">"Open 30 new Define Studio retail stores through 2022" (CEO Antonio Nieves)</td>
+<td data-l="Fonte">[3]</td>
+</tr>
+<tr class="even">
+<td data-l="Item">Equipe</td>
+<td data-l="Dado">De 200 a 300 no pico; cerca de 115 depois dos cortes de 2022</td>
+<td data-l="Fonte">[4][5]</td>
+</tr>
+<tr class="odd">
+<td data-l="Item">Lojas</td>
+<td data-l="Dado">20 listadas em 01.2023, várias fechadas, com avisos de despejo</td>
+<td data-l="Fonte">[4] 04.01.2023</td>
+</tr>
+<tr class="even">
+<td data-l="Item">Desfecho</td>
+<td data-l="Dado">Cessão de bens a credores em 12.2022; a Havenly comprou só a marca e a propriedade intelectual; passivos de cerca de US$ 96 mi</td>
+<td data-l="Fonte">[4][6]</td>
+</tr>
+<tr class="odd">
+<td data-l="Item">Credor</td>
+<td data-l="Dado">A Horizon recebeu US$ 5,6 mi da venda dos ativos e financiou o comprador</td>
+<td data-l="Fonte">[7] 11.01.2023</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="como-ganhava-dinheiro-e-o-que-deu-errado">Como ganhava dinheiro, e o que deu errado</h3>
+<p>A cliente pagava na compra, à vista ou parcelado, e o sofá era feito depois, na Ásia. O dinheiro entrava semanas antes do custo de fábrica e de frete, e a empresa usou esse ciclo e uma dívida nova para abrir lojas [3]. Em 2022, segundo a Business of Home, quatro coisas aconteceram ao mesmo tempo: as vendas caíram depois da pandemia, frete e fábrica encareceram, uma captação anunciada não veio e os investidores recuaram [4][6]. A empresa parou de pagar fábricas e transportadoras, e "milhões de dólares" em produto ficaram nos portos. Os pedidos atrasaram cerca de seis meses, com pouca comunicação [4][6]. Na liquidação, ninguém era obrigado a entregar os pedidos de 2022. A Havenly não reembolsou; os clientes foram orientados a contestar a compra no cartão, e a financeira do parcelamento seguiu cobrando as parcelas [5]. Lee Mayer, da Havenly, resumiu: a empresa estava "not just out of cash", com fornecedores "pushed… to some dramatic amount" [6].</p>
+<h3 id="o-funil-hoje-sob-a-havenly">O funil hoje, sob a Havenly</h3>
+<p>A promoção é permanente: "Autumn Sale" com 25% de desconto abaixo de US$ 4.000 e 30% acima, e "Warehouse Sale: up to 60% off" no topo.</p>
+<p><img loading="lazy" src="/negocio/img/ref-interiordefine-home-promocao-desktop-20261016.jpg" alt="Interior Define: home com &quot;Autumn Sale, up to 30% off sitewide&quot;, a faixa &quot;Warehouse Sale, up to 60% off&quot; e o pop-up &quot;We&#39;re on sale.&quot; pedindo e-mail e telefone para mensagens de texto, com a oferta de 10 amostras de tecido grátis" /></p>
+<p>Prazo, frete e devolução ficam junto do botão. O sofá Sloan, de US$ 2.950, saía por US$ 2.212,50 [8].</p>
+<p><img loading="lazy" src="/negocio/img/ref-interiordefine-pdp-prazo-mobile-20261016.jpg" alt="Interior Define no celular: plano de proteção de 2 a 5 anos, botão &quot;Add to Cart&quot; com US$ 2.212,50, Afterpay em 4 vezes, &quot;Delivered in 8–14 weeks&quot;, &quot;$299 flat rate delivery&quot; e &quot;60-day returns&quot;" /></p>
+<p>As letras miúdas contam outra parte: devolver uma peça sob encomenda custa 50% do valor; cancelar depois de 24 horas custa 25%, e depois de 30 dias, 50%. A página de frete explica o ciclo de caixa, "we import after the customer pays for the furniture", e por isso cobra uma taxa fixa de importação [8].</p>
+<h3 id="peças-atômicas-do-site-atual">Peças atômicas do site atual</h3>
+<div class="meas"><table>
+<thead>
+<tr class="header">
+<th>Etapa</th>
+<th>Peça</th>
+<th>Exemplo</th>
+<th>Fonte</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-l="Etapa">Cadastro</td>
+<td data-l="Peça">Pop-up de promoção com SMS</td>
+<td data-l="Exemplo">"Get sale alerts and new arrivals first"</td>
+<td data-l="Fonte">captura</td>
+</tr>
+<tr class="even">
+<td data-l="Etapa">Produto</td>
+<td data-l="Peça">Configurador em 9 passos</td>
+<td data-l="Exemplo">Lado, tecido, chaise, profundidade, pés, assento, enchimento</td>
+<td data-l="Fonte">captura</td>
+</tr>
+<tr class="odd">
+<td data-l="Etapa">Contato</td>
+<td data-l="Peça">Amostras grátis</td>
+<td data-l="Exemplo">"Explore 150+ fabrics to choose 10 free swatches"</td>
+<td data-l="Fonte">[8]</td>
+</tr>
+<tr class="even">
+<td data-l="Etapa">Contato</td>
+<td data-l="Peça">Consultoria gratuita</td>
+<td data-l="Exemplo">Chat, FaceTime ou Zoom</td>
+<td data-l="Fonte">[8]</td>
+</tr>
+<tr class="odd">
+<td data-l="Etapa">Loja</td>
+<td data-l="Peça">Define Studios</td>
+<td data-l="Exemplo">Lojas listadas em 12 estados</td>
+<td data-l="Fonte">[8]</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="o-que-não-se-sabe-3">O que não se sabe</h3>
+<p>A receita de qualquer ano, quantas lojas abriram com o empréstimo de 2022, quantos pedidos pagos não foram entregues, quanto os clientes recuperaram, o preço pago pela Havenly e o desempenho da marca desde 2023.</p>
+<h3 id="perguntas-para-a-more-3">Perguntas para a More</h3>
+<ul>
+<li>Entre o sinal de uma cliente e o pagamento à oficina, onde fica o dinheiro, e quem pode usá-lo?</li>
+<li>Se um pedido atrasar 30 dias, quem avisa a cliente, quando e com que palavras?</li>
+<li>Que número de pedidos entregues, e não vendidos, justificaria uma segunda loja ou uma contratação?</li>
+</ul>
+<h3 id="como-este-caso-foi-feito-3">Como este caso foi feito</h3>
+<p>O site atual, sob a Havenly, foi aberto ao vivo em 16.10.2026 (home, produto Sloan no celular, frete e devoluções, lojas). Não foi possível abrir uma cópia arquivada do site de 2022, por isso não há captura de antes da falência. A história vem das reportagens da Business of Home e do documento da Horizon na SEC. Nenhum cliente, ex-funcionário ou credor foi ouvido.</p>
+<h3 id="fontes-da-interior-define">Fontes da Interior Define</h3>
+<ol type="1">
+<li>TechCrunch, 08.09.2014: <a href="https://techcrunch.com/?p=1052481" rel="noopener">https://techcrunch.com/?p=1052481</a></li>
+<li>Agregadores, com números divergentes: <a href="https://seedtable.com/companies/interior-define/funding-rounds/series-b-2018-03" rel="noopener">https://seedtable.com/companies/interior-define/funding-rounds/series-b-2018-03</a> · vcnewsdaily.com · <a href="https://www.cbinsights.com/company/interior-define/financials" rel="noopener">https://www.cbinsights.com/company/interior-define/financials</a></li>
+<li>Release da Horizon reproduzido pela SFNet, 11.01.2022: sfnet.com</li>
+<li>Business of Home, 04.01.2023: <a href="https://businessofhome.com/articles/interior-define-sells-assets-to-havenly" rel="noopener">https://businessofhome.com/articles/interior-define-sells-assets-to-havenly</a></li>
+<li>Business of Home, 09.01.2023: <a href="https://businessofhome.com/articles/interior-define-bankruptcy-questions-answered" rel="noopener">https://businessofhome.com/articles/interior-define-bankruptcy-questions-answered</a></li>
+<li>Business of Home, 27.02.2023: <a href="https://businessofhome.com/articles/why-havenly-bought-interior-define" rel="noopener">https://businessofhome.com/articles/why-havenly-bought-interior-define</a></li>
+<li>SEC, 11.01.2023: <a href="https://www.sec.gov/Archives/edgar/data/1487428/000143774923000874/ex_462941.htm" rel="noopener">https://www.sec.gov/Archives/edgar/data/1487428/000143774923000874/ex_462941.htm</a></li>
+<li><a href="https://interiordefine.com" rel="noopener">https://interiordefine.com</a>, /shipping-and-returns, /locations, /about</li>
+</ol>
+
+</article>
+
+<section class="mods" id="modulos" aria-label="Páginas desta seção"><div class="eyebrow">As 10 páginas desta seção</div><ol class="lst"><li><span class="n">00</span><p><a href="/negocio/">Comece aqui</a></p><span class="t">3 min</span></li><li><span class="n">01</span><p><a href="/negocio/rh/">RH</a></p><span class="t">12 min</span></li><li><span class="n">02</span><p><a href="/negocio/flamingo-estate/">Flamingo Estate</a></p><span class="t">12 min</span></li><li><span class="n">03</span><p><a href="/negocio/trousseau/">Trousseau</a></p><span class="t">12 min</span></li><li><span class="n">04</span><p><a href="/negocio/sklum/">Sklum</a></p><span class="t">12 min</span></li><li><span class="n">05</span><p><a href="/negocio/nordic-knots/">Nordic Knots</a></p><span class="t">12 min</span></li><li aria-current="page"><span class="n">06</span><p><a href="/negocio/curtos/">Hem, The Invisible Collection, ETEL e Interior Define</a></p><span class="t">12 min</span></li><li><span class="n">07</span><p><a href="/negocio/pecas/">As peças, na ordem do funil</a></p><span class="t">12 min</span></li><li><span class="n">08</span><p><a href="/negocio/lancamento/">Lançar uma marca: Nik Sharma e os experts</a></p><span class="t">8 min</span></li><li><span class="n">09</span><p><a href="/negocio/perguntas/">Perguntas para a mesa</a></p><span class="t">5 min</span></li></ol></section>
+
+</div>
+
+<footer><div class="wrap">
+  <p>Estudos de caso feitos com IA em 16.10.2026, a partir de fontes públicas e de visitas aos sites de cada marca. Cada número traz a fonte. As capturas são de páginas públicas, abertas no mesmo dia. Nada aqui diz o que a More deve fazer: os casos descrevem, as perguntas ficam com o time. Feito com o sistema de design da More.</p>
+</div></footer>
+</div>
+
+<div class="barzone"><div class="bar" aria-label="Navegação">
+  <a href="/" aria-label="Índice"><svg viewBox="0 0 272 69" role="img" aria-label="More" xmlns:c2pa="http://c2pa.org/manifest"><metadata><c2pa:manifest>AAAWgmp1bWIAAAAeanVtZGMycGEAEQAQgAAAqgA4m3EDYzJwYQAAABZcanVtYgAAAEdqdW1kYzJtYQARABCAAACqADibcQN1cm46YzJwYTozMzg3YWIyYy1hMWM1LTQ5Y2EtYmY5Ny00N2RiMjI3YmYwZWYAAAADl2p1bWIAAAApanVtZGMyYXMAEQAQgAAAqgA4m3EDYzJwYS5hc3NlcnRpb25zAAAAALxqdW1iAAAARGp1bWRjYm9yABEAEIAAAKoAOJtxE2MycGEuaW5ncmVkaWVudC52MwAAAAAYYzJzaAvejDJIOSNzaPAwHj7kaAAAAABwY2JvcqNpZGM6Zm9ybWF0bWltYWdlL3N2Zyt4bWxqaW5zdGFuY2VJRHgseG1wOmlpZDphMmQ3YjNhMC04Mzk1LTQ0MTUtYWFhNS04ZWFhYWM2ZjQ1YjFscmVsYXRpb25zaGlwaHBhcmVudE9mAAAB4mp1bWIAAABBanVtZGNib3IAEQAQgAAAqgA4m3ETYzJwYS5hY3Rpb25zLnYyAAAAABhjMnNoAWo9OMK4bgwwZanS+OWsagAAAZljYm9yomdhY3Rpb25zgqJmYWN0aW9ua2MycGEub3BlbmVkanBhcmFtZXRlcnOha2luZ3JlZGllbnRzgaJjdXJseC1zZWxmI2p1bWJmPWMycGEuYXNzZXJ0aW9ucy9jMnBhLmluZ3JlZGllbnQudjNkaGFzaFggWSobncfM24/WN0aREmJtsgGGyNu3mVlNb3PF1vaOaZWkZmFjdGlvbngdY29tLmFudGhyb3BpYy5jbGF1ZGUucHJvdmlkZWRqcGFyYW1ldGVyc6F4H2NvbS5hbnRocm9waWMub3JpZ2luLWNvbmZpZGVuY2VndW5rbm93bmtkZXNjcmlwdGlvbnhmQ2xhdWRlIHByb3ZpZGVkIHRoaXMgZmlsZSBhdCB0aGUgcmVxdWVzdCBvZiBhIHVzZXIgYW5kIG1heSBoYXZlIGNyZWF0ZWQgb3IgbW9kaWZpZWQgdGhlIGZpbGUgY29udGVudHMubXNvZnR3YXJlQWdlbnShZG5hbWVmQ2xhdWRlcmFsbEFjdGlvbnNJbmNsdWRlZPUAAADIanVtYgAAAEBqdW1kY2JvcgARABCAAACqADibcRNjMnBhLmhhc2guZGF0YQAAAAAYYzJzaGE4ixWuWp1iLg6wekWrKwQAAACAY2JvcqVjYWxnZnNoYTI1NmNwYWRNAAAAAAAAAAAAAAAAAGRoYXNoWCBiHjqZX82DROgQX7UaMEWiMeHylF9MCDlPFIRlXx33amRuYW1lbmp1bWJmIG1hbmlmZXN0amV4Y2x1c2lvbnOBomVzdGFydBh2Zmxlbmd0aBkeBAAAAj5qdW1iAAAAJ2p1bWRjMmNsABEAEIAAAKoAOJtxA2MycGEuY2xhaW0udjIAAAACD2Nib3KlY2FsZ2ZzaGEyNTZpc2lnbmF0dXJleE1zZWxmI2p1bWJmPS9jMnBhL3VybjpjMnBhOjMzODdhYjJjLWExYzUtNDljYS1iZjk3LTQ3ZGIyMjdiZjBlZi9jMnBhLnNpZ25hdHVyZWppbnN0YW5jZUlEeCx4bXA6aWlkOmU1NGExMTEzLTcyMzItNGM5Zi1hMWIwLTdlOTZjMDQzZWYzYnJjcmVhdGVkX2Fzc2VydGlvbnODomN1cmx4LXNlbGYjanVtYmY9YzJwYS5hc3NlcnRpb25zL2MycGEuaW5ncmVkaWVudC52M2RoYXNoWCBZKhudx8zbj9Y3RpESYm2yAYbI27eZWU1vc8XW9o5plaJjdXJseCpzZWxmI2p1bWJmPWMycGEuYXNzZXJ0aW9ucy9jMnBhLmFjdGlvbnMudjJkaGFzaFgg7+iOlXzN9fsl5dtomZi9dr38n5qn+jROtSMCZ/zZgOeiY3VybHgpc2VsZiNqdW1iZj1jMnBhLmFzc2VydGlvbnMvYzJwYS5oYXNoLmRhdGFkaGFzaFgg5dtuer2DYxW6ttFffBa8QryKsKlQ4VcBq6Dmm04/y9x0Y2xhaW1fZ2VuZXJhdG9yX2luZm+jZG5hbWVvQW50aHJvcGljIEZpbGVzZ3ZlcnNpb25lMS4wLjBrc3BlY1ZlcnNpb25lMi40LjAAABA4anVtYgAAAChqdW1kYzJjcwARABCAAACqADibcQNjMnBhLnNpZ25hdHVyZQAAABAIY2JvctKEWQISogEmGCFZAgowggIGMIIBjaADAgECAhRA5aAK7sI50L64g/oGQgU9Z1UTADAKBggqhkjOPQQDAzBJMRcwFQYDVQQKEw5BbnRocm9waWMsIFBCQzEuMCwGA1UEAxMlQW50aHJvcGljIENvbnRlbnQgQ3JlZGVudGlhbHMgUm9vdCBDQTAeFw0yNjA4MDcxODQzNTZaFw0yODA4MDYxOTQzNTZaMEQxFzAVBgNVBAoTDkFudGhyb3BpYywgUEJDMSkwJwYDVQQDEyBBbnRocm9waWMgQ2xhdWRlIENvbnRlbnQgU2lnbmluZzBZMBMGByqGSM49AgEGCCqGSM49AwEHA0IABJh6CmvLUBgFFNU0vUKlOVtE6djd17L5SuwX0LemFisBM3dkd/3cyjxFA3Qo5S46fX0/ihY0VZ7mfb9KF703t5OjWDBWMA4GA1UdDwEB/wQEAwIHgDAVBgNVHSUEDjAMBgorBgEEAYPoXgIBMAwGA1UdEwEB/wQCMAAwHwYDVR0jBBgwFoAUzlHiBIFOZFsj+OPEz5o+nMHXXMIwCgYIKoZIzj0EAwMDZwAwZAIwMXMdFJ4BetLLVY7ORuE9noqbbAZOZn/aArXyTwFAZfKrPzxF2vPoJNf1+UCdg1XGAjBwX1zd9WGqYkqmL5SFqw1QySjr1zJfpJM9+1rdDwSPLMOPOjKuiXjoU/pUUeG9RwmhY3BhZFkNngAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPZYQLNSdZSJ1Lb4KyXNjcHFt+dMD/kTbfSuk+KST65sHWF18sFBsDHhJT9XVfg3laI//fXetfblD/peX/vE5v8r43Y=</c2pa:manifest></metadata><path fill="currentColor" d="M176.593 23.0819V1.91833H150.317V66.5948H176.593V44.2791H205.243V1.91833C189.55 1.91833 177.465 13.093 176.593 23.0875V23.0819Z"/><path fill="currentColor" d="M111.007 0C91.875 0 76.3403 15.3302 76.3403 34.223C76.3403 53.1159 91.8693 68.4461 111.007 68.4461C130.145 68.4461 145.742 53.1159 145.742 34.223C145.742 15.3302 130.213 0 111.007 0ZM111.007 42.4334C106.43 42.4334 102.69 38.8036 102.69 34.2174C102.69 29.6313 106.435 26.0015 111.007 26.0015C115.579 26.0015 119.398 29.6984 119.398 34.2174C119.398 38.7365 115.653 42.4334 111.007 42.4334Z"/><path fill="currentColor" d="M35.919 19.6423L26.2764 1.91833H0V66.5948H26.2764V44.212H45.4936V66.5948H71.77V1.91833H45.4936L35.919 19.6423Z"/><path fill="currentColor" d="M272.002 1.87909H211.835V24.7541V34.7487V44.1783V66.5612H272.002V44.7376H238.219L255.669 34.7151L238.236 24.7541H272.002V1.87909Z"/></svg></a>
+  <nav><a href="/">[Índice]</a><a href="/negocio/">[Início]</a><a href="/negocio/pecas/">[Peças]</a></nav>
+</div></div>
+<script>
+document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener('click',e=>{const t=document.querySelector(decodeURIComponent(a.getAttribute('href')));if(t){e.preventDefault();t.scrollIntoView({block:'start'});history.replaceState(null,'',a.getAttribute('href'));}});});
+if(location.hash){const t=document.querySelector(decodeURIComponent(location.hash));if(t)t.scrollIntoView({block:'start'});}
+</script>
+</body>
+</html>

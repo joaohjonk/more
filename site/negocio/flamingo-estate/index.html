@@ -1,0 +1,570 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Flamingo Estate · a casa que vira produto · Estudos de caso · More</title>
+<meta name="description" content="Uma marca de Los Angeles que vende velas, sabonetes, despensa e caixas de hortifrúti tendo a casa e a horta do dono como origem de tudo. Cresceu de caixas de vegetais na pandemia para US$ 30 milhões em 2025, com venda direta, assinatura, clube pago e atacado.">
+<link rel="icon" href="data:,">
+<link rel="stylesheet" href="/nav/shell.css">
+<style>
+@font-face{font-family:"Muoto";src:url("/fonts/mr.otf") format("opentype");font-weight:400;font-display:swap}
+@font-face{font-family:"MuotoMono";src:url("/fonts/mm.woff2") format("woff2");font-weight:400;font-display:swap}
+/* Tokens do sistema de design da More (/sistema/brand/generated/tokens.css). Página de marca: paleta clara nos dois temas. */
+:root{
+  color-scheme:light;
+  --page:#E5E1DB; --ink:#2D211E; --muted:#5D554F; --label:#686868; --rule:#2D211E1A; --glass:#2D211E1A; --tile:#DDD7CF; --inverse:#2D211E; --on-inverse:#E5E1DB;
+  --muoto:"Muoto","DM Sans","Helvetica Neue",Arial,sans-serif;
+  --mono:"MuotoMono","Martian Mono",ui-monospace,Menlo,monospace;
+  --s-hair:6px; --s-sm:10px; --s-md:16px; --s-lg:20px; --s-xl:30px; --s-2xl:40px; --s-3xl:60px; --s-sec:96px;
+  --bar:35px; --barzone:75px;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--page:#E5E1DB;--ink:#2D211E;--muted:#5D554F;--rule:#2D211E1A;--glass:#2D211E1A;--tile:#DDD7CF;color-scheme:light}}
+:root[data-theme="dark"]{--page:#E5E1DB;--ink:#2D211E;--muted:#5D554F;--rule:#2D211E1A;--glass:#2D211E1A;--tile:#DDD7CF;color-scheme:light}
+*{box-sizing:border-box}
+html,body{height:100%}
+body{background:var(--page);color:var(--ink);font-family:var(--muoto);font-size:15px;line-height:1.47;-webkit-font-smoothing:antialiased;margin:0;overflow:hidden}
+/* A página rola dentro de .page; a barra vive numa faixa própria embaixo e nunca cobre texto. */
+.page{height:calc(100% - var(--barzone));overflow-y:auto;overflow-x:hidden;scroll-behavior:smooth;overscroll-behavior:contain;padding-bottom:106px}
+.wrap{max-width:1120px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:0 var(--s-3xl)}
+.mono{font-family:var(--mono);font-stretch:75%;font-size:13px}
+.muted{color:var(--muted)}
+.label{color:var(--label)}
+a{color:inherit;text-underline-offset:3px;text-decoration-thickness:1px;overflow-wrap:anywhere}
+a:hover{color:var(--muted)}
+h1,h2,h3{font-weight:400;text-wrap:balance;margin:0}
+h2{font-size:clamp(26px,3.4vw,32px);line-height:1.05;margin-bottom:var(--s-lg)}
+h3{font-size:15px;margin-bottom:4px}
+p{margin:0 0 var(--s-sm);max-width:64ch;text-wrap:pretty}
+section{padding-top:var(--s-sec)}
+.eyebrow{font-family:var(--mono);font-stretch:75%;font-size:13px;color:var(--label);margin-bottom:var(--s-md)}
+img{max-width:100%}
+b{font-weight:400}
+.tag{font-family:var(--mono);font-stretch:75%;font-size:11px;color:var(--label);white-space:nowrap}
+.tag.open{color:var(--ink)}
+.meas .tag{white-space:normal}
+
+/* abertura */
+.abre{padding-top:var(--s-3xl);display:grid;gap:var(--s-md)}
+.abre h1{font-size:clamp(34px,5.2vw,58px);line-height:.98;letter-spacing:-.01em;max-width:18ch}
+.abre .lede{font-size:clamp(18px,2vw,22px);line-height:1.25;margin:0;max-width:34ch}
+.meta{display:flex;flex-wrap:wrap;gap:6px var(--s-lg);margin-top:var(--s-sm)}
+
+/* tabelas */
+.meas{overflow-x:auto;margin-top:var(--s-lg)}
+.meas table{border-collapse:collapse;width:100%;min-width:760px;font-size:14px}
+.meas th{font-family:var(--mono);font-stretch:75%;font-weight:400;font-size:12px;color:var(--label);text-align:left;padding:8px;border-bottom:1px solid var(--ink)}
+.meas td{padding:10px 8px;border-bottom:1px solid var(--rule);vertical-align:top}
+.meas td:first-child{width:18%}
+.meas tr.grp td{font-family:var(--mono);font-stretch:75%;font-size:12px;color:var(--label);padding-top:var(--s-lg);border-bottom:1px solid var(--ink)}
+@media(max-width:700px){.meas table{min-width:0}.meas thead{display:none}.meas tr{display:block;padding:12px 0;border-bottom:1px solid var(--ink)}.meas tr.grp{padding:var(--s-lg) 0 4px}.meas td{display:block;padding:2px 0;border:0;width:auto!important}.meas td:first-child{font-size:16px;margin-bottom:4px}.meas td[data-l]::before{content:attr(data-l);display:block;font-family:var(--mono);font-stretch:75%;font-size:11px;color:var(--label);margin-top:6px}}
+
+/* riscos e perguntas */
+.lst{list-style:none;margin:var(--s-lg) 0 0;padding:0;border-top:1px solid var(--ink)}
+.lst li{display:grid;grid-template-columns:4ch minmax(0,1fr);gap:8px 16px;padding:12px 0;border-bottom:1px solid var(--rule);font-size:15px}
+.lst .n{font-family:var(--mono);font-stretch:75%;font-size:12px;color:var(--label);padding-top:3px}
+.lst p{margin:0;max-width:70ch}
+.lst p b{display:block}
+.lst .how{font-family:var(--mono);font-stretch:75%;font-size:12px;color:var(--label);margin-top:4px}
+
+/* barra, em faixa própria */
+.barzone{height:var(--barzone);position:relative;background:var(--page)}
+.bar{position:absolute;left:50%;transform:translateX(-50%);top:20px;width:420px;max-width:calc(100vw - 32px);height:var(--bar);background:var(--glass);backdrop-filter:blur(13px);-webkit-backdrop-filter:blur(13px);display:flex;align-items:center;justify-content:space-between;padding:0 var(--s-sm)}
+.bar svg{width:56px;height:auto;display:block;fill:currentColor}
+.bar nav{display:flex;gap:8px}
+.bar a{font-family:var(--mono);font-stretch:75%;font-size:13px;text-decoration:none;white-space:nowrap}
+.bar a:hover,.bar a:focus-visible{color:var(--muted)}
+@media(max-width:560px){.bar nav a{font-size:11px}.bar nav{gap:4px}}
+footer{background:var(--inverse);color:var(--on-inverse);margin-top:var(--s-sec)}
+footer .wrap{padding-block:var(--s-2xl)}
+footer p{font-size:13px;max-width:70ch}
+:focus-visible{outline:1px solid var(--ink);outline-offset:2px}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important;scroll-behavior:auto!important}}
+
+/* oitava seção: texto longo convertido do pacote */
+.doc{padding-top:var(--s-2xl)}
+.doc h2{padding-top:var(--s-3xl);scroll-margin-top:16px}
+.doc h3{font-size:clamp(17px,1.8vw,20px);line-height:1.2;margin:var(--s-xl) 0 var(--s-sm);scroll-margin-top:16px}
+.doc h4{font-family:var(--mono);font-stretch:75%;font-weight:400;font-size:12px;color:var(--label);margin:var(--s-lg) 0 6px}
+.doc p,.doc li{font-size:16px;line-height:1.5}
+.doc p{max-width:68ch}
+.doc strong{font-weight:400;color:var(--ink)}
+.doc p>strong:first-child{font-family:var(--mono);font-stretch:75%;font-size:13px;color:var(--label);margin-right:4px}
+.doc em{font-style:italic}
+.doc ul,.doc ol{max-width:68ch;padding-left:20px;margin:0 0 var(--s-md)}
+.doc li{margin-bottom:6px}
+.doc li>p{margin:0}
+.doc hr{border:0;border-top:1px solid var(--ink);margin:var(--s-2xl) 0 0}
+.doc blockquote{margin:var(--s-lg) 0;padding:var(--s-lg);background:var(--glass);max-width:68ch}
+.doc blockquote p{font-size:clamp(17px,1.8vw,20px);line-height:1.3;margin:0}
+.doc pre{font-family:var(--mono);font-stretch:75%;font-size:13px;line-height:1.5;background:var(--glass);padding:var(--s-md) var(--s-lg);overflow-x:auto;max-width:100%;white-space:pre}
+.doc code{font-family:var(--mono);font-stretch:75%;font-size:.88em}
+.doc .meas table{min-width:640px}
+.doc .meas td:first-child{width:auto}
+.doc .meas td,.doc .meas th{font-size:14px;line-height:1.4}
+.doc .meas th{font-size:12px}
+.doc .meas img{display:block;margin-bottom:6px}
+.doc img{height:auto;display:block;border:1px solid var(--rule)}
+.doc h3+p>a>img,.doc h3+p>img{margin:var(--s-sm) 0}
+.doc-atlas h3{padding-top:var(--s-xl);border-top:1px solid var(--ink)}
+@media(max-width:700px){.doc .meas:not(.grid) table{min-width:0}.doc .meas:not(.grid) thead{display:none}.doc .meas:not(.grid) tr{display:block;padding:12px 0;border-bottom:1px solid var(--ink)}.doc .meas:not(.grid) td{display:block;padding:2px 0;border:0}.doc .meas:not(.grid) td:first-child{font-size:16px}.doc .meas:not(.grid) td[data-l]:not(:first-child)::before{content:attr(data-l);display:block;font-family:var(--mono);font-stretch:75%;font-size:11px;color:var(--label);margin-top:6px}.doc .meas.grid table{min-width:560px}.doc .meas.grid td,.doc .meas.grid th{padding:8px 6px}}
+.mods{padding-top:var(--s-sec)}
+.mods .lst li{grid-template-columns:4ch minmax(0,1fr) auto;align-items:baseline}
+.mods .lst p{font-size:17px}
+.mods .lst a{text-decoration:none}
+.mods .lst a:hover{text-decoration:underline}
+.mods .lst .t{font-family:var(--mono);font-stretch:75%;font-size:12px;color:var(--label)}
+.mods li[aria-current] p a{text-decoration:underline}
+.mods li[aria-current] .n::after{content:" ·"}
+.doc hr+h3{border-top:0}
+@media(max-width:700px){.doc .meas.grid{overflow-x:auto}.doc .meas.grid table{display:table;min-width:560px}.doc .meas.grid thead{display:table-header-group}.doc .meas.grid tr{display:table-row;padding:0}.doc .meas.grid td{display:table-cell;border-bottom:1px solid var(--rule);font-size:14px}.doc .meas.grid td::before{content:none!important}.doc .meas.grid td:first-child{font-size:13px;white-space:nowrap}}
+
+</style>
+</head>
+<body><script src="/nav/shell.js" data-section="negocio" data-into=".page" data-foot="on" defer></script>
+<div class="page" id="page">
+<div class="wrap">
+
+<header class="abre" id="topo">
+  <div class="eyebrow">More · Estudos de caso · Flamingo Estate · 16.10.2026</div>
+  <h1>Flamingo Estate · a casa que vira produto</h1>
+  <p class="lede">Uma marca de Los Angeles que vende velas, sabonetes, despensa e caixas de hortifrúti tendo a casa e a horta do dono como origem de tudo. Cresceu de caixas de vegetais na pandemia para US$ 30 milhões em 2025, com venda direta, assinatura, clube pago e atacado.</p>
+  <div class="meta mono label"><span>Para Fred, Edu e Vitor</span><span>Estudos de caso, sem recomendação</span><span>Leitura: 12 min</span></div>
+</header>
+
+<article class="doc doc-flamingo-estate">
+
+<h2 id="em-números">Em números</h2>
+<div class="meas"><table>
+<thead>
+<tr class="header">
+<th>Item</th>
+<th>Dado</th>
+<th>Fonte · data</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-l="Item">Fundação</td>
+<td data-l="Dado">Março de 2020, com caixas de hortifrúti na pandemia</td>
+<td data-l="Fonte · data">Glossy, 13.01.2022 [22]; Wikipedia [17]</td>
+</tr>
+<tr class="even">
+<td data-l="Item">Quem fundou</td>
+<td data-l="Dado">Richard Christiansen, australiano, 49 anos em 05.2026. Aaron Harvey, noivo e diretor de criação, aparece como cofundador na Shopify</td>
+<td data-l="Fonte · data">Inc., 17.05.2026 [16]; Shopify, 07.04.2026 [19]</td>
+</tr>
+<tr class="odd">
+<td data-l="Item">Sede</td>
+<td data-l="Dado">Highland Park, Los Angeles: casa dos anos 1940 num terreno de 7 acres (~2,8 ha), comprada em 2013</td>
+<td data-l="Fonte · data">[16]; family style, 18.05.2024 [25]</td>
+</tr>
+<tr class="even">
+<td data-l="Item">Faturamento</td>
+<td data-l="Dado">~US$ 10 mi em 2022; US$ 30 mi em 2025, com projeção de US$ 50 mi em 2026 e US$ 75 mi em 2027</td>
+<td data-l="Fonte · data">[17]; The Case for Brand, 05.07.2024 [18]; [16]</td>
+</tr>
+<tr class="odd">
+<td data-l="Item">Margem</td>
+<td data-l="Dado">Não divulgada. A empresa diz que "queima muito pouco caixa" e espera lucro em 2026</td>
+<td data-l="Fonte · data">[16]</td>
+</tr>
+<tr class="even">
+<td data-l="Item">Equipe</td>
+<td data-l="Dado">~40 pessoas no negócio e na criação, mais ~20 no armazém próprio</td>
+<td data-l="Fonte · data">[16]</td>
+</tr>
+<tr class="odd">
+<td data-l="Item">Lojas</td>
+<td data-l="Dado">1 loja própria em Highland Park (sexta a domingo, 11h às 18h) e pop-ups</td>
+<td data-l="Fonte · data">Site, 16.10.2026 [8]; [16]</td>
+</tr>
+<tr class="even">
+<td data-l="Item">Catálogo</td>
+<td data-l="Dado">132 produtos, preço mediano de US$ 68, de US$ 0,50 a US$ 1.500</td>
+<td data-l="Fonte · data">Catálogo público do site, 16.10.2026 [2]</td>
+</tr>
+<tr class="odd">
+<td data-l="Item">Prazo</td>
+<td data-l="Dado">Despacho em 3 a 5 dias úteis; hortifrúti só em LA, às sextas; mesmo dia em LA por US$ 30</td>
+<td data-l="Fonte · data">[6]</td>
+</tr>
+<tr class="even">
+<td data-l="Item">Pagamento</td>
+<td data-l="Dado">Integral no checkout; Afterpay em 4 vezes; assinatura cobrada a cada envio ou anual pré-paga</td>
+<td data-l="Fonte · data">[1]; [4]</td>
+</tr>
+<tr class="odd">
+<td data-l="Item">Canais</td>
+<td data-l="Dado">Site próprio com assinatura e clube; atacado (Nordstrom, Bloomingdale's, Anthropologie, Bergdorf Goodman, Mecca, Design Within Reach); presentes corporativos; Japão desde 04.2026</td>
+<td data-l="Fonte · data">[16]; [23]; [11]</td>
+</tr>
+<tr class="even">
+<td data-l="Item">Investidores</td>
+<td data-l="Dado">Anjos e family offices, Worklife Ventures e Synetro Group. Total não divulgado; o NYT noticiou US$ 7,5 mi em 2023</td>
+<td data-l="Fonte · data">[16]</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="história-curta">História curta</h2>
+<p><strong>A casa e a agência.</strong> Christiansen cresceu numa fazenda na Austrália, dirigiu a revista <em>Colors</em> da Benetton e fundou em Nova York a agência Chandelier Creative, que atendeu Apple, Old Navy e Hermès e chegou a mais de 100 pessoas no auge [16]. O ano de fundação da agência diverge entre 2004, 2005 e cerca de 2006 [16][22][24]. Em 2013 ele comprou a propriedade por um valor que compara ao de um relógio caro, com a condição de não ver o interior antes; o nome vem do reboco rosa [16].</p>
+<p><strong>A caixa de vegetais.</strong> Duas semanas depois do início da pandemia, Christiansen e Harvey passaram a vender caixas de produtores que tinham perdido os pedidos dos restaurantes, no estacionamento de uma livraria de Christiansen [16][19]. Os números do primeiro fim de semana divergem: Harvey fala em 100 caixas, depois 200 e 300 [19]; Christiansen, em trezentas [24]. Os produtores pediram ajuda para usar a matéria-prima, e assim vieram velas, azeite e sabonete [16]. A caixa tinha margem negativa no começo e só passou a dar lucro quando ganhou curadoria de um chef e receitas [19]. A vela de tomate virou o produto-símbolo: a lista de favoritos da Oprah de 2023 levou a vendas de 2.500 velas por hora [18].</p>
+<p><strong>Viradas.</strong> Em 2022, um acordo com a Mecca deu à marca uma parede em 150 lojas na Austrália: "somos agora um negócio adulto, entrando na nossa primeira expansão fora do quintal" [22]. Em 2023 e 2024 vieram pop-ups com a Mytheresa [17][26] e a captação: 160 reuniões com investidores em dois anos [23], "mais de 100" recusas [16]. Em 05.2024, a parceria com a JW Marriott [25]; em 06.2025, a carta no Substack [15]; em 2025, o atacado "mais que dobra" [16]. Em 2026, Japão, perfumes com Jean-Claude Ellena e o livro <em>Pleasure Principles</em> [15][16].</p>
+<p><strong>Tensões.</strong> Investidores e conselheiros sugeriram virar empresa de suplementos, acabar com o hortifrúti e organizar o catálogo por "need states". Harvey: "Temos que parar de falar com essas pessoas" [19][20].</p>
+<h2 id="como-ganha-dinheiro">Como ganha dinheiro</h2>
+<p><strong>Modelo.</strong> Venda direta com quatro camadas recorrentes e atacado por cima. Produção própria, salvo alguns itens de beleza, com mais de 150 fornecedores [16], e armazém próprio, sem operador logístico [19].</p>
+<div class="meas"><table>
+<thead>
+<tr class="header">
+<th>Tipo</th>
+<th>Itens</th>
+<th>Exemplos e preço (16.10.2026) [2]</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-l="Tipo">Casa (velas, sprays, limpeza)</td>
+<td data-l="Itens">43</td>
+<td data-l="Exemplos e preço (16.10.2026) [2]">Vela Heirloom Tomato 8 oz US$ 68; XL personalizada US$ 225</td>
+</tr>
+<tr class="even">
+<td data-l="Tipo">Banho e corpo</td>
+<td data-l="Itens">37</td>
+<td data-l="Exemplos e preço (16.10.2026) [2]">Sabonete em barra US$ 38 a 52; sabonete líquido US$ 50</td>
+</tr>
+<tr class="odd">
+<td data-l="Tipo">Despensa</td>
+<td data-l="Itens">24</td>
+<td data-l="Exemplos e preço (16.10.2026) [2]">Azeite Heritage US$ 50; morango apimentado US$ 82</td>
+</tr>
+<tr class="even">
+<td data-l="Tipo">Hortifrúti (só LA)</td>
+<td data-l="Itens">6</td>
+<td data-l="Exemplos e preço (16.10.2026) [2]">Regenerative Farm Box US$ 130 com entrega; versão pequena US$ 70</td>
+</tr>
+<tr class="odd">
+<td data-l="Tipo">Kits, livros, clube, caixas</td>
+<td data-l="Itens">22</td>
+<td data-l="Exemplos e preço (16.10.2026) [2]">Seasonal Subscription Box US$ 345; Ultimate Flamingo Set US$ 1.500</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Preço no tempo.</strong> A vela de tomate custava US$ 58 numa compra de 2022 e US$ 60 em 2024 [18], US$ 64 em 05.2026 [16] e US$ 68 no site em 16.10.2026 [1].</p>
+<p><strong>Recorrência em quatro formatos.</strong></p>
+<ol type="1">
+<li><em>Subscribe &amp; save</em>: 10% de desconto em quase todo item de consumo, a cada 4 a 12 semanas, e essa opção já vem marcada na página do produto [1].</li>
+<li><em>Seasonal Subscription Box</em>: uma caixa por estação, com nove itens de uma viagem. A do outono de 2026 é Marrocos: US$ 345 avulsa, US$ 310 por trimestre ou US$ 1.100 pré-pagos por quatro caixas. É venda final [4].</li>
+<li><em>Regenerative Farm Box</em>: semanal, só em LA, entregue na sexta para pedidos até quarta às 21h, com um chef curador por semana [2][7].</li>
+<li><em>The Estate Membership</em>: US$ 98 por ano, com até 12 presentes (um produto de até US$ 72 em cada mês com pedido acima de US$ 150), frete terrestre grátis, acesso antecipado, produtos só para membros, convites para eventos na casa e a carta no Substack [3]. Em 2024 custava US$ 95, com presente trimestral [18].</li>
+</ol>
+<p><strong>Frete e devolução.</strong> Grátis acima de US$ 150 nos EUA [6]. Só a vela avulsa, nova e lacrada, volta em até 30 dias; despensa, corpo, kits e personalizados são venda final [6][7].</p>
+<p><strong>Atacado e profissional.</strong> Há formulário de atacado, com revenda proibida em Amazon e eBay, e desconto para designers e empresas [10]. O mapa de revendedores tem 752 pontos; numa varredura por cidades, a Design Within Reach aparece em 46 endereços, a Nordstrom em 24, a Anthropologie em 21 e a Mecca em 17 [11]. Presentes corporativos vão até 500 unidades num endereço, com desconto por volume e guia em PDF [9].</p>
+<p><strong>Promoção.</strong> A marca dá desconto: 10% na primeira compra [1], US$ 20 por indicação [7] e, em 21.09.2026, a "Estate Sale", com "até 60% off + acesso à nossa coleção privada de objetos de cena" [27]. Os códigos não valem em edição limitada, hortifrúti e assinatura, e não há proteção de preço "por sermos uma empresa pequena" [6].</p>
+<h2 id="o-funil-etapa-por-etapa">O funil, etapa por etapa</h2>
+<h3 id="pré-lançamento">Pré-lançamento</h3>
+<p>Não há lista de espera. A pré-venda fica no próprio catálogo: a caixa Marrocos entrou no ar em 08.09.2026 com o selo "Ships by 11/02" [2][4], e o e-mail da caixa "Goat Shed" (01.04.2026) dizia "Pre-order the scents &amp; tastes of home" [27].</p>
+<h3 id="descoberta">Descoberta</h3>
+<p>Imprensa, celebridade e colaboração: picles de Pamela Anderson com renda para santuários de animais, LeBron James, Kelly Wearstler, Ai Weiwei, o mel dos 90 anos de Jane Goodall [16][18]. A casa serve de palco, com jantar de Martha Stewart e chá de bebê de Emily Weiss [16]. Christiansen resume a regra como "marca, marca, marca primeiro e só marca" [16]. Harvey diz o mesmo de outro jeito: "Eu odeio marketing" e "a criação lidera tudo" [19].</p>
+<h3 id="página-inicial">Página inicial</h3>
+<p><img loading="lazy" src="/negocio/img/ref-flamingoestate-home-desktop-20261016.jpg" alt="Home: a barra preta do topo leva ao clube (&quot;The Estate Membership&quot;), não a uma promoção; o destaque é a caixa sazonal do Marrocos com o botão &quot;Open your love letter&quot;" /></p>
+<p>O menu tem quatro itens (Shop, The Estate, Gift Guide, Membership) e um "Get $20" de indicação. No carrossel "Most Loved", cada card traz selo de prazo ("Ships by 11/02"), de colheita ("Harvested Nov 2025") e o seletor de assinatura [1].</p>
+<h3 id="página-do-produto">Página do produto</h3>
+<p><img loading="lazy" src="/negocio/img/ref-flamingoestate-pdp-vela-tomate-desktop-20261016.jpg" alt="Vela de tomate no computador: selos de AD, The Strategist e GQ sobre a foto; a linha &quot;Scent&quot; vem antes do preço; a assinatura com 10% de desconto vem marcada e a compra avulsa fica embaixo" /></p>
+<p>A página abre com o cheiro, "folhas de tomate amassadas, recém-colhidas e esfregadas nas mãos", seguido de 4,9 estrelas em 1.299 avaliações. A assinatura pré-marcada custa US$ 61,20 a cada 4 semanas e promete "entrega garantida durante esgotamentos"; o Afterpay divide em 4 de US$ 17. A procedência fica no texto: estragão silvestre do Oregon e pimenta-do-reino de Madagascar [1].</p>
+<p><img loading="lazy" src="/negocio/img/ref-flamingoestate-pdp-vela-tomate-mobile-20261016.jpg" alt="A mesma página no celular: &quot;Subscribe &amp; save 10%&quot; selecionado por padrão, com &quot;Guaranteed delivery during sell-outs&quot; e &quot;Cancel or skip anytime&quot;" /></p>
+<p>Na caixa sazonal, cada um dos nove itens tem origem e produtor descritos, por exemplo "uma cooperativa de mulheres numa floresta protegida pela UNESCO" [4].</p>
+<p><img loading="lazy" src="/negocio/img/ref-flamingoestate-assinatura-caixa-sazonal-desktop-20261016.jpg" alt="Caixa sazonal: selos &quot;Ships by 11/02&quot;, &quot;New&quot; e &quot;Excluded from Discounts&quot;; três preços lado a lado (US$ 345, US$ 310 por trimestre, US$ 275 por caixa no anual) e a nota &quot;This item is final sale&quot;" /></p>
+<h3 id="presentes-e-clube-o-contato-desta-marca">Presentes e clube, o contato desta marca</h3>
+<p>Não há agendamento nem consulta. O contato humano é um concierge por e-mail, das 10h às 17h no horário do Pacífico [7], um endereço próprio para corporativo [9] e o e-mail pessoal do dono, publicado no pé de várias páginas e cartas ("você sempre pode falar comigo diretamente") [12][14][15]. A loja oferece "escolha 3 produtos e ganhe caixa embrulhada à mão e bilhete escrito à mão" [1]. A caixa de presente é uma variante paga: a vela custa US$ 68 na caixa padrão e US$ 80 na de presente, e a personalização feita por calígrafos acrescenta 1 a 2 dias ao prazo [2].</p>
+<p><img loading="lazy" src="/negocio/img/ref-flamingoestate-presentes-corporativos-desktop-20261016.jpg" alt="Presentes corporativos: &quot;True hospitality has a love language&quot;, envio para vários destinatários, pedido em volume ou itens sob medida, e o botão para baixar o guia em PDF" /></p>
+<p><img loading="lazy" src="/negocio/img/ref-flamingoestate-membership-beneficios-desktop-20261016.jpg" alt="Clube: &quot;Up to 12 gifts&quot;, frete grátis, acesso antecipado, produtos só para membros e a frase &quot;Two gifts cover the signup fee, everything after is surplus&quot;, por US$ 98 por ano" /></p>
+<h3 id="checkout">Checkout</h3>
+<p><img loading="lazy" src="/negocio/img/ref-flamingoestate-carrinho-desktop-20261016.jpg" alt="Gaveta do carrinho: a vela entra como recorrente (&quot;Delivery Every 4 Weeks&quot;, US$ 61,20 contra US$ 68 riscado), a barra avisa &quot;You are $88.80 away from FREE SHIPPING&quot; e o bloco &quot;Try new pleasures&quot; sugere mais itens" /></p>
+<p>No checkout aparece a linha "Recurring subtotal". A caixa "Email me with news and offers" vem marcada; o telefone é obrigatório e o SMS fica desmarcado. Há um bloco de doação ao Bob Baker Marionette Theater, de US$ 1, 5 ou 10.</p>
+<p><img loading="lazy" src="/negocio/img/ref-flamingoestate-checkout-desktop-20261016.jpg" alt="Checkout: &quot;Email me with news and offers&quot; já marcado, &quot;Recurring subtotal $61.20 every 4 weeks&quot; e o bloco de doação ao teatro de marionetes" /></p>
+<h3 id="e-mails-depois-do-cadastro">E-mails depois do cadastro</h3>
+<p><img loading="lazy" src="/negocio/img/ref-flamingoestate-popup-email-desktop-20261016.jpg" alt="Pop-up de e-mail: &quot;Get 10% Off&quot;, &quot;Welcome to the home of radical pleasure&quot;, um campo de e-mail e o botão &quot;Continue&quot;" /></p>
+<p>As etapas depois do pop-up não foram vistas. Na página The Estate, o formulário promete outra coisa: "toda sexta escrevo uma carta do jardim. Inscreva-se. E 10% na primeira compra" [12].</p>
+<p><strong>A lista de varejo.</strong> O arquivo Email Love registrou 24 envios entre 28.08 e 15.10.2026, cerca de 3,4 por semana. Os assuntos misturam lançamento ("NEW: JURASSIC VANILLA CANDLE", 09.10), escassez ("We Put Jalapeños in a Candle", com o pré-cabeçalho "uma edição limitada de 200 velas apimentadas", 10.06), preço ("PLENTY UNDER $35", 23.09) e resumo editorial ("March at the Estate", 22.03) [27].</p>
+<p><img loading="lazy" src="/negocio/img/ref-flamingoestate-email-estate-sale-emaillove-desktop-20261016.jpg" alt="E-mail &quot;The Estate Sale&quot; de 21.09.2026 no arquivo público: a liquidação ganha nome da casa, foto de estúdio e o botão &quot;Explore the Estate Sale&quot;" /></p>
+<p><strong>A carta paga.</strong> O Estate Journal, no Substack, teve 51 edições de 09.06.2025 a 10.10.2026, 32 delas em 2026; 30 saíram numa sexta, com mediana de 1.365 palavras, e todas são só para pagantes [15]. Só um título anuncia produto, o do livro (18.09.2026). No Substack, a assinatura direta custa US$ 98 por ano; o clube do site, pelo mesmo preço, inclui os presentes [3][15]. O tom vai do luto ("uma semana atrás voltei para casa porque meu cachorro amado estava morrendo", 01.05.2026) à idade ("fiz 50 anos neste fim de semana […] por que estou trabalhando tanto o tempo todo?", 17.08.2026). O produto aparece de passagem: "acendi velas de sálvia frescas em todos os cômodos" [15].</p>
+<p><img loading="lazy" src="/negocio/img/ref-flamingoestate-journal-substack-edicao-desktop-20261016.jpg" alt="Edição de 01.05.2026, &quot;The Joy of Service&quot;: marcada como paga, abre com a morte do cachorro do dono e foto da varanda, sem produto à vista" /></p>
+<h3 id="pós-compra">Pós-compra</h3>
+<p>Não há página de cuidados nem de garantia. O FAQ cobre cobrança do hortifrúti na quarta, aviso por SMS na entrega, rastreio em até 48 horas e troca com etiqueta pré-paga só para velas elegíveis [6][7]. A Flamingo Estate Fund é um fundo de doação na California Community Foundation; a marca promete "uma porcentagem dos nossos lucros", sem dizer quanto [14].</p>
+<h3 id="loja-física-e-a-casa">Loja física e a casa</h3>
+<p><img loading="lazy" src="/negocio/img/ref-flamingoestate-loja-popup-figueroa-desktop-20261016.jpg" alt="Highland Park Shop: sexta a domingo, das 11h às 18h, no endereço da oficina, com o letreiro em ponto-cruz" /></p>
+<p>A loja abre três dias por semana no endereço da oficina: "transformamos nossa oficina de LA numa carta de amor" [8]. Houve pop-ups com a Mytheresa nos Hamptons (2023 e 2024) e em Highland Park (12.2023) [17][26] e na Bloomingdale's de Nova York em 2025 [30]. A casa "é residência privada e não está aberta ao público" [7]; os eventos são só por convite, para membros [3], marcas e amigos [16]. Os projetos com produtores têm páginas próprias, como a sálvia-negra do White Buffalo Land Trust ("150 libras colhidas à mão, 440 g de óleo essencial") e o santuário de abelhas Melipona no Yucatán [13].</p>
+<h2 id="peças-atômicas">Peças atômicas</h2>
+<div class="meas"><table>
+<thead>
+<tr class="header">
+<th>Etapa</th>
+<th>Peça</th>
+<th>O que é, com exemplo real</th>
+<th>Fonte / captura</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-l="Etapa">Pré-lançamento</td>
+<td data-l="Peça">Pré-venda datada</td>
+<td data-l="O que é, com exemplo real">Selo "Ships by 11/02" na caixa Marrocos, no ar desde 08.09</td>
+<td data-l="Fonte / captura">[2]; ref-flamingoestate-assinatura-caixa-sazonal-desktop</td>
+</tr>
+<tr class="even">
+<td data-l="Etapa">Descoberta</td>
+<td data-l="Peça">Selo de imprensa na foto</td>
+<td data-l="O que é, com exemplo real">AD, The Strategist e GQ sobre a imagem da vela</td>
+<td data-l="Fonte / captura">ref-flamingoestate-pdp-vela-tomate-desktop</td>
+</tr>
+<tr class="odd">
+<td data-l="Etapa">Descoberta</td>
+<td data-l="Peça">Colaboração com renda para causa</td>
+<td data-l="O que é, com exemplo real">Picles de Pamela Anderson; mel dos 90 anos de Jane Goodall</td>
+<td data-l="Fonte / captura">[16][18]</td>
+</tr>
+<tr class="even">
+<td data-l="Etapa">Descoberta</td>
+<td data-l="Peça">Casa como palco</td>
+<td data-l="O que é, com exemplo real">Jantar de Martha Stewart; chá de bebê de Emily Weiss</td>
+<td data-l="Fonte / captura">[16]</td>
+</tr>
+<tr class="odd">
+<td data-l="Etapa">Página inicial</td>
+<td data-l="Peça">Barra do clube</td>
+<td data-l="O que é, com exemplo real">"The Estate Membership →" no topo de todas as páginas</td>
+<td data-l="Fonte / captura">ref-flamingoestate-home-desktop</td>
+</tr>
+<tr class="even">
+<td data-l="Etapa">Página do produto</td>
+<td data-l="Peça">Linha de cheiro</td>
+<td data-l="O que é, com exemplo real">"Scent: folhas de tomate amassadas…" antes do preço</td>
+<td data-l="Fonte / captura">ref-flamingoestate-pdp-vela-tomate-desktop</td>
+</tr>
+<tr class="odd">
+<td data-l="Etapa">Página do produto</td>
+<td data-l="Peça">Procedência no texto</td>
+<td data-l="O que é, com exemplo real">Estragão do Oregon, pimenta de Madagascar; "Harvested Nov 2025"</td>
+<td data-l="Fonte / captura">[1]</td>
+</tr>
+<tr class="even">
+<td data-l="Etapa">Página do produto</td>
+<td data-l="Peça">Assinatura pré-marcada</td>
+<td data-l="O que é, com exemplo real">10% off a cada 4 semanas, "entrega garantida durante esgotamentos"</td>
+<td data-l="Fonte / captura">ref-flamingoestate-pdp-vela-tomate-mobile</td>
+</tr>
+<tr class="odd">
+<td data-l="Etapa">Contato</td>
+<td data-l="Peça">E-mail pessoal do dono</td>
+<td data-l="O que é, com exemplo real">Publicado no pé de cartas e páginas institucionais</td>
+<td data-l="Fonte / captura">[12][14][15]</td>
+</tr>
+<tr class="even">
+<td data-l="Etapa">Contato</td>
+<td data-l="Peça">Concierge corporativo</td>
+<td data-l="O que é, com exemplo real">Até 500 presentes, lista de destinatários, guia em PDF</td>
+<td data-l="Fonte / captura">[9]; ref-flamingoestate-presentes-corporativos-desktop</td>
+</tr>
+<tr class="odd">
+<td data-l="Etapa">Checkout</td>
+<td data-l="Peça">Barra de frete grátis</td>
+<td data-l="O que é, com exemplo real">"Faltam US$ 88,80" para o limite de US$ 150</td>
+<td data-l="Fonte / captura">ref-flamingoestate-carrinho-desktop</td>
+</tr>
+<tr class="even">
+<td data-l="Etapa">Checkout</td>
+<td data-l="Peça">Doação</td>
+<td data-l="O que é, com exemplo real">Bob Baker Marionette Theater, US$ 1, 5 ou 10</td>
+<td data-l="Fonte / captura">ref-flamingoestate-checkout-desktop</td>
+</tr>
+<tr class="odd">
+<td data-l="Etapa">E-mail</td>
+<td data-l="Peça">Pop-up de 10%</td>
+<td data-l="O que é, com exemplo real">"Bem-vindo à casa do prazer radical"</td>
+<td data-l="Fonte / captura">ref-flamingoestate-popup-email-desktop</td>
+</tr>
+<tr class="even">
+<td data-l="Etapa">E-mail</td>
+<td data-l="Peça">Carta paga do dono</td>
+<td data-l="O que é, com exemplo real">51 edições, sexta, ~1.400 palavras, US$ 98 por ano</td>
+<td data-l="Fonte / captura">[15]; ref-flamingoestate-journal-substack-edicao-desktop</td>
+</tr>
+<tr class="odd">
+<td data-l="Etapa">E-mail</td>
+<td data-l="Peça">Escassez numerada</td>
+<td data-l="O que é, com exemplo real">"Uma edição limitada de 200 velas apimentadas"</td>
+<td data-l="Fonte / captura">[27]</td>
+</tr>
+<tr class="even">
+<td data-l="Etapa">E-mail</td>
+<td data-l="Peça">Liquidação</td>
+<td data-l="O que é, com exemplo real">"Estate Sale: até 60% off" e objetos de cena da casa</td>
+<td data-l="Fonte / captura">[27]; ref-flamingoestate-email-estate-sale-emaillove-desktop</td>
+</tr>
+<tr class="odd">
+<td data-l="Etapa">Pós-compra</td>
+<td data-l="Peça">Embalagem</td>
+<td data-l="O que é, com exemplo real">Caixa com "duas chapas de relevo", laço e bilhete à mão</td>
+<td data-l="Fonte / captura">[19][20]</td>
+</tr>
+<tr class="even">
+<td data-l="Etapa">Pós-compra</td>
+<td data-l="Peça">Clube com presente mensal</td>
+<td data-l="O que é, com exemplo real">Até 12 presentes de até US$ 72 por US$ 98</td>
+<td data-l="Fonte / captura">[3]; ref-flamingoestate-membership-beneficios-desktop</td>
+</tr>
+<tr class="odd">
+<td data-l="Etapa">Loja física</td>
+<td data-l="Peça">Oficina aberta 3 dias</td>
+<td data-l="O que é, com exemplo real">Highland Park Shop, sexta a domingo</td>
+<td data-l="Fonte / captura">[8]; ref-flamingoestate-loja-popup-figueroa-desktop</td>
+</tr>
+<tr class="even">
+<td data-l="Etapa">Loja física</td>
+<td data-l="Peça">Pop-up com grande varejista</td>
+<td data-l="O que é, com exemplo real">Mytheresa nos Hamptons; casa de biscoito de gengibre</td>
+<td data-l="Fonte / captura">[17][26]</td>
+</tr>
+<tr class="odd">
+<td data-l="Etapa">Profissional</td>
+<td data-l="Peça">Atacado e desconto para designers</td>
+<td data-l="O que é, com exemplo real">Formulário de atacado; DWR em 46 endereços</td>
+<td data-l="Fonte / captura">[10][11]</td>
+</tr>
+<tr class="even">
+<td data-l="Etapa">Profissional</td>
+<td data-l="Peça">Hotelaria</td>
+<td data-l="O que é, com exemplo real">JW Marriott: perfume, loja dentro do hotel, playlists, mel</td>
+<td data-l="Fonte / captura">[25]</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="o-que-dizem-dela">O que dizem dela</h2>
+<p><strong>Podcasts.</strong> Nenhum foi ouvido; as durações vêm dos feeds e as descrições, das páginas dos episódios.</p>
+<div class="meas"><table>
+<thead>
+<tr class="header">
+<th>Programa</th>
+<th>Data</th>
+<th>Duração</th>
+<th>O que cobre</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-l="Programa">Business of Home, ep. 444</td>
+<td data-l="Data">07.04.2025</td>
+<td data-l="Duração">54:22</td>
+<td data-l="O que cobre">Origem no estacionamento; "aprender a amar dizer não"; a pressão para crescer e a vontade de ficar pequeno [21]</td>
+</tr>
+<tr class="even">
+<td data-l="Programa">Glossy Beauty Podcast</td>
+<td data-l="Data">13.01.2022</td>
+<td data-l="Duração">52 min</td>
+<td data-l="O que cobre">A agência, a origem, a Mecca em 150 lojas [22]</td>
+</tr>
+<tr class="odd">
+<td data-l="Programa">Glossy Beauty Podcast, "No one cares about the story"</td>
+<td data-l="Data">21.11.2024</td>
+<td data-l="Duração">53 min</td>
+<td data-l="O que cobre">160 reuniões com investidores; "investidores querem margem de 90%" [23]</td>
+</tr>
+<tr class="even">
+<td data-l="Programa">Time Sensitive</td>
+<td data-l="Data">gravado em 19.11.2024</td>
+<td data-l="Duração">~56 min</td>
+<td data-l="O que cobre">Seis capítulos; o quinto, "Farm to Label", começa por volta de 37:00 (minutagem calculada pelas durações publicadas) [24]</td>
+</tr>
+<tr class="odd">
+<td data-l="Programa">Shopify Masters, com Aaron Harvey</td>
+<td data-l="Data">07.04.2026</td>
+<td data-l="Duração">~38 min</td>
+<td data-l="O que cobre">Conselheiros, margem negativa da caixa, armazém próprio [19][20]</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Citações, traduzidas.</strong></p>
+<ul>
+<li>"As pessoas sentem cheiro de besteira." Christiansen [16]</li>
+<li>"Escala simplesmente mata toda a graça." Christiansen [16]</li>
+<li>"Na hora dessas reuniões, é só sobre os números. […] Ninguém liga para a história." Christiansen [23]</li>
+<li>"Essa ideia de que a comida deve ficar mais barata é uma mentira. A comida precisa ficar mais cara." Christiansen [24]</li>
+<li>"No começo, isso não era um negócio lucrativo." Harvey, sobre a caixa [19]</li>
+</ul>
+<h2 id="o-que-não-se-sabe">O que não se sabe</h2>
+<ul>
+<li>Margem bruta e líquida, e o peso de cada canal (site, atacado, assinatura, clube).</li>
+<li>Número de membros do clube e de assinantes da carta, que o Substack não mostra [15].</li>
+<li>Ticket médio, taxa de recompra e custo de aquisição de cliente.</li>
+<li>O total captado e a data da primeira rodada: 2023 ou 2024, conforme a fonte [16][17][28].</li>
+<li>O fluxo de boas-vindas depois do pop-up.</li>
+<li>Quais hotéis da JW Marriott usam o perfume; a fonte só diz "alguns" [25].</li>
+<li>Faturamento, movimento e data de abertura da loja de Highland Park.</li>
+</ul>
+<h2 id="perguntas-para-a-more">Perguntas para a More</h2>
+<ol type="1">
+<li>A Flamingo vende a casa do dono sem abri-la ao público: o lugar chega por carta, foto e convite. O que da oficina e das casas de quem desenha as 24 peças a More mostraria, e o que manteria fechado?</li>
+<li>O clube da Flamingo se paga em dois presentes e põe a carta do dono atrás de uma cobrança anual. Numa casa com poucos clientes por ano e 120 dias de espera, o que seria ser "membro" da More, e quem pagaria por isso?</li>
+<li>A marca dá desconto na primeira compra, fez uma liquidação de até 60% e mesmo assim sobe o preço da vela todo ano (de US$ 58 para US$ 68). Qual é a política de preço da More para a peça sob encomenda, para a peça de mostruário e para o objeto que sobra de uma sessão de fotos?</li>
+<li>A Design Within Reach revende velas da Flamingo em 46 endereços. Existe um objeto pequeno, dos mesmos materiais e fornecedores, que a More poria nas mãos de terceiros (lojas, hotéis, arquitetos)? O que ele diria da peça grande?</li>
+<li>A Flamingo nomeia o produtor dentro do produto ("estragão do Oregon", "cooperativa de mulheres"). Quais marceneiros, tecelões e fornecedores da More têm nome e história que poderiam estar na ficha da peça, e quais preferem não aparecer?</li>
+<li>A loja da Flamingo abre três dias por semana, no endereço da oficina. Com a Alameda Franca abrindo em 05.11, quais dias e horários a More abre, e o que acontece na loja quando ela está fechada?</li>
+</ol>
+<h2 id="como-este-caso-foi-feito">Como este caso foi feito</h2>
+<p>Em 16.10.2026 foram abertos ao vivo o site (home, página da vela, caixa sazonal, clube, presentes, carrinho e a primeira tela do checkout, sem compra), o catálogo público de produtos, o mapa de revendedores, o arquivo da carta no Substack e o arquivo Email Love. Nenhum e-mail real foi cadastrado, então o fluxo de boas-vindas não foi visto. As reportagens da Inc. (por reprodução), da Shopify e do The Case for Brand foram lidas; NYT, WSJ e Fashionista ficaram atrás de paywall ou bloqueio e entram só pelo que outras fontes citam. Nenhum podcast foi ouvido.</p>
+<h2 id="fontes">Fontes</h2>
+<p>Acesso em 16.10.2026, salvo indicação.</p>
+<ol type="1">
+<li>Site e página da vela de tomate. <a href="https://flamingoestate.com/" rel="noopener">https://flamingoestate.com/</a> · <a href="https://flamingoestate.com/products/roma-heirloom-tomato-soy-wax-candle" rel="noopener">https://flamingoestate.com/products/roma-heirloom-tomato-soy-wax-candle</a></li>
+<li>Catálogo público (132 produtos, preços, variantes e datas de publicação). <a href="https://flamingoestate.com/products.json" rel="noopener">https://flamingoestate.com/products.json</a></li>
+<li>The Estate Membership. <a href="https://flamingoestate.com/pages/the-estate-membership" rel="noopener">https://flamingoestate.com/pages/the-estate-membership</a></li>
+<li>Seasonal Subscription Box. <a href="https://flamingoestate.com/products/seasonal-subscription-box" rel="noopener">https://flamingoestate.com/products/seasonal-subscription-box</a> · <a href="https://flamingoestate.com/products/seasonal-harvest-subscription-box-pre-paid" rel="noopener">https://flamingoestate.com/products/seasonal-harvest-subscription-box-pre-paid</a></li>
+<li>Assinaturas. <a href="https://flamingoestate.com/pages/subscriptions" rel="noopener">https://flamingoestate.com/pages/subscriptions</a></li>
+<li>Política de envio. <a href="https://flamingoestate.com/pages/shipping-policy" rel="noopener">https://flamingoestate.com/pages/shipping-policy</a></li>
+<li>FAQ. <a href="https://flamingoestate.com/pages/faq" rel="noopener">https://flamingoestate.com/pages/faq</a></li>
+<li>Pop-ups e loja. <a href="https://flamingoestate.com/pages/pop-ups" rel="noopener">https://flamingoestate.com/pages/pop-ups</a></li>
+<li>Presentes corporativos. <a href="https://flamingoestate.com/pages/gifting-inquiry" rel="noopener">https://flamingoestate.com/pages/gifting-inquiry</a></li>
+<li>Atacado. <a href="https://flamingoestate.com/pages/wholesale-gifting" rel="noopener">https://flamingoestate.com/pages/wholesale-gifting</a></li>
+<li>Revendedores (752 pontos no mapa; 717 únicos na varredura por cidades). <a href="https://flamingoestate.com/pages/stockists" rel="noopener">https://flamingoestate.com/pages/stockists</a></li>
+<li>The Estate. <a href="https://flamingoestate.com/pages/the-estate" rel="noopener">https://flamingoestate.com/pages/the-estate</a></li>
+<li>Projetos com produtores. <a href="https://flamingoestate.com/pages/jalama-canyon-project" rel="noopener">https://flamingoestate.com/pages/jalama-canyon-project</a> · <a href="https://flamingoestate.com/pages/melipona-bee-project" rel="noopener">https://flamingoestate.com/pages/melipona-bee-project</a> · <a href="https://flamingoestate.com/pages/nuturn" rel="noopener">https://flamingoestate.com/pages/nuturn</a></li>
+<li>The Flamingo Fund. <a href="https://flamingoestate.com/pages/the-flamingo-fund" rel="noopener">https://flamingoestate.com/pages/the-flamingo-fund</a></li>
+<li>Estate Journal (Substack), página, arquivo e edições abertas. <a href="https://flamingoestate.substack.com/about" rel="noopener">https://flamingoestate.substack.com/about</a> · <a href="https://flamingoestate.substack.com/archive" rel="noopener">https://flamingoestate.substack.com/archive</a></li>
+<li>Jennifer Conrad, "The Glamorous Growth Strategy of Flamingo Estate", Inc. (17.05.2026), via reprodução. <a href="https://inc-1-smart-business-story.beehiiv.com/p/the-glamorous-growth-strategy-of-flamingo-estate" rel="noopener">https://inc-1-smart-business-story.beehiiv.com/p/the-glamorous-growth-strategy-of-flamingo-estate</a></li>
+<li>Wikipedia, "Flamingo Estate", e as referências listadas ali (NYT 21.05.2023, WSJ 01.11.2024, WWD 14.05.2024), não lidas. <a href="https://en.wikipedia.org/wiki/Flamingo_Estate" rel="noopener">https://en.wikipedia.org/wiki/Flamingo_Estate</a></li>
+<li>Amanda K. Gordon, The Case for Brand (05.07.2024). <a href="https://thecaseforbrand.substack.com/p/how-flamingo-estate-turned-heirloom" rel="noopener">https://thecaseforbrand.substack.com/p/how-flamingo-estate-turned-heirloom</a></li>
+<li>Shopify, entrevista com Aaron Harvey (07.04.2026). <a href="https://www.shopify.com/blog/flamingo-estate-creative-vision-at-scale" rel="noopener">https://www.shopify.com/blog/flamingo-estate-creative-vision-at-scale</a></li>
+<li>eCommerce Fastlane (07.04.2026). <a href="https://ecommercefastlane.com/how-flamingo-estates-founders-protect-their-vision-while-scaling-to-8-figures/" rel="noopener">https://ecommercefastlane.com/how-flamingo-estates-founders-protect-their-vision-while-scaling-to-8-figures/</a></li>
+<li>Business of Home Podcast, feed (episódio de 07.04.2025). <a href="https://feeds.simplecast.com/FMUd4fE9" rel="noopener">https://feeds.simplecast.com/FMUd4fE9</a></li>
+<li>Glossy Beauty Podcast (13.01.2022). <a href="https://www.glossy.co/podcasts/flamingo-estate-founder-richard-christiansen-pleasure-is-a-priority" rel="noopener">https://www.glossy.co/podcasts/flamingo-estate-founder-richard-christiansen-pleasure-is-a-priority</a></li>
+<li>Glossy Beauty Podcast (21.11.2024). <a href="https://podcasts.apple.com/us/podcast/fundraising-lessons-with-flamingo-estate-founder/id1441018579?i=1000677727850" rel="noopener">https://podcasts.apple.com/us/podcast/fundraising-lessons-with-flamingo-estate-founder/id1441018579?i=1000677727850</a></li>
+<li>Time Sensitive (gravado em 19.11.2024). <a href="https://www.timesensitive.fm/episode/richard-christiansen-on-bridging-horticulture-and-popular-culture" rel="noopener">https://www.timesensitive.fm/episode/richard-christiansen-on-bridging-horticulture-and-popular-culture</a></li>
+<li>Joshua Glass, family style (18.05.2024). <a href="https://family.style/culture/jw-marriott-flamingo-estate" rel="noopener">https://family.style/culture/jw-marriott-flamingo-estate</a></li>
+<li>Time Out Los Angeles (01.12.2023). <a href="https://www.timeout.com/los-angeles/shopping/mytheresa-x-flamingo-estate-gingerbread-house" rel="noopener">https://www.timeout.com/los-angeles/shopping/mytheresa-x-flamingo-estate-gingerbread-house</a></li>
+<li>Email Love, arquivo da marca (28.08 a 15.10.2026) e e-mails de 21.09, 24.09, 10.10, 22.03, 01.04 e 10.06.2026. <a href="https://emaillove.com/?s=flamingo+estate" rel="noopener">https://emaillove.com/?s=flamingo+estate</a> · <a href="https://emaillove.com/email-inspiration-from-flamingo-estate-192" rel="noopener">https://emaillove.com/email-inspiration-from-flamingo-estate-192</a></li>
+<li>CB Insights (rodada de 18.06.2024 sem valor; via buscador). <a href="https://www.cbinsights.com/company/flamingo-estate/financials" rel="noopener">https://www.cbinsights.com/company/flamingo-estate/financials</a></li>
+<li>CNBC Events (Chandelier em 2005; via buscador). <a href="https://www.cnbcevents.com/speakers/richard-christiansen/" rel="noopener">https://www.cnbcevents.com/speakers/richard-christiansen/</a></li>
+<li>Retail TouchPoints, pop-up na Bloomingdale's (datas via resumo de buscador). <a href="https://www.retailtouchpoints.com/topics/retail-store-design/bloomingdales-brings-garden-brand-flamingo-estate-to-rotating-pop-up-space" rel="noopener">https://www.retailtouchpoints.com/topics/retail-store-design/bloomingdales-brings-garden-brand-flamingo-estate-to-rotating-pop-up-space</a></li>
+</ol>
+
+</article>
+
+<section class="mods" id="modulos" aria-label="Páginas desta seção"><div class="eyebrow">As 10 páginas desta seção</div><ol class="lst"><li><span class="n">00</span><p><a href="/negocio/">Comece aqui</a></p><span class="t">3 min</span></li><li><span class="n">01</span><p><a href="/negocio/rh/">RH</a></p><span class="t">12 min</span></li><li aria-current="page"><span class="n">02</span><p><a href="/negocio/flamingo-estate/">Flamingo Estate</a></p><span class="t">12 min</span></li><li><span class="n">03</span><p><a href="/negocio/trousseau/">Trousseau</a></p><span class="t">12 min</span></li><li><span class="n">04</span><p><a href="/negocio/sklum/">Sklum</a></p><span class="t">12 min</span></li><li><span class="n">05</span><p><a href="/negocio/nordic-knots/">Nordic Knots</a></p><span class="t">12 min</span></li><li><span class="n">06</span><p><a href="/negocio/curtos/">Hem, The Invisible Collection, ETEL e Interior Define</a></p><span class="t">12 min</span></li><li><span class="n">07</span><p><a href="/negocio/pecas/">As peças, na ordem do funil</a></p><span class="t">12 min</span></li><li><span class="n">08</span><p><a href="/negocio/lancamento/">Lançar uma marca: Nik Sharma e os experts</a></p><span class="t">8 min</span></li><li><span class="n">09</span><p><a href="/negocio/perguntas/">Perguntas para a mesa</a></p><span class="t">5 min</span></li></ol></section>
+
+</div>
+
+<footer><div class="wrap">
+  <p>Estudos de caso feitos com IA em 16.10.2026, a partir de fontes públicas e de visitas aos sites de cada marca. Cada número traz a fonte. As capturas são de páginas públicas, abertas no mesmo dia. Nada aqui diz o que a More deve fazer: os casos descrevem, as perguntas ficam com o time. Feito com o sistema de design da More.</p>
+</div></footer>
+</div>
+
+<div class="barzone"><div class="bar" aria-label="Navegação">
+  <a href="/" aria-label="Índice"><svg viewBox="0 0 272 69" role="img" aria-label="More" xmlns:c2pa="http://c2pa.org/manifest"><metadata><c2pa:manifest>AAAWgmp1bWIAAAAeanVtZGMycGEAEQAQgAAAqgA4m3EDYzJwYQAAABZcanVtYgAAAEdqdW1kYzJtYQARABCAAACqADibcQN1cm46YzJwYTozMzg3YWIyYy1hMWM1LTQ5Y2EtYmY5Ny00N2RiMjI3YmYwZWYAAAADl2p1bWIAAAApanVtZGMyYXMAEQAQgAAAqgA4m3EDYzJwYS5hc3NlcnRpb25zAAAAALxqdW1iAAAARGp1bWRjYm9yABEAEIAAAKoAOJtxE2MycGEuaW5ncmVkaWVudC52MwAAAAAYYzJzaAvejDJIOSNzaPAwHj7kaAAAAABwY2JvcqNpZGM6Zm9ybWF0bWltYWdlL3N2Zyt4bWxqaW5zdGFuY2VJRHgseG1wOmlpZDphMmQ3YjNhMC04Mzk1LTQ0MTUtYWFhNS04ZWFhYWM2ZjQ1YjFscmVsYXRpb25zaGlwaHBhcmVudE9mAAAB4mp1bWIAAABBanVtZGNib3IAEQAQgAAAqgA4m3ETYzJwYS5hY3Rpb25zLnYyAAAAABhjMnNoAWo9OMK4bgwwZanS+OWsagAAAZljYm9yomdhY3Rpb25zgqJmYWN0aW9ua2MycGEub3BlbmVkanBhcmFtZXRlcnOha2luZ3JlZGllbnRzgaJjdXJseC1zZWxmI2p1bWJmPWMycGEuYXNzZXJ0aW9ucy9jMnBhLmluZ3JlZGllbnQudjNkaGFzaFggWSobncfM24/WN0aREmJtsgGGyNu3mVlNb3PF1vaOaZWkZmFjdGlvbngdY29tLmFudGhyb3BpYy5jbGF1ZGUucHJvdmlkZWRqcGFyYW1ldGVyc6F4H2NvbS5hbnRocm9waWMub3JpZ2luLWNvbmZpZGVuY2VndW5rbm93bmtkZXNjcmlwdGlvbnhmQ2xhdWRlIHByb3ZpZGVkIHRoaXMgZmlsZSBhdCB0aGUgcmVxdWVzdCBvZiBhIHVzZXIgYW5kIG1heSBoYXZlIGNyZWF0ZWQgb3IgbW9kaWZpZWQgdGhlIGZpbGUgY29udGVudHMubXNvZnR3YXJlQWdlbnShZG5hbWVmQ2xhdWRlcmFsbEFjdGlvbnNJbmNsdWRlZPUAAADIanVtYgAAAEBqdW1kY2JvcgARABCAAACqADibcRNjMnBhLmhhc2guZGF0YQAAAAAYYzJzaGE4ixWuWp1iLg6wekWrKwQAAACAY2JvcqVjYWxnZnNoYTI1NmNwYWRNAAAAAAAAAAAAAAAAAGRoYXNoWCBiHjqZX82DROgQX7UaMEWiMeHylF9MCDlPFIRlXx33amRuYW1lbmp1bWJmIG1hbmlmZXN0amV4Y2x1c2lvbnOBomVzdGFydBh2Zmxlbmd0aBkeBAAAAj5qdW1iAAAAJ2p1bWRjMmNsABEAEIAAAKoAOJtxA2MycGEuY2xhaW0udjIAAAACD2Nib3KlY2FsZ2ZzaGEyNTZpc2lnbmF0dXJleE1zZWxmI2p1bWJmPS9jMnBhL3VybjpjMnBhOjMzODdhYjJjLWExYzUtNDljYS1iZjk3LTQ3ZGIyMjdiZjBlZi9jMnBhLnNpZ25hdHVyZWppbnN0YW5jZUlEeCx4bXA6aWlkOmU1NGExMTEzLTcyMzItNGM5Zi1hMWIwLTdlOTZjMDQzZWYzYnJjcmVhdGVkX2Fzc2VydGlvbnODomN1cmx4LXNlbGYjanVtYmY9YzJwYS5hc3NlcnRpb25zL2MycGEuaW5ncmVkaWVudC52M2RoYXNoWCBZKhudx8zbj9Y3RpESYm2yAYbI27eZWU1vc8XW9o5plaJjdXJseCpzZWxmI2p1bWJmPWMycGEuYXNzZXJ0aW9ucy9jMnBhLmFjdGlvbnMudjJkaGFzaFgg7+iOlXzN9fsl5dtomZi9dr38n5qn+jROtSMCZ/zZgOeiY3VybHgpc2VsZiNqdW1iZj1jMnBhLmFzc2VydGlvbnMvYzJwYS5oYXNoLmRhdGFkaGFzaFgg5dtuer2DYxW6ttFffBa8QryKsKlQ4VcBq6Dmm04/y9x0Y2xhaW1fZ2VuZXJhdG9yX2luZm+jZG5hbWVvQW50aHJvcGljIEZpbGVzZ3ZlcnNpb25lMS4wLjBrc3BlY1ZlcnNpb25lMi40LjAAABA4anVtYgAAAChqdW1kYzJjcwARABCAAACqADibcQNjMnBhLnNpZ25hdHVyZQAAABAIY2JvctKEWQISogEmGCFZAgowggIGMIIBjaADAgECAhRA5aAK7sI50L64g/oGQgU9Z1UTADAKBggqhkjOPQQDAzBJMRcwFQYDVQQKEw5BbnRocm9waWMsIFBCQzEuMCwGA1UEAxMlQW50aHJvcGljIENvbnRlbnQgQ3JlZGVudGlhbHMgUm9vdCBDQTAeFw0yNjA4MDcxODQzNTZaFw0yODA4MDYxOTQzNTZaMEQxFzAVBgNVBAoTDkFudGhyb3BpYywgUEJDMSkwJwYDVQQDEyBBbnRocm9waWMgQ2xhdWRlIENvbnRlbnQgU2lnbmluZzBZMBMGByqGSM49AgEGCCqGSM49AwEHA0IABJh6CmvLUBgFFNU0vUKlOVtE6djd17L5SuwX0LemFisBM3dkd/3cyjxFA3Qo5S46fX0/ihY0VZ7mfb9KF703t5OjWDBWMA4GA1UdDwEB/wQEAwIHgDAVBgNVHSUEDjAMBgorBgEEAYPoXgIBMAwGA1UdEwEB/wQCMAAwHwYDVR0jBBgwFoAUzlHiBIFOZFsj+OPEz5o+nMHXXMIwCgYIKoZIzj0EAwMDZwAwZAIwMXMdFJ4BetLLVY7ORuE9noqbbAZOZn/aArXyTwFAZfKrPzxF2vPoJNf1+UCdg1XGAjBwX1zd9WGqYkqmL5SFqw1QySjr1zJfpJM9+1rdDwSPLMOPOjKuiXjoU/pUUeG9RwmhY3BhZFkNngAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPZYQLNSdZSJ1Lb4KyXNjcHFt+dMD/kTbfSuk+KST65sHWF18sFBsDHhJT9XVfg3laI//fXetfblD/peX/vE5v8r43Y=</c2pa:manifest></metadata><path fill="currentColor" d="M176.593 23.0819V1.91833H150.317V66.5948H176.593V44.2791H205.243V1.91833C189.55 1.91833 177.465 13.093 176.593 23.0875V23.0819Z"/><path fill="currentColor" d="M111.007 0C91.875 0 76.3403 15.3302 76.3403 34.223C76.3403 53.1159 91.8693 68.4461 111.007 68.4461C130.145 68.4461 145.742 53.1159 145.742 34.223C145.742 15.3302 130.213 0 111.007 0ZM111.007 42.4334C106.43 42.4334 102.69 38.8036 102.69 34.2174C102.69 29.6313 106.435 26.0015 111.007 26.0015C115.579 26.0015 119.398 29.6984 119.398 34.2174C119.398 38.7365 115.653 42.4334 111.007 42.4334Z"/><path fill="currentColor" d="M35.919 19.6423L26.2764 1.91833H0V66.5948H26.2764V44.212H45.4936V66.5948H71.77V1.91833H45.4936L35.919 19.6423Z"/><path fill="currentColor" d="M272.002 1.87909H211.835V24.7541V34.7487V44.1783V66.5612H272.002V44.7376H238.219L255.669 34.7151L238.236 24.7541H272.002V1.87909Z"/></svg></a>
+  <nav><a href="/">[Índice]</a><a href="/negocio/">[Início]</a><a href="/negocio/trousseau/">[Trousseau]</a></nav>
+</div></div>
+<script>
+document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener('click',e=>{const t=document.querySelector(decodeURIComponent(a.getAttribute('href')));if(t){e.preventDefault();t.scrollIntoView({block:'start'});history.replaceState(null,'',a.getAttribute('href'));}});});
+if(location.hash){const t=document.querySelector(decodeURIComponent(location.hash));if(t)t.scrollIntoView({block:'start'});}
+</script>
+</body>
+</html>

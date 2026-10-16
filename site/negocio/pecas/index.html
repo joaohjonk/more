@@ -1,0 +1,978 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>As peças, na ordem do funil · Estudos de caso · More</title>
+<meta name="description" content="Tudo o que as nove marcas estudadas e os autores lidos por Nik Sharma põem no caminho do cliente, da primeira notícia ao arquiteto. Cada peça vem com quem a faz e uma pergunta para a More.">
+<link rel="icon" href="data:,">
+<link rel="stylesheet" href="/nav/shell.css">
+<style>
+@font-face{font-family:"Muoto";src:url("/fonts/mr.otf") format("opentype");font-weight:400;font-display:swap}
+@font-face{font-family:"MuotoMono";src:url("/fonts/mm.woff2") format("woff2");font-weight:400;font-display:swap}
+/* Tokens do sistema de design da More (/sistema/brand/generated/tokens.css). Página de marca: paleta clara nos dois temas. */
+:root{
+  color-scheme:light;
+  --page:#E5E1DB; --ink:#2D211E; --muted:#5D554F; --label:#686868; --rule:#2D211E1A; --glass:#2D211E1A; --tile:#DDD7CF; --inverse:#2D211E; --on-inverse:#E5E1DB;
+  --muoto:"Muoto","DM Sans","Helvetica Neue",Arial,sans-serif;
+  --mono:"MuotoMono","Martian Mono",ui-monospace,Menlo,monospace;
+  --s-hair:6px; --s-sm:10px; --s-md:16px; --s-lg:20px; --s-xl:30px; --s-2xl:40px; --s-3xl:60px; --s-sec:96px;
+  --bar:35px; --barzone:75px;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--page:#E5E1DB;--ink:#2D211E;--muted:#5D554F;--rule:#2D211E1A;--glass:#2D211E1A;--tile:#DDD7CF;color-scheme:light}}
+:root[data-theme="dark"]{--page:#E5E1DB;--ink:#2D211E;--muted:#5D554F;--rule:#2D211E1A;--glass:#2D211E1A;--tile:#DDD7CF;color-scheme:light}
+*{box-sizing:border-box}
+html,body{height:100%}
+body{background:var(--page);color:var(--ink);font-family:var(--muoto);font-size:15px;line-height:1.47;-webkit-font-smoothing:antialiased;margin:0;overflow:hidden}
+/* A página rola dentro de .page; a barra vive numa faixa própria embaixo e nunca cobre texto. */
+.page{height:calc(100% - var(--barzone));overflow-y:auto;overflow-x:hidden;scroll-behavior:smooth;overscroll-behavior:contain;padding-bottom:106px}
+.wrap{max-width:1120px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:0 var(--s-3xl)}
+.mono{font-family:var(--mono);font-stretch:75%;font-size:13px}
+.muted{color:var(--muted)}
+.label{color:var(--label)}
+a{color:inherit;text-underline-offset:3px;text-decoration-thickness:1px;overflow-wrap:anywhere}
+a:hover{color:var(--muted)}
+h1,h2,h3{font-weight:400;text-wrap:balance;margin:0}
+h2{font-size:clamp(26px,3.4vw,32px);line-height:1.05;margin-bottom:var(--s-lg)}
+h3{font-size:15px;margin-bottom:4px}
+p{margin:0 0 var(--s-sm);max-width:64ch;text-wrap:pretty}
+section{padding-top:var(--s-sec)}
+.eyebrow{font-family:var(--mono);font-stretch:75%;font-size:13px;color:var(--label);margin-bottom:var(--s-md)}
+img{max-width:100%}
+b{font-weight:400}
+.tag{font-family:var(--mono);font-stretch:75%;font-size:11px;color:var(--label);white-space:nowrap}
+.tag.open{color:var(--ink)}
+.meas .tag{white-space:normal}
+
+/* abertura */
+.abre{padding-top:var(--s-3xl);display:grid;gap:var(--s-md)}
+.abre h1{font-size:clamp(34px,5.2vw,58px);line-height:.98;letter-spacing:-.01em;max-width:18ch}
+.abre .lede{font-size:clamp(18px,2vw,22px);line-height:1.25;margin:0;max-width:34ch}
+.meta{display:flex;flex-wrap:wrap;gap:6px var(--s-lg);margin-top:var(--s-sm)}
+
+/* tabelas */
+.meas{overflow-x:auto;margin-top:var(--s-lg)}
+.meas table{border-collapse:collapse;width:100%;min-width:760px;font-size:14px}
+.meas th{font-family:var(--mono);font-stretch:75%;font-weight:400;font-size:12px;color:var(--label);text-align:left;padding:8px;border-bottom:1px solid var(--ink)}
+.meas td{padding:10px 8px;border-bottom:1px solid var(--rule);vertical-align:top}
+.meas td:first-child{width:18%}
+.meas tr.grp td{font-family:var(--mono);font-stretch:75%;font-size:12px;color:var(--label);padding-top:var(--s-lg);border-bottom:1px solid var(--ink)}
+@media(max-width:700px){.meas table{min-width:0}.meas thead{display:none}.meas tr{display:block;padding:12px 0;border-bottom:1px solid var(--ink)}.meas tr.grp{padding:var(--s-lg) 0 4px}.meas td{display:block;padding:2px 0;border:0;width:auto!important}.meas td:first-child{font-size:16px;margin-bottom:4px}.meas td[data-l]::before{content:attr(data-l);display:block;font-family:var(--mono);font-stretch:75%;font-size:11px;color:var(--label);margin-top:6px}}
+
+/* riscos e perguntas */
+.lst{list-style:none;margin:var(--s-lg) 0 0;padding:0;border-top:1px solid var(--ink)}
+.lst li{display:grid;grid-template-columns:4ch minmax(0,1fr);gap:8px 16px;padding:12px 0;border-bottom:1px solid var(--rule);font-size:15px}
+.lst .n{font-family:var(--mono);font-stretch:75%;font-size:12px;color:var(--label);padding-top:3px}
+.lst p{margin:0;max-width:70ch}
+.lst p b{display:block}
+.lst .how{font-family:var(--mono);font-stretch:75%;font-size:12px;color:var(--label);margin-top:4px}
+
+/* barra, em faixa própria */
+.barzone{height:var(--barzone);position:relative;background:var(--page)}
+.bar{position:absolute;left:50%;transform:translateX(-50%);top:20px;width:420px;max-width:calc(100vw - 32px);height:var(--bar);background:var(--glass);backdrop-filter:blur(13px);-webkit-backdrop-filter:blur(13px);display:flex;align-items:center;justify-content:space-between;padding:0 var(--s-sm)}
+.bar svg{width:56px;height:auto;display:block;fill:currentColor}
+.bar nav{display:flex;gap:8px}
+.bar a{font-family:var(--mono);font-stretch:75%;font-size:13px;text-decoration:none;white-space:nowrap}
+.bar a:hover,.bar a:focus-visible{color:var(--muted)}
+@media(max-width:560px){.bar nav a{font-size:11px}.bar nav{gap:4px}}
+footer{background:var(--inverse);color:var(--on-inverse);margin-top:var(--s-sec)}
+footer .wrap{padding-block:var(--s-2xl)}
+footer p{font-size:13px;max-width:70ch}
+:focus-visible{outline:1px solid var(--ink);outline-offset:2px}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important;scroll-behavior:auto!important}}
+
+/* oitava seção: texto longo convertido do pacote */
+.doc{padding-top:var(--s-2xl)}
+.doc h2{padding-top:var(--s-3xl);scroll-margin-top:16px}
+.doc h3{font-size:clamp(17px,1.8vw,20px);line-height:1.2;margin:var(--s-xl) 0 var(--s-sm);scroll-margin-top:16px}
+.doc h4{font-family:var(--mono);font-stretch:75%;font-weight:400;font-size:12px;color:var(--label);margin:var(--s-lg) 0 6px}
+.doc p,.doc li{font-size:16px;line-height:1.5}
+.doc p{max-width:68ch}
+.doc strong{font-weight:400;color:var(--ink)}
+.doc p>strong:first-child{font-family:var(--mono);font-stretch:75%;font-size:13px;color:var(--label);margin-right:4px}
+.doc em{font-style:italic}
+.doc ul,.doc ol{max-width:68ch;padding-left:20px;margin:0 0 var(--s-md)}
+.doc li{margin-bottom:6px}
+.doc li>p{margin:0}
+.doc hr{border:0;border-top:1px solid var(--ink);margin:var(--s-2xl) 0 0}
+.doc blockquote{margin:var(--s-lg) 0;padding:var(--s-lg);background:var(--glass);max-width:68ch}
+.doc blockquote p{font-size:clamp(17px,1.8vw,20px);line-height:1.3;margin:0}
+.doc pre{font-family:var(--mono);font-stretch:75%;font-size:13px;line-height:1.5;background:var(--glass);padding:var(--s-md) var(--s-lg);overflow-x:auto;max-width:100%;white-space:pre}
+.doc code{font-family:var(--mono);font-stretch:75%;font-size:.88em}
+.doc .meas table{min-width:640px}
+.doc .meas td:first-child{width:auto}
+.doc .meas td,.doc .meas th{font-size:14px;line-height:1.4}
+.doc .meas th{font-size:12px}
+.doc .meas img{display:block;margin-bottom:6px}
+.doc img{height:auto;display:block;border:1px solid var(--rule)}
+.doc h3+p>a>img,.doc h3+p>img{margin:var(--s-sm) 0}
+.doc-atlas h3{padding-top:var(--s-xl);border-top:1px solid var(--ink)}
+@media(max-width:700px){.doc .meas:not(.grid) table{min-width:0}.doc .meas:not(.grid) thead{display:none}.doc .meas:not(.grid) tr{display:block;padding:12px 0;border-bottom:1px solid var(--ink)}.doc .meas:not(.grid) td{display:block;padding:2px 0;border:0}.doc .meas:not(.grid) td:first-child{font-size:16px}.doc .meas:not(.grid) td[data-l]:not(:first-child)::before{content:attr(data-l);display:block;font-family:var(--mono);font-stretch:75%;font-size:11px;color:var(--label);margin-top:6px}.doc .meas.grid table{min-width:560px}.doc .meas.grid td,.doc .meas.grid th{padding:8px 6px}}
+.mods{padding-top:var(--s-sec)}
+.mods .lst li{grid-template-columns:4ch minmax(0,1fr) auto;align-items:baseline}
+.mods .lst p{font-size:17px}
+.mods .lst a{text-decoration:none}
+.mods .lst a:hover{text-decoration:underline}
+.mods .lst .t{font-family:var(--mono);font-stretch:75%;font-size:12px;color:var(--label)}
+.mods li[aria-current] p a{text-decoration:underline}
+.mods li[aria-current] .n::after{content:" ·"}
+.doc hr+h3{border-top:0}
+@media(max-width:700px){.doc .meas.grid{overflow-x:auto}.doc .meas.grid table{display:table;min-width:560px}.doc .meas.grid thead{display:table-header-group}.doc .meas.grid tr{display:table-row;padding:0}.doc .meas.grid td{display:table-cell;border-bottom:1px solid var(--rule);font-size:14px}.doc .meas.grid td::before{content:none!important}.doc .meas.grid td:first-child{font-size:13px;white-space:nowrap}}
+
+</style>
+</head>
+<body><script src="/nav/shell.js" data-section="negocio" data-into=".page" data-foot="on" defer></script>
+<div class="page" id="page">
+<div class="wrap">
+
+<header class="abre" id="topo">
+  <div class="eyebrow">More · Estudos de caso · As peças, na ordem do funil · 16.10.2026</div>
+  <h1>As peças, na ordem do funil</h1>
+  <p class="lede">Tudo o que as nove marcas estudadas e os autores lidos por Nik Sharma põem no caminho do cliente, da primeira notícia ao arquiteto. Cada peça vem com quem a faz e uma pergunta para a More.</p>
+  <div class="meta mono label"><span>Para Fred, Edu e Vitor</span><span>Estudos de caso, sem recomendação</span><span>Leitura: 12 min</span></div>
+</header>
+
+<article class="doc doc-pecas">
+
+<p>Esta página junta os seis casos (<a href="/negocio/rh/">RH</a>, <a href="/negocio/flamingo-estate/">Flamingo Estate</a>, <a href="/negocio/trousseau/">Trousseau</a>, <a href="/negocio/sklum/">Sklum</a>, <a href="/negocio/nordic-knots/">Nordic Knots</a>, <a href="/negocio/curtos/">Hem, The Invisible Collection, ETEL e Interior Define</a>) e o que Nik Sharma e outros operadores dizem sobre lançar uma marca (<a href="/negocio/lancamento/">Lançar uma marca: Nik Sharma e os experts</a>). Uma "peça atômica" é a menor unidade que alguém precisa criar e manter: uma faixa no topo do site, uma ficha técnica, um e-mail, uma amostra, um horário de loja. As etapas seguem o funil usado nos casos. Dentro de cada etapa, as peças vêm na ordem em que o cliente as encontra ou na ênfase que os autores dão a elas. A página não diz quais a More deve fazer.</p>
+<p>Siglas das marcas: <strong>RH</strong>, <strong>FE</strong> (Flamingo Estate), <strong>TR</strong> (Trousseau), <strong>SK</strong> (Sklum), <strong>NK</strong> (Nordic Knots), <strong>Hem</strong>, <strong>TIC</strong> (The Invisible Collection), <strong>ETEL</strong> e <strong>ID</strong> (Interior Define, o caso de contraste). Quase todo o material dos autores foi escrito para marcas de consumo. Três marcas indicam quando uma tática depende de uma premissa que não é a da More: <strong>[recompra]</strong> pressupõe compra frequente ou assinatura; <strong>[ticket baixo]</strong> pressupõe compra por impulso, frete barato ou amostra de custo baixo; <strong>[varejo]</strong> pressupõe venda em rede de terceiros.</p>
+<h2 id="quem-faz-o-quê">Quem faz o quê</h2>
+<p>● faz, e a peça é visível no caso. ○ faz em parte, ou o caso não conseguiu ver por inteiro. – não faz, ou não há registro.</p>
+<div class="meas grid"><table>
+<thead>
+<tr class="header">
+<th>Etapa</th>
+<th>RH</th>
+<th>FE</th>
+<th>TR</th>
+<th>SK</th>
+<th>NK</th>
+<th>Hem</th>
+<th>TIC</th>
+<th>ETEL</th>
+<th>ID</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-l="Etapa">Pré-lançamento</td>
+<td data-l="RH">●</td>
+<td data-l="FE">○</td>
+<td data-l="TR">○</td>
+<td data-l="SK">–</td>
+<td data-l="NK">–</td>
+<td data-l="Hem">–</td>
+<td data-l="TIC">–</td>
+<td data-l="ETEL">○</td>
+<td data-l="ID">–</td>
+</tr>
+<tr class="even">
+<td data-l="Etapa">Descoberta</td>
+<td data-l="RH">●</td>
+<td data-l="FE">●</td>
+<td data-l="TR">●</td>
+<td data-l="SK">○</td>
+<td data-l="NK">●</td>
+<td data-l="Hem">–</td>
+<td data-l="TIC">○</td>
+<td data-l="ETEL">●</td>
+<td data-l="ID">–</td>
+</tr>
+<tr class="odd">
+<td data-l="Etapa">Página inicial</td>
+<td data-l="RH">○</td>
+<td data-l="FE">●</td>
+<td data-l="TR">○</td>
+<td data-l="SK">●</td>
+<td data-l="NK">●</td>
+<td data-l="Hem">●</td>
+<td data-l="TIC">●</td>
+<td data-l="ETEL">●</td>
+<td data-l="ID">○</td>
+</tr>
+<tr class="even">
+<td data-l="Etapa">Página do produto</td>
+<td data-l="RH">○</td>
+<td data-l="FE">●</td>
+<td data-l="TR">●</td>
+<td data-l="SK">●</td>
+<td data-l="NK">●</td>
+<td data-l="Hem">●</td>
+<td data-l="TIC">●</td>
+<td data-l="ETEL">○</td>
+<td data-l="ID">●</td>
+</tr>
+<tr class="odd">
+<td data-l="Etapa">Contato e venda assistida</td>
+<td data-l="RH">●</td>
+<td data-l="FE">○</td>
+<td data-l="TR">●</td>
+<td data-l="SK">○</td>
+<td data-l="NK">●</td>
+<td data-l="Hem">○</td>
+<td data-l="TIC">●</td>
+<td data-l="ETEL">○</td>
+<td data-l="ID">○</td>
+</tr>
+<tr class="even">
+<td data-l="Etapa">Checkout</td>
+<td data-l="RH">○</td>
+<td data-l="FE">●</td>
+<td data-l="TR">●</td>
+<td data-l="SK">●</td>
+<td data-l="NK">●</td>
+<td data-l="Hem">○</td>
+<td data-l="TIC">○</td>
+<td data-l="ETEL">–</td>
+<td data-l="ID">○</td>
+</tr>
+<tr class="odd">
+<td data-l="Etapa">E-mails depois do cadastro</td>
+<td data-l="RH">●</td>
+<td data-l="FE">●</td>
+<td data-l="TR">○</td>
+<td data-l="SK">○</td>
+<td data-l="NK">○</td>
+<td data-l="Hem">○</td>
+<td data-l="TIC">–</td>
+<td data-l="ETEL">–</td>
+<td data-l="ID">○</td>
+</tr>
+<tr class="even">
+<td data-l="Etapa">Pós-compra</td>
+<td data-l="RH">●</td>
+<td data-l="FE">●</td>
+<td data-l="TR">●</td>
+<td data-l="SK">○</td>
+<td data-l="NK">○</td>
+<td data-l="Hem">–</td>
+<td data-l="TIC">●</td>
+<td data-l="ETEL">●</td>
+<td data-l="ID">○</td>
+</tr>
+<tr class="odd">
+<td data-l="Etapa">Loja física</td>
+<td data-l="RH">●</td>
+<td data-l="FE">●</td>
+<td data-l="TR">●</td>
+<td data-l="SK">–</td>
+<td data-l="NK">●</td>
+<td data-l="Hem">○</td>
+<td data-l="TIC">●</td>
+<td data-l="ETEL">●</td>
+<td data-l="ID">○</td>
+</tr>
+<tr class="even">
+<td data-l="Etapa">Profissionais e arquitetos</td>
+<td data-l="RH">●</td>
+<td data-l="FE">○</td>
+<td data-l="TR">○</td>
+<td data-l="SK">●</td>
+<td data-l="NK">●</td>
+<td data-l="Hem">●</td>
+<td data-l="TIC">●</td>
+<td data-l="ETEL">–</td>
+<td data-l="ID">–</td>
+</tr>
+</tbody>
+</table></div>
+<p>Duas leituras rápidas da matriz. A RH aparece com ○ nas etapas do site porque o rh.com bloqueou a navegação da pesquisa; o que se sabe ali vem do 10-K e de e-mails arquivados [1]. A ETEL não vende pelo site e não tem página para arquitetos; tudo passa pela galeria [6].</p>
+<h2 id="1-pré-lançamento">1. Pré-lançamento</h2>
+<p>Só quatro das nove marcas deixaram registro público de um lançamento, e nenhum é o da marca inteira. A RH lançou a linha Estates em 2026 em cinco passos: prévia no Salone del Mobile, estreia na abertura de Londres em 27.06, um Sourcebook de 268 páginas, uma galeria própria em Greenwich em 18.09 e, só depois, o térreo das galerias existentes [1]. A Trousseau pôs os mais vendidos da Casa Costa no site em 14.04.2025 e lançou a primeira coleção conjunta seis meses depois, em 30.09.2025 [3]. A Flamingo Estate vende caixas em pré-venda com data de envio impressa no card [2]. A ETEL lança edições numeradas, como a Cadeirinha de Eduardo Longo em 89 exemplares [6].</p>
+<p>Os autores lidos por Nik Sharma são mais detalhados aqui do que em qualquer outra etapa. A lista do Nik tem cinco pré-requisitos (produto com prova orgânica, mensagem, conteúdo, social orgânico e ferramentas instaladas) e uma regra: testar a demanda com pagamento real antes de gastar com agência [7].</p>
+<p><img loading="lazy" src="/negocio/img/ref-rh-ir-estates-greenwich-desktop-20261016.jpg" alt="Comunicado da galeria RH Estates em Greenwich" /> <em>Observar: a linha nova ganha um endereço próprio antes de ocupar as lojas existentes. O lançamento é uma sequência de lugares, não uma data.</em></p>
+<div class="meas"><table>
+<thead>
+<tr class="header">
+<th>Peça</th>
+<th>O que é</th>
+<th>Quem faz</th>
+<th>Pergunta para a More</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-l="Peça">Brief de marca em cinco perguntas</td>
+<td data-l="O que é">Para quem somos, o que resolvemos, por que somos diferentes, como soamos (três adjetivos), qual é nosso mundo visual</td>
+<td data-l="Quem faz">Nik Sharma: "not a 40-page guide nobody reads" [7]. Nenhuma das nove publica o seu; a FE resume a regra em "marca, marca, marca primeiro" [2]</td>
+<td data-l="Pergunta para a More">Quais são as três palavras da More, e elas valem igual na loja, no WhatsApp e na ficha da peça?</td>
+</tr>
+<tr class="even">
+<td data-l="Peça">Ângulo contra algo</td>
+<td data-l="O que é">Uma posição que diz como ver o produto e dá função à foto e ao texto</td>
+<td data-l="Quem faz">NK: "entre o tapete barato e ruim e o feito à mão, caro e demorado" [5]. RH: "acima dos lifestyle retailers e abaixo do interior design trade" [1]. Nik e Oren John: Poppi contra Coca e Pepsi [7]</td>
+<td data-l="Pergunta para a More">Contra o que a More se posiciona: a loja de decoração, a marcenaria de projeto ou o design de galeria?</td>
+</tr>
+<tr class="odd">
+<td data-l="Peça">História de origem em três durações</td>
+<td data-l="O que é">Versões de 60 s, 3 min e 10 min, com as derrotas incluídas</td>
+<td data-l="Quem faz">Caleb Ralston: "where you came from" é o que cria identificação [7]. FE: caixas de vegetais vendidas no estacionamento de uma livraria em 03.2020 [2]. TIC: uma poltrona que só se comprava contratando o projeto inteiro [6]</td>
+<td data-l="Pergunta para a More">Qual é a história da More em 60 segundos, e quem a conta?</td>
+</tr>
+<tr class="even">
+<td data-l="Peça">Banco de imagens</td>
+<td data-l="O que é">Um ensaio de estúdio e um externo por trimestre ou semestre</td>
+<td data-l="Quem faz">Nik [7]. NK legenda a foto com o lugar: "Grand Walnut, Soho Loft, New York" [5]</td>
+<td data-l="Pergunta para a More">Quais das 24 peças já têm foto numa casa real, com o lugar nomeado?</td>
+</tr>
+<tr class="odd">
+<td data-l="Peça">Lista de espera ou pré-venda</td>
+<td data-l="O que é">Medir a demanda com pagamento, não só com cadastro</td>
+<td data-l="Quem faz">Native: pré-venda com página e anúncio, cerca de US$ 8 mil no 1º mês; David Protein: 40 mil e-mails disparados no dia 1 [7]. FE: "Ships by 11/02" desde 08.09.2026 [2]</td>
+<td data-l="Pergunta para a More">O que a More pede a quem entra na lista antes de 05.11: e-mail, visita marcada ou sinal?</td>
+</tr>
+<tr class="even">
+<td data-l="Peça">Sequência de lançamento de linha</td>
+<td data-l="O que é">Prévia, abertura, catálogo, loja</td>
+<td data-l="Quem faz">RH Estates; TR Casa Costa em duas etapas [1][3]</td>
+<td data-l="Pergunta para a More">Uma peça nova da More estreia na loja, numa feira, no Instagram ou para quem já comprou?</td>
+</tr>
+<tr class="odd">
+<td data-l="Peça">Edição numerada</td>
+<td data-l="O que é">Tiragem fechada com certificado</td>
+<td data-l="Quem faz">ETEL, 89 exemplares da Cadeirinha [6]. Represent: 50 peças num pop-up de dois dias [7]</td>
+<td data-l="Pergunta para a More">Alguma das 24 peças tem tiragem fechada?</td>
+</tr>
+<tr class="even">
+<td data-l="Peça">Medição instalada</td>
+<td data-l="O que é">Pixel, UTMs e a pergunta "onde nos conheceu?" antes do primeiro anúncio</td>
+<td data-l="Quem faz">Nik: "a pixel is like a SIM card" [7]. TR: campo "Código do vendedor" no carrinho [3]</td>
+<td data-l="Pergunta para a More">Daqui a seis meses, como a More vai saber de onde veio cada cliente?</td>
+</tr>
+<tr class="odd">
+<td data-l="Peça">Plano de caixa com a oficina</td>
+<td data-l="O que é">Prazo de pagamento ao fornecedor menos prazo de produção dá o fôlego de caixa</td>
+<td data-l="Quem faz">Roman Khan; Rahal sobre a RXBAR, que quase quebrou com um único fabricante [7]. ID usou esse ciclo para abrir lojas e quebrou [6]</td>
+<td data-l="Pergunta para a More">Entre o sinal da cliente e o pagamento à oficina, onde fica o dinheiro?</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="2-descoberta">2. Descoberta</h2>
+<p>As nove marcas se dividem em quatro maneiras de ser encontradas. A RH gasta em papel: US$ 106 mi de publicidade no ano fiscal de 2025, 3,1% da receita, "principalmente" Sourcebooks, e o 10-K chama o catálogo de "meio de baixo custo para testar produtos novos" [1]. FE, TR e NK vivem de imprensa e colaboração: a NK lista 62 matérias de 10.2021 a 09.2026 [5], a TR transforma cada colaboração (Campana, Paula Raia, Arthur Casas) em categoria permanente do menu [3]. A ETEL aparece no calendário cultural, com SP-Arte desde 2016 e 15 exposições em três anos na Casa Zalszupin [6]. E há o anúncio pago: em 16.10.2026 a NK tinha cerca de 140 anúncios ativos no Meta, e nenhum dos 30 lidos oferecia cupom; o argumento era o prazo [5]. A TIC, segundo a Business of Home, deixou de anunciar em redes sociais [6].</p>
+<p>Os autores discordam sobre a ordem. Sean Frank (Ridge) diz que uma marca nova pode chegar a US$ 10 mi só com vídeo curto orgânico; o Nik usa o orgânico como laboratório e logo escala um funil pago [7].</p>
+<p><img loading="lazy" src="/negocio/img/ref-nordicknots-anuncios-meta-desktop-20261016.jpg" alt="Biblioteca de Anúncios do Meta com anúncios da Nordic Knots" /> <em>Observar: "Free delivery in 3–6 days" e "Made-to-measure rugs in just 2–4 weeks". O anúncio vende um número de prazo, não um desconto.</em></p>
+<div class="meas"><table>
+<thead>
+<tr class="header">
+<th>Peça</th>
+<th>O que é</th>
+<th>Quem faz</th>
+<th>Pergunta para a More</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-l="Peça">Catálogo impresso</td>
+<td data-l="O que é">Livro de produto enviado à casa do cliente</td>
+<td data-l="Quem faz">RH: Modern 2026 com quase 500 páginas, Estates com 268 [1]. TIC: catálogos impressos sob medida para profissionais [6]. Os autores do digest não tratam de catálogo</td>
+<td data-l="Pergunta para a More">Qual peça física faz o papel do Sourcebook numa casa com 24 peças?</td>
+</tr>
+<tr class="even">
+<td data-l="Peça">Colaboração assinada</td>
+<td data-l="O que é">Peça ou linha com o nome de outro designer</td>
+<td data-l="Quem faz">TR, NK (Studio Mellone, designer brasileiro em Nova York), FE (Pamela Anderson, Jane Goodall) [2][3][5]. Nema (Salt &amp; Stone): o critério é "what will be fun + how many new eyeballs"; Garofalo: audiências diferentes, "why do you want to talk to yourself?" [7]</td>
+<td data-l="Pergunta para a More">Com quem a More dividiria uma peça, e a audiência dessa pessoa é diferente da sua?</td>
+</tr>
+<tr class="odd">
+<td data-l="Peça">Imprensa e selo de veículo</td>
+<td data-l="O que é">Matéria, e o logo dela sobre a foto</td>
+<td data-l="Quem faz">NK, 62 matérias [5]; FE põe AD, The Strategist e GQ sobre a imagem da vela [2]. Nik: "brand emprestado"; a "brag bar" com veículos que o cliente reconhece [7]</td>
+<td data-l="Pergunta para a More">Quais três veículos o cliente da More reconhece?</td>
+</tr>
+<tr class="even">
+<td data-l="Peça">Feira e exposição</td>
+<td data-l="O que é">Presença no calendário de design</td>
+<td data-l="Quem faz">ETEL na ICFF desde 1995 e na SP-Arte [6]; RH com prévia no Salone [1]</td>
+<td data-l="Pergunta para a More">Em que calendário cultural de São Paulo a More aparece, e com qual peça?</td>
+</tr>
+<tr class="odd">
+<td data-l="Peça">Lugar de outro como vitrine</td>
+<td data-l="O que é">O produto em uso num hotel ou numa loja conhecida</td>
+<td data-l="Quem faz">TR: carrossel de 30 hotéis "que oferecem Trousseau" [3]; FE: JW Marriott e DWR em 46 endereços [2]. Nema: o lugar icônico que gera foto espontânea [7]</td>
+<td data-l="Pergunta para a More">Onde uma peça da More pode ser vista e usada fora da loja?</td>
+</tr>
+<tr class="even">
+<td data-l="Peça">Casa ou ativo como mídia</td>
+<td data-l="O que é">Um lugar da marca que vira notícia</td>
+<td data-l="Quem faz">FE: jantar de Martha Stewart na casa [2]. RH: Guesthouse, jatos e iate listados no 10-K como "advertising vehicles" [1]</td>
+<td data-l="Pergunta para a More">Que encontro na Alameda Franca gera uma foto que outra pessoa publica?</td>
+</tr>
+<tr class="odd">
+<td data-l="Peça">Anúncio com um número</td>
+<td data-l="O que é">O mesmo argumento do anúncio à página</td>
+<td data-l="Quem faz">NK (prazo), SK ("Up to 50% off · 15 oct / 25 oct") [4][5]. Nik: o gancho do anúncio vira o título da página; "Sending cold Meta traffic to a homepage in 2026 is malpractice" [7]</td>
+<td data-l="Pergunta para a More">Qual número a More consegue repetir em todo anúncio sem quebrar a promessa?</td>
+</tr>
+<tr class="even">
+<td data-l="Peça">Envio de produto a criadores <strong>[ticket baixo]</strong></td>
+<td data-l="O que é">Produto dado, sem exigir atribuição</td>
+<td data-l="Quem faz">Nik: seis tipos de vídeo, 10 a 20 criadores; Jolie com 10 mil chuveiros [7]. Nenhuma das nove envia móvel</td>
+<td data-l="Pergunta para a More">Que peça a More emprestaria, a quem e por quanto tempo?</td>
+</tr>
+<tr class="odd">
+<td data-l="Peça">Página-resposta de busca</td>
+<td data-l="O que é">Página que responde uma pergunta que as pessoas digitam</td>
+<td data-l="Quem faz">SK: "¿Tiene Sklum tienda física?" responde que não [4]. Kurt Elster: FAQ escrita como pergunta de agente de IA [7]</td>
+<td data-l="Pergunta para a More">Que pergunta sobre a More alguém faz ao Google ou ao ChatGPT, e onde está a resposta?</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="3-página-inicial">3. Página inicial</h2>
+<p>O que cada marca põe primeiro diz o que ela considera o argumento principal: a NK põe o prazo, a SK e a ID uma campanha de desconto, a FE o clube, a ETEL a agenda de exposições, a Hem e a TIC uma pergunta sobre quem está chegando [2][4][5][6]. O Nik pede que a home responda cinco perguntas: o que é, por que importa, quão rápido chega, como melhora minha vida e como se compara [7].</p>
+<p><img loading="lazy" src="/negocio/img/ref-hem-portao-perfil-desktop-20261016.jpg" alt="Hem: portão &quot;Private or trade?&quot; antes da home" /> <em>Observar: o perfil e a região são escolhidos antes de qualquer produto. O arquiteto entra por outra porta desde o primeiro clique.</em></p>
+<div class="meas"><table>
+<thead>
+<tr class="header">
+<th>Peça</th>
+<th>O que é</th>
+<th>Quem faz</th>
+<th>Pergunta para a More</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-l="Peça">Faixa do topo</td>
+<td data-l="O que é">A primeira linha de texto, repetida em todas as páginas</td>
+<td data-l="Quem faz">NK: "Free standard delivery in 3-6 business days"; FE: "The Estate Membership →"; SK: cupom com contador; TR: "até 10% off na 1ª compra" e "10x" [2][3][4][5]</td>
+<td data-l="Pergunta para a More">O que vai na primeira linha do site da More?</td>
+</tr>
+<tr class="even">
+<td data-l="Peça">Portão de perfil</td>
+<td data-l="O que é">Pergunta se é cliente final ou profissional</td>
+<td data-l="Quem faz">Hem ("Private or trade?"); TIC ("Are you an interior designer or architect?") [6]</td>
+<td data-l="Pergunta para a More">O arquiteto se identifica na entrada ou só quando pede preço?</td>
+</tr>
+<tr class="odd">
+<td data-l="Peça">As cinco respostas</td>
+<td data-l="O que é">O que é, por que importa, prazo, benefício, comparação</td>
+<td data-l="Quem faz">Nik [7]. NK escreve no herói o que vende: "RUGS, CURTAINS, BEDDING &amp; DECOR" [5]</td>
+<td data-l="Pergunta para a More">Quem chega à home sabe em cinco segundos que a More faz móvel autoral sob encomenda?</td>
+</tr>
+<tr class="even">
+<td data-l="Peça">Menu curto</td>
+<td data-l="O que é">Quatro ou cinco itens e um caminho claro</td>
+<td data-l="Quem faz">Nik: "the red-carpet analogy" [7]. FE tem quatro itens; NK põe "Pro Account" no menu principal [2][5]</td>
+<td data-l="Pergunta para a More">Quantos itens tem o menu da More, e o arquiteto está nele?</td>
+</tr>
+<tr class="odd">
+<td data-l="Peça">Home como agenda</td>
+<td data-l="O que é">Exposições e feiras no lugar de produto</td>
+<td data-l="Quem faz">ETEL: "SP-Arte 2026", "Aberto5 · Cadeirinha" [6]</td>
+<td data-l="Pergunta para a More">A home da More muda quando muda o que está na loja?</td>
+</tr>
+<tr class="even">
+<td data-l="Peça">Botão de conversa fixo</td>
+<td data-l="O que é">Acesso a uma pessoa em qualquer página</td>
+<td data-l="Quem faz">TR: "Ajuda?" abre o WhatsApp; Hem: "Chat with an expert" [3][6]</td>
+<td data-l="Pergunta para a More">Quem responde o WhatsApp da More, e em quanto tempo?</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="4-página-do-produto">4. Página do produto</h2>
+<p>É a etapa em que as nove mais se parecem e em que a More tem o problema mais específico: dizer, na mesma tela do preço, que a peça leva cerca de 120 dias. Cinco marcas mostram o prazo dentro da variante. A Hem tem a mesma cadeira com envio em 15 semanas ou em 1 a 7 dias, conforme o acabamento [6]. A NK põe estoque, sob medida e amostra no mesmo seletor de tamanho [5]. A RH mostra "2–7 dias" para tecidos de estoque e semanas para os outros [1]. A SK escreve a data exata, "entre el 22/10 y el 26/10", e concentra as reclamações justamente quando essa data escorrega [4]. A ID mostra "Delivered in 8–14 weeks" ao lado do botão [6]. Para o Nik, a pergunta da página é "compro hoje, chega quando?" [7].</p>
+<p><img loading="lazy" src="/negocio/img/ref-nordicknots-pdp-tamanho-estoque-prazo-desktop-20261016.jpg" alt="Nordic Knots: seletor de tamanho com amostra, estoque e sob medida" /> <em>Observar: a amostra de 8"×8" é a primeira opção de tamanho, "Only 1 left" aparece no tamanho de estoque e o sob medida traz o prazo de 2–4 semanas. Ninguém sai da página para descobrir isso.</em></p>
+<div class="meas"><table>
+<thead>
+<tr class="header">
+<th>Peça</th>
+<th>O que é</th>
+<th>Quem faz</th>
+<th>Pergunta para a More</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-l="Peça">Prazo na variante</td>
+<td data-l="O que é">O prazo muda com o acabamento ou o tamanho, junto do botão</td>
+<td data-l="Quem faz">Hem, NK, RH, SK, ID [1][4][5][6]</td>
+<td data-l="Pergunta para a More">Os ~120 dias mudam com a madeira ou o tecido, e onde a cliente vê isso antes de abrir o WhatsApp?</td>
+</tr>
+<tr class="even">
+<td data-l="Peça">Dois caminhos de compra</td>
+<td data-l="O que é">Comprar direto ou pedir orçamento</td>
+<td data-l="Quem faz">TIC: "Place order" e "Request a quote or a customisation" [6]. ETEL: só "Wishlist (+)" [6]</td>
+<td data-l="Pergunta para a More">Quais das 24 peças têm preço no site e quais saem por orçamento?</td>
+</tr>
+<tr class="odd">
+<td data-l="Peça">Amostra</td>
+<td data-l="O que é">Pedaço do material, pago ou grátis</td>
+<td data-l="Quem faz">NK: US$ 12, grátis para profissionais [5]; ID: 10 amostras grátis de mais de 150 tecidos [6]</td>
+<td data-l="Pergunta para a More">O que faz o papel da amostra na More (madeira, tecido, visita à oficina), e quem paga?</td>
+</tr>
+<tr class="even">
+<td data-l="Peça">Ficha técnica para baixar</td>
+<td data-l="O que é">Medidas, materiais, arquivo 3D</td>
+<td data-l="Quem faz">NK ("Download tearsheet"), Hem (fact sheet, 3D), TIC (tecido Dedar, metragem), SK (densidade da espuma, 3D) [4][5][6]</td>
+<td data-l="Pergunta para a More">A ficha de cada peça existe em PDF que um arquiteto põe no projeto?</td>
+</tr>
+<tr class="odd">
+<td data-l="Peça">Autoria e procedência</td>
+<td data-l="O que é">Quem desenhou, quem fez, de onde vem</td>
+<td data-l="Quem faz">ETEL: edição e certificado; FE: "estragão do Oregon"; TR: filtro "Origem" [2][3][6]</td>
+<td data-l="Pergunta para a More">Quais marceneiros e fornecedores da More querem ter o nome na ficha?</td>
+</tr>
+<tr class="even">
+<td data-l="Peça">Configurador</td>
+<td data-l="O que é">Escolhas que mudam preço e prazo na tela</td>
+<td data-l="Quem faz">TR: monograma com aviso "+7 dias"; SK: "Personaliza el diseño"; ID: nove passos [3][4][6]</td>
+<td data-l="Pergunta para a More">O que o cliente pode mudar numa peça da More, e cada mudança mexe no prazo?</td>
+</tr>
+<tr class="odd">
+<td data-l="Peça">Parcelamento escrito</td>
+<td data-l="O que é">Valor da parcela ao lado do preço</td>
+<td data-l="Quem faz">NK (Affirm), SK (Klarna, com taxa), FE (Afterpay), TR (10x) [2][3][4][5]. Nik: parcelamento "for higher AOV" [7]</td>
+<td data-l="Pergunta para a More">Em quantas vezes a More parcela, e isso aparece na ficha ou só na conversa?</td>
+</tr>
+<tr class="even">
+<td data-l="Peça">Prova de cliente</td>
+<td data-l="O que é">Avaliações e fotos de quem comprou</td>
+<td data-l="Quem faz">FE: 4,9 com 1.299 avaliações; SK: Trustpilot 3,6 com 288.080 [2][4]. Nik: só ~15% chega ao fim da página, então a prova vai em cima, no meio e embaixo [7]</td>
+<td data-l="Pergunta para a More">Com dezenas de pedidos por ano, que prova de cliente a More mostra, e onde?</td>
+</tr>
+<tr class="odd">
+<td data-l="Peça">Venda casada</td>
+<td data-l="O que é">Peças que completam o conjunto</td>
+<td data-l="Quem faz">TR: "Compre também" com a mesma linha; NK: base de tapete; FE: "Pairs Better With" [2][3][5]</td>
+<td data-l="Pergunta para a More">Que par de peças da More se compra junto?</td>
+</tr>
+<tr class="even">
+<td data-l="Peça">Assinatura pré-marcada <strong>[recompra]</strong></td>
+<td data-l="O que é">Compra recorrente como opção padrão</td>
+<td data-l="Quem faz">FE: "Subscribe &amp; save 10%" já marcado [2]. Nik: seletor de assinatura e "preço por dia" [7]</td>
+<td data-l="Pergunta para a More">Não se aplica a móvel; existe algo da More que se repõe?</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="5-contato-e-venda-assistida">5. Contato e venda assistida</h2>
+<p>O digest dos autores fala pouco de venda consultiva. Ele trata de atendimento: o SAC que resolve o problema antes que ele exista (Jess Cervellon), o caderno de clientes da Represent, as notas da h.wood sobre 200 a 300 clientes frequentes [7]. Os casos têm mais. A RH oferece projeto de interiores gratuito para membros em três níveis, e seu escritório de Palm Desert, com 3.000 pés² e nenhum produto exposto, gera "um milhão de dólares por mês" em projetos, segundo a carta de 12.2025 [1]. A Trousseau publica seis portas de contato, cada uma com pessoa ou número próprio, vende reforma e bordado como item de catálogo e faz o sob medida só por orçamento [3]. A TIC devolve um orçamento escrito em menos de 24 horas, ou até 7 dias para peças complexas, com especificação, prazo, origem, impostos e frete [6]. A NK oferece quatro tipos de consulta, "complimentary, with no purchase required" [5].</p>
+<p><img loading="lazy" src="/negocio/img/ref-rh-email-design-membro-mobile-20261016.jpg" alt="E-mail da RH: projeto de interiores em três níveis" /> <em>Observar: o botão é "Request a Design Consultation" e o pré-cabeçalho amarra o serviço à assinatura. A foto mostra uma mesa de reunião, sem móvel à venda.</em></p>
+<div class="meas"><table>
+<thead>
+<tr class="header">
+<th>Peça</th>
+<th>O que é</th>
+<th>Quem faz</th>
+<th>Pergunta para a More</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-l="Peça">Consulta de projeto</td>
+<td data-l="O que é">Conversa com alguém que desenha junto</td>
+<td data-l="Quem faz">RH (três níveis), NK (digital, na loja, em casa, profissional), ID (chat, FaceTime ou Zoom) [1][5][6]</td>
+<td data-l="Pergunta para a More">Quanto custa à More uma hora de consulta, e quem pode tê-la sem comprar?</td>
+</tr>
+<tr class="even">
+<td data-l="Peça">Orçamento escrito</td>
+<td data-l="O que é">Documento com especificação, prazo, origem e frete</td>
+<td data-l="Quem faz">TIC, em até 24 horas [6]; TR, por e-mail ou na loja [3]</td>
+<td data-l="Pergunta para a More">Em quanto tempo a More devolve um orçamento, e o que ele contém?</td>
+</tr>
+<tr class="odd">
+<td data-l="Peça">Contato nomeado por canal</td>
+<td data-l="O que é">Uma pessoa ou número para cada tipo de cliente</td>
+<td data-l="Quem faz">TR: WhatsApp por loja, executivas de hotelaria e de presentes [3]; TIC: WhatsApp citado em cada resposta do FAQ [6]; FE: e-mail do fundador no rodapé dos textos [2]</td>
+<td data-l="Pergunta para a More">O WhatsApp da More tem nome de pessoa?</td>
+</tr>
+<tr class="even">
+<td data-l="Peça">Lista-modelo</td>
+<td data-l="O que é">Sugestão de compra completa para uma ocasião</td>
+<td data-l="Quem faz">TR: "Sugestão de enxoval", 21 linhas, de lençol a odorizante [3]</td>
+<td data-l="Pergunta para a More">Como seria a lista de uma casa nova com peças da More?</td>
+</tr>
+<tr class="odd">
+<td data-l="Peça">Serviço vendido como item</td>
+<td data-l="O que é">Ajuste com preço publicado</td>
+<td data-l="Quem faz">TR: "colocar elástico no lençol R$ 100", "personalizar toalha R$ 33" [3]</td>
+<td data-l="Pergunta para a More">Que ajuste a More já faz de graça e poderia ter preço?</td>
+</tr>
+<tr class="even">
+<td data-l="Peça">Atribuição ao vendedor</td>
+<td data-l="O que é">Liga a venda online a quem atendeu</td>
+<td data-l="Quem faz">TR: "Código do vendedor" no carrinho [3]</td>
+<td data-l="Pergunta para a More">Uma venda que começa na loja e fecha no celular conta para quem?</td>
+</tr>
+<tr class="odd">
+<td data-l="Peça">Escritório de projeto sem produto</td>
+<td data-l="O que é">Sala de reunião no lugar de exposição</td>
+<td data-l="Quem faz">RH em Palm Desert, aluguel de US$ 200 mil por ano [1]</td>
+<td data-l="Pergunta para a More">Na Alameda Franca, o que pesa mais: espaço de projeto ou de exposição?</td>
+</tr>
+<tr class="even">
+<td data-l="Peça">Caderno de clientes</td>
+<td data-l="O que é">Notas sobre preferências, compartilhadas com a equipe</td>
+<td data-l="Quem faz">Represent: "black book" e aviso de lançamento; h.wood: notas sobre 200 a 300 clientes [7]</td>
+<td data-l="Pergunta para a More">O que a More anota sobre cada cliente, e onde fica isso?</td>
+</tr>
+<tr class="odd">
+<td data-l="Peça">Aviso antes da reclamação</td>
+<td data-l="O que é">Mensagem proativa sobre prazo e entrega</td>
+<td data-l="Quem faz">Cervellon: "CX ótimo é invisível" [7]. ID como contraexemplo: atrasos de cerca de seis meses com pouca comunicação [6]</td>
+<td data-l="Pergunta para a More">Se um pedido atrasar 30 dias, quem avisa a cliente, quando e com que palavras?</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="6-checkout">6. Checkout</h2>
+<p>As regras de pagamento variam mais do que o desenho da tela. A RH cobra 50% de sinal em toda encomenda e não devolve o sinal de peça especial [1]; TIC, NK, SK e TR cobram tudo no pedido [3][4][5][6]. A ID cobrava na compra e fabricava depois, e usou esse caixa para abrir lojas [6]. O frete aparece de quatro jeitos: grátis (NK), tabela por faixa de valor (SK, de € 5,99 a € 49,99, grátis acima de € 1.500), taxa fixa (ID, US$ 299) e grátis acima de um valor por região (TR, R$ 1.000 na capital paulista) [3][4][5][6].</p>
+<p><img loading="lazy" src="/negocio/img/ref-trousseau-carrinho-desktop-20261016.jpg" alt="Carrinho da Trousseau" /> <em>Observar: embalagem de presente grátis com nota sem valor, o aviso sobre peças personalizadas, os campos "Cupom" e "Código do vendedor" e "1ª troca com frete grátis".</em></p>
+<div class="meas"><table>
+<thead>
+<tr class="header">
+<th>Peça</th>
+<th>O que é</th>
+<th>Quem faz</th>
+<th>Pergunta para a More</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-l="Peça">Regra de pagamento</td>
+<td data-l="O que é">Sinal, integral ou parcelas</td>
+<td data-l="Quem faz">RH (50%), os demais integral [1][6]</td>
+<td data-l="Pergunta para a More">O que a cliente de uma peça de 120 dias aceita, e o que o caixa da oficina exige?</td>
+</tr>
+<tr class="even">
+<td data-l="Peça">Frete visível antes de pagar</td>
+<td data-l="O que é">Valor ou regra escrita</td>
+<td data-l="Quem faz">NK, SK, ID, TR [3][4][5][6]. Nik: frete com nome e prazo, "Standard, ships within 24 hours" [7]</td>
+<td data-l="Pergunta para a More">Em que momento da conversa a More informa o frete?</td>
+</tr>
+<tr class="odd">
+<td data-l="Peça">Garantias junto do botão</td>
+<td data-l="O que é">Frete, devolução, atendimento</td>
+<td data-l="Quem faz">NK: três garantias ao lado do resumo [5]. Nik: garantia ao lado de cada botão, no carrinho e no e-mail de abandono [7]</td>
+<td data-l="Pergunta para a More">Qual garantia a More escreve ao lado do botão de compra?</td>
+</tr>
+<tr class="even">
+<td data-l="Peça">Política de cancelamento escrita</td>
+<td data-l="O que é">O que acontece se a cliente desistir</td>
+<td data-l="Quem faz">ID: 25% depois de 24 h, 50% depois de 30 dias; RH: peça especial não se cancela; NK: pedido confirmado não se altera [1][5][6]</td>
+<td data-l="Pergunta para a More">Até quando uma cliente da More pode desistir, e quanto custa?</td>
+</tr>
+<tr class="odd">
+<td data-l="Peça">Embalagem de presente</td>
+<td data-l="O que é">Opção no carrinho, com nota sem valor</td>
+<td data-l="Quem faz">TR [3]; FE cobra a caixa de presente como variante [2]</td>
+<td data-l="Pergunta para a More">A peça da More pode ser um presente, e como ela chega?</td>
+</tr>
+<tr class="even">
+<td data-l="Peça">Venda cruzada no carrinho</td>
+<td data-l="O que é">Oferta entre o botão e o pagamento</td>
+<td data-l="Quem faz">SK: três ofertas antes de pagar; NK: base no mesmo tamanho [4][5]. True Classic: brindes por faixa de valor <strong>[ticket baixo]</strong> [7]</td>
+<td data-l="Pergunta para a More">Existe um objeto menor da More que cabe ao lado de uma peça grande?</td>
+</tr>
+<tr class="odd">
+<td data-l="Peça">Cartão ou crédito próprio</td>
+<td data-l="O que é">Financiamento da marca</td>
+<td data-l="Quem faz">RH: 0% em 12 meses para membros [1]</td>
+<td data-l="Pergunta para a More">Quem financia a parcela da More: o cartão, a própria More ou ninguém?</td>
+</tr>
+<tr class="even">
+<td data-l="Peça">Opt-in já marcado</td>
+<td data-l="O que é">Autorização de e-mail pré-selecionada</td>
+<td data-l="Quem faz">NK e FE: "Email me with news and offers" marcado [2][5]</td>
+<td data-l="Pergunta para a More">Como a More pede autorização para escrever depois da compra?</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="7-e-mails-depois-do-cadastro">7. E-mails depois do cadastro</h2>
+<p>O que cada marca oferece em troca do e-mail resume a política de preço dela. A NK oferece "first access to limited collections", sem cupom [5]. A FE, a TR, a SK e a Hem oferecem 10%; na Hem a oferta continuava no rodapé oito meses depois do anúncio do fim das promoções [3][4][6]. A frequência também diverge: a RH mandou 24 e-mails em 16 dias, 17 com desconto no assunto [1]; a FE manda cerca de 3,4 por semana para a lista de varejo e uma carta paga toda sexta [2]. O Nik propõe 60% de conteúdo de marca e 40% de promoção, duas ou três vezes por semana, e diz que o e-mail gera de 15% a 50% da receita das marcas que ele conhece [7].</p>
+<p><img loading="lazy" src="/negocio/img/ref-rh-email-lista-desktop-20261016.jpg" alt="Lista de e-mails da RH em outubro de 2026" /> <em>Observar: a cadência e o tom de liquidação, dez anos depois de a RH dizer que e-mail promocional repetitivo contradizia a marca.</em></p>
+<div class="meas"><table>
+<thead>
+<tr class="header">
+<th>Peça</th>
+<th>O que é</th>
+<th>Quem faz</th>
+<th>Pergunta para a More</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-l="Peça">A troca do pop-up</td>
+<td data-l="O que é">O que se oferece pelo e-mail</td>
+<td data-l="Quem faz">NK (acesso antecipado), FE, TR, SK, Hem (10%), ID (alerta de promoção) [2][3][4][5][6]. Nik: uma pergunta que qualifica, depois e-mail, depois telefone; meta de 12% de adesão [7]</td>
+<td data-l="Pergunta para a More">O que a More oferece em troca do e-mail, se não for desconto?</td>
+</tr>
+<tr class="even">
+<td data-l="Peça">Sequência de boas-vindas</td>
+<td data-l="O que é">Seis e-mails em duas semanas</td>
+<td data-l="Quem faz">Nik: história, por que você merece, o produto, a prova, última chance; o sexto manda para o varejo <strong>[varejo]</strong> [7]. FE marca produtos com "Klaviyo Welcome!" [2]</td>
+<td data-l="Pergunta para a More">O que a pessoa recebe da More nos primeiros 14 dias?</td>
+</tr>
+<tr class="odd">
+<td data-l="Peça">Carta do fundador</td>
+<td data-l="O que é">Texto longo e pessoal, com frequência fixa</td>
+<td data-l="Quem faz">FE: 51 edições, mediana de 1.365 palavras, paga [2]. RH: carta trimestral do CEO, metade narrativa de marca [1]. Nik: e-mail em texto puro, "somos pequenos, obrigado" [7]</td>
+<td data-l="Pergunta para a More">Quem escreve a carta da More, com que frequência, e ela é aberta ou paga?</td>
+</tr>
+<tr class="even">
+<td data-l="Peça">E-mail editorial de produto</td>
+<td data-l="O que é">História, material e processo de uma peça</td>
+<td data-l="Quem faz">RH: o Baldacchino, com a compra da Formations e o mármore [1]; NK: campanha FW26 [5]</td>
+<td data-l="Pergunta para a More">Qual peça da More rende o primeiro e-mail desse tipo?</td>
+</tr>
+<tr class="odd">
+<td data-l="Peça">Calendário</td>
+<td data-l="O que é">Proporção entre marca e promoção</td>
+<td data-l="Quem faz">Nik: 60/40 [7]; RH: 17 de 24 com desconto [1]</td>
+<td data-l="Pergunta para a More">Quantos e-mails por mês a More consegue escrever com conteúdo?</td>
+</tr>
+<tr class="even">
+<td data-l="Peça">Abandono</td>
+<td data-l="O que é">Lembrete, depois objeções, depois urgência</td>
+<td data-l="Quem faz">Nik: "Still thinking it over, {nome}?" [7]</td>
+<td data-l="Pergunta para a More">Numa compra de 120 dias, o que é "abandonar", e quem retoma: o e-mail ou a pessoa?</td>
+</tr>
+<tr class="odd">
+<td data-l="Peça">Lista no WhatsApp</td>
+<td data-l="O que é">Telefone pedido junto do e-mail</td>
+<td data-l="Quem faz">TR (telefone antes do e-mail), SK (opt-in de WhatsApp) [3][4]</td>
+<td data-l="Pergunta para a More">A lista da More vive no e-mail, no WhatsApp ou nos dois?</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="8-pós-compra">8. Pós-compra</h2>
+<p>Para a More, esta etapa dura mais do que as outras somadas: são cerca de 120 dias entre o pagamento e a entrega. Os autores dão um nome a isso. O Nik chama a primeira experiência de "teatro" e diz que "40–50% do funil vive aqui"; para ele, dois pequenos presentes valem mais que um desconto grande ("discounts read as 'this is what it's worth'; gifts read as 'they want me to win'") [7]. A sequência dele de dez contatos depois da compra pressupõe recompra nos marcos de hábito, mas a estrutura de confirmação, despacho e conteúdo antes da entrega não depende disso [7]. Entre as nove, a ETEL e a TIC entregam um certificado; a TR perfuma todo pedido com a fragrância Printemps, a mesma dos quartos de hotel [3][6].</p>
+<p><img loading="lazy" src="/negocio/img/ref-etel-autenticidade-certificado-desktop-20261016.jpg" alt="ETEL: página de autenticidade e certificado" /> <em>Observar: o certificado registra designer, ano de criação, ano de edição, artesão e cliente. O documento conta a história da peça depois que ela sai da loja.</em></p>
+<div class="meas"><table>
+<thead>
+<tr class="header">
+<th>Peça</th>
+<th>O que é</th>
+<th>Quem faz</th>
+<th>Pergunta para a More</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-l="Peça">Confirmação com prazo explicado</td>
+<td data-l="O que é">Mensagem que diz quando e por quê</td>
+<td data-l="Quem faz">TR: "7 dias corridos + envio = cerca de 12 dias" [3]. Nik: "quando chega meu pacote?" é a maior fonte de chamados [7]</td>
+<td data-l="Pergunta para a More">Como a More escreve a conta dos 120 dias na confirmação?</td>
+</tr>
+<tr class="even">
+<td data-l="Peça">Conteúdo durante a espera</td>
+<td data-l="O que é">Notícia da peça antes de ela chegar</td>
+<td data-l="Quem faz">Nik: o "content drop" do dia 4; Mud\Wtr manda um documentário [7]</td>
+<td data-l="Pergunta para a More">O que a cliente vê da sua peça nos 120 dias: foto da oficina, nome do marceneiro, nada?</td>
+</tr>
+<tr class="odd">
+<td data-l="Peça">Certificado e registro</td>
+<td data-l="O que é">Documento com número e história</td>
+<td data-l="Quem faz">ETEL (selo de DNA), TIC (certificado digital) [6]</td>
+<td data-l="Pergunta para a More">Que registro cada peça da More tem hoje, e quem o guarda?</td>
+</tr>
+<tr class="even">
+<td data-l="Peça">Entrega como cerimônia</td>
+<td data-l="O que é">O momento da chegada</td>
+<td data-l="Quem faz">RH: entrega própria em 29 mercados; TR: pedido perfumado; FE: laço e bilhete escritos à mão [1][2][3]. Terzian (h.wood): frases escondidas sob os pratos [7]</td>
+<td data-l="Pergunta para a More">O que acontece na casa da cliente no dia em que a peça chega?</td>
+</tr>
+<tr class="odd">
+<td data-l="Peça">Política de devolução</td>
+<td data-l="O que é">O que volta, quem paga</td>
+<td data-l="Quem faz">RH: provisão de 4,5% da receita para devoluções, mesmo sem aceitar devolução de peça especial; NK: taxa de US$ 39 ou 89; SK: o cliente paga a volta; ID: 50% para devolver sob encomenda [1][4][5][6]</td>
+<td data-l="Pergunta para a More">Se a peça chega e a cliente não gosta, o que a regra da More diz?</td>
+</tr>
+<tr class="even">
+<td data-l="Peça">Destino das devoluções</td>
+<td data-l="O que é">Outlet, mostruário, venda de fim de série</td>
+<td data-l="Quem faz">RH: 44 outlets "parte-chave da logística reversa"; SK: Special Price com 4.203 itens; TR: 5 lojas "OFF" [1][3][4]</td>
+<td data-l="Pergunta para a More">Para onde vai uma peça de mostruário da More?</td>
+</tr>
+<tr class="odd">
+<td data-l="Peça">Clube ou assinatura <strong>[recompra]</strong></td>
+<td data-l="O que é">Taxa anual com benefícios</td>
+<td data-l="Quem faz">RH: US$ 200, cerca de 262 mil membros e ~97% das vendas principais; FE: US$ 98 com até 12 presentes [1][2]. Nik chama programa de pontos de "accounting liability" [7]</td>
+<td data-l="Pergunta para a More">O que seria "membro" para a More, e quem pagaria por isso?</td>
+</tr>
+<tr class="even">
+<td data-l="Peça">Pedido de avaliação e pesquisa</td>
+<td data-l="O que é">Review e "onde nos conheceu?"</td>
+<td data-l="Quem faz">SK convida todos e publica a nota 3,6 [4]. Nik: sequência de 5 a 7 e-mails de review; Bartlet e Khan: a pesquisa é o placar do boca a boca [7]</td>
+<td data-l="Pergunta para a More">A More pergunta a todo cliente como chegou até ela?</td>
+</tr>
+<tr class="odd">
+<td data-l="Peça">Ligar para os melhores clientes</td>
+<td data-l="O que é">Conversa direta com quem mais comprou</td>
+<td data-l="Quem faz">Checketts (Rhone): os 100 maiores clientes, em grupos de 15 a 20 [7]</td>
+<td data-l="Pergunta para a More">Quem são os dez primeiros clientes da More, e quando foi a última conversa?</td>
+</tr>
+<tr class="even">
+<td data-l="Peça">Oferta depois da compra <strong>[recompra]</strong></td>
+<td data-l="O que é">Segunda compra sugerida em dias</td>
+<td data-l="Quem faz">Nik: 1 a 5 dias depois; True Classic diz que isso dá 5–15% do lucro líquido [7]</td>
+<td data-l="Pergunta para a More">Qual é a segunda peça de quem comprou a primeira?</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="9-loja-física">9. Loja física</h2>
+<p>As lojas das nove têm uma coisa em comum: abrem pouco ou com hora marcada. A FE abre de sexta a domingo, no endereço da oficina [2]. A NK tem um apartamento no 2º andar da Mount Street, em Londres, onde se toca a campainha [5]. Quatro das seis "galerias" da TIC funcionam só com hora marcada [6]. A TR tem lojas em destinos de fim de semana com horário curto [3]. No outro extremo, a RH abre galerias de 30 a 50 mil pés² com restaurante, e diz que os restaurantes rendem, em média, cerca de 65% do aluguel das galerias onde ficam [1]. A NK levou sete anos para abrir a primeira loja, de 2016 a 2023 [5]; a ID tomou US$ 30 mi emprestados em 01.2022 com o plano de abrir 30 lojas naquele ano e foi liquidada em 12.2022 [6].</p>
+<p>Simon Molner propõe ler a loja como um site: a vitrine é o anúncio, a mesa da entrada é a home, o fundo da loja é a página do produto, e a medida é receita por metro quadrado ou por mesa [7].</p>
+<p><img loading="lazy" src="/negocio/img/ref-theinvisiblecollection-galerias-desktop-20261016.jpg" alt="The Invisible Collection: página das galerias" /> <em>Observar: cada endereço tem horário, um botão "Book an appointment" e um "Currently on view" que troca a vitrine.</em></p>
+<div class="meas"><table>
+<thead>
+<tr class="header">
+<th>Peça</th>
+<th>O que é</th>
+<th>Quem faz</th>
+<th>Pergunta para a More</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-l="Peça">Horário e formato</td>
+<td data-l="O que é">Quando abre e como se entra</td>
+<td data-l="Quem faz">FE (três dias), NK (campainha), TIC (hora marcada), TR (fim de semana) [2][3][5][6]</td>
+<td data-l="Pergunta para a More">Quais dias e horários a Alameda Franca abre, e o que acontece quando está fechada?</td>
+</tr>
+<tr class="even">
+<td data-l="Peça">Botão de agendamento</td>
+<td data-l="O que é">Marcar visita pelo site</td>
+<td data-l="Quem faz">NK: "Book consultation"; TIC: "Book an appointment" [5][6]</td>
+<td data-l="Pergunta para a More">O que muda entre uma visita marcada e uma espontânea?</td>
+</tr>
+<tr class="odd">
+<td data-l="Peça">Vitrine que muda</td>
+<td data-l="O que é">Mostra com data</td>
+<td data-l="Quem faz">TIC: "Currently on view"; ETEL: mostras com curador na Casa Zalszupin [6]</td>
+<td data-l="Pergunta para a More">De quanto em quanto tempo a loja da More muda?</td>
+</tr>
+<tr class="even">
+<td data-l="Peça">Hospitalidade</td>
+<td data-l="O que é">Comida, bebida, permanência</td>
+<td data-l="Quem faz">RH: restaurantes em 25 galerias [1]. Terzian: "lighting makes or breaks a room" [7]</td>
+<td data-l="Pergunta para a More">O que se oferece a quem senta na loja?</td>
+</tr>
+<tr class="odd">
+<td data-l="Peça">Loja lida como site</td>
+<td data-l="O que é">Cada área com uma função e uma medida</td>
+<td data-l="Quem faz">Molner: receita por m² ou mesa [7]</td>
+<td data-l="Pergunta para a More">Qual é a "home" e qual é a "página do produto" dentro da loja?</td>
+</tr>
+<tr class="even">
+<td data-l="Peça">Peça exposta com prazo</td>
+<td data-l="O que é">O que está na loja e quando chega</td>
+<td data-l="Quem faz">Molner: produto exposto sem estoque é mídia desperdiçada [7]</td>
+<td data-l="Pergunta para a More">A cliente que se apaixona pela peça exposta leva aquela ou espera 120 dias?</td>
+</tr>
+<tr class="odd">
+<td data-l="Peça">Pop-up</td>
+<td data-l="O que é">Presença curta em outro lugar</td>
+<td data-l="Quem faz">FE com a Mytheresa nos Hamptons; Represent com 50 peças em dois dias [2][7]</td>
+<td data-l="Pergunta para a More">Onde a More apareceria por um fim de semana fora da Alameda Franca?</td>
+</tr>
+<tr class="even">
+<td data-l="Peça">Segunda loja</td>
+<td data-l="O que é">Critério para abrir outra</td>
+<td data-l="Quem faz">Checketts: abrir onde já há clientes online, por mapa de calor; Rhone com 16 lojas lucrativas [7]. ID como contraexemplo [6]</td>
+<td data-l="Pergunta para a More">Que número de pedidos entregues justificaria uma segunda loja?</td>
+</tr>
+</tbody>
+</table></div>
+<p>Os autores discordam aqui. A True Classic aceita loja no zero a zero como topo de funil; a Rhone recusa a loja como chamariz que dá prejuízo [7].</p>
+<h2 id="10-profissionais-e-arquitetos">10. Profissionais e arquitetos</h2>
+<p>Seis das nove têm programa profissional, e os desenhos variam. A Hem publica 25% de desconto padrão, que não se soma a promoções, e vende autosserviço: "No middlemen or under the table negotiations", estoque e prazo em tempo real, arquivos 3D [6]. A SK tem quatro níveis por compra anual, de 7% a 20%, com prazo de pagamento de 30 ou 60 dias e armazenagem [4]. A NK não publica o percentual; vende aprovação em 24 horas, amostra grátis e uma galeria de projetos com o nome de cada escritório, e diz que designers são cerca de 30% da base [5]. A TIC trata o profissional como sócio de clube: masterclasses, jantares e catálogos impressos sob medida [6]. A RH anunciou em 06.2026 "A New Covenant with the Trade", para que designers e arquitetos sejam "remunerados" [1]. A ETEL não tem página para arquitetos [6]. A TR atende hotéis e empresas, não arquitetos [3].</p>
+<p>O digest dos autores tem uma única peça parecida: o "pro team" da Mad Rabbit, 14 tatuadores que crescem com a marca, que Oliver Zak compara à Paul Mitchell nos salões [7].</p>
+<p><img loading="lazy" src="/negocio/img/ref-hem-hempro-desktop-20261016.jpg" alt="Hem Pro: autosserviço para profissionais" /> <em>Observar: a página promete preço sem negociação, estoque em tempo real e data de entrega pedida na própria cotação.</em></p>
+<div class="meas"><table>
+<thead>
+<tr class="header">
+<th>Peça</th>
+<th>O que é</th>
+<th>Quem faz</th>
+<th>Pergunta para a More</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-l="Peça">Cadastro e aprovação</td>
+<td data-l="O que é">Como o profissional entra</td>
+<td data-l="Quem faz">NK: três passos, aprovação em 24 h; Hem: autosserviço [5][6]</td>
+<td data-l="Pergunta para a More">O que um arquiteto ganha da More nas primeiras 24 horas depois de se apresentar?</td>
+</tr>
+<tr class="even">
+<td data-l="Peça">Desconto publicado ou não</td>
+<td data-l="O que é">Percentual à vista ou só depois de entrar</td>
+<td data-l="Quem faz">Hem (25%), RH (25% nos EUA, 30% na Europa), SK (7% a 20% por nível), NK e TIC (não publicam) [1][4][5][6]</td>
+<td data-l="Pergunta para a More">O desconto do arquiteto na More é público, negociado ou não existe?</td>
+</tr>
+<tr class="odd">
+<td data-l="Peça">Remuneração do profissional</td>
+<td data-l="O que é">Comissão, desconto repassado ou crédito</td>
+<td data-l="Quem faz">RH: "New Covenant with the Trade" [1]</td>
+<td data-l="Pergunta para a More">O arquiteto é, para a More, intermediário com comissão, cliente ou coautor?</td>
+</tr>
+<tr class="even">
+<td data-l="Peça">Arquivos e amostras</td>
+<td data-l="O que é">3D, Revit, ficha, amostra grátis</td>
+<td data-l="Quem faz">Hem, SK, NK [4][5][6]</td>
+<td data-l="Pergunta para a More">Quais arquivos de cada peça um escritório precisa para especificá-la?</td>
+</tr>
+<tr class="odd">
+<td data-l="Peça">Crédito ao escritório</td>
+<td data-l="O que é">O nome do profissional junto da foto</td>
+<td data-l="Quem faz">NK: "Designer &amp; Trade Projects"; SK: "visibilidad proyectos Web y Blog" [4][5]</td>
+<td data-l="Pergunta para a More">A More publica o projeto do arquiteto com o nome dele?</td>
+</tr>
+<tr class="even">
+<td data-l="Peça">Clube profissional</td>
+<td data-l="O que é">Encontros, aulas, material impresso</td>
+<td data-l="Quem faz">TIC: masterclass, jantar, catálogo sob medida [6]</td>
+<td data-l="Pergunta para a More">O que acontece na loja da More só para arquitetos?</td>
+</tr>
+<tr class="odd">
+<td data-l="Peça">Condições de projeto</td>
+<td data-l="O que é">Prazo de pagamento, data de entrega, armazenagem</td>
+<td data-l="Quem faz">SK: 30/60 dias e armazenagem; Hem: data desejada na cotação [4][6]</td>
+<td data-l="Pergunta para a More">Uma obra atrasa: a More guarda a peça pronta, e por quanto tempo?</td>
+</tr>
+<tr class="even">
+<td data-l="Peça">Hotelaria e presentes corporativos</td>
+<td data-l="O que é">Venda a empresas</td>
+<td data-l="Quem faz">TR: 300 a 400 hotéis, conforme a página; FE: até 500 presentes num endereço [2][3]</td>
+<td data-l="Pergunta para a More">Existe um projeto de hotel ou restaurante em São Paulo onde as peças da More seriam vistas todo dia?</td>
+</tr>
+<tr class="odd">
+<td data-l="Peça">Revenda <strong>[varejo]</strong></td>
+<td data-l="O que é">Produto em lojas de terceiros</td>
+<td data-l="Quem faz">FE: 752 pontos de venda, DWR em 46; SK: revenda por lojas; Hem: "a maioria das vendas vem de trade e atacado" [2][4][6]. Heaton: a escada de uma arara até a loja própria [7]</td>
+<td data-l="Pergunta para a More">Quem venderia a More fora de São Paulo?</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="como-esta-página-foi-feita">Como esta página foi feita</h2>
+<p>Esta página foi escrita em 16.10.2026 a partir dos seis casos da seção, que trazem as capturas feitas ao vivo no mesmo dia e as fontes primárias, e do digest das anotações de e-commerce do Joao (masterclass e newsletters de Nik Sharma, 40 episódios do podcast Open Residency e outros textos). Nenhum dado novo foi buscado para esta síntese. Onde um caso não conseguiu ver uma etapa, a matriz marca ○ ou –.</p>
+<h2 id="fontes">Fontes</h2>
+<ol type="1">
+<li><a href="/negocio/rh/">RH</a>: 10-K do ano fiscal 2025 (encerrado em 31.01.2026), cartas trimestrais de 12.2025, 06.2026 e 09.2026, Speedwell, e-mails arquivados no Email Love (30.09 a 15.10.2026).</li>
+<li><a href="/negocio/flamingo-estate/">Flamingo Estate</a>: site e catálogo público (16.10.2026), Inc. (17.05.2026), Substack da marca, Email Love.</li>
+<li><a href="/negocio/trousseau/">Trousseau</a>: site, catálogo e simulação de frete (16.10.2026), Receita Federal, ELLE (19.03.2025), Portal IN (30.09.2025).</li>
+<li><a href="/negocio/sklum/">Sklum</a>: site (16.10.2026), contas de 2025 via infoempresa, elDiario.es (20.07.2019), Trustpilot.</li>
+<li><a href="/negocio/nordic-knots/">Nordic Knots</a>: site e Biblioteca de Anúncios do Meta (16.10.2026), Business of Home (27.03.2026), WWD (26.03.2026), allabolag.</li>
+<li><a href="/negocio/curtos/">Hem, The Invisible Collection, ETEL e Interior Define</a>: Hem (Fast Company, 02.09.2026), The Invisible Collection (Business of Home, 22.01.2024), ETEL (etel.design, Forbes, 03.08.2025), Interior Define (Business of Home, 01 e 02.2023; release da Horizon, 11.01.2022).</li>
+<li><a href="/negocio/lancamento/">Lançar uma marca: Nik Sharma e os experts</a>: digest das anotações de e-commerce do Joao, com Nik Sharma (masterclass de lançamento, set/2026; newsletters de 2023 a 2026) e os episódios do Open Residency.</li>
+</ol>
+
+</article>
+
+<section class="mods" id="modulos" aria-label="Páginas desta seção"><div class="eyebrow">As 10 páginas desta seção</div><ol class="lst"><li><span class="n">00</span><p><a href="/negocio/">Comece aqui</a></p><span class="t">3 min</span></li><li><span class="n">01</span><p><a href="/negocio/rh/">RH</a></p><span class="t">12 min</span></li><li><span class="n">02</span><p><a href="/negocio/flamingo-estate/">Flamingo Estate</a></p><span class="t">12 min</span></li><li><span class="n">03</span><p><a href="/negocio/trousseau/">Trousseau</a></p><span class="t">12 min</span></li><li><span class="n">04</span><p><a href="/negocio/sklum/">Sklum</a></p><span class="t">12 min</span></li><li><span class="n">05</span><p><a href="/negocio/nordic-knots/">Nordic Knots</a></p><span class="t">12 min</span></li><li><span class="n">06</span><p><a href="/negocio/curtos/">Hem, The Invisible Collection, ETEL e Interior Define</a></p><span class="t">12 min</span></li><li aria-current="page"><span class="n">07</span><p><a href="/negocio/pecas/">As peças, na ordem do funil</a></p><span class="t">12 min</span></li><li><span class="n">08</span><p><a href="/negocio/lancamento/">Lançar uma marca: Nik Sharma e os experts</a></p><span class="t">8 min</span></li><li><span class="n">09</span><p><a href="/negocio/perguntas/">Perguntas para a mesa</a></p><span class="t">5 min</span></li></ol></section>
+
+</div>
+
+<footer><div class="wrap">
+  <p>Estudos de caso feitos com IA em 16.10.2026, a partir de fontes públicas e de visitas aos sites de cada marca. Cada número traz a fonte. As capturas são de páginas públicas, abertas no mesmo dia. Nada aqui diz o que a More deve fazer: os casos descrevem, as perguntas ficam com o time. Feito com o sistema de design da More.</p>
+</div></footer>
+</div>
+
+<div class="barzone"><div class="bar" aria-label="Navegação">
+  <a href="/" aria-label="Índice"><svg viewBox="0 0 272 69" role="img" aria-label="More" xmlns:c2pa="http://c2pa.org/manifest"><metadata><c2pa:manifest>AAAWgmp1bWIAAAAeanVtZGMycGEAEQAQgAAAqgA4m3EDYzJwYQAAABZcanVtYgAAAEdqdW1kYzJtYQARABCAAACqADibcQN1cm46YzJwYTozMzg3YWIyYy1hMWM1LTQ5Y2EtYmY5Ny00N2RiMjI3YmYwZWYAAAADl2p1bWIAAAApanVtZGMyYXMAEQAQgAAAqgA4m3EDYzJwYS5hc3NlcnRpb25zAAAAALxqdW1iAAAARGp1bWRjYm9yABEAEIAAAKoAOJtxE2MycGEuaW5ncmVkaWVudC52MwAAAAAYYzJzaAvejDJIOSNzaPAwHj7kaAAAAABwY2JvcqNpZGM6Zm9ybWF0bWltYWdlL3N2Zyt4bWxqaW5zdGFuY2VJRHgseG1wOmlpZDphMmQ3YjNhMC04Mzk1LTQ0MTUtYWFhNS04ZWFhYWM2ZjQ1YjFscmVsYXRpb25zaGlwaHBhcmVudE9mAAAB4mp1bWIAAABBanVtZGNib3IAEQAQgAAAqgA4m3ETYzJwYS5hY3Rpb25zLnYyAAAAABhjMnNoAWo9OMK4bgwwZanS+OWsagAAAZljYm9yomdhY3Rpb25zgqJmYWN0aW9ua2MycGEub3BlbmVkanBhcmFtZXRlcnOha2luZ3JlZGllbnRzgaJjdXJseC1zZWxmI2p1bWJmPWMycGEuYXNzZXJ0aW9ucy9jMnBhLmluZ3JlZGllbnQudjNkaGFzaFggWSobncfM24/WN0aREmJtsgGGyNu3mVlNb3PF1vaOaZWkZmFjdGlvbngdY29tLmFudGhyb3BpYy5jbGF1ZGUucHJvdmlkZWRqcGFyYW1ldGVyc6F4H2NvbS5hbnRocm9waWMub3JpZ2luLWNvbmZpZGVuY2VndW5rbm93bmtkZXNjcmlwdGlvbnhmQ2xhdWRlIHByb3ZpZGVkIHRoaXMgZmlsZSBhdCB0aGUgcmVxdWVzdCBvZiBhIHVzZXIgYW5kIG1heSBoYXZlIGNyZWF0ZWQgb3IgbW9kaWZpZWQgdGhlIGZpbGUgY29udGVudHMubXNvZnR3YXJlQWdlbnShZG5hbWVmQ2xhdWRlcmFsbEFjdGlvbnNJbmNsdWRlZPUAAADIanVtYgAAAEBqdW1kY2JvcgARABCAAACqADibcRNjMnBhLmhhc2guZGF0YQAAAAAYYzJzaGE4ixWuWp1iLg6wekWrKwQAAACAY2JvcqVjYWxnZnNoYTI1NmNwYWRNAAAAAAAAAAAAAAAAAGRoYXNoWCBiHjqZX82DROgQX7UaMEWiMeHylF9MCDlPFIRlXx33amRuYW1lbmp1bWJmIG1hbmlmZXN0amV4Y2x1c2lvbnOBomVzdGFydBh2Zmxlbmd0aBkeBAAAAj5qdW1iAAAAJ2p1bWRjMmNsABEAEIAAAKoAOJtxA2MycGEuY2xhaW0udjIAAAACD2Nib3KlY2FsZ2ZzaGEyNTZpc2lnbmF0dXJleE1zZWxmI2p1bWJmPS9jMnBhL3VybjpjMnBhOjMzODdhYjJjLWExYzUtNDljYS1iZjk3LTQ3ZGIyMjdiZjBlZi9jMnBhLnNpZ25hdHVyZWppbnN0YW5jZUlEeCx4bXA6aWlkOmU1NGExMTEzLTcyMzItNGM5Zi1hMWIwLTdlOTZjMDQzZWYzYnJjcmVhdGVkX2Fzc2VydGlvbnODomN1cmx4LXNlbGYjanVtYmY9YzJwYS5hc3NlcnRpb25zL2MycGEuaW5ncmVkaWVudC52M2RoYXNoWCBZKhudx8zbj9Y3RpESYm2yAYbI27eZWU1vc8XW9o5plaJjdXJseCpzZWxmI2p1bWJmPWMycGEuYXNzZXJ0aW9ucy9jMnBhLmFjdGlvbnMudjJkaGFzaFgg7+iOlXzN9fsl5dtomZi9dr38n5qn+jROtSMCZ/zZgOeiY3VybHgpc2VsZiNqdW1iZj1jMnBhLmFzc2VydGlvbnMvYzJwYS5oYXNoLmRhdGFkaGFzaFgg5dtuer2DYxW6ttFffBa8QryKsKlQ4VcBq6Dmm04/y9x0Y2xhaW1fZ2VuZXJhdG9yX2luZm+jZG5hbWVvQW50aHJvcGljIEZpbGVzZ3ZlcnNpb25lMS4wLjBrc3BlY1ZlcnNpb25lMi40LjAAABA4anVtYgAAAChqdW1kYzJjcwARABCAAACqADibcQNjMnBhLnNpZ25hdHVyZQAAABAIY2JvctKEWQISogEmGCFZAgowggIGMIIBjaADAgECAhRA5aAK7sI50L64g/oGQgU9Z1UTADAKBggqhkjOPQQDAzBJMRcwFQYDVQQKEw5BbnRocm9waWMsIFBCQzEuMCwGA1UEAxMlQW50aHJvcGljIENvbnRlbnQgQ3JlZGVudGlhbHMgUm9vdCBDQTAeFw0yNjA4MDcxODQzNTZaFw0yODA4MDYxOTQzNTZaMEQxFzAVBgNVBAoTDkFudGhyb3BpYywgUEJDMSkwJwYDVQQDEyBBbnRocm9waWMgQ2xhdWRlIENvbnRlbnQgU2lnbmluZzBZMBMGByqGSM49AgEGCCqGSM49AwEHA0IABJh6CmvLUBgFFNU0vUKlOVtE6djd17L5SuwX0LemFisBM3dkd/3cyjxFA3Qo5S46fX0/ihY0VZ7mfb9KF703t5OjWDBWMA4GA1UdDwEB/wQEAwIHgDAVBgNVHSUEDjAMBgorBgEEAYPoXgIBMAwGA1UdEwEB/wQCMAAwHwYDVR0jBBgwFoAUzlHiBIFOZFsj+OPEz5o+nMHXXMIwCgYIKoZIzj0EAwMDZwAwZAIwMXMdFJ4BetLLVY7ORuE9noqbbAZOZn/aArXyTwFAZfKrPzxF2vPoJNf1+UCdg1XGAjBwX1zd9WGqYkqmL5SFqw1QySjr1zJfpJM9+1rdDwSPLMOPOjKuiXjoU/pUUeG9RwmhY3BhZFkNngAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPZYQLNSdZSJ1Lb4KyXNjcHFt+dMD/kTbfSuk+KST65sHWF18sFBsDHhJT9XVfg3laI//fXetfblD/peX/vE5v8r43Y=</c2pa:manifest></metadata><path fill="currentColor" d="M176.593 23.0819V1.91833H150.317V66.5948H176.593V44.2791H205.243V1.91833C189.55 1.91833 177.465 13.093 176.593 23.0875V23.0819Z"/><path fill="currentColor" d="M111.007 0C91.875 0 76.3403 15.3302 76.3403 34.223C76.3403 53.1159 91.8693 68.4461 111.007 68.4461C130.145 68.4461 145.742 53.1159 145.742 34.223C145.742 15.3302 130.213 0 111.007 0ZM111.007 42.4334C106.43 42.4334 102.69 38.8036 102.69 34.2174C102.69 29.6313 106.435 26.0015 111.007 26.0015C115.579 26.0015 119.398 29.6984 119.398 34.2174C119.398 38.7365 115.653 42.4334 111.007 42.4334Z"/><path fill="currentColor" d="M35.919 19.6423L26.2764 1.91833H0V66.5948H26.2764V44.212H45.4936V66.5948H71.77V1.91833H45.4936L35.919 19.6423Z"/><path fill="currentColor" d="M272.002 1.87909H211.835V24.7541V34.7487V44.1783V66.5612H272.002V44.7376H238.219L255.669 34.7151L238.236 24.7541H272.002V1.87909Z"/></svg></a>
+  <nav><a href="/">[Índice]</a><a href="/negocio/">[Início]</a><a href="/negocio/lancamento/">[Lançamento]</a></nav>
+</div></div>
+<script>
+document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener('click',e=>{const t=document.querySelector(decodeURIComponent(a.getAttribute('href')));if(t){e.preventDefault();t.scrollIntoView({block:'start'});history.replaceState(null,'',a.getAttribute('href'));}});});
+if(location.hash){const t=document.querySelector(decodeURIComponent(location.hash));if(t)t.scrollIntoView({block:'start'});}
+</script>
+</body>
+</html>
