@@ -107,8 +107,14 @@ titulo "4. gstack (github.com/garrytan/gstack)"
 if [ "$INSTALAR" = 1 ] && tem bun; then
   if [ -d "$GSTACK_DIR/.git" ]; then ok "gstack já instalado (para atualizar, peça /gstack-upgrade no Claude Code)"
   else git clone -q --single-branch --depth 1 https://github.com/garrytan/gstack.git "$GSTACK_DIR"; fi
-  if [ "$NAVEGADOR" = 1 ]; then (cd "$GSTACK_DIR" && ./setup -q) || falta "gstack: ./setup falhou em $GSTACK_DIR"
-  else (cd "$GSTACK_DIR" && ./setup -q --no-browser) || falta "gstack: ./setup falhou em $GSTACK_DIR"; fi
+  LOG="${TMPDIR:-/tmp}/more-setup-gstack.log"; OPC=""; [ "$NAVEGADOR" = 1 ] || OPC="--no-browser"
+  printf '         instalando (leva um ou dois minutos; o registro fica em %s)\n' "$LOG"
+  if (cd "$GSTACK_DIR" && ./setup $OPC) >"$LOG" 2>&1; then
+    if grep -qE 'Chromium bootstrap:|Browser unavailable' "$LOG"; then
+      aviso "o navegador do gstack não abriu nesta máquina, então /qa e /design-review ainda não rodam. O motivo está em $LOG"
+    elif [ "$NAVEGADOR" = 0 ]; then aviso "navegador do gstack não instalado (--sem-navegador): ele baixa no primeiro /qa"
+    else ok "navegador do gstack (Chromium) instalado"; fi
+  else falta "gstack: ./setup falhou; veja $LOG"; fi
 fi
 if [ -f "$GSTACK_DIR/SKILL.md" ] && [ -e "$HOME/.claude/skills/qa" ]; then ok "gstack em $GSTACK_DIR, skills /qa /design-review /review ligadas"
 else falta "gstack: git clone --single-branch --depth 1 https://github.com/garrytan/gstack.git ~/.claude/skills/gstack && cd ~/.claude/skills/gstack && ./setup"; fi
@@ -125,7 +131,7 @@ else aviso "algum check da marca não passou no autoteste (rode  node checks/sel
 
 # 6. Opcionais: só para exportar imagem e vídeo -----------------------------------------------------
 titulo "6. Opcionais (checar e exportar imagem, vídeo e PDF)"
-if tem python3 && python3 -c 'import PIL' >/dev/null 2>&1; then ok "python3 com Pillow"; else aviso "python3 com Pillow ausente: os checks de imagem não rodam (python3 -m pip install Pillow)"; fi
+if tem python3 && python3 -c 'import PIL' >/dev/null 2>&1; then ok "python3 com Pillow"; else aviso "python3 com Pillow ausente: os checks de imagem não rodam ($( [ "$BREW" = 1 ] && echo 'brew install pillow' || echo 'python3 -m pip install --user Pillow'))"; fi
 if tem ffmpeg; then ok "ffmpeg"; else aviso "ffmpeg ausente: o check de vídeo não roda ($( [ "$BREW" = 1 ] && echo 'brew install ffmpeg' || echo 'instale o ffmpeg'))"; fi
 
 # 7. MCPs ---------------------------------------------------------------------------------------------
