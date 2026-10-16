@@ -1,0 +1,16 @@
+{
+  "mcpServers": {
+    "netlify": {
+      "command": "npx",
+      "args": ["-y", "@netlify/mcp"]
+    },
+    "figma": {
+      "type": "http",
+      "url": "https://mcp.figma.com/mcp"
+    },
+    "shopify-dev": {
+      "command": "npx",
+      "args": ["-y", "@shopify/dev-mcp@latest"]
+    }
+  }
+}
