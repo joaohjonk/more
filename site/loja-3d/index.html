@@ -1,0 +1,535 @@
+<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><link rel="icon" href="data:,"><style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style></head><body><script src="/nav/shell.js" data-section="loja-3d" data-into=".bars" data-mode="bar" data-foot="off" defer></script><title>Loja More em 3D</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,600&family=Martian+Mono:wdth,wght@75,400&display=swap" rel="stylesheet">
+<style>
+/* A loja da More (Al. Franca 1332, casa 04), construída a partir da planta executiva EX_A102_R03.
+   Entrar no site é entrar na loja: cada peça exposta é clicável. Papel off-white, luz dura de dia, sem pós-processamento. */
+@font-face{font-family:"Muoto";src:url("/fonts/mr.otf") format("opentype");font-weight:400;font-display:swap}
+@font-face{font-family:"MuotoMono";src:url("/fonts/mm.woff2") format("woff2");font-weight:400;font-display:swap}
+:root{
+  --page:#E5E1DB; --ink:#2D211E; --muted:#5D554F; --label:#686868; --soft:#BDBDBD;
+  --glass:rgba(45,33,30,.10); --strong:rgba(45,33,30,.80); --accent:#8BC0D0; --accent-ink:#3F7F93; --white:#FFFFFF;
+  --muoto:"Muoto","DM Sans","Helvetica Neue",Arial,sans-serif;
+  --mono:"MuotoMono","Martian Mono",ui-monospace,Menlo,monospace;
+  --bar:35px; --gutter-l:max(16px,env(safe-area-inset-left,0px)); --gutter-r:max(16px,env(safe-area-inset-right,0px));
+  --snap:cubic-bezier(.63,.01,0,1.01); --out:cubic-bezier(.22,1,.36,1);
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+html,body{height:100%;overflow:hidden}
+body{margin:0;background:var(--page);color:var(--ink);font-family:var(--muoto);font-size:13px;line-height:1.4;-webkit-font-smoothing:antialiased}
+button{font:inherit;color:inherit}
+a{color:inherit}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.mono{font-family:var(--mono);font-stretch:75%}
+
+#stage{position:fixed;inset:0;background:var(--page)}
+#gl{display:block;width:100%;height:100%;touch-action:none;cursor:grab;opacity:0;transition:opacity 800ms var(--out)}
+#gl.on{opacity:1}
+#gl.grabbing{cursor:grabbing}
+
+/* capa: a foto da loja antes do 3D (como no quarto do Felix: foto, barra, cena) */
+#still{position:fixed;inset:0;background:var(--page) url("still.jpg") center/cover no-repeat;transition:opacity 800ms var(--out);pointer-events:none}
+#still.off{opacity:0}
+#load{position:fixed;left:50%;bottom:calc(30px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);z-index:9;display:flex;align-items:center;gap:12px;height:var(--bar);padding:0 14px;background:var(--glass);backdrop-filter:blur(13px);-webkit-backdrop-filter:blur(13px);font-family:var(--mono);font-stretch:75%;font-size:12px;white-space:nowrap;transition:opacity 400ms var(--out)}
+#load .bar{width:120px;height:1px;background:var(--soft);position:relative;overflow:hidden}
+#load .bar i{position:absolute;left:0;top:0;bottom:0;width:0;background:var(--ink);transition:width 300ms var(--out)}
+#load.off{opacity:0;pointer-events:none}
+
+/* marca: SVG oficial (More • logo preto.svg, 481 × 123), S (60 px), respiro = altura do O */
+#mark{position:fixed;top:calc(16px + env(safe-area-inset-top,0px));left:var(--gutter-l);z-index:6;width:60px;height:15.3px;color:var(--ink);display:block}
+#mark svg{display:block;width:60px;height:15.3px}
+
+/* barras flutuantes de 35 px, centradas embaixo (R-LAYOUT-01) */
+.bars{position:fixed;left:0;right:0;bottom:calc(30px + env(safe-area-inset-bottom,0px));z-index:7;display:flex;flex-direction:column;align-items:center;gap:6px;pointer-events:none;padding-left:var(--gutter-l);padding-right:var(--gutter-r)}
+.bar-row{display:flex;gap:6px;pointer-events:auto;max-width:100%}
+.glass{display:flex;align-items:center;gap:0;height:var(--bar);padding:0 6px;background:var(--glass);backdrop-filter:blur(13px);-webkit-backdrop-filter:blur(13px)}
+.glass button,.glass a{all:unset;cursor:pointer;font-family:var(--mono);font-stretch:75%;font-size:13px;height:var(--bar);padding:0 10px;display:flex;align-items:center;white-space:nowrap;color:var(--ink)}
+.glass button[aria-pressed="true"]{font-weight:600}
+.glass button:hover,.glass a:hover{color:var(--white);background:var(--strong)}
+.glass button:focus-visible,.glass a:focus-visible{outline:1px solid var(--ink);outline-offset:-1px}
+.glass button.buy{color:var(--accent-ink)}
+#hint{font-family:var(--mono);font-stretch:75%;font-size:12px;color:var(--ink);height:var(--bar);display:flex;align-items:center;padding:0 12px;background:var(--glass);backdrop-filter:blur(13px);-webkit-backdrop-filter:blur(13px);pointer-events:none;max-width:100%;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+
+/* dica junto ao cursor */
+#tip{position:fixed;z-index:8;pointer-events:none;font-family:var(--mono);font-stretch:75%;font-size:12px;background:var(--ink);color:var(--white);padding:4px 7px;transform:translate(14px,14px);white-space:nowrap}
+
+/* cartão da peça */
+#card{position:fixed;z-index:8;top:calc(16px + env(safe-area-inset-top,0px));right:var(--gutter-r);width:min(340px,calc(100vw - var(--gutter-l) - var(--gutter-r)));max-height:calc(100% - 32px - var(--bar) - 60px - env(safe-area-inset-top,0px) - env(safe-area-inset-bottom,0px));overflow:auto;background:var(--page);box-shadow:0 0 0 1px rgba(45,33,30,.12);padding:14px;display:flex;flex-direction:column;gap:10px;scrollbar-width:thin;opacity:0;transform:translateY(-6px);transition:opacity 300ms var(--out),transform 300ms var(--out)}
+#card.on{opacity:1;transform:none}
+#card .photo{width:100%;aspect-ratio:3/4;background:#DED8D0;object-fit:cover;display:block;max-width:100%}
+#card .photo.wide{aspect-ratio:3/2}
+#card h2{font-weight:400;font-size:22px;margin:0;line-height:1.1;text-wrap:balance}
+#card .cat{font-family:var(--mono);font-stretch:75%;font-size:11px;color:var(--label)}
+#card p{margin:0;color:var(--muted);font-size:13px}
+#card .price{font-size:15px}
+#card .price small{color:var(--label);font-size:11px;margin-left:6px}
+#card .badge{align-self:flex-start;font-family:var(--mono);font-stretch:75%;font-size:11px;padding:2px 6px;background:var(--accent);color:var(--ink)}
+#card .acts{display:flex;flex-wrap:wrap;gap:6px;padding-top:4px;border-top:1px solid var(--soft)}
+#card .acts a,#card .acts button{all:unset;cursor:pointer;font-family:var(--mono);font-stretch:75%;font-size:12px;height:30px;padding:0 10px;display:flex;align-items:center;background:var(--glass)}
+#card .acts a:hover,#card .acts button:hover{background:var(--strong);color:var(--white)}
+#card .acts a:focus-visible,#card .acts button:focus-visible{outline:1px solid var(--ink)}
+#card .kv{display:flex;justify-content:space-between;gap:12px;font-size:11px;color:var(--label);padding:2px 0}
+#card .kv b{font-weight:400;color:var(--ink)}
+#card ol{list-style:none;margin:0;padding:0;display:flex;flex-direction:column}
+#card ol li{display:flex;justify-content:space-between;gap:10px;padding:5px 0;border-bottom:1px solid rgba(45,33,30,.08);font-size:13px}
+#card ol li button{all:unset;cursor:pointer;flex:1;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+#card ol li button:hover{color:var(--accent-ink)}
+#card ol li span{font-family:var(--mono);font-stretch:75%;font-size:11px;color:var(--label);white-space:nowrap}
+#card ol li.off{color:var(--label)}
+#card .note{font-family:var(--mono);font-stretch:75%;font-size:11px;color:var(--label)}
+@media (max-width:759px){
+  #card{top:auto;bottom:calc(30px + var(--bar) + 6px + 22px + 10px + env(safe-area-inset-bottom,0px));left:var(--gutter-l);right:var(--gutter-r);width:auto;max-height:46vh;flex-direction:row;flex-wrap:wrap;align-content:flex-start;transform:translateY(6px)}
+  #card .photo{width:96px;aspect-ratio:3/4;flex:none}
+  #card .photo.wide{width:120px}
+  #card .text{flex:1;min-width:0;display:flex;flex-direction:column;gap:6px}
+  #card .acts{width:100%}
+  #card ol{width:100%}
+  #hint{font-size:11px}
+}
+@media (min-width:760px){ #card .text{display:flex;flex-direction:column;gap:8px} }
+
+/* versão plana: sem WebGL 2, ou desenho por software */
+#plain{position:fixed;inset:0;overflow:auto;background:var(--page);display:none;padding-block:80px 140px;padding-left:var(--gutter-l);padding-right:var(--gutter-r)}
+#plain.on{display:block}
+#plain .wrap{max-width:720px;margin:0 auto;display:flex;flex-direction:column;gap:18px}
+#plain img{width:100%;max-width:100%;display:block;aspect-ratio:4/3;object-fit:cover}
+#plain h1{font-weight:400;font-size:22px;margin:0}
+#plain p{margin:0;color:var(--muted);max-width:60ch}
+#plain .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:6px}
+#plain .grid a{display:block;text-decoration:none}
+#plain .grid img{aspect-ratio:3/4}
+#plain .grid span{display:block;font-size:11px;padding:4px 0}
+#plain .try{all:unset;cursor:pointer;font-family:var(--mono);font-stretch:75%;font-size:12px;height:30px;padding:0 10px;display:inline-flex;align-items:center;background:var(--glass);align-self:flex-start}
+
+@media (prefers-reduced-motion:reduce){ #gl,#still,#card,#load{transition:none} }
+</style>
+
+<a id="mark" href="https://mymore.design" target="_blank" rel="noopener" aria-label="More">
+<svg viewBox="0 0 481 123" fill="none" aria-hidden="true"><path d="M480.1 3.35986H373.9V44.2599V62.1299V78.9899V119.01H480.1V79.9899H420.47L451.27 62.0699L420.5 44.2599H480.1V3.35986Z" fill="currentColor"/><path d="M63.4 35.1202L46.38 3.43018H0V119.07H46.38V79.0502H80.3V119.07H126.68V3.43018H80.3L63.4 35.1202Z" fill="currentColor"/><path d="M195.94 0C162.17 0 134.75 27.41 134.75 61.19C134.75 94.97 162.16 122.38 195.94 122.38C229.72 122.38 257.25 94.97 257.25 61.19C257.25 27.41 229.84 0 195.94 0ZM195.94 75.87C187.86 75.87 181.26 69.38 181.26 61.18C181.26 52.98 187.87 46.49 195.94 46.49C204.01 46.49 210.75 53.1 210.75 61.18C210.75 69.26 204.14 75.87 195.94 75.87Z" fill="currentColor"/><path d="M311.71 41.2702V3.43018H265.33V119.07H311.71V79.1702H362.28V3.43018C334.58 3.43018 313.25 23.4102 311.71 41.2802V41.2702Z" fill="currentColor"/></svg>
+</a>
+
+<div id="stage">
+  <canvas id="gl" aria-label="A loja da More na Alameda Franca, vista da porta: um salão de 5 por 17 metros, concreto lapidado, luz de dia pela fachada de vidro e as peças expostas. Clique numa peça para vê-la de perto."></canvas>
+</div>
+<div id="still" aria-hidden="true"></div>
+<div id="load" aria-live="polite"><span>[Entrando na loja]</span><span class="bar"><i id="loadbar"></i></span><span id="loadpc">0%</span></div>
+<h1 class="sr">Loja More em 3D</h1>
+<p class="sr">Alameda Franca 1332, casa 04, Jardins, São Paulo. Abre em 05.11.</p>
+
+<div id="tip" hidden></div>
+
+<section id="card" hidden aria-live="polite"></section>
+
+<div class="bars">
+  <div class="bar-row">
+    <div class="glass" role="navigation" aria-label="Loja">
+      <button id="b-pecas" aria-pressed="false">[Peças]</button>
+      <button id="b-loja" aria-pressed="false">[Loja]</button>
+      <button id="b-sobre" aria-pressed="false">[Sobre]</button>
+      <button id="b-voltar" hidden>[Voltar]</button>
+    </div>
+  </div>
+  <div id="hint">Arraste para olhar · clique numa peça · Esc volta para a porta</div>
+<script>if(matchMedia("(hover: none) and (pointer: coarse)").matches) document.getElementById("hint").textContent="Arraste para olhar · toque numa peça";</script>
+</div>
+
+<div id="plain" role="region" aria-label="Versão sem 3D">
+  <div class="wrap">
+    <img src="still.jpg" alt="A loja da More vista da porta, em 3D.">
+    <h1>Loja More, Alameda Franca 1332</h1>
+    <p>Seu navegador não desenha a loja em 3D. Aqui estão as peças que vão estar expostas na abertura, em 05.11.</p>
+    <button class="try" id="try3d">[Tentar o 3D mesmo assim]</button>
+    <div class="grid" id="plaingrid"></div>
+  </div>
+</div>
+
+<script type="importmap">
+{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.169.0/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.169.0/examples/jsm/"}}
+</script>
+<script type="module">
+import * as THREE from "three";
+import { OrbitControls } from "three/addons/controls/OrbitControls.js";
+import { RoomEnvironment } from "three/addons/environments/RoomEnvironment.js";
+
+const $=s=>document.querySelector(s);
+const reduce=matchMedia("(prefers-reduced-motion: reduce)").matches;
+const touchOnly=()=>matchMedia("(hover: none) and (pointer: coarse)").matches;
+const mobile=()=>innerWidth<760;
+const WA="https://wa.me/5511912092600?text="+encodeURIComponent("Olá, tenho interesse na peça: ");
+const SITE="https://mymore.design/products/";
+
+/* ------------------------------------------------------------------ as peças
+   Nome, categoria, material e preço vêm do catálogo do site (products.json, 15.10.2026).
+   Medidas: estimativas a partir das fotos de estúdio, até o time mandar as medidas reais (marcadas "~"). */
+const PECAS=[
+ {h:"poltrona-leticia",t:"Poltrona Leticia",c:"Assentos",m:"Estofada, com estrutura de madeira maciça.",p:23990,d:"~82 × 88 × 92 cm"},
+ {h:"otoman-leticia",t:"Otoman Leticia",c:"Assentos",m:"Estofado, com base de madeira maciça.",p:6980,d:"~80 × 60 × 42 cm"},
+ {h:"sofa-canoa",t:"Sofá Canoa",c:"Assentos",m:"Estofado, com pés de madeira maciça de cruzetas.",p:87850,d:"~240 × 95 × 72 cm"},
+ {h:"mesa-cildo",t:"Mesa Cildo",c:"Mesas",m:"Tampo de vidro fundido pigmentado, com pés em cerâmica esmaltada.",p:31800,d:"~95 × 95 × 32 cm"},
+ {h:"mesa-de-apoio-eto",t:"Mesa de apoio Eto",c:"Mesas",m:"Estrutura de madeira maciça, com tampo em mosaico de madrepérola.",p:17200,d:"~60 × 60 × 50 cm"},
+ {h:"luminaria-naz",t:"Luminária Naz",c:"Luminárias",m:"Base de aço fundido, e cúpula giratória de fibra de vidro laminada com papel coreano.",p:15980,d:"~35 × 35 × 170 cm"},
+ {h:"estante-domino",t:"Estante Dominó",c:"Estantes",m:"Sistema componível de madeira maciça, com chapas modulares de aço inox.",p:0,d:"~240 × 25 × 120 cm"},
+ {h:"mesa-de-jantar-leila",t:"Mesa de jantar Leila",c:"Mesas",m:"Estrutura de madeira maciça, com tampo em vidro laqueado.",p:72980,d:"~Ø 140 × 75 cm"},
+ {h:"cadeira-maria",t:"Cadeira Maria",c:"Assentos",m:"Estofada, com estrutura de madeira maciça.",p:10200,d:"~50 × 55 × 80 cm"},
+ {h:"pendente-naz",t:"Pendente Naz",c:"Luminárias",m:"Cúpula de fibra de vidro laminada com papel coreano.",p:13490,d:"~110 × 40 × 15 cm"},
+ {h:"cadeira-556",t:"Cadeira 556",c:"Assentos",m:"Estrutura de madeira maciça, com assento estofado ou de percintas de couro.",p:14290,d:"~56 × 55 × 78 cm"},
+ {h:"luminaria-ngoni",t:"Luminária Ngoni",c:"Luminárias",m:"Estrutura aramada envolvida por talagarça de algodão.",p:8990,d:"~25 × 25 × 160 cm"},
+ {h:"sofa-catedral",t:"Sofá Catedral",c:"Assentos",m:"Estofado, com pés de madeira maciça.",p:68990,d:"~230 × 95 × 70 cm"},
+ {h:"mesa-carnivora",t:"Mesa de apoio Carnívora",c:"Mesas",m:"Conjunto de duas peças, produzido de madeira maciça.",p:19100,d:"~90 × 60 × 45 cm"},
+ {h:"poltrona-eduardo",t:"Poltrona Eduardo",c:"Assentos",m:"Estofada, com estrutura de madeira maciça.",p:22990,d:"~80 × 85 × 75 cm"},
+ {h:"luminaria-fanto",t:"Luminária Fantô",c:"Luminárias",m:"Estrutura metálica com cúpulas direcionáveis e acabamento laqueado.",p:13200,d:"~60 × 40 × 170 cm"},
+ {h:"banco-joao",t:"Banco João",c:"Assentos",m:"Produzido de madeira maciça.",p:4600,d:"~Ø 36 × 45 cm"},
+ {h:"banco-maria",t:"Banco Maria",c:"Assentos",m:"Produzido de madeira maciça.",p:4880,d:"~Ø 36 × 45 cm"},
+ {h:"mesa-de-centro-oops",t:"Mesa de centro Oops",c:"Mesas",m:"Tampo de alumínio naval, com pés fundidos e acabamento manual.",p:28980,d:"~140 × 110 × 35 cm"},
+ {h:"mesa-de-centro-imi",t:"Mesa de centro Imi",c:"Mesas",m:"Produzida de madeira maciça.",p:25480,d:"~120 × 100 × 35 cm"},
+ {h:"sofa-moustache",t:"Sofá Moustache",c:"Assentos",m:"Sistema modular estofado, com pés de metal fundido e acessórios laterais componíveis.",p:15980,d:"~200 × 85 × 70 cm"},
+ {h:"mesa-de-jantar-naz",t:"Mesa de jantar Naz",c:"Mesas",m:"Sistema componível e estrutura de madeira maciça.",p:25480,d:"~90 × 90 × 75 cm"},
+ {h:"tomada-tom-01",t:"Tomada TOM.01",c:"Fixos",m:"Tomada de embutir no frame com conexão modular com núcleo de 20A, em três cores.",p:0,buy:true,d:"Ø 8 cm"},
+ {h:"macaneta-constantin",t:"Maçaneta Constantin",c:"Fixos",m:"Latão ou alumínio fundido, com acabamento manual.",p:990,buy:true,d:"~15 cm"},
+];
+const byH=Object.fromEntries(PECAS.map(p=>[p.h,p]));
+const brl=n=>n?"R$ "+n.toLocaleString("pt-BR",{minimumFractionDigits:0}):"";
+
+/* --------------------------------------------------------------- a versão plana */
+function plain(soft){
+  $("#plain").classList.add("on"); $("#still").hidden=true; $("#load").classList.add("off"); document.querySelector(".bars").hidden=true;
+  const g=$("#plaingrid"); g.innerHTML="";
+  for(const p of PECAS){ const a=document.createElement("a"); a.href=SITE+p.h; a.target="_blank"; a.rel="noopener";
+    const im=document.createElement("img"); im.src="img/"+p.h+".jpg"; im.alt=p.t; im.loading="lazy"; const s=document.createElement("span"); s.textContent=p.t; a.append(im,s); g.append(a); }
+  const t=$("#try3d"); t.hidden=!soft; t.onclick=()=>{ const u=new URL(location.href); u.hash="3d"; location.href=u.href; location.reload(); };
+}
+let gl2=null; try{ gl2=document.createElement("canvas").getContext("webgl2"); }catch(e){}
+const force=location.hash==="#3d";
+let soft=false;
+try{ if(gl2&&!force){ const ri=gl2.getExtension("WEBGL_debug_renderer_info"), rn=String(gl2.getParameter(ri?ri.UNMASKED_RENDERER_WEBGL:gl2.RENDERER)||"");
+  soft=/swiftshader|llvmpipe|softpipe|lavapipe|software|basic render/i.test(rn); } }catch(e){}
+if(!gl2){ plain(false); throw new Error("sem WebGL 2"); }
+if(soft&&!navigator.webdriver){ plain(true); throw new Error("desenho por software"); }
+
+/* ------------------------------------------------------------------ renderer */
+const canvas=$("#gl");
+const renderer=new THREE.WebGLRenderer({canvas,antialias:true,powerPreference:"high-performance"});
+const DPR_MAX=()=>Math.max(1,Math.min(devicePixelRatio||1,touchOnly()?1.5:2,Math.sqrt(4.2e6/(innerWidth*innerHeight))));
+let DPR=DPR_MAX(); renderer.setPixelRatio(DPR); renderer.setSize(innerWidth,innerHeight,false);
+renderer.outputColorSpace=THREE.SRGBColorSpace;
+renderer.toneMapping=THREE.AgXToneMapping; renderer.toneMappingExposure=.88;
+renderer.shadowMap.enabled=true; renderer.shadowMap.type=THREE.PCFSoftShadowMap;
+renderer.shadowMap.autoUpdate=false;   // a loja é estática: as sombras são desenhadas uma vez
+let shadowsDirty=2;
+
+const scene=new THREE.Scene();
+scene.background=new THREE.Color("#E5E1DB");
+scene.fog=new THREE.Fog("#E5E1DB",26,60);
+{ const pm=new THREE.PMREMGenerator(renderer); scene.environment=pm.fromScene(new RoomEnvironment(),.04).texture; scene.environmentIntensity=.22; pm.dispose(); }
+
+/* ------------------------------------------------------------------ a câmera
+   Lente de 36° na horizontal: em janelas largas o corte vertical é fixo; em pé, a largura do salão continua inteira. */
+const FOV=31;
+function lensFov(){ const a=innerWidth/innerHeight, tv=Math.tan(THREE.MathUtils.degToRad(FOV/2)); return THREE.MathUtils.radToDeg(2*Math.atan(Math.max(tv,Math.min(.95,.55/a)))); }
+const camera=new THREE.PerspectiveCamera(lensFov(),innerWidth/innerHeight,.05,120);
+const controls=new OrbitControls(camera,canvas);
+controls.enableDamping=true; controls.dampingFactor=.08; controls.enablePan=false; controls.enableZoom=true;
+controls.minDistance=.5; controls.maxDistance=14; controls.minPolarAngle=.35; controls.maxPolarAngle=1.62; controls.rotateSpeed=.6; controls.zoomSpeed=.7;
+
+/* ------------------------------------------------------------------ materiais */
+const M={
+  piso:new THREE.MeshStandardMaterial({color:"#ADA79F",roughness:.28,metalness:.05,envMapIntensity:1.3}),       // concreto lapidado (RV1)
+  calcada:new THREE.MeshStandardMaterial({color:"#8E8A84",roughness:.95}),                                    // granito bruto filetado (RV2)
+  rua:new THREE.MeshStandardMaterial({color:"#5A5652",roughness:1}),
+  parede:new THREE.MeshStandardMaterial({color:"#E9E5DF",roughness:.92,envMapIntensity:.25}),
+  forro:new THREE.MeshStandardMaterial({color:"#EDEAE5",roughness:1,envMapIntensity:.15}),
+  aco:new THREE.MeshStandardMaterial({color:"#3A3633",roughness:.45,metalness:.8}),                           // estrutura metálica
+  caixilho:new THREE.MeshStandardMaterial({color:"#2D211E",roughness:.5,metalness:.6}),
+  vidro:new THREE.MeshPhysicalMaterial({color:"#DCE6E8",roughness:.05,metalness:0,transparent:true,opacity:.18,envMapIntensity:1.2,side:THREE.DoubleSide}),
+  madeira:new THREE.MeshStandardMaterial({color:"#9C6F45",roughness:.6}),
+  madeiraClara:new THREE.MeshStandardMaterial({color:"#C9A574",roughness:.65}),
+  madeiraEscura:new THREE.MeshStandardMaterial({color:"#4A2F22",roughness:.6}),
+  madeiraMedia:new THREE.MeshStandardMaterial({color:"#8A5A38",roughness:.6}),
+  boucleTerracota:new THREE.MeshStandardMaterial({color:"#B04E26",roughness:1}),
+  boucleNeve:new THREE.MeshStandardMaterial({color:"#E6DCC6",roughness:1}),
+  linhoCinza:new THREE.MeshStandardMaterial({color:"#8F8271",roughness:1}),
+  linhoAreia:new THREE.MeshStandardMaterial({color:"#C4B59C",roughness:1}),
+  papel:new THREE.MeshStandardMaterial({color:"#F1E7C9",roughness:.9,emissive:"#F6E7B8",emissiveIntensity:.35,side:THREE.DoubleSide}),
+  preto:new THREE.MeshStandardMaterial({color:"#1E1A18",roughness:.5,metalness:.4}),
+  aluminio:new THREE.MeshStandardMaterial({color:"#C9C6C0",roughness:.35,metalness:.9}),
+  inox:new THREE.MeshStandardMaterial({color:"#A9A7A2",roughness:.4,metalness:.9}),
+  latao:new THREE.MeshStandardMaterial({color:"#B8925A",roughness:.35,metalness:.9}),
+  ceramica:new THREE.MeshStandardMaterial({color:"#3B2F2A",roughness:.25}),
+  vidroAmbar:new THREE.MeshPhysicalMaterial({color:"#B8742C",roughness:.1,transparent:true,opacity:.78,envMapIntensity:1.4}),
+  vidroLaqueado:new THREE.MeshStandardMaterial({color:"#EDE7DA",roughness:.08,metalness:0,envMapIntensity:1.2}),
+  madreperola:new THREE.MeshStandardMaterial({color:"#E9E3D6",roughness:.3,metalness:.2,envMapIntensity:1.3}),
+  couro:new THREE.MeshStandardMaterial({color:"#6B3B22",roughness:.7}),
+  cinzaClaro:new THREE.MeshStandardMaterial({color:"#9A9893",roughness:.6,metalness:.5}),
+  ciano:new THREE.MeshStandardMaterial({color:"#8BC0D0",roughness:.5}),
+  placa:new THREE.MeshStandardMaterial({color:"#2D211E",roughness:.6}),
+};
+
+/* ------------------------------------------------------------------ helpers */
+const interact=new Map();   // mesh → {handle|kind,label}
+function mesh(geo,mat,x=0,y=0,z=0,parent=scene,shadow=true){ const m=new THREE.Mesh(geo,mat); m.position.set(x,y,z); m.castShadow=shadow; m.receiveShadow=true; parent.add(m); return m; }
+const box=(w,h,d,mat,x,y,z,parent,shadow)=>mesh(new THREE.BoxGeometry(w,h,d),mat,x,y,z,parent,shadow);
+const cyl=(rt,rb,h,mat,x,y,z,parent,seg=24)=>mesh(new THREE.CylinderGeometry(rt,rb,h,seg),mat,x,y,z,parent);
+function rbox(w,h,d,r,mat,x,y,z,parent){ // caixa com cantos arredondados (estofados)
+  const s=new THREE.Shape(); const hw=w/2,hh=h/2; s.moveTo(-hw+r,-hh); s.lineTo(hw-r,-hh); s.quadraticCurveTo(hw,-hh,hw,-hh+r); s.lineTo(hw,hh-r); s.quadraticCurveTo(hw,hh,hw-r,hh); s.lineTo(-hw+r,hh); s.quadraticCurveTo(-hw,hh,-hw,hh-r); s.lineTo(-hw,-hh+r); s.quadraticCurveTo(-hw,-hh,-hw+r,-hh);
+  const g=new THREE.ExtrudeGeometry(s,{depth:d,bevelEnabled:true,bevelThickness:Math.min(r,d/2.2),bevelSize:Math.min(r,d/2.2),bevelSegments:4}); g.translate(0,0,-d/2);
+  return mesh(g,mat,x,y,z,parent); }
+function group(x,z,ry=0,parent=scene){ const g=new THREE.Group(); g.position.set(x,0,z); g.rotation.y=ry; parent.add(g); return g; }
+function pickable(g,handle,label){ g.traverse(o=>{ if(o.isMesh) interact.set(o,{handle,label}); }); g.userData.handle=handle; return g; }
+
+/* ------------------------------------------------------------------ a loja
+   Eixos da planta: x atravessa o salão (5,36 m internos), z é a profundidade (fachada em z=0, fundo em z=-15,9),
+   y é a altura (pé-direito 4,20). Pilares metálicos na parede esquerda nos eixos B, C e D (3,88 / 8,22 / 12,24 m). */
+const W=5.36, D=15.9, H=4.20, HW=W/2;
+const ground=mesh(new THREE.PlaneGeometry(W,D),M.piso,0,0,-D/2,scene,false); ground.rotation.x=-Math.PI/2;
+{ const j=new THREE.MeshStandardMaterial({color:"#8F8981",roughness:.6}); for(let z=-2.68;z>-D;z-=2.68) box(W,.002,.008,j,0,.001,z,scene,false); box(.008,.002,D,j,0,.001,-D/2,scene,false); }   // juntas de dilatação do concreto
+const ceil=box(W+.4,.12,D,M.forro,0,H+.06,-D/2);
+// paredes (muro de arrimo existente dos dois lados, acabamento em massa)
+{ box(.2,H+.3,D,M.parede,-HW-.1,H/2,-D/2); box(.2,H+.3,D,M.parede,HW+.1,H/2,-D/2); box(W+.4,H+.3,.2,M.parede,0,H/2,-D-.1);
+  box(W+.6,2.2,.3,M.parede,0,H+1.1,-.05);   // a fachada do mezanino, por cima do vidro
+}
+// vigas metálicas no forro, a cada 2 m, e pilares (estrutura metálica embutida na contraparede)
+for(let z=-2;z>-D;z-=2){ box(W,.22,.1,M.aco,0,H-.11,z); }
+for(const z of [-3.88,-8.22,-12.24]){ cyl(.11,.11,H,M.aco,-HW+.06,H/2,z); box(.16,H,.36,M.parede,HW-.08,H/2,z); }
+// fachada: caixilho de aço preto, vidro de piso a teto, porta dupla de 1,60 m (CX01) com a maçaneta Constantin
+{ const zf=0; const vidro=mesh(new THREE.PlaneGeometry(W,H),M.vidro,0,H/2,zf,scene,false);
+  box(W,.06,.08,M.caixilho,0,H-.03,zf); box(W,.06,.08,M.caixilho,0,.03,zf);
+  for(const x of [-HW+.03,-.8,.8,HW-.03]) box(.06,H,.08,M.caixilho,x,H/2,zf);
+  box(1.6,.06,.08,M.caixilho,0,2.4,zf);                                             // bandeira da porta
+  // folhas da porta abertas para dentro
+  for(const s of [-1,1]){ const g=group(s*.8,zf,s*-.95); box(.04,2.36,.04,M.caixilho,0,1.2,-.02,g); box(.04,2.36,.04,M.caixilho,0,1.2,-.76,g); box(.04,.05,.78,M.caixilho,0,2.36,-.39,g); box(.04,.12,.78,M.caixilho,0,.06,-.39,g); mesh(new THREE.PlaneGeometry(.7,2.2),M.vidro,0,1.2,-.39,g,false).rotation.y=Math.PI/2;
+    if(s===1){ const h=group(-.04,-.66,0,g); const hd=box(.025,.03,.18,M.aluminio,0,1.05,0,h); hd.rotation.x=.08; cyl(.012,.012,.05,M.aluminio,0,1.05,.06,h).rotation.x=Math.PI/2; cyl(.02,.02,.012,M.aluminio,0,1.05,.0,h).rotation.x=Math.PI/2; pickable(h,"macaneta-constantin","Maçaneta Constantin"); } }
+}
+// calçada (granito bruto), guia e rua; o sol entra por aqui
+{ const c=mesh(new THREE.PlaneGeometry(14,2.4),M.calcada,0,-.005,1.2,scene,false); c.rotation.x=-Math.PI/2;
+  const r=mesh(new THREE.PlaneGeometry(40,14),M.rua,0,-.14,9.4,scene,false); r.rotation.x=-Math.PI/2;
+  box(14,.14,.2,M.calcada,0,-.07,2.5);
+  // vizinhos: muros cegos dos dois lados e a rua à frente
+  box(.3,6,3,M.parede,-HW-.15,3,1.5,scene,false); box(.3,6,3,M.parede,HW+.15,3,1.5,scene,false);
+  const viz=new THREE.MeshStandardMaterial({color:"#D9D3CB",roughness:1}); box(30,9,1,viz,0,4.5,17.5,scene,false);
+  for(const x of [-9,-3,3,9]) cyl(.12,.16,5.5,new THREE.MeshStandardMaterial({color:"#5B4A3A",roughness:1}),x,2.75,13.5);   // troncos das árvores da alameda
+  for(const x of [-9,-3,3,9]) mesh(new THREE.SphereGeometry(2.6,10,8),new THREE.MeshStandardMaterial({color:"#6E7B4C",roughness:1}),x,7,13.5); }
+// escada ao fundo (23 degraus de 18,5 cm até o +4,44): quatro degraus pelo fundo, depois sobe junto à parede direita
+{ const g=group(0,0,0); let y=0, z=-D+.55;
+  const conc=new THREE.MeshStandardMaterial({color:"#B5AFA7",roughness:.7});
+  for(let i=0;i<4;i++){ box(.28,.185,1.0,conc,-.4+i*.28,y+.0925,z,g); y+=.185; }
+  const bal=box(1.0,.18,1.0,conc,.9,y-.09,z,g);
+  for(let i=0;i<19;i++){ box(1.0,.04,.3,conc,HW-.5,y+.165,z+.64+i*.28,g); box(.02,.185,.02,M.aco,HW-.04,y+.0925,z+.64+i*.28,g); y+=.185; }
+  { const r=box(.025,.025,19*.28,M.aco,HW-1.0,y-.9,z+.64+19*.14,g); r.rotation.x=-Math.atan2(19*.185,19*.28); for(let i=0;i<6;i++) box(.015,.95,.015,M.aco,HW-1.0,y-19*.185+i*3.5*.185+.6,z+.64+i*3.5*.28,g); }   // guarda-corpo: corrimão e montantes finos
+  box(2.0,H,1.9,M.parede,-HW+1.0,H/2,-D+.95,g); box(.8,2.1,.05,M.madeiraEscura,-HW+1.3,1.05,-D+1.93,g);   // apoio e W.C. da loja, com porta
+  box(1.04,.9,.45,M.madeira,-.1,.45,-D+2.2,g);              // balcão de apoio M02 (1,04 × 0,45)
+  }
+// placa na parede esquerda, perto da entrada: "Menos do mesmo."
+const placa=group(-HW+.012,-1.7,Math.PI/2); { const p=box(.9,.26,.012,M.placa,0,1.55,0,placa);
+  const cv=document.createElement("canvas"); cv.width=1024; cv.height=296; const g=cv.getContext("2d"); g.fillStyle="#2D211E"; g.fillRect(0,0,1024,296); g.fillStyle="#E5E1DB"; g.font="400 84px Muoto, 'DM Sans', sans-serif"; g.textBaseline="middle"; g.fillText("Menos do mesmo.",64,148);
+  const t=new THREE.CanvasTexture(cv); t.colorSpace=THREE.SRGBColorSpace; t.anisotropy=8; const tm=mesh(new THREE.PlaneGeometry(.9,.26),new THREE.MeshStandardMaterial({map:t,roughness:.6}),0,1.55,.0065,placa,false);
+  document.fonts.load("84px Muoto").then(()=>{ g.font="400 84px Muoto, 'DM Sans', sans-serif"; g.fillStyle="#2D211E"; g.fillRect(0,0,1024,296); g.fillStyle="#E5E1DB"; g.fillText("Menos do mesmo.",64,148); t.needsUpdate=true; render(); });
+  pickable(placa,"sobre","Sobre a More"); }
+// tomada TOM.01 na parede direita, a 1,10 m do piso, logo depois da porta (pronta entrega)
+const tomada=group(HW-.012,-1.6,-Math.PI/2); { cyl(.045,.045,.012,M.preto,0,1.1,0,tomada,32).rotation.x=Math.PI/2; cyl(.03,.03,.016,M.latao,0,1.1,0,tomada,32).rotation.x=Math.PI/2;
+  for(const [a,b] of [[-.011,0],[.011,0],[0,-.012]]) cyl(.0035,.0035,.02,M.preto,a,1.1+b,0,tomada,8).rotation.x=Math.PI/2; pickable(tomada,"tomada-tom-01","Tomada TOM.01"); }
+
+/* ------------------------------------------------------------------ as peças (volumes de estudo a partir das fotos) */
+function poltronaLeticia(x,z,ry){ const g=group(x,z,ry); const w=.82,d=.88;
+  for(const [sx,sz] of [[-1,-1],[1,-1],[-1,1],[1,1]]) box(.07,sz<0?.62:.42,.07,M.madeira,sx*(w/2-.035),sz<0?.31:.21,sz*(d/2-.035),g);
+  box(w,.06,.08,M.madeira,0,.59,-d/2+.04,g); for(const s of [-1,1]) box(.07,.05,d-.1,M.madeira,s*(w/2-.035),.40,0,g);
+  rbox(w-.26,.22,d-.24,.025,M.boucleTerracota,0,.44,.02,g);                           // assento
+  const enc=rbox(w-.18,.52,.16,.04,M.boucleTerracota,0,.82,-d/2+.2,g); enc.rotation.x=-.1; for(const s of [-1,1]){ const o=rbox(.2,.3,.15,.07,M.boucleTerracota,s*(w/2-.2),1.0,-d/2+.2,g); o.rotation.x=-.1; o.rotation.z=s*.35; }   // encosto curvo, abas abertas
+  rbox(w-.3,.32,.12,.03,M.boucleTerracota,0,.68,-d/2+.3,g).rotation.x=-.2;        // almofada
+  return pickable(g,"poltrona-leticia","Poltrona Leticia"); }
+function otomanLeticia(x,z,ry){ const g=group(x,z,ry); for(const [sx,sz] of [[-1,-1],[1,-1],[-1,1],[1,1]]) box(.06,.2,.06,M.madeira,sx*.34,.1,sz*.24,g);
+  box(.78,.04,.56,M.madeira,0,.21,0,g); rbox(.76,.2,.56,.03,M.boucleTerracota,0,.33,0,g); return pickable(g,"otoman-leticia","Otoman Leticia"); }
+function sofaCanoa(x,z,ry){ const g=group(x,z,ry); const w=2.4,d=.95;
+  rbox(w,.18,d,.05,M.linhoCinza,0,.33,0,g);                                           // base
+  rbox(w-.3,.14,d-.3,.05,M.linhoCinza,0,.48,.08,g);                                   // assento
+  rbox(w-.2,.36,.22,.06,M.linhoCinza,0,.62,-d/2+.14,g);                               // encosto
+  for(const s of [-1,1]) rbox(.16,.2,d-.2,.04,M.linhoCinza,s*(w/2-.08),.52,0,g);     // braços baixos
+  for(const sx of [-1,1]) for(const sz of [-1,1]){ const p=group(sx*(w/2-.3),sz*(d/2-.16),Math.PI/4,g); box(.05,.26,.05,M.madeiraMedia,0,.12,0,p); }
+  for(const i of [0,1,2]) rbox(.6,.1,.5,.04,M.linhoCinza,-.75+i*.75,.57,.1,g);        // almofadas de assento
+  return pickable(g,"sofa-canoa","Sofá Canoa"); }
+function mesaCildo(x,z,ry){ const g=group(x,z,ry); rbox(.95,.028,.95,.012,M.vidroAmbar,0,.31,0,g);
+  for(const [a,b] of [[-.3,-.3],[.3,-.25],[0,.32]]) cyl(.07,.07,.29,M.ceramica,a,.145,b,g,20); return pickable(g,"mesa-cildo","Mesa Cildo"); }
+function mesaEto(x,z,ry){ const g=group(x,z,ry); const s=new THREE.Shape(); s.moveTo(-.32,-.2); s.lineTo(.32,-.2); s.quadraticCurveTo(.34,0,.06,.34); s.quadraticCurveTo(0,.38,-.06,.34); s.quadraticCurveTo(-.34,0,-.32,-.2);
+  const top=new THREE.ExtrudeGeometry(s,{depth:.03,bevelEnabled:false}); top.rotateX(Math.PI/2); mesh(top,M.madreperola,0,.5,0,g); const rim=new THREE.ExtrudeGeometry(s,{depth:.05,bevelEnabled:false}); rim.rotateX(Math.PI/2); mesh(rim,M.madeira,0,.47,0,g).scale.set(1.04,1,1.04);
+  for(const [a,b] of [[-.24,-.12],[.24,-.12],[0,.24]]) box(.07,.47,.07,M.madeira,a,.235,b,g); return pickable(g,"mesa-de-apoio-eto","Mesa de apoio Eto"); }
+function luminariaNaz(x,z){ const g=group(x,z,0); cyl(.15,.17,.03,M.preto,0,.015,0,g,32); cyl(.006,.006,1.4,M.preto,0,.72,0,g,8);
+  const c=mesh(new THREE.SphereGeometry(.19,24,32),M.papel,0,1.12,0,g,false); c.scale.set(1,2.9,.55); c.castShadow=true; for(const y of [.72,.95,1.18,1.4]) mesh(new THREE.TorusGeometry(.19*Math.sqrt(1-((y-1.12)/.55)**2)+.002,.003,6,32),M.preto,0,y,0,g,false).rotation.x=Math.PI/2;
+  const l=new THREE.PointLight("#FFE6B0",2.2,5,2); l.position.set(0,1.12,0); g.add(l); return pickable(g,"luminaria-naz","Luminária Naz"); }
+function pendenteNaz(x,z,y){ const g=group(x,z,0); const c=mesh(new THREE.SphereGeometry(.55,32,16,0,Math.PI*2,Math.PI/2,Math.PI/2),M.papel,0,y+.1,0,g); c.scale.set(1,.5,.36);
+  for(const s of [-1,1]) cyl(.003,.003,H-y-.1,M.preto,s*.42,(H+y+.1)/2,0,g,6); const l=new THREE.PointLight("#FFE6B0",2.5,5,2); l.position.set(0,y-.05,0); g.add(l); return pickable(g,"pendente-naz","Pendente Naz"); }
+function mesaLeila(x,z){ const g=group(x,z,0); cyl(.7,.7,.04,M.madeiraClara,0,.73,0,g,48); cyl(.64,.64,.012,M.vidroLaqueado,0,.756,0,g,48);
+  for(const a of [0,1,2,3]){ const t=a*Math.PI/2+Math.PI/4; cyl(.05,.05,.71,M.madeiraClara,Math.cos(t)*.46,.355,Math.sin(t)*.46,g,16); } return pickable(g,"mesa-de-jantar-leila","Mesa de jantar Leila"); }
+function cadeiraMaria(x,z,ry){ const g=group(x,z,ry); for(const [sx,sz] of [[-1,-1],[1,-1],[-1,1],[1,1]]) box(.04,sz<0?.78:.44,.04,M.madeiraClara,sx*.22,sz<0?.39:.22,sz*.25,g);
+  box(.48,.04,.5,M.madeiraClara,0,.42,0,g); rbox(.44,.08,.46,.015,M.boucleNeve,0,.48,0,g); rbox(.46,.24,.07,.03,M.boucleNeve,0,.7,-.24,g); return pickable(g,"cadeira-maria","Cadeira Maria"); }
+function cadeira556(x,z,ry){ const g=group(x,z,ry); for(const [sx,sz] of [[-1,-1],[1,-1],[-1,1],[1,1]]) box(.035,sz<0?.76:.44,.035,M.madeiraEscura,sx*.26,sz<0?.38:.22,sz*.26,g);
+  box(.56,.03,.55,M.madeiraEscura,0,.43,0,g); for(let i=0;i<6;i++) box(.5,.012,.05,M.couro,0,.45,-.21+i*.085,g); box(.56,.07,.03,M.madeiraEscura,0,.72,-.26,g);
+  for(const s of [-1,1]){ box(.035,.03,.5,M.madeiraEscura,s*.26,.64,0,g); box(.035,.2,.035,M.madeiraEscura,s*.26,.54,.24,g); } return pickable(g,"cadeira-556","Cadeira 556"); }
+function luminariaNgoni(x,z){ const g=group(x,z,0); const b=mesh(new THREE.BoxGeometry(.25,1.5,.25),M.papel,0,.82,0,g); for(const [a,c] of [[-1,-1],[1,-1],[-1,1],[1,1]]) cyl(.003,.003,1.62,M.preto,a*.13,.81,c*.13,g,6);
+  const l=new THREE.PointLight("#FFE6B0",1.8,4,2); l.position.set(0,.9,0); g.add(l); return pickable(g,"luminaria-ngoni","Luminária Ngoni"); }
+function sofaCatedral(x,z,ry){ const g=group(x,z,ry); const w=2.3,d=.95; rbox(w,.4,d,.17,M.linhoAreia,0,.33,0,g); rbox(w-.1,.34,.3,.15,M.linhoAreia,0,.62,-d/2+.18,g);
+  for(const [sx,sz] of [[-1,-1],[1,-1],[-1,1],[1,1]]) cyl(.05,.05,.14,M.madeiraClara,sx*(w/2-.2),.07,sz*(d/2-.2),g,12); return pickable(g,"sofa-catedral","Sofá Catedral"); }
+function mesaCarnivora(x,z,ry){ const g=group(x,z,ry); for(const s of [0,1]){ const p=group(s*.5,0,0,g); const sh=new THREE.Shape(); sh.absellipse(0,0,.3,.26,0,Math.PI*2); const t=new THREE.ExtrudeGeometry(sh,{depth:.04,bevelEnabled:false}); t.rotateX(Math.PI/2); mesh(t,M.madeiraClara,0,.45-s*.05,0,p);
+    for(const a of [0,1,2]){ const th=a*2.1+s; cyl(.025,.035,.42-s*.05,M.madeiraClara,Math.cos(th)*.2,.21-s*.025,Math.sin(th)*.17,p,10); } } return pickable(g,"mesa-carnivora","Mesa de apoio Carnívora"); }
+function poltronaEduardo(x,z,ry){ const g=group(x,z,ry); for(const [sx,sz] of [[-1,-1],[1,-1],[-1,1],[1,1]]) box(.07,sz<0?.72:.6,.07,M.madeira,sx*.37,sz<0?.36:.3,sz*.38,g);
+  for(const s of [-1,1]) box(.07,.05,.8,M.madeira,s*.37,.58,0,g); rbox(.64,.22,.7,.025,M.boucleTerracota,0,.42,0,g); rbox(.64,.4,.18,.03,M.boucleTerracota,0,.72,-.3,g).rotation.x=-.1; rbox(.5,.28,.1,.03,M.boucleTerracota,0,.62,-.2,g).rotation.x=-.2; return pickable(g,"poltrona-eduardo","Poltrona Eduardo"); }
+function luminariaFanto(x,z){ const g=group(x,z,0); for(const a of [0,1,2]){ const t=a*2.09; const p=cyl(.006,.006,.5,M.preto,Math.cos(t)*.16,.12,Math.sin(t)*.16,g,6); p.rotation.z=Math.cos(t)*.6; p.rotation.x=-Math.sin(t)*.6; }
+  cyl(.008,.008,1.35,M.preto,0,.9,0,g,8); for(const s of [-1,1]){ const arm=cyl(.006,.006,.45,M.preto,s*.18,1.65,0,g,6); arm.rotation.z=s*1.1; const sh=mesh(new THREE.ConeGeometry(.11,.08,20,1,true),M.cinzaClaro,s*.36,1.82,0,g); sh.rotation.z=s*.5;
+    const l=new THREE.PointLight("#FFEBC8",1.0,3,2); l.position.set(s*.36,1.74,0); g.add(l); } return pickable(g,"luminaria-fanto","Luminária Fantô"); }
+function banco(x,z,mat,handle,label){ const g=group(x,z,Math.random()*3); cyl(.18,.17,.05,mat,0,.425,0,g,32); for(const a of [0,1,2]){ const t=a*2.09; const p=box(.045,.4,.12,mat,Math.cos(t)*.1,.2,Math.sin(t)*.1,g); p.rotation.y=-t; } return pickable(g,handle,label); }
+function estanteDomino(x,z,ry){ const g=group(x,z,ry); const w=2.4,h=1.2,y0=.9;
+  for(const r of [0,1,2,3]) box(w,.045,.26,M.madeiraClara,0,y0+r*(h/3),-.13,g);
+  for(let i=0;i<10;i++){ const c=i*(w/9)-w/2; box(.025,h,.2,M.madeiraClara,c,y0+h/2,-.1,g); }
+  const pat=[[0,1],[0,4],[0,7],[1,2],[1,5],[1,8],[2,0],[2,3],[2,6]]; for(const [r,c] of pat) box(.24,h/3-.05,.012,M.inox,-w/2+c*(w/9)+w/18,y0+r*(h/3)+h/6,-.25,g);
+  for(const [r,c] of [[0,2],[1,6],[2,8],[0,5]]) box(.12,.18,.12,M.ceramica,-w/2+c*(w/9)+w/18,y0+r*(h/3)+.11,-.13,g);   // objetos nas prateleiras
+  return pickable(g,"estante-domino","Estante Dominó"); }
+function mesaOops(x,z,ry){ const g=group(x,z,ry); const s=new THREE.Shape(); const n=4; for(let i=0;i<n*2;i++){ const a=i*Math.PI/n-Math.PI/8, r=i%2?.36:.72; i?s.lineTo(Math.cos(a)*r,Math.sin(a)*r*.8):s.moveTo(Math.cos(a)*r,Math.sin(a)*r*.8); } s.closePath();
+  const geo=new THREE.ExtrudeGeometry(s,{depth:.02,bevelEnabled:true,bevelSize:.06,bevelThickness:.004,bevelSegments:3}); geo.rotateX(Math.PI/2); mesh(geo,M.aluminio,0,.34,0,g);
+  for(const [a,b] of [[-.25,-.18],[.25,-.18],[0,.26]]) cyl(.02,.03,.33,M.aluminio,a,.165,b,g,12); return pickable(g,"mesa-de-centro-oops","Mesa de centro Oops"); }
+function mesaImi(x,z,ry){ const g=group(x,z,ry); rbox(1.2,.06,1.0,.012,M.madeiraClara,0,.32,0,g); for(const [a,b] of [[-.4,-.3],[.4,-.3],[0,.3]]) cyl(.09,.09,.29,M.madeiraClara,a,.145,b,g,20); return pickable(g,"mesa-de-centro-imi","Mesa de centro Imi"); }
+function sofaMoustache(x,z,ry){ const g=group(x,z,ry); for(const i of [0,1,2]){ const cx=-.67+i*.67; rbox(.64,.3,.8,.1,M.boucleNeve,cx,.33,0,g); rbox(.64,.42,.24,.1,M.boucleNeve,cx,.6,-.28,g); for(const s of [-1,1]) mesh(new THREE.TorusGeometry(.07,.012,8,20,Math.PI),M.preto,cx+s*.2,.07,.3,g).rotation.z=Math.PI; }
+  return pickable(g,"sofa-moustache","Sofá Moustache"); }
+function mesaNaz(x,z,ry){ const g=group(x,z,ry); box(.9,.04,.9,M.madeiraEscura,0,.73,0,g); for(const [a,b] of [[-1,-1],[1,-1],[-1,1],[1,1]]) box(.05,.71,.05,M.madeiraEscura,a*.42,.355,b*.42,g); return pickable(g,"mesa-de-jantar-naz","Mesa de jantar Naz"); }
+
+/* o arranjo na loja: entrada (fixos e bancos), estar (Leticia, Canoa, Cildo), estante na parede direita, jantar (Leila, Maria, pendente), fundo (Catedral, Eduardo) */
+const PLACED={};
+PLACED["banco-joao"]=banco(-2.15,-3.6,M.madeiraEscura,"banco-joao","Banco João");
+PLACED["banco-maria"]=banco(-1.55,-4.15,M.madeiraClara,"banco-maria","Banco Maria");
+PLACED["luminaria-fanto"]=luminariaFanto(2.05,-3.1);
+PLACED["poltrona-leticia"]=poltronaLeticia(1.35,-6.4,-.6);
+PLACED["otoman-leticia"]=otomanLeticia(2.05,-5.3,-.6);
+PLACED["mesa-de-apoio-eto"]=mesaEto(2.2,-7.4,.3);
+PLACED["sofa-canoa"]=sofaCanoa(-1.55,-7.5,Math.PI/2);
+PLACED["mesa-cildo"]=mesaCildo(-.3,-7.3,.15);
+PLACED["luminaria-naz"]=luminariaNaz(-2.1,-5.3);
+PLACED["estante-domino"]=estanteDomino(HW-.02,-10.2,-Math.PI/2);
+PLACED["mesa-de-centro-oops"]=mesaOops(1.0,-9.0,.4);
+PLACED["mesa-de-jantar-leila"]=mesaLeila(-.2,-11.2);
+PLACED["pendente-naz"]=pendenteNaz(-.2,-11.2,2.05);
+{ const g=new THREE.Group(); scene.add(g); let first=null; for(const a of [0,1,2,3]){ const t=a*Math.PI/2; const c=cadeiraMaria(-.2+Math.cos(t)*1.0,-11.2+Math.sin(t)*1.0,-t-Math.PI/2); if(!first) first=c; } PLACED["cadeira-maria"]=first; }
+PLACED["cadeira-556"]=cadeira556(-2.2,-9.2,1.2);
+PLACED["luminaria-ngoni"]=luminariaNgoni(-2.3,-12.1);
+PLACED["sofa-catedral"]=sofaCatedral(-1.2,-13.6,0);
+PLACED["mesa-carnivora"]=mesaCarnivora(-1.3,-12.5,-.3);
+PLACED["poltrona-eduardo"]=poltronaEduardo(1.6,-13.3,-2.3);
+PLACED["mesa-de-centro-imi"]=mesaImi(1.0,-14.4,.2);
+PLACED["sofa-moustache"]=sofaMoustache(2.2,-11.9,-Math.PI/2);
+PLACED["mesa-de-jantar-naz"]=mesaNaz(1.5,-9.0,.35);
+PLACED["tomada-tom-01"]=tomada; PLACED["macaneta-constantin"]=(()=>{ let g=null; interact.forEach((v,k)=>{ if(v.handle==="macaneta-constantin"&&!g){ g=k; while(g.parent&&!g.userData.handle) g=g.parent; } }); return g; })();
+
+/* ------------------------------------------------------------------ a luz
+   Uma luz dura de dia pela fachada (R-IMG-02: luz lateral dura com sombra de janela nítida), céu e um pouco de retorno do piso. */
+const sun=new THREE.DirectionalLight("#FFEFD6",3.4); sun.position.set(2.4,6.2,10); sun.target.position.set(-.2,0,-4.5); scene.add(sun,sun.target);
+sun.castShadow=true; sun.shadow.mapSize.set(2048,2048); Object.assign(sun.shadow.camera,{left:-9,right:9,top:12,bottom:-12,near:1,far:40}); sun.shadow.bias=-.0004; sun.shadow.normalBias=.02; sun.shadow.radius=2;
+scene.add(new THREE.HemisphereLight("#E6EDF4","#7E7468",.38));
+const fill=new THREE.DirectionalLight("#FFFFFF",.22); fill.position.set(2,3,-20); scene.add(fill);   // retorno do fundo, sem sombra
+// trilho de spots no forro (as lojas de design usam; marca cada peça de leve)
+for(const [x,z] of [[0,-2.5],[0,-6],[0,-9.5],[0,-13]]){ box(.05,.04,.8,M.preto,x,H-.02,z,scene,false); for(const s of [-1,1]){ cyl(.035,.035,.1,M.preto,x,H-.09,z+s*.3,scene,8); const sp=new THREE.SpotLight("#FFF1DC",18,8,.5,.6,1.6); sp.position.set(x,H-.1,z+s*.3); sp.target.position.set(x+s*1.4,0,z+s*.3-1); scene.add(sp,sp.target); } }
+
+/* ------------------------------------------------------------------ enquadramentos */
+const HOME_D={pos:new THREE.Vector3(0,1.45,.25),tgt:new THREE.Vector3(0,1.0,-9)}, HOME_M={pos:new THREE.Vector3(.1,1.3,-1.4),tgt:new THREE.Vector3(-.1,.85,-7)};
+const HOME={get pos(){return mobile()?HOME_M.pos:HOME_D.pos},get tgt(){return mobile()?HOME_M.tgt:HOME_D.tgt}};
+const FR={ loja:{pos:new THREE.Vector3(1.0,1.5,6.6),tgt:new THREE.Vector3(-.3,1.7,-3)} };
+const tmpB=new THREE.Box3(), tmpV=new THREE.Vector3(), tmpS=new THREE.Sphere();
+function frameFor(obj,opts={}){
+  tmpB.setFromObject(obj); tmpB.getBoundingSphere(tmpS); const c=tmpS.center.clone(), r=Math.max(.25,tmpS.radius);
+  const vfov=THREE.MathUtils.degToRad(camera.fov/2), hfov=Math.atan(Math.tan(vfov)*camera.aspect);
+  const side=mobile()?1:.6;   // no desktop o cartão ocupa a direita: a peça fica à esquerda do centro
+  const d=r/Math.sin(Math.min(vfov*(mobile()?.75:1),hfov*side))*1.25;
+  const dir=new THREE.Vector3(-c.x*.45,.5,1).normalize();   // do eixo do salão, pela frente, um pouco de cima
+  const pos=c.clone().addScaledVector(dir,d);
+  pos.x=THREE.MathUtils.clamp(pos.x,-HW+.35,HW-.35); pos.z=Math.min(pos.z,1.4); pos.y=THREE.MathUtils.clamp(pos.y,.6,H-.3);
+  const tgt=c.clone(); const right=new THREE.Vector3().subVectors(tgt,pos).cross(new THREE.Vector3(0,1,0)).normalize();
+  if(mobile()) tgt.y-=r*.55; else { const sh=d*Math.tan(hfov)*(356/innerWidth); tgt.addScaledVector(right,sh); pos.addScaledVector(right,sh); }
+  return {pos,tgt}; }
+
+/* ------------------------------------------------------------------ voo da câmera (fades e crescimentos de 200 a 800 ms, ease-out) */
+let fly=null;
+function flyTo(f,instant){
+  const dur=instant||reduce?0:800; const p0=camera.position.clone(), t0=controls.target.clone(); fly={p0,t0,p1:f.pos.clone(),t1:f.tgt.clone(),s:performance.now(),dur}; if(!dur){ camera.position.copy(f.pos); controls.target.copy(f.tgt); fly=null; }
+  controls.update(); render(); }
+const ease=k=>1-Math.pow(1-k,3);
+
+/* ------------------------------------------------------------------ interação */
+const tip=$("#tip"), card=$("#card");
+const ray=new THREE.Raycaster(), ptr=new THREE.Vector2();
+const pickables=[...interact.keys()];
+function pick(e){ const r=canvas.getBoundingClientRect(); ptr.set(((e.clientX-r.left)/r.width)*2-1,-((e.clientY-r.top)/r.height)*2+1); ray.setFromCamera(ptr,camera); const hits=ray.intersectObjects(pickables,false); return hits.length?hits[0].object:null; }
+let hoverEv=null, hovered=null;
+canvas.addEventListener("pointermove",e=>{ if(touchOnly()) return; if(!hoverEv) requestAnimationFrame(()=>{ const ev=hoverEv; hoverEv=null; if(ev&&!fly) hover(ev); }); hoverEv=e; });
+let hovG=null; function groupOf(o){ let g=o; while(g&&!g.userData.handle) g=g.parent; return g; }
+function hover(e){ const h=pick(e); canvas.style.cursor=h?"pointer":""; if(h!==hovered){ hovered=h; const g=h?groupOf(h):null; if(g!==hovG){ if(hovG) hovG.scale.setScalar(1); hovG=g; if(hovG&&byH[hovG.userData.handle]) hovG.scale.setScalar(1.015); render(); } } if(h){ const info=interact.get(h); tip.hidden=false; tip.textContent="["+info.label+"]"; tip.style.left=e.clientX+"px"; tip.style.top=e.clientY+"px"; tip.style.transform=e.clientX+tip.offsetWidth+28>innerWidth?"translate(calc(-100% - 12px),14px)":""; } else tip.hidden=true; }
+canvas.addEventListener("pointerleave",()=>{ tip.hidden=true; });
+let down=null;
+canvas.addEventListener("pointerdown",e=>{ down={x:e.clientX,y:e.clientY,t:performance.now()}; canvas.classList.add("grabbing"); });
+canvas.addEventListener("pointerup",e=>{ canvas.classList.remove("grabbing"); if(!down) return; const moved=Math.hypot(e.clientX-down.x,e.clientY-down.y); const dt=performance.now()-down.t; down=null; if(moved>6||dt>600) return;
+  const h=pick(e); if(h){ const info=interact.get(h); open(info.handle); } });
+
+let state={page:"home"};
+function setPressed(id){ for(const b of ["pecas","loja","sobre"]) $("#b-"+b).setAttribute("aria-pressed",String(id===b)); $("#b-voltar").hidden=id==="home"; }
+function showCard(html){ card.innerHTML=html; card.hidden=false; requestAnimationFrame(()=>card.classList.add("on")); }
+function hideCard(){ card.classList.remove("on"); setTimeout(()=>{ if(!card.classList.contains("on")) card.hidden=true; },300); }
+
+function cardPeca(p){
+  const placed=!!PLACED[p.h];
+  const price=p.p?`<div class="price">${brl(p.p)}<small>${p.buy?"pronta entrega":"sob encomenda, a partir de"}</small></div>`:`<div class="price">Preço sob consulta</div>`;
+  return `<img class="photo" src="img/${p.h}.jpg" alt="${p.t}, foto de estúdio">
+  <div class="text">
+    ${p.buy?'<span class="badge">Pronta entrega</span>':""}
+    <div class="cat">${p.c}</div>
+    <h2>${p.t}</h2>
+    <p>${p.m}</p>
+    ${price}
+    <div class="kv"><span>Medidas${p.d.startsWith("~")?" (estimadas)":""}</span><b>${p.d.replace("~","")}</b></div>
+    <div class="kv"><span>Na loja</span><b>${placed?"exposta na abertura":"sob encomenda"}</b></div>
+  </div>
+  <div class="acts"><a href="${SITE}${p.h}" target="_blank" rel="noopener">[Ver no site]</a><a href="${WA}${encodeURIComponent(p.t)}" target="_blank" rel="noopener">[Falar no WhatsApp]</a><button id="c-ant">[Anterior]</button><button id="c-prox">[Próxima]</button></div>`; }
+
+const ORDER=Object.keys(PLACED);
+function open(handle,instant){
+  if(handle==="sobre"){ state={page:"sobre"}; setPressed("sobre"); flyTo({pos:new THREE.Vector3(-.75,1.5,-.55),tgt:new THREE.Vector3(-HW,1.5,-1.85)},instant);
+    showCard(`<div class="text"><div class="cat">Sobre</div><h2>Menos do mesmo.</h2><p>Estúdio de São Paulo que desenha e faz móveis, luminárias e peças fixas. Madeira maciça, metal fundido, vidro e cerâmica, com acabamento manual. Tudo sob encomenda, com prazo.</p><p>A loja abre em 05.11 na Alameda Franca 1332, casa 04, nos Jardins.</p></div><div class="acts"><a href="https://mymore.design/pages/sobre" target="_blank" rel="noopener">[Ler no site]</a><a href="https://www.instagram.com/more.mymore/" target="_blank" rel="noopener">[Instagram]</a></div>`); return; }
+  if(handle==="loja"){ state={page:"loja"}; setPressed("loja"); flyTo(FR.loja,instant);
+    showCard(`<div class="text"><div class="cat">Loja</div><h2>Alameda Franca 1332, casa 04</h2><p>Jardins, São Paulo. Abre em 05.11.</p><div class="kv"><span>Salão</span><b>5,4 × 17 m, pé-direito 4,20</b></div><div class="kv"><span>Piso</span><b>concreto lapidado</b></div><div class="kv"><span>Mezanino</span><b>+4,44 m, loja 2 e escritório</b></div><p class="note">Construída a partir da planta executiva EX_A102_R03 (Atelier Peclat).</p></div><div class="acts"><a href="https://maps.google.com/?q=Alameda+Franca+1332+Jardins+São+Paulo" target="_blank" rel="noopener">[Como chegar]</a><a href="https://wa.me/5511912092600" target="_blank" rel="noopener">[WhatsApp]</a></div>`); return; }
+  if(handle==="pecas"){ state={page:"pecas"}; setPressed("pecas"); if(camera.position.distanceTo(HOME.pos)>.5&&!instant) flyTo(HOME,instant);
+    showCard(`<div class="text"><div class="cat">Peças</div><h2>Na loja</h2><ol>${PECAS.map(p=>`<li class="${PLACED[p.h]?"":"off"}"><button data-h="${p.h}">${p.t}</button><span>${PLACED[p.h]?(p.buy?"pronta entrega":"exposta"):"sob encomenda"}</span></li>`).join("")}</ol><p class="note">Clique numa peça exposta para vê-la de perto.</p></div>`);
+    card.querySelectorAll("button[data-h]").forEach(b=>b.onclick=()=>open(b.dataset.h)); return; }
+  const p=byH[handle]; if(!p) return; state={page:"peca",handle}; setPressed(null);
+  const g=PLACED[handle]; if(g) flyTo(frameFor(g),instant);
+  showCard(cardPeca(p)); $("#c-prox").onclick=()=>{ const i=ORDER.indexOf(handle); open(ORDER[(i+1)%ORDER.length]); }; $("#c-ant").onclick=()=>{ const i=ORDER.indexOf(handle); open(ORDER[(i+ORDER.length-1)%ORDER.length]); };
+  $("#live").textContent=p.t+". "+p.m; }
+function home(instant){ state={page:"home"}; setPressed("home"); hideCard(); flyTo(HOME,instant); }
+$("#b-pecas").onclick=()=>state.page==="pecas"?home():open("pecas");
+$("#b-loja").onclick=()=>state.page==="loja"?home():open("loja");
+$("#b-sobre").onclick=()=>state.page==="sobre"?home():open("sobre");
+$("#b-voltar").onclick=()=>home();
+addEventListener("keydown",e=>{ if(e.metaKey||e.ctrlKey||e.altKey) return; const k=e.key.toLowerCase();
+  if(e.key==="Escape") home(); else if(k==="p") open("pecas"); else if(k==="l") open("loja"); else if(k==="s") open("sobre");
+  else if(e.key==="ArrowRight"||e.key==="ArrowLeft"){ const i=state.handle?ORDER.indexOf(state.handle):-1; open(ORDER[(i+(e.key==="ArrowRight"?1:ORDER.length-1))%ORDER.length]); } });
+const live=document.createElement("div"); live.id="live"; live.className="sr"; live.setAttribute("aria-live","polite"); document.body.append(live);
+
+/* ------------------------------------------------------------------ desenho sob demanda */
+let needs=true; function render(){ needs=true; }
+controls.addEventListener("change",render);
+let frames=0, slow=0, lastT=0;
+function loop(t){ requestAnimationFrame(loop);
+  if(fly){ const k=Math.min(1,(t-fly.s)/fly.dur), e=ease(k); camera.position.lerpVectors(fly.p0,fly.p1,e); controls.target.lerpVectors(fly.t0,fly.t1,e); if(k>=1) fly=null; needs=true; }
+  const moved=controls.update();   // o damping continua a mexer a câmera depois do arrasto
+  if(!(needs||moved||fly)&&frames>3) return; needs=false;
+  if(shadowsDirty>0){ renderer.shadowMap.needsUpdate=true; shadowsDirty--; }
+  const t0=performance.now(); renderer.render(scene,camera); const dt=performance.now()-t0;
+  // frames que arrastam derrubam o DPR, nunca sobem de volta (como no quarto do Felix)
+  if(frames++>20&&dt>28){ if(++slow>12&&DPR>1.0){ DPR=Math.max(1.0,DPR-.25); renderer.setPixelRatio(DPR); slow=0; } } else slow=Math.max(0,slow-1);
+  if(frames===2){ $("#gl").classList.add("on"); $("#still").classList.add("off"); $("#load").classList.add("off"); } }
+addEventListener("resize",()=>{ camera.aspect=innerWidth/innerHeight; camera.fov=lensFov(); camera.updateProjectionMatrix(); DPR=Math.min(DPR,DPR_MAX()); renderer.setPixelRatio(DPR); renderer.setSize(innerWidth,innerHeight,false); render(); });
+
+/* carregamento: a barra conta as fotos usadas pelo cartão que já estão em cache mais o primeiro quadro */
+{ let n=0; const total=6; const bump=()=>{ n++; $("#loadbar").style.width=Math.round(100*n/total)+"%"; $("#loadpc").textContent=Math.round(100*n/total)+"%"; };
+  for(const h of ["poltrona-leticia","sofa-canoa","mesa-cildo","mesa-de-jantar-leila","tomada-tom-01"]){ const im=new Image(); im.onload=im.onerror=bump; im.src="img/"+h+".jpg"; }
+  document.fonts.ready.then(bump); }
+camera.position.copy(HOME.pos); controls.target.copy(HOME.tgt); controls.update();
+if(location.hash&&location.hash!=="#3d"){ const h=location.hash.slice(1); if(byH[h]||["loja","sobre","pecas"].includes(h)) open(h,true); }
+requestAnimationFrame(loop);
+window.__loja={scene,camera,renderer,controls,open,home,PLACED,THREE,frameFor,get dpr(){return DPR}};
+</script>
+</body></html>

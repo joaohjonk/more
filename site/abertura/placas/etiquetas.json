@@ -1,0 +1,97 @@
+{
+ "_leia": "Mestre das etiquetas. Etiqueta nova em 4 passos: (1) copie um objeto de 'pecas' e troque handle, nome e cat (iguais aos de lista/produtos.json; categorias: Assentos, Mesas, Luminárias, Estantes, Fixos), desc, specs, status, prazo e preco. (2) gere o QR: python3 _tools/qr.py <handle> (o nome vem de produtos.json; grava a URL com UTM em utm.csv). (3) veja no navegador com a pasta servida (cd explorations/assets && python3 -m http.server 8765): http://localhost:8765/placas/MORE_FONTE_marca_etiquetas_20261015_v01.html?p=<handle>&f=a6 (ficha A6) ou &f=tag (etiqueta de pendurar 50x90); &faca=1 mostra a faca. (4) exporte PNG e PDF de tudo: bash _tools/exportar-loja.sh (nomes no padrão R-FILE-01, canal ETIQUETA). Regras de conteúdo: status 'pronta' só para peça com estoque no Shopify (hoje: tomada-tom-01 e luminaria-ngoni); todo o resto é 'encomenda'. prazo é opcional (padrão '120 dias'). Spec ou preço que você não tem: escreva '?' e a etiqueta imprime o aviso confirmar no Shopify antes de imprimir, em vez de inventar. Descrição: a primeira frase da página do produto no site. Se o JSON tiver erro de sintaxe a página mostra o erro em vez das etiquetas.",
+ "pecas": [
+  {
+   "handle": "poltrona-leticia",
+   "nome": "Poltrona Leticia",
+   "cat": "Assentos",
+   "desc": "Estofada, com estrutura de madeira maciça.",
+   "specs": [
+    [
+     "Madeira",
+     "Ipê, Sucupira, Tauari ou Angelim Pedra · natural, tonalizada ou ebanizada"
+    ],
+    [
+     "Tecido",
+     "12 opções: bouclês, veludos e tecido palha"
+    ],
+    [
+     "Dimensões",
+     "81 × 71 × 89 cm · assento 39 cm"
+    ]
+   ],
+   "status": "encomenda",
+   "preco": "A partir de R$ 23.990",
+   "prazo": "120 dias"
+  },
+  {
+   "handle": "tomada-tom-01",
+   "nome": "Tomada TOM.01",
+   "cat": "Fixos",
+   "desc": "Tomada de embutir, com núcleo modular de 20A. Padrão NBR.",
+   "specs": [
+    [
+     "Cor do núcleo",
+     "Preto, Branco ou Vermelho"
+    ],
+    [
+     "Material",
+     "Anel em metal, núcleo em polímero"
+    ],
+    [
+     "Dimensões",
+     "102 × 102 × 15 mm"
+    ]
+   ],
+   "status": "pronta",
+   "preco": "?",
+   "prazo": "120 dias"
+  },
+  {
+   "handle": "mesa-cildo",
+   "nome": "Mesa de centro Cildo",
+   "cat": "Mesas",
+   "desc": "Tampo de vidro fundido pigmentado, com pés em cerâmica esmaltada.",
+   "specs": [
+    [
+     "Vidro fundido",
+     "Guaraná, Âmbar, Berinjela ou Azul Índigo"
+    ],
+    [
+     "Pés",
+     "Cerâmica esmaltada"
+    ],
+    [
+     "Dimensões",
+     "32 × 88 × 88 cm"
+    ]
+   ],
+   "status": "encomenda",
+   "preco": "R$ 31.800",
+   "prazo": "120 dias"
+  },
+  {
+   "handle": "estante-domino",
+   "nome": "Estante Dominó",
+   "cat": "Estantes",
+   "desc": "Sistema componível de madeira maciça, com chapas modulares de aço inox.",
+   "specs": [
+    [
+     "Madeira",
+     "Ipê, Sucupira, Tauari ou Angelim Pedra · natural, tonalizada ou ebanizada"
+    ],
+    [
+     "Módulos",
+     "Chapas modulares em aço inox"
+    ],
+    [
+     "Dimensões",
+     "?"
+    ]
+   ],
+   "status": "encomenda",
+   "preco": "?",
+   "prazo": "120 dias"
+  }
+ ]
+}

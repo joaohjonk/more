@@ -86,7 +86,9 @@
   .brk:hover{color:var(--color-text-secondary)}
   .filter{display:flex;gap:var(--space-md);height:var(--layout-bar-height);align-items:center;padding:0 var(--space-md);background:var(--color-surface-glass);backdrop-filter:blur(var(--blur-medium));font-family:var(--font-family-muoto);font-size:var(--font-size-ui)}
   .filter span{color:#1a1a1a;cursor:pointer}.filter .on{font-weight:600}.filter .fixos.on{color:var(--color-ciano-destaque)}
-  .card{width:220px}
+  .card{width:240px;max-width:100%}
+  .card.proposal{padding:var(--space-xs)}
+  .card .lbl{display:block;font-family:var(--font-family-mono);font-stretch:75%;font-size:var(--font-size-label);color:var(--color-text-secondary);margin-bottom:var(--space-xs)}
   .card .img{aspect-ratio:3/4;overflow:hidden;position:relative;background:#ddd6cc}
   .card .img img{width:100%;height:100%;object-fit:cover;display:block}
   .card .img img{transition:opacity var(--motion-role-hover-swap-duration) var(--motion-role-hover-swap-easing)}
@@ -95,8 +97,30 @@
   .card .img:hover img.alt,.card .img:focus-within img.alt,.card:focus-within .img img.alt{opacity:1}
   .card .foot{display:flex;justify-content:space-between;padding-top:var(--space-xs);font-family:var(--font-family-muoto)}
   .card .foot .pr{color:var(--color-text-secondary)}
-  .tag{position:absolute;left:var(--space-sm);top:var(--space-sm);font-stretch:75%;font-size:var(--font-size-label);padding:2px 6px;background:var(--color-surface-glass);backdrop-filter:blur(var(--blur-soft))}
-  .tag.now{background:var(--color-ciano-destaque);color:var(--color-preto)}
+  /* legenda no formato do guia (p. 17): nome, depois as medidas, uma por linha, tudo em preto e à esquerda */
+  .card .foot.guia{display:block;color:var(--color-preto)}
+  .card .foot.guia .m{display:block;font-size:var(--font-size-label);line-height:1.35;font-variant-numeric:tabular-nums}
+  .card .foot.guia .m:first-of-type{margin-top:2px}
+  .tag{position:absolute;left:var(--space-sm);top:var(--space-sm);font-stretch:75%;font-size:var(--font-size-label);line-height:1;padding:4px 6px;background:var(--color-branco);color:var(--color-preto)}
+  .tag.now{background:var(--color-preto);color:var(--color-branco)}
+  .card .note b{font-weight:400;color:var(--color-preto)}
+  .og{display:inline-block;font-family:var(--font-family-mono);font-stretch:75%;font-size:var(--font-size-label);padding:1px 5px;border:1px solid var(--color-preto);white-space:nowrap}
+  .og.pr{border-style:dashed;border-color:var(--color-text-secondary);color:var(--color-text-secondary)}
+  table.t.card-t td:first-child{width:14%;font-family:var(--font-family-mono);font-stretch:75%;color:var(--color-text-secondary)}
+  table.t.card-t td{width:28.6%}
+  @media(max-width:700px){
+    table.t.card-t tr:first-child{display:none}
+    table.t.card-t tr{display:block;border-bottom:1px solid var(--color-alpha-preto-10);padding:var(--space-sm) 0}
+    table.t.card-t td,table.t.card-t td:first-child{display:block;width:auto;border:0;padding:3px 0}
+    table.t.card-t td:first-child{color:var(--color-preto)}
+    table.t.card-t td:nth-child(3)::before{content:"Hoje no site: ";font-family:var(--font-family-mono);font-stretch:75%;color:var(--color-text-secondary)}
+  }
+  /* topo: resumo e link do repositório */
+  .tldr{max-width:62ch;margin:var(--space-xl) auto 0;padding:var(--space-md) var(--space-lg);border:1px solid var(--color-alpha-preto-10);text-align:left}
+  .tldr .k{font-family:var(--font-family-mono);font-stretch:75%;color:var(--color-text-secondary);font-size:var(--font-size-label)}
+  .tldr ul{margin:var(--space-xs) 0 0;padding-left:1.1em;font-family:var(--font-family-muoto);font-size:var(--font-size-ui);line-height:1.45}
+  .tldr li{margin-bottom:4px}
+  .tldr .gh{display:inline-block;margin-top:var(--space-sm);font-family:var(--font-family-mono);font-stretch:75%}
   .swrow{display:flex;gap:var(--space-hair)}
   .swrow span{width:30px;height:30px;display:block;outline:1px solid transparent;outline-offset:2px;cursor:pointer}
   .swrow span:hover,.swrow span.on{outline-color:var(--color-preto)}
@@ -165,6 +189,16 @@
     <p>Menos do mesmo.</p>
     <p class="mono secondary" style="font-size:var(--font-size-body)">Sistema de design · v0.3 · provisório até aprovação do time More</p>
     <p class="mono" style="font-size:var(--font-size-body);margin-top:var(--space-sm)"><a href="brand/build/pdf/regras-uma-pagina.pdf">[Regras em uma página · PDF]</a>&nbsp;&nbsp;<a href="brand/specimen/especime.png">[Espécime da fonte]</a></p>
+    <aside class="tldr" aria-label="Em resumo">
+      <span class="k">[Em resumo]</span>
+      <ul>
+        <li>Esta página é o sistema de design da More: cor, tipo, espaço, componentes, movimento, fotografia e regras, cada um com o valor medido no site mymore.design.</li>
+        <li>Desde 15.10 ela traz também o guia de uso oficial da marca, o manual de 39 páginas que veio com o logo e as fontes. Onde o guia e o site discordam, os dois valores aparecem lado a lado.</li>
+        <li>Nada muda no sistema sem o time da More responder. O que é sugestão nossa vem marcado como proposta.</li>
+        <li>No GitHub estão os tokens (cada cor, tamanho e espaço num arquivo que o site, o Figma e a IA leem), as regras com exemplos de certo e errado, as verificações que conferem as peças e esta página. Os arquivos de fonte ficam de fora, porque a licença não deixa publicá-los.</li>
+      </ul>
+      <a class="gh" href="https://github.com/joaohjonk/more">[Ver o repositório no GitHub · joaohjonk/more]</a>
+    </aside>
   </header>
 
   <section id="o-que-e">
@@ -315,11 +349,27 @@
       <div class="filter"><span class="on">Todos</span><span>Assentos</span><span>Mesas</span><span class="fixos">Fixos</span></div>
     </div>
 
-    <h3>Card de produto e etiquetas</h3>
+    <h3 id="card">Card de produto e etiquetas</h3>
+    <p class="body">O guia de uso da More não desenha card, preço nem etiqueta: ele trata de logo, cor, tipografia, foto e layout de campanha. O card pega do guia o que se aplica a ele e deixa o resto como proposta nossa. Na tabela abaixo, cada linha põe o que o guia diz (com a página do PDF) ao lado do que o site faz hoje, medido em 15.10. <span class="og">guia</span> marca o que vem do guia; <span class="og pr">proposta</span> marca o que é nosso. Nada disso muda o núcleo do sistema até o time da More responder.</p>
     <div class="stage" style="align-items:flex-start">
-      <div class="card"><div class="img"><img src="references/gold/site/PDT_ASS_POL_LETICIA_01.jpg" alt="Poltrona Leticia"><img class="alt" src="references/gold/site/PDT_ASS_POL_LETICIA_06.jpg" alt=""></div><div class="foot"><span>Poltrona Leticia</span><span class="pr">R$ 23.990</span></div><p class="note">Passe o mouse: o quadro de hoje, a segunda foto por fusão de 300ms, sem escala (R-MOTION-03, proposta). Hoje o site faz 200ms snap com escala .8 → 1; comparação em <a href="demos/hover-foto/index.html">demos/hover-foto</a>.</p></div>
-      <div class="card proposal"><div class="img"><img src="references/gold/site/PDT_ASS_POL_LETICIA_01.jpg" alt="Poltrona Leticia"><span class="tag mono">Sob encomenda</span></div><div class="foot"><span>Poltrona Leticia</span><span class="pr">12 tecidos</span></div><p class="note">Proposta: sem preço na grade, etiqueta "Sob encomenda".</p></div>
-      <div class="card proposal"><div class="img"><img src="references/gold/site/PDT_FIX_TOM_TOM.jpg" alt="Tomada TOM.01"><span class="tag now mono">Pronta entrega</span></div><div class="foot"><span>Tomada TOM.01</span><span class="pr">Comprar</span></div><p class="note">Proposta: o único acento marca o que se compra já.</p></div>
+      <div class="card"><span class="lbl">[Hoje no site, com o movimento proposto]</span><div class="img"><img src="references/gold/site/PDT_ASS_POL_LETICIA_01.jpg" alt="Poltrona Leticia, de frente"><img class="alt" src="references/gold/site/PDT_ASS_POL_LETICIA_06.jpg" alt=""></div><div class="foot"><span>Poltrona Leticia</span><span class="pr">R$ 23.990</span></div><p class="note">Nome à esquerda, preço à direita em cinza. Passe o mouse: a foto da frente dá lugar ao detalhe, no mesmo quadro de hoje, por uma fusão de 300 ms sem escala (regra de movimento 03, proposta). O site hoje troca a foto num corte seco de 200 ms, com a segunda foto crescendo de 80% a 100%. <a href="demos/hover-foto/index.html">Ver os dois lado a lado</a>.</p></div>
+      <div class="card proposal"><span class="lbl">[Proposta · sob encomenda]</span><div class="img"><img src="references/gold/site/PDT_ASS_POL_LETICIA_01.jpg" alt="Poltrona Leticia, de frente"><img class="alt" src="references/gold/site/PDT_ASS_POL_LETICIA_06.jpg" alt=""><span class="tag mono">Sob encomenda</span></div><div class="foot guia"><span>Poltrona Leticia</span><span class="m">81 × 71 × 89 cm</span><span class="m">12 tecidos</span></div><p class="note">Sem preço na grade. A legenda segue o exemplo de peça do próprio guia: nome, depois as medidas, uma por linha, tudo em preto e à esquerda (<b>guia p. 17</b>). O preço fica na página da peça e na barra de compra. A etiqueta é preto sobre branco e fica no fundo vazio da foto, longe da peça.</p></div>
+      <div class="card proposal"><span class="lbl">[Proposta · pronta entrega]</span><div class="img"><img src="references/gold/site/PDT_FIX_TOM_TOM.jpg" alt="Tomada TOM.01"><img class="alt" src="references/gold/site/PDT_FIX_TOM_TOM.01_02.jpg" alt=""><span class="tag now mono">Pronta entrega</span></div><div class="foot guia"><span>Tomada TOM.01</span><span class="m">102 × 102 × 15 mm</span><span class="m">3 cores de núcleo</span></div><p class="note">A única etiqueta invertida, branco sobre preto, marca o que se leva já. A versão anterior desta proposta usava o ciano do filtro Fixos do site; o ciano não está entre as nove cores do guia (<b>guia p. 14</b>), então saiu. Passe o mouse: o hover mostra as três cores de núcleo.</p></div>
+    </div>
+    <div class="tscroll">
+    <table class="t card-t">
+      <tr><th>Ponto</th><th>O que o guia diz</th><th>Hoje no site (medido em 15.10)</th><th>No card proposto</th></tr>
+      <tr><td>Fonte</td><td><span class="og">guia</span> Só a Muoto Regular, a única fonte que o guia nomeia (p. 17).</td><td>Nome e preço em Muoto. Botões entre colchetes e barras em Muoto Mono Condensed, a versão estreita e de largura fixa da mesma família.</td><td><span class="og pr">proposta</span> Nome e legenda em Muoto Regular. A etiqueta fica na Mono até o time decidir se a Mono é uma exceção ao guia.</td></tr>
+      <tr><td>Legenda</td><td><span class="og">guia</span> O exemplo de peça do guia é "Otoman Maria João", com "50 cm de largura" e "30 cm de altura" embaixo, uma medida por linha, sem preço (p. 17).</td><td>Nome e preço na mesma linha. As medidas já vêm no código da grade, mas escondidas; aparecem só na página da peça, como "81x71x89".</td><td><span class="og pr">proposta</span> Nome, medidas e opções, sem preço na grade. O site escreve "81x71x89" sem unidade e sem dizer qual número é a largura; o guia escreveria cada medida com o nome dela. Pergunta para o time: qual é a ordem?</td></tr>
+      <tr><td>Alinhamento</td><td><span class="og">guia</span> Um tipo de alinhamento por peça (p. 29, escrito para campanha).</td><td>Nome alinhado à esquerda, preço à direita.</td><td><span class="og pr">proposta</span> Tudo à esquerda.</td></tr>
+      <tr><td>Preto e cinza</td><td><span class="og">guia</span> Não usar preto com cinza no mesmo layout (p. 14). O cinza do guia é o preto a 89%, #434345.</td><td>Nome em preto quente #2D211E, preço em cinza #686868.</td><td><span class="og pr">proposta</span> Tudo no mesmo preto. Pergunta para o time: a regra vale para texto ou só para áreas de cor?</td></tr>
+      <tr><td>Cor da etiqueta</td><td><span class="og">guia</span> Só as nove cores da paleta (p. 14). Texto sobre cor sempre preto ou branco (p. 12).</td><td>O card não tem etiqueta. O ciano #8BC0D0 aparece só no filtro Fixos.</td><td><span class="og pr">proposta</span> Duas etiquetas: preto sobre branco para "Sob encomenda", branco sobre preto para "Pronta entrega". Sem ciano e sem vidro sobre a foto.</td></tr>
+      <tr><td>Lugar da etiqueta</td><td><span class="og">guia</span> Para o logo: não interromper o objeto da foto nem cobrir a área que explica o produto (p. 30 e 31).</td><td>Não se aplica.</td><td><span class="og pr">proposta</span> A mesma regra vale para a etiqueta: no canto, no fundo vazio da foto, nunca sobre a peça. É uma extensão nossa de uma regra que o guia escreveu para o logo.</td></tr>
+      <tr><td>Fotos do card</td><td><span class="og">guia</span> Still com luz difusa e sombra levemente marcada, em seis ângulos: frente, 3/4 frente, lado, costas, 3/4 costas e detalhe, com cuidado com textura e cor dos materiais (p. 23). Sem pessoas, sem luz com desenho de janela, sem luz chapada (p. 24).</td><td>O card abre na foto de frente; a segunda foto da Leticia é o detalhe. Fotos de 2:3 recortadas em 3:4.</td><td><span class="og pr">proposta</span> Frente no card, detalhe no hover, porque o guia põe a textura em primeiro lugar. Peça com variações (a tomada) mostra as variações no hover.</td></tr>
+      <tr><td>Movimento</td><td>O guia não fala de movimento.</td><td>Corte seco de 200 ms, segunda foto crescendo de 80% a 100%.</td><td><span class="og pr">proposta</span> Fusão de 300 ms, sem escala.</td></tr>
+      <tr><td>Números</td><td>O guia mostra os algarismos da Muoto, sem regra de uso (p. 17 e 18).</td><td>Algarismos de largura variável; medidas com a letra x, como "81x71x89".</td><td><span class="og pr">proposta</span> Algarismos de largura fixa, para preços e medidas alinharem em coluna, e o sinal × de verdade nas medidas. As duas coisas são recursos da própria Muoto.</td></tr>
+      <tr><td>Etiqueta impressa na loja</td><td><span class="og">guia</span> Logo com no mínimo 18 mm no papel e 120 px na tela (p. 5). Em campanha, texto corrido até 12 pt e título até 20 pt (p. 29 e 31).</td><td>As <a href="/abertura/#etiquetas">etiquetas da abertura de 05.11</a>: na ficha A6 o logo tem 18 mm e o nome 30 pt; na etiqueta de pendurar 50 × 90 mm o logo tem 14 mm e o nome 15 pt. As duas usam o desenho antigo do logo.</td><td><span class="og pr">proposta</span> Logo de 18 mm também na etiqueta de pendurar, com o desenho oficial, e as mesmas duas etiquetas de status do card. Pergunta para o time: os limites de 12 e 20 pt valem para etiqueta ou só para campanha?</td></tr>
+    </table>
     </div>
 
     <h3>Seletores de material e acordeão</h3>

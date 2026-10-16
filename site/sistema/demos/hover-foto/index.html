@@ -1,0 +1,176 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hover da foto</title>
+<meta name="description" content="A troca de foto no card da More: como está no site, sem movimento, e a versão recomendada, lado a lado, com as medidas das referências.">
+<style>
+/* Tokens de brand/generated/tokens.css (copiados para a página ficar autônoma) */
+:root{
+  --color-off-white:#e5e1db; --color-preto:#2d211e; --color-cinza-medio:#686868; --color-ciano-destaque:#8bc0d0;
+  --color-surface-glass:rgba(45,33,30,.10); --color-rule:rgba(45,33,30,.18); --stage:#ddd6cc;
+  --font-family-muoto:Muoto,"DM Sans","Helvetica Neue",Arial,sans-serif;
+  --font-family-mono:MuotoMono,"Martian Mono",ui-monospace,Menlo,monospace;
+  --motion-duration-quick:200ms; --motion-duration-step:300ms; --motion-duration-base:500ms;
+  --motion-easing-snap:cubic-bezier(.63,.01,0,1.01); --motion-easing-standard:cubic-bezier(.25,.1,.25,1);
+  --motion-distance-none:0px; --motion-scale-in:.8; --motion-scale-soft:.98;
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--color-off-white);color:var(--color-preto);font-family:var(--font-family-muoto);font-size:13px;line-height:1.47;-webkit-font-smoothing:antialiased;padding:32px 20px 120px}
+h1,h2,h3,p{margin:0;font-weight:400}
+h1{font-size:26px;line-height:1.15;max-width:30ch}
+h2{font-size:16px;margin-bottom:6px}
+.mono{font-family:var(--font-family-mono);font-size:11px;letter-spacing:0}
+.muted{color:var(--color-cinza-medio)}
+.lede{max-width:56ch;margin:12px 0 28px}
+a{color:inherit;text-decoration:none}
+button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:pointer}
+
+/* Barra de ações, no rodapé como no site */
+.bar{position:fixed;left:50%;bottom:30px;transform:translateX(-50%);height:35px;display:flex;align-items:center;gap:16px;padding:0 14px;background:var(--color-surface-glass);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);white-space:nowrap;z-index:5}
+.bar button{font-family:var(--font-family-mono);font-size:11px}
+.bar button:hover,.bar button:focus-visible{color:var(--color-cinza-medio)}
+
+/* Uma linha por variante */
+.var{display:grid;grid-template-columns:minmax(200px,260px) 1fr;gap:28px;padding:28px 0;border-top:1px solid var(--color-rule)}
+.var.rec{border-top:2px solid var(--color-preto)}
+.var .meta{display:flex;flex-direction:column;gap:8px}
+.var .meta .k{display:grid;grid-template-columns:72px 1fr;gap:6px;font-family:var(--font-family-mono);font-size:11px}
+.var .meta .k b{font-weight:400;color:var(--color-cinza-medio)}
+.var .meta .why{max-width:34ch;margin-top:6px}
+.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:7vw;max-width:980px}
+@media (max-width:760px){.var{grid-template-columns:1fr}.grid{gap:20px}}
+
+/* Card: nome à esquerda, 3:4, segunda foto no hover */
+.card{min-width:0}
+.card .ph{position:relative;aspect-ratio:3/4;overflow:hidden;background:var(--stage)}
+.card .ph img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+.card .ft{display:flex;justify-content:space-between;gap:10px;padding-top:8px}
+.card .ft .pr{color:var(--color-cinza-medio);white-space:nowrap}
+.card .ft .pr.lbl{font-size:10px;opacity:0;transition:opacity var(--motion-duration-quick) var(--motion-easing-snap)}
+
+/* Quadro de hoje, em todas as variantes: a segunda foto a 75% do quadro, centrada; a primeira escurece a 60% */
+.card .ph img.detalhe{inset:auto;top:50%;left:50%;width:75%;height:auto;transform:translate(-50%,-50%);opacity:0}
+.card:hover .ph img.peca,.card:focus-within .ph img.peca,.card.on .ph img.peca{opacity:.6}
+.card:hover .ph img.detalhe,.card:focus-within .ph img.detalhe,.card.on .ph img.detalhe{opacity:1}
+.card:hover .lbl,.card:focus-within .lbl,.card.on .lbl{opacity:1}
+
+/* A · hoje no site: tudo em 200ms snap, a segunda cresce de .8 a 1 */
+.comparacao.a .ph img.peca{transition:opacity var(--motion-duration-quick) var(--motion-easing-snap)}
+.comparacao.a .ph img.detalhe{transform:translate(-50%,-50%) scale(var(--motion-scale-in));transition:transform var(--motion-duration-quick) var(--motion-easing-snap),opacity var(--motion-duration-quick) var(--motion-easing-snap)}
+.comparacao.a .card:hover .ph img.detalhe,.comparacao.a .card:focus-within .ph img.detalhe,.comparacao.a .card.on .ph img.detalhe{transform:translate(-50%,-50%) scale(1)}
+
+/* B · sem movimento: troca seca */
+.b .ph img.peca,.b .ph img.detalhe,.b .lbl{transition:none}
+
+/* C · recomendada: só opacidade, 300ms, ease; nada escala */
+.c .ph img.peca,.c .ph img.detalhe,.c .lbl{transition:opacity var(--motion-duration-step) var(--motion-easing-standard)}
+
+/* D · comparação: fusão com escala leve .98 → 1 em 500ms ease-out (a versão Knoll) */
+.comparacao.d .ph img.peca{transition:opacity var(--motion-duration-base) ease-out}
+.comparacao.d .ph img.detalhe{transform:translate(-50%,-50%) scale(var(--motion-scale-soft));transition:opacity var(--motion-duration-base) ease-out,transform var(--motion-duration-base) ease-out}
+.comparacao.d .card:hover .ph img.detalhe,.comparacao.d .card:focus-within .ph img.detalhe,.comparacao.d .card.on .ph img.detalhe{transform:translate(-50%,-50%) scale(1)}
+
+/* Tabela de medidas */
+table{border-collapse:collapse;width:100%;max-width:980px;font-size:12px}
+th,td{text-align:left;vertical-align:top;padding:8px 10px 8px 0;border-top:1px solid var(--color-rule)}
+th{font-weight:400;color:var(--color-cinza-medio);font-family:var(--font-family-mono);font-size:11px}
+td.m{font-family:var(--font-family-mono);font-size:11px;white-space:nowrap}
+tr.more td{border-top:2px solid var(--color-preto)}
+.tscroll{overflow-x:auto;margin:16px 0 28px}
+section{margin-top:40px}
+
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{transition:none!important;animation:none!important}}
+</style>
+</head>
+<body>
+
+<p class="mono muted">More · sistema de design · movimento · proposta</p>
+<h1>A segunda foto do card</h1>
+<p class="lede">Passe o mouse ou toque em [Simular hover]. O quadro de hoje fica; muda só como a foto chega.</p>
+
+<div class="var a comparacao">
+  <div class="meta">
+    <h2>A · Hoje no site</h2>
+    <div class="k"><b>duração</b><span>200ms (motion.duration.quick)</span></div>
+    <div class="k"><b>curva</b><span>snap · .63,.01,0,1.01</span></div>
+    <div class="k"><b>o que muda</b><span>foto 1 escurece a 60%. Foto 2 entra a 75% do quadro, escala .8 → 1</span></div>
+    <p class="why muted">Três coisas mudam ao mesmo tempo, em 200ms. O snap passa de 1 e dá o pulo.</p>
+  </div>
+  <div class="grid" id="ga"></div>
+</div>
+
+<div class="var b">
+  <div class="meta">
+    <h2>B · Sem movimento</h2>
+    <div class="k"><b>duração</b><span>0</span></div>
+    <div class="k"><b>curva</b><span>nenhuma</span></div>
+    <div class="k"><b>o que muda</b><span>o mesmo quadro de hoje, troca seca</span></div>
+    <p class="why muted">O corte seco do vídeo na tela. Na grade, pisca a cada card.</p>
+  </div>
+  <div class="grid" id="gb"></div>
+</div>
+
+<div class="var c rec">
+  <div class="meta">
+    <h2>C · Recomendada</h2>
+    <div class="k"><b>duração</b><span>300ms (motion.duration.step)</span></div>
+    <div class="k"><b>curva</b><span>ease (motion.easing.standard)</span></div>
+    <div class="k"><b>o que muda</b><span>o mesmo quadro de hoje: foto 1 a 60%, foto 2 a 75%. Só a opacidade muda; nada escala</span></div>
+    <p class="why muted">O tempo e a curva de The Row e Jacquemus: 300ms, ease, só opacidade. A composição não muda.</p>
+  </div>
+  <div class="grid" id="gc"></div>
+</div>
+
+<div class="var d comparacao">
+  <div class="meta">
+    <h2>D · Comparação</h2>
+    <div class="k"><b>duração</b><span>500ms (motion.duration.base)</span></div>
+    <div class="k"><b>curva</b><span>ease-out</span></div>
+    <div class="k"><b>o que muda</b><span>o mesmo quadro; opacidade e escala .98 → 1 da foto 2</span></div>
+    <p class="why muted">A versão Knoll (600ms, escala .95). A escala mexe na peça de novo. Meio segundo é lento na grade.</p>
+  </div>
+  <div class="grid" id="gd"></div>
+</div>
+
+<section>
+  <h2>Medido em 15.10.2026</h2>
+  <p class="muted" style="max-width:60ch">Lido do CSS de cada loja no navegador. Norr11 não troca a foto. Jacquemus estava em manutenção; o CSS carregou.</p>
+  <div class="tscroll"><table>
+    <thead><tr><th>Loja</th><th>No hover do card</th><th>Duração</th><th>Curva</th><th>Propriedades</th></tr></thead>
+    <tbody>
+      <tr class="more"><td>More (hoje)</td><td>foto 1 a 60% + foto 2 a 75% do quadro, escala .8 → 1</td><td class="m">200ms</td><td class="m">.63,.01,0,1.01</td><td class="m">opacity, transform</td></tr>
+      <tr><td>The Row</td><td>fusão para a foto no corpo, quadro inteiro</td><td class="m">300ms</td><td class="m">ease</td><td class="m">opacity</td></tr>
+      <tr><td>Jacquemus</td><td>fusão entre fotos do tile, quadro inteiro</td><td class="m">300ms</td><td class="m">.25,.1,.25,1 (ease)</td><td class="m">opacity</td></tr>
+      <tr><td>Knoll</td><td>fusão para foto em ambiente, escala .95 → 1</td><td class="m">600ms</td><td class="m">.215,.61,.355,1</td><td class="m">opacity, transform</td></tr>
+      <tr><td>Norr11</td><td>a foto não troca; o nome aparece</td><td class="m">200ms</td><td class="m">ease</td><td class="m">opacity</td></tr>
+      <tr><td>Kann Design</td><td>fusão para foto em ambiente, quadro inteiro</td><td class="m">250ms</td><td class="m">ease-in-out</td><td class="m">all</td></tr>
+      <tr><td>Massproductions</td><td>fusão para a segunda foto, quadro inteiro</td><td class="m">400ms</td><td class="m">ease</td><td class="m">opacity</td></tr>
+      <tr><td>Vipp</td><td>fusão entre fotos de categoria</td><td class="m">300ms</td><td class="m">ease-in-out</td><td class="m">opacity</td></tr>
+    </tbody>
+  </table></div>
+  <p class="muted" style="max-width:60ch">O que vem das referências é o tempo e a curva. O quadro é da More.</p>
+</section>
+
+<section>
+  <h2>O que a recomendada pede do site</h2>
+  <p style="max-width:60ch">Em product-card.css, foto 2: tirar o <span class="mono">scale(.8)</span> do estado base e o <span class="mono">transform</span> da transição; <span class="mono">transition:opacity 300ms ease</span>. Foto 1: <span class="mono">transition:opacity 300ms ease</span>. Posição, tamanho e o 60% ficam como estão.</p>
+</section>
+
+<div class="bar"><button type="button" id="sim">[Simular hover]</button><span class="mono muted">1,5s em todos os cards</span></div>
+
+<script>
+const PECAS=[
+  {s:'poltrona-leticia',n:'Poltrona Leticia',p:'Sob encomenda'},
+  {s:'mesa-de-centro-oops',n:'Mesa de centro Oops',p:'Sob encomenda'},
+  {s:'cadeira-maria',n:'Cadeira Maria',p:'Pronta entrega'}
+];
+const card=(x)=>`<a class="card" href="#" aria-label="${x.n}, foto da peça e detalhe"><div class="ph"><img class="peca" src="img/${x.s}-peca.jpg" alt="${x.n}" width="600" height="900"><img class="detalhe" src="img/${x.s}-detalhe.jpg" alt="" width="600" height="900"></div><div class="ft"><span>${x.n}</span><span class="pr lbl">${x.p}</span></div></a>`;
+for(const id of ['ga','gb','gc','gd']) document.getElementById(id).innerHTML=PECAS.map(card).join('');
+document.querySelectorAll('.card').forEach(c=>c.addEventListener('click',e=>e.preventDefault()));
+document.getElementById('sim').addEventListener('click',()=>{const cs=document.querySelectorAll('.card');cs.forEach(c=>c.classList.add('on'));setTimeout(()=>cs.forEach(c=>c.classList.remove('on')),1500)});
+</script>
+</body>
+</html>

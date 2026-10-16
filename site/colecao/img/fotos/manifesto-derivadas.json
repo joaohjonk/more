@@ -1,0 +1,866 @@
+{
+ "origem": "PDT_ASS_POL_LETICIA (Drive da More), corte 3:4 centrado pelo token aspect.portrait",
+ "fotos": [
+  {
+   "original": "PDT_ASS_POL_LETICIA_01.jpg",
+   "drive_id": "1ELw9obxs_NwAEu6Vn1oImzSNssmVBtdg",
+   "bytes": 4764001,
+   "sha256": "7838603a22c8b9c52ed232b42ee5a85edb34aa0d7004722e008b58ce7e90b278",
+   "inedita": true,
+   "derivadas": [
+    {
+     "arquivo": "MORE_SITE_poltrona-leticia_3x4-01-w480_20261015_v01.jpg",
+     "largura": 480,
+     "bytes": 27150,
+     "sha256": "09a5e4ec5e9e77fc8ba4e85d3a86d45bbc29783b91f3caa6ffd486a547d6124a"
+    },
+    {
+     "arquivo": "MORE_SITE_poltrona-leticia_3x4-01-w480_20261015_v01.webp",
+     "largura": 480,
+     "bytes": 15966,
+     "sha256": "42fcbf3ab8bcf30883bff6d642ee85cf57c439ea7d0218dd9ebd0f63dc7e305a"
+    },
+    {
+     "arquivo": "MORE_SITE_poltrona-leticia_3x4-01-w480_20261015_v01.avif",
+     "largura": 480,
+     "bytes": 12033,
+     "sha256": "cb58541b051bc74781cb56b26d4d9678f3b03e676b9f6872259808adc1dd37db"
+    },
+    {
+     "arquivo": "MORE_SITE_poltrona-leticia_3x4-01-w800_20261015_v01.jpg",
+     "largura": 800,
+     "bytes": 81864,
+     "sha256": "92352e21accaf1a5740e2135711801dd348fc0ea2fd432fb43bc826300e2a6c5"
+    },
+    {
+     "arquivo": "MORE_SITE_poltrona-leticia_3x4-01-w800_20261015_v01.webp",
+     "largura": 800,
+     "bytes": 53976,
+     "sha256": "147e01c1e9f07f7ff7ab7d5ed10befb90dd284a5be02ad3bccfb5fec18ea1df4"
+    },
+    {
+     "arquivo": "MORE_SITE_poltrona-leticia_3x4-01-w800_20261015_v01.avif",
+     "largura": 800,
+     "bytes": 37480,
+     "sha256": "de914bb7de6da908c72305ccc108fcf273ec75355f782b3cda8ad0526978b04b"
+    },
+    {
+     "arquivo": "MORE_SITE_poltrona-leticia_3x4-01-w1200_20261015_v01.jpg",
+     "largura": 1200,
+     "bytes": 202594,
+     "sha256": "9823a19b55703be73e0335396d8889c5b233e679740f4505d30f92d302e79edf"
+    },
+    {
+     "arquivo": "MORE_SITE_poltrona-leticia_3x4-01-w1200_20261015_v01.webp",
+     "largura": 1200,
+     "bytes": 133904,
+     "sha256": "3df9e338b0935ed8f58a42e2ddf7437955be0abef731238678f7d6227b7af9b4"
+    },
+    {
+     "arquivo": "MORE_SITE_poltrona-leticia_3x4-01-w1200_20261015_v01.avif",
+     "largura": 1200,
+     "bytes": 89208,
+     "sha256": "6ed5689cd1cb9ed9ccb9215f52e22b53f196a3d0c43bb7738dd57bb46348e9c2"
+    },
+    {
+     "arquivo": "MORE_SITE_poltrona-leticia_3x4-01-w1600_20261015_v01.jpg",
+     "largura": 1600,
+     "bytes": 377759,
+     "sha256": "9b6e78f14b85292bbbfe52dcddc104bd570fda7eac97dc16f5c588cef277bc7e"
+    },
+    {
+     "arquivo": "MORE_SITE_poltrona-leticia_3x4-01-w1600_20261015_v01.webp",
+     "largura": 1600,
+     "bytes": 242086,
+     "sha256": "5d2faed4b6e495421bf240145533e374d8ed5055c19da19dfaf12fd1a77473e9"
+    },
+    {
+     "arquivo": "MORE_SITE_poltrona-leticia_3x4-01-w1600_20261015_v01.avif",
+     "largura": 1600,
+     "bytes": 155380,
+     "sha256": "f131e726af8bcde78986050ff0ff4cbc9cc6cbc06ff90960f0a06f50d4e9cc94"
+    },
+    {
+     "arquivo": "MORE_SITE_poltrona-leticia_3x4-01-w160_20261015_v01.jpg",
+     "largura": 160,
+     "bytes": 3802,
+     "sha256": "98f5d68ae2a00d3835deb080a7d0544d6fb95f9290af25f7fd847128644ec968"
+    }
+   ]
+  },
+  {
+   "original": "PDT_ASS_POL_LETICIA_02.jpg",
+   "drive_id": "1SXGRZKCCvLqypKOlMYGaRkAzbv01j1cO",
+   "bytes": 4071320,
+   "sha256": "b353d5c851bebb88d394c3283334c10e99b67946db04b25a0bc24169f6253e48",
+   "inedita": true,
+   "derivadas": [
+    {
+     "arquivo": "MORE_SITE_poltrona-leticia_3x4-02-w480_20261015_v01.jpg",
+     "largura": 480,
+     "bytes": 24838,
+     "sha256": "f8dbd417667b9d71dc001de7371c5b6ed95a719f0a5eef9625c8e32c57c0686b"
+    },
+    {
+     "arquivo": "MORE_SITE_poltrona-leticia_3x4-02-w480_20261015_v01.webp",
+     "largura": 480,
+     "bytes": 13082,
+     "sha256": "dd25b88d157c88b4d072dd29e75e732c44d0e8b3cb47dfcdbb8f01f4fd2ec65d"
+    },
+    {
+     "arquivo": "MORE_SITE_poltrona-leticia_3x4-02-w480_20261015_v01.avif",
+     "largura": 480,
+     "bytes": 9914,
+     "sha256": "7331fbfa56d36c19cb0d8850f8bf3dd17c76de56378031b562f7b6cee3abe256"
+    },
+    {
+     "arquivo": "MORE_SITE_poltrona-leticia_3x4-02-w800_20261015_v01.jpg",
+     "largura": 800,
+     "bytes": 72313,
+     "sha256": "c8328c5ef3cc09555c93dc5dcc8260af84eeadd6ba26ffa81e335104ae4ad7a1"
+    },
+    {
+     "arquivo": "MORE_SITE_poltrona-leticia_3x4-02-w800_20261015_v01.webp",
+     "largura": 800,
+     "bytes": 43636,
+     "sha256": "938de81d1c2f33b469b1268c1447e229aca7b76b588b2d58d5fe95832ec7fd84"
+    },
+    {
+     "arquivo": "MORE_SITE_poltrona-leticia_3x4-02-w800_20261015_v01.avif",
+     "largura": 800,
+     "bytes": 30627,
+     "sha256": "54e1bfd1941ed186694b765be318eba84142b02a0e1b20dfff28e61d8dfb6b0e"
+    },
+    {
+     "arquivo": "MORE_SITE_poltrona-leticia_3x4-02-w1200_20261015_v01.jpg",
+     "largura": 1200,
+     "bytes": 184460,
+     "sha256": "360bc48a4abc67a36e5b1edf0e819faeefa0a58bae45ddb9d00e658e7735915f"
+    },
+    {
+     "arquivo": "MORE_SITE_poltrona-leticia_3x4-02-w1200_20261015_v01.webp",
+     "largura": 1200,
+     "bytes": 112884,
+     "sha256": "4e769bcaef5835545eb603d2942142618a2e04c6435c2414fbd9d6d9a639993c"
+    },
+    {
+     "arquivo": "MORE_SITE_poltrona-leticia_3x4-02-w1200_20261015_v01.avif",
+     "largura": 1200,
+     "bytes": 76611,
+     "sha256": "a2eeced9e14aa3206a3fbf36a6b3eabd29ce259706ba2464b4d9aa9e3ad04b27"
+    }
+   ]
+  },
+  {
+   "original": "PDT_ASS_POL_LETICIA_03.jpg",
+   "drive_id": "1giL_9PbEMNL5ZyyhnvwltOwu8KOZMeeH",
+   "bytes": 4789000,
+   "sha256": "b0d70a830560d7a1ea63562f7ad839c0d41ca01c0fc7bee84647f47e147f33f6",
+   "inedita": false,
+   "derivadas": [
+    {
+     "arquivo": "MORE_SITE_poltrona-leticia_3x4-03-w480_20261015_v01.jpg",
+     "largura": 480,
+     "bytes": 29310,
+     "sha256": "6b85078bbdd6b122585e03e4d9f52f2142a276c5a01bfa9e6d1364946c44a1fa"
+    },
+    {
+     "arquivo": "MORE_SITE_poltrona-leticia_3x4-03-w480_20261015_v01.webp",
+     "largura": 480,
+     "bytes": 18622,
+     "sha256": "dd9a7827aaced02d373200e00d40762dffa2e2f6a4ee67f9dd9ef51304faf65e"
+    },
+    {
+     "arquivo": "MORE_SITE_poltrona-leticia_3x4-03-w480_20261015_v01.avif",
+     "largura": 480,
+     "bytes": 13137,
+     "sha256": "a034bebd08c0fcc7a00c1753efcdf8aea4c14f3f025a973d0329b0e138117390"
+    },
+    {
+     "arquivo": "MORE_SITE_poltrona-leticia_3x4-03-w800_20261015_v01.jpg",
+     "largura": 800,
+     "bytes": 88493,
+     "sha256": "f6dc691dcf5c22e1444d181fa9d3900d24bac10188facb5919e77cd5b83db436"
+    },
+    {
+     "arquivo": "MORE_SITE_poltrona-leticia_3x4-03-w800_20261015_v01.webp",
+     "largura": 800,
+     "bytes": 62066,
+     "sha256": "c183b56e6c9e29210e921cc7367823d3120ab5bffef6eac680cd3754f41e3fc9"
+    },
+    {
+     "arquivo": "MORE_SITE_poltrona-leticia_3x4-03-w800_20261015_v01.avif",
+     "largura": 800,
+     "bytes": 41340,
+     "sha256": "e3a28511f988a6228ee7d460ca8b2d803f750063ae530b4984ebd6168246dd35"
+    },
+    {
+     "arquivo": "MORE_SITE_poltrona-leticia_3x4-03-w1200_20261015_v01.jpg",
+     "largura": 1200,
+     "bytes": 220248,
+     "sha256": "faf265414bcf7140968499e0631792369480e0d0e4936c0a4506c7e40d287515"
+    },
+    {
+     "arquivo": "MORE_SITE_poltrona-leticia_3x4-03-w1200_20261015_v01.webp",
+     "largura": 1200,
+     "bytes": 156854,
+     "sha256": "c232af154a19afb9a267eb5938133518cea78c93e5e0fd21bdc1df2759afca15"
+    },
+    {
+     "arquivo": "MORE_SITE_poltrona-leticia_3x4-03-w1200_20261015_v01.avif",
+     "largura": 1200,
+     "bytes": 97335,
+     "sha256": "ded675bbb32dc3a7727183431362ebed6d9c5e6b259d830d06b0df8e214858b1"
+    },
+    {
+     "arquivo": "MORE_SITE_poltrona-leticia_3x4-03-w1600_20261015_v01.jpg",
+     "largura": 1600,
+     "bytes": 412189,
+     "sha256": "170401f920a928d946b349370cce8299d608effffbb6c3ef0396a68bf56a22c9"
+    },
+    {
+     "arquivo": "MORE_SITE_poltrona-leticia_3x4-03-w1600_20261015_v01.webp",
+     "largura": 1600,
+     "bytes": 292132,
+     "sha256": "5a57042efd1c4fcf789200dbe38fdd0d3bbcfe2028f25eab2012009d2c6c5df3"
+    },
+    {
+     "arquivo": "MORE_SITE_poltrona-leticia_3x4-03-w1600_20261015_v01.avif",
+     "largura": 1600,
+     "bytes": 172553,
+     "sha256": "90108b7d4887cf5b85ebd166526582991f4e14ab27abf9fca7ee7cee8d119eb4"
+    },
+    {
+     "arquivo": "MORE_SITE_poltrona-leticia_3x4-03-w160_20261015_v01.jpg",
+     "largura": 160,
+     "bytes": 4078,
+     "sha256": "aa4826b73e5502e0e045d08e0233715c35dd727d83d4a0c01ff9fb79f2c86d76"
+    }
+   ]
+  },
+  {
+   "original": "PDT_ASS_POL_LETICIA_04.jpg",
+   "drive_id": "11dd-N7O8QftWGCsctTTLjFP_ZtI4Ry7B",
+   "bytes": 3664880,
+   "sha256": "08d011597adb94ab6e2a518a09277ff42884afe863e663e577b79fe27d046a1b",
+   "inedita": false,
+   "derivadas": [
+    {
+     "arquivo": "MORE_SITE_poltrona-leticia_3x4-04-w480_20261015_v01.jpg",
+     "largura": 480,
+     "bytes": 23936,
+     "sha256": "283d3c157b9ba8907eab5983e73a5fb9a8ca42b8f0a968613074bba01b335adf"
+    },
+    {
+     "arquivo": "MORE_SITE_poltrona-leticia_3x4-04-w480_20261015_v01.webp",
+     "largura": 480,
+     "bytes": 13188,
+     "sha256": "6f924898a132a0c9278d8ddfef0b7c84cff555710925a27625555e1ebe2d32d6"
+    },
+    {
+     "arquivo": "MORE_SITE_poltrona-leticia_3x4-04-w480_20261015_v01.avif",
+     "largura": 480,
+     "bytes": 8966,
+     "sha256": "a07ab18f315a979c1a060cecbc2158923eefd34968764b603fe9cc69cc3dcc2c"
+    },
+    {
+     "arquivo": "MORE_SITE_poltrona-leticia_3x4-04-w800_20261015_v01.jpg",
+     "largura": 800,
+     "bytes": 69722,
+     "sha256": "2368148cc1bb11322d3de73e82184fb4c84cea4ec4e26864c4078592854cfefb"
+    },
+    {
+     "arquivo": "MORE_SITE_poltrona-leticia_3x4-04-w800_20261015_v01.webp",
+     "largura": 800,
+     "bytes": 42164,
+     "sha256": "1e0210fc7a8ed9c835a1403bdc1978b87f0c1aef132e0b7c0ffe8d8edd1454b6"
+    },
+    {
+     "arquivo": "MORE_SITE_poltrona-leticia_3x4-04-w800_20261015_v01.avif",
+     "largura": 800,
+     "bytes": 28759,
+     "sha256": "1ecc7c489ac92fd5a07eb8374b4e69a1017501249a80304f7404f2c8be3634ac"
+    },
+    {
+     "arquivo": "MORE_SITE_poltrona-leticia_3x4-04-w1200_20261015_v01.jpg",
+     "largura": 1200,
+     "bytes": 176038,
+     "sha256": "1e97cc2852459ccc28561da453e794d6b5c85a2440fc4cf8b02b3bb3796748be"
+    },
+    {
+     "arquivo": "MORE_SITE_poltrona-leticia_3x4-04-w1200_20261015_v01.webp",
+     "largura": 1200,
+     "bytes": 105476,
+     "sha256": "8c0a86956b17ade6a5aadfa5883ac5728231b55b30da31240da26b7bc5b06491"
+    },
+    {
+     "arquivo": "MORE_SITE_poltrona-leticia_3x4-04-w1200_20261015_v01.avif",
+     "largura": 1200,
+     "bytes": 70018,
+     "sha256": "6e9c3e1d050c19b9c5e1c08bddea3e74791b6b69b07c6820cd11e0f7e570a08a"
+    },
+    {
+     "arquivo": "MORE_SITE_poltrona-leticia_3x4-04-w1600_20261015_v01.jpg",
+     "largura": 1600,
+     "bytes": 336852,
+     "sha256": "148c8211324e884a8b8a1dd76f60d2eb07be3fa4332c30335f3bde07e320441c"
+    },
+    {
+     "arquivo": "MORE_SITE_poltrona-leticia_3x4-04-w1600_20261015_v01.webp",
+     "largura": 1600,
+     "bytes": 193076,
+     "sha256": "3b5bad7f6bfe41832dc95ba071fca16c8ca3fc4f28753203b22dbb59976c96ae"
+    },
+    {
+     "arquivo": "MORE_SITE_poltrona-leticia_3x4-04-w1600_20261015_v01.avif",
+     "largura": 1600,
+     "bytes": 125093,
+     "sha256": "e68ae1abc3b7206266e2dc1036845d86ddeb8b54379bd682ca313a96a3ef7523"
+    },
+    {
+     "arquivo": "MORE_SITE_poltrona-leticia_3x4-04-w160_20261015_v01.jpg",
+     "largura": 160,
+     "bytes": 3649,
+     "sha256": "7f7e4bb907c97a1e220e9a40de348db97338506417be39b8ef81bf5a949db8ea"
+    }
+   ]
+  },
+  {
+   "original": "PDT_ASS_POL_LETICIA_05.jpg",
+   "drive_id": "1ROTgyjQm7BhlgAB12VIfPL1RbzqqV-aw",
+   "bytes": 3998051,
+   "sha256": "84bd7766d14c8a5053668e2feafd32ac09a1add10b632a80a73a29029d218610",
+   "inedita": true,
+   "derivadas": [
+    {
+     "arquivo": "MORE_SITE_poltrona-leticia_3x4-05-w480_20261015_v01.jpg",
+     "largura": 480,
+     "bytes": 24022,
+     "sha256": "eb401b405e969b91a80f962aa2b9c7a8350b84f5fb692d6d7c9b3d9b2b56f6e0"
+    },
+    {
+     "arquivo": "MORE_SITE_poltrona-leticia_3x4-05-w480_20261015_v01.webp",
+     "largura": 480,
+     "bytes": 12656,
+     "sha256": "8e4b0b8b4141f08c33b0c0a226b0d20f351f160b44ffe9f4d3bd039db1519f33"
+    },
+    {
+     "arquivo": "MORE_SITE_poltrona-leticia_3x4-05-w480_20261015_v01.avif",
+     "largura": 480,
+     "bytes": 9848,
+     "sha256": "22033b5b75967e8d8b5550aae3d31abc61a2e522bba2d98b6072228758662fac"
+    },
+    {
+     "arquivo": "MORE_SITE_poltrona-leticia_3x4-05-w800_20261015_v01.jpg",
+     "largura": 800,
+     "bytes": 74348,
+     "sha256": "6445d311e94b1e9c28204d8e0154dbdab72245a9340a51472cd871d5c255c2ac"
+    },
+    {
+     "arquivo": "MORE_SITE_poltrona-leticia_3x4-05-w800_20261015_v01.webp",
+     "largura": 800,
+     "bytes": 45914,
+     "sha256": "d9d6b93bd9d713b056b1b0d839f0e0d2456f8c3709d2c8b948ce60340e962d6b"
+    },
+    {
+     "arquivo": "MORE_SITE_poltrona-leticia_3x4-05-w800_20261015_v01.avif",
+     "largura": 800,
+     "bytes": 32908,
+     "sha256": "95b2ba8f5a0a2cd675e30ff4cf39e99d0c998eac260791507f58cd21d5d946cf"
+    },
+    {
+     "arquivo": "MORE_SITE_poltrona-leticia_3x4-05-w1200_20261015_v01.jpg",
+     "largura": 1200,
+     "bytes": 191162,
+     "sha256": "d2bb181910beb989ddff504f7395e3e9475a195cbe4d9135bc11a3a660ad3bc6"
+    },
+    {
+     "arquivo": "MORE_SITE_poltrona-leticia_3x4-05-w1200_20261015_v01.webp",
+     "largura": 1200,
+     "bytes": 119856,
+     "sha256": "16dcf2009c5be15f6293b5449bcf6af8bd071f939457454eb489bc1d1c6f53dd"
+    },
+    {
+     "arquivo": "MORE_SITE_poltrona-leticia_3x4-05-w1200_20261015_v01.avif",
+     "largura": 1200,
+     "bytes": 81102,
+     "sha256": "3e9172352c834af5ac20f2ef828865cacbfa87bf195ef7c4a1a1c9895d656853"
+    },
+    {
+     "arquivo": "MORE_SITE_poltrona-leticia_3x4-05-w1600_20261015_v01.jpg",
+     "largura": 1600,
+     "bytes": 362744,
+     "sha256": "1e6ac93c95f57cb4eceba52cae9af8d6b4d5fdfb66c6663bdd0016ddd47fe7d3"
+    },
+    {
+     "arquivo": "MORE_SITE_poltrona-leticia_3x4-05-w1600_20261015_v01.webp",
+     "largura": 1600,
+     "bytes": 220884,
+     "sha256": "3c1a5a70020edd347a0adbb4ff46086d4caede7afb1acf02dc3834e5d145d1bf"
+    },
+    {
+     "arquivo": "MORE_SITE_poltrona-leticia_3x4-05-w1600_20261015_v01.avif",
+     "largura": 1600,
+     "bytes": 145348,
+     "sha256": "4f2e1b75fdc94630e5c3211826f01fa481e2450eb88379305b9d9684c6827e83"
+    },
+    {
+     "arquivo": "MORE_SITE_poltrona-leticia_3x4-05-w160_20261015_v01.jpg",
+     "largura": 160,
+     "bytes": 3463,
+     "sha256": "e9dbeacc4dd21682fa5b27b9e863fc49d287cb2a014c11f6859fe72e4e3b6ea9"
+    }
+   ]
+  },
+  {
+   "original": "PDT_ASS_POL_LETICIA_06.jpg",
+   "drive_id": "1iDdDQi6RIW_MCHhcdfcO31VIHb30FNEy",
+   "bytes": 5483109,
+   "sha256": "69abe7cca560d4160234acac5dbd963f69b9f44ead87fd62fcf17630c8a51b64",
+   "inedita": false,
+   "derivadas": [
+    {
+     "arquivo": "MORE_SITE_poltrona-leticia_3x4-06-w480_20261015_v01.jpg",
+     "largura": 480,
+     "bytes": 63597,
+     "sha256": "8a3e7255d68edc772af2b391fa10139494d299fef4c00334ca3533b6a83dc2b6"
+    },
+    {
+     "arquivo": "MORE_SITE_poltrona-leticia_3x4-06-w480_20261015_v01.webp",
+     "largura": 480,
+     "bytes": 56144,
+     "sha256": "d60404d0580112407a1d3d29dd0c1ab949d7fbda9066413bedef0c0ad55d060d"
+    },
+    {
+     "arquivo": "MORE_SITE_poltrona-leticia_3x4-06-w480_20261015_v01.avif",
+     "largura": 480,
+     "bytes": 32435,
+     "sha256": "68663b8f00e755c766a20c7225de0647876580bae64e0ec3d07e5bcc91b7487f"
+    },
+    {
+     "arquivo": "MORE_SITE_poltrona-leticia_3x4-06-w800_20261015_v01.jpg",
+     "largura": 800,
+     "bytes": 167429,
+     "sha256": "aa57954cc9165fc65d3b69780780d81fbae32d1c64299964732d6cb0eecdceab"
+    },
+    {
+     "arquivo": "MORE_SITE_poltrona-leticia_3x4-06-w800_20261015_v01.webp",
+     "largura": 800,
+     "bytes": 141850,
+     "sha256": "8a02521241233cb2aa0f93b1374454528050fc4ccb587aac72d7b2ee190fa98f"
+    },
+    {
+     "arquivo": "MORE_SITE_poltrona-leticia_3x4-06-w800_20261015_v01.avif",
+     "largura": 800,
+     "bytes": 81335,
+     "sha256": "04484a831d0f1d017a68c612aa0cc0c3e659cd320335a7c8f04d0bfa88dd7838"
+    },
+    {
+     "arquivo": "MORE_SITE_poltrona-leticia_3x4-06-w1200_20261015_v01.jpg",
+     "largura": 1200,
+     "bytes": 352566,
+     "sha256": "5a7b83e728d4a9346eb2d45effdbef9983058b5fa18a7349137338c6cb947926"
+    },
+    {
+     "arquivo": "MORE_SITE_poltrona-leticia_3x4-06-w1200_20261015_v01.webp",
+     "largura": 1200,
+     "bytes": 275960,
+     "sha256": "b0ab070d124e4c323eb70150d0b33092de210ec3f24f9da20ba1835ea58ebd38"
+    },
+    {
+     "arquivo": "MORE_SITE_poltrona-leticia_3x4-06-w1200_20261015_v01.avif",
+     "largura": 1200,
+     "bytes": 159115,
+     "sha256": "c9ff051dbb496a453753c91262191652b8626ba6d4f71734f072dc7b8ec1ba86"
+    },
+    {
+     "arquivo": "MORE_SITE_poltrona-leticia_3x4-06-w1600_20261015_v01.jpg",
+     "largura": 1600,
+     "bytes": 595612,
+     "sha256": "87e81dd404aa2d172d1229f95ef647a4bb7154e1341ccc303e9df8939900da02"
+    },
+    {
+     "arquivo": "MORE_SITE_poltrona-leticia_3x4-06-w1600_20261015_v01.webp",
+     "largura": 1600,
+     "bytes": 438346,
+     "sha256": "64b01caad97cb7ccf3b9f36ae14fbe809897ee29d78cc1fc00dc6b0c6ae05b63"
+    },
+    {
+     "arquivo": "MORE_SITE_poltrona-leticia_3x4-06-w1600_20261015_v01.avif",
+     "largura": 1600,
+     "bytes": 257947,
+     "sha256": "cdeb0882366e647921df6e31dcc4b86bed500d1d10034c15316731ecd3ebc5b0"
+    },
+    {
+     "arquivo": "MORE_SITE_poltrona-leticia_3x4-06-w160_20261015_v01.jpg",
+     "largura": 160,
+     "bytes": 6325,
+     "sha256": "1a9977773d54b3d34e016979660b225dd62e52ecfe0234ca9cfca876bcdde8f1"
+    }
+   ]
+  },
+  {
+   "original": "PDT_ASS_POL_LETICIA_07.jpg",
+   "drive_id": "1uXhLB73E6VGhq9JeQCP438Ex7LVA6Xqb",
+   "bytes": 5230795,
+   "sha256": "75c1d583d592c7e1c54e3e0dfc81784e8f149c630d4c64436f20c43dd632d557",
+   "inedita": true,
+   "derivadas": [
+    {
+     "arquivo": "MORE_SITE_poltrona-leticia_3x4-07-w480_20261015_v01.jpg",
+     "largura": 480,
+     "bytes": 35944,
+     "sha256": "2ed26dab658dd66c9074244ca5ee9f1f69d2a0e3f4bebb80d892d4fcd8bee160"
+    },
+    {
+     "arquivo": "MORE_SITE_poltrona-leticia_3x4-07-w480_20261015_v01.webp",
+     "largura": 480,
+     "bytes": 23230,
+     "sha256": "3707f976c71da7c59494a99d3d67f4ae6ab8027fa278b6afaaef416e73e07ba3"
+    },
+    {
+     "arquivo": "MORE_SITE_poltrona-leticia_3x4-07-w480_20261015_v01.avif",
+     "largura": 480,
+     "bytes": 15576,
+     "sha256": "30e72618879e59f7bd67757dd1dd356c3cd88d345ce9101b4107fb236ae192f2"
+    },
+    {
+     "arquivo": "MORE_SITE_poltrona-leticia_3x4-07-w800_20261015_v01.jpg",
+     "largura": 800,
+     "bytes": 115576,
+     "sha256": "0aa8881b214b5090b008176abe7a84fd3ef66ddaf31950fdeb036110ad56628b"
+    },
+    {
+     "arquivo": "MORE_SITE_poltrona-leticia_3x4-07-w800_20261015_v01.webp",
+     "largura": 800,
+     "bytes": 79838,
+     "sha256": "cda08b3710688422cc7b35ef479cf415d375cf615c94e551e33a81d6e90bcb44"
+    },
+    {
+     "arquivo": "MORE_SITE_poltrona-leticia_3x4-07-w800_20261015_v01.avif",
+     "largura": 800,
+     "bytes": 49952,
+     "sha256": "6feeb3b8808b37bbe260113ada081f7bf6318098ceb933f7e23e1cd6e06c2fa7"
+    },
+    {
+     "arquivo": "MORE_SITE_poltrona-leticia_3x4-07-w1200_20261015_v01.jpg",
+     "largura": 1200,
+     "bytes": 285974,
+     "sha256": "da3e9ab3025e715660bbccf5f023e932149f147c74b706a4e4edca804f4fc5be"
+    },
+    {
+     "arquivo": "MORE_SITE_poltrona-leticia_3x4-07-w1200_20261015_v01.webp",
+     "largura": 1200,
+     "bytes": 202320,
+     "sha256": "9d516e9e9d81309d2ded7982d6e766fcb2e9d13f7ff3ca93a714858284ccb2a7"
+    },
+    {
+     "arquivo": "MORE_SITE_poltrona-leticia_3x4-07-w1200_20261015_v01.avif",
+     "largura": 1200,
+     "bytes": 121281,
+     "sha256": "241fff60c032bd08d6027a6be96391cacf0f12245ad331722345db199859f2d2"
+    }
+   ]
+  },
+  {
+   "original": "PDT_ASS_POL_LETICIA_08.jpg",
+   "drive_id": "1KA6xXOmpqU03jPMPQ3DVHjRlQCD1xoPf",
+   "bytes": 4426664,
+   "sha256": "79a86ec21f0bed28198c5be92f31b75a975f0c491ea2de70bc1508aa6fc06ba9",
+   "inedita": true,
+   "derivadas": [
+    {
+     "arquivo": "MORE_SITE_poltrona-leticia_3x4-08-w480_20261015_v01.jpg",
+     "largura": 480,
+     "bytes": 33904,
+     "sha256": "66e9bd925b44d0447fdb3a370278668bcd8bbb50011294a8a8c2f491a8ecb086"
+    },
+    {
+     "arquivo": "MORE_SITE_poltrona-leticia_3x4-08-w480_20261015_v01.webp",
+     "largura": 480,
+     "bytes": 22692,
+     "sha256": "dae3b33e84e7896af3b458a36e61e7d8bb30dd9973b874b5f00f544424d8d0cc"
+    },
+    {
+     "arquivo": "MORE_SITE_poltrona-leticia_3x4-08-w480_20261015_v01.avif",
+     "largura": 480,
+     "bytes": 14651,
+     "sha256": "0c6ebe1ad3f73ee3635c1cb6120830d7025046536d390ae73baa7bc8058167c1"
+    },
+    {
+     "arquivo": "MORE_SITE_poltrona-leticia_3x4-08-w800_20261015_v01.jpg",
+     "largura": 800,
+     "bytes": 99101,
+     "sha256": "0a52ddcd492c741148165f29ea616e892ce81580fb61507df6002e3bdffb701d"
+    },
+    {
+     "arquivo": "MORE_SITE_poltrona-leticia_3x4-08-w800_20261015_v01.webp",
+     "largura": 800,
+     "bytes": 64192,
+     "sha256": "80b83a87da49126b728f140e71cd93a69ec6bf91e68efca8be8e07adf647ad34"
+    },
+    {
+     "arquivo": "MORE_SITE_poltrona-leticia_3x4-08-w800_20261015_v01.avif",
+     "largura": 800,
+     "bytes": 40781,
+     "sha256": "a295e61b0a14bc0ff949f35d21ca0507a6ff25da827fee567aafd6e4a5d37a03"
+    },
+    {
+     "arquivo": "MORE_SITE_poltrona-leticia_3x4-08-w1200_20261015_v01.jpg",
+     "largura": 1200,
+     "bytes": 232248,
+     "sha256": "21efccf88f90b614395dcca729cb398fd652b279a4036f57e498fbd3e6d8f4de"
+    },
+    {
+     "arquivo": "MORE_SITE_poltrona-leticia_3x4-08-w1200_20261015_v01.webp",
+     "largura": 1200,
+     "bytes": 137676,
+     "sha256": "41f8a38d152c598897d70736cae7a055b71aaa3449b307fef05ac98e33cd9e16"
+    },
+    {
+     "arquivo": "MORE_SITE_poltrona-leticia_3x4-08-w1200_20261015_v01.avif",
+     "largura": 1200,
+     "bytes": 87093,
+     "sha256": "1b1ff967ea811b9f863fe135386494cb3bd8cc1db8cadcd563e1eeb02cf96236"
+    },
+    {
+     "arquivo": "MORE_SITE_poltrona-leticia_3x4-08-w1600_20261015_v01.jpg",
+     "largura": 1600,
+     "bytes": 428173,
+     "sha256": "a39f45ba8490587acb7a3ead100415ee4af8bc633e8572e75cb70e58519c5993"
+    },
+    {
+     "arquivo": "MORE_SITE_poltrona-leticia_3x4-08-w1600_20261015_v01.webp",
+     "largura": 1600,
+     "bytes": 236816,
+     "sha256": "6348530c6304c8df4bb30a61c6d75ee565c3b8d034993d3c6fa6457810637550"
+    },
+    {
+     "arquivo": "MORE_SITE_poltrona-leticia_3x4-08-w1600_20261015_v01.avif",
+     "largura": 1600,
+     "bytes": 150228,
+     "sha256": "6deac4fa0dcfd0a844d3742ea71feb160776c20189133f6cdf03acbc23412d9e"
+    },
+    {
+     "arquivo": "MORE_SITE_poltrona-leticia_3x4-08-w160_20261015_v01.jpg",
+     "largura": 160,
+     "bytes": 3654,
+     "sha256": "3fda94da078ad076b459212fe64a6fb8b5d77b95ffe6ee174c4a39b86cd3d391"
+    }
+   ]
+  },
+  {
+   "original": "PDT_ASS_POL_LETICIA_09.jpg",
+   "drive_id": "1IQQ1VjyS0OIfvxs4dc8JZt23IabGH5p-",
+   "bytes": 5666446,
+   "sha256": "011e5ec77040283850d801efd1605f59208dc072bb7bcac0fda2777db1956bb0",
+   "inedita": true,
+   "derivadas": [
+    {
+     "arquivo": "MORE_SITE_poltrona-leticia_3x4-09-w480_20261015_v01.jpg",
+     "largura": 480,
+     "bytes": 25845,
+     "sha256": "feeb63f21aa85720e0a727bbdb909c5392a2cefa1e2e317fe71d866c4cc699eb"
+    },
+    {
+     "arquivo": "MORE_SITE_poltrona-leticia_3x4-09-w480_20261015_v01.webp",
+     "largura": 480,
+     "bytes": 18530,
+     "sha256": "c458af1b0ff2cb0365aaf59f1d64534722b83df5f8edf76fa2b8cbb98c3fb881"
+    },
+    {
+     "arquivo": "MORE_SITE_poltrona-leticia_3x4-09-w480_20261015_v01.avif",
+     "largura": 480,
+     "bytes": 11900,
+     "sha256": "eaa8bf2fdb95a0c1a8de3729539a13649adec6e33fc7282ee6771a8464165981"
+    },
+    {
+     "arquivo": "MORE_SITE_poltrona-leticia_3x4-09-w800_20261015_v01.jpg",
+     "largura": 800,
+     "bytes": 81231,
+     "sha256": "51697eaeff59aa1b94e26027ebdac35963833686ce971c7f85d3ae86d0afdbc2"
+    },
+    {
+     "arquivo": "MORE_SITE_poltrona-leticia_3x4-09-w800_20261015_v01.webp",
+     "largura": 800,
+     "bytes": 52730,
+     "sha256": "cd26d0a9e9861964580bc17a8e5b90f80d91efc144a366ad1c425299b427001f"
+    },
+    {
+     "arquivo": "MORE_SITE_poltrona-leticia_3x4-09-w800_20261015_v01.avif",
+     "largura": 800,
+     "bytes": 31566,
+     "sha256": "33cd8b40bf20a8955f6413bc33c0ceb3208720f7c4bdca89ce9e478f24b616d4"
+    },
+    {
+     "arquivo": "MORE_SITE_poltrona-leticia_3x4-09-w1200_20261015_v01.jpg",
+     "largura": 1200,
+     "bytes": 193693,
+     "sha256": "cf80c1269525c60aee8dac125e2e33ad4716bb8ea8eca8f89ce8bbf30ef2dc3e"
+    },
+    {
+     "arquivo": "MORE_SITE_poltrona-leticia_3x4-09-w1200_20261015_v01.webp",
+     "largura": 1200,
+     "bytes": 110426,
+     "sha256": "dc88ae51f074f3e0d2a08553212ab7691dcab849b1c3a5ad8768bc1e99ef22f2"
+    },
+    {
+     "arquivo": "MORE_SITE_poltrona-leticia_3x4-09-w1200_20261015_v01.avif",
+     "largura": 1200,
+     "bytes": 68477,
+     "sha256": "6775372f70a670435bd08d07032838788e261a2a7805dd245a54a78531edc548"
+    }
+   ]
+  },
+  {
+   "original": "PDT_ASS_POL_LETICIA_10.jpg",
+   "drive_id": "1lzd4PcqdFYLLNPCAFXUlhGeDq_QWy9C3",
+   "bytes": 5297279,
+   "sha256": "786b66c8eeecf227e358545abb44ca63c8c1bdf697ceacb86239127b038d31df",
+   "inedita": true,
+   "derivadas": [
+    {
+     "arquivo": "MORE_SITE_poltrona-leticia_3x4-10-w480_20261015_v01.jpg",
+     "largura": 480,
+     "bytes": 26295,
+     "sha256": "94d999209efcae8c5734bd0a8e48de849164f227aa23c54da7ff0979d63ec5c6"
+    },
+    {
+     "arquivo": "MORE_SITE_poltrona-leticia_3x4-10-w480_20261015_v01.webp",
+     "largura": 480,
+     "bytes": 19298,
+     "sha256": "232319a915a2315ef20f8cb40fa197bd84f2360a937badcd4eb7d8f483763b92"
+    },
+    {
+     "arquivo": "MORE_SITE_poltrona-leticia_3x4-10-w480_20261015_v01.avif",
+     "largura": 480,
+     "bytes": 12205,
+     "sha256": "c08cff425e99cb92918e6a8ca1e531b3393dde12740eb17bb24fc0dd097d5628"
+    },
+    {
+     "arquivo": "MORE_SITE_poltrona-leticia_3x4-10-w800_20261015_v01.jpg",
+     "largura": 800,
+     "bytes": 75629,
+     "sha256": "448599655ba5ca13aecefa1d89adcc78c4e78286bc43b909d472b0a6b72516a8"
+    },
+    {
+     "arquivo": "MORE_SITE_poltrona-leticia_3x4-10-w800_20261015_v01.webp",
+     "largura": 800,
+     "bytes": 48596,
+     "sha256": "5d82ae1870988183523700978528527df37545fb2c50a77e5d4f56bedbab4cdd"
+    },
+    {
+     "arquivo": "MORE_SITE_poltrona-leticia_3x4-10-w800_20261015_v01.avif",
+     "largura": 800,
+     "bytes": 28594,
+     "sha256": "ea4febcb5f2cbb7d84a48c0e52dee3ebf650abec3cfc39a1a94156f1b01c1f70"
+    },
+    {
+     "arquivo": "MORE_SITE_poltrona-leticia_3x4-10-w1200_20261015_v01.jpg",
+     "largura": 1200,
+     "bytes": 175936,
+     "sha256": "8319b43c64543215bdf137bda748758d16f06c388a684ca52138c194591768a3"
+    },
+    {
+     "arquivo": "MORE_SITE_poltrona-leticia_3x4-10-w1200_20261015_v01.webp",
+     "largura": 1200,
+     "bytes": 92732,
+     "sha256": "c9b23e2a99f8a8cf0742f33cd9d4adabb0f4f71297ba63ef8ae37a906d769297"
+    },
+    {
+     "arquivo": "MORE_SITE_poltrona-leticia_3x4-10-w1200_20261015_v01.avif",
+     "largura": 1200,
+     "bytes": 55557,
+     "sha256": "7ba7b76712fda038d3da61fa4fb07cba45853406ce97eb7c2b6d68646c393001"
+    },
+    {
+     "arquivo": "MORE_SITE_poltrona-leticia_3x4-10-w1600_20261015_v01.jpg",
+     "largura": 1600,
+     "bytes": 332333,
+     "sha256": "b7c8168e82fd6ca0264aee8c8629419e783fadbc916d7418bc68f478bc1ddbaf"
+    },
+    {
+     "arquivo": "MORE_SITE_poltrona-leticia_3x4-10-w1600_20261015_v01.webp",
+     "largura": 1600,
+     "bytes": 152174,
+     "sha256": "8eb4d54437fecc8a694d29ea12120a6419cbd58efbd858b2332f5a7bfe4013a1"
+    },
+    {
+     "arquivo": "MORE_SITE_poltrona-leticia_3x4-10-w1600_20261015_v01.avif",
+     "largura": 1600,
+     "bytes": 91711,
+     "sha256": "baecebc56d5933aa6c4ad081d376a887b0dd5bca39dba6dad7653824a009caa3"
+    },
+    {
+     "arquivo": "MORE_SITE_poltrona-leticia_3x4-10-w160_20261015_v01.jpg",
+     "largura": 160,
+     "bytes": 2896,
+     "sha256": "c8fb2c3a4fe067811e6e700262fcb1e2732fed1d43e111f30b1eb7972d22ad3e"
+    }
+   ]
+  },
+  {
+   "original": "PDT_ASS_POL_LETICIA_11.jpg",
+   "drive_id": "1SH1i1ikpMoxXEfTr5IjWKmF5uevZtsFK",
+   "bytes": 8439277,
+   "sha256": "5c8554fe2eb668df3b5f08a57a10f395ef2c630c55d4223dc34834c05af35585",
+   "inedita": true,
+   "derivadas": [
+    {
+     "arquivo": "MORE_SITE_poltrona-leticia_3x4-11-w480_20261015_v01.jpg",
+     "largura": 480,
+     "bytes": 22137,
+     "sha256": "ad4db77d04bd905e2ca484d0e5ebb08e556ba1d85ac4dcc1a46d1988c28918d6"
+    },
+    {
+     "arquivo": "MORE_SITE_poltrona-leticia_3x4-11-w480_20261015_v01.webp",
+     "largura": 480,
+     "bytes": 15548,
+     "sha256": "a1f8c60de98a8423de2bf88e0cd1f51b19ac7f13fe2f5554505297472b3d0692"
+    },
+    {
+     "arquivo": "MORE_SITE_poltrona-leticia_3x4-11-w480_20261015_v01.avif",
+     "largura": 480,
+     "bytes": 10438,
+     "sha256": "23232707580d0d0cb5396e96124ef04c7af654d2297a819b1947a263e89edb26"
+    },
+    {
+     "arquivo": "MORE_SITE_poltrona-leticia_3x4-11-w800_20261015_v01.jpg",
+     "largura": 800,
+     "bytes": 67893,
+     "sha256": "fa5bed86fd1692bd3217f79a0e666e9f3b79ae9739b770e511090509e44c2d45"
+    },
+    {
+     "arquivo": "MORE_SITE_poltrona-leticia_3x4-11-w800_20261015_v01.webp",
+     "largura": 800,
+     "bytes": 46046,
+     "sha256": "44c4371186ba708d53280505abf28761ce4f302bd2725003ed0c6273e7eb7cd3"
+    },
+    {
+     "arquivo": "MORE_SITE_poltrona-leticia_3x4-11-w800_20261015_v01.avif",
+     "largura": 800,
+     "bytes": 28407,
+     "sha256": "28a76a2f3abbfaceba3d60df7ae31f5fecb95f2bc59001c3e8d1641af6af19dc"
+    },
+    {
+     "arquivo": "MORE_SITE_poltrona-leticia_3x4-11-w1200_20261015_v01.jpg",
+     "largura": 1200,
+     "bytes": 163251,
+     "sha256": "3255906f8c1b5063753e485c65bcaf99a5451b5a78e716b2f35e5ba9a8e05265"
+    },
+    {
+     "arquivo": "MORE_SITE_poltrona-leticia_3x4-11-w1200_20261015_v01.webp",
+     "largura": 1200,
+     "bytes": 100328,
+     "sha256": "060b75f8778065cf6a1eced5709756b488024bb27df1f7d2c7d5aba78dde023e"
+    },
+    {
+     "arquivo": "MORE_SITE_poltrona-leticia_3x4-11-w1200_20261015_v01.avif",
+     "largura": 1200,
+     "bytes": 59989,
+     "sha256": "a88782bb9af6682ebec083d863f5fd19e442c47ad8404075601fe5bffac270ea"
+    }
+   ]
+  }
+ ]
+}

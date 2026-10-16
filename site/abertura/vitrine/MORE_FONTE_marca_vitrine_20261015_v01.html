@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="pt-BR"><head><meta charset="utf-8">
+<title>Vitrine · More</title>
+<style>
+@font-face{font-family:MuotoMono;font-weight:400;font-style:normal;src:url(/fonts/mm.woff2) format('woff2')}
+@font-face{font-family:Muoto;font-weight:400;font-style:normal;src:url(/fonts/mr.otf) format('opentype')}
+:root{--preto:#2D211E;--off-white:#E5E1DB;--mono:MuotoMono,"Martian Mono",ui-monospace,monospace;--sans:Muoto,"DM Sans",Arial,sans-serif}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{font-synthesis:none;background:#9a948c;font-family:var(--sans);color:var(--preto)}
+@media print{html,body{background:none}}
+body{padding:40px}
+/* 1 px = 1 mm. O vidro é o fundo: nada de off-white impresso. Vinil recortado preto fosco. */
+.vidro{position:relative;width:var(--w);height:var(--h);background:linear-gradient(180deg,#cfc9c0,#b9b3aa);overflow:hidden}
+.wm{position:absolute;left:2.5%;width:95%;height:auto;bottom:var(--sub)}
+.wm path{fill:var(--preto)}
+.data{position:absolute;left:5%;top:5%;font-size:var(--fd);line-height:.9;letter-spacing:-.02em;font-feature-settings:"lnum" 1,"tnum" 1}
+.linha{position:absolute;left:5%;top:calc(5% + var(--fd) * 1.05);font-family:var(--mono);font-size:var(--fm);line-height:1.4}
+.bar{position:absolute;left:0;right:0;bottom:0;height:var(--bar);background:var(--preto);color:var(--off-white);font-family:var(--mono);font-size:var(--fm);display:flex;align-items:center;justify-content:space-between;padding:0 5%}
+.cotas{position:absolute;left:0;top:calc(100% + 8px);font-family:var(--mono);font-size:11px;color:#2D211E;white-space:nowrap}
+body.depois .data,body.depois .linha{display:none}
+.ref{position:absolute;right:5%;bottom:calc(var(--bar) + 20px);width:var(--pessoa);height:auto;opacity:.5}
+body.semref .ref{display:none}
+</style></head>
+<body>
+<div class="vidro" id="v">
+  <div class="data" id="data">05.11</div>
+  <div class="linha" id="linha">Abertura da loja<br>Al. Franca 1332, Casa 04</div>
+  <svg class="wm" viewBox="0 0 272 69" aria-label="MORE"><path d="M176.593 23.0819V1.91833H150.317V66.5948H176.593V44.2791H205.243V1.91833C189.55 1.91833 177.465 13.093 176.593 23.0875V23.0819Z"/><path d="M111.007 0C91.875 0 76.3403 15.3302 76.3403 34.223C76.3403 53.1159 91.8693 68.4461 111.007 68.4461C130.145 68.4461 145.742 53.1159 145.742 34.223C145.742 15.3302 130.213 0 111.007 0ZM111.007 42.4334C106.43 42.4334 102.69 38.8036 102.69 34.2174C102.69 29.6313 106.435 26.0015 111.007 26.0015C115.579 26.0015 119.398 29.6984 119.398 34.2174C119.398 38.7365 115.653 42.4334 111.007 42.4334Z"/><path d="M35.919 19.6423L26.2764 1.91833H0V66.5948H26.2764V44.212H45.4936V66.5948H71.77V1.91833H45.4936L35.919 19.6423Z"/><path d="M272.002 1.87909H211.835V24.7541V34.7487V44.1783V66.5612H272.002V44.7376H238.219L255.669 34.7151L238.236 24.7541H272.002V1.87909Z"/></svg>
+  <svg class="ref" viewBox="0 0 40 170"><g fill="#2D211E"><circle cx="20" cy="12" r="11"/><rect x="8" y="26" width="24" height="70"/><rect x="9" y="96" width="9" height="74"/><rect x="22" y="96" width="9" height="74"/></g></svg>
+  <div class="bar"><span id="bar1">Abertura 05.11 · Jardins</span><span id="bar2">mymore.design</span></div>
+  <div class="cotas" id="cotas"></div>
+</div>
+<script>
+// Medidas em mm pela URL: ?w=2000&h=2600 (vão do vidro). &fase=depois tira a data e deixa só a marca e a barra.
+var q=new URLSearchParams(location.search);var w=+(q.get('w')||2000),h=+(q.get('h')||2600);var esc=+(q.get('esc')||0.25);
+var v=document.getElementById('v');v.style.setProperty('--w',w*esc+'px');v.style.setProperty('--h',h*esc+'px');
+var fd=Math.round(w*0.14*esc),fm=Math.round(w*0.022*esc),bar=Math.round(w*0.06*esc);
+v.style.setProperty('--fd',fd+'px');v.style.setProperty('--fm',fm+'px');v.style.setProperty('--bar',bar+'px');v.style.setProperty('--sub',bar+'px');v.style.setProperty('--pessoa',Math.round(1700/170*40*esc)+'px');
+if(q.get('fase')==='depois'){document.body.classList.add('depois');document.getElementById('bar1').textContent='Al. Franca 1332, Casa 04 · Jardins'}
+if(q.get('semref'))document.body.classList.add('semref');
+var wmH=Math.round(w*0.95*69/272);
+document.getElementById('cotas').textContent='vão '+w+' × '+h+' mm · marca XL '+Math.round(w*0.95)+' × '+wmH+' mm, base a '+bar+'/'+esc+' mm do chão do vidro · barra '+Math.round(bar/esc)+' mm · vinil preto fosco (preto #2D211E, Pantone a confirmar) · escala 1:'+Math.round(1/esc)+' · silhueta de 1,70 m só para referência';
+</script>
+</body></html>

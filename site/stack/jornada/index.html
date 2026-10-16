@@ -1,0 +1,358 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Jornada da cliente · More</title>
+<meta name="description" content="A jornada inteira da More, do desejo à segunda peça: dez etapas, o que a cliente vê, o que a pessoa faz, o que roda sozinho, a ferramenta e os desvios.">
+<link rel="icon" href="data:,">
+<link rel="stylesheet" href="/nav/shell.css">
+<style>
+@font-face{font-family:"Muoto";src:url("/fonts/mr.otf") format("opentype");font-weight:400;font-display:swap}
+@font-face{font-family:"MuotoMono";src:url("/fonts/mm.woff2") format("woff2");font-weight:400;font-display:swap}
+:root{
+  color-scheme:light;
+  --page:#E5E1DB; --ink:#2D211E; --muted:#5D554F; --label:#686868; --rule:#2D211E1A; --glass:#2D211E1A; --tile:#DDD7CF; --inverse:#2D211E; --on-inverse:#E5E1DB;
+  --muoto:"Muoto","DM Sans","Helvetica Neue",Arial,sans-serif;
+  --mono:"MuotoMono","Martian Mono",ui-monospace,Menlo,monospace;
+  --s-hair:6px; --s-sm:10px; --s-md:16px; --s-lg:20px; --s-xl:30px; --s-2xl:40px; --s-3xl:60px; --s-sec:96px;
+  --bar:35px; --barzone:75px;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--page:#E5E1DB;--ink:#2D211E;--muted:#5D554F;--rule:#2D211E1A;--glass:#2D211E1A;--tile:#DDD7CF;color-scheme:light}}
+:root[data-theme="dark"]{--page:#E5E1DB;--ink:#2D211E;--muted:#5D554F;--rule:#2D211E1A;--glass:#2D211E1A;--tile:#DDD7CF;color-scheme:light}
+*{box-sizing:border-box}
+html,body{height:100%}
+body{background:var(--page);color:var(--ink);font-family:var(--muoto);font-size:15px;line-height:1.47;-webkit-font-smoothing:antialiased;margin:0;overflow:hidden;font-synthesis:none}
+.page{height:calc(100% - var(--barzone));overflow-y:auto;overflow-x:hidden;scroll-behavior:smooth;overscroll-behavior:contain;padding-bottom:106px}
+.wrap{max-width:1120px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:0 var(--s-3xl)}
+.mono{font-family:var(--mono);font-stretch:75%;font-size:13px}
+.muted{color:var(--muted)}
+.label{color:var(--label)}
+a{color:inherit;text-underline-offset:3px;text-decoration-thickness:1px;overflow-wrap:anywhere}
+a:hover{color:var(--muted)}
+h1,h2,h3{font-weight:400;text-wrap:balance;margin:0}
+h2{font-size:clamp(26px,3.4vw,32px);line-height:1.05;margin-bottom:var(--s-lg)}
+h3{font-size:15px;margin-bottom:4px}
+p{margin:0 0 var(--s-sm);max-width:64ch;text-wrap:pretty}
+section{padding-top:var(--s-sec)}
+.eyebrow{font-family:var(--mono);font-stretch:75%;font-size:13px;color:var(--label);margin-bottom:var(--s-md)}
+b{font-weight:400}
+.tag{font-family:var(--mono);font-stretch:75%;font-size:11px;color:var(--label)}
+.tag.open{color:var(--ink)}
+.abre{padding-top:var(--s-3xl);display:grid;gap:var(--s-md)}
+.abre h1{font-size:clamp(34px,5.2vw,58px);line-height:.98;letter-spacing:-.01em;max-width:18ch}
+.abre .lede{font-size:clamp(18px,2vw,22px);line-height:1.25;margin:0;max-width:34ch}
+.meta{display:flex;flex-wrap:wrap;gap:6px var(--s-lg);margin-top:var(--s-sm)}
+.tres{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--s-hair);margin-top:var(--s-lg)}
+@media(max-width:860px){.tres{grid-template-columns:1fr}}
+.tres div{background:var(--glass);padding:var(--s-lg);min-width:0}
+.tres .n{font-family:var(--mono);font-stretch:75%;font-size:12px;color:var(--label);display:block;margin-bottom:8px}
+.tres p{margin:0;font-size:clamp(16px,1.6vw,19px);line-height:1.25;max-width:30ch}
+/* fluxograma vertical: espinha à esquerda, uma etapa por nó, desvios entre nós */
+.fluxo{list-style:none;margin:var(--s-lg) 0 0;padding:0;position:relative}
+.fluxo::before{content:"";position:absolute;left:21px;top:0;bottom:0;width:1px;background:var(--ink)}
+.fluxo>li{position:relative;padding-left:56px;margin-bottom:var(--s-md)}
+.fluxo>li .no{position:absolute;left:0;top:14px;width:43px;height:43px;border-radius:50%;background:var(--ink);color:var(--on-inverse);font-family:var(--mono);font-stretch:75%;font-size:13px;display:flex;align-items:center;justify-content:center}
+.fluxo>li.desvio .no{background:var(--page);color:var(--ink);border:1px solid var(--ink);width:43px;height:43px;border-radius:0;transform:rotate(45deg);top:10px}
+.fluxo>li.desvio .no span{transform:rotate(-45deg);display:block;font-size:11px}
+.et{background:var(--glass);padding:var(--s-md) var(--s-lg)}
+.et .k{font-family:var(--mono);font-stretch:75%;font-size:12px;color:var(--label);display:block}
+.et h3{font-size:clamp(18px,2vw,22px);line-height:1.2;margin:2px 0 var(--s-sm)}
+.et dl{margin:0;display:grid;grid-template-columns:repeat(5,1fr);gap:var(--s-sm) var(--s-md);font-size:13px;line-height:1.35}
+.et dt{font-family:var(--mono);font-stretch:75%;font-size:11px;color:var(--label);margin-bottom:2px}
+.et dd{margin:0}
+.et dd.vazio{color:var(--label)}
+@media(max-width:980px){.et dl{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:600px){.et dl{grid-template-columns:1fr}.fluxo>li{padding-left:50px}.fluxo::before{left:18px}.fluxo>li .no{width:37px;height:37px;font-size:12px}.fluxo>li.desvio .no{width:37px;height:37px}}
+.desvio .et{background:transparent;border:1px solid var(--ink);padding:var(--s-sm) var(--s-md);font-size:13px}
+.desvio .et p{margin:0;max-width:none}
+.desvio .et .k{display:inline;margin-right:8px}
+.legenda{font-family:var(--mono);font-stretch:75%;font-size:12px;color:var(--label);margin-top:var(--s-md);display:flex;gap:var(--s-lg);flex-wrap:wrap}
+.legenda span::before{content:"";display:inline-block;width:12px;height:12px;background:var(--ink);border-radius:50%;margin-right:6px;vertical-align:-1px}
+.legenda span.d::before{background:var(--page);border:1px solid var(--ink);border-radius:0;transform:rotate(45deg);width:10px;height:10px}
+/* tabelas */
+.meas{overflow-x:auto;margin-top:var(--s-lg)}
+.meas table{border-collapse:collapse;width:100%;min-width:760px;font-size:14px}
+.meas th{font-family:var(--mono);font-stretch:75%;font-weight:400;font-size:12px;color:var(--label);text-align:left;padding:8px;border-bottom:1px solid var(--ink)}
+.meas td{padding:10px 8px;border-bottom:1px solid var(--rule);vertical-align:top}
+.meas td:first-child{width:18%}
+.meas tr.grp td{font-family:var(--mono);font-stretch:75%;font-size:12px;color:var(--label);padding-top:var(--s-lg);border-bottom:1px solid var(--ink)}
+.meas .tag{white-space:normal}
+@media(max-width:700px){.meas table{min-width:0}.meas thead{display:none}.meas tr{display:block;padding:12px 0;border-bottom:1px solid var(--ink)}.meas tr.grp{padding:var(--s-lg) 0 4px}.meas td{display:block;padding:2px 0;border:0;width:auto!important}.meas td:first-child{font-size:16px;margin-bottom:4px}.meas td[data-l]::before{content:attr(data-l);display:block;font-family:var(--mono);font-stretch:75%;font-size:11px;color:var(--label)}}
+/* esteira */
+.esteira{display:grid;grid-template-columns:repeat(9,1fr);gap:var(--s-hair);margin-top:var(--s-lg)}
+.esteira div{background:var(--glass);padding:var(--s-sm);min-width:0;font-size:12px;line-height:1.3}
+.esteira .k{font-family:var(--mono);font-stretch:75%;font-size:11px;color:var(--label);display:block;margin-bottom:4px}
+@media(max-width:980px){.esteira{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:600px){.esteira{grid-template-columns:1fr}}
+.base{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:var(--s-md) var(--s-2xl);margin-top:var(--s-xl)}
+.base div{border-top:1px solid var(--rule);padding-top:var(--s-sm);min-width:0}
+.base p{font-size:14px;color:var(--muted)}
+.lst{list-style:none;margin:var(--s-lg) 0 0;padding:0;border-top:1px solid var(--ink)}
+.lst li{display:grid;grid-template-columns:4ch minmax(0,1fr);gap:8px 16px;padding:12px 0;border-bottom:1px solid var(--rule);font-size:15px}
+.lst .n{font-family:var(--mono);font-stretch:75%;font-size:12px;color:var(--label);padding-top:3px}
+.lst p{margin:0;max-width:70ch}
+.lst p b{display:block}
+.ia{margin-top:var(--s-sec);border-top:1px solid var(--ink);padding-top:var(--s-md);font-size:14px}
+.ia p{max-width:80ch}
+.barzone{height:var(--barzone);position:relative;background:var(--page)}
+.bar{position:absolute;left:50%;transform:translateX(-50%);top:20px;width:460px;max-width:calc(100vw - 32px);height:var(--bar);background:var(--glass);backdrop-filter:blur(13px);-webkit-backdrop-filter:blur(13px);display:flex;align-items:center;justify-content:space-between;padding:0 var(--s-sm)}
+.bar svg{width:56px;height:auto;display:block;fill:currentColor}
+.bar nav{display:flex;gap:8px}
+.bar a{font-family:var(--mono);font-stretch:75%;font-size:13px;text-decoration:none;white-space:nowrap}
+.bar a:hover,.bar a:focus-visible{color:var(--muted)}
+@media(max-width:560px){.bar nav a{font-size:11px}.bar nav{gap:4px}}
+footer{background:var(--inverse);color:var(--on-inverse);margin-top:var(--s-sec)}
+footer .wrap{padding-block:var(--s-2xl)}
+footer p{font-size:13px;max-width:70ch}
+:focus-visible{outline:1px solid var(--ink);outline-offset:2px}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body><script src="/nav/shell.js" data-section="stack" data-into=".page" data-foot="on" defer></script>
+<div class="page" id="page">
+<div class="wrap">
+
+<header class="abre" id="topo">
+  <div class="eyebrow">More · IA e experiência digital · Stack e automações · Jornada · 15.10.2026</div>
+  <h1>Do desejo à segunda peça.</h1>
+  <p class="lede">A jornada inteira da More em dez etapas. O que a cliente vê, o que a pessoa faz, o que roda sozinho. E os desvios.</p>
+  <div class="meta mono label"><span>Para: Fred, Edu, Vitor</span><span>Leitura: 10 min</span><span>Parte de <a href="/stack/">Stack e automações</a></span><span>Base: call de 15/10, lojas de referência, Nordic Knots e Sklum</span></div>
+  <p class="muted" style="font-size:14px;margin-top:var(--s-sm)">Uma marca de desejo vende como quem namora. A pergunta desta página: em cada toque, o que é gente e o que é máquina? A resposta nunca é "tudo máquina".</p>
+</header>
+
+<section id="resumo">
+  <div class="eyebrow">[00] Em três linhas</div>
+  <h2>Gente conversa. A máquina lembra, registra e avisa.</h2>
+  <div class="tres">
+    <div><span class="n">A regra</span><p>Toda mensagem que a cliente lê tem nome de pessoa. Tudo o que ninguém precisa digitar, ninguém digita.</p></div>
+    <div><span class="n">O cérebro</span><p>Um perfil por pessoa: quem é, o que viu, o que pediu, o que recebeu. Com uma nota de quão perto está da More.</p></div>
+    <div><span class="n">O ritmo</span><p>Um tema por mês e um e-mail âncora. Um evento no ateliê por trimestre, um livro por ano. Tudo sai do mesmo calendário.</p></div>
+  </div>
+</section>
+
+<section id="fluxo">
+  <div class="eyebrow">[01] O fluxograma</div>
+  <h2>Dez etapas e sete desvios.</h2>
+  <p>Círculo é etapa. Losango é desvio: um "se" que manda a pessoa para outro caminho. Cada etapa diz a ferramenta e o sinal que entra no perfil.</p>
+  <div class="legenda"><span>Etapa</span><span class="d">Desvio</span></div>
+  <ol class="fluxo">
+    <li><div class="no">1</div><div class="et"><span class="k">Desejo</span><h3>A peça aparece onde a pessoa já está</h3>
+      <dl><dt>Cliente vê</dt><dd>Uma peça num ambiente: no Instagram, numa revista, na casa de alguém, num evento, num presente.</dd>
+      <dt>Pessoa da More faz</dt><dd>Posta, responde comentário, recebe a imprensa, convida para o ateliê.</dd>
+      <dt>Roda sozinho</dt><dd>O pixel guarda a origem. Uma palavra no comentário ou na DM devolve a ficha da peça, com aceite.</dd>
+      <dt>Ferramenta</dt><dd>Instagram, Meta Ads, ManyChat para a DM, planilha de imprensa e eventos.</dd>
+      <dt>Sinal no perfil</dt><dd>Origem. Peça de interesse. Quem indicou.</dd></dl></div></li>
+    <li><div class="no">2</div><div class="et"><span class="k">Descoberta</span><h3>A galeria, com prazo e ficha</h3>
+      <dl><dt>Cliente vê</dt><dd>O site como é. Na peça: madeira, tecido, medidas, "sob encomenda, cerca de 120 dias", cenas em ambiente, bloco 2D e 3D, "pedir amostra".</dd>
+      <dt>Pessoa da More faz</dt><dd>Nada.</dd>
+      <dt>Roda sozinho</dt><dd>Peça vista entra no perfil. O bloco pede nome, e-mail, onde trabalha, estúdio ou empresa, e o uso: projeto de cliente, projeto pessoal, estudo da peça, outro. E se é arquiteta ou não. "Avise-me" nas peças sem data.</dd>
+      <dt>Ferramenta</dt><dd>Shopify com os campos e relações do catálogo associativo.</dd>
+      <dt>Sinal no perfil</dt><dd>Peças vistas. Bloco baixado. Estúdio. Uso declarado. É arquiteta: sim ou não. Tudo na mesma base central.</dd></dl></div></li>
+    <li class="desvio"><div class="no"><span>se</span></div><div class="et"><p><span class="k">Disse que é arquiteta ou escritório</span>Entra no mundo More: modelos 3D e fichas, mostruário padrão pelo correio, convite ao ateliê, e notícia constante do que a oficina faz. Vai direto para a etapa 4.</p></div></li>
+    <li><div class="no">3</div><div class="et"><span class="k">Primeiro contato</span><h3>Uma conversa com nome, em horas, não dias</h3>
+      <dl><dt>Cliente vê</dt><dd>O WhatsApp da More, já com a peça e as opções escritas. Resposta de uma pessoa, com nome.</dd>
+      <dt>Pessoa da More faz</dt><dd>Uma pessoa do time, cerca de seis horas por dia. Responde dentro da promessa. Pergunta o projeto, o ambiente e o prazo. Decide o que mandar.</dd>
+      <dt>Roda sozinho</dt><dd>O número vira perfil com etiqueta "interesse: peça". A IA sugere a resposta com ficha, prazo e fotos; a pessoa escolhe e envia. Fora do horário, a mensagem diz quando alguém responde.</dd>
+      <dt>Ferramenta</dt><dd>WhatsApp Business no número da marca. Depois, a API oficial dentro do CRM.</dd>
+      <dt>Sinal no perfil</dt><dd>Tipo: cliente final, arquiteta, imprensa, presente. Prazo do projeto. Peça.</dd></dl></div></li>
+    <li class="desvio"><div class="no"><span>se</span></div><div class="et"><p><span class="k">Sem resposta da cliente em três dias</span>Um lembrete só, em nome de quem atendeu, oferecendo a amostra. Sem resposta de novo: etiqueta "frio", e-mail mensal continua.</p></div></li>
+    <li><div class="no">4</div><div class="et"><span class="k">Namoro</span><h3>Amostra, cena, visita, livro: o concierge</h3>
+      <dl><dt>Cliente vê</dt><dd>Amostra de tecido e madeira em casa. Fotos da peça no ambiente parecido com o dela. Convite para ver no ateliê. Um livro, se for o caso.</dd>
+      <dt>Pessoa da More faz</dt><dd>Escolhe o que mandar pela regra da seção [02]. Recebe no ateliê. Conversa.</dd>
+      <dt>Roda sozinho</dt><dd>O pedido de amostra vira tarefa com dono e prazo. As fotos certas saem do banco por etiqueta de peça e ambiente. Amostra entregue: pergunta em dois dias.</dd>
+      <dt>Ferramenta</dt><dd>Quadro interno (seção [03]), banco de fotos com etiquetas, agenda para visita.</dd>
+      <dt>Sinal no perfil</dt><dd>Amostra pedida. Visita feita. Livro enviado. Madeira e tecido preferidos.</dd></dl></div></li>
+    <li class="desvio"><div class="no"><span>se</span></div><div class="et"><p><span class="k">Nota alta no perfil</span>Convite pessoal para o próximo evento no ateliê. Livro pelo correio. Quem liga é o Fred, não um fluxo.</p></div></li>
+    <li><div class="no">5</div><div class="et"><span class="k">Orçamento</span><h3>Proposta em 24 horas, sempre igual</h3>
+      <dl><dt>Cliente vê</dt><dd>Um PDF com a peça, madeira, tecido, medidas, preço, mês de entrega e o link do sinal.</dd>
+      <dt>Pessoa da More faz</dt><dd>Confere e aprova a proposta. Manda com uma frase sua.</dd>
+      <dt>Roda sozinho</dt><dd>O rascunho de pedido vira o PDF. O perfil marca "proposta enviada" e "proposta aberta".</dd>
+      <dt>Ferramenta</dt><dd>Rascunho de pedido do Shopify e um modelo de proposta.</dd>
+      <dt>Sinal no perfil</dt><dd>Valor proposto. Abriu ou não. Dias desde o envio.</dd></dl></div></li>
+    <li class="desvio"><div class="no"><span>se</span></div><div class="et"><p><span class="k">Proposta sem resposta em três dias</span>Um lembrete, curto, em nome de quem atendeu. Depois, silêncio: a pessoa segue no e-mail mensal.</p></div></li>
+    <li><div class="no">6</div><div class="et"><span class="k">Encomenda</span><h3>Pagou o sinal, nasceu a data</h3>
+      <dl><dt>Cliente vê</dt><dd>Um link de pagamento. Depois, a confirmação com o mês de entrega e a data da segunda parcela.</dd>
+      <dt>Pessoa da More faz</dt><dd>Avisa a oficina. Agradece com nome.</dd>
+      <dt>Roda sozinho</dt><dd>Sinal pago marca "em produção" e calcula a entrega. Agenda a segunda parcela. Pedido entra na fila da oficina.</dd>
+      <dt>Ferramenta</dt><dd>Link de pagamento do Pagar.me, pedido no Shopify, fila no quadro interno.</dd>
+      <dt>Sinal no perfil</dt><dd>Cliente. Valor. Madeira e tecido comprados. Mês de entrega.</dd></dl></div></li>
+    <li class="desvio"><div class="no"><span>se</span></div><div class="et"><p><span class="k">Cartão recusado ou Pix vencido</span>Uma mensagem, com o link de volta. Só uma. Na tomada, a mesma regra para carrinho abandonado.</p></div></li>
+    <li><div class="no">7</div><div class="et"><span class="k">Produção</span><h3>Quatro mensagens, uma foto da oficina</h3>
+      <dl><dt>Cliente vê</dt><dd>"Em produção", "acabamento", "enviado", "entregue". Uma foto da peça sendo feita, com o nome de quem fez.</dd>
+      <dt>Pessoa da More faz</dt><dd>Marca a etapa quando a oficina avisa. Tira a foto.</dd>
+      <dt>Roda sozinho</dt><dd>Cada etapa dispara a mensagem. Atraso de mais de duas semanas avisa o time antes da cliente perguntar.</dd>
+      <dt>Ferramenta</dt><dd>Etapa no pedido do Shopify, mensagem pelo WhatsApp oficial.</dd>
+      <dt>Sinal no perfil</dt><dd>Etapa atual. Atraso. Foto da oficina enviada.</dd></dl></div></li>
+    <li><div class="no">8</div><div class="et"><span class="k">Entrega</span><h3>Chegou, montou, sabe cuidar</h3>
+      <dl><dt>Cliente vê</dt><dd>Agendamento da entrega. Montagem. Uma mensagem com o cuidado da peça por material.</dd>
+      <dt>Pessoa da More faz</dt><dd>Combina o dia. Monta ou acompanha.</dd>
+      <dt>Roda sozinho</dt><dd>Rastreio "entregue" marca a data. Sete dias depois, pede uma foto da peça em casa.</dd>
+      <dt>Ferramenta</dt><dd>Rastreio, Shopify, WhatsApp oficial.</dd>
+      <dt>Sinal no perfil</dt><dd>Entregue em. Foto recebida. Aceite para publicar.</dd></dl></div></li>
+    <li class="desvio"><div class="no"><span>se</span></div><div class="et"><p><span class="k">Mandou a foto e aceitou publicar</span>A foto vira cena no Instagram, com crédito. A cliente recebe o aviso antes de sair.</p></div></li>
+    <li><div class="no">9</div><div class="et"><span class="k">Vida com a peça</span><h3>Um e-mail por mês, um evento por trimestre</h3>
+      <dl><dt>Cliente vê</dt><dd>O e-mail do mês com a peça nova. Convite para o ateliê. No aniversário da peça, uma mensagem.</dd>
+      <dt>Pessoa da More faz</dt><dd>Escolhe quem convida. Recebe no evento. Escreve o e-mail do mês, com a IA ao lado.</dd>
+      <dt>Roda sozinho</dt><dd>Segmentos: cliente, arquiteta, imprensa, presente. O e-mail sai para quem aceitou. O aniversário dispara sozinho.</dd>
+      <dt>Ferramenta</dt><dd>E-mail do Shopify agora; CRM com e-mail depois. Lista de eventos.</dd>
+      <dt>Sinal no perfil</dt><dd>Abriu, clicou, foi ao evento. Resposta ao aniversário.</dd></dl></div></li>
+    <li class="desvio"><div class="no"><span>se</span></div><div class="et"><p><span class="k">Alguém quer dar More de presente</span>Cartão escrito à mão, entrega no endereço de quem recebe, e quem recebe vira perfil, com aceite. Hoje esse fluxo não existe.</p></div></li>
+    <li><div class="no">10</div><div class="et"><span class="k">Segunda peça</span><h3>Indicação, presente, a mesma madeira</h3>
+      <dl><dt>Cliente vê</dt><dd>Uma peça nova no tom de madeira que ela já tem. A arquiteta vê o que o cliente dela comprou. O convidado do evento vira cliente.</dd>
+      <dt>Pessoa da More faz</dt><dd>Liga para quem indicou. Agradece de verdade.</dd>
+      <dt>Roda sozinho</dt><dd>Lançamento cruza com a madeira comprada. Indicação registra quem trouxe quem.</dd>
+      <dt>Ferramenta</dt><dd>CRM, etiqueta "indicou", campo "madeira".</dd>
+      <dt>Sinal no perfil</dt><dd>Indicações feitas. Segunda compra. Benefício para quem indica: <span class="tag open">[em aberto]</span>.</dd></dl></div></li>
+  </ol>
+  <p class="muted" style="font-size:14px;margin-top:var(--s-lg)">O que hoje existe de tudo isso: as etapas 2, 5 e 6, pela metade. O resto é a pessoa lembrando. Veja <a href="/stack/#funil">o funil de hoje</a>.</p>
+</section>
+
+<section id="score">
+  <div class="eyebrow">[02] A nota no perfil</div>
+  <h2>Quem é quem, com dado que a pessoa deu.</h2>
+  <p>A nota diz o que a pessoa recebe e quem liga para ela. Vem de três fontes, nesta ordem. O que a pessoa contou, o que ela fez, o que é público. Nada de vasculhar perfil sem aceite.</p>
+  <div class="meas" role="region" aria-label="Sinais da nota" tabindex="0"><table>
+    <thead><tr><th>Sinal</th><th>De onde vem</th><th>Peso</th><th>Exemplo</th></tr></thead>
+    <tbody>
+      <tr><td>Tipo</td><td data-l="De onde vem">Formulário do bloco, primeira conversa</td><td data-l="Peso">Define o caminho</td><td data-l="Exemplo">Cliente final, arquiteta ou escritório, imprensa, quem presenteia</td></tr>
+      <tr><td>Estúdio e projetos</td><td data-l="De onde vem">Formulário do bloco; site do estúdio, que é público</td><td data-l="Peso">Alto para o caminho Pro</td><td data-l="Exemplo">Escritório com obra residencial em andamento</td></tr>
+      <tr><td>Compras</td><td data-l="De onde vem">Shopify</td><td data-l="Peso">Alto</td><td data-l="Exemplo">Uma poltrona comprada vale mais que dez curtidas</td></tr>
+      <tr><td>Interesse</td><td data-l="De onde vem">Peças vistas, amostra pedida, visita feita</td><td data-l="Peso">Médio</td><td data-l="Exemplo">Pediu amostra de bouclê e viu a Leticia três vezes</td></tr>
+      <tr><td>Resposta</td><td data-l="De onde vem">E-mail aberto, convite aceito, foto enviada</td><td data-l="Peso">Médio</td><td data-l="Exemplo">Foi aos dois últimos eventos</td></tr>
+      <tr><td>Indicação</td><td data-l="De onde vem">Campo "quem indicou", etiqueta "indicou"</td><td data-l="Peso">Alto</td><td data-l="Exemplo">Trouxe duas clientes</td></tr>
+      <tr><td>Alcance</td><td data-l="De onde vem">Perfil público, só se a pessoa o deu</td><td data-l="Peso">Baixo, e só com aceite</td><td data-l="Exemplo">Jornalista de design, arquiteta com obra publicada</td></tr>
+    </tbody>
+  </table></div>
+  <div class="base">
+    <div><h3>Lista A</h3><p>Comprou, indicou ou publica. Recebe livro, convite pessoal, primeira notícia de peça nova. Quem liga é gente.</p></div>
+    <div><h3>Lista B</h3><p>Pediu amostra ou bloco, visitou. Recebe mostruário, convite ao evento, e-mail do mês. Arquitetas: modelos 3D e notícia constante da oficina.</p></div>
+    <div><h3>Lista C</h3><p>Viu, seguiu, baixou. Recebe o e-mail do mês. Nada físico até dar um sinal.</p></div>
+    <div><h3>O que custa</h3><p>Amostra, mostruário, livro e evento têm preço por pessoa. A regra acima só fecha com a margem na mesa: <span class="tag open">[em aberto]</span>.</p></div>
+  </div>
+</section>
+
+<section id="esteira">
+  <div class="eyebrow">[03] O quadro interno</div>
+  <h2>Nove colunas. Cada cartão sabe o próximo passo e o dono.</h2>
+  <p>É o que o JJ chamou de quadro na call. Um cartão por pessoa, arrastado de coluna em coluna. O que o cartão carrega: nome, tipo, peça, nota, próxima ação, dono, data.</p>
+  <div class="esteira">
+    <div><span class="k">1</span>Novo contato</div>
+    <div><span class="k">2</span>Conversando</div>
+    <div><span class="k">3</span>Amostra ou bloco enviado</div>
+    <div><span class="k">4</span>Visita marcada</div>
+    <div><span class="k">5</span>Proposta enviada</div>
+    <div><span class="k">6</span>Sinal pago</div>
+    <div><span class="k">7</span>Em produção</div>
+    <div><span class="k">8</span>Entregue</div>
+    <div><span class="k">9</span>Vive com a peça</div>
+  </div>
+  <div class="base">
+    <div><h3>O que move o cartão sozinho</h3><p>Pedido de amostra, sinal pago, etapa da oficina, rastreio entregue. A pessoa só arrasta o que só ela sabe: conversou, visitou.</p></div>
+    <div><h3>O que o cartão lembra</h3><p>Três dias sem resposta. Amostra entregue sem retorno. Proposta aberta e parada. Atraso na oficina.</p></div>
+    <div><h3>Onde mora</h3><p>Começa em Clientes do Shopify com etiquetas, que já existe. O quadro em si: Notion, que o time conhece, ou o CRM quando ele chegar. Decisão do time: <span class="tag open">[em aberto]</span>.</p></div>
+  </div>
+</section>
+
+<section id="calendario">
+  <div class="eyebrow">[04] O calendário</div>
+  <h2>Um tema por mês. Um e-mail âncora. Tudo o mais deriva dele.</h2>
+  <p>O método é o da MKT1. Um tema por mês, uma peça âncora, e o resto reaproveita. Para a More, a peça do mês é o tema. Um vídeo curto da oficina, o e-mail, quatro posts, uma palavra na DM.</p>
+  <div class="meas" role="region" aria-label="Calendário por mês" tabindex="0"><table>
+    <thead><tr><th>Mês</th><th>Tema</th><th>Âncora</th><th>Deriva</th><th>Chamada</th></tr></thead>
+    <tbody>
+      <tr><td>Novembro</td><td data-l="Tema">A abertura da loja</td><td data-l="Âncora">O livro e o convite</td><td data-l="Deriva">Posts do ateliê, cenas da loja, vídeo do dia</td><td data-l="Chamada">Vir à Alameda Franca</td></tr>
+      <tr><td>Dezembro</td><td data-l="Tema">Dar More de presente</td><td data-l="Âncora">E-mail "a tomada e o que mais cabe num presente"</td><td data-l="Deriva">Cartão, embalagem, três posts</td><td data-l="Chamada">Comprar a tomada; marcar visita</td></tr>
+      <tr><td>Janeiro</td><td data-l="Tema">A oficina</td><td data-l="Âncora">Vídeo de uma peça sendo feita, com quem faz</td><td data-l="Deriva">Fotos do processo, e-mail, DM "OFICINA"</td><td data-l="Chamada">Pedir amostra</td></tr>
+      <tr><td>Fevereiro</td><td data-l="Tema">Para arquitetas</td><td data-l="Âncora">Página Pro com blocos, fichas e mostruário</td><td data-l="Deriva">E-mail para a lista Pro, posts de projeto</td><td data-l="Chamada">Cadastrar o escritório</td></tr>
+      <tr><td>Março</td><td data-l="Tema">A peça nova</td><td data-l="Âncora">Lançamento: a peça, a madeira, a história</td><td data-l="Deriva">Avise-me, evento no ateliê, DM com o nome da peça</td><td data-l="Chamada">Ver no ateliê; encomendar</td></tr>
+    </tbody>
+  </table></div>
+  <div class="base">
+    <div><h3>O que já existe</h3><p>424 fotos oficiais, 353 delas em 24 pastas por peça. O banco de fotos é isso, com etiqueta de peça, ambiente e madeira. Falta a etiqueta, não a foto.</p></div>
+    <div><h3>O que falta</h3><p>Vídeo da oficina, nenhum. Uma hora de celular por mês resolve. Quem segura o celular: <span class="tag open">[em aberto]</span>.</p></div>
+    <div><h3>O evento</h3><p>Um por trimestre, no ateliê, para as listas A e B. O convite é a chamada leve do e-mail, como a MKT1 recomenda para quem mais importa.</p></div>
+  </div>
+</section>
+
+<section id="ferramentas">
+  <div class="eyebrow">[05] O stack ideal, por função</div>
+  <h2>Uma recomendação por função. Quando, por quê, e o que mais existe.</h2>
+  <p>Preços são os publicados em 15.10, em ordem de grandeza. Os cobrados em dólar mudam com o câmbio. Cada ferramenta nova faz 30 dias de teste com critério de corte.</p>
+  <div class="meas" role="region" aria-label="Stack ideal por função" tabindex="0"><table>
+    <thead><tr><th>Função</th><th>Recomendo</th><th>Quando</th><th>Por quê</th><th>Alternativas</th><th>Preço</th></tr></thead>
+    <tbody>
+      <tr><td>Loja e ficha da peça</td><td data-l="Recomendo"><a href="https://www.shopify.com/br">Shopify</a>, a que já existe, com campos e relações do catálogo associativo</td><td data-l="Quando">Agora</td><td data-l="Por quê">Tudo o mais se liga nela. Trocar de loja é o único erro caro.</td><td data-l="Alternativas">Nenhuma vale a troca</td><td data-l="Preço">Cerca de US$ 19 a 39 por mês no plano menor, mais 2% por venda; 1% no plano seguinte</td></tr>
+      <tr><td>Conversa</td><td data-l="Recomendo"><a href="https://business.whatsapp.com/">WhatsApp Business</a> no número da marca</td><td data-l="Quando">Agora</td><td data-l="Por quê">É onde a cliente já está. Etiquetas, catálogo e ausência vêm de graça.</td><td data-l="Alternativas">API oficial dentro do CRM, quando passar de uma pessoa atendendo</td><td data-l="Preço">Grátis; API cerca de R$ 0,04 por mensagem de serviço</td></tr>
+      <tr><td>Base central e nota</td><td data-l="Recomendo">Clientes do Shopify com etiquetas e campos, agora; <a href="https://www.userevi.com/">Revi</a> depois</td><td data-l="Quando">Shopify agora; Revi em janeiro, com 30 dias de teste</td><td data-l="Por quê">A Revi junta WhatsApp oficial, e-mail e SMS num perfil só, lê o Shopify e é brasileira. É o cérebro da etapa 3 à 10.</td><td data-l="Alternativas"><a href="https://www.klaviyo.com/">Klaviyo</a>, forte em e-mail, fraca em WhatsApp no Brasil</td><td data-l="Preço">Shopify: incluso. Revi: só sob demonstração <span class="tag open">[em aberto]</span>. Klaviyo: grátis até 250 perfis, cerca de US$ 20 por mês com 500</td></tr>
+      <tr><td>Quadro interno</td><td data-l="Recomendo"><a href="https://www.notion.com/">Notion</a>, nove colunas</td><td data-l="Quando">Agora</td><td data-l="Por quê">O time já conhece. Um cartão por pessoa, a próxima ação e o dono. A IA preenche o cartão a partir da conversa.</td><td data-l="Alternativas">Quadro do CRM, quando a Revi entrar; <a href="https://www.pipefy.com/">Pipefy</a> é mais do que precisa</td><td data-l="Preço">Grátis para começar; cerca de US$ 10 por pessoa por mês no plano pago</td></tr>
+      <tr><td>DM e comentário automático</td><td data-l="Recomendo"><a href="https://manychat.com/">ManyChat</a>: uma palavra no comentário devolve a ficha e pede o e-mail, com aceite</td><td data-l="Quando">Depois do lançamento, quando os comentários passarem do que cabe à mão</td><td data-l="Por quê">É o único jeito de o Instagram virar base sem alguém copiando e-mail.</td><td data-l="Alternativas">Resposta salva do Instagram, grátis</td><td data-l="Preço">Grátis até 25 contatos ativos; cerca de US$ 15 a 39 por mês no Pro</td></tr>
+      <tr><td>E-mail do mês</td><td data-l="Recomendo"><a href="https://www.shopify.com/email">Shopify Email</a> agora; e-mail do CRM depois</td><td data-l="Quando">Agora</td><td data-l="Por quê">Já está no painel, lê as etiquetas e sai da mesma base.</td><td data-l="Alternativas">Klaviyo, se a Revi não entrar</td><td data-l="Preço">Grátis até 10 mil e-mails por mês</td></tr>
+      <tr><td>Modelos 3D e cadastro</td><td data-l="Recomendo">Formulário do Shopify com nome, e-mail, onde trabalha, estúdio ou empresa, uso e "sou arquiteta ou não"; arquivo por link depois do envio</td><td data-l="Quando">Agora, no lugar do formulário da tomada</td><td data-l="Por quê">Cada download vira perfil na base central, com o uso declarado.</td><td data-l="Alternativas">Página Pro com login, quando a lista passar de centenas</td><td data-l="Preço">Grátis</td></tr>
+      <tr><td>Banco de fotos</td><td data-l="Recomendo">As pastas que já existem, com etiqueta de peça, ambiente e madeira no nome</td><td data-l="Quando">Agora, uma tarde</td><td data-l="Por quê">424 fotos já existem. A etiqueta é o que deixa a IA achar a cena certa para cada conversa.</td><td data-l="Alternativas">Arquivos do Shopify ligados ao campo "cenas"</td><td data-l="Preço">Grátis</td></tr>
+      <tr><td>Amostra e mostruário</td><td data-l="Recomendo">Produto "amostra" a R$ 0 no Shopify: vira pedido, tarefa e etiqueta</td><td data-l="Quando">Agora</td><td data-l="Por quê">Sem produto, ninguém sabe quantas amostras saíram e para quem.</td><td data-l="Alternativas">Pedir pelo WhatsApp e anotar no quadro</td><td data-l="Preço">Grátis; o kit custa por envio <span class="tag open">[em aberto]</span></td></tr>
+      <tr><td>Proposta</td><td data-l="Recomendo">Rascunho de pedido do Shopify e um modelo de PDF</td><td data-l="Quando">Agora</td><td data-l="Por quê">Proposta em 24 horas, sempre igual, com o link do sinal dentro.</td><td data-l="Alternativas">Nenhuma precisa</td><td data-l="Preço">Grátis</td></tr>
+      <tr><td>Pagamento do sinal</td><td data-l="Recomendo">Link de pagamento do <a href="https://pagar.me/">Pagar.me</a>, que já existe</td><td data-l="Quando">Agora</td><td data-l="Por quê">Sinal pago é o fato que liga produção, data e mensagens.</td><td data-l="Alternativas">Link de pagamento do Shopify, se o Pagar.me não der</td><td data-l="Preço">Taxa do cartão, cerca de 3% a 5%; parcelas: quem paga o juro <span class="tag open">[em aberto]</span></td></tr>
+      <tr><td>Eventos no ateliê</td><td data-l="Recomendo"><a href="https://lu.ma/">Luma</a>, página e confirmação, convidados a partir das etiquetas</td><td data-l="Quando">Primeiro evento depois da abertura</td><td data-l="Por quê">Confirmação, lembrete e lista de presença sem planilha.</td><td data-l="Alternativas">Formulário do Google</td><td data-l="Preço">Grátis</td></tr>
+      <tr><td>Presente</td><td data-l="Recomendo">Campo "é presente" e cartão no pedido do Shopify; quem recebe vira perfil, com aceite</td><td data-l="Quando">Dezembro</td><td data-l="Por quê">Gente dá More de presente e hoje isso some.</td><td data-l="Alternativas">Nenhuma precisa</td><td data-l="Preço">Grátis</td></tr>
+      <tr><td>Nota fiscal e estoque</td><td data-l="Recomendo"><a href="https://www.bling.com.br/">Bling</a></td><td data-l="Quando">Quando as peças sob encomenda passarem pelo site</td><td data-l="Por quê">Nota, estoque e Shopify num lugar, em português.</td><td data-l="Alternativas">Contador ou emissor da Sefaz, para a tomada só</td><td data-l="Preço">Cerca de R$ 200 por mês</td></tr>
+      <tr><td>Ligar tudo</td><td data-l="Recomendo"><a href="https://help.shopify.com/pt-BR/manual/shopify-flow">Shopify Flow</a>; <a href="https://n8n.io/">n8n</a> só para o que o Flow não alcança</td><td data-l="Quando">Flow agora; n8n depois de três fluxos fora do Flow</td><td data-l="Por quê">Nativo antes de app, app antes de automação, automação antes de código.</td><td data-l="Alternativas">Zapier, mais caro por fluxo</td><td data-l="Preço">Flow: incluso. n8n: cerca de US$ 20 a 24 por mês</td></tr>
+      <tr><td>Placar</td><td data-l="Recomendo">Planilha, sexta às nove</td><td data-l="Quando">Agora</td><td data-l="Por quê">Seis números, uma pessoa lê. Sai do CRM sozinho depois.</td><td data-l="Alternativas">Painel do CRM</td><td data-l="Preço">Grátis</td></tr>
+    </tbody>
+  </table></div>
+  <div class="base">
+    <div><h3>O que está fora</h3><p>CRM de vendas pago, chat flutuante, pop-up, segunda loja. E qualquer ferramenta antes de a anterior ter 30 dias de uso.</p></div>
+    <div><h3>A conta do mês</h3><p>Agora: só a Shopify. Em janeiro, com ManyChat, Notion e n8n: algumas centenas de reais. Mais o preço da Revi.</p></div>
+    <div><h3>A ordem</h3><p>Número da marca e formulário. Quadro e etiquetas. Amostra como produto. E-mail do mês. Só então Revi, ManyChat e n8n, um por mês.</p></div>
+  </div>
+</section>
+
+<section id="perguntas">
+  <div class="eyebrow">[06] O que ninguém perguntou</div>
+  <h2>Oito coisas fora da pergunta, e três perguntas de volta.</h2>
+  <ol class="lst">
+    <li><span class="n">1</span><p><b>Capacidade da oficina.</b>Desejo cresce mais rápido que 120 dias. Sem fila com prioridade, o funil quebra na etapa 7.</p></li>
+    <li><span class="n">2</span><p><b>Dono do dado.</b>O tema é da agência, o WhatsApp é pessoal. Nenhum CRM segura o que não tem dono.</p></li>
+    <li><span class="n">3</span><p><b>Economia do namoro.</b>Amostra, livro, evento e presente custam por pessoa. A regra das listas só fecha com a margem.</p></li>
+    <li><span class="n">4</span><p><b>Voz das mensagens.</b>Quem escreve e quem aprova o que a máquina manda. A The Row não soa como robô.</p></li>
+    <li><span class="n">5</span><p><b>Presentear.</b>Gente dá More de presente. O fluxo não existe: cartão, entrega, quem recebe.</p></li>
+    <li><span class="n">6</span><p><b>O ciclo de anos.</b>Segunda peça, cuidado, revenda, indicação. A jornada não acaba na entrega.</p></li>
+    <li><span class="n">7</span><p><b>Um número.</b>Conversas qualificadas por mês, encomendas, arquitetas ativas. Um deles é o placar.</p></li>
+    <li><span class="n">8</span><p><b>Consentimento.</b>Nota, presente, foto publicada: cada um pede um aceite registrado. É LGPD e é educação.</p></li>
+  </ol>
+  <div class="base">
+    <div><h3>Quem atende: respondido</h3><p>Uma pessoa do time, cerca de seis horas por dia, com a IA sugerindo respostas. A promessa de resposta fica para o time escrever: <span class="tag open">[em aberto]</span>.</p></div>
+    <div><h3>Arquitetas ganham: respondido</h3><p>Acesso aos modelos 3D e ao mundo More, com notícia constante do craft. Arquivos atrás de cadastro: nome, onde trabalha, estúdio ou empresa, uso. Preço para profissional: <span class="tag open">[em aberto]</span>.</p></div>
+    <div><h3>Stack: respondido</h3><p>Uma recomendação forte por função, com quando, porquê e alternativas. Está na seção [05].</p></div>
+  </div>
+</section>
+
+<section id="fontes">
+  <div class="eyebrow">[07] Fontes e referências</div>
+  <h2>De onde vem cada parte.</h2>
+  <div class="base">
+    <div><h3>A call de 15/10</h3><p>Venda consultiva e quadro de etapas. Livro para a lista alta. Perfil central com nota. Blocos em troca de e-mail. Humanização fora do site.</p></div>
+    <div><h3>Nordic Knots</h3><p>Lida em 15.10. Consulta grátis com hora marcada e conta Pro. Campanhas por estação. Grade do Instagram com projetos e designers convidados. Investimento de US$ 100 milhões em março, liderado pela Imaginary Ventures, com a Iris Ventures.</p></div>
+    <div><h3>Sklum e as lojas premiadas</h3><p>Prazo em data, amostras, arquivos para profissionais, avise-me, mensagens de etapa. A pesquisa está no <a href="/guia/">guia</a> e na <a href="/stack/#referencias">seção [06] do stack</a>.</p></div>
+    <div><h3>Método</h3><p>Fluxos "um fato cada", como o Greg Isenberg descreve. Ciclo de vida e retenção como o Lenny Rachitsky mede. Calendário por tema mensal, como a MKT1 publica.</p></div>
+  </div>
+  <div class="ia">
+    <p><b>Feito com IA:</b> o mapa, a tabela de sinais, o calendário e a tabela de ferramentas. <b>Opinião de pessoa:</b> a ordem e as listas A, B e C. O que ficou de fora também é escolha do JJ. Tudo que o time ainda não decidiu está marcado como [em aberto].</p>
+  </div>
+</section>
+
+</div>
+<footer><div class="wrap">
+  <p>Feito com o sistema de design da More. Tokens medidos de mymore.design e do Instagram em 15/10/2026. Fontes da página: Muoto e Muoto Mono.</p>
+</div></footer>
+</div>
+
+<div class="barzone"><div class="bar" aria-label="Navegação">
+  <a href="/stack/" aria-label="Stack e automações"><svg viewBox="0 0 272 69" role="img" aria-label="More"><path fill="currentColor" d="M176.593 23.0819V1.91833H150.317V66.5948H176.593V44.2791H205.243V1.91833C189.55 1.91833 176.593 11.3985 176.593 23.0819ZM0 1.91833V66.5948H26.2759V26.0319L45.5 66.5948H58.4571L77.681 26.0319V66.5948H103.957V1.91833H70.4L51.9786 40.8663L33.5571 1.91833H0ZM112.738 34.2566C112.738 54.6474 129.157 68.5 149.317 68.5C169.477 68.5 185.895 54.6474 185.895 34.2566C185.895 13.8657 169.477 0 149.317 0C129.157 0 112.738 13.8657 112.738 34.2566ZM213.074 1.91833V66.5948H272V46.5177H239.35V43.3421H270.681V25.1711H239.35V21.9954H272V1.91833H213.074Z"/></svg></a>
+  <nav><a href="/">[Índice]</a><a href="/stack/">[Stack]</a><a href="#fluxo">[Fluxograma]</a><a href="#score">[Nota]</a><a href="#ferramentas">[Ferramentas]</a></nav>
+</div></div>
+<script>
+document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener('click',e=>{const t=document.querySelector(a.getAttribute('href'));if(t){e.preventDefault();t.scrollIntoView({block:'start'});history.replaceState(null,'',a.getAttribute('href'))}})});
+</script>
+</body>
+</html>

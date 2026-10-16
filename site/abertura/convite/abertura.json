@@ -1,0 +1,13 @@
+{
+ "_leia": "Mestre da comunicação de 05.11. Cada peça abaixo é um objeto; os textos são os únicos campos a editar. Formatos: story 1080x1920, post 1080x1350, wa 1200x1500, a5 148x210 mm. Para trocar a foto do dia, substitua img/dia.jpg (3:4, 1440x1920) e exporte de novo.",
+ "endereco": "Al. Franca 1332, Casa 04",
+ "bairro": "Jardins, São Paulo",
+ "pecas": {
+  "aviso":    {"quando": "20.10", "data": "05.11", "titulo": "Guarde a data.", "linha": "Nada de corte de fita.", "acao": "Convite em breve", "foto": "img/cadeira-maria-luz.jpg"},
+  "convite":  {"quando": "28.10", "data": "05.11", "titulo": "Abertura da loja", "linha": "", "acao": "Confirmar presença: WhatsApp (11) 91209-2600", "foto": "img/cadeira-maria-luz.jpg"},
+  "vespera":  {"quando": "04.11", "data": "Amanhã.", "titulo": "Abertura da loja, 05.11", "linha": "", "acao": "Confirmar presença: WhatsApp (11) 91209-2600", "foto": "img/cadeira-maria-luz.jpg"},
+  "dia":      {"quando": "05.11", "data": "Hoje.", "titulo": "A loja está aberta.", "linha": "", "acao": "Hoje, Jardins", "foto": "img/dia.jpg", "_foto": "placeholder: foto de estúdio p33_0. Trocar pela foto do dia, feita pelo Vitor."},
+  "obrigado": {"quando": "06.11", "data": "Obrigado.", "titulo": "A loja fica.", "linha": "Volte quando quiser.", "acao": "Aberta. mymore.design", "foto": "img/obrigado.jpg", "_foto": "placeholder: foto de estúdio p39_0. Trocar por uma foto da abertura."}
+ },
+ "elipse": {"_leia": "Variante com a elipse laranja do convite atual. A regra contra elipses saiu do sistema; as duas versões valem e o time escolhe.", "data": "05.11", "rotulo": "abertura", "cor": "#D9541E"}
+}

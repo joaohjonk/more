@@ -1,0 +1,516 @@
+<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><link rel="icon" href="data:,"><style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style></head><body><script src="/nav/shell.js" data-section="guia" data-into=".page" data-foot="on" defer></script><title>Guia para o time · More</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,600&family=Martian+Mono:wdth,wght@75,400&display=swap" rel="stylesheet">
+<style>
+/* Tokens do sistema de design da More. Página de marca: paleta clara nos dois temas. */
+:root{
+  color-scheme:light;
+  --page:#E5E1DB; --ink:#2D211E; --muted:#5D554F; --rule:#2D211E1A; --glass:#2D211E1A; --tile:#DDD7CF; --white:#FFFFFF; --inverse:#2D211E; --on-inverse:#E5E1DB;
+  --muoto:"Muoto","DM Sans","Helvetica Neue",Arial,sans-serif;
+  --mono:"MuotoMono","Martian Mono",ui-monospace,Menlo,monospace;
+  --s-hair:6px; --s-sm:10px; --s-md:16px; --s-lg:20px; --s-xl:30px; --s-2xl:40px; --s-3xl:60px; --s-sec:110px;
+  --bar:35px; --barzone:75px;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--page:#E5E1DB;--ink:#2D211E;--muted:#5D554F;--rule:#2D211E1A;--glass:#2D211E1A;--tile:#DDD7CF;color-scheme:light}}
+:root[data-theme="dark"]{--page:#E5E1DB;--ink:#2D211E;--muted:#5D554F;--rule:#2D211E1A;--glass:#2D211E1A;--tile:#DDD7CF;color-scheme:light}
+*{box-sizing:border-box}
+html,body{height:100%}
+body{background:var(--page);color:var(--ink);font-family:var(--muoto);font-size:15px;line-height:1.5;-webkit-font-smoothing:antialiased;margin:0;overflow:hidden}
+/* A página rola dentro de .page; a barra vive numa faixa própria embaixo e nunca cobre texto. */
+.page{height:calc(100% - var(--barzone));overflow-y:auto;overflow-x:hidden;scroll-behavior:smooth;overscroll-behavior:contain}
+.wrap{max-width:1120px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:0 var(--s-3xl)}
+.mono{font-family:var(--mono);font-stretch:75%;font-size:13px}
+.muted{color:var(--muted)}
+a{color:inherit;text-underline-offset:3px;text-decoration-thickness:1px;overflow-wrap:anywhere}
+a:hover{color:var(--muted)}
+h1,h2,h3{font-weight:400;text-wrap:balance;margin:0}
+h2{font-size:clamp(26px,3.4vw,32px);line-height:1.05;margin-bottom:var(--s-lg)}
+h3{font-size:15px;margin-bottom:4px}
+p{margin:0 0 var(--s-sm);max-width:64ch;text-wrap:pretty}
+section{padding-top:var(--s-sec)}
+.eyebrow{font-family:var(--mono);font-stretch:75%;font-size:13px;color:var(--muted);margin-bottom:var(--s-md)}
+img{max-width:100%}
+.sup{font-family:var(--mono);font-stretch:75%;font-size:11px;color:var(--muted)}
+
+/* abertura */
+.open{padding-top:var(--s-3xl);display:grid;grid-template-columns:1.1fr .9fr;gap:var(--s-2xl);align-items:end}
+.open h1{font-size:clamp(34px,5.2vw,58px);line-height:.98;letter-spacing:-.01em}
+.open .lede{font-size:clamp(18px,2vw,22px);line-height:1.25;margin-top:var(--s-lg);max-width:30ch}
+.open figure{margin:0}
+.open img{width:100%;aspect-ratio:3/4;object-fit:cover;display:block}
+.open figcaption{display:flex;justify-content:space-between;padding-top:8px;font-size:13px}
+.meta{display:flex;flex-wrap:wrap;gap:6px var(--s-lg);margin-top:var(--s-xl)}
+@media(max-width:760px){.open{grid-template-columns:1fr}.open figure{max-width:360px}}
+
+/* decisões */
+.dec{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--s-hair);margin-top:var(--s-lg)}
+@media(max-width:860px){.dec{grid-template-columns:1fr}}
+.dec article{background:var(--glass);padding:var(--s-lg);min-width:0;display:flex;flex-direction:column;gap:var(--s-sm)}
+.dec .n{font-family:var(--mono);font-stretch:75%;font-size:12px;color:var(--muted)}
+.dec h3{font-size:clamp(18px,2vw,22px);line-height:1.2;margin:0}
+.dec dl{margin:0;display:grid;grid-template-columns:auto 1fr;gap:4px 12px;font-size:14px}
+.dec dt{font-family:var(--mono);font-stretch:75%;font-size:12px;color:var(--muted);padding-top:2px}
+.dec dd{margin:0}
+.dec ul{margin:0;padding-left:18px;font-size:14px}
+.dec li{margin-bottom:3px}
+
+/* blueprint */
+.bp{margin:var(--s-xl) 0 0}
+.bp figcaption{font-size:14px;max-width:64ch;margin-bottom:var(--s-sm)}
+.bpscroll{overflow-x:auto;padding-bottom:var(--s-sm)}
+.bpscroll svg{width:100%;min-width:960px;height:auto;display:block;color:var(--ink)}
+.bpscroll svg text{font-family:var(--muoto)}
+.bpscroll svg text.m{font-family:var(--mono);font-stretch:75%}
+.bpm{display:none}
+@media(max-width:700px){.bpscroll,.hint{display:none}.bpm{display:grid;gap:var(--s-md)}.bpm .st{border-top:1px solid var(--ink);padding-top:8px}.bpm .sn{font-family:var(--mono);font-stretch:75%;font-size:12px;margin-bottom:6px}.bpm .st>div:not(.sn){display:grid;grid-template-columns:72px 1fr;gap:8px;font-size:14px;padding:6px 0;border-top:1px solid var(--rule)}.bpm .st>div span{font-family:var(--mono);font-stretch:75%;font-size:11px;color:var(--muted);padding-top:3px}.bpm .st>div p{margin:0}.bpm .nw{background:var(--ink);color:var(--page);padding:6px 8px;border:0}.bpm .nw span{color:var(--page);opacity:.7}}
+.hint{display:none;font-family:var(--mono);font-stretch:75%;font-size:12px;color:var(--muted);margin-top:var(--s-md)}
+@media(max-width:1000px){.hint{display:block}}
+
+/* listas numeradas */
+.lst{margin:var(--s-lg) 0 0;padding:0;list-style:none;max-width:72ch}
+.lst li{border-top:1px solid var(--rule);padding:10px 0;display:grid;grid-template-columns:28px 1fr;gap:12px;font-size:15px}
+.lst li:last-child{border-bottom:1px solid var(--rule)}
+.lst .n{font-family:var(--mono);font-stretch:75%;font-size:12px;color:var(--muted);padding-top:3px}
+.lst .w{display:block;font-family:var(--mono);font-stretch:75%;font-size:12px;color:var(--muted);margin-top:3px}
+/* crenças */
+.bel{display:grid;grid-template-columns:1fr 1fr;gap:var(--s-2xl);margin-top:var(--s-lg)}
+@media(max-width:860px){.bel{grid-template-columns:1fr}}
+.bel>div{min-width:0;border-top:1px solid var(--ink);padding-top:var(--s-sm)}
+.bel h3{font-size:clamp(18px,2vw,22px);line-height:1.2;margin-bottom:var(--s-sm)}
+.bel h4{font-family:var(--mono);font-stretch:75%;font-weight:400;font-size:12px;color:var(--muted);margin:var(--s-md) 0 4px}
+.bel ul{margin:0;padding-left:18px;font-size:14px}
+.bel li{margin-bottom:4px}
+.bel .verd{background:var(--glass);padding:var(--s-sm) var(--s-md);font-size:14px;margin-top:var(--s-md)}
+.bel .verd p{margin:0}
+
+/* prints anotados */
+.prints{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:var(--s-xl) var(--s-lg);margin-top:var(--s-xl)}
+.pr{min-width:0}
+.pr a{text-decoration:none;display:block}
+.pr figure{margin:0;background:var(--tile)}
+.pr img{width:100%;display:block;height:auto;max-height:380px;object-fit:cover;object-position:top}
+.pr .ann{background:var(--ink);color:var(--page);padding:var(--s-sm) var(--s-md);font-size:13px;line-height:1.4}
+.pr .ann b{font-family:var(--mono);font-stretch:75%;font-weight:400;font-size:11px;display:block;margin-bottom:3px;color:#BDBDBD}
+.pr figcaption{font-family:var(--mono);font-stretch:75%;font-size:12px;color:var(--muted);padding:6px 0 0}
+.pr a:hover figcaption{color:var(--ink)}
+
+/* medição */
+.meas{overflow-x:auto;margin-top:var(--s-lg)}
+.meas table{border-collapse:collapse;width:100%;min-width:720px;font-size:14px}
+.meas th{font-family:var(--mono);font-stretch:75%;font-weight:400;font-size:12px;color:var(--muted);text-align:left;padding:8px;border-bottom:1px solid var(--ink)}
+.meas td{padding:10px 8px;border-bottom:1px solid var(--rule);vertical-align:top}
+.meas td:first-child{width:24%}
+@media(max-width:700px){.meas table{min-width:0}.meas thead{display:none}.meas tr{display:block;padding:12px 0;border-bottom:1px solid var(--ink)}.meas td{display:block;padding:2px 0;border:0;width:auto!important}.meas td:first-child{font-size:16px;margin-bottom:4px}.meas td[data-l]::before{content:attr(data-l);display:block;font-family:var(--mono);font-stretch:75%;font-size:11px;color:var(--muted);margin-top:6px}}
+.base{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:var(--s-md) var(--s-2xl);margin-top:var(--s-xl)}
+.base div{border-top:1px solid var(--rule);padding-top:var(--s-sm);min-width:0}
+.base p{font-size:14px;color:var(--muted)}
+
+/* peças e anexos */
+.hub{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:var(--s-hair);margin-top:var(--s-lg)}
+.hub a{display:block;background:var(--glass);padding:var(--s-md);text-decoration:none;min-width:0;position:relative;min-height:96px}
+.hub a:hover{background:var(--tile);color:var(--ink)}
+.hub a::after{content:"→";position:absolute;right:var(--s-md);bottom:var(--s-sm);font-family:var(--mono);font-stretch:75%;font-size:13px;color:var(--muted)}
+.hub .k{font-family:var(--mono);font-stretch:75%;font-size:12px;color:var(--muted);display:block;margin-bottom:6px}
+.hub b{font-weight:400;display:block}
+.hub span{font-size:13px;color:var(--muted);display:block;max-width:34ch}
+
+/* próximos passos */
+.fr{display:grid;grid-template-columns:repeat(2,1fr);gap:var(--s-hair);margin-top:var(--s-lg)}
+@media(max-width:760px){.fr{grid-template-columns:1fr}}
+.fr article{background:var(--glass);padding:var(--s-lg);min-width:0;display:flex;flex-direction:column;gap:var(--s-sm)}
+.fr .st{font-family:var(--mono);font-stretch:75%;font-size:12px;color:var(--muted)}
+.fr h3{font-size:clamp(18px,2vw,22px);line-height:1.2;margin:0}
+.fr p{margin:0;font-size:14px}
+.fr dl{margin:0;display:grid;grid-template-columns:auto 1fr;gap:4px 12px;font-size:14px}
+.fr dt{font-family:var(--mono);font-stretch:75%;font-size:12px;color:var(--muted);padding-top:2px}
+.fr dd{margin:0}
+.fr dd+dd{grid-column:2}
+.fr .lk{font-family:var(--mono);font-stretch:75%;font-size:12px;margin-top:auto;padding-top:var(--s-sm)}
+.dep{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:var(--s-hair);margin-top:var(--s-lg)}
+.dep div{background:var(--glass);padding:var(--s-md);min-width:0}
+.dep .k{font-family:var(--mono);font-stretch:75%;font-size:12px;color:var(--muted);display:block;margin-bottom:6px}
+.dep p{font-size:14px;margin:0}
+.so{background:var(--glass);border-left:2px solid var(--ink);padding:var(--s-md);margin-top:var(--s-lg)}
+.so .k{font-family:var(--mono);font-stretch:75%;font-size:12px;color:var(--muted);display:block;margin-bottom:6px}
+.so ul{margin:0;padding-left:1.1em;font-size:14px}
+#depende h3{font-size:clamp(18px,2vw,22px);line-height:1.2;margin:var(--s-lg) 0 var(--s-sm)}
+.pr .ann b span{display:block}
+.ia{margin-top:var(--s-sec);border-top:1px solid var(--ink);padding-top:var(--s-md);font-size:14px}
+.ia p{max-width:80ch}
+
+/* barra, em faixa própria */
+.barzone{height:var(--barzone);position:relative;background:var(--page)}
+.bar{position:absolute;left:50%;transform:translateX(-50%);top:20px;width:320px;max-width:calc(100vw - 32px);height:var(--bar);background:var(--glass);backdrop-filter:blur(13px);-webkit-backdrop-filter:blur(13px);display:flex;align-items:center;justify-content:space-between;padding:0 var(--s-sm)}
+.bar svg{width:56px;height:auto;display:block}.bar svg path{fill:var(--ink)}
+.bar nav{display:flex;gap:12px}
+.bar a{font-family:var(--mono);font-stretch:75%;font-size:13px;text-decoration:none}
+.bar a:hover,.bar a:focus-visible{color:var(--muted)}
+footer{background:var(--inverse);color:var(--on-inverse);margin-top:var(--s-sec)}
+footer .wrap{padding-block:var(--s-2xl)}
+footer p{font-size:13px;max-width:70ch}
+:focus-visible{outline:1px solid var(--ink);outline-offset:2px}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important;scroll-behavior:auto!important}}
+</style>
+
+<div class="page" id="page">
+<div class="wrap">
+
+<header class="open" id="topo">
+  <div>
+    <div class="eyebrow">More · IA e experiência digital · Guia para o time · 15.10.2026</div>
+    <h1>Três sugestões. Sete exemplos. Um guia.</h1>
+    <p class="lede">A More pode ser a marca de mobiliário mais desejada do Brasil. O craft no centro. A jornada da cliente roda sozinha onde ninguém precisa digitar. O ateliê fica com as pessoas. Este guia diz o que vale fazer antes de 05.11 e o que fica para conversar. O que entra, e quando, é o time quem diz.</p>
+    <div class="meta mono muted"><span>Para: Fred, Edu, Vitor</span><span>Loja abre em 05.11.2026</span><span>Leitura: 25 min</span><span>Base: call de 15.10, site, lojas de referência, Instagram, material oficial da More</span><span>Escrito pelo JJ, o João, que estava na call. De fora da More, sem acesso ao painel</span></div>
+  </div>
+  <figure>
+    <img src="img/PDT_ASS_POL_LETICIA_01.jpg" alt="Poltrona Leticia em bouclê ferrugem, luz de estúdio">
+    <figcaption><span>Poltrona Leticia</span><span class="muted">81x71x89</span></figcaption>
+  </figure>
+</header>
+
+<section id="decisoes">
+  <div class="eyebrow">[00] Três sugestões</div>
+  <h2>Se for mexer em algo antes da abertura, começaria por aqui.</h2>
+  <p>Três sugestões, não três tarefas. Cada uma diz quem poderia fazer, quando faria sentido e como saber se funcionou. Nenhuma pede agência nem código. O time pega o que servir e deixa o resto.</p>
+  <div class="dec">
+    <article>
+      <span class="n">Sugestão 1</span>
+      <h3>Sete ajustes no painel antes de tirar a senha.</h3>
+      <dl><dt>Quem poderia</dt><dd>O Vitor, no painel; o Fred, o texto do Sobre e o endereço.</dd><dt>Quando faria sentido</dt><dd>Até 29.10, uma semana antes da abertura.</dd></dl>
+      <div><span class="n">Como saber se funcionou</span><ul>
+        <li>Nenhum preço de R$ 1 na loja. Imposto do checkout conferido.</li>
+        <li>Toda página com título e descrição, o texto que aparece na aba do navegador e no Google.</li>
+        <li>Sobre em português, Termos em português, grafias corrigidas.</li>
+        <li>"Sob encomenda · cerca de 120 dias" ao lado do botão; "Pronta entrega" na tomada.</li>
+        <li>Botão "Conversar no WhatsApp" no lugar de "A partir de".</li>
+        <li>Endereço, horário e "visite a loja" no site; perfil no Google.</li>
+        <li>Senha removida e o link na bio do Instagram.</li>
+      </ul></div>
+    </article>
+    <article>
+      <span class="n">Sugestão 2</span>
+      <h3>Duas horas com o JJ, e o Vitor fica à vontade no painel do Shopify.</h3>
+      <dl><dt>Quem poderia</dt><dd>O JJ se ofereceu na call; o Vitor opera.</dd><dt>Quando faria sentido</dt><dd>Quando o time quiser. Antes de 24.10 ajuda na sugestão 1.</dd></dl>
+      <div><span class="n">Como saber se funcionou</span><ul>
+        <li>Ao fim, o Vitor faz sozinho: trocar foto, texto, preço, rótulo e título de uma página.</li>
+        <li>O passo a passo das cinco mudanças cabe numa folha, na pasta do time.</li>
+        <li>Nenhum pedido à agência para os ajustes da sugestão 1.</li>
+      </ul></div>
+    </article>
+    <article>
+      <span class="n">Sugestão 3</span>
+      <h3>Uma lista só para todas as conversas, desde a abertura.</h3>
+      <dl><dt>Quem poderia</dt><dd>Alguém do time como dono (o Edu, talvez); todos anotam depois de cada conversa.</dd><dt>Quando faria sentido</dt><dd>Antes de 05.11, se der. Uma olhada nela em 05.12.</dd></dl>
+      <div><span class="n">Como saber se funcionou</span><ul>
+        <li>Uma planilha com: nome, WhatsApp, e-mail (se houver), peça de interesse, origem, é arquiteto?, consentimento, situação.</li>
+        <li>Trinta dias depois, cada convidado da abertura, cada conversa de WhatsApp e cada compra da tomada estão nela.</li>
+        <li>A primeira pergunta de cada conversa anotada: preço, prazo ou outra. É o dado que ajuda a decidir o preço na grade.</li>
+      </ul></div>
+    </article>
+  </div>
+  <p style="margin-top:var(--s-lg)"><b>Para depois:</b> esconder o preço na grade. A conversa inclinou para isso, a evidência não; está em <a href="#crencas">[03]</a>. Duas escolhas de gosto ficam com o time, em <a href="#frentes">[01]</a>: o convite com ou sem a elipse e a cor da capa do livro. Preferimos sem a elipse e em Vermelho Jambo, o vermelho do sistema.</p>
+</section>
+
+<section id="frentes">
+  <div class="eyebrow">[01] Sete exemplos</div>
+  <h2>O que o sistema permitiu fazer.</h2>
+  <p>Tudo abaixo saiu do sistema de design e de fotos reais. Nada é final. São pontos de partida para o time olhar e criticar. Cada cartão diz o que é, o que mostra e o que fica com o time.</p>
+    <div class="fr">
+    <article>
+      <span class="st">Exemplo · sistema</span>
+      <h3>Sistema de design tokenizado</h3>
+      <p>Cores, tipos, marca, voz e impresso, medidos no site e no Instagram. Tudo escrito em tokens: um arquivo de valores que pessoas e programas leem igual. É a base dos outros exemplos. Nenhum foi desenhado do zero.</p>
+      <dl><dt>Feito com</dt><dd>O CSS e as fontes do site, lidos no navegador. Cada regra tem um teste automático: passa ou falha. O que é observado na marca, o que é dedução nossa e o que é invenção estão separados.</dd><dt>Mostra</dt><dd>Que uma pessoa que nunca viu as conversas faz uma peça nova só com o repositório.</dd><dt>Se o time quiser</dt><dd>Passar o olho na tabela de aceite (na página do sistema, uma linha por regra), regra por regra, e dizer o que fica e o que sai. O que só o time tem: ficha de cada peça, o texto do Sobre em português, os detalhes da abertura. Já no repositório: variáveis do Figma, mapa do tema Shopify, PDF de regras numa página, espécime da fonte.</dd><dt>O que chegou da More</dt><dd>O guia de uso, 39 páginas, de Manoela Moura e Anna's. As diferenças estão em <a href="#discordam">onde o guia e o site discordam</a>.</dd><dd>As fontes são as mesmas que o site usa. A licença cobre a Muoto Mono no desktop, na web e nas redes.</dd><dd>As fotos originais são 2:3. O 3:4 do site é corte.</dd><dd>348 das 424 fotos nunca saíram no Instagram.</dd><dd class="muted">Folha de contato, tabela de diferenças e inventário ficam na pasta do time. Não vão para o site aberto.</dd></dl>
+      <p class="lk"><a href="/sistema/">Página do sistema de design</a> · <a href="https://github.com/joaohjonk/more">Repositório, atualizado</a></p>
+    </article>
+    <article>
+      <span class="st">Exemplo · site</span>
+      <h3>Coleção e página da Leticia</h3>
+      <p>Grade, lista e o modo Ambientes. A página da peça vira ficha técnica: prazo, a partir de, medidas, blocos 2D e 3D. O botão abre o WhatsApp com a escolha feita.</p>
+      <dl><dt>Feito com</dt><dd>Os tokens do sistema e só fotos reais. Conferida com as listas de boas práticas de loja e de acessibilidade.</dd><dt>Mostra</dt><dd>Que uma arquiteta acha prazo, preço e arquivo sem clicar. No site de hoje, o prazo não existe.</dd><dt>Se o time quiser</dt><dd>Conversar se a ficha técnica vira padrão. Depois, com acesso ao Shopify, um tema duplicado com campos para prazo, medidas e arquivos.</dd></dl>
+      <p class="lk"><a href="/colecao/">Coleção</a> · <a href="/colecao/pdp-leticia.html">Página da Poltrona Leticia</a> · <a href="/sistema/demos/tomada-3d/">Tomada TOM.01 em 3D</a></p>
+    </article>
+    <article>
+      <span class="st">Exemplo · abertura</span>
+      <h3>05.11: convite, livro, etiquetas</h3>
+      <p>Nove peças. Cinco em sequência (aviso, convite, véspera, dia, obrigado) para story, post e WhatsApp. A5 para a gráfica. Vitrine com a marca em tamanho grande. O livro "Menos do mesmo" como objeto: 230×300 mm, 112 páginas. Etiquetas e lista com um QR por peça, que diz de qual peça veio a visita.</p>
+      <dl><dt>Feito com</dt><dd>Mestres em HTML com os tokens e os textos num arquivo à parte: trocar o texto e exportar refaz a peça nos três formatos. O livro é um objeto 3D posto numa foto real do Instagram.</dd><dt>Mostra</dt><dd>Que trocar o texto refaz as peças nos três formatos. Cronograma: revisão 17.10, aviso 20.10, gráfica 22.10, convite 28.10.</dd><dt>Se o time quiser</dt><dd>Duas escolhas de gosto, ditas em [00]: a elipse do convite e a cor da capa. Tudo é prova: faltam gráfica, lista de convidados e as nove legendas do livro.</dd></dl>
+      <p class="lk"><a href="/abertura/#regras">Convite</a> · <a href="/abertura/#livro">Livro</a> · <a href="/abertura/#etiquetas">Etiquetas e lista</a> · <a href="/abertura/#cronograma">Cronograma</a></p>
+    </article>
+    <article>
+      <span class="st">Exemplo · movimento</span>
+      <h3>A foto que troca no cartão da peça</h3>
+      <p>A troca de foto no cartão da peça do mymore.design, medida no navegador. Comparada com The Row, Jacquemus, Knoll, Norr11 e Kann. A composição de hoje fica. A sugestão muda só a transição: fusão de 300 ms, sem a foto crescer. Ou nenhum movimento, se o time preferir.</p>
+      <dl><dt>Feito com</dt><dd>O CSS do tema e as lojas de referência, medidos no mesmo dia. Viraram tokens e duas regras no sistema, como proposta.</dd><dt>Mostra</dt><dd>Que dá para trocar gosto por medida: duração, curva e o que se move, lado a lado.</dd><dt>Se o time quiser</dt><dd>Abrir a demonstração e escolher entre a fusão de 300 ms e nenhum movimento. As duas cabem no sistema.</dd></dl>
+      <p class="lk"><a href="/sistema/demos/hover-foto/">Ver as duas versões da troca de foto</a> · <a href="/sistema/#movimento">Movimento no sistema de design</a></p>
+    </article>
+    <article>
+      <span class="st">Exemplo · 3D</span>
+      <h3>A loja em 3D</h3>
+      <p>A casa 04 da Alameda Franca, feita da planta. 5,4 por 17 metros, pé-direito de 4,20, escada ao fundo, luz pela fachada. 24 peças; cada clique abre foto, preço e WhatsApp. Abre leve, também no celular.</p>
+      <dl><dt>Feito com</dt><dd>A planta EX_A102 e as fotos de estúdio.</dd><dt>Mostra</dt><dd>Que a loja pode existir na tela antes de existir na rua. As medidas de hoje vêm das fotos, e o cartão avisa.</dd><dt>Se o time quiser</dt><dd>Fica assim, como prova do possível. O refino vem depois, com modelos 3D reais, o corte 301_A, fotos da obra e a lista do que estará exposto.</dd></dl>
+      <p class="lk"><a href="/loja-3d/">A loja em 3D</a></p>
+    </article>
+    <article>
+      <span class="st">Exemplo · operação</span>
+      <h3>Stack e automações</h3>
+      <p>O que roda hoje no site e no checkout, lido de fora com prova. Oito riscos até 05.11, sete de graça. O que ligar depois, um por vez. E a jornada inteira da cliente, na página própria.</p>
+      <dl><dt>Feito com</dt><dd>Um navegador real, o código do site e o checkout até a tela de pagamento, sem fechar pedido. O que mora dentro do painel está marcado como em aberto.</dd><dt>Mostra</dt><dd>Que a automação cabe no bastidor sem a cliente ver. Na frente, o site continua a galeria que é.</dd><dt>Se o time quiser</dt><dd>Responder as seis perguntas da página e marcar quem faz cada linha da tabela "agora".</dd></dl>
+      <p class="lk"><a href="/stack/">Stack e automações</a> · <a href="/stack/jornada/">A jornada da cliente</a></p>
+    </article>
+    <article>
+      <span class="st">Exemplo · catálogo</span>
+      <h3>Catálogo associativo</h3>
+      <p>As 24 peças por tipo, por ambiente, por material e por história. Uma peça pertence a vários caminhos ao mesmo tempo, e o site mostra por onde continuar. Direção para 2027, para conversar.</p>
+      <dl><dt>Feito com</dt><dd>Os dados do site e as quatro cenas de estúdio. Duas versões lado a lado: a associativa e a com navegação clássica.</dd><dt>Mostra</dt><dd>Que dá para explorar a More como uma galeria, sem grade de loja e sem parecer um grafo.</dd><dt>Se o time quiser</dt><dd>Ler o documento e dizer se a direção vale, e com que fotos. Nada disso muda o site de hoje.</dd></dl>
+      <p class="lk"><a href="/catalogo/">Protótipo</a> · <a href="/catalogo/controle-a/">Versão com navegação clássica</a> · <a href="/catalogo/documento/">Documento</a></p>
+    </article>
+  </div>
+
+</section>
+
+<section id="servico">
+  <div class="eyebrow">[02] Como o serviço funciona, hoje e depois</div>
+  <h2>O que a cliente vê. O que o time faz. Onde fica.</h2>
+  <p>A linha de cima é o que a pessoa vê. A do meio, o que o time faz. A de baixo, onde a informação fica. Desenhado a partir do site e da conversa. O que não dá para ver de fora está marcado como suposição.</p>
+  <div class="hint" aria-hidden="true">Deslize para o lado →</div>
+  <figure class="bp"><figcaption><b>Hoje.</b> Cada orçamento nasce e morre numa conversa de WhatsApp pessoal. Nada registra quem perguntou, o quê, nem em que pé está.</figcaption><div class="bpscroll"><svg viewBox="0 0 1196 414" role="img" aria-label="Hoje: o que a pessoa vê, o que o time faz e onde fica, em seis etapas."><path d="M104,0 h166 l10,12.0 l-10,12.0 h-166  z" fill="var(--glass)"/><text x="192.0" y="16.0" text-anchor="middle" font-size="12">Descobre</text><path d="M286,0 h166 l10,12.0 l-10,12.0 h-166 l10,-12.0 l-10,-12.0 z" fill="var(--glass)"/><text x="374.0" y="16.0" text-anchor="middle" font-size="12">Olha</text><path d="M468,0 h166 l10,12.0 l-10,12.0 h-166 l10,-12.0 l-10,-12.0 z" fill="var(--glass)"/><text x="556.0" y="16.0" text-anchor="middle" font-size="12">Pergunta</text><path d="M650,0 h166 l10,12.0 l-10,12.0 h-166 l10,-12.0 l-10,-12.0 z" fill="var(--glass)"/><text x="738.0" y="16.0" text-anchor="middle" font-size="12">Compra ou orça</text><path d="M832,0 h166 l10,12.0 l-10,12.0 h-166 l10,-12.0 l-10,-12.0 z" fill="var(--glass)"/><text x="920.0" y="16.0" text-anchor="middle" font-size="12">Espera</text><path d="M1014,0 h166 l10,12.0 l-10,12.0 h-166 l10,-12.0 l-10,-12.0 z" fill="var(--glass)"/><text x="1102.0" y="16.0" text-anchor="middle" font-size="12">Recebe e volta</text><text x="0" y="46" font-size="12">Palco</text><text x="0" y="60" font-size="10" class="m" fill="var(--muted)">a pessoa vê</text><rect x="104" y="30" width="176" height="122" fill="none" stroke="var(--rule)"/><text x="112" y="46" font-size="11" fill="currentColor">Instagram e indicação. O</text><text x="112" y="59" font-size="11" fill="currentColor">link da bio leva a um site</text><text x="112" y="72" font-size="11" fill="currentColor">com senha.</text><rect x="286" y="30" width="176" height="122" fill="none" stroke="var(--rule)"/><text x="294" y="46" font-size="11" fill="currentColor">Abertura &quot;Menos do</text><text x="294" y="59" font-size="11" fill="currentColor">mesmo.&quot;, grade com preço,</text><text x="294" y="72" font-size="11" fill="currentColor">página da peça sem prazo.</text><rect x="468" y="30" width="176" height="122" fill="none" stroke="var(--rule)"/><text x="476" y="46" font-size="11" fill="currentColor">Botão &quot;A partir de&quot; abre o</text><text x="476" y="59" font-size="11" fill="currentColor">WhatsApp com a peça e os</text><text x="476" y="72" font-size="11" fill="currentColor">materiais escolhidos.</text><rect x="650" y="30" width="176" height="122" fill="none" stroke="var(--rule)"/><text x="658" y="46" font-size="11" fill="currentColor">Tomada: carrinho e</text><text x="658" y="59" font-size="11" fill="currentColor">checkout. Demais peças:</text><text x="658" y="72" font-size="11" fill="currentColor">orçamento dentro da</text><text x="658" y="85" font-size="11" fill="currentColor">conversa.</text><rect x="832" y="30" width="176" height="122" fill="none" stroke="var(--rule)"/><text x="840" y="46" font-size="11" fill="currentColor">Cerca de 120 dias sem</text><text x="840" y="59" font-size="11" fill="currentColor">aviso.</text><rect x="1014" y="30" width="176" height="122" fill="none" stroke="var(--rule)"/><text x="1022" y="46" font-size="11" fill="currentColor">Entrega. Depois, silêncio:</text><text x="1022" y="59" font-size="11" fill="currentColor">sem convite nem novidade.</text><text x="0" y="174" font-size="12">Bastidor</text><text x="0" y="188" font-size="10" class="m" fill="var(--muted)">o time faz</text><rect x="104" y="158" width="176" height="122" fill="none" stroke="var(--rule)"/><text x="112" y="174" font-size="11" fill="currentColor">Vitor posta as peças</text><text x="112" y="187" font-size="11" fill="currentColor">fotografadas em estúdio.</text><rect x="286" y="158" width="176" height="122" fill="none" stroke="var(--rule)"/><text x="294" y="174" font-size="11" fill="currentColor">Agência mexe no tema; o</text><text x="294" y="187" font-size="11" fill="currentColor">time pede por e-mail.</text><rect x="468" y="158" width="176" height="122" fill="none" stroke="var(--rule)"/><text x="476" y="174" font-size="11" fill="currentColor">Alguém do time responde à</text><text x="476" y="187" font-size="11" fill="currentColor">mão, quando vê</text><text x="476" y="200" font-size="11" fill="currentColor">(suposição).</text><rect x="650" y="158" width="176" height="122" fill="none" stroke="var(--rule)"/><text x="658" y="174" font-size="11" fill="currentColor">Orçamento feito à mão,</text><text x="658" y="187" font-size="11" fill="currentColor">caso a caso (suposição).</text><rect x="832" y="158" width="176" height="122" fill="none" stroke="var(--rule)"/><text x="840" y="174" font-size="11" fill="currentColor">Produção acompanhada de</text><text x="840" y="187" font-size="11" fill="currentColor">cabeça; cliente pergunta.</text><rect x="1014" y="158" width="176" height="122" fill="none" stroke="var(--rule)"/><text x="1022" y="174" font-size="11" fill="currentColor">O que se sabe do cliente</text><text x="1022" y="187" font-size="11" fill="currentColor">fica na memória de quem</text><text x="1022" y="200" font-size="11" fill="currentColor">atendeu.</text><text x="0" y="302" font-size="12">Sistemas</text><text x="0" y="316" font-size="10" class="m" fill="var(--muted)">onde fica</text><rect x="104" y="286" width="176" height="122" fill="none" stroke="var(--rule)"/><text x="112" y="302" font-size="10.5" class="m" fill="currentColor">Instagram</text><rect x="286" y="286" width="176" height="122" fill="none" stroke="var(--rule)"/><text x="294" y="302" font-size="10.5" class="m" fill="currentColor">Shopify, tema da agência</text><rect x="468" y="286" width="176" height="122" fill="none" stroke="var(--rule)"/><text x="476" y="302" font-size="10.5" class="m" fill="currentColor">WhatsApp pessoal, sem</text><text x="476" y="315" font-size="10.5" class="m" fill="currentColor">nome da marca</text><rect x="650" y="286" width="176" height="122" fill="none" stroke="var(--rule)"/><text x="658" y="302" font-size="10.5" class="m" fill="currentColor">Shopify checkout e</text><text x="658" y="315" font-size="10.5" class="m" fill="currentColor">Pagar.me (só a tomada).</text><text x="658" y="328" font-size="10.5" class="m" fill="currentColor">Nada registra o</text><text x="658" y="341" font-size="10.5" class="m" fill="currentColor">orçamento.</text><rect x="832" y="286" width="176" height="122" fill="none" stroke="var(--rule)"/><text x="840" y="302" font-size="10.5" class="m" fill="currentColor">Nenhum</text><rect x="1014" y="286" width="176" height="122" fill="none" stroke="var(--rule)"/><text x="1022" y="302" font-size="10.5" class="m" fill="currentColor">Nenhum</text></svg></div><div class="bpm" aria-hidden="true"><div class="st"><div class="sn">1. Descobre</div><div><span>Palco</span><p>Instagram e indicação. O link da bio leva a um site com senha.</p></div><div><span>Bastidor</span><p>Vitor posta as peças fotografadas em estúdio.</p></div><div><span>Sistemas</span><p>Instagram</p></div></div><div class="st"><div class="sn">2. Olha</div><div><span>Palco</span><p>Abertura &quot;Menos do mesmo.&quot;, grade com preço, página da peça sem prazo.</p></div><div><span>Bastidor</span><p>Agência mexe no tema; o time pede por e-mail.</p></div><div><span>Sistemas</span><p>Shopify, tema da agência</p></div></div><div class="st"><div class="sn">3. Pergunta</div><div><span>Palco</span><p>Botão &quot;A partir de&quot; abre o WhatsApp com a peça e os materiais escolhidos.</p></div><div><span>Bastidor</span><p>Alguém do time responde à mão, quando vê (suposição).</p></div><div><span>Sistemas</span><p>WhatsApp pessoal, sem nome da marca</p></div></div><div class="st"><div class="sn">4. Compra ou orça</div><div><span>Palco</span><p>Tomada: carrinho e checkout. Demais peças: orçamento dentro da conversa.</p></div><div><span>Bastidor</span><p>Orçamento feito à mão, caso a caso (suposição).</p></div><div><span>Sistemas</span><p>Shopify checkout e Pagar.me (só a tomada). Nada registra o orçamento.</p></div></div><div class="st"><div class="sn">5. Espera</div><div><span>Palco</span><p>Cerca de 120 dias sem aviso.</p></div><div><span>Bastidor</span><p>Produção acompanhada de cabeça; cliente pergunta.</p></div><div><span>Sistemas</span><p>Nenhum</p></div></div><div class="st"><div class="sn">6. Recebe e volta</div><div><span>Palco</span><p>Entrega. Depois, silêncio: sem convite nem novidade.</p></div><div><span>Bastidor</span><p>O que se sabe do cliente fica na memória de quem atendeu.</p></div><div><span>Sistemas</span><p>Nenhum</p></div></div></div></figure>
+<figure class="bp"><figcaption><b>Depois.</b> Quase tudo é conteúdo e configuração no painel. Ficha técnica na página da peça, rótulos, número com nome, modelos de mensagem, uma planilha. Só a proposta em 24 h e as mensagens por etapa pedem rotina nova do time.</figcaption><div class="bpscroll"><svg viewBox="0 0 1196 414" role="img" aria-label="Pode ser: o que muda em cada etapa, com as caixas cheias."><path d="M104,0 h166 l10,12.0 l-10,12.0 h-166  z" fill="var(--glass)"/><text x="192.0" y="16.0" text-anchor="middle" font-size="12">Descobre</text><path d="M286,0 h166 l10,12.0 l-10,12.0 h-166 l10,-12.0 l-10,-12.0 z" fill="var(--glass)"/><text x="374.0" y="16.0" text-anchor="middle" font-size="12">Olha</text><path d="M468,0 h166 l10,12.0 l-10,12.0 h-166 l10,-12.0 l-10,-12.0 z" fill="var(--glass)"/><text x="556.0" y="16.0" text-anchor="middle" font-size="12">Pergunta</text><path d="M650,0 h166 l10,12.0 l-10,12.0 h-166 l10,-12.0 l-10,-12.0 z" fill="var(--glass)"/><text x="738.0" y="16.0" text-anchor="middle" font-size="12">Compra ou orça</text><path d="M832,0 h166 l10,12.0 l-10,12.0 h-166 l10,-12.0 l-10,-12.0 z" fill="var(--glass)"/><text x="920.0" y="16.0" text-anchor="middle" font-size="12">Espera</text><path d="M1014,0 h166 l10,12.0 l-10,12.0 h-166 l10,-12.0 l-10,-12.0 z" fill="var(--glass)"/><text x="1102.0" y="16.0" text-anchor="middle" font-size="12">Recebe e volta</text><text x="0" y="46" font-size="12">Palco</text><text x="0" y="60" font-size="10" class="m" fill="var(--muted)">a pessoa vê</text><rect x="104" y="30" width="176" height="122" fill="currentColor" stroke="none"/><text x="112" y="46" font-size="11" fill="var(--page)">Instagram aponta para a</text><text x="112" y="59" font-size="11" fill="var(--page)">loja (05.11) e para o site</text><text x="112" y="72" font-size="11" fill="var(--page)">aberto. Anúncio só da</text><text x="112" y="85" font-size="11" fill="var(--page)">tomada.</text><rect x="286" y="30" width="176" height="122" fill="currentColor" stroke="none"/><text x="294" y="46" font-size="11" fill="var(--page)">Grade com &quot;Sob encomenda&quot;</text><text x="294" y="59" font-size="11" fill="var(--page)">e &quot;Pronta entrega&quot;. Página</text><text x="294" y="72" font-size="11" fill="var(--page)">da peça vira ficha</text><text x="294" y="85" font-size="11" fill="var(--page)">técnica: prazo, &quot;a partir</text><text x="294" y="98" font-size="11" fill="var(--page)">de&quot;, medidas, blocos.</text><rect x="468" y="30" width="176" height="122" fill="currentColor" stroke="none"/><text x="476" y="46" font-size="11" fill="var(--page)">&quot;Conversar no WhatsApp&quot; no</text><text x="476" y="59" font-size="11" fill="var(--page)">botão. O número aparece</text><text x="476" y="72" font-size="11" fill="var(--page)">como More.</text><rect x="650" y="30" width="176" height="122" fill="currentColor" stroke="none"/><text x="658" y="46" font-size="11" fill="var(--page)">Tomada: compra. Demais:</text><text x="658" y="59" font-size="11" fill="var(--page)">proposta escrita em até 24</text><text x="658" y="72" font-size="11" fill="var(--page)">h, com prazo e condição</text><text x="658" y="85" font-size="11" fill="var(--page)">(suposição).</text><rect x="832" y="30" width="176" height="122" fill="currentColor" stroke="none"/><text x="840" y="46" font-size="11" fill="var(--page)">Quatro mensagens, uma por</text><text x="840" y="59" font-size="11" fill="var(--page)">etapa: confirmado, em</text><text x="840" y="72" font-size="11" fill="var(--page)">produção, acabamento,</text><text x="840" y="85" font-size="11" fill="var(--page)">entrega.</text><rect x="1014" y="30" width="176" height="122" fill="currentColor" stroke="none"/><text x="1022" y="46" font-size="11" fill="var(--page)">Entrega com foto. Convite</text><text x="1022" y="59" font-size="11" fill="var(--page)">para o próximo lançamento.</text><text x="0" y="174" font-size="12">Bastidor</text><text x="0" y="188" font-size="10" class="m" fill="var(--muted)">o time faz</text><rect x="104" y="158" width="176" height="122" fill="currentColor" stroke="none"/><text x="112" y="174" font-size="11" fill="var(--page)">Posts com o nome da peça e</text><text x="112" y="187" font-size="11" fill="var(--page)">&quot;na loja&quot;.</text><rect x="286" y="158" width="176" height="122" fill="currentColor" stroke="none"/><text x="294" y="174" font-size="11" fill="var(--page)">Vitor edita foto, texto,</text><text x="294" y="187" font-size="11" fill="var(--page)">preço e rótulo no painel,</text><text x="294" y="200" font-size="11" fill="var(--page)">sem agência.</text><rect x="468" y="158" width="176" height="122" fill="currentColor" stroke="none"/><text x="476" y="174" font-size="11" fill="var(--page)">Resposta com modelo pronto</text><text x="476" y="187" font-size="11" fill="var(--page)">e registro na lista: nome,</text><text x="476" y="200" font-size="11" fill="var(--page)">peça, é arquiteto?</text><rect x="650" y="158" width="176" height="122" fill="currentColor" stroke="none"/><text x="658" y="174" font-size="11" fill="var(--page)">Proposta montada a partir</text><text x="658" y="187" font-size="11" fill="var(--page)">da ficha técnica.</text><rect x="832" y="158" width="176" height="122" fill="currentColor" stroke="none"/><text x="840" y="174" font-size="11" fill="var(--page)">Modelos prontos; data</text><text x="840" y="187" font-size="11" fill="var(--page)">confirmada no pedido.</text><rect x="1014" y="158" width="176" height="122" fill="currentColor" stroke="none"/><text x="1022" y="174" font-size="11" fill="var(--page)">Lista de convidados com</text><text x="1022" y="187" font-size="11" fill="var(--page)">consentimento.</text><text x="0" y="302" font-size="12">Sistemas</text><text x="0" y="316" font-size="10" class="m" fill="var(--muted)">onde fica</text><rect x="104" y="286" width="176" height="122" fill="currentColor" stroke="none"/><text x="112" y="302" font-size="10.5" class="m" fill="var(--page)">Instagram, Meta Insights</text><rect x="286" y="286" width="176" height="122" fill="currentColor" stroke="none"/><text x="294" y="302" font-size="10.5" class="m" fill="var(--page)">Painel do Shopify</text><rect x="468" y="286" width="176" height="122" fill="currentColor" stroke="none"/><text x="476" y="302" font-size="10.5" class="m" fill="var(--page)">WhatsApp Business,</text><text x="476" y="315" font-size="10.5" class="m" fill="var(--page)">planilha de contatos</text><rect x="650" y="286" width="176" height="122" fill="currentColor" stroke="none"/><text x="658" y="302" font-size="10.5" class="m" fill="var(--page)">Shopify, Pagar.me,</text><text x="658" y="315" font-size="10.5" class="m" fill="var(--page)">planilha</text><rect x="832" y="286" width="176" height="122" fill="currentColor" stroke="none"/><text x="840" y="302" font-size="10.5" class="m" fill="var(--page)">WhatsApp Business,</text><text x="840" y="315" font-size="10.5" class="m" fill="var(--page)">planilha</text><rect x="1014" y="286" width="176" height="122" fill="currentColor" stroke="none"/><text x="1022" y="302" font-size="10.5" class="m" fill="var(--page)">Planilha, e-mail</text></svg></div><div class="bpm" aria-hidden="true"><div class="st"><div class="sn">1. Descobre</div><div class="nw"><span>Palco</span><p>Instagram aponta para a loja (05.11) e para o site aberto. Anúncio só da tomada.</p></div><div class="nw"><span>Bastidor</span><p>Posts com o nome da peça e &quot;na loja&quot;.</p></div><div class="nw"><span>Sistemas</span><p>Instagram, Meta Insights</p></div></div><div class="st"><div class="sn">2. Olha</div><div class="nw"><span>Palco</span><p>Grade com &quot;Sob encomenda&quot; e &quot;Pronta entrega&quot;. Página da peça vira ficha técnica: prazo, &quot;a partir de&quot;, medidas, blocos.</p></div><div class="nw"><span>Bastidor</span><p>Vitor edita foto, texto, preço e rótulo no painel, sem agência.</p></div><div class="nw"><span>Sistemas</span><p>Painel do Shopify</p></div></div><div class="st"><div class="sn">3. Pergunta</div><div class="nw"><span>Palco</span><p>&quot;Conversar no WhatsApp&quot; no botão. O número aparece como More.</p></div><div class="nw"><span>Bastidor</span><p>Resposta com modelo pronto e registro na lista: nome, peça, é arquiteto?</p></div><div class="nw"><span>Sistemas</span><p>WhatsApp Business, planilha de contatos</p></div></div><div class="st"><div class="sn">4. Compra ou orça</div><div class="nw"><span>Palco</span><p>Tomada: compra. Demais: proposta escrita em até 24 h, com prazo e condição.</p></div><div class="nw"><span>Bastidor</span><p>Proposta montada a partir da ficha técnica.</p></div><div class="nw"><span>Sistemas</span><p>Shopify, Pagar.me, planilha</p></div></div><div class="st"><div class="sn">5. Espera</div><div class="nw"><span>Palco</span><p>Quatro mensagens, uma por etapa: confirmado, em produção, acabamento, entrega.</p></div><div class="nw"><span>Bastidor</span><p>Modelos prontos; data confirmada no pedido.</p></div><div class="nw"><span>Sistemas</span><p>WhatsApp Business, planilha</p></div></div><div class="st"><div class="sn">6. Recebe e volta</div><div class="nw"><span>Palco</span><p>Entrega com foto. Convite para o próximo lançamento.</p></div><div class="nw"><span>Bastidor</span><p>Lista de convidados com consentimento.</p></div><div class="nw"><span>Sistemas</span><p>Planilha, e-mail</p></div></div></div></figure>
+</section>
+
+<section id="crencas">
+  <div class="eyebrow">[03] O que a call deu por certo</div>
+  <h2>Duas certezas, postas à prova.</h2>
+    <p>Duas ideias saíram da call de 15.10 como quase certas. Fomos procurar o que fala contra elas. Na própria call, no teste do site, nas lojas premiadas e nos 42 posts.</p>
+  <div class="bel">
+    <div>
+      <h3>A. "O gargalo é captar o contato de quem visita o site."</h3>
+      <h4>Quem disse</h4>
+      <ul><li>O JJ levantou. O time concedeu com um "às vezes" e ponderou contra: é compra de alto valor, a pessoa quer que alguém explique o que muda com a madeira.</li></ul>
+      <h4>Contra</h4>
+      <ul>
+        <li>O botão "A partir de" já abre o WhatsApp com peça, madeira e tecido. O sinal existe. O que falta é onde guardá-lo.</li>
+        <li>Instagram: 14 dos 195 comentários de terceiros pedem preço, medida ou informação. Nenhum tem resposta pública da More nos dados coletados.</li>
+        <li>Dito na call: cem clientes num ano está ótimo. Cem pessoas cabem numa planilha; não pedem uma base de dez mil e-mails.</li>
+        <li>Das lojas premiadas, as mais parecidas com a More terminam em "pedir orçamento", sem formulário de e-mail.</li>
+      </ul>
+      <h4>Sabemos / suposição</h4>
+      <ul>
+        <li>Sabemos: o site não guarda contato antes do WhatsApp; a compra da tomada já registra nome, e-mail e endereço; o cadastro do 2D/3D não segura o arquivo.</li>
+        <li>Suposição: que quem visita e não escreve é cliente perdido. O site está com senha; ninguém mediu.</li>
+      </ul>
+      <h4>Mudaria de ideia se</h4>
+      <ul>
+        <li>Nas primeiras 50 conversas, o time não souber quem perguntou o quê. Ferramenta: a lista única da sugestão 3.</li>
+        <li>O Shopify Análises mostrar mais de 300 sessões por semana nas peças e menos de 2% clicando em "Conversar". Ferramenta: Análises mais um link rastreável no botão.</li>
+      </ul>
+      <div class="verd"><p><b>Provisório.</b> O gargalo é guardar e responder o interesse que já chega, não captar e-mail. WhatsApp segue como porta; "e-mail antes" só entra em teste se o segundo gatilho acontecer.</p></div>
+    </div>
+    <div>
+      <h3>B. "Preço fora da grade é a lógica certa, como numa galeria."</h3>
+      <h4>Quem disse</h4>
+      <ul><li>O JJ propôs. O time concordou no fim, com "talvez" e "depois da abertura", e antes tinha defendido o preço visível: fez questão de preço em tudo, e o preço já corta quem só quer ter uma ideia de valor.</li></ul>
+      <h4>Contra</h4>
+      <ul>
+        <li>O que o JJ via, "preço ali fora dá sentido de que dá pra comprar", foi resolvido na própria call com a etiqueta na foto, sem tirar preço.</li>
+        <li>Das lojas premiadas analisadas, duas escondem o preço na grade e seis mostram. In Common With mostra "a partir de" com o prazo ao lado.</li>
+        <li>O post mais curtido da More, a Luminária Ngoni com 145 curtidas, recebeu "Qual valor, por gentileza?" na primeira interação. A pergunta de preço veio junto com o desejo, não depois.</li>
+        <li>Quem esconde preço tem configurador e equipe de orçamento. A More tem três pessoas e um WhatsApp; sem preço, a pergunta cai no colo do time.</li>
+      </ul>
+      <h4>Sabemos / suposição</h4>
+      <ul>
+        <li>Sabemos: a grade mostra o valor cheio e a página da peça mostra "A partir de"; trocar madeira ou tecido ainda não muda o preço.</li>
+        <li>Suposição: que o preço na grade afasta quem entraria, e que a loja física vai funcionar sem etiqueta de preço. Nenhum dos dois está nos arquivos.</li>
+      </ul>
+      <h4>Mudaria de ideia se</h4>
+      <ul>
+        <li>Com preço na grade, menos de 25% das sessões que a veem abrirem alguma peça. Ferramenta: Shopify Análises, caminho home para produto.</li>
+        <li>Em mais de metade das primeiras 50 conversas, a primeira pergunta for "quanto custa?". Ferramenta: a coluna "primeira pergunta" da lista.</li>
+        <li>O time escolher etiqueta de preço nas peças da loja em 05.11. Aí a analogia da galeria cai para o site também.</li>
+      </ul>
+      <div class="verd"><p><b>Provisório.</b> Não tirar o preço da grade antes da abertura. Trocar o valor seco por "a partir de R$ X". Marcar a tomada como "pronta entrega". Testar "sem preço" só depois de quatro semanas de dados.</p></div>
+    </div>
+  </div>
+
+</section>
+
+<section id="prints">
+  <div class="eyebrow">[04] Prints anotados das lojas premiadas</div>
+  <h2>Como funciona, não como parece.</h2>
+  <p>Lojas de Home &amp; Decor premiadas no Ecom Design Awards. Abertas no navegador em 15.10, até a tela de pagamento. Cada print abre a página original. A faixa escura diz o que o elemento faz.</p>
+  <div class="prints">
+        <div class="pr"><a href="https://kanndesign.com/products/bureau-pastille-pastille-2-drawers-d3065"><figure><img src="img/casos/kann-pdp-prazo.jpg" alt="Página da Kann Design: preço, botão de compra e a linha sur commande, livraison sous 9 à 14 semaines"><div class="ann"><b><span>mecanismo</span></b>O prazo está escrito embaixo do botão, antes de qualquer pergunta. A primeira dúvida da arquiteta é respondida sem WhatsApp. Para a More: "Sob encomenda · cerca de 120 dias".</div><figcaption>kanndesign.com · visto em 15.10</figcaption></figure></a></div>
+    <div class="pr"><a href="https://norr11.com/collections/chairs"><figure><img src="img/casos/norr11-grid-sem-preco.jpg" alt="Grade de cadeiras da NORR11 sem preço nos cards"><div class="ann"><b><span>mecanismo</span></b>Grade sem preço, mas a página da peça termina em "pedir orçamento" com blocos para baixar. Esconder o preço só funciona porque o caminho seguinte é claro. Na More ele ainda não é.</div><figcaption>norr11.com · visto em 15.10</figcaption></figure></a></div>
+    <div class="pr"><a href="https://bemz.com/en-gb/products/EKT1-AGL101"><figure><img src="img/casos/bemz-pdp-amostra-prazo.jpg" alt="Bemz: botão Add free sample ao lado do botão de compra e a data estimada de envio"><div class="ann"><b><span>mecanismo</span></b>"Amostra grátis" ao lado de "comprar" e uma data de envio escrita. A pessoa dá o endereço em troca de um pedaço de tecido, não de uma promessa. Para a More: amostra sob pedido no WhatsApp, anotada na lista.</div><figcaption>bemz.com · visto em 15.10</figcaption></figure></a></div>
+    <div class="pr"><a href="https://www.muuto.com/product/Outline-Sofa-3-Seater--OU3S/OU3SCD12101/"><figure><img src="img/casos/muuto-pdp-arquivos.jpg" alt="Muuto: acordeão com 2D, 3D e Revit e o link Download Architect Files"><div class="ann"><b><span>mecanismo</span></b>Os blocos 2D, 3D e Revit ficam na própria página, sem cadastro. A peça entra no projeto no mesmo dia. O bloco da tomada já está público no código do mymore.design; falta só mostrar.</div><figcaption>muuto.com · visto em 15.10</figcaption></figure></a></div>
+    <div class="pr"><a href="https://www.incommonwith.com/products/ceramic-disc-surface-mount"><figure><img src="img/casos/icw-pdp-leadtime.jpg" alt="In Common With: seletores de acabamento, Lead Time 12 weeks, data estimada e botão Inquire About This Item"><div class="ann"><b><span>mecanismo</span></b>"Prazo: 12 semanas · envio estimado: 7 de janeiro". Ao lado, "a partir de" e o botão "Perguntar sobre esta peça". É a ficha técnica inteira num bloco: prazo, data, preço de partida, conversa.</div><figcaption>incommonwith.com · visto em 15.10</figcaption></figure></a></div>
+    <div class="pr"><a href="https://mymore.design/products/poltrona-leticia"><figure><img src="img/casos/more-pdp-leticia-barras.jpg" alt="Página da Poltrona Leticia no celular: o topo da página e, embaixo, as duas barras fixas"><div class="ann"><b><span>o que já existe na More</span></b>O botão "A partir de" abre o WhatsApp com peça, madeira e tecido escolhidos. Faltam o prazo ao lado, outro nome no botão e tirar a barra do texto.</div><figcaption>mymore.design · visto em 15.10</figcaption></figure></a></div>
+
+  </div>
+</section>
+
+<section id="medicao">
+  <div class="eyebrow">[05] Medição desde a semana em que a senha cai</div>
+  <h2>Seis números, para janeiro não virar discussão de gosto.</h2>
+  <p>Se o time quiser medir, dá para fazer com ferramenta que já existe. Uma pessoa anota toda sexta, numa aba da planilha da sugestão 3. As duas primeiras semanas são a linha de base; nada muda no site nesse período.</p>
+  <div class="meas" role="region" aria-label="Plano de medição" tabindex="0"><table>
+    <thead><tr><th>O quê</th><th>Onde ver</th><th>Como colher</th><th>O que responde</th></tr></thead>
+    <tbody>
+      <tr><td>Visitas por semana e páginas mais vistas</td><td data-l="Onde ver">Shopify, Análises › Relatórios › Sessões e Páginas</td><td data-l="Como colher">Anotar sessões, origem (Instagram, direto, Google) e as 5 páginas mais vistas</td><td data-l="O que responde">Quanta gente chega e quais peças olham. Se a Leticia lidera no site e a Ngoni no Instagram, o Instagram não está vendendo o que o site mostra.</td></tr>
+      <tr><td>Conversas de WhatsApp por semana e a primeira pergunta</td><td data-l="Onde ver">Lista única da sugestão 3</td><td data-l="Como colher">Uma linha por conversa: data, origem (site, Instagram, loja), peça, primeira pergunta (preço, prazo, outra)</td><td data-l="O que responde">Se a primeira pergunta é prazo, o preço na grade não assusta. Se é preço, o "a partir de" já deveria estar na grade.</td></tr>
+      <tr><td>Cliques em "Conversar no WhatsApp"</td><td data-l="Onde ver">Meta, Gerenciador de Eventos (o pixel, o código que conta visitas e compras) ou a planilha</td><td data-l="Como colher">Com o pixel ativo, o evento "Contato"; sem ele, contar na planilha as conversas com origem "site"</td><td data-l="O que responde">Quantos de cem visitantes falam com o time. Abaixo de dois em cem, o problema é desejo ou clareza, não captura.</td></tr>
+      <tr><td>Tomada: visualizações, carrinho, compra</td><td data-l="Onde ver">Shopify, Análises › Funil de conversão</td><td data-l="Como colher">Anotar as três etapas e o número de pedidos</td><td data-l="O que responde">Única venda online. Se vê e não compra, é preço, frete ou confiança; se compra, é o anúncio que vale testar.</td></tr>
+      <tr><td>Instagram: visitas ao perfil, cliques no link, salvamentos por post</td><td data-l="Onde ver">App do Instagram, Insights (conta profissional)</td><td data-l="Como colher">Anotar os três totais da semana e os 3 posts mais salvos</td><td data-l="O que responde">Salvamento é desejo sem compromisso; é a lista do que a loja deveria ter à vista.</td></tr>
+      <tr><td>Pagamentos recusados</td><td data-l="Onde ver">Painel da Pagar.me, Transações</td><td data-l="Como colher">Filtrar por "recusada" nas duas primeiras semanas</td><td data-l="O que responde">Conta nova recusa em silêncio. Cada recusa é um cliente para chamar no WhatsApp.</td></tr>
+    </tbody>
+  </table></div>
+  <div class="base">
+    <div><h3>Linha de base</h3><p>Semanas 1 e 2 depois da senha cair. Uma linha por semana, seis números. Comparar sempre com elas.</p></div>
+    <div><h3>Quando olhar</h3><p>Toda sexta, cinco minutos. Em 05.12, trinta dias depois da abertura, uma leitura de meia hora com os três.</p></div>
+    <div><h3>O que decide</h3><p>Preço na grade, pela primeira pergunta. Anúncio da tomada, pelo funil. O que a loja destaca, pelos salvamentos.</p></div>
+  </div>
+</section>
+
+<section id="anexos">
+  <div class="eyebrow">[06] Anexos e links</div>
+  <h2>Tudo num lugar só.</h2>
+  <p>O endereço mymore.netlify.app é aberto, sem senha: é o link para mandar.</p>
+  <div class="hub">
+        <a href="https://mymore.netlify.app/"><span class="k">Endereço</span><h3>mymore.netlify.app</h3><span>Abre no índice das sete páginas: guia, sistema, coleção, loja 3D, abertura, stack e catálogo. O guia fica em /guia/.</span></a>
+    <a href="plano.html"><span class="k">Anexo</span><h3>A lista completa: 28 melhorias</h3><span>Impacto, esforço, quando, quem, por quê e de onde veio cada nota.</span></a>
+    <a href="pesquisa-lojas.html"><span class="k">Anexo</span><h3>As onze lojas, etapa por etapa</h3><span>O que cada loja premiada faz em cada etapa, com os links. Em inglês.</span></a>
+    <a href="revisoes.html"><span class="k">Anexo</span><h3>Revisões completas</h3><span>Material de trabalho. A crítica ao plano, o teste do site fluxo a fluxo e a revisão deste texto.</span></a>
+    <a href="https://mymore.design"><span class="k">Site</span><h3>mymore.design</h3><span>O site atual, ainda com senha.</span></a>
+    <a href="https://www.instagram.com/more.mymore"><span class="k">Instagram</span><h3>@more.mymore</h3><span>5,6 mil seguidores. 42 posts de dez/2025 a out/2026, mediana de 49 curtidas.</span></a>
+    <a href="https://admin.shopify.com/"><span class="k">Loja</span><h3>Painel do Shopify</h3><span>Onde se troca foto, texto, preço, rótulo e título. É onde a sugestão 2 acontece.</span></a>
+    <a href="/sistema/"><span class="k">Sistema de design</span><h3>Página do sistema de design</h3><span>Cores, tipografia, marca, voz, impresso. Tokens conferidos pelo site, cada regra com checagem por script. A tabela de aceite fica aberta para o time, sem pressa.</span></a>
+    <a href="https://github.com/joaohjonk/more"><span class="k">Sistema de design</span><h3>Repositório More</h3><span>Os mesmos tokens e regras em arquivos que pessoas e IA leem.</span></a>
+    <a href="https://github.com/joaohjonk/cstack"><span class="k">Como isto foi feito</span><h3>cstack, gstack e Claude Code</h3><span>O método do JJ para criar com IA a partir de um sistema escrito. O testador de sites do Garry Tan. A ferramenta onde tudo rodou. Para quem quiser repetir.</span></a>
+    <a href="https://felixrieseberg.com/"><span class="k">Referência</span><h3>O site 3D do Felix Rieseberg, que inspirou a loja em 3D</h3><span>Foto de capa antes do 3D. Foi lido antes de fazer a loja da More em 3D.</span></a>
+    <a href="https://www.ecomdesignawards.com/category/home-decor"><span class="k">Referência</span><h3>Ecom Design Awards · Home &amp; Decor</h3><span>As lojas premiadas de onde vieram os prints.</span></a>
+
+  </div>
+</section>
+
+<section id="stack">
+  <div class="eyebrow">[07] Stack e automações: o que roda e o que fazer</div>
+  <h2>Elegante na frente. Automático atrás.</h2>
+  <p>A operação tem página própria: <a href="/stack/">Stack e automações</a>, cinco minutos. Diz o que roda hoje, com prova. O que fazer até 05.11 e o que fica para depois.</p>
+  <div class="base" style="margin-top:var(--s-lg)">
+    <div><h3>O que roda hoje</h3><p>Shopify com tema sob medida, Pagar.me no checkout e WhatsApp num número pessoal. Nenhuma medição além da nativa. Preços de R$ 1 no catálogo.</p></div>
+    <div><h3>O que fazer até 05.11</h3><p>Número da marca no WhatsApp Business, pixel do Meta, preços e nota fiscal da tomada. Depois, o Flow com etiquetas e o placar na planilha. Flow é o automatizador que já vem no Shopify.</p></div>
+    <div><h3>O que fica em aberto</h3><p>Seis perguntas para o time, no formato de ambição, público, canais, preparo e economia. As que a call já respondeu estão respondidas.</p></div>
+  </div>
+  <p class="muted" style="font-size:14px;margin-top:var(--s-lg)">A jornada inteira da cliente, do desejo à segunda peça. Em cada toque, o que é gente e o que é máquina: <a href="/stack/jornada/">a jornada</a>.</p>
+</section>
+
+<section id="prioridades">
+  <div class="eyebrow">[08] Prioridades</div>
+  <h2>Dez coisas, nesta ordem.</h2>
+  <p>Vem da lista de 28 melhorias e da tabela do stack. O que move venda ou relação com arquitetas em 90 dias, com menos esforço. As quatro primeiras são texto e configuração no painel. Nenhuma pede agência. Nomes e datas são proposta; o time troca.</p>
+  <ol class="lst">
+    <li><span class="n">01</span><div>Preços de R$ 1 fora da loja, peso em todas as peças, imposto do checkout conferido.<span class="w">Vitor · até 29.10</span></div></li>
+    <li><span class="n">02</span><div>"Sob encomenda · cerca de 120 dias" e "Pronta entrega" nos rótulos; o prazo ao lado do botão; preço "a partir de" na grade.<span class="w">Vitor · até 29.10</span></div></li>
+    <li><span class="n">03</span><div>Botão "Conversar no WhatsApp" e o número da marca no WhatsApp Business, com nome e foto.<span class="w">Vitor, o botão; Edu, o número · até 29.10</span></div></li>
+    <li><span class="n">04</span><div>Endereço, horário e "visite a loja" no site; perfil da More no Google; senha removida.<span class="w">Fred · até 29.10</span></div></li>
+    <li><span class="n">05</span><div>Lista única de contatos, com consentimento, desde o primeiro convidado de 05.11.<span class="w">Edu · antes de 05.11</span></div></li>
+    <li><span class="n">06</span><div>Pixel do Meta e Google Analytics ligados antes da senha cair; os seis números de [05] toda sexta.<span class="w">Vitor com o JJ · antes de 05.11</span></div></li>
+    <li><span class="n">07</span><div>Termos em português, política de troca da tomada, nota fiscal: quem emite.<span class="w">Fred · antes de 05.11</span></div></li>
+    <li><span class="n">08</span><div>Duas horas no painel: o Vitor troca foto, texto, preço e rótulo sem agência.<span class="w">JJ e Vitor · quando der</span></div></li>
+    <li><span class="n">09</span><div>A ficha técnica como padrão da página da peça: prazo, "a partir de", medidas, blocos abertos com e-mail opcional.<span class="w">Vitor com o JJ · até dezembro</span></div></li>
+    <li><span class="n">10</span><div>Depois, um por vez e com 30 dias de prova cada: Flow, proposta em 24 h, CRM de conversa, programa para arquitetas, pré-venda de protótipo, o livro.<span class="w">Time · dezembro em diante</span></div></li>
+  </ol>
+</section>
+
+<section id="perguntas">
+  <div class="eyebrow">[09] Perguntas para o time</div>
+  <h2>O que só a More responde.</h2>
+  <p>Doze perguntas, para conversar junto. Nenhuma trava a abertura. Cada uma muda uma parte deste guia quando for respondida. A resposta vale mais que qualquer sugestão aqui.</p>
+  <ol class="lst">
+    <li><span class="n">01</span><div>Preço na grade: "a partir de" ou escondido? Decidir depois das primeiras 50 conversas e da loja aberta.</div></li>
+    <li><span class="n">02</span><div>Captura: e-mail antes ou depois do WhatsApp? Confirmar os blocos 2D e 3D abertos, com e-mail opcional.</div></li>
+    <li><span class="n">03</span><div>Pré-venda de protótipo, com sinal e mês de entrega: sim, quando, e como fica o direito de arrependimento?</div></li>
+    <li><span class="n">04</span><div>O site é uma exceção ao guia de uso (preto quente, off-white, Muoto Mono), ou o guia manda? A tabela está em [11].</div></li>
+    <li><span class="n">05</span><div>Fontes: a Muoto normal tem licença para a web? O segundo domínio e o arquivo .otf servido hoje vão para a 205TF, a fundição que vende a Muoto.</div></li>
+    <li><span class="n">06</span><div>Quem fotografou a campanha e os stills, e o que o contrato cobre: site, redes, impresso, prazo.</div></li>
+    <li><span class="n">07</span><div>O que é sucesso em 30 dias: quantas tomadas, quantas conversas, quantos convidados na loja.</div></li>
+    <li><span class="n">08</span><div>Quem são as cem primeiras pessoas: a lista de escritórios, os convidados de 05.11, quem já comprou do ateliê.</div></li>
+    <li><span class="n">09</span><div>As duas ou três frases que o time repete em toda conversa. O nome do lugar: loja. Os nomes oficiais das peças e das cores.</div></li>
+    <li><span class="n">10</span><div>Catálogo por ambientes e fotos de projeto: direção para 2027 ou não, e com que rigor na escolha das fotos.</div></li>
+    <li><span class="n">11</span><div>Gente nas imagens: bastidores só no Instagram e no livro? Um vídeo institucional, um dia?</div></li>
+    <li><span class="n">12</span><div>Quem faz o quê até 05.11, com dia. A lista de [08] é a proposta.</div></li>
+  </ol>
+</section>
+
+<section id="lancamento">
+  <div class="eyebrow">[10] Para o lançamento</div>
+  <h2>De graça ou quase, antes de 05.11.</h2>
+  <p>Além das dez de [08]. O que guarda o contato e começa a jornada, sem ferramenta nova. Tudo é painel, aplicativo grátis ou texto. A cliente não vê nada disso. Vê uma conversa com nome e um site que responde antes de ela perguntar.</p>
+  <ol class="lst">
+    <li><span class="n">01</span><div>WhatsApp Business com o nome e a foto da More, mensagem de ausência com horário, uma etiqueta por conversa.</div></li>
+    <li><span class="n">02</span><div>Blocos 2D e 3D abertos, com e-mail opcional. Quem deixa o e-mail vira cliente no Shopify, com etiqueta. Ler toda semana.</div></li>
+    <li><span class="n">03</span><div>Aceite de novidades no checkout da tomada e no login. Com o Shopify Email, grátis, um e-mail por mês com as peças novas.</div></li>
+    <li><span class="n">04</span><div>Convite com QR e link rastreável. A confirmação pelo WhatsApp vira uma linha na lista. Etiquetas com QR na loja, uma por peça.</div></li>
+    <li><span class="n">05</span><div>Quatro mensagens por etapa (confirmado, em produção, acabamento, entrega) e a proposta em 24 h, como modelos de texto.</div></li>
+    <li><span class="n">06</span><div>"Avise-me" na tomada sem estoque. Visita com hora marcada pela agenda do Google, com o link no site.</div></li>
+  </ol>
+</section>
+
+<section id="depende">
+  <div class="eyebrow">[11] Com o time da More, depois</div>
+  <h2>O que fica para fazer junto.</h2>
+  <h3 id="discordam">Onde o guia e o site discordam</h3>
+  <p>O guia de uso chegou em 15.10. Em seis pontos, ele e o site medido não batem. O sistema segue como está até o time escolher.</p>
+  <div class="meas" role="region" aria-label="Onde o guia e o site discordam" tabindex="0"><table>
+    <thead><tr><th>O quê</th><th>No site, medido</th><th>No guia da More</th><th>Para o time</th></tr></thead>
+    <tbody>
+      <tr><td>Preto</td><td data-l="No site, medido">Quente, hex 2D211E</td><td data-l="No guia da More">Preto puro, K100</td><td data-l="Para o time">Qual vale?</td></tr>
+      <tr><td>Fundo</td><td data-l="No site, medido">Off-white, hex E5E1DB</td><td data-l="No guia da More">Branco</td><td data-l="Para o time">Qual vale?</td></tr>
+      <tr><td>Cinza</td><td data-l="No site, medido">Quente, hex 5D554F, no rodapé</td><td data-l="No guia da More">Neutro, hex 434345</td><td data-l="Para o time">Qual vale?</td></tr>
+      <tr><td>Campos de cor</td><td data-l="No site, medido">Cinco tons tirados das fotos, com nomes nossos</td><td data-l="No guia da More">Nove cores sazonais com Pantone, sem nome</td><td data-l="Para o time">Qual vale?</td></tr>
+      <tr><td>Luz da foto</td><td data-l="No site, medido">Sombra de janela e fundo quase preto</td><td data-l="No guia da More">Sem sombra de janela, sem luz dramática</td><td data-l="Para o time">Qual vale?</td></tr>
+      <tr><td>Muoto Mono</td><td data-l="No site, medido">Preços, medidas e etiquetas</td><td data-l="No guia da More">Não aparece. O guia cita só a Muoto Regular</td><td data-l="Para o time">Qual vale?</td></tr>
+    </tbody>
+  </table></div>
+  <div class="so">
+    <span class="k">Só a More responde</span>
+    <ul>
+      <li>A Muoto normal tem licença para a web? Vieram as fontes, sem o recibo dessa parte.</li>
+      <li>Quem fotografou, e onde as fotos podem sair: impresso, redes, site?</li>
+      <li>O site é uma exceção ao guia, escrita e combinada? Ou o guia vale para ele também?</li>
+    </ul>
+  </div>
+  <div class="dep">
+    <div><span class="k">depende de: acesso ao Shopify</span><p>Conferir impostos, apps instalados e o pixel do Meta. Sem isso, a sugestão 1 fica com o Vitor. E a medição começa sem o evento de clique.</p></div>
+    <div><span class="k">depende de: log de WhatsApp anonimizado</span><p>As conversas dos últimos meses, sem nomes. Reescreve a ordem das sugestões: mostra a primeira pergunta real e quantas conversas viram pedido.</p></div>
+    <div><span class="k">depende de: uma arquiteta de fora</span><p>Lê este resumo e a página da Leticia no celular. Depois conta o que entendeu.</p></div>
+    <div><span class="k">depende de: Meta Insights</span><p>Salvamentos e cliques por post dos últimos 90 dias. Diz o que a loja deve ter à vista em 05.11.</p></div>
+    <div><span class="k">depende de: gravação da call</span><p>Com o áudio, o tom e as hesitações entram na leitura das duas crenças de [03].</p></div>
+    <div><span class="k">depende de: gráfica e preço</span><p>Convite, livro e etiquetas seguem sem sangria até a gráfica confirmar as cores. O preço real da TOM.01 também falta: hoje está R$ 1.</p></div>
+    <div><span class="k">mais tarde, com o time: a loja em 3D</span><p>Hoje é prova do possível. Vira planta fiel com quatro coisas. Modelos 3D das peças, o corte 301_A, fotos da obra, a lista do 05.11.</p></div>
+    <div><span class="k">uma ideia para depois: o catálogo associativo</span><p>Uma peça pertence, ao mesmo tempo, a uma coleção, uma casa, um material e uma história. É direção sugerida, não compromisso; nada muda no site de hoje. <a href="/catalogo/documento/">O documento</a> termina com as perguntas que só o time responde.</p></div>
+    <div><span class="k">bom ter: programa para arquitetos</span><p>Condição de RT escrita: a reserva técnica, comissão da arquiteta. Contato direto com Fred e Edu. Lista de 30 a 50 escritórios. Fica para depois da abertura.</p></div>
+    <div><span class="k">a prova real: 05.11</span><p>Se alguns dos sete ajustes da sugestão 1 estiverem feitos, este guia serviu. Se nenhum fizer sentido, também vale saber.</p></div>
+  </div>
+  <div class="ia">
+    <p><b>Feito com IA:</b> a leitura do site e das lojas, os prints, o teste do site. As páginas de exemplo e as revisões deste texto. <b>Opinião de pessoa:</b> as três sugestões, as prioridades, a ordem. O que entrou e o que saiu. Escolhas do JJ.</p>
+  </div>
+</section>
+
+</div>
+
+<footer><div class="wrap">
+  <p>Feito com o sistema de design da More. Tokens medidos de mymore.design e do Instagram em 15.10.2026. Fontes desta página: DM Sans e Martian Mono, no lugar da Muoto e da Muoto Mono.</p>
+</div></footer>
+</div>
+
+<div class="barzone"><div class="bar" aria-label="Navegação">
+  <svg viewBox="0 0 272 69" role="img" aria-label="More"><path d="M176.593 23.0819V1.91833H150.317V66.5948H176.593V44.2791H205.243V1.91833C189.55 1.91833 177.465 13.093 176.593 23.0875V23.0819Z"/><path d="M111.007 0C91.875 0 76.3403 15.3302 76.3403 34.223C76.3403 53.1159 91.8693 68.4461 111.007 68.4461C130.145 68.4461 145.742 53.1159 145.742 34.223C145.742 15.3302 130.213 0 111.007 0ZM111.007 42.4334C106.43 42.4334 102.69 38.8036 102.69 34.2174C102.69 29.6313 106.435 26.0015 111.007 26.0015C115.579 26.0015 119.398 29.6984 119.398 34.2174C119.398 38.7365 115.653 42.4334 111.007 42.4334Z"/><path d="M35.919 19.6423L26.2764 1.91833H0V66.5948H26.2764V44.212H45.4936V66.5948H71.77V1.91833H45.4936L35.919 19.6423Z"/><path d="M272.002 1.87909H211.835V24.7541V34.7487V44.1783V66.5612H272.002V44.7376H238.219L255.669 34.7151L238.236 24.7541H272.002V1.87909Z"/></svg>
+  <nav><a href="/">[Índice]</a><a href="#decisoes">[Sugestões]</a><a href="#frentes">[Exemplos]</a><a href="#anexos">[Anexos]</a></nav>
+</div></div>
+<script>
+// Âncoras rolam dentro de .page (a barra vive fora da área de rolagem).
+document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener('click',e=>{const t=document.querySelector(a.getAttribute('href'));if(t){e.preventDefault();t.scrollIntoView({block:'start'});history.replaceState(null,'',a.getAttribute('href'));}});});
+</script>
+<style>/*nav-shell-fix*/.bar{width:420px}.bar nav{gap:8px}.bar nav a{white-space:nowrap}@media(max-width:560px){.bar nav a{font-size:11px}}</style></body></html>

@@ -1,0 +1,191 @@
+<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Lista completa de melhorias</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,600&family=Martian+Mono:wdth,wght@75,400&display=swap" rel="stylesheet">
+<style>
+/* Tokens do sistema de design da More. Página de marca: paleta clara nos dois temas. */
+:root{
+  color-scheme:light;
+  --page:#E5E1DB; --ink:#2D211E; --muted:#5D554F; --rule:#2D211E1A; --glass:#2D211E1A; --tile:#DDD7CF; --white:#FFFFFF; --inverse:#2D211E; --on-inverse:#E5E1DB;
+  --muoto:"Muoto","DM Sans","Helvetica Neue",Arial,sans-serif;
+  --mono:"MuotoMono","Martian Mono",ui-monospace,Menlo,monospace;
+  --s-hair:6px; --s-sm:10px; --s-md:16px; --s-lg:20px; --s-xl:30px; --s-2xl:40px; --s-3xl:60px; --s-sec:110px;
+  --bar:35px; --barzone:75px;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--page:#E5E1DB;--ink:#2D211E;--muted:#5D554F;--rule:#2D211E1A;--glass:#2D211E1A;--tile:#DDD7CF;color-scheme:light}}
+:root[data-theme="dark"]{--page:#E5E1DB;--ink:#2D211E;--muted:#5D554F;--rule:#2D211E1A;--glass:#2D211E1A;--tile:#DDD7CF;color-scheme:light}
+*{box-sizing:border-box}
+html,body{height:100%}
+body{background:var(--page);color:var(--ink);font-family:var(--muoto);font-size:15px;line-height:1.5;-webkit-font-smoothing:antialiased;margin:0;overflow:hidden}
+/* A página rola dentro de .page; a barra vive numa faixa própria embaixo e nunca cobre texto. */
+.page{height:calc(100% - var(--barzone));overflow-y:auto;overflow-x:hidden;scroll-behavior:smooth;overscroll-behavior:contain}
+.wrap{max-width:1120px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:0 var(--s-3xl)}
+.mono{font-family:var(--mono);font-stretch:75%;font-size:13px}
+.muted{color:var(--muted)}
+a{color:inherit;text-underline-offset:3px;text-decoration-thickness:1px;overflow-wrap:anywhere}
+a:hover{color:var(--muted)}
+h1,h2,h3{font-weight:400;text-wrap:balance;margin:0}
+h2{font-size:clamp(26px,3.4vw,32px);line-height:1.05;margin-bottom:var(--s-lg)}
+h3{font-size:15px;margin-bottom:4px}
+p{margin:0 0 var(--s-sm);max-width:64ch;text-wrap:pretty}
+section{padding-top:var(--s-sec)}
+.eyebrow{font-family:var(--mono);font-stretch:75%;font-size:13px;color:var(--muted);margin-bottom:var(--s-md)}
+img{max-width:100%}
+.sup{font-family:var(--mono);font-stretch:75%;font-size:11px;color:var(--muted)}
+
+/* abertura */
+.open{padding-top:var(--s-3xl);display:grid;grid-template-columns:1.1fr .9fr;gap:var(--s-2xl);align-items:end}
+.open h1{font-size:clamp(34px,5.2vw,58px);line-height:.98;letter-spacing:-.01em}
+.open .lede{font-size:clamp(18px,2vw,22px);line-height:1.25;margin-top:var(--s-lg);max-width:30ch}
+.open figure{margin:0}
+.open img{width:100%;aspect-ratio:3/4;object-fit:cover;display:block}
+.open figcaption{display:flex;justify-content:space-between;padding-top:8px;font-size:13px}
+.meta{display:flex;flex-wrap:wrap;gap:6px var(--s-lg);margin-top:var(--s-xl)}
+@media(max-width:760px){.open{grid-template-columns:1fr}.open figure{max-width:360px}}
+
+/* decisões */
+.dec{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--s-hair);margin-top:var(--s-lg)}
+@media(max-width:860px){.dec{grid-template-columns:1fr}}
+.dec article{background:var(--glass);padding:var(--s-lg);min-width:0;display:flex;flex-direction:column;gap:var(--s-sm)}
+.dec .n{font-family:var(--mono);font-stretch:75%;font-size:12px;color:var(--muted)}
+.dec h3{font-size:clamp(18px,2vw,22px);line-height:1.2;margin:0}
+.dec dl{margin:0;display:grid;grid-template-columns:auto 1fr;gap:4px 12px;font-size:14px}
+.dec dt{font-family:var(--mono);font-stretch:75%;font-size:12px;color:var(--muted);padding-top:2px}
+.dec dd{margin:0}
+.dec ul{margin:0;padding-left:18px;font-size:14px}
+.dec li{margin-bottom:3px}
+
+/* blueprint */
+.bp{margin:var(--s-xl) 0 0}
+.bp figcaption{font-size:14px;max-width:64ch;margin-bottom:var(--s-sm)}
+.bpscroll{overflow-x:auto;padding-bottom:var(--s-sm)}
+.bpscroll svg{width:100%;min-width:960px;height:auto;display:block;color:var(--ink)}
+.bpscroll svg text{font-family:var(--muoto)}
+.bpscroll svg text.m{font-family:var(--mono);font-stretch:75%}
+.hint{display:none;font-family:var(--mono);font-stretch:75%;font-size:12px;color:var(--muted);margin-top:var(--s-md)}
+@media(max-width:1000px){.hint{display:block}}
+
+/* crenças */
+.bel{display:grid;grid-template-columns:1fr 1fr;gap:var(--s-2xl);margin-top:var(--s-lg)}
+@media(max-width:860px){.bel{grid-template-columns:1fr}}
+.bel>div{min-width:0;border-top:1px solid var(--ink);padding-top:var(--s-sm)}
+.bel h3{font-size:clamp(18px,2vw,22px);line-height:1.2;margin-bottom:var(--s-sm)}
+.bel h4{font-family:var(--mono);font-stretch:75%;font-weight:400;font-size:12px;color:var(--muted);margin:var(--s-md) 0 4px}
+.bel ul{margin:0;padding-left:18px;font-size:14px}
+.bel li{margin-bottom:4px}
+.bel .verd{background:var(--glass);padding:var(--s-sm) var(--s-md);font-size:14px;margin-top:var(--s-md)}
+.bel .verd p{margin:0}
+
+/* prints anotados */
+.prints{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:var(--s-xl) var(--s-lg);margin-top:var(--s-xl)}
+.pr{min-width:0}
+.pr a{text-decoration:none;display:block}
+.pr figure{margin:0;background:var(--tile)}
+.pr img{width:100%;display:block;height:auto;max-height:380px;object-fit:cover;object-position:top}
+.pr .ann{background:var(--ink);color:var(--page);padding:var(--s-sm) var(--s-md);font-size:13px;line-height:1.4}
+.pr .ann b{font-family:var(--mono);font-stretch:75%;font-weight:400;font-size:11px;display:block;margin-bottom:3px;color:#BDBDBD}
+.pr figcaption{font-family:var(--mono);font-stretch:75%;font-size:12px;color:var(--muted);padding:6px 0 0}
+.pr a:hover figcaption{color:var(--ink)}
+
+/* medição */
+.meas{overflow-x:auto;margin-top:var(--s-lg)}
+.meas table{border-collapse:collapse;width:100%;min-width:720px;font-size:14px}
+.meas th{font-family:var(--mono);font-stretch:75%;font-weight:400;font-size:12px;color:var(--muted);text-align:left;padding:8px;border-bottom:1px solid var(--ink)}
+.meas td{padding:10px 8px;border-bottom:1px solid var(--rule);vertical-align:top}
+.meas td:first-child{width:24%}
+.base{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:var(--s-md) var(--s-2xl);margin-top:var(--s-xl)}
+.base div{border-top:1px solid var(--rule);padding-top:var(--s-sm);min-width:0}
+.base p{font-size:14px;color:var(--muted)}
+
+/* peças e anexos */
+.pieces{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:var(--s-hair);margin-top:var(--s-lg)}
+.pieces a{display:block;background:var(--glass);padding:var(--s-md);text-decoration:none;min-width:0}
+.pieces a:hover{background:var(--tile);color:var(--ink)}
+.pieces img{width:100%;display:block;aspect-ratio:4/3;object-fit:cover;margin-bottom:var(--s-sm);background:var(--tile)}
+.pieces b{font-weight:400;display:block}
+.pieces span{font-size:13px;color:var(--muted);display:block}
+.pieces a.soon{outline:1px dashed var(--rule);background:transparent}
+.pieces a.soon span::after{content:" Em breve.";font-family:var(--mono);font-stretch:75%;font-size:12px}
+.hub{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:var(--s-hair);margin-top:var(--s-lg)}
+.hub a{display:block;background:var(--glass);padding:var(--s-md);text-decoration:none;min-width:0;position:relative;min-height:96px}
+.hub a:hover{background:var(--tile);color:var(--ink)}
+.hub a::after{content:"→";position:absolute;right:var(--s-md);bottom:var(--s-sm);font-family:var(--mono);font-stretch:75%;font-size:13px;color:var(--muted)}
+.hub .k{font-family:var(--mono);font-stretch:75%;font-size:12px;color:var(--muted);display:block;margin-bottom:6px}
+.hub b{font-weight:400;display:block}
+.hub span{font-size:13px;color:var(--muted);display:block;max-width:34ch}
+
+/* próximos passos */
+.dep{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:var(--s-hair);margin-top:var(--s-lg)}
+.dep div{background:var(--glass);padding:var(--s-md);min-width:0}
+.dep .k{font-family:var(--mono);font-stretch:75%;font-size:12px;color:var(--muted);display:block;margin-bottom:6px}
+.dep p{font-size:14px;margin:0}
+.ia{margin-top:var(--s-sec);border-top:1px solid var(--ink);padding-top:var(--s-md);font-size:14px}
+.ia p{max-width:80ch}
+
+/* barra, em faixa própria */
+.barzone{height:var(--barzone);position:relative;background:var(--page)}
+.bar{position:absolute;left:50%;transform:translateX(-50%);top:20px;width:320px;max-width:calc(100vw - 32px);height:var(--bar);background:var(--glass);backdrop-filter:blur(13px);-webkit-backdrop-filter:blur(13px);display:flex;align-items:center;justify-content:space-between;padding:0 var(--s-sm)}
+.bar svg{width:56px;height:auto;display:block}.bar svg path{fill:var(--ink)}
+.bar nav{display:flex;gap:12px}
+.bar a{font-family:var(--mono);font-stretch:75%;font-size:13px;text-decoration:none}
+.bar a:hover,.bar a:focus-visible{color:var(--muted)}
+footer{background:var(--inverse);color:var(--on-inverse);margin-top:var(--s-sec)}
+footer .wrap{padding-block:var(--s-2xl)}
+footer p{font-size:13px;max-width:70ch}
+:focus-visible{outline:1px solid var(--ink);outline-offset:2px}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important;scroll-behavior:auto!important}}
+
+body{overflow:auto;height:auto}.page{height:auto;overflow:visible}
+
+.mx{position:relative;display:grid;grid-template-columns:1fr 1fr;grid-template-rows:190px 190px;gap:var(--s-hair);margin:calc(var(--s-xl) + 20px) 0 calc(var(--s-xl) + 24px) 28px;max-width:min(820px,calc(100% - 28px))}
+.mx-q{background:var(--glass);position:relative}
+.mx-q span{position:absolute;font-family:var(--mono);font-stretch:75%;font-size:12px;color:var(--muted);white-space:nowrap}
+.mx .q1 span,.mx .q2 span{top:-20px}.mx .q3 span,.mx .q4 span{bottom:-20px}.mx .q2 span,.mx .q4 span{right:0}
+.mx-plot{position:absolute;inset:16px 110px 50px 16px}
+.dot{position:absolute;transform:translate(-50%,-50%);width:20px;height:20px;background:var(--ink);color:var(--page);font-family:var(--mono);font-stretch:75%;font-size:11px;display:flex;align-items:center;justify-content:center}
+.mx-y{position:absolute;left:-28px;top:50%;transform:rotate(-90deg) translateX(50%);transform-origin:left top;font-family:var(--mono);font-stretch:75%;font-size:12px;color:var(--muted)}
+.mx-x{position:absolute;left:50%;transform:translateX(-50%);bottom:-22px;font-family:var(--mono);font-stretch:75%;font-size:12px;color:var(--muted)}
+.rank{overflow-x:auto;margin-top:var(--s-lg)}
+.rank table{border-collapse:collapse;width:100%;min-width:760px;font-size:14px}
+.rank th{font-family:var(--mono);font-stretch:75%;font-weight:400;font-size:12px;color:var(--muted);text-align:left;padding:8px;border-bottom:1px solid var(--ink)}
+.rank td{padding:10px 8px;border-bottom:1px solid var(--rule);vertical-align:top}
+.rank td:first-child,.rank td:nth-child(3),.rank td:nth-child(4),.rank td:nth-child(5){font-family:var(--mono);font-stretch:75%;white-space:nowrap}
+.rank tr.h1 td{background:var(--tile)}
+@media(max-width:700px){.rank{overflow:visible}.rank table{min-width:0}.rank thead{display:none}.rank tr{display:grid;grid-template-columns:28px max-content max-content max-content minmax(0,1fr);grid-template-rows:auto auto auto;column-gap:10px;padding:12px 6px;border-bottom:1px solid var(--rule);align-items:start}.rank td{display:block;border:0;padding:0;white-space:normal}.rank td:nth-child(1){grid-row:1;grid-column:1}.rank td:nth-child(2){grid-row:1;grid-column:2/-1}.rank td:nth-child(3){grid-row:2;grid-column:2}.rank td:nth-child(4){grid-row:2;grid-column:3}.rank td:nth-child(5){grid-row:2;grid-column:4}.rank td:nth-child(6){grid-row:2;grid-column:5;font-family:var(--muoto);white-space:normal!important}.rank td:nth-child(n+3):not(:nth-child(7)){font-size:12px;color:var(--muted);margin-top:4px;white-space:nowrap}.rank td:nth-child(3)::before{content:"impacto "}.rank td:nth-child(4)::before{content:"esforço "}.rank td:nth-child(7){grid-row:3;grid-column:2/-1;font-size:13px;color:var(--muted);margin-top:4px}}
+.plan{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--s-hair);margin-top:var(--s-lg)}
+@media(max-width:860px){.plan{grid-template-columns:1fr}}
+.plan > div{background:var(--glass);padding:var(--s-lg);min-width:0}
+.plan h3{font-family:var(--mono);font-stretch:75%;font-weight:400;font-size:13px;color:var(--muted);margin-bottom:var(--s-md)}
+.plan ul{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:var(--s-sm)}
+.plan li{display:grid;grid-template-columns:18px 1fr;gap:8px;font-size:14px;line-height:1.4}
+.plan li::before{content:"";width:12px;height:12px;border:1px solid var(--ink);margin-top:4px}
+.how{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:var(--s-md) var(--s-2xl);margin-top:var(--s-lg)}
+.how div{border-top:1px solid var(--rule);padding-top:var(--s-sm);min-width:0}
+.how p{font-size:14px}
+
+
+.rank td:nth-child(8){font-family:var(--mono);font-stretch:75%;font-size:12px;color:var(--muted)}
+</style></head><body><div class="wrap" style="padding-top:60px">
+<a class="eyebrow" href="index.html">← Voltar ao resumo</a>
+<div class="eyebrow" style="margin-top:30px">[Anexo] Melhorias, em ordem de impacto e esforço · 15/10/2026</div>
+<h2>A lista completa</h2>
+
+  <p><b>Premissa das notas.</b> Impacto mede o quanto o item move venda ou relação com arquitetos nos próximos 90 dias; esforço mede horas de um time de três pessoas sem perfil técnico, com 1 = uma tarde no painel e 5 = projeto com desenvolvimento. As notas foram dadas por agentes de IA (um com olhar de CEO, uma arquiteta que especifica, um responsável por marca e operação) e revistas pelo JJ. As linhas escuras cabem antes de 05.11. A coluna "de onde veio" diz a fonte de cada item: a conversa de 15/10, o teste do site, as lojas de referência ou uma revisão.</p>
+  <div class="mx" aria-hidden="true">
+    <div class="mx-q q1"><span>Fazer já</span></div><div class="mx-q q2"><span>Planejar</span></div><div class="mx-q q3"><span>Encaixar</span></div><div class="mx-q q4"><span>Depois ou cortar</span></div>
+    <div class="mx-plot"><span class="dot" style="left:calc(0.0% + 0px);top:calc(0.0% + 0px)" title="Corrigir os preços de R$ 1, as duas grafias e o texto Sobre">1</span><span class="dot" style="left:calc(0.0% + 26px);top:calc(0.0% + 0px)" title="Prazo escrito ao lado do botão ("cerca de 120 dias")">2</span><span class="dot" style="left:calc(0.0% + 0px);top:calc(25.0% + 0px)" title=""Pronta entrega" na tomada, "Sob encomenda" nas demais">3</span><span class="dot" style="left:calc(0.0% + 0px);top:calc(50.0% + 0px)" title="[Conversar no WhatsApp] no botão das peças sob encomenda">4</span><span class="dot" style="left:calc(0.0% + 52px);top:calc(0.0% + 0px)" title="JJ envia a lista e faz a sessão de ~2h com o Vitor">5</span><span class="dot" style="left:calc(0.0% + 78px);top:calc(0.0% + 0px)" title="Endereço, horário e "visite a loja" no site, com hora marcada pelo WhatsApp; perfil da More no Google (busca e mapa)">6</span><span class="dot" style="left:calc(0.0% + 0px);top:calc(0.0% + 26px)" title="Tirar a senha do site, com data, logo depois dos itens 1 a 4">7</span><span class="dot" style="left:calc(0.0% + 26px);top:calc(0.0% + 26px)" title="Uma base única de contatos, a mais simples possível">8</span><span class="dot" style="left:calc(0.0% + 26px);top:calc(25.0% + 0px)" title="Lista de convidados para lançamentos">9</span><span class="dot" style="left:calc(25.0% + 0px);top:calc(25.0% + 0px)" title="WhatsApp Business com nome e foto da More">10</span><span class="dot" style="left:calc(25.0% + 26px);top:calc(25.0% + 0px)" title="Barras fixas que cobrem texto, no celular e no computador">11</span><span class="dot" style="left:calc(0.0% + 52px);top:calc(25.0% + 0px)" title="Título e descrição em cada página e produto">12</span><span class="dot" style="left:calc(0.0% + 78px);top:calc(25.0% + 0px)" title="Conferir o imposto do checkout e as recusas de cartão na Pagar.me nas duas primeiras semanas">13</span><span class="dot" style="left:calc(25.0% + 0px);top:calc(50.0% + 0px)" title="Vídeo de abertura menor e só na primeira visita">14</span><span class="dot" style="left:calc(0.0% + 0px);top:calc(25.0% + 26px)" title="Aprovar o sistema de design: confirmar a licença desktop das fontes 205TF (a licença web não cobre impresso) e as cores com a gráfica">15</span><span class="dot" style="left:calc(0.0% + 26px);top:calc(50.0% + 0px)" title="Decidir preço na grade: manter "a partir de R$" ou esconder">16</span><span class="dot" style="left:calc(25.0% + 0px);top:calc(0.0% + 0px)" title="Ficha técnica em PDF por peça: medidas, materiais, acabamentos e prazo">17</span><span class="dot" style="left:calc(50.0% + 0px);top:calc(0.0% + 0px)" title="Blocos 2D/3D e amostras para arquitetos, abertos, com e-mail opcional">18</span><span class="dot" style="left:calc(25.0% + 26px);top:calc(0.0% + 0px)" title="Programa para arquitetos: condição de RT escrita, contato direto com Fred e Edu, lista de 30 a 50 escritórios">19</span><span class="dot" style="left:calc(0.0% + 26px);top:calc(25.0% + 26px)" title="Mensagens por etapa da produção (modelos de WhatsApp)">20</span><span class="dot" style="left:calc(50.0% + 0px);top:calc(25.0% + 0px)" title="Projetos ambientados e imprensa no site">21</span><span class="dot" style="left:calc(25.0% + 0px);top:calc(75.0% + 0px)" title="Texto alternativo nas imagens, nomes nos seletores, página de erro com mensagem, carrinho que abre ao adicionar">22</span><span class="dot" style="left:calc(25.0% + 26px);top:calc(50.0% + 0px)" title="Anúncio só da tomada, medido por compra">23</span><span class="dot" style="left:calc(50.0% + 0px);top:calc(50.0% + 0px)" title="Claude conectado ao Shopify, com aprovação humana para preço">24</span><span class="dot" style="left:calc(75.0% + 0px);top:calc(50.0% + 0px)" title="Cesta de interesse: escolher peças, deixar e-mail, seguir para o WhatsApp">25</span><span class="dot" style="left:calc(50.0% + 0px);top:calc(75.0% + 0px)" title="Anúncios para arquitetos, medidos por e-mail captado">26</span><span class="dot" style="left:calc(75.0% + 0px);top:calc(75.0% + 0px)" title="Imagem da peça muda com o acabamento (só fotos reais)">27</span><span class="dot" style="left:calc(75.0% + 26px);top:calc(75.0% + 0px)" title="Pré-venda com sinal para peças novas">28</span></div>
+    <div class="mx-y">Impacto ↑</div><div class="mx-x">Esforço →</div>
+  </div>
+  <div class="rank" role="region" aria-label="Melhorias ordenadas" tabindex="0"><table>
+    <thead><tr><th>#</th><th>Melhoria</th><th>Impacto</th><th>Esforço</th><th>Quando</th><th>Quem</th><th>Por quê</th><th>De onde veio</th></tr></thead>
+    <tbody><tr class="h1"><td>1</td><td>Corrigir os preços de R$ 1, as duas grafias e o texto Sobre</td><td>5</td><td>1</td><td>antes de 5.11</td><td>Time More</td><td>Preço anunciado vincula. Não se abre loja com R$ 1 na vitrine.</td><td class="o">QA do site</td></tr><tr class="h1"><td>2</td><td>Prazo escrito ao lado do botão ("cerca de 120 dias")</td><td>5</td><td>1</td><td>antes de 5.11</td><td>Time More</td><td>É a primeira pergunta da arquiteta. Evita a pergunta no WhatsApp.</td><td class="o">call + lojas (Kann, Muuto)</td></tr><tr class="h1"><td>3</td><td>"Pronta entrega" na tomada, "Sob encomenda" nas demais</td><td>4</td><td>1</td><td>antes de 5.11</td><td>Time More</td><td>O rótulo já existe no tema. Separa compra de conversa.</td><td class="o">QA (rótulo existe no tema) + lojas (Caravane)</td></tr><tr class="h1"><td>4</td><td>[Conversar no WhatsApp] no botão das peças sob encomenda</td><td>3</td><td>1</td><td>antes de 5.11</td><td>Time More</td><td>Tira a surpresa do botão "A partir de" que abre o WhatsApp.</td><td class="o">QA (botão abre WhatsApp)</td></tr><tr class="h1"><td>5</td><td>JJ envia a lista e faz a sessão de ~2h com o Vitor</td><td>5</td><td>1</td><td>antes de 5.11</td><td>JJ</td><td>Ao fim, Vitor faz sozinho as 5 mudanças mais comuns no painel e tem o passo a passo numa folha. Destrava o resto.</td><td class="o">call</td></tr><tr class="h1"><td>6</td><td>Endereço, horário e "visite a loja" no site, com hora marcada pelo WhatsApp; perfil da More no Google (busca e mapa)</td><td>5</td><td>1</td><td>antes de 5.11</td><td>Time More</td><td>O site passa a servir à abertura. Quem digitar "More móveis Jardins" acha a loja.</td><td class="o">revisão CEO + call (loja 05.11)</td></tr><tr class="h1"><td>7</td><td>Tirar a senha do site, com data, logo depois dos itens 1 a 4</td><td>5</td><td>1</td><td>antes de 5.11</td><td>Time More</td><td>Site fechado não traz ninguém à loja. O Instagram precisa de um lugar para apontar.</td><td class="o">revisão CEO</td></tr><tr class="h1"><td>8</td><td>Uma base única de contatos, a mais simples possível</td><td>5</td><td>1</td><td>antes de 5.11</td><td>Time More</td><td>Uma tabela (Notion ou planilha) preenchida depois de cada conversa e visita. A abertura é o primeiro lote.</td><td class="o">call + revisão CEO</td></tr><tr class="h1"><td>9</td><td>Lista de convidados para lançamentos</td><td>4</td><td>1</td><td>antes de 5.11</td><td>Time More</td><td>A abertura em 05.11 é o lançamento. Cada convidado entra na tabela com consentimento (LGPD).</td><td class="o">call (lista de convidados)</td></tr><tr class="h1"><td>10</td><td>WhatsApp Business com nome e foto da More</td><td>4</td><td>2</td><td>antes de 5.11</td><td>Time More</td><td>Hoje o número aparece sem identificação. Quem clica precisa ver "More".</td><td class="o">call (número sem nome) + revisão CEO</td></tr><tr class="h1"><td>11</td><td>Barras fixas que cobrem texto, no celular e no computador</td><td>4</td><td>2</td><td>antes de 5.11</td><td>JJ ou agência</td><td>A maior parte do tráfego é Instagram no celular. Mexer no tema só com cópia de segurança.</td><td class="o">QA do site</td></tr><tr class="h1"><td>12</td><td>Título e descrição em cada página e produto</td><td>4</td><td>1</td><td>antes de 5.11</td><td>Vitor</td><td>Hoje a aba fica em branco e o Google não tem o que mostrar. É campo de formulário no painel.</td><td class="o">QA do site</td></tr><tr class="h1"><td>13</td><td>Conferir o imposto do checkout e as recusas de cartão na Pagar.me nas duas primeiras semanas</td><td>4</td><td>1</td><td>antes de 5.11</td><td>Time More</td><td>Duas tomadas a R$ 1 fecham em R$ 2,34. Única venda online: recusa silenciosa perde o cliente.</td><td class="o">QA do site (checkout R$ 2,34)</td></tr><tr class="h1"><td>14</td><td>Vídeo de abertura menor e só na primeira visita</td><td>3</td><td>2</td><td>antes de 5.11</td><td>JJ ou agência</td><td>Hoje baixa 20 MB em toda página, mesmo escondido. No celular, isso é o que a pessoa paga para entrar.</td><td class="o">QA do site (vídeo 20 MB)</td></tr><tr class="h1"><td>15</td><td>Aprovar o sistema de design: confirmar a licença desktop das fontes 205TF (a licença web não cobre impresso) e as cores com a gráfica</td><td>4</td><td>1</td><td>antes de 5.11</td><td>Fred e Vitor</td><td>Sem isso, convite, livro e qualquer peça impressa saem fora do sistema.</td><td class="o">painel de críticos do sistema de design</td></tr><tr><td>16</td><td>Decidir preço na grade: manter "a partir de R$" ou esconder</td><td>3</td><td>1</td><td>até dez</td><td>Time More</td><td>Decisão de marca, não de teste. Decidir depois de ouvir as perguntas dos visitantes da loja.</td><td class="o">revisão CEO + call</td></tr><tr><td>17</td><td>Ficha técnica em PDF por peça: medidas, materiais, acabamentos e prazo</td><td>5</td><td>2</td><td>até dez</td><td>Vitor</td><td>É o objeto que a arquiteta guarda e manda para o cliente.</td><td class="o">revisão CEO + lojas (ICW, Kann)</td></tr><tr><td>18</td><td>Blocos 2D/3D e amostras para arquitetos, abertos, com e-mail opcional</td><td>5</td><td>3</td><td>até dez</td><td>Time More</td><td>Alcance de especificação vale mais que uma lista curta. Amostras sob pedido no WhatsApp.</td><td class="o">lojas (Muuto, NORR11) + QA (zip público)</td></tr><tr><td>19</td><td>Programa para arquitetos: condição de RT escrita, contato direto com Fred e Edu, lista de 30 a 50 escritórios</td><td>5</td><td>2</td><td>até dez</td><td>Fred e Edu</td><td>O canal real para quem especifica. A loja é o motivo do convite.</td><td class="o">revisão CEO</td></tr><tr><td>20</td><td>Mensagens por etapa da produção (modelos de WhatsApp)</td><td>4</td><td>1</td><td>até dez</td><td>Time More</td><td>Quatro textos prontos: confirmado, em produção, acabamento, entrega. Evita cobrança nos 120 dias.</td><td class="o">call + lojas (Sklum)</td></tr><tr><td>21</td><td>Projetos ambientados e imprensa no site</td><td>4</td><td>3</td><td>até dez / 2027</td><td>Time More</td><td>Depende das fotos dos projetos. Seleção rigorosa.</td><td class="o">call (projeto citado)</td></tr><tr><td>22</td><td>Texto alternativo nas imagens, nomes nos seletores, página de erro com mensagem, carrinho que abre ao adicionar</td><td>2</td><td>2</td><td>até dez</td><td>JJ</td><td>Barato, invisível, ajuda a busca e quem navega por voz. Na mesma sessão ou na seguinte.</td><td class="o">QA do site</td></tr><tr><td>23</td><td>Anúncio só da tomada, medido por compra</td><td>3</td><td>2</td><td>até dez</td><td>Time More</td><td>Único produto com evento de compra. Começa após duas semanas de checkout limpo.</td><td class="o">revisão CEO</td></tr><tr><td>24</td><td>Claude conectado ao Shopify, com aprovação humana para preço</td><td>3</td><td>3</td><td>2027</td><td>JJ</td><td>Segunda camada de autonomia, depois de o Vitor dominar o painel.</td><td class="o">revisão CEO</td></tr><tr><td>25</td><td>Cesta de interesse: escolher peças, deixar e-mail, seguir para o WhatsApp</td><td>3</td><td>4</td><td>2027</td><td>JJ</td><td>Boa para um volume que ainda não existe. Revisitar quando a tabela passar de cem nomes.</td><td class="o">call (cesta)</td></tr><tr><td>26</td><td>Anúncios para arquitetos, medidos por e-mail captado</td><td>2</td><td>3</td><td>2027</td><td>Time More</td><td>Arquiteto chega por relação (item 16), não por anúncio.</td><td class="o">call (anúncios)</td></tr><tr><td>27</td><td>Imagem da peça muda com o acabamento (só fotos reais)</td><td>2</td><td>4</td><td>2027</td><td>Time More</td><td>Fotografar cada combinação é caro. O seletor com fotos reais de material já resolve.</td><td class="o">call (acabamentos)</td></tr><tr><td>28</td><td>Pré-venda com sinal para peças novas</td><td>2</td><td>4</td><td>2027</td><td>Time More</td><td>Direito de arrependimento de 7 dias. Advogado antes. Testar com a tomada.</td><td class="o">call (pré-venda)</td></tr></tbody>
+  </table></div>
+  <div class="plan">
+    <div><h3>Três apostas que facilitam o resto</h3><ul><li>O Vitor sai da sessão de 2h fazendo sozinho as cinco mudanças mais comuns: foto, texto, preço, rótulo de pronta entrega, mostrar ou esconder preço.</li><li>Uma tabela de contatos que começa na abertura de 05.11: convidados, visitantes, conversas de WhatsApp e compradores da tomada no mesmo lugar, com o campo "é arquiteto?".</li><li>A página da peça vira a ficha técnica: prazo com data, "a partir de", medidas, materiais, blocos e PDF abertos, botão "Conversar".</li></ul></div>
+    <div><h3>Cortar ou adiar</h3><ul><li><span><b>Teste de grade com e sem preço.</b> Tráfego pequeno demais para decidir por teste. Virou decisão de marca, de graça.</span></li><li><span><b>Visualizador 3D na página da tomada.</b> Uma boa foto e as medidas resolvem. O 3D fica como demonstração do que a IA faz.</span></li><li><span><b>Navegar por ambiente como camada editorial.</b> Com poucas peças e três pessoas, não paga a manutenção antes de 2027. Inspiração e conjuntos ficam como protótipo.</span></li><li><span><b>Orçamento automático por IA no WhatsApp.</b> A conversa humana é parte do valor. Automatizar antes de cem conversas registradas é automatizar o que ainda não se entende.</span></li></ul></div>
+    <div><h3>Cuidados antes de fazer</h3><ul><li>Prazo publicado é promessa: escrever "cerca de" e confirmar a data em cada pedido.</li><li>E-mail captado precisa de consentimento e descadastro fácil (LGPD).</li><li>Nenhuma imagem de peça gerada ou alterada por IA.</li><li>Mexer no código do tema só com cópia de segurança: ninguém no time conserta se quebrar.</li></ul></div>
+  </div>
+  <div class="how">
+    <div><h3>Como chegamos nessa ordem</h3><p>Primeiro, vinte ideias da conversa e do site receberam nota de três agentes de IA com papéis diferentes (CEO, arquiteta que especifica, marca e operação). Depois, uma revisão com olhar de CEO (método gstack) desafiou as premissas, acrescentou sete itens e fixou a regra: até 05.11, só correção, texto e configuração.</p></div>
+    <div><h3>Duas premissas que a revisão virou</h3><p>Esconder o preço na grade deixou de ser proposta e virou decisão a tomar depois de ouvir os visitantes da loja. Os blocos 2D/3D ficam abertos, sem exigir e-mail: alcance de especificação vale mais que uma lista curta.</p></div>
+    <div><h3>Para ler o raciocínio inteiro</h3><p><a href="revisoes.html">Revisões completas</a>: premissas desafiadas, o produto "10 estrelas" para uma arquiteta, o teste do site fluxo a fluxo e a revisão criativa deste resumo.</p></div>
+  </div>
+</div></body></html>

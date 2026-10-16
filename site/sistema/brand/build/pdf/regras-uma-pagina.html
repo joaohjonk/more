@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>More · regras em uma página</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,600&family=Martian+Mono:wdth,wght@75,400&display=swap" rel="stylesheet">
+<style>
+  @page{size:A4;margin:0}
+  *{box-sizing:border-box;margin:0;padding:0}
+  :root{--preto:#2D211E;--off:#E5E1DB;--cm:#686868;--ce:#5D554F;--cc:#BDBDBD;--ciano:#8BC0D0;--l:rgba(45,33,30,.18)}
+  body{width:210mm;height:297mm;background:var(--off);color:var(--preto);font-family:"DM Sans",Helvetica,Arial,sans-serif;font-size:7.6pt;line-height:1.32;padding:11mm 11mm 9mm;display:flex;flex-direction:column;gap:3.4mm}
+  .m{font-family:"Martian Mono",monospace;font-stretch:75%;font-size:6.4pt;color:var(--cm)}
+  h1{font-weight:400;font-size:21pt;line-height:1;letter-spacing:-.01em}
+  h2{font-family:"Martian Mono",monospace;font-stretch:75%;font-weight:400;font-size:6.6pt;color:var(--cm);border-bottom:.6pt solid var(--preto);padding-bottom:1.2mm;margin-bottom:1.8mm}
+  header{display:flex;justify-content:space-between;align-items:flex-end}
+  header svg{width:34mm;height:auto}
+  .cols{display:grid;grid-template-columns:1fr 1fr;gap:3.4mm 7mm}
+  .sw{display:grid;grid-template-columns:repeat(6,1fr);gap:1.4mm}
+  .sw div{height:11mm;display:flex;align-items:flex-end;padding:1mm;font-family:"Martian Mono",monospace;font-stretch:75%;font-size:5.4pt;line-height:1.15}
+  .campos{display:grid;grid-template-columns:repeat(4,1fr);gap:1.4mm;margin-top:1.4mm}
+  .campos div{height:7mm;color:var(--off);padding:1mm;font-family:"Martian Mono",monospace;font-stretch:75%;font-size:5.4pt;display:flex;align-items:flex-end}
+  table{width:100%;border-collapse:collapse}
+  td{padding:.75mm 1.5mm .75mm 0;border-bottom:.4pt solid var(--l);vertical-align:top}
+  td:first-child{font-family:"Martian Mono",monospace;font-stretch:75%;font-size:6.2pt;color:var(--cm);white-space:nowrap;width:1%}
+  ol{list-style:none;counter-reset:r}
+  li{padding:.9mm 0;border-bottom:.4pt solid var(--l);display:grid;grid-template-columns:15mm 1fr;gap:2mm}
+  li b{font-family:"Martian Mono",monospace;font-stretch:75%;font-weight:400;font-size:6.2pt;color:var(--cm)}
+  .no{color:var(--cm)}
+  footer{margin-top:auto;display:flex;justify-content:space-between;border-top:.6pt solid var(--preto);padding-top:1.6mm}
+</style>
+</head>
+<body>
+<header>
+  <div><h1>Regras da More</h1><p class="m" style="margin-top:1.5mm">Uma página · v0.3 · provisório até o time aceitar em state/approvals.jsonl</p></div>
+  <svg class="logo" viewBox="0 0 481 123" role="img" aria-label="More" style="width:34mm;height:auto;display:block;color:var(--preto)"><path d="M480.1 3.35986H373.9V44.2599V62.1299V78.9899V119.01H480.1V79.9899H420.47L451.27 62.0699L420.5 44.2599H480.1V3.35986Z" fill="currentColor"/><path d="M63.4 35.1202L46.38 3.43018H0V119.07H46.38V79.0502H80.3V119.07H126.68V3.43018H80.3L63.4 35.1202Z" fill="currentColor"/><path d="M195.94 0C162.17 0 134.75 27.41 134.75 61.19C134.75 94.97 162.16 122.38 195.94 122.38C229.72 122.38 257.25 94.97 257.25 61.19C257.25 27.41 229.84 0 195.94 0ZM195.94 75.87C187.86 75.87 181.26 69.38 181.26 61.18C181.26 52.98 187.87 46.49 195.94 46.49C204.01 46.49 210.75 53.1 210.75 61.18C210.75 69.26 204.14 75.87 195.94 75.87Z" fill="currentColor"/><path d="M311.71 41.2702V3.43018H265.33V119.07H311.71V79.1702H362.28V3.43018C334.58 3.43018 313.25 23.4102 311.71 41.2802V41.2702Z" fill="currentColor"/></svg>
+</header>
+
+<section>
+  <h2>Cor · tela</h2>
+  <div class="sw">
+    <div style="background:#E5E1DB;outline:.4pt solid var(--l)">off-white<br>#E5E1DB fundo</div>
+    <div style="background:#2D211E;color:#E5E1DB">preto<br>#2D211E texto</div>
+    <div style="background:#5D554F;color:#E5E1DB">cinza-escuro<br>#5D554F</div>
+    <div style="background:#686868;color:#E5E1DB">cinza-medio<br>#686868 só ≥24px</div>
+    <div style="background:#BDBDBD">cinza-claro<br>#BDBDBD</div>
+    <div style="background:#8BC0D0">ciano<br>#8BC0D0 só estado</div>
+  </div>
+  <div class="campos">
+    <div style="background:#9A1935">vermelho-jambo #9A1935</div>
+    <div style="background:#D2890C;color:#2D211E">amarelo-igaratá #D2890C</div>
+    <div style="background:#323E1C">verde-jamaica #323E1C</div>
+    <div style="background:#332436">berinjela #332436</div>
+  </div>
+  <p class="m" style="margin-top:1mm">Campos de cor: um por peça, só em cartaz, convite, livro, vitrine e social. Nunca na loja online. Hex do Instagram; o amarelo medido na foto original. O guia de uso tem outra paleta, de 9 cores com Pantone: troca em proposta.</p>
+</section>
+
+<div class="cols">
+  <section>
+    <h2>Tipo</h2>
+    <table>
+      <tr><td>Muoto</td><td>nomes, preços, frases. 26 nome na PDP e frase do menu, 32 frase do rodapé, 22 e 25 no celular, 13 no grid, 11 medidas.</td></tr>
+      <tr><td>Muoto Mono Cond.</td><td>interface: 13 (12 e 15 no celular), 10 legal. Ações entre colchetes: [Voltar], Menu [+].</td></tr>
+      <tr><td>peso</td><td>400, o único licenciado (Regular e Italic). 300, 600 e 700 não existem: CSS com font-synthesis: none.</td></tr>
+      <tr><td>sem</td><td>caixa-alta, espaçamento entre letras, uma terceira família.</td></tr>
+      <tr><td>substitutas</td><td>DM Sans e Martian Mono 75 enquanto a licença 205TF não cobrir o uso.</td></tr>
+    </table>
+  </section>
+  <section>
+    <h2>Forma, espaço, movimento</h2>
+    <table>
+      <tr><td>texto pequeno</td><td>abaixo de 24px use cinza-escuro, não cinza-medio.</td></tr>
+      <tr><td>cantos</td><td>0 em foto, card, barra, botão, campo. Raio só 2 (miniatura), 8 (tooltip), 10 (painel flutuante), 50% (círculo).</td></tr>
+      <tr><td>espaço</td><td>4 · 6 · 8 · 10 · 12 · 16 · 20 · 24 · 30 · 40 · 60 · 120 · 160 px</td></tr>
+      <tr><td>barras</td><td>menu e carrinho flutuam embaixo, 35 px de altura, 30 px do pé. Deixe 106 px livres no fim da página.</td></tr>
+      <tr><td>movimento</td><td>80 · 140 · 200 · 300 · 450 · 500 · 700 · 800 · 1000 ms; ease ou ease-out. Sempre com versão para movimento reduzido.</td></tr>
+      <tr><td>breakpoints</td><td>1440 · 1200 · 1024 · 768 · 600</td></tr>
+    </table>
+  </section>
+</div>
+
+<section>
+  <h2>Regras em vigor · cada uma tem um script em checks/</h2>
+  <ol>
+    <li><b>R-COLOR-01</b><span>Só cores dos tokens. #1A1A1A, #DAD7D1 e #DEDBD5 estão no site mas não são aprovadas.</span></li>
+    <li><b>R-COLOR-02</b><span>Fundo off-white, texto preto #2D211E. Nunca #000 nem fundo branco puro.</span></li>
+    <li><b>R-COLOR-03</b><span>Ciano é o único acento da interface: só estado ativo ou hover de navegação. Nunca como texto sobre off-white.</span></li>
+    <li><b>R-SHAPE-01</b><span>Estrutura reta. Raio só da escala acima.</span></li>
+    <li><b>R-TYPE-01/02</b><span>Duas famílias, pesos acima. Ação leva colchetes ([Comprar], Menu [+]); status e lugares não ("Pronta entrega", "Jardins"). Imagem estática não tem ação.</span></li>
+    <li><b>R-LAYOUT-01</b><span>Menu, carrinho e adicionar ficam em barras flutuantes embaixo. Sem cabeçalho fixo.</span></li>
+    <li><b>R-LAYOUT-02</b><span>Uma peça por foto de produto. Original 2:3; recortes 3:4 (site), feed 4:5, story 9:16 com 250 px livres em cima e embaixo.</span></li>
+    <li><b>R-IMG-01/02</b><span>Peça é fotografada, nunca gerada. Luz dura lateral com sombra nítida, ou low-key com uma luz quente rasante.</span></li>
+    <li><b>R-GEN-01</b><span>A marca entra sempre com os paths do arquivo oficial do brand book (more-wordmark-currentcolor.svg, cor pelo CSS). Nunca digitada nem redesenhada. Mínimo do guia: 120 px na tela, 18 mm no papel.</span></li>
+    <li><b>R-COPY-01</b><span>Sem exclusivo, sofisticado, luxo, premium, alma, essência, personalidade. Sem exclamação, emoji ou hashtag. Frases até 16 palavras.</span></li>
+    <li><b>R-COMMERCE</b><span>Todo produto diz "Pronta entrega" (sem prazo) ou "Sob encomenda · ~120 dias". Preço fora da grade é proposta, ainda não decidida.</span></li>
+    <li><b>R-MOTION-01</b><span>Durações e curvas da tabela acima. Nunca "transition: all".</span></li>
+  </ol>
+</section>
+
+<section>
+  <h2>Propostas · valem quando o time aceitar</h2>
+  <p>Marca em M (alvo 1/6 do lado curto) ou XL (95–100% da largura, base até 5% da borda), branca sobre campos escuros e preta sobre amarelo, observadas no cartaz da TOM.01 e no convite 05.11. Legenda com uma linha seca antes do material. Português primeiro. Um nome por peça (checks/nomes-canonicos.json). Vídeo com corte seco e sombra de janela que atravessa a peça. <span class="no">Inventadas por nós, fora até decisão: respiro igual ao O, abertura M-O-R-E letra a letra, campo petróleo, nome de arquivo, ficha de impressão.</span></p>
+</section>
+
+<footer class="m"><span>Checar uma peça: node checks/run-all.mjs &lt;pasta&gt;</span><span>Medido de mymore.design e do guia de uso da More em 15/10/2026</span></footer>
+</body>
+</html>

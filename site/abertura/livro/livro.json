@@ -1,0 +1,265 @@
+{
+ "titulo": "Menos do mesmo.",
+ "edicao": "Edição 01",
+ "ano": "2026",
+ "formato": "230 × 300 mm fechado, retrato. Aberto: 460 × 300 mm.",
+ "paginas": "112 páginas (7 cadernos de 16) + capa",
+ "encadernacao": "Brochura costurada, lombada quadrada de 12 mm, capa flexível sem orelhas.",
+ "miolo": "Papel não revestido natural 150 g (bulk 1,3; 56 folhas ≈ 10,6 mm).",
+ "capa": "Cartão não revestido 300 g, impressão 4/0 em campo de cor, sem laminação. Cor do campo: Vermelho Jambo (#9A1935), CMYK e Pantone a confirmar com a gráfica.",
+ "tipografia": "Muoto (títulos e textos) e Muoto Mono Condensed (dados). Licença desktop da 205TF a confirmar antes da gráfica.",
+ "imagens": "Uma luz só: estúdio, luz dura de lado. Para 230 × 300 mm a 300 dpi a foto precisa ter 2.717 × 3.543 px. As fotos atuais do site têm 1.200 px: servem para o flatplan e para prova de leitura, não para a tiragem. Pedir os RAW.",
+ "texto_abertura": "Vinte e quatro peças, fotografadas no estúdio com uma luz só. Madeira maciça, vidro fundido, latão, alumínio naval, talagarça. Feitas sob encomenda em São Paulo.",
+ "colofao": "Fotografia: estúdio More. Impresso em São Paulo, 2026. Tiragem a definir.",
+ "sequencia": "Por tipo, do chão para a parede: assentos, mesas, luminárias, estante, fixos. Cada peça ocupa dois spreads: a foto inteira à direita e o nome com a linha seca à esquerda; depois o detalhe com a linha de material, as medidas e os acabamentos.",
+ "frente": [
+  {
+   "p": "1",
+   "o": "Falsa folha de rosto: só a marca S."
+  },
+  {
+   "p": "2–3",
+   "o": "Folha de rosto: Menos do mesmo. Edição 01."
+  },
+  {
+   "p": "4–5",
+   "o": "Texto de abertura (um parágrafo) à direita; à esquerda, off-white."
+  },
+  {
+   "p": "6–7",
+   "o": "Índice das 24 peças, por tipo."
+  }
+ ],
+ "fim": [
+  {
+   "p": "104–105",
+   "o": "Ficha técnica das peças: medidas, madeiras, tecidos, prazos."
+  },
+  {
+   "p": "106–107",
+   "o": "Colofão."
+  },
+  {
+   "p": "108–112",
+   "o": "Off-white, sem impressão."
+  }
+ ],
+ "pecas": [
+  {
+   "handle": "banco-joao",
+   "nome": "Banco João",
+   "cat": "Assentos",
+   "linha": "Precisa da sua Maria.",
+   "material": "Madeira maciça.",
+   "fonte": "IG 10.07.2026",
+   "img": "../lista/img/banco-joao.jpg"
+  },
+  {
+   "handle": "banco-maria",
+   "nome": "Banco Maria",
+   "cat": "Assentos",
+   "linha": "O João é opcional, mas sempre bem-vindo.",
+   "material": "Madeira maciça.",
+   "fonte": "IG 14.07.2026",
+   "img": "../lista/img/banco-maria.jpg"
+  },
+  {
+   "handle": "cadeira-556",
+   "nome": "Cadeira 556-A",
+   "cat": "Assentos",
+   "linha": "",
+   "material": "Madeira maciça, marcenaria precisa.",
+   "fonte": "IG 09.01.2026",
+   "img": "../lista/img/cadeira-556.jpg"
+  },
+  {
+   "handle": "cadeira-maria",
+   "nome": "Cadeira Maria",
+   "cat": "Assentos",
+   "linha": "Essa não vai com as outras.",
+   "material": "Estofada, com estrutura de madeira maciça.",
+   "fonte": "IG 23.06.2026",
+   "img": "../lista/img/cadeira-maria.jpg"
+  },
+  {
+   "handle": "otoman-leticia",
+   "nome": "Otoman Leticia",
+   "cat": "Assentos",
+   "linha": "",
+   "material": "Estofado, com estrutura de madeira maciça.",
+   "fonte": "",
+   "img": "../lista/img/otoman-leticia.jpg"
+  },
+  {
+   "handle": "poltrona-eduardo",
+   "nome": "Poltrona Eduardo",
+   "cat": "Assentos",
+   "linha": "",
+   "material": "Estofada, com estrutura de madeira maciça.",
+   "fonte": "IG 30.07.2026",
+   "img": "../lista/img/poltrona-eduardo.jpg"
+  },
+  {
+   "handle": "poltrona-leticia",
+   "nome": "Poltrona Leticia",
+   "cat": "Assentos",
+   "linha": "Se parecer deslocada na sua sala, talvez o problema não seja a poltrona.",
+   "material": "Estofada, com estrutura de madeira maciça.",
+   "fonte": "IG 09.03.2026",
+   "img": "../lista/img/poltrona-leticia.jpg"
+  },
+  {
+   "handle": "sofa-canoa",
+   "nome": "Sofá Canoa",
+   "cat": "Assentos",
+   "linha": "Feito para durar mais do que tendências.",
+   "material": "Estofado, com pés de madeira maciça.",
+   "fonte": "IG 21.02.2026",
+   "img": "../lista/img/sofa-canoa.jpg"
+  },
+  {
+   "handle": "sofa-catedral",
+   "nome": "Sofá Catedral",
+   "cat": "Assentos",
+   "linha": "",
+   "material": "Estofado, com pés de madeira maciça.",
+   "fonte": "IG 03.07.2026",
+   "img": "../lista/img/sofa-catedral.jpg"
+  },
+  {
+   "handle": "sofa-moustache",
+   "nome": "Sofá Moustache",
+   "cat": "Assentos",
+   "linha": "Um é poltrona. Dois, namoradeira.",
+   "material": "Sistema modular estofado.",
+   "fonte": "IG 31.08.2026",
+   "img": "../lista/img/sofa-moustache.jpg"
+  },
+  {
+   "handle": "mesa-carnivora",
+   "nome": "Mesa de apoio Carnívora",
+   "cat": "Mesas",
+   "linha": "Não foi feita para combinar com o sofá. E isso é ótimo.",
+   "material": "Tampo de alumínio.",
+   "fonte": "IG 22.01.2026",
+   "img": "../lista/img/mesa-carnivora.jpg"
+  },
+  {
+   "handle": "mesa-de-apoio-eto",
+   "nome": "Mesa de apoio Eto",
+   "cat": "Mesas",
+   "linha": "",
+   "material": "Estrutura de madeira maciça, com tampo em mosaico de madrepérola.",
+   "fonte": "IG 11.09.2026",
+   "img": "../lista/img/mesa-de-apoio-eto.jpg"
+  },
+  {
+   "handle": "mesa-cildo",
+   "nome": "Mesa de centro Cildo",
+   "cat": "Mesas",
+   "linha": "",
+   "material": "Tampo de vidro fundido pigmentado, com pés em cerâmica esmaltada.",
+   "fonte": "site",
+   "img": "../lista/img/mesa-cildo.jpg"
+  },
+  {
+   "handle": "mesa-de-centro-imi",
+   "nome": "Mesa de centro Imi",
+   "cat": "Mesas",
+   "linha": "",
+   "material": "",
+   "fonte": "",
+   "img": "../lista/img/mesa-de-centro-imi.jpg"
+  },
+  {
+   "handle": "mesa-de-centro-oops",
+   "nome": "Mesa de centro Oops",
+   "cat": "Mesas",
+   "linha": "Segura seu café, e sua atenção.",
+   "material": "Tampo de alumínio naval, com pés fundidos e acabamento manual.",
+   "fonte": "IG 13.03 e 14.08.2026",
+   "img": "../lista/img/mesa-de-centro-oops.jpg"
+  },
+  {
+   "handle": "mesa-de-jantar-leila",
+   "nome": "Mesa de jantar Leila",
+   "cat": "Mesas",
+   "linha": "Uma grande amiga da Cadeira Maria.",
+   "material": "Estrutura de madeira maciça.",
+   "fonte": "IG 04.09.2026",
+   "img": "../lista/img/mesa-de-jantar-leila.jpg"
+  },
+  {
+   "handle": "mesa-de-jantar-naz",
+   "nome": "Mesa de jantar Naz",
+   "cat": "Mesas",
+   "linha": "Não é quadrada, só parece.",
+   "material": "A forma é uma escolha sua. Componível.",
+   "fonte": "IG 01.04.2026",
+   "img": "../lista/img/mesa-de-jantar-naz.jpg"
+  },
+  {
+   "handle": "luminaria-fanto",
+   "nome": "Luminária Fantô",
+   "cat": "Luminárias",
+   "linha": "Na parede, no piso, onde fizer mais sentido.",
+   "material": "",
+   "fonte": "IG 21.07.2026",
+   "img": "../lista/img/luminaria-fanto.jpg"
+  },
+  {
+   "handle": "luminaria-naz",
+   "nome": "Luminária Naz",
+   "cat": "Luminárias",
+   "linha": "",
+   "material": "Base de aço fundido, cúpula giratória de fibra de vidro laminada com papel coreano.",
+   "fonte": "IG 11.08.2026",
+   "img": "../lista/img/luminaria-naz.jpg"
+  },
+  {
+   "handle": "luminaria-ngoni",
+   "nome": "Luminária Ngoni",
+   "cat": "Luminárias",
+   "linha": "Para projetos sem personalidade, a concorrência resolve.",
+   "material": "Talagarça de algodão e estrutura aramada. Pronta entrega.",
+   "fonte": "IG 30.01 e 26.06.2026",
+   "img": "../lista/img/luminaria-ngoni.jpg"
+  },
+  {
+   "handle": "pendente-naz",
+   "nome": "Pendente Naz",
+   "cat": "Luminárias",
+   "linha": "Viram o eclipse ontem?",
+   "material": "Cúpula de fibra de vidro laminada com papel coreano.",
+   "fonte": "IG 07.08.2026",
+   "img": "../lista/img/pendente-naz.jpg"
+  },
+  {
+   "handle": "estante-domino",
+   "nome": "Estante Dominó",
+   "cat": "Estantes",
+   "linha": "",
+   "material": "",
+   "fonte": "",
+   "img": "../lista/img/estante-domino.jpg"
+  },
+  {
+   "handle": "macaneta-constantin",
+   "nome": "Maçaneta Constantin",
+   "cat": "Fixos",
+   "linha": "A primeira impressão é na mão.",
+   "material": "Latão ou alumínio fundido, com acabamento manual.",
+   "fonte": "IG 25.09.2026",
+   "img": "../lista/img/macaneta-constantin.jpg"
+  },
+  {
+   "handle": "tomada-tom-01",
+   "nome": "Tomada TOM.01",
+   "cat": "Fixos",
+   "linha": "A primeira tomada no frame do Brasil.",
+   "material": "Tomada de embutir, núcleo modular de 20A. Pronta entrega.",
+   "fonte": "IG 27.02.2026",
+   "img": "../lista/img/tomada-tom-01.jpg"
+  }
+ ]
+}

@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="pt-BR"><head><meta charset="utf-8">
+<title>Convite 05.11 · variante pelo guia de uso</title>
+<style>
+/* Exemplo de implementação do brand book da More (guia de uso, abr-dez 2025): segue o guia à risca, não o sistema medido no site.
+   Logo oficial (SVG da More, mín. 18 mm), preto puro sobre branco, uma cor sazonal (#AE1B3A, Pantone 206 C) como campo,
+   foto da campanha em P&B com a cor em multiply (p. 15), margem de 5% do lado menor, texto corrido até 12 pt e título até 20 pt (p. 28-30).
+   Só Muoto Regular (p. 17-18). Formato A5 (148 x 210 mm) a 4 px/mm; ?bleed=1 adiciona sangria de 3 mm. */
+@font-face{font-family:Muoto;font-weight:400;font-style:normal;src:url(/fonts/mr.otf) format('opentype')}
+:root{--branco:#FFFFFF;--preto-puro:#000000;--sazonal:#AE1B3A;--sans:Muoto,"DM Sans",Arial,sans-serif}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{font-synthesis:none;background:var(--branco);color:var(--preto-puro);font-family:var(--sans);font-weight:400;-webkit-font-smoothing:antialiased;text-rendering:geometricPrecision}
+body{--w:592px;--h:840px;--m:30px;--ph:520px;--crop:210px;--t:28px;--b:16px;--s:13px;--logo:120px;--qr:84px;--bl:0px}
+.sheet{position:relative;width:calc(var(--w) + 2 * var(--bl));height:calc(var(--h) + 2 * var(--bl));overflow:hidden;background:var(--branco);padding:var(--bl)}
+.art{position:relative;width:var(--w);height:var(--h);overflow:visible}
+/* foto da campanha em preto e branco, cor sazonal em multiply: o campo é a própria foto tingida */
+.ph{position:absolute;left:calc(-1 * var(--bl));top:calc(-1 * var(--bl));width:calc(var(--w) + 2 * var(--bl));height:calc(var(--ph) + var(--bl));overflow:hidden;background:var(--sazonal)}
+.ph img{position:absolute;left:0;top:calc(-1 * var(--crop));width:100%;height:auto;display:block;filter:grayscale(1) brightness(1.12) contrast(.9);mix-blend-mode:multiply}
+.band{position:absolute;left:0;right:0;top:var(--ph);bottom:0;padding:var(--m) var(--m) 0}
+h1{font-size:var(--t);line-height:1.05;letter-spacing:-.01em;font-weight:400;font-feature-settings:"lnum" 1,"tnum" 1}
+h1 span{display:block}
+p{font-size:var(--b);line-height:1.3;margin-top:10px;max-width:420px}
+.small{font-size:var(--s);line-height:1.35;margin-top:6px;max-width:420px}
+.logo{position:absolute;left:var(--m);bottom:var(--m);width:var(--logo);height:auto;display:block}
+.logo path{fill:var(--preto-puro)}
+.qr{position:absolute;right:var(--m);bottom:var(--m);width:var(--qr);height:var(--qr)}
+.qr img{width:100%;height:100%;image-rendering:pixelated;display:block}
+body.bleed{--bl:12px}
+@page{margin:0}
+@media print{html,body{background:none}.sheet{zoom:.9449}}
+</style></head>
+<body>
+<div class="sheet"><div class="art">
+  <div class="ph"><img id="foto" src="img/campanha-1017.jpg" alt=""></div>
+  <div class="band">
+    <h1 id="data"></h1>
+    <p id="titulo"></p>
+    <p class="small"><span id="end"></span> · <span id="bairro"></span></p>
+    <p class="small" id="acao"></p>
+    <svg class="logo" viewBox="0 0 481 123" aria-label="More"><path d="M480.1 3.35986H373.9V44.2599V62.1299V78.9899V119.01H480.1V79.9899H420.47L451.27 62.0699L420.5 44.2599H480.1V3.35986Z"/><path d="M63.4 35.1202L46.38 3.43018H0V119.07H46.38V79.0502H80.3V119.07H126.68V3.43018H80.3L63.4 35.1202Z"/><path d="M195.94 0C162.17 0 134.75 27.41 134.75 61.19C134.75 94.97 162.16 122.38 195.94 122.38C229.72 122.38 257.25 94.97 257.25 61.19C257.25 27.41 229.84 0 195.94 0ZM195.94 75.87C187.86 75.87 181.26 69.38 181.26 61.18C181.26 52.98 187.87 46.49 195.94 46.49C204.01 46.49 210.75 53.1 210.75 61.18C210.75 69.26 204.14 75.87 195.94 75.87Z"/><path d="M311.71 41.2702V3.43018H265.33V119.07H311.71V79.1702H362.28V3.43018C334.58 3.43018 313.25 23.4102 311.71 41.2802V41.2702Z"/></svg>
+    <div class="qr"><img src="img/qr-convite-a5-preto.png" alt="QR"></div>
+  </div>
+</div></div>
+<script>
+var q=new URLSearchParams(location.search);if(q.get('bleed'))document.body.classList.add('bleed');
+fetch('abertura.json').then(function(r){return r.json()}).then(function(J){
+  var P=J.pecas.convite;
+  document.getElementById('data').innerHTML='<span>'+P.data+'</span><span>'+P.titulo+'</span>';
+  document.getElementById('titulo').textContent=P.linha||'';
+  document.getElementById('end').textContent=J.endereco; document.getElementById('bairro').textContent=J.bairro;
+  document.getElementById('acao').textContent=P.acao;
+});
+</script>
+</body></html>
